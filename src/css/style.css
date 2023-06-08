@@ -1,0 +1,23 @@
+.shadowban-scanner-message {
+    padding: 1em;
+    border-radius: 0.5em;
+    background: rgb(255, 0, 0, 0.2);
+    margin: 1em 0;
+}
+
+.shadowban-scanner-message-no-problem {
+    background: rgb(0, 255, 0, 0.2);
+}
+
+.shadowban-scanner-message button {
+    cursor: pointer;
+    color: inherit;
+    border: none;
+    background: none;
+}
+
+.shadowban-scanner-message pre {
+    font-family: inherit;
+    line-height: inherit;
+    margin: 0.5rem 0 0 0;
+}

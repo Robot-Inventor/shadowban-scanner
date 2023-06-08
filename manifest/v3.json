@@ -1,0 +1,58 @@
+{
+    "manifest_version": 3,
+    "name": "Shadowban Scanner",
+    "short_name": "Shadowban Scanner",
+    "version": "1.0.0",
+    "description": "__MSG_manifest_description__",
+    "icons": {
+        "16": "src/image/icon16.png",
+        "48": "src/image/icon48.png",
+        "128": "src/image/icon128.png"
+    },
+    "host_permissions": [
+        "https://twitter.com/*",
+        "https://mobile.twitter.com/*",
+        "https://tweetdeck.twitter.com/*"
+    ],
+    "permissions": [
+        "storage"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://twitter.com/*",
+                "https://mobile.twitter.com/*",
+                "https://tweetdeck.twitter.com/*"
+            ],
+            "js": [
+                "src/js/contentScript.js"
+            ],
+            "css": [
+                "src/css/style.css"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "src/js/pageScript.js",
+                "src/css/style.css"
+            ],
+            "matches": [
+                "https://twitter.com/*",
+                "https://mobile.twitter.com/*",
+                "https://tweetdeck.twitter.com/*"
+            ]
+        }
+    ],
+    "default_locale": "en",
+    "action": {
+        "default_icon": {
+            "16": "src/image/icon16.png",
+            "48": "src/image/icon48.png",
+            "128": "src/image/icon128.png"
+        },
+        "default_popup": "src/html/browserAction.html",
+        "default_title": "Shadowban Scanner"
+    }
+}

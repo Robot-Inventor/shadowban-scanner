@@ -1,0 +1,29 @@
+{
+  "name": "shadowban-scanner",
+  "version": "1.0.0",
+  "description": "A browser extension that detects shadowbans on Twitter.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node ./script/build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Robot-Inventor/shadowban-scanner.git"
+  },
+  "keywords": [
+    "twitter",
+    "extension",
+    "shadowban",
+    "react"
+  ],
+  "author": "Robot-Inventor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Robot-Inventor/shadowban-scanner/issues"
+  },
+  "homepage": "https://github.com/Robot-Inventor/shadowban-scanner#readme",
+  "dependencies": {
+    "web-ext": "^7.6.2"
+  }
+}
