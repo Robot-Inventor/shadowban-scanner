@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../css/browserAction.css" />
+        <title>Shadowban Scanner</title>
+    </head>
+    <body>
+        <h1><img src="../image/icon.svg" alt="Shadowban Scanner Logo" id="logo" /> Shadowban Scanner</h1>
+        <fieldset>
+            <div>
+                <label for="alwaysDetailedView" data-translation="settingsAlwaysDetailedView"></label>
+                <input type="checkbox" name="alwaysDetailedView" id="alwaysDetailedView" />
+            </div>
+            <div>
+                <label for="showMessageInAllTweets" data-translation="settingsShowMessageInAllTweets"></label>
+                <input type="checkbox" name="showMessageInAllTweets" id="showMessageInAllTweets" />
+            </div>
+        </fieldset>
+        <small data-translation="settingsPleaseReload"></small>
+        <script src="../js/browserPolyfill/browserPolyfill.min.js"></script>
+        <script src="../js/browserAction.js"></script>
+    </body>
+</html>

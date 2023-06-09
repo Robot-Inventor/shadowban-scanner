@@ -1,0 +1,53 @@
+{
+    "manifest_description": {
+        "message": "Twitterのシャドウバンを検出する拡張機能です。"
+    },
+    "accountShadowbanned": {
+        "message": "このユーザーはシャドウバンされている可能性があるため、ツイートが検索結果に表示されないかもしれません。"
+    },
+    "accountShadowbannedStatusMessage": {
+        "message": "🚫アカウントがシャドウバンされている可能性があります\n✅ツイートにセンシティブフラグは付与されていません\n✅ツイートに年齢制限はありません\n🚫ツイートが検索結果に表示されない可能性があります"
+    },
+    "accountShadowbannedAndTweetFlaggedAsSensitive": {
+        "message": "このユーザーはシャドウバンされている可能性があるため、ツイートが検索結果に表示されないかもしれません。また、このツイートにはセンシティブフラグが付与されています。"
+    },
+    "accountShadowbannedAndTweetFlaggedAsSensitiveStatusMessage": {
+        "message": "🚫アカウントがシャドウバンされている可能性があります\n🚫ツイートにセンシティブフラグが付与されています\n✅ツイートに年齢制限はありません\n🚫ツイートが検索結果に表示されない可能性があります"
+    },
+    "accountAndTweetShadowbanned": {
+        "message": "このツイートには年齢制限があり、18歳未満のユーザーやログインしていないユーザーは閲覧できません。また、検索結果に表示されない可能性があります。"
+    },
+    "accountAndTweetShadowbannedStatusMessage": {
+        "message": "🚫アカウントがシャドウバンされている可能性があります\n🚫ツイートにセンシティブフラグが付与されています\n🚫ツイートに年齢制限があります\n🚫ツイートが検索結果に表示されない可能性があります"
+    },
+    "tweetFlaggedAsSensitive": {
+        "message": "このツイートにはセンシティブフラグが付与されており、閲覧者の設定によっては検索結果に表示されません。"
+    },
+    "tweetFlaggedAsSensitiveStatusMessage": {
+        "message": "✅アカウントはシャドウバンされていません\n🚫ツイートにセンシティブフラグが付与されています\n✅ツイートに年齢制限はありません\n⚠️ツイートは閲覧者の設定によっては検索結果に表示されません"
+    },
+    "tweetShadowbanned": {
+        "message": "このツイートには年齢制限があり、18歳未満のユーザーやログインしていないユーザーは閲覧できません。また、検索結果に表示されない可能性があります。"
+    },
+    "tweetShadowbannedStatusMessage": {
+        "message": "✅アカウントはシャドウバンされていません\n🚫ツイートにセンシティブフラグが付与されています\n🚫ツイートに年齢制限があります\n🚫ツイートが検索結果に表示されない可能性があります"
+    },
+    "tweetNoProblem": {
+        "message": "ツイートに問題は見つかりませんでした。"
+    },
+    "tweetNoProblemStatusMessage": {
+        "message": "✅アカウントはシャドウバンされていません\n✅ツイートにセンシティブフラグは付与されていません\n✅ツイートに年齢制限はありません\n✅ツイートは検索結果に表示されます"
+    },
+    "showMore": {
+        "message": "▶さらに表示"
+    },
+    "settingsAlwaysDetailedView": {
+        "message": "常に詳細情報を表示する"
+    },
+    "settingsShowMessageInAllTweets": {
+        "message": "すべてのツイートに検証結果を表示する"
+    },
+    "settingsPleaseReload": {
+        "message": "設定を変更したらTwitterを再読み込みしてください。"
+    }
+}

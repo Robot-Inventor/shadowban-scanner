@@ -1,0 +1,58 @@
+:root {
+    --theme-background-color: #fff;
+    --theme-font-color: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --theme-background-color: #121212;
+        --theme-font-color: #fff;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    padding: 1rem;
+    width: max-content;
+    background: var(--theme-background-color);
+    color: var(--theme-font-color);
+    font-size: 16px;
+}
+
+#logo {
+    width: 1.2em;
+    vertical-align: bottom;
+}
+
+h1 {
+    font-size: 1.4em;
+}
+
+fieldset {
+    margin: 0.75em 0;
+    border: none;
+}
+
+h1 + fieldset {
+    margin-top: 0.5;
+}
+
+label,
+input {
+    cursor: pointer;
+}
+
+label + input {
+    margin-left: 0.5em;
+}
+
+small {
+    font-size: 0.8em;
+    opacity: 0.7;
+}
