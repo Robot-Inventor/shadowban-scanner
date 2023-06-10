@@ -1,14 +1,12 @@
-const DEFAULT_SETTINGS = {
-    alwaysDetailedView: false,
-    showMessageInAllTweets: false
-};
+import { DEFAULT_SETTINGS } from "./defaultSettings";
 
 const pageScript = document.createElement("script");
-pageScript.src = browser.runtime.getURL("src/js/pageScript.js");
+pageScript.src = browser.runtime.getURL("dist/js/pageScript.js");
 
 pageScript.addEventListener("load", async () => {
     pageScript.remove();
     const eventGenerator = document.getElementById("shadowban-scanner-event-generator");
+    if (!eventGenerator) throw new Error("Failed to get event generator");
 
     const settings = await browser.storage.local.get(DEFAULT_SETTINGS);
 
@@ -19,10 +17,12 @@ pageScript.addEventListener("load", async () => {
     }
 
     eventGenerator.addEventListener("newMessage", () => {
-        const target = document.querySelector(".shadowban-scanner-message:not(.text-inserted");
+        const target: HTMLElement | null = document.querySelector(".shadowban-scanner-message:not(.text-inserted");
+        if (!target) return;
 
         target.classList.add("text-inserted");
         const { messageType } = target.dataset;
+        if (!messageType) throw new Error("Failed to get message type");
 
         const message = browser.i18n.getMessage(messageType);
         target.insertAdjacentText("afterbegin", message);
@@ -37,6 +37,7 @@ pageScript.addEventListener("load", async () => {
         }
 
         const pre = target.querySelector("pre");
+        if (!pre) return;
         pre.textContent = browser.i18n.getMessage(`${messageType}StatusMessage`);
     });
 });

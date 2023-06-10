@@ -5,9 +5,9 @@
     "version": "1.0.0",
     "description": "__MSG_manifest_description__",
     "icons": {
-        "16": "src/image/icon16.png",
-        "48": "src/image/icon48.png",
-        "128": "src/image/icon128.png"
+        "16": "dist/image/icon16.png",
+        "48": "dist/image/icon48.png",
+        "128": "dist/image/icon128.png"
     },
     "permissions": [
         "storage"
@@ -20,26 +20,26 @@
                 "https://tweetdeck.twitter.com/*"
             ],
             "js": [
-                "src/js/browserPolyfill/browserPolyfill.min.js",
-                "src/js/contentScript.js"
+                "dist/polyfill/browserPolyfill.min.js",
+                "dist/js/contentScript.js"
             ],
             "css": [
-                "src/css/style.css"
+                "dist/css/style.css"
             ]
         }
     ],
     "web_accessible_resources": [
-        "src/js/pageScript.js"
+        "dist/js/pageScript.js"
     ],
     "default_locale": "en",
     "browser_action": {
         "browser_style": true,
         "default_icon": {
-            "16": "src/image/icon16.png",
-            "48": "src/image/icon48.png",
-            "128": "src/image/icon128.png"
+            "16": "dist/image/icon16.png",
+            "48": "dist/image/icon48.png",
+            "128": "dist/image/icon128.png"
         },
-        "default_popup": "src/html/browserAction.html",
+        "default_popup": "dist/html/browserAction.html",
         "default_title": "Shadowban Scanner"
     }
 }
