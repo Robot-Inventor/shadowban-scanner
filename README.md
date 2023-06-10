@@ -6,6 +6,11 @@ A browser extension that detects shadowbans on Twitter.
 
 ![Shadowban Scanner's logo](src/image/logo.png)
 
+## Installation
+
+- [Chrome version](https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/)
+- [Firefox version](https://addons.mozilla.org/firefox/addon/shadowban-scanner/)
+
 ## Features
 
 - Detects shadowbans per account

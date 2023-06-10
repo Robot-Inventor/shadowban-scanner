@@ -6,6 +6,11 @@ Twitterのシャドウバンを検出する拡張機能です。
 
 ![Shadowban Scannerのロゴ](src/image/logo.png)
 
+## インストール
+
+- [Chrome版](https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/)
+- [Firefox版](https://addons.mozilla.org/firefox/addon/shadowban-scanner/)
+
 ## 機能
 
 - アカウント単位のシャドウバンを検出します
