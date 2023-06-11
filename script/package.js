@@ -1,6 +1,19 @@
 const { execSync } = require("child_process");
 
-const IGNORE_FILES = '"./src/" "./script/" "./node_modules/" "package.json" "package-lock.json" "./*.md" "./manifest/" "./web-ext-artifacts/"';
+const IGNORE_FILES = [
+    "./src/",
+    "./script/",
+    "./node_modules/",
+    "./package.json",
+    "./package-lock.json",
+    "./*.md",
+    "./manifest/",
+    "./web-ext-artifacts/",
+    "./userScript/",
+    "./renovate.json",
+    "./tsconfig.json",
+    "./webpack.config.js"
+].map((path) => `"${path}"`).join(" ");
 
 console.log("Building...");
 execSync("npm run build");
