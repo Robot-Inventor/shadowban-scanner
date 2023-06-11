@@ -35,8 +35,7 @@ class ProfileReactProps {
 
     get() {
         const reactProps = new ReactProps(this.userName).get();
-        // @ts-expect-error
-        return this.userName[reactProps].children[1].props;
+        return reactProps;
     }
 }
 

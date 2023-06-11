@@ -1,17 +1,33 @@
 const { execSync } = require("child_process");
+const glob = require("glob");
+const fs = require("fs");
+const packagejson = require("../package.json");
+const path = require("path");
 
-const IGNORE_FILES = '"./src/" "./script/" "./node_modules/" "package.json" "package-lock.json" "./*.md" "./manifest/" "./web-ext-artifacts/"';
-
-console.log("Running Webpack...");
+console.log("Building...");
 execSync("npx webpack");
 
-console.log("Switching to manifest v2.");
-execSync("node ./script/changeManifestVersion.js 2");
-console.log("Building...");
-execSync(`npx web-ext build --artifacts-dir "./web-ext-artifacts/manifestV2" --ignore-files ${IGNORE_FILES}`);
+console.log("Adding userScript comments...");
+const userScriptFiles = glob.sync("./userScript/*.user.js");
 
-console.log("Switching to manifest v3.");
-execSync("node ./script/changeManifestVersion.js 3");
-console.log("Building...");
-execSync(`npx web-ext build --artifacts-dir "./web-ext-artifacts/manifestV3" --ignore-files ${IGNORE_FILES}`);
-console.log("Done.");
+for (const userScript of userScriptFiles) {
+    const scriptString = fs.readFileSync(userScript);
+    const userScriptComment = `
+// ==UserScript==
+// @name         Shadowban Scanner (${path.basename(userScript, ".user.js")})
+// @namespace    https://github.com/Robot-Inventor/shadowban-scanner/
+// @version      ${packagejson.version}
+// @description  A browser extension that detects shadowbans on Twitter.
+// @author       Robot-Inventor (ろぼいん / @keita_roboin)
+// @match        https://twitter.com/*
+// @match        https://mobile.twitter.com/*
+// @match        https://tweetdeck.twitter.com/*
+// @icon         https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/src/image/icon128.png
+// @downloadURL  https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/${userScript.replace("\\", "/")}
+// @updateURL    https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/${userScript.replace("\\", "/")}
+// @grant        none
+// ==/UserScript==
+`.trim();
+    const newScriptString = userScriptComment + "\n\n" + scriptString;
+    fs.writeFileSync(userScript, newScriptString);
+}

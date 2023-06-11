@@ -11,6 +11,13 @@ A browser extension that detects shadowbans on Twitter.
 - [Chrome version](https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/)
 - [Firefox version](https://addons.mozilla.org/firefox/addon/shadowban-scanner/)
 
+### User Scripts
+
+The settings cannot be changed in the user script version. If you need detailed customization, please use the Browser Extensions version.
+
+- [English](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/en.user.js)
+- [日本語](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/ja.user.js)
+
 ## Features
 
 - Detects shadowbans per account
@@ -55,4 +62,10 @@ node script/changeManifestVersion.js <manifestVersion>
 
 ```console
 npm run build
+```
+
+### Package
+
+```console
+npm run package
 ```
