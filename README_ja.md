@@ -11,6 +11,13 @@ Twitterのシャドウバンを検出する拡張機能です。
 - [Chrome版](https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/)
 - [Firefox版](https://addons.mozilla.org/firefox/addon/shadowban-scanner/)
 
+### ユーザースクリプト
+
+ユーザースクリプト版では、設定を変更できません。詳細なカスタマイズが必要な場合はブラウザー拡張機能版をご利用ください。
+
+- [English](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/en.user.js)
+- [日本語](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/ja.user.js)
+
 ## 機能
 
 - アカウント単位のシャドウバンを検出します
@@ -55,4 +62,10 @@ node script/changeManifestVersion.js <manifestVersion>
 
 ```console
 npm run build
+```
+
+### パッケージ化
+
+```console
+npm run package
 ```
