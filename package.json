@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node ./script/build.js",
-    "package": "node ./script/package.js"
+    "package": "node ./script/package.js",
+    "version": "npm run build && npm run package && git add ."
   },
   "repository": {
     "type": "git",
