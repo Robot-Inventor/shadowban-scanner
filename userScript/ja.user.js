@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Shadowban Scanner (ja)
 // @namespace    https://github.com/Robot-Inventor/shadowban-scanner/
-// @version      1.0.0
+// @version      1.1.0
 // @description  A browser extension that detects shadowbans on Twitter.
 // @author       Robot-Inventor (ろぼいん / @keita_roboin)
 // @match        https://twitter.com/*
