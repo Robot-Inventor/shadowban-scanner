@@ -12,7 +12,8 @@ const IGNORE_FILES = [
     "./userScript/",
     "./renovate.json",
     "./tsconfig.json",
-    "./webpack.config.js"
+    "./webpack.config.js",
+    "./doc/"
 ].map((path) => `"${path}"`).join(" ");
 
 console.log("Building...");

@@ -4,7 +4,7 @@
 
 Twitterのシャドウバンを検出する拡張機能です。
 
-![Shadowban Scannerのロゴ](src/image/logo.png)
+![Shadowban Scannerのロゴ](doc/image/logo.png)
 
 ## インストール
 
@@ -24,9 +24,9 @@ Twitterのシャドウバンを検出する拡張機能です。
 - ツイート単位のセンシティブフラグを検出します
 - ツイートの年齢制限を検出します
 
-![アカウント単位のシャドウバン検出のスクリーンショット](src/image/screenshot1_ja.png)
+![アカウント単位のシャドウバン検出のスクリーンショット](doc/image/screenshot2_ja.png)
 
-![ツイート単位のシャドウバン検出のスクリーンショット](src/image/screenshot2_ja.png)
+![ツイート単位のシャドウバン検出のスクリーンショット](doc/image/screenshot1_ja.png)
 
 ## 精度
 

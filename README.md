@@ -4,7 +4,7 @@
 
 A browser extension that detects shadowbans on Twitter.
 
-![Shadowban Scanner's logo](src/image/logo.png)
+![Shadowban Scanner's logo](doc/image/logo.png)
 
 ## Installation
 
@@ -24,9 +24,9 @@ The settings cannot be changed in the user script version. If you need detailed 
 - Detects sensitive flags per tweet
 - Detects age restrictions on tweets.
 
-![Screenshot of per-account shadowban detection](src/image/screenshot1_en.png)
+![Screenshot of per-account shadowban detection](doc/image/screenshot2_en.png)
 
-![Screenshot of per-tweet shadowban detection](src/image/screenshot2_en.png)
+![Screenshot of per-tweet shadowban detection](doc/image/screenshot1_en.png)
 
 ## Accuracy
 
