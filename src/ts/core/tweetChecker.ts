@@ -2,7 +2,7 @@ import { Color } from "./color";
 import { MessageElement } from "./messageElement";
 import { MessageType, TweetStatus } from "./messageType";
 import { TweetReactProps } from "./reactProps";
-import { CHECKED_DATA_ATTRIBUTE } from "./settings";
+import { CHECKED_DATA_ATTRIBUTE } from "../pageScript/settings";
 
 class TweetChecker {
     private readonly tweet: Element;

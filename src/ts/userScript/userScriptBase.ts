@@ -1,4 +1,4 @@
-import { Core } from "../core";
+import { Core } from "../core/core";
 import translationEn from "../../../_locales/en/messages.json";
 import { TextFlow } from "../pageScript/textFlow";
 import { DEFAULT_SETTINGS } from "../defaultSettings";

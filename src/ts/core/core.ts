@@ -1,8 +1,8 @@
-import { ProfileChecker } from "./pageScript/profilechecker";
-import { CHECKED_DATA_ATTRIBUTE } from "./pageScript/settings";
-import { TweetChecker } from "./pageScript/tweetChecker";
-import enTranslation from "../../_locales/en/messages.json";
-import "../css/style.css";
+import { ProfileChecker } from "./profilechecker";
+import { CHECKED_DATA_ATTRIBUTE } from "../pageScript/settings";
+import { TweetChecker } from "./tweetChecker";
+import enTranslation from "../../../_locales/en/messages.json";
+import "../../css/style.css";
 
 type TranslationData = typeof enTranslation;
 

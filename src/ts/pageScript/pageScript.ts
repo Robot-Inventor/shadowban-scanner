@@ -1,4 +1,4 @@
-import { Core } from "../core";
+import { Core } from "../core/core";
 import { EVENT_GENERATOR_ID } from "./settings";
 
 const eventGenerator = document.createElement("div");
