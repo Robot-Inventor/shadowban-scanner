@@ -1,7 +1,7 @@
 import { Color } from "./color";
 import { MessageElement } from "./messageElement";
 import { ProfileReactProps } from "./reactProps";
-import { CHECKED_DATA_ATTRIBUTE } from "./settings";
+import { CHECKED_DATA_ATTRIBUTE } from "../pageScript/settings";
 
 class ProfileChecker {
     private readonly userName: Element;

@@ -1,5 +1,5 @@
-import { TweetStatusString } from "./messageType";
-import { TranslationData, Translator } from "../core";
+import { TweetStatusString } from "../core/messageType";
+import { TranslationData, Translator } from "../core/core";
 
 class TextFlow {
     private readonly translator: Translator;
