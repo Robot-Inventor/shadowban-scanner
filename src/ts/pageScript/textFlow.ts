@@ -2,7 +2,7 @@ import { TweetStatusString } from "./messageType";
 import { TranslationData, Translator } from "../core";
 
 class TextFlow {
-    private translator: Translator;
+    private readonly translator: Translator;
     private readonly allWaysDetailedView: boolean;
 
     constructor(showMessageInAllTweets: boolean, alwaysDetailedView: boolean, translator: Translator) {
