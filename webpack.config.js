@@ -43,23 +43,19 @@ module.exports = {
         new CopyFilePlugin({
             patterns: [
                 {
-                    to: "./**/*",
                     from: "./src/css/",
                     to: "./css/[name][ext]"
                 },
                 {
-                    to: "./**/*",
                     from: "./src/html/",
                     to: "./html/[name][ext]"
                 },
                 {
-                    from: "./**/*",
-                    context: "./src/image/",
+                    from: "./src/image/",
                     to: "./image/[name][ext]"
                 },
                 {
-                    from: "./**/*",
-                    context: "./src/polyfill/",
+                    from: "./src/polyfill/",
                     to: "./polyfill/[name][ext]"
                 }
             ]
