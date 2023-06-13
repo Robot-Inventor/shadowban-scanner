@@ -6,9 +6,7 @@ import { DEFAULT_SETTINGS } from "../defaultSettings";
 class UserScriptBase {
     constructor(translationData: typeof translationEn) {
         const textFlowOptions: TextFlowOptions = {
-            showMessageInAllTweets: DEFAULT_SETTINGS.showMessageInAllTweets,
-            alwaysDetailedView: DEFAULT_SETTINGS.alwaysDetailedView,
-            enableOnlyForCurrentUsersTweets: DEFAULT_SETTINGS.enableOnlyForCurrentUsersTweets,
+            ...DEFAULT_SETTINGS,
             translator: (key) => {
                 return translationData[key].message;
             }
