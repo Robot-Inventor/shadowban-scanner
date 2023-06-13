@@ -13,9 +13,7 @@ pageScript.addEventListener("load", async () => {
     const settings = await browser.storage.local.get(DEFAULT_SETTINGS);
 
     const textFlowOptions: TextFlowOptions = {
-        showMessageInAllTweets: settings.showMessageInAllTweets,
-        alwaysDetailedView: settings.alwaysDetailedView,
-        enableOnlyForCurrentUsersTweets: settings.enableOnlyForCurrentUsersTweets,
+        ...settings,
         translator: browser.i18n.getMessage
     };
     const textFlow = new TextFlow(textFlowOptions);
