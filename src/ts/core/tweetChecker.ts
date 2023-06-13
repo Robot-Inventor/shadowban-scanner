@@ -19,12 +19,13 @@ class TweetChecker {
         const reactProps = new TweetReactProps(menuBar).get();
         const tweetStatus: TweetStatus = {
             tweet: {
-                possiblySensitive: reactProps.possibly_sensitive,
-                possiblySensitiveEditable: reactProps.possibly_sensitive_editable,
+                possiblySensitive: Boolean(reactProps.possibly_sensitive),
+                // ref: https://github.com/Robot-Inventor/shadowban-scanner/issues/16
+                possiblySensitiveEditable: !(reactProps.possibly_sensitive_editable === false),
                 isTweetByCurrentUser: reactProps.user.following === null
             },
             user: {
-                possiblySensitive: reactProps.user.possibly_sensitive
+                possiblySensitive: Boolean(reactProps.user.possibly_sensitive)
             }
         };
 
