@@ -1,20 +1,34 @@
 import { TweetStatusString } from "../core/messageType";
 import { TranslationData, Translator } from "../core/core";
+import { CURRENT_USERS_TWEET_CLASS_NAME, MESSAGE_CLASS_NAME } from "./settings";
+
+interface TextFlowOptions {
+    showMessageInAllTweets: boolean;
+    alwaysDetailedView: boolean;
+    enableOnlyForCurrentUsersTweets: boolean;
+    translator: Translator;
+}
 
 class TextFlow {
     private readonly translator: Translator;
     private readonly allWaysDetailedView: boolean;
 
-    constructor(showMessageInAllTweets: boolean, alwaysDetailedView: boolean, translator: Translator) {
-        if (!showMessageInAllTweets) {
+    constructor(options: TextFlowOptions) {
+        if (!options.showMessageInAllTweets) {
             const style = document.createElement("style");
             style.textContent = ".shadowban-scanner-message-no-problem { display: none; }";
             document.body.appendChild(style);
         }
 
-        this.allWaysDetailedView = alwaysDetailedView;
+        if (options.enableOnlyForCurrentUsersTweets) {
+            const style = document.createElement("style");
+            style.textContent = `.${MESSAGE_CLASS_NAME}:not(.${CURRENT_USERS_TWEET_CLASS_NAME}) {display: none;}`;
+            document.body.appendChild(style);
+        }
 
-        this.translator = translator;
+        this.allWaysDetailedView = options.alwaysDetailedView;
+
+        this.translator = options.translator;
     }
 
     run() {
@@ -43,4 +57,4 @@ class TextFlow {
     }
 }
 
-export { TextFlow };
+export { TextFlowOptions, TextFlow };

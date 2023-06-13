@@ -2,7 +2,7 @@ import { Color } from "./color";
 import { MessageElement } from "./messageElement";
 import { MessageType, TweetStatus } from "./messageType";
 import { TweetReactProps } from "./reactProps";
-import { CHECKED_DATA_ATTRIBUTE } from "../pageScript/settings";
+import { CHECKED_DATA_ATTRIBUTE, CURRENT_USERS_TWEET_CLASS_NAME } from "../pageScript/settings";
 
 class TweetChecker {
     private readonly tweet: Element;
@@ -20,7 +20,8 @@ class TweetChecker {
         const tweetStatus: TweetStatus = {
             tweet: {
                 possiblySensitive: reactProps.possibly_sensitive,
-                possiblySensitiveEditable: reactProps.possibly_sensitive_editable
+                possiblySensitiveEditable: reactProps.possibly_sensitive_editable,
+                isTweetByCurrentUser: reactProps.user.following === null
             },
             user: {
                 possiblySensitive: reactProps.user.possibly_sensitive
@@ -29,6 +30,10 @@ class TweetChecker {
 
         const color = new Color().textColor;
         const messageElement = new MessageElement("tweet", color);
+
+        if (tweetStatus.tweet.isTweetByCurrentUser) {
+            messageElement.element.classList.add(CURRENT_USERS_TWEET_CLASS_NAME);
+        }
 
         const messageType = new MessageType().fromTweetStatus(tweetStatus);
         messageElement.messageType = messageType;

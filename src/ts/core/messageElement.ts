@@ -1,3 +1,4 @@
+import { MESSAGE_CLASS_NAME } from "../pageScript/settings";
 import { ColorCode } from "./color";
 import { TweetStatusString } from "./messageType";
 
@@ -6,7 +7,7 @@ class MessageElement {
 
     constructor(type: "tweet" | "account", color: ColorCode, messageType?: TweetStatusString) {
         this.div = document.createElement("div");
-        this.div.classList.add("shadowban-scanner-message");
+        this.div.classList.add(MESSAGE_CLASS_NAME);
         this.div.dataset.messageType = messageType;
         this.div.style.color = color;
 
