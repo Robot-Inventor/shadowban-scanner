@@ -47,6 +47,9 @@
     "settingsShowMessageInAllTweets": {
         "message": "Show check results in all tweets"
     },
+    "settingsEnableOnlyForCurrentUsersTweets": {
+        "message": "Display check results only in your own tweets (beta)"
+    },
     "settingsPleaseReload": {
         "message": "Please reload Twitter once you have changed the settings."
     }

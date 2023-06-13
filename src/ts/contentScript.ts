@@ -1,6 +1,6 @@
 import { DEFAULT_SETTINGS } from "./defaultSettings";
 import { EVENT_GENERATOR_ID } from "./pageScript/settings";
-import { TextFlow } from "./pageScript/textFlow";
+import { TextFlow, TextFlowOptions } from "./pageScript/textFlow";
 
 const pageScript = document.createElement("script");
 pageScript.src = browser.runtime.getURL("dist/js/pageScript.js");
@@ -12,11 +12,13 @@ pageScript.addEventListener("load", async () => {
 
     const settings = await browser.storage.local.get(DEFAULT_SETTINGS);
 
-    const textFlow = new TextFlow(
-        settings.showMessageInAllTweets,
-        settings.alwaysDetailedView,
-        browser.i18n.getMessage
-    );
+    const textFlowOptions: TextFlowOptions = {
+        showMessageInAllTweets: settings.showMessageInAllTweets,
+        alwaysDetailedView: settings.alwaysDetailedView,
+        enableOnlyForCurrentUsersTweets: settings.enableOnlyForCurrentUsersTweets,
+        translator: browser.i18n.getMessage
+    };
+    const textFlow = new TextFlow(textFlowOptions);
 
     eventGenerator.addEventListener("newMessage", () => {
         textFlow.run();

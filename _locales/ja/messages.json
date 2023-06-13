@@ -47,6 +47,9 @@
     "settingsShowMessageInAllTweets": {
         "message": "すべてのツイートに検証結果を表示する"
     },
+    "settingsEnableOnlyForCurrentUsersTweets": {
+        "message": "自分のツイートにのみ検証結果を表示する（ベータ版）"
+    },
     "settingsPleaseReload": {
         "message": "設定を変更したらTwitterを再読み込みしてください。"
     }
