@@ -1,10 +1,9 @@
-import { Core } from "../core/core";
-import translationEn from "../../../_locales/en/messages.json";
+import { Core, TranslationData } from "../core/core";
 import { TextFlow, TextFlowOptions } from "../pageScript/textFlow";
 import { DEFAULT_SETTINGS } from "../defaultSettings";
 
 class UserScriptBase {
-    constructor(translationData: typeof translationEn) {
+    constructor(translationData: TranslationData) {
         const textFlowOptions: TextFlowOptions = {
             ...DEFAULT_SETTINGS,
             translator: (key) => {
