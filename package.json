@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "node ./script/webExtLint.js",
     "build": "node ./script/build.js",
     "package": "node ./script/package.js",
     "version": "npm run build && npm run package && git add ."
@@ -26,6 +27,7 @@
   },
   "homepage": "https://github.com/Robot-Inventor/shadowban-scanner#readme",
   "dependencies": {
+    "colors": "^1.4.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
     "style-loader": "^3.3.3",
