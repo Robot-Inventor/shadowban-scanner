@@ -1,6 +1,6 @@
-import { DEFAULT_SETTINGS } from "./defaultSettings";
-import { EVENT_GENERATOR_ID } from "./pageScript/settings";
-import { TextFlow, TextFlowOptions } from "./pageScript/textFlow";
+import { DEFAULT_SETTINGS } from "./common/defaultSettings";
+import { EVENT_GENERATOR_ID } from "./common/settings";
+import { TextFlow, TextFlowOptions } from "./common/textFlow";
 
 const pageScript = document.createElement("script");
 pageScript.src = browser.runtime.getURL("dist/js/pageScript.js");

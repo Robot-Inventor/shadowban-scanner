@@ -1,4 +1,4 @@
-import { MESSAGE_CLASS_NAME } from "../pageScript/settings";
+import { MESSAGE_CLASS_NAME } from "../common/settings";
 import { ColorCode } from "./color";
 import { TweetStatusString } from "./messageType";
 

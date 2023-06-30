@@ -1,6 +1,6 @@
 import { Core, TranslationData } from "../core/core";
-import { TextFlow, TextFlowOptions } from "../pageScript/textFlow";
-import { DEFAULT_SETTINGS } from "../defaultSettings";
+import { TextFlow, TextFlowOptions } from "../common/textFlow";
+import { DEFAULT_SETTINGS } from "../common/defaultSettings";
 
 class UserScriptBase {
     constructor(translationData: TranslationData) {
