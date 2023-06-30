@@ -1,4 +1,4 @@
-import { DEFAULT_SETTINGS } from "./defaultSettings";
+import { DEFAULT_SETTINGS } from "./common/defaultSettings";
 
 const translationTargets: NodeListOf<HTMLElement> = document.querySelectorAll("[data-translation]");
 for (const translationTarget of translationTargets) {

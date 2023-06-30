@@ -1,5 +1,5 @@
 import { ProfileChecker } from "./profilechecker";
-import { CHECKED_DATA_ATTRIBUTE } from "../pageScript/settings";
+import { CHECKED_DATA_ATTRIBUTE } from "../common/settings";
 import { TweetChecker } from "./tweetChecker";
 import enTranslation from "../../../_locales/en/messages.json";
 import "../../css/style.css";
