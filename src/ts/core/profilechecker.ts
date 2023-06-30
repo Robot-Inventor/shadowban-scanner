@@ -18,7 +18,7 @@ class ProfileChecker {
 
         const color = new Color().textColor;
 
-        const messageElement = new MessageElement("account", color, "accountShadowbanned");
+        const messageElement = new MessageElement({ type: "account", summary: "accountShadowbanned" }, color);
         const userDescription = document.querySelector("[data-testid='UserDescription']");
         if (!userDescription) throw new Error("Failed to get user description of profile");
         userDescription.insertAdjacentElement("afterend", messageElement.element);

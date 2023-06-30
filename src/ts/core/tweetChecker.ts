@@ -1,6 +1,6 @@
 import { Color } from "./color";
-import { MessageElement } from "./messageElement";
-import { MessageType, TweetStatus } from "./messageType";
+import { MessageElement, MessageElementStatus } from "./messageElement";
+import { MessageSummary, TweetStatus } from "./messageType";
 import { TweetReactProps } from "./reactProps";
 import { CHECKED_DATA_ATTRIBUTE, CURRENT_USERS_TWEET_CLASS_NAME } from "../common/settings";
 
@@ -29,17 +29,42 @@ class TweetChecker {
             }
         };
 
+        const messageSummary = new MessageSummary().fromTweetStatus(tweetStatus);
+
         const color = new Color().textColor;
-        const messageElement = new MessageElement("tweet", color);
+        const statusData: MessageElementStatus = {
+            type: "tweet",
+            summary: messageSummary,
+            detail: {
+                accountStatus: tweetStatus.user.possiblySensitive
+                    ? "accountIsShadowbanned"
+                    : "accountIsNotShadowbanned",
+                tweetSensitiveFlag: tweetStatus.tweet.possiblySensitive
+                    ? "tweetIsFlaggedAsSensitive"
+                    : "tweetIsNotFlaggedAsSensitive",
+                tweetAgeRestriction:
+                    tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable
+                        ? "tweetIsAgeRestricted"
+                        : "tweetIsNotAgeRestricted",
+                tweetSearchStatus: (() => {
+                    if (
+                        (tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable) ||
+                        tweetStatus.user.possiblySensitive
+                    )
+                        return "tweetIsNotSearchable";
+                    return tweetStatus.tweet.possiblySensitive ? "tweetMayNotBeSearchable" : "tweetIsSearchable";
+                })()
+            }
+        };
+
+        const messageElement = new MessageElement(statusData, color);
+
+        if (statusData.detail.tweetSearchStatus === "tweetIsSearchable") {
+            messageElement.element.classList.add("shadowban-scanner-message-no-problem");
+        }
 
         if (tweetStatus.tweet.isTweetByCurrentUser) {
             messageElement.element.classList.add(CURRENT_USERS_TWEET_CLASS_NAME);
-        }
-
-        const messageType = new MessageType().fromTweetStatus(tweetStatus);
-        messageElement.messageType = messageType;
-        if (messageType === "tweetNoProblem") {
-            messageElement.element.classList.add("shadowban-scanner-message-no-problem");
         }
 
         menuBar.insertAdjacentElement("beforebegin", messageElement.element);

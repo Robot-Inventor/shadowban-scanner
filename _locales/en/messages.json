@@ -5,38 +5,47 @@
     "accountShadowbanned": {
         "message": "This user may be shadowbanned, so this tweet may not appear in search results."
     },
-    "accountShadowbannedStatusMessage": {
-        "message": "🚫Account may be shadowbanned.\n✅Tweet is not flagged as sensitive.\n✅Tweet has no age limit.\n🚫Tweet may not appear in search results."
-    },
     "accountShadowbannedAndTweetFlaggedAsSensitive": {
         "message": "This user may be shadowbanned so this tweet may not appear in search results. Also, this tweet is flagged as sensitive."
-    },
-    "accountShadowbannedAndTweetFlaggedAsSensitiveStatusMessage": {
-        "message": "🚫Account may be shadowbanned.\n🚫Tweet is flagged as sensitive.\n✅Tweet has no age limit.\n🚫Tweet may not appear in search results."
     },
     "accountAndTweetShadowbanned": {
         "message": "This tweet is age-restricted and cannot be viewed by users under the age of 18 or who are not logged in. This tweet may not appear in search results."
     },
-    "accountAndTweetShadowbannedStatusMessage": {
-        "message": "🚫Account may be shadowbanned.\n🚫Tweet is flagged as sensitive.\n🚫Tweet has age limit.\n🚫Tweet may not appear in search results."
-    },
     "tweetFlaggedAsSensitive": {
         "message": "This tweet is flagged as sensitive and will not appear in search results depending on the viewer's preferences."
-    },
-    "tweetFlaggedAsSensitiveStatusMessage": {
-        "message": "✅Account is not shadowbanned.\n🚫Tweet is flagged as sensitive.\n✅Tweet has no age limit.\n⚠️Tweet may not appear in search results depending on viewer preferences."
     },
     "tweetShadowbanned": {
         "message": "This tweet is age-restricted and cannot be viewed by users under the age of 18 or who are not logged in. This tweet may not appear in search results."
     },
-    "tweetShadowbannedStatusMessage": {
-        "message": "✅Account is not shadowbanned.\n🚫Tweet is flagged as sensitive.\n🚫Tweet has age limit.\n🚫Tweet may not appear in search results."
-    },
     "tweetNoProblem": {
         "message": "No problems was found with this tweet."
     },
-    "tweetNoProblemStatusMessage": {
-        "message": "✅Account is not shadowbanned.\n✅Tweet is not flagged as sensitive.\n✅Tweet has no age limit.\n✅Tweet will appear in search results."
+    "accountIsNotShadowbanned": {
+        "message": "✅Account is not shadowbanned."
+    },
+    "accountIsShadowbanned": {
+        "message": "🚫Account may be shadowbanned."
+    },
+    "tweetIsNotFlaggedAsSensitive": {
+        "message": "✅Tweet is not flagged as sensitive."
+    },
+    "tweetIsFlaggedAsSensitive": {
+        "message": "🚫Tweet is flagged as sensitive."
+    },
+    "tweetIsNotAgeRestricted": {
+        "message": "✅Tweet has no age limit."
+    },
+    "tweetIsAgeRestricted": {
+        "message": "🚫Tweet has age limit."
+    },
+    "tweetIsSearchable": {
+        "message": "✅Tweet will appear in search results."
+    },
+    "tweetMayNotBeSearchable": {
+        "message": "⚠️Tweet may not appear in search results depending on viewer preferences."
+    },
+    "tweetIsNotSearchable": {
+        "message": "🚫Tweet may not appear in search results."
     },
     "showMore": {
         "message": "▶show more"
