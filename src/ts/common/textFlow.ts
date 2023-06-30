@@ -1,6 +1,10 @@
-import { TweetStatusString } from "../core/messageType";
 import { TranslationData, Translator } from "../core/core";
-import { CURRENT_USERS_TWEET_CLASS_NAME, MESSAGE_CLASS_NAME } from "./settings";
+import {
+    CURRENT_USERS_TWEET_CLASS_NAME,
+    MESSAGE_CLASS_NAME,
+    TRANSLATION_ATTRIBUTE,
+    TWEMOJI_ATTRIBUTE
+} from "./settings";
 import emojiRegex from "emoji-regex";
 
 interface TextFlowOptions {
@@ -51,28 +55,28 @@ class TextFlow {
     }
 
     run() {
-        const target: HTMLElement | null = document.querySelector(".shadowban-scanner-message:not(.text-inserted");
+        const target: HTMLElement | null = document.querySelector(".shadowban-scanner-message:not(.text-inserted)");
         if (!target) return;
 
         target.classList.add("text-inserted");
-        const { messageType } = target.dataset;
-        if (!messageType) throw new Error("Failed to get message type");
-
-        const message = this.convertEmojiToTwemoji(this.translator(messageType as keyof TranslationData));
-        target.insertAdjacentHTML("afterbegin", message);
 
         const button = target.querySelector("button");
         if (!button) return;
-
         if (this.allWaysDetailedView) {
             button.click();
-        } else {
-            button.textContent = this.translator("showMore");
         }
 
-        const pre = target.querySelector("pre");
-        if (!pre) return;
-        pre.innerHTML = this.convertEmojiToTwemoji(this.translator(`${messageType as TweetStatusString}StatusMessage`));
+        document.querySelectorAll(`[${TRANSLATION_ATTRIBUTE}]`).forEach((element) => {
+            if (element.hasAttribute(TWEMOJI_ATTRIBUTE)) {
+                element.innerHTML = this.convertEmojiToTwemoji(
+                    this.translator(element.getAttribute(TRANSLATION_ATTRIBUTE) as keyof TranslationData)
+                );
+            } else {
+                element.textContent = this.translator(
+                    element.getAttribute(TRANSLATION_ATTRIBUTE) as keyof TranslationData
+                );
+            }
+        });
     }
 }
 

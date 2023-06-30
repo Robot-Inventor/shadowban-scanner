@@ -17,7 +17,7 @@ type TweetStatusString =
     | "tweetFlaggedAsSensitive"
     | "accountShadowbannedAndTweetFlaggedAsSensitive";
 
-class MessageType {
+class MessageSummary {
     constructor() {}
 
     fromTweetStatus(status: TweetStatus): TweetStatusString {
@@ -37,4 +37,4 @@ class MessageType {
     }
 }
 
-export { TweetStatus, TweetStatusString, MessageType };
+export { TweetStatus, TweetStatusString, MessageSummary };

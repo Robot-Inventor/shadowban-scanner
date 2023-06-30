@@ -23,8 +23,13 @@
     background: none;
 }
 
-.shadowban-scanner-message pre {
+.shadowban-scanner-message ul {
     font-family: inherit;
     line-height: inherit;
     margin: 0.5rem 0 0 0;
+    padding: 0;
+}
+
+.shadowban-scanner-message ul li {
+    list-style: none;
 }

@@ -5,8 +5,8 @@ import enTranslation from "../../../_locales/en/messages.json";
 import "../../css/style.css";
 
 type TranslationData = typeof enTranslation;
-
-type Translator = (key: keyof TranslationData) => string;
+type TranslationKey = keyof TranslationData;
+type Translator = (key: TranslationKey) => string;
 
 class Core {
     constructor(onMessageCallback: Function) {
@@ -39,4 +39,4 @@ class Core {
     }
 }
 
-export { TranslationData, Translator, Core };
+export { TranslationData, TranslationKey, Translator, Core };

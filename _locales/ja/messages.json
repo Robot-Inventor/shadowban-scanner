@@ -5,38 +5,47 @@
     "accountShadowbanned": {
         "message": "このユーザーはシャドウバンされている可能性があるため、ツイートが検索結果に表示されないかもしれません。"
     },
-    "accountShadowbannedStatusMessage": {
-        "message": "🚫アカウントがシャドウバンされている可能性があります\n✅ツイートにセンシティブフラグは付与されていません\n✅ツイートに年齢制限はありません\n🚫ツイートが検索結果に表示されない可能性があります"
-    },
     "accountShadowbannedAndTweetFlaggedAsSensitive": {
         "message": "このユーザーはシャドウバンされている可能性があるため、ツイートが検索結果に表示されないかもしれません。また、このツイートにはセンシティブフラグが付与されています。"
-    },
-    "accountShadowbannedAndTweetFlaggedAsSensitiveStatusMessage": {
-        "message": "🚫アカウントがシャドウバンされている可能性があります\n🚫ツイートにセンシティブフラグが付与されています\n✅ツイートに年齢制限はありません\n🚫ツイートが検索結果に表示されない可能性があります"
     },
     "accountAndTweetShadowbanned": {
         "message": "このツイートには年齢制限があり、18歳未満のユーザーやログインしていないユーザーは閲覧できません。また、検索結果に表示されない可能性があります。"
     },
-    "accountAndTweetShadowbannedStatusMessage": {
-        "message": "🚫アカウントがシャドウバンされている可能性があります\n🚫ツイートにセンシティブフラグが付与されています\n🚫ツイートに年齢制限があります\n🚫ツイートが検索結果に表示されない可能性があります"
-    },
     "tweetFlaggedAsSensitive": {
         "message": "このツイートにはセンシティブフラグが付与されており、閲覧者の設定によっては検索結果に表示されません。"
-    },
-    "tweetFlaggedAsSensitiveStatusMessage": {
-        "message": "✅アカウントはシャドウバンされていません\n🚫ツイートにセンシティブフラグが付与されています\n✅ツイートに年齢制限はありません\n⚠️ツイートは閲覧者の設定によっては検索結果に表示されません"
     },
     "tweetShadowbanned": {
         "message": "このツイートには年齢制限があり、18歳未満のユーザーやログインしていないユーザーは閲覧できません。また、検索結果に表示されない可能性があります。"
     },
-    "tweetShadowbannedStatusMessage": {
-        "message": "✅アカウントはシャドウバンされていません\n🚫ツイートにセンシティブフラグが付与されています\n🚫ツイートに年齢制限があります\n🚫ツイートが検索結果に表示されない可能性があります"
-    },
     "tweetNoProblem": {
         "message": "ツイートに問題は見つかりませんでした。"
     },
-    "tweetNoProblemStatusMessage": {
-        "message": "✅アカウントはシャドウバンされていません\n✅ツイートにセンシティブフラグは付与されていません\n✅ツイートに年齢制限はありません\n✅ツイートは検索結果に表示されます"
+    "accountIsNotShadowbanned": {
+        "message": "✅アカウントはシャドウバンされていません"
+    },
+    "accountIsShadowbanned": {
+        "message": "🚫アカウントがシャドウバンされている可能性があります"
+    },
+    "tweetIsNotFlaggedAsSensitive": {
+        "message": "✅ツイートにセンシティブフラグは付与されていません"
+    },
+    "tweetIsFlaggedAsSensitive": {
+        "message": "🚫ツイートにセンシティブフラグが付与されています"
+    },
+    "tweetIsNotAgeRestricted": {
+        "message": "✅ツイートに年齢制限はありません"
+    },
+    "tweetIsAgeRestricted": {
+        "message": "🚫ツイートに年齢制限があります"
+    },
+    "tweetIsSearchable": {
+        "message": "✅ツイートは検索結果に表示されます"
+    },
+    "tweetMayNotBeSearchable": {
+        "message": "⚠️ツイートは閲覧者の設定によっては検索結果に表示されません"
+    },
+    "tweetIsNotSearchable": {
+        "message": "🚫ツイートが検索結果に表示されない可能性があります"
     },
     "showMore": {
         "message": "▶さらに表示"
