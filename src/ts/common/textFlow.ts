@@ -1,6 +1,7 @@
 import { TweetStatusString } from "../core/messageType";
 import { TranslationData, Translator } from "../core/core";
 import { CURRENT_USERS_TWEET_CLASS_NAME, MESSAGE_CLASS_NAME } from "./settings";
+import emojiRegex from "emoji-regex";
 
 interface TextFlowOptions {
     showMessageInAllTweets: boolean;
@@ -31,6 +32,24 @@ class TextFlow {
         this.translator = options.translator;
     }
 
+    convertEmojiToTwemoji(text: string): string {
+        const regex = emojiRegex();
+        return text.replace(regex, (match) => {
+            let codePoints = "";
+
+            try {
+                for (const emoji of match) {
+                    codePoints += `${emoji.codePointAt(0)?.toString(16)}-`;
+                }
+            } catch (error) {
+                throw new Error(`Failed to convert emoji to twemoji: ${error}`);
+            }
+
+            codePoints = codePoints.replace(/-$/, "");
+            return `<img src="https://abs-0.twimg.com/emoji/v2/svg/${codePoints}.svg" class="twemoji">`;
+        });
+    }
+
     run() {
         const target: HTMLElement | null = document.querySelector(".shadowban-scanner-message:not(.text-inserted");
         if (!target) return;
@@ -39,8 +58,8 @@ class TextFlow {
         const { messageType } = target.dataset;
         if (!messageType) throw new Error("Failed to get message type");
 
-        const message = this.translator(messageType as keyof TranslationData);
-        target.insertAdjacentText("afterbegin", message);
+        const message = this.convertEmojiToTwemoji(this.translator(messageType as keyof TranslationData));
+        target.insertAdjacentHTML("afterbegin", message);
 
         const button = target.querySelector("button");
         if (!button) return;
@@ -53,7 +72,7 @@ class TextFlow {
 
         const pre = target.querySelector("pre");
         if (!pre) return;
-        pre.textContent = this.translator(`${messageType as TweetStatusString}StatusMessage`);
+        pre.innerHTML = this.convertEmojiToTwemoji(this.translator(`${messageType as TweetStatusString}StatusMessage`));
     }
 }
 

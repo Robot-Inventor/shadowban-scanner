@@ -30,6 +30,7 @@
     "colors": "^1.4.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
+    "emoji-regex": "^10.2.1",
     "style-loader": "^3.3.3",
     "ts-loader": "^9.4.3",
     "typescript": "^5.1.3",
