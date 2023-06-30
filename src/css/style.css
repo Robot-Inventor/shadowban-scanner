@@ -5,6 +5,13 @@
     margin: 1em 0;
 }
 
+.shadowban-scanner-message .twemoji {
+    height: 1em;
+    width: 1em;
+    margin-right: 0.25em;
+    vertical-align: middle;
+}
+
 .shadowban-scanner-message-no-problem {
     background: rgb(0, 255, 0, 0.2);
 }
