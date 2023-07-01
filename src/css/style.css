@@ -33,3 +33,13 @@
 .shadowban-scanner-message ul li {
     list-style: none;
 }
+
+.shadowban-scanner-translated-by-ai {
+    opacity: 0.8;
+    font-size: 0.8em;
+    margin-top: 0.5em;
+}
+
+.shadowban-scanner-translated-by-ai a {
+    color: inherit;
+}

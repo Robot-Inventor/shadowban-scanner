@@ -1,4 +1,9 @@
-import { MESSAGE_CLASS_NAME, TRANSLATION_ATTRIBUTE, TWEMOJI_ATTRIBUTE } from "../common/settings";
+import {
+    MESSAGE_CLASS_NAME,
+    TRANSLATED_BY_AI_MESSAGE_CLASS_NAME,
+    TRANSLATION_ATTRIBUTE,
+    TWEMOJI_ATTRIBUTE
+} from "../common/settings";
 import { ColorCode } from "./color";
 import { TranslationKey } from "./core";
 
@@ -40,6 +45,11 @@ class MessageElement {
         this.div.appendChild(summary);
 
         if (status.type === "tweet") {
+            const translatedByAIMessage = document.createElement("div");
+            translatedByAIMessage.setAttribute(TRANSLATION_ATTRIBUTE, "translatedByAI");
+            translatedByAIMessage.classList.add(TRANSLATED_BY_AI_MESSAGE_CLASS_NAME);
+            translatedByAIMessage.style.display = "none";
+
             const ul = document.createElement("ul");
             ul.style.display = "none";
             this.div.appendChild(ul);
@@ -55,9 +65,12 @@ class MessageElement {
             button.setAttribute(TRANSLATION_ATTRIBUTE, "showMore");
             button.addEventListener("click", () => {
                 ul.style.display = "block";
+                translatedByAIMessage.style.display = "block";
                 button.remove();
             });
             this.div.appendChild(button);
+
+            this.div.appendChild(translatedByAIMessage);
         }
     }
 

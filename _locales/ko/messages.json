@@ -47,6 +47,10 @@
     "tweetIsNotSearchable": {
         "message": "🚫트윗이 검색 결과에 표시되지 않을 가능성이 있습니다."
     },
+    "translatedByAI": {
+        "message": "AI에 의해 일본어에서 한국어로 번역되었습니다. 불자연스러운 점이 있을 경우 <a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>에게 알려주세요.",
+        "description": "This field is used if the translation was done by AI. Otherwise, set this field to an empty string. Example sentence: \"Translated from Japanese to <language name> by AI. Please notify <a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a> if there are any unnatural points.\""
+    },
     "showMore": {
         "message": "▶더 보기"
     },

@@ -72,7 +72,7 @@ class TextFlow {
                     this.translator(element.getAttribute(TRANSLATION_ATTRIBUTE) as keyof TranslationData)
                 );
             } else {
-                element.textContent = this.translator(
+                element.innerHTML = this.translator(
                     element.getAttribute(TRANSLATION_ATTRIBUTE) as keyof TranslationData
                 );
             }
