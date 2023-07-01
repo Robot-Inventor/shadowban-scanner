@@ -1,4 +1,4 @@
-import { MESSAGE_CLASS_NAME, TRANSLATION_ATTRIBUTE } from "../common/settings";
+import { MESSAGE_CLASS_NAME, TRANSLATION_ATTRIBUTE, TWEMOJI_ATTRIBUTE } from "../common/settings";
 import { ColorCode } from "./color";
 import { TranslationKey } from "./core";
 
@@ -47,6 +47,7 @@ class MessageElement {
             for (const item of DETAIL_ITEMS) {
                 const li = document.createElement("li");
                 li.setAttribute(TRANSLATION_ATTRIBUTE, status.detail[item]);
+                li.setAttribute(TWEMOJI_ATTRIBUTE, "");
                 ul.appendChild(li);
             }
 
