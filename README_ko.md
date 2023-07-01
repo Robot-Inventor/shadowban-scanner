@@ -28,9 +28,9 @@ Twitter의 Shadowban을 감지하는 확장 기능입니다.
 - 트윗 단위의 민감 정보 플래그를 감지합니다.
 - 트윗의 연령 제한을 감지합니다.
 
-![계정 단위의 쉐도우밴 감지 스크린샷](doc/image/screenshot2_ja.png)
+![계정 단위의 쉐도우밴 감지 스크린샷](doc/image/screenshot2_ko.png)
 
-![트윗 단위의 쉐도우밴 감지 스크린샷](doc/image/screenshot1_ja.png)
+![트윗 단위의 쉐도우밴 감지 스크린샷](doc/image/screenshot1_ko.png)
 
 ## 정확도
 

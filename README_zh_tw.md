@@ -28,9 +28,9 @@
 - 偵測推文層級的敏感標籤
 - 偵測推文的年齡限制
 
-![帳戶層級Shadowban偵測的截圖](doc/image/screenshot2_ja.png)
+![帳戶層級Shadowban偵測的截圖](doc/image/screenshot2_zh_tw.png)
 
-![推文層級Shadowban偵測的截圖](doc/image/screenshot1_ja.png)
+![推文層級Shadowban偵測的截圖](doc/image/screenshot1_zh_tw.png)
 
 ## 精確性
 
