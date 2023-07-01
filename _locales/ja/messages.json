@@ -47,6 +47,10 @@
     "tweetIsNotSearchable": {
         "message": "🚫ツイートが検索結果に表示されない可能性があります"
     },
+    "translatedByAI": {
+        "message": "",
+        "description": "This field is used if the translation was done by AI. Otherwise, set this field to an empty string. Example sentence: \"Translated from Japanese to <language name> by AI. Please notify <a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a> if there are any unnatural points.\""
+    },
     "showMore": {
         "message": "▶さらに表示"
     },
