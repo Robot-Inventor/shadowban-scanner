@@ -1,0 +1,65 @@
+{
+    "manifest_description": {
+        "message": "這是一個用於檢測Twitter的Shadowban的擴充功能。"
+    },
+    "accountShadowbanned": {
+        "message": "這個使用者可能已經被進行了Shadowban，因此他的推文可能不會顯示在搜尋結果中。"
+    },
+    "accountShadowbannedAndTweetFlaggedAsSensitive": {
+        "message": "這個使用者可能已經被進行了Shadowban，因此他的推文可能不會顯示在搜尋結果中。此外，該推文被標記為敏感內容。"
+    },
+    "accountAndTweetShadowbanned": {
+        "message": "這則推文有年齡限制，未滿18歲的使用者或未登入的使用者將無法閱讀。此外，它可能不會出現在搜尋結果中。"
+    },
+    "tweetFlaggedAsSensitive": {
+        "message": "這則推文已被標註為敏感內容，根據閱讀者的設定，可能不會在搜尋結果中顯示。"
+    },
+    "tweetShadowbanned": {
+        "message": "這則推文有年齡限制，未滿18歲的使用者或未登入的使用者將無法閱讀。此外，它可能不會出現在搜尋結果中。"
+    },
+    "tweetNoProblem": {
+        "message": "這則推文並未發現任何問題。"
+    },
+    "accountIsNotShadowbanned": {
+        "message": "✅帳戶並未被 Shadowban。"
+    },
+    "accountIsShadowbanned": {
+        "message": "🚫這個帳號有可能被進行了Shadowban。"
+    },
+    "tweetIsNotFlaggedAsSensitive": {
+        "message": "✅推文未添加敏感标志。"
+    },
+    "tweetIsFlaggedAsSensitive": {
+        "message": "🚫推文已添加敏感标志。"
+    },
+    "tweetIsNotAgeRestricted": {
+        "message": "✅這則推文無年齡限制。"
+    },
+    "tweetIsAgeRestricted": {
+        "message": "🚫這則推文有年齡限制。"
+    },
+    "tweetIsSearchable": {
+        "message": "✅推文會顯示在搜索結果中。"
+    },
+    "tweetMayNotBeSearchable": {
+        "message": "⚠️根據使用者的設定，推文可能不會顯示在搜索結果中。"
+    },
+    "tweetIsNotSearchable": {
+        "message": "🚫有可能推文不會在搜索結果中顯示。"
+    },
+    "showMore": {
+        "message": "▶顯示更多"
+    },
+    "settingsAlwaysDetailedView": {
+        "message": "始終顯示詳細資訊"
+    },
+    "settingsShowMessageInAllTweets": {
+        "message": "在所有推文中顯示驗證結果。"
+    },
+    "settingsEnableOnlyForCurrentUsersTweets": {
+        "message": "僅在我的推文中顯示驗證結果（測試版）。"
+    },
+    "settingsPleaseReload": {
+        "message": "若更改設定，請重新載入 Twitter。"
+    }
+}
