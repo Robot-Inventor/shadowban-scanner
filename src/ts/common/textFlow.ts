@@ -50,7 +50,7 @@ class TextFlow {
             }
 
             codePoints = codePoints.replace(/-$/, "");
-            return `<img src="https://abs-0.twimg.com/emoji/v2/svg/${codePoints}.svg" class="twemoji">`;
+            return `<img src="https://abs-0.twimg.com/emoji/v2/svg/${codePoints}.svg" alt="${match}" class="twemoji">`;
         });
     }
 
