@@ -1,6 +1,6 @@
 # Shadowban Scanner
 
-[日本語で表示する](README_ja.md)
+[日本語で読む](README_ja.md) | [한국어로 읽기](README_ko.md) | [以繁體字閱讀](README_zh_tw.md)
 
 A browser extension that detects shadowbans on Twitter.
 

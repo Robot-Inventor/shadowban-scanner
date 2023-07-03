@@ -1,6 +1,6 @@
 # Shadowban Scanner
 
-[Read in English](README.md)　[한국어로 읽기](README_ko.md)　[以繁體字閱讀](README_zh_tw.md)
+[Read in English](README.md) | [한국어로 읽기](README_ko.md) | [以繁體字閱讀](README_zh_tw.md)
 
 Twitterのシャドウバンを検出する拡張機能です。
 
