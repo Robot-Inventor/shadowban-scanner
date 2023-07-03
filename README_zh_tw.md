@@ -1,6 +1,6 @@
 # Shadowban Scanner
 
-[Read in English](README.md)　[한국어로 읽기](README_ko.md)　[日本語で読む](README_ja.md)
+[Read in English](README.md) | [日本語で読む](README_ja.md) | [한국어로 읽기](README_ko.md)
 
 這是一個用於檢測Twitter的Shadowban的擴充功能。
 

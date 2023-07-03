@@ -1,6 +1,6 @@
 # Shadowban Scanner
 
-[Read in English](README.md)　[日本語で読む](README_ja.md)　[以繁體字閱讀](README_zh_tw.md)
+[Read in English](README.md) | [日本語で読む](README_ja.md) | [以繁體字閱讀](README_zh_tw.md)
 
 Twitter의 Shadowban을 감지하는 확장 기능입니다.
 
