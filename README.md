@@ -32,7 +32,7 @@ The settings cannot be changed in the user script version. If you need detailed 
 
 ## Accuracy
 
-For per-account shadowban detection, as with many other tools, false positives and false negatives can occur. On the other hand, per-tweet sensitive flags and age restrictions can be detected almost flawlessly.
+When it comes to detecting shadowbans on an account level, like many other tools, there can be instances of false positives and false negatives. However, when it comes to detecting sensitive flags and age restrictions on a tweet level, it can be almost perfectly accurate. Therefore, it is recommended to use Shadowban Scanner to continuously monitor the status of your account and tweets, while also utilizing other tools alongside it.
 
 ## Detection Methods
 
