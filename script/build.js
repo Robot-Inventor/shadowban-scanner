@@ -11,13 +11,15 @@ console.log("Adding userScript comments...");
 const userScriptFiles = glob.sync("./userScript/*.user.js");
 
 for (const userScript of userScriptFiles) {
-    const scriptString = fs.readFileSync(userScript);
+    const scriptString = fs.readFileSync(userScript, "utf-8");
+    const languageCode = path.basename(userScript, ".user.js");
+    const localizedMessages = fs.readFileSync(`./_locales/${languageCode}/messages.json`, "utf-8");
     const userScriptComment = `
 // ==UserScript==
-// @name         Shadowban Scanner (${path.basename(userScript, ".user.js")})
+// @name         Shadowban Scanner (${languageCode})
 // @namespace    https://github.com/Robot-Inventor/shadowban-scanner/
 // @version      ${packagejson.version}
-// @description  A browser extension that detects shadowbans on Twitter.
+// @description  ${JSON.parse(localizedMessages)["manifest_description"]["message"]}
 // @author       Robot-Inventor (ろぼいん / @keita_roboin)
 // @match        https://twitter.com/*
 // @match        https://mobile.twitter.com/*
