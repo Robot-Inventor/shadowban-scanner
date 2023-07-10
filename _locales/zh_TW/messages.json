@@ -57,13 +57,13 @@
     "settingsAlwaysDetailedView": {
         "message": "始終顯示詳細資訊"
     },
-    "settingsShowMessageInAllTweets": {
-        "message": "在所有推文中顯示驗證結果。"
+    "settingsShowMessagesInUnproblematicTweets": {
+        "message": "显示验证结果，即使是没有问题的推文"
     },
     "settingsEnableOnlyForCurrentUsersTweets": {
-        "message": "僅在我的推文中顯示驗證結果（測試版）。"
+        "message": "僅在我的推文中顯示驗證結果（測試版）"
     },
     "settingsPleaseReload": {
-        "message": "若更改設定，請重新載入 Twitter。"
+        "message": "若更改設定，請重新載入 Twitter"
     }
 }
