@@ -37,6 +37,8 @@ h1 {
 #version-number {
     font-size: 0.7em;
     margin-left: 0.5em;
+    color: inherit;
+    text-decoration: none;
 }
 
 fieldset {
