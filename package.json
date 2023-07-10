@@ -32,6 +32,7 @@
     "css-loader": "^6.8.1",
     "emoji-regex": "^10.2.1",
     "style-loader": "^3.3.3",
+    "ts-auto-guard": "^4.1.3",
     "ts-loader": "^9.4.3",
     "typescript": "^5.1.3",
     "web-ext": "^7.6.2",
