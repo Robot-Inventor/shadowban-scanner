@@ -3,12 +3,18 @@ const glob = require("glob");
 const fs = require("fs");
 const packagejson = require("../package.json");
 const path = require("path");
+const colors = require("colors/safe");
 
-console.log("Generating type guards...");
-execSync("npx ts-auto-guard ./src/ts/core/reactProps.ts");
+try {
+    console.log("Generating type guards...");
+    execSync("npx ts-auto-guard ./src/ts/core/reactProps.ts");
 
-console.log("Building...");
-execSync("npx webpack");
+    console.log("Building...");
+    execSync("npx webpack");
+} catch (error) {
+    console.error(colors.red(error.stdout.toString()));
+    process.exit(1);
+}
 
 console.log("Adding userScript comments...");
 const userScriptFiles = glob.sync("./userScript/*.user.js");
