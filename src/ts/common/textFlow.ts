@@ -8,7 +8,7 @@ import {
 import emojiRegex from "emoji-regex";
 
 interface TextFlowOptions {
-    showMessageInAllTweets: boolean;
+    showMessagesInUnproblematicTweets: boolean;
     alwaysDetailedView: boolean;
     enableOnlyForCurrentUsersTweets: boolean;
     translator: Translator;
@@ -19,7 +19,7 @@ class TextFlow {
     private readonly allWaysDetailedView: boolean;
 
     constructor(options: TextFlowOptions) {
-        if (!options.showMessageInAllTweets) {
+        if (!options.showMessagesInUnproblematicTweets) {
             const style = document.createElement("style");
             style.textContent = ".shadowban-scanner-message-no-problem { display: none; }";
             document.body.appendChild(style);

@@ -57,8 +57,8 @@
     "settingsAlwaysDetailedView": {
         "message": "常に詳細情報を表示する"
     },
-    "settingsShowMessageInAllTweets": {
-        "message": "すべてのツイートに検証結果を表示する"
+    "settingsShowMessagesInUnproblematicTweets": {
+        "message": "問題のないツイートにも検証結果を表示する"
     },
     "settingsEnableOnlyForCurrentUsersTweets": {
         "message": "自分のツイートにのみ検証結果を表示する（ベータ版）"

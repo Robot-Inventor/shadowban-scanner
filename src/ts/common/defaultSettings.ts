@@ -1,6 +1,6 @@
 const DEFAULT_SETTINGS = {
     alwaysDetailedView: false,
-    showMessageInAllTweets: false,
+    showMessagesInUnproblematicTweets: false,
     enableOnlyForCurrentUsersTweets: false
 };
 

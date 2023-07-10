@@ -57,13 +57,13 @@
     "settingsAlwaysDetailedView": {
         "message": "항상 상세 정보 표시"
     },
-    "settingsShowMessageInAllTweets": {
-        "message": "모든 트윗에 검증 결과 표시"
+    "settingsShowMessagesInUnproblematicTweets": {
+        "message": "문제 없는 트윗에도 검증 결과를 표시합니다"
     },
     "settingsEnableOnlyForCurrentUsersTweets": {
         "message": "내 트윗에만 검증 결과 표시 (베타 버전)"
     },
     "settingsPleaseReload": {
-        "message": "설정을 변경한 후 Twitter를 다시 로드해주세요."
+        "message": "설정을 변경한 후 Twitter를 다시 로드해주세요"
     }
 }
