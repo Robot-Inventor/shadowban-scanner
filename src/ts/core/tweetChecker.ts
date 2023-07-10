@@ -13,19 +13,21 @@ class TweetChecker {
 
     run() {
         this.tweet.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
+
         const menuBar = this.tweet.querySelector("div[role='group'][id]");
         if (!menuBar) throw new Error("Failed to get menu bar of tweet");
 
-        const reactProps = new TweetReactProps(menuBar).get();
+        const tweetReactProps = new TweetReactProps(this.tweet, menuBar);
+        const tweetData = tweetReactProps.get();
         const tweetStatus: TweetStatus = {
             tweet: {
-                possiblySensitive: Boolean(reactProps.possibly_sensitive),
+                possiblySensitive: Boolean(tweetData.possibly_sensitive),
                 // ref: https://github.com/Robot-Inventor/shadowban-scanner/issues/16
-                possiblySensitiveEditable: !(reactProps.possibly_sensitive_editable === false),
-                isTweetByCurrentUser: reactProps.user.following === null
+                possiblySensitiveEditable: !(tweetData.possibly_sensitive_editable === false),
+                isTweetByCurrentUser: tweetReactProps.isTweetByCurrentUser
             },
             user: {
-                possiblySensitive: Boolean(reactProps.user.possibly_sensitive)
+                possiblySensitive: Boolean(tweetData.user.possibly_sensitive)
             }
         };
 

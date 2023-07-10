@@ -4,6 +4,9 @@ const fs = require("fs");
 const packagejson = require("../package.json");
 const path = require("path");
 
+console.log("Generating type guards...");
+execSync("npx ts-auto-guard ./src/ts/core/reactProps.ts");
+
 console.log("Building...");
 execSync("npx webpack");
 
