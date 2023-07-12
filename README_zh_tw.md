@@ -52,6 +52,10 @@ Twitter中存在著以帳號和推文為單位的``possibly_sensitive``標記。
 
 该扩展程序采用MIT许可证发布。
 
+## 添加語言本地化
+
+請參考[翻譯指南（英文）](doc/localization.md)以添加新語言。
+
 ## 開発
 
 ### Manifest
