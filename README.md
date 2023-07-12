@@ -50,6 +50,10 @@ This extension performs all processing on the user's computer. No data is transm
 
 This extension is released under the MIT License.
 
+## Adding Language Localization
+
+To add a new language, see the [Localization Guide (English)](doc/localization.md).
+
 ## Development
 
 ### Manifest
