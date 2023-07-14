@@ -1,5 +1,13 @@
 import { DEFAULT_SETTINGS } from "./common/defaultSettings";
 
+const migrateFromV1ToV2 = async () => {
+    const v1Settings = await browser.storage.local.get(null);
+    if ("showMessageInAllTweets" in v1Settings) {
+        await browser.storage.local.set({ showMessagesInUnproblematicTweets: v1Settings.showMessageInAllTweets });
+        await browser.storage.local.remove("showMessageInAllTweets");
+    }
+};
+
 const translationTargets: NodeListOf<HTMLElement> = document.querySelectorAll("[data-translation]");
 for (const translationTarget of translationTargets) {
     const translationAttribute = translationTarget.dataset.translation;
@@ -8,17 +16,20 @@ for (const translationTarget of translationTargets) {
     translationTarget.textContent = text;
 }
 
-const inputElements: NodeListOf<HTMLInputElement> = document.querySelectorAll("input[type='checkbox']");
-for (const inputElement of inputElements) {
-    browser.storage.local.get(DEFAULT_SETTINGS).then((currentSettings) => {
-        if (!(inputElement.name in currentSettings)) throw new Error(`Failed to get ${inputElement.name} from storage`);
-        inputElement.checked = currentSettings[inputElement.name as keyof typeof DEFAULT_SETTINGS];
-    });
+migrateFromV1ToV2().then(() => {
+    const inputElements: NodeListOf<HTMLInputElement> = document.querySelectorAll("input[type='checkbox']");
+    for (const inputElement of inputElements) {
+        browser.storage.local.get(DEFAULT_SETTINGS).then((currentSettings) => {
+            if (!(inputElement.name in currentSettings))
+                throw new Error(`Failed to get ${inputElement.name} from storage`);
+            inputElement.checked = currentSettings[inputElement.name as keyof typeof DEFAULT_SETTINGS];
+        });
 
-    inputElement.addEventListener("input", () => {
-        browser.storage.local.set({ [inputElement.name]: inputElement.checked });
-    });
-}
+        inputElement.addEventListener("input", () => {
+            browser.storage.local.set({ [inputElement.name]: inputElement.checked });
+        });
+    }
+});
 
 const { version } = browser.runtime.getManifest();
 const versionElement = document.getElementById("version-number");
