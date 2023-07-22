@@ -18,18 +18,7 @@ class TweetChecker {
         if (!menuBar) throw new Error("Failed to get menu bar of tweet");
 
         const tweetReactProps = new TweetReactProps(this.tweet, menuBar);
-        const tweetData = tweetReactProps.get();
-        const tweetStatus: TweetStatus = {
-            tweet: {
-                possiblySensitive: Boolean(tweetData.possibly_sensitive),
-                // ref: https://github.com/Robot-Inventor/shadowban-scanner/issues/16
-                possiblySensitiveEditable: !(tweetData.possibly_sensitive_editable === false),
-                isTweetByCurrentUser: tweetReactProps.isTweetByCurrentUser
-            },
-            user: {
-                possiblySensitive: Boolean(tweetData.user.possibly_sensitive)
-            }
-        };
+        const tweetStatus = tweetReactProps.get();
 
         const messageSummary = new MessageSummary().fromTweetStatus(tweetStatus);
 
@@ -41,6 +30,9 @@ class TweetChecker {
                 accountStatus: tweetStatus.user.possiblySensitive
                     ? "accountIsShadowbanned"
                     : "accountIsNotShadowbanned",
+                sensitiveMediaInProfile: tweetStatus.user.sensitiveMediaInProfile
+                    ? "profileContainsSensitiveMedia"
+                    : "profileDoesNotContainSensitiveMedia",
                 tweetSensitiveFlag: tweetStatus.tweet.possiblySensitive
                     ? "tweetIsFlaggedAsSensitive"
                     : "tweetIsNotFlaggedAsSensitive",

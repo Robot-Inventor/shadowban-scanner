@@ -2,10 +2,10 @@
  * Generated type guards for "reactProps.ts".
  * WARNING: Do not manually change this file.
  */
-import { MenuBarReactPropsData, TweetOuterReactPropsData, FocalTweetOuterReactPropsData, ProfileReactPropsData } from "./reactProps";
+import { menubarReactProps, TweetOuterReactPropsData, FocalTweetOuterReactPropsData, ProfileReactPropsData } from "./reactProps";
 
-export function isMenuBarReactPropsData(obj: unknown): obj is MenuBarReactPropsData {
-    const typedObj = obj as MenuBarReactPropsData
+export function isMenuBarReactPropsData(obj: unknown): obj is menubarReactProps {
+    const typedObj = obj as menubarReactProps
     return (
         (typedObj !== null &&
             typeof typedObj === "object" ||
@@ -41,7 +41,12 @@ export function isMenuBarReactPropsData(obj: unknown): obj is MenuBarReactPropsD
             typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"]["possibly_sensitive"] === null ||
             typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"]["possibly_sensitive"] === false ||
             typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"]["possibly_sensitive"] === true) &&
-        typeof typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"]["screen_name"] === "string"
+        typeof typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"]["screen_name"] === "string" &&
+        (typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"]["profile_interstitial_type"] === "" ||
+            typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"]["profile_interstitial_type"] === "sensitive_media" ||
+            typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"]["profile_interstitial_type"] === "fake_account" ||
+            typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"]["profile_interstitial_type"] === "offensive_profile_content" ||
+            typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"]["profile_interstitial_type"] === "timeout")
     )
 }
 

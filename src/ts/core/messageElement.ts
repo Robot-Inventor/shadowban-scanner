@@ -12,6 +12,7 @@ type MessageElementTweetStatus = {
     summary: TranslationKey;
     detail: {
         accountStatus: TranslationKey;
+        sensitiveMediaInProfile: TranslationKey;
         tweetSensitiveFlag: TranslationKey;
         tweetAgeRestriction: TranslationKey;
         tweetSearchStatus: TranslationKey;
@@ -31,6 +32,7 @@ class MessageElement {
     constructor(status: MessageElementStatus, color: ColorCode) {
         const DETAIL_ITEMS: (keyof MessageElementTweetStatus["detail"])[] = [
             "accountStatus",
+            "sensitiveMediaInProfile",
             "tweetSensitiveFlag",
             "tweetAgeRestriction",
             "tweetSearchStatus"
