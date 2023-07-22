@@ -26,6 +26,12 @@
     "accountIsShadowbanned": {
         "message": "🚫계정이 쉐도우밴되었을 가능성이 있습니다."
     },
+    "profileDoesNotContainSensitiveMedia": {
+        "message": "✅계정의 프로필 미디어(아이콘 또는 헤더 이미지)에는 센시티브 플래그가 부여되지 않았습니다."
+    },
+    "profileContainsSensitiveMedia": {
+        "message": "🚫계정의 프로필 미디어(아이콘 또는 헤더 이미지)에는 센시티브 플래그가 부여되어 있습니다."
+    },
     "tweetIsNotFlaggedAsSensitive": {
         "message": "✅트윗에는 센시티브 플래그가 부여되지 않았습니다."
     },

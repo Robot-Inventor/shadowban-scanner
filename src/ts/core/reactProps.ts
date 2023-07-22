@@ -1,3 +1,4 @@
+import { TweetStatus } from "./messageType";
 import {
     isMenuBarReactPropsData,
     isProfileReactPropsData,
@@ -6,14 +7,14 @@ import {
 } from "./reactProps.guard";
 
 /** @see {isMenuBarReactPropsData} ts-auto-guard:type-guard */
-export interface MenuBarReactPropsData {
+export interface menubarReactProps {
     children: [
         unknown,
         {
             props: {
                 retweetWithCommentLink: {
                     state: {
-                        quotedStatus: TweetReactPropsData;
+                        quotedStatus: basicTweetProps;
                     };
                 };
             };
@@ -110,12 +111,13 @@ export interface FocalTweetOuterReactPropsData {
     ];
 }
 
-interface TweetReactPropsData {
+interface basicTweetProps {
     possibly_sensitive?: boolean | null;
     possibly_sensitive_editable?: boolean | null;
     user: {
         possibly_sensitive?: boolean | null;
         screen_name: string;
+        profile_interstitial_type: "" | "sensitive_media" | "fake_account" | "offensive_profile_content" | "timeout";
     };
 }
 
@@ -150,21 +152,42 @@ class ReactProps {
 
 class TweetReactProps {
     private readonly tweet: Element;
-    private readonly menuBar: Element;
+    private readonly basicTweetProps: basicTweetProps;
+    private readonly fullTweetProps: TweetOuterReactPropsData | FocalTweetOuterReactPropsData;
 
     constructor(tweet: Element, menuBar: Element) {
         this.tweet = tweet;
-        this.menuBar = menuBar;
+
+        const fullTweetProps = new ReactProps(tweet).get();
+        if (!isTweetOuterReactPropsData(fullTweetProps) && !isFocalTweetOuterReactPropsData(fullTweetProps))
+            throw new Error("Type of fullTweetProps is invalid.");
+        this.fullTweetProps = fullTweetProps;
+
+        const basicTweetProps = new ReactProps(menuBar).get();
+        if (!isMenuBarReactPropsData(basicTweetProps)) throw new Error("Type of basicTweetProps is invalid.");
+        this.basicTweetProps = basicTweetProps.children[1].props.retweetWithCommentLink.state.quotedStatus;
     }
 
-    get(): TweetReactPropsData {
-        const menuBarReactProps = new ReactProps(this.menuBar).get();
-        if (!isMenuBarReactPropsData(menuBarReactProps)) throw new Error("Type of menuBarReactProps is invalid.");
-        return menuBarReactProps.children[1].props.retweetWithCommentLink.state.quotedStatus;
+    get(): TweetStatus {
+        const tweetData = this.basicTweetProps;
+        const result: TweetStatus = {
+            tweet: {
+                possiblySensitive: Boolean(tweetData.possibly_sensitive),
+                // ref: https://github.com/Robot-Inventor/shadowban-scanner/issues/16
+                possiblySensitiveEditable: !(tweetData.possibly_sensitive_editable === false),
+                isTweetByCurrentUser: this.isTweetByCurrentUser
+            },
+            user: {
+                possiblySensitive: Boolean(tweetData.user.possibly_sensitive),
+                sensitiveMediaInProfile: tweetData.user.profile_interstitial_type === "sensitive_media"
+            }
+        };
+
+        return result;
     }
 
     get isTweetByCurrentUser(): boolean {
-        const tweetAuthorScreenName = this.get().user.screen_name;
+        const tweetAuthorScreenName = this.basicTweetProps.user.screen_name;
 
         const tweetReactProps = new ReactProps(this.tweet).get();
         let currentUserScreenName = "";

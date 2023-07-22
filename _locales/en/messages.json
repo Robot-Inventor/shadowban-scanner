@@ -26,6 +26,12 @@
     "accountIsShadowbanned": {
         "message": "🚫Account may be shadowbanned."
     },
+    "profileDoesNotContainSensitiveMedia": {
+        "message": "✅Account's profile media (icon or header image) is not flagged as sensitive."
+    },
+    "profileContainsSensitiveMedia": {
+        "message": "🚫Account's profile media (icon or header image) is flagged as sensitive."
+    },
     "tweetIsNotFlaggedAsSensitive": {
         "message": "✅Tweet is not flagged as sensitive."
     },

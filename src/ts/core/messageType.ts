@@ -6,6 +6,7 @@ interface TweetStatus {
     };
     user: {
         possiblySensitive: boolean;
+        sensitiveMediaInProfile: boolean;
     };
 }
 

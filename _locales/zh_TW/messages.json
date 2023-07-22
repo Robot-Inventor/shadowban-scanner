@@ -26,6 +26,12 @@
     "accountIsShadowbanned": {
         "message": "🚫這個帳號有可能被進行了Shadowban。"
     },
+    "profileDoesNotContainSensitiveMedia": {
+        "message": "✅帳戶的個人檔案媒體（圖示或標題圖片）未被設置為敏感內容。"
+    },
+    "profileContainsSensitiveMedia": {
+        "message": "🚫帳戶的個人檔案媒體（圖示或標題圖片）已被設置為敏感內容。"
+    },
     "tweetIsNotFlaggedAsSensitive": {
         "message": "✅推文未添加敏感标志。"
     },
