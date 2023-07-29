@@ -14,6 +14,12 @@
     "tweetFlaggedAsSensitive": {
         "message": "這則推文已被標註為敏感內容，根據閱讀者的設定，可能不會在搜尋結果中顯示。"
     },
+    "thisUserIsNotShadowbanned": {
+        "message": "这个使用者没有被Shadowban。"
+    },
+    "thisUserIsShadowbanned": {
+        "message": "這個使用者可能已經被進行了Shadowban，因此他的推文可能不會顯示在搜尋結果中。"
+    },
     "tweetShadowbanned": {
         "message": "這則推文有年齡限制，未滿18歲的使用者或未登入的使用者將無法閱讀。此外，它可能不會出現在搜尋結果中。"
     },
