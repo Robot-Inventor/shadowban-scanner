@@ -10,8 +10,9 @@ Twitter의 Shadowban을 감지하는 확장 기능입니다.
 
 ## 설치
 
-- [Chrome 버전](https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/)
-- [Firefox 버전](https://addons.mozilla.org/firefox/addon/shadowban-scanner/)
+- [Chrome](https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/)
+- [Edge](https://microsoftedge.microsoft.com/addons/detail/shadowban-scanner/kfeecmboomhggeeceipnbbdjmhjoccbl)
+- [Firefox](https://addons.mozilla.org/firefox/addon/shadowban-scanner/)
 
 ### 사용자 스크립트
 

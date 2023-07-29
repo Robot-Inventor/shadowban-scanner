@@ -10,8 +10,9 @@
 
 ## 安裝
 
-- [Chrome版](https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/)
-- [Firefox版](https://addons.mozilla.org/firefox/addon/shadowban-scanner/)
+- [Chrome](https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/)
+- [Edge](https://microsoftedge.microsoft.com/addons/detail/shadowban-scanner/kfeecmboomhggeeceipnbbdjmhjoccbl)
+- [Firefox](https://addons.mozilla.org/firefox/addon/shadowban-scanner/)
 
 ### 使用者腳本
 
