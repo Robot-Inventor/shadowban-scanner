@@ -1,8 +1,8 @@
 import { Color } from "./color";
 import { MessageElement, MessageElementStatus } from "./messageElement";
-import { MessageSummary, TweetStatus } from "./messageType";
+import { MessageSummary } from "./messageType";
 import { TweetReactProps } from "./reactProps";
-import { CHECKED_DATA_ATTRIBUTE, CURRENT_USERS_TWEET_CLASS_NAME } from "../common/settings";
+import { CHECKED_DATA_ATTRIBUTE, CURRENT_USERS_TWEET_CLASS_NAME, NO_PROBLEM_CLASS_NAME } from "../common/settings";
 
 class TweetChecker {
     private readonly tweet: Element;
@@ -20,7 +20,7 @@ class TweetChecker {
         const tweetReactProps = new TweetReactProps(this.tweet, menuBar);
         const tweetStatus = tweetReactProps.get();
 
-        const messageSummary = new MessageSummary().fromTweetStatus(tweetStatus);
+        const messageSummary = MessageSummary.fromTweetStatus(tweetStatus);
 
         const color = new Color().textColor;
         const statusData: MessageElementStatus = {
@@ -54,7 +54,7 @@ class TweetChecker {
         const messageElement = new MessageElement(statusData, color);
 
         if (statusData.detail.tweetSearchStatus === "tweetIsSearchable") {
-            messageElement.element.classList.add("shadowban-scanner-message-no-problem");
+            messageElement.element.classList.add(NO_PROBLEM_CLASS_NAME);
         }
 
         if (tweetStatus.tweet.isTweetByCurrentUser) {
