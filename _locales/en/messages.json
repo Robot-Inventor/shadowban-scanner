@@ -67,7 +67,7 @@
         "message": "Display verification results for tweets that have no issues"
     },
     "settingsEnableOnlyForCurrentUsersTweets": {
-        "message": "Display check results only in your own tweets (beta)"
+        "message": "Display check results only in your own tweets"
     },
     "settingsPleaseReload": {
         "message": "Please reload Twitter once you have changed the settings"
