@@ -1,10 +1,11 @@
+import { TextFlow, TextFlowOptions } from "./common/textFlow";
 import { DEFAULT_SETTINGS } from "./common/defaultSettings";
 import { EVENT_GENERATOR_ID } from "./common/settings";
-import { TextFlow, TextFlowOptions } from "./common/textFlow";
 
 const pageScript = document.createElement("script");
 pageScript.src = browser.runtime.getURL("dist/js/pageScript.js");
 
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
 pageScript.addEventListener("load", async () => {
     pageScript.remove();
     const eventGenerator = document.getElementById(EVENT_GENERATOR_ID);

@@ -1,15 +1,15 @@
-import { ProfileChecker } from "./profileChecker";
+import "../../css/style.css";
 import { CHECKED_DATA_ATTRIBUTE } from "../common/settings";
+import { ProfileChecker } from "./profileChecker";
 import { TweetChecker } from "./tweetChecker";
 import enTranslation from "../../../_locales/en/messages.json";
-import "../../css/style.css";
 
 type TranslationData = typeof enTranslation;
 type TranslationKey = keyof TranslationData;
 type Translator = (key: TranslationKey) => string;
 
 class Core {
-    constructor(onMessageCallback: Function) {
+    constructor(onMessageCallback: () => void) {
         const timelineObserver = new MutationObserver(() => {
             const tweets = document.querySelectorAll(`[data-testid="tweet"]:not([${CHECKED_DATA_ATTRIBUTE}]`);
             for (const tweet of tweets) {
@@ -18,8 +18,10 @@ class Core {
                 onMessageCallback();
             }
 
+            // eslint-disable-next-line function-paren-newline
             const userName = document.querySelector(
                 `:not([data-testid="tweet"]) [data-testid="UserName"]:not([${CHECKED_DATA_ATTRIBUTE}])`
+                // eslint-disable-next-line function-paren-newline
             );
             if (userName) {
                 const profileChecker = new ProfileChecker(userName);
@@ -28,14 +30,19 @@ class Core {
             }
         });
 
+        const observerOptions = {
+            childList: true,
+            subtree: true
+        };
+
         const loadingObserver = new MutationObserver(() => {
             const main = document.querySelector("main");
             if (!main) return;
 
             loadingObserver.disconnect();
-            timelineObserver.observe(main, { subtree: true, childList: true });
+            timelineObserver.observe(main, observerOptions);
         });
-        loadingObserver.observe(document.body, { subtree: true, childList: true });
+        loadingObserver.observe(document.body, observerOptions);
     }
 }
 

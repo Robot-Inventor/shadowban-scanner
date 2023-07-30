@@ -1,0 +1,101 @@
+{
+    "extends": [
+        "eslint:all",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "root": true,
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "project": [
+            "./tsconfig.eslint.json"
+        ],
+        "sourceType": "module"
+    },
+    "rules": {
+        "array-element-newline": [
+            "error",
+            "consistent"
+        ],
+        "curly": [
+            "error",
+            "multi-line"
+        ],
+        "function-call-argument-newline": [
+            "error",
+            "consistent"
+        ],
+        "lines-between-class-members": [
+            "error",
+            "always",
+            {
+                "exceptAfterSingleLine": true
+            }
+        ],
+        "max-len": [
+            "error",
+            {
+                "code": 120
+            }
+        ],
+        "multiline-ternary": [
+            "error",
+            "always-multiline"
+        ],
+        "no-magic-numbers": [
+            "error",
+            {
+                "ignoreArrayIndexes": true
+            }
+        ],
+        "no-ternary": "off",
+        "no-void": [
+            "error",
+            {
+                "allowAsStatement": true
+            }
+        ],
+        "object-curly-spacing": [
+            "error",
+            "always"
+        ],
+        "one-var": [
+            "error",
+            "never"
+        ],
+        "padded-blocks": [
+            "error",
+            "never"
+        ],
+        "quote-props": [
+            "error",
+            "consistent-as-needed"
+        ],
+        "space-before-function-paren": [
+            "error",
+            {
+                "anonymous": "always",
+                "asyncArrow": "always",
+                "named": "never"
+            }
+        ],
+        "no-plusplus": [
+            "error",
+            {
+                "allowForLoopAfterthoughts": true
+            }
+        ],
+        "no-extra-parens": [
+            "error",
+            "all",
+            {
+                "nestedBinaryExpressions": false
+            }
+        ],
+        "no-new": "off"
+    }
+}

@@ -7,7 +7,7 @@ const colors = require("colors/safe");
 
 try {
     console.log("Generating type guards...");
-    execSync("npx ts-auto-guard ./src/ts/core/reactProps.ts");
+    execSync("npx ts-auto-guard ./src/ts/@types/**/*.ts");
 
     console.log("Building...");
     execSync("npx webpack");

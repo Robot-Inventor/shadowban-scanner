@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "node ./script/webExtLint.js",
+    "lint": "npx eslint ./src/ts/**/*.ts && node ./script/webExtLint.js",
     "build": "node ./script/build.js",
     "package": "node ./script/package.js",
     "version": "npm run build && npm run package && git add ."
@@ -27,10 +27,13 @@
   },
   "homepage": "https://github.com/Robot-Inventor/shadowban-scanner#readme",
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
     "colors": "^1.4.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
     "emoji-regex": "^10.2.1",
+    "eslint": "^8.46.0",
     "style-loader": "^3.3.3",
     "ts-auto-guard": "^4.1.3",
     "ts-loader": "^9.4.3",
