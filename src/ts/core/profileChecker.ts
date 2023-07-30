@@ -1,8 +1,8 @@
+import { CHECKED_DATA_ATTRIBUTE, NO_PROBLEM_CLASS_NAME } from "../common/settings";
 import { Color } from "./color";
 import { MessageElement } from "./messageElement";
-import { ProfileReactProps } from "./reactProps";
-import { CHECKED_DATA_ATTRIBUTE, NO_PROBLEM_CLASS_NAME } from "../common/settings";
 import { MessageSummary } from "./messageType";
+import { ProfileReactProps } from "./reactProps/profileReactProps";
 
 class ProfileChecker {
     private readonly userName: Element;
@@ -16,10 +16,14 @@ class ProfileChecker {
         const reactProps = new ProfileReactProps(this.userName).get();
         const isUserPossiblySensitive = Boolean(reactProps.user.possibly_sensitive);
 
-        const color = new Color().textColor;
+        const color = Color.textColor;
 
         const messageElement = new MessageElement(
-            { type: "account", summary: MessageSummary.fromAccountStatus(isUserPossiblySensitive) },
+            {
+                type: "account",
+                // eslint-disable-next-line sort-keys
+                summary: MessageSummary.fromAccountStatus(isUserPossiblySensitive)
+            },
             color
         );
         if (!isUserPossiblySensitive) {

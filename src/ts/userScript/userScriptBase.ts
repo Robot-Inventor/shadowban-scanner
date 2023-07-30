@@ -6,9 +6,7 @@ class UserScriptBase {
     constructor(translationData: TranslationData) {
         const textFlowOptions: TextFlowOptions = {
             ...DEFAULT_SETTINGS,
-            translator: (key) => {
-                return translationData[key].message;
-            }
+            translator: (key) => translationData[key].message
         };
         const textFlow = new TextFlow(textFlowOptions);
 

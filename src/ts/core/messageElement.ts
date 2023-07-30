@@ -27,9 +27,13 @@ type MessageElementAccountStatus = {
 type MessageElementStatus = MessageElementTweetStatus | MessageElementAccountStatus;
 
 class MessageElement {
-    private div: HTMLDivElement;
+    private readonly div: HTMLDivElement;
+    private readonly status: MessageElementStatus;
 
-    constructor(status: MessageElementStatus, color: ColorCode) {
+    // eslint-disable-next-line max-statements
+    private insertMessagesForTweet() {
+        if (this.status.type !== "tweet") throw new Error("this.status is not the status of tweet.");
+
         const DETAIL_ITEMS: (keyof MessageElementTweetStatus["detail"])[] = [
             "accountStatus",
             "sensitiveMediaInProfile",
@@ -37,6 +41,37 @@ class MessageElement {
             "tweetAgeRestriction",
             "tweetSearchStatus"
         ];
+
+        const translatedByAIMessage = document.createElement("div");
+        translatedByAIMessage.setAttribute(TRANSLATION_ATTRIBUTE, "translatedByAI");
+        translatedByAIMessage.classList.add(TRANSLATED_BY_AI_MESSAGE_CLASS_NAME);
+        translatedByAIMessage.style.display = "none";
+
+        const ul = document.createElement("ul");
+        ul.style.display = "none";
+        this.div.appendChild(ul);
+
+        for (const item of DETAIL_ITEMS) {
+            const li = document.createElement("li");
+            li.setAttribute(TRANSLATION_ATTRIBUTE, this.status.detail[item]);
+            li.setAttribute(TWEMOJI_ATTRIBUTE, "");
+            ul.appendChild(li);
+        }
+
+        const button = document.createElement("button");
+        button.setAttribute(TRANSLATION_ATTRIBUTE, "showMore");
+        button.addEventListener("click", () => {
+            ul.style.display = "block";
+            translatedByAIMessage.style.display = "block";
+            button.remove();
+        });
+        this.div.appendChild(button);
+
+        this.div.appendChild(translatedByAIMessage);
+    }
+
+    constructor(status: MessageElementStatus, color: ColorCode) {
+        this.status = status;
 
         this.div = document.createElement("div");
         this.div.classList.add(MESSAGE_CLASS_NAME);
@@ -47,32 +82,7 @@ class MessageElement {
         this.div.appendChild(summary);
 
         if (status.type === "tweet") {
-            const translatedByAIMessage = document.createElement("div");
-            translatedByAIMessage.setAttribute(TRANSLATION_ATTRIBUTE, "translatedByAI");
-            translatedByAIMessage.classList.add(TRANSLATED_BY_AI_MESSAGE_CLASS_NAME);
-            translatedByAIMessage.style.display = "none";
-
-            const ul = document.createElement("ul");
-            ul.style.display = "none";
-            this.div.appendChild(ul);
-
-            for (const item of DETAIL_ITEMS) {
-                const li = document.createElement("li");
-                li.setAttribute(TRANSLATION_ATTRIBUTE, status.detail[item]);
-                li.setAttribute(TWEMOJI_ATTRIBUTE, "");
-                ul.appendChild(li);
-            }
-
-            const button = document.createElement("button");
-            button.setAttribute(TRANSLATION_ATTRIBUTE, "showMore");
-            button.addEventListener("click", () => {
-                ul.style.display = "block";
-                translatedByAIMessage.style.display = "block";
-                button.remove();
-            });
-            this.div.appendChild(button);
-
-            this.div.appendChild(translatedByAIMessage);
+            this.insertMessagesForTweet();
         }
     }
 
@@ -81,4 +91,4 @@ class MessageElement {
     }
 }
 
-export { MessageElementStatus, MessageElement };
+export { MessageElementTweetStatus, MessageElementStatus, MessageElement };

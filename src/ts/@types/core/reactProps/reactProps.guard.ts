@@ -1,5 +1,5 @@
 /*
- * Generated type guards for "reactProps.ts".
+ * Generated type guards for "reactProps.d.ts".
  * WARNING: Do not manually change this file.
  */
 import { menubarReactProps, TweetOuterReactPropsData, FocalTweetOuterReactPropsData, ProfileReactPropsData } from "./reactProps";

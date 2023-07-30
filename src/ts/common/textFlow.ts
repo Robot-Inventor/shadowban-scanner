@@ -1,10 +1,10 @@
-import { TranslationData, Translator } from "../core/core";
 import {
     CURRENT_USERS_TWEET_CLASS_NAME,
     MESSAGE_CLASS_NAME,
     TRANSLATION_ATTRIBUTE,
     TWEMOJI_ATTRIBUTE
 } from "./settings";
+import { TranslationData, Translator } from "../core/core";
 import emojiRegex from "emoji-regex";
 
 interface TextFlowOptions {
@@ -36,20 +36,22 @@ class TextFlow {
         this.translator = options.translator;
     }
 
-    convertEmojiToTwemoji(text: string): string {
+    static convertEmojiToTwemoji(text: string): string {
         const regex = emojiRegex();
         return text.replace(regex, (match) => {
             let codePoints = "";
 
             try {
                 for (const emoji of match) {
+                    // eslint-disable-next-line no-magic-numbers
                     codePoints += `${emoji.codePointAt(0)?.toString(16)}-`;
                 }
             } catch (error) {
+                // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
                 throw new Error(`Failed to convert emoji to twemoji: ${error}`);
             }
 
-            codePoints = codePoints.replace(/-$/, "");
+            codePoints = codePoints.replace(/-$/u, "");
             return `<img src="https://abs-0.twimg.com/emoji/v2/svg/${codePoints}.svg" alt="${match}" class="twemoji">`;
         });
     }
@@ -68,12 +70,16 @@ class TextFlow {
 
         document.querySelectorAll(`[${TRANSLATION_ATTRIBUTE}]`).forEach((element) => {
             if (element.hasAttribute(TWEMOJI_ATTRIBUTE)) {
-                element.innerHTML = this.convertEmojiToTwemoji(
+                // eslint-disable-next-line function-paren-newline
+                element.innerHTML = TextFlow.convertEmojiToTwemoji(
                     this.translator(element.getAttribute(TRANSLATION_ATTRIBUTE) as keyof TranslationData)
+                    // eslint-disable-next-line function-paren-newline
                 );
             } else {
+                // eslint-disable-next-line function-paren-newline
                 element.innerHTML = this.translator(
                     element.getAttribute(TRANSLATION_ATTRIBUTE) as keyof TranslationData
+                    // eslint-disable-next-line function-paren-newline
                 );
             }
         });

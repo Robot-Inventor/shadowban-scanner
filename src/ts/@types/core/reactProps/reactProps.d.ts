@@ -1,10 +1,12 @@
-import { TweetStatus } from "./messageType";
-import {
-    isMenuBarReactPropsData,
-    isProfileReactPropsData,
-    isTweetOuterReactPropsData,
-    isFocalTweetOuterReactPropsData
-} from "./reactProps.guard";
+interface BasicTweetProps {
+    possibly_sensitive?: boolean | null;
+    possibly_sensitive_editable?: boolean | null;
+    user: {
+        possibly_sensitive?: boolean | null;
+        screen_name: string;
+        profile_interstitial_type: "" | "sensitive_media" | "fake_account" | "offensive_profile_content" | "timeout";
+    };
+}
 
 /** @see {isMenuBarReactPropsData} ts-auto-guard:type-guard */
 export interface menubarReactProps {
@@ -14,7 +16,7 @@ export interface menubarReactProps {
             props: {
                 retweetWithCommentLink: {
                     state: {
-                        quotedStatus: basicTweetProps;
+                        quotedStatus: BasicTweetProps;
                     };
                 };
             };
@@ -111,16 +113,6 @@ export interface FocalTweetOuterReactPropsData {
     ];
 }
 
-interface basicTweetProps {
-    possibly_sensitive?: boolean | null;
-    possibly_sensitive_editable?: boolean | null;
-    user: {
-        possibly_sensitive?: boolean | null;
-        screen_name: string;
-        profile_interstitial_type: "" | "sensitive_media" | "fake_account" | "offensive_profile_content" | "timeout";
-    };
-}
-
 /** @see {isProfileReactPropsData} ts-auto-guard:type-guard */
 export interface ProfileReactPropsData {
     children: [
@@ -134,91 +126,3 @@ export interface ProfileReactPropsData {
         }
     ];
 }
-
-class ReactProps {
-    private readonly element: Element;
-    private readonly reactPropsName: string;
-
-    constructor(element: Element) {
-        this.element = element;
-        this.reactPropsName = Object.getOwnPropertyNames(element).filter((n) => n.startsWith("__reactProps$"))[0];
-    }
-
-    get(): unknown {
-        // @ts-expect-error
-        return this.element[this.reactPropsName];
-    }
-}
-
-class TweetReactProps {
-    private readonly tweet: Element;
-    private readonly basicTweetProps: basicTweetProps;
-    private readonly fullTweetProps: TweetOuterReactPropsData | FocalTweetOuterReactPropsData;
-
-    constructor(tweet: Element, menuBar: Element) {
-        this.tweet = tweet;
-
-        const fullTweetProps = new ReactProps(tweet).get();
-        if (!isTweetOuterReactPropsData(fullTweetProps) && !isFocalTweetOuterReactPropsData(fullTweetProps))
-            throw new Error("Type of fullTweetProps is invalid.");
-        this.fullTweetProps = fullTweetProps;
-
-        const basicTweetProps = new ReactProps(menuBar).get();
-        if (!isMenuBarReactPropsData(basicTweetProps)) throw new Error("Type of basicTweetProps is invalid.");
-        this.basicTweetProps = basicTweetProps.children[1].props.retweetWithCommentLink.state.quotedStatus;
-    }
-
-    get(): TweetStatus {
-        const tweetData = this.basicTweetProps;
-        const result: TweetStatus = {
-            tweet: {
-                possiblySensitive: Boolean(tweetData.possibly_sensitive),
-                // ref: https://github.com/Robot-Inventor/shadowban-scanner/issues/16
-                possiblySensitiveEditable: !(tweetData.possibly_sensitive_editable === false),
-                isTweetByCurrentUser: this.isTweetByCurrentUser
-            },
-            user: {
-                possiblySensitive: Boolean(tweetData.user.possibly_sensitive),
-                sensitiveMediaInProfile: tweetData.user.profile_interstitial_type === "sensitive_media"
-            }
-        };
-
-        return result;
-    }
-
-    get isTweetByCurrentUser(): boolean {
-        const tweetAuthorScreenName = this.basicTweetProps.user.screen_name;
-
-        const tweetReactProps = new ReactProps(this.tweet).get();
-        let currentUserScreenName = "";
-        if (isTweetOuterReactPropsData(tweetReactProps)) {
-            currentUserScreenName =
-                tweetReactProps.children[0][1].props.children[0].props.children[1].props.children[1][2].props
-                    .children[1].props.loggedInUser.screen_name;
-        } else if (isFocalTweetOuterReactPropsData(tweetReactProps)) {
-            currentUserScreenName =
-                tweetReactProps.children[0][1].props.children[0].props.children[2].props.children[6].props.loggedInUser
-                    .screen_name;
-        } else {
-            throw new Error("Type of tweetReactProps is invalid.");
-        }
-
-        return tweetAuthorScreenName === currentUserScreenName;
-    }
-}
-
-class ProfileReactProps {
-    private readonly userName: Element;
-
-    constructor(userNameElement: Element) {
-        this.userName = userNameElement;
-    }
-
-    get() {
-        const reactProps = new ReactProps(this.userName).get();
-        if (!isProfileReactPropsData(reactProps)) throw new Error("Type of reactProps is invalid.");
-        return reactProps.children[1].props;
-    }
-}
-
-export { TweetReactProps, ProfileReactProps };

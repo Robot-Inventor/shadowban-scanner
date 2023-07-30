@@ -21,8 +21,6 @@ type TweetStatusString =
 type AccountStatusString = "thisUserIsShadowbanned" | "thisUserIsNotShadowbanned";
 
 class MessageSummary {
-    constructor() {}
-
     static fromTweetStatus(status: TweetStatus): TweetStatusString {
         if (!status.user.possiblySensitive && !status.tweet.possiblySensitive) return "tweetNoProblem";
 
@@ -31,12 +29,10 @@ class MessageSummary {
                 return status.tweet.possiblySensitiveEditable
                     ? "accountShadowbannedAndTweetFlaggedAsSensitive"
                     : "accountAndTweetShadowbanned";
-            } else {
-                return "accountShadowbanned";
             }
-        } else {
-            return status.tweet.possiblySensitiveEditable ? "tweetFlaggedAsSensitive" : "tweetShadowbanned";
+            return "accountShadowbanned";
         }
+        return status.tweet.possiblySensitiveEditable ? "tweetFlaggedAsSensitive" : "tweetShadowbanned";
     }
 
     static fromAccountStatus(isPossiblySensitive: boolean): AccountStatusString {
