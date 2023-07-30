@@ -44,12 +44,12 @@ class TweetReactProps {
         let currentUserScreenName = "";
         if (isTweetOuterReactPropsData(tweetReactProps)) {
             currentUserScreenName =
-                tweetReactProps.children[0][1].props.children[0].props.children[1].props.children[1][2].props.
-                    children[1].props.loggedInUser.screen_name;
+                tweetReactProps.children[0][1].props.children[0].props.children[1].props.children[1][2].props
+                    .children[1].props.loggedInUser.screen_name;
         } else if (isFocalTweetOuterReactPropsData(tweetReactProps)) {
             currentUserScreenName =
-                tweetReactProps.children[0][1].props.children[0].props.children[2].props.children[6].props.loggedInUser.
-                    screen_name;
+                tweetReactProps.children[0][1].props.children[0].props.children[2].props.children[6].props.loggedInUser
+                    .screen_name;
         } else {
             throw new Error("Type of tweetReactProps is invalid.");
         }
