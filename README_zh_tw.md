@@ -1,5 +1,7 @@
 # Shadowban Scanner
 
+[![Node.js CI (build)](https://github.com/Robot-Inventor/shadowban-scanner/actions/workflows/build.yml/badge.svg)](https://github.com/Robot-Inventor/shadowban-scanner/actions/workflows/build.yml) [![Node.js CI (build)](https://github.com/Robot-Inventor/shadowban-scanner/actions/workflows/build.yml/badge.svg)](https://github.com/Robot-Inventor/shadowban-scanner/actions/workflows/build.yml)
+
 [Read in English](README.md) | [日本語で読む](README_ja.md) | [한국어로 읽기](README_ko.md)
 
 這是一個用於檢測Twitter的Shadowban的擴充功能。
