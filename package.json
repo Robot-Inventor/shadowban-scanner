@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx eslint ./src/ts/**/*.ts && node ./script/webExtLint.js",
     "format": "npx prettier --write ./src/ts/**/*.ts",
+    "format:check": "npx prettier --check ./src/ts/**/*.ts",
     "build": "npm run format && node ./script/build.js",
     "package": "node ./script/package.js",
     "version": "npm run build && npm run package && git add ."
