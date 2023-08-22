@@ -2,13 +2,13 @@
 
 [![Node.js CI (build)](https://github.com/Robot-Inventor/shadowban-scanner/actions/workflows/build.yml/badge.svg)](https://github.com/Robot-Inventor/shadowban-scanner/actions/workflows/build.yml) [![Node.js CI (lint)](https://github.com/Robot-Inventor/shadowban-scanner/actions/workflows/lint.yml/badge.svg)](https://github.com/Robot-Inventor/shadowban-scanner/actions/workflows/lint.yml) [![Node.js CI (format)](https://github.com/Robot-Inventor/shadowban-scanner/actions/workflows/format.yml/badge.svg)](https://github.com/Robot-Inventor/shadowban-scanner/actions/workflows/format.yml)
 
+![Shadowban Scanner的標誌](doc/image/logo.svg)
+
 [Read in English](README.md) | [日本語で読む](README_ja.md) | [한국어로 읽기](README_ko.md)
 
 這是一個用於檢測Twitter的Shadowban的擴充功能。
 
 ※此文档经由人工智能将日语翻译为繁体字。如有不自然之处，请及时报告。
-
-![Shadowban Scanner的標誌](doc/image/logo.png)
 
 ## 安裝
 
