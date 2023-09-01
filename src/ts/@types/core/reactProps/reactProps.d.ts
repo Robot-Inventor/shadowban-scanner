@@ -45,16 +45,9 @@ export interface TweetOuterReactPropsData {
                                                     unknown,
                                                     {
                                                         props: {
-                                                            children: [
-                                                                unknown,
-                                                                {
-                                                                    props: {
-                                                                        loggedInUser: {
-                                                                            screen_name: string;
-                                                                        };
-                                                                    };
-                                                                }
-                                                            ];
+                                                            loggedInUser: {
+                                                                screen_name: string;
+                                                            };
                                                         };
                                                     }
                                                 ]
