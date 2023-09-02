@@ -60,8 +60,8 @@
         "message": "🚫有可能推文不會在搜索結果中顯示。"
     },
     "translatedByAI": {
-        "message": "這段文字是由AI從日語翻譯成繁體字。若有任何不自然之處，請通知<a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>。",
-        "description": "This field is used if the translation was done by AI. Otherwise, set this field to an empty string. Example sentence: \"Translated from Japanese to <language name> by AI. Please notify <a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a> if there are any unnatural points.\""
+        "message": "這段文字由AI翻譯自日語成繁體中文。如有任何不自然之處，請通知<a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>的DM或<a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub存儲庫</a>。",
+        "description": "This field is used if the translation was done by AI. Otherwise, set this field to an empty string. Example sentence: \"Translated from Japanese to <language name> by AI. Please notify <a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>'s DM or <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub repository</a> if there are any unnatural points.\""
     },
     "showMore": {
         "message": "▶顯示更多"
