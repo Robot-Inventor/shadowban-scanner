@@ -70,18 +70,15 @@ class TextFlow {
 
         document.querySelectorAll(`[${TRANSLATION_ATTRIBUTE}]`).forEach((element) => {
             if (element.hasAttribute(TWEMOJI_ATTRIBUTE)) {
-                // eslint-disable-next-line function-paren-newline
                 element.innerHTML = TextFlow.convertEmojiToTwemoji(
                     this.translator(element.getAttribute(TRANSLATION_ATTRIBUTE) as keyof TranslationData)
-                    // eslint-disable-next-line function-paren-newline
                 );
             } else {
-                // eslint-disable-next-line function-paren-newline
                 element.innerHTML = this.translator(
                     element.getAttribute(TRANSLATION_ATTRIBUTE) as keyof TranslationData
-                    // eslint-disable-next-line function-paren-newline
                 );
             }
+            element.removeAttribute(TRANSLATION_ATTRIBUTE);
         });
     }
 }
