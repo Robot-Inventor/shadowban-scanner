@@ -26,11 +26,11 @@
     "tweetNoProblem": {
         "message": "這則推文並未發現任何問題。"
     },
-    "accountIsNotShadowbanned": {
-        "message": "✅帳戶並未被 Shadowban。"
+    "accountIsNotFlaggedAsSensitive": {
+        "message": "✅帐户没有敏感标志。"
     },
-    "accountIsShadowbanned": {
-        "message": "🚫這個帳號有可能被進行了Shadowban。"
+    "accountIsShadowbannedOrFlaggedAsSensitive": {
+        "message": "🚫帐户可能被设有shadowban，或者带有敏感标志。"
     },
     "profileDoesNotContainSensitiveMedia": {
         "message": "✅帳戶的個人檔案媒體（圖示或標題圖片）未被設置為敏感內容。"

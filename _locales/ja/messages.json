@@ -26,11 +26,11 @@
     "tweetNoProblem": {
         "message": "ツイートに問題は見つかりませんでした。"
     },
-    "accountIsNotShadowbanned": {
-        "message": "✅アカウントはシャドウバンされていません"
+    "accountIsNotFlaggedAsSensitive": {
+        "message": "✅アカウントにセンシティブフラグは付与されていません"
     },
-    "accountIsShadowbanned": {
-        "message": "🚫アカウントがシャドウバンされている可能性があります"
+    "accountIsShadowbannedOrFlaggedAsSensitive": {
+        "message": "🚫アカウントがシャドウバンされているか、センシティブフラグが付与されています"
     },
     "profileDoesNotContainSensitiveMedia": {
         "message": "✅アカウントのプロフィールのメディア（アイコンやヘッダー画像）にセンシティブフラグは付与されていません"

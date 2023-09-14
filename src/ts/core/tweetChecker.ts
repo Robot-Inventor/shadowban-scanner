@@ -21,8 +21,8 @@ class TweetChecker {
             summary: messageSummary,
             detail: {
                 accountStatus: tweetStatus.user.possiblySensitive
-                    ? "accountIsShadowbanned"
-                    : "accountIsNotShadowbanned",
+                    ? "accountIsShadowbannedOrFlaggedAsSensitive"
+                    : "accountIsNotFlaggedAsSensitive",
                 sensitiveMediaInProfile: tweetStatus.user.sensitiveMediaInProfile
                     ? "profileContainsSensitiveMedia"
                     : "profileDoesNotContainSensitiveMedia",
