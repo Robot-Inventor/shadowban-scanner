@@ -5,22 +5,21 @@ import { EVENT_GENERATOR_ID } from "./common/settings";
 const pageScript = document.createElement("script");
 pageScript.src = browser.runtime.getURL("dist/js/pageScript.js");
 
-// eslint-disable-next-line @typescript-eslint/no-misused-promises
-pageScript.addEventListener("load", async () => {
+pageScript.addEventListener("load", () => {
     pageScript.remove();
     const eventGenerator = document.getElementById(EVENT_GENERATOR_ID);
     if (!eventGenerator) throw new Error("Failed to get event generator");
 
-    const settings = await browser.storage.local.get(DEFAULT_SETTINGS);
+    void browser.storage.local.get(DEFAULT_SETTINGS).then((settings) => {
+        const textFlowOptions: TextFlowOptions = {
+            ...settings,
+            translator: browser.i18n.getMessage
+        };
+        const textFlow = new TextFlow(textFlowOptions);
 
-    const textFlowOptions: TextFlowOptions = {
-        ...settings,
-        translator: browser.i18n.getMessage
-    };
-    const textFlow = new TextFlow(textFlowOptions);
-
-    eventGenerator.addEventListener("newMessage", () => {
-        textFlow.run();
+        eventGenerator.addEventListener("newMessage", () => {
+            textFlow.run();
+        });
     });
 });
 
