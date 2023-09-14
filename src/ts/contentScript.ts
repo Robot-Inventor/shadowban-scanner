@@ -1,26 +1,21 @@
-import { TextFlow, TextFlowOptions } from "./common/textFlow";
+import { EVENT_GENERATOR_ID, EVENT_GENERATOR_SETTINGS_ATTRIBUTE } from "./common/constants";
 import { DEFAULT_SETTINGS } from "./common/defaultSettings";
-import { EVENT_GENERATOR_ID } from "./common/settings";
+import { Translator } from "./common/translator";
 
-const pageScript = document.createElement("script");
-pageScript.src = browser.runtime.getURL("dist/js/pageScript.js");
+void browser.storage.local.get(DEFAULT_SETTINGS).then((settings) => {
+    const pageScript = document.createElement("script");
+    pageScript.src = browser.runtime.getURL("dist/js/pageScript.js");
 
-pageScript.addEventListener("load", () => {
-    pageScript.remove();
-    const eventGenerator = document.getElementById(EVENT_GENERATOR_ID);
-    if (!eventGenerator) throw new Error("Failed to get event generator");
+    const translator = new Translator(browser.i18n.getMessage);
 
-    void browser.storage.local.get(DEFAULT_SETTINGS).then((settings) => {
-        const textFlowOptions: TextFlowOptions = {
-            ...settings,
-            translator: browser.i18n.getMessage
-        };
-        const textFlow = new TextFlow(textFlowOptions);
-
-        eventGenerator.addEventListener("newMessage", () => {
-            textFlow.run();
-        });
+    const eventGenerator = document.createElement("div");
+    const settingsString = JSON.stringify(settings);
+    eventGenerator.setAttribute(EVENT_GENERATOR_SETTINGS_ATTRIBUTE, settingsString);
+    eventGenerator.id = EVENT_GENERATOR_ID;
+    eventGenerator.addEventListener("newMessage", () => {
+        translator.translateElements();
     });
-});
 
-document.body.appendChild(pageScript);
+    document.body.appendChild(eventGenerator);
+    document.body.appendChild(pageScript);
+});

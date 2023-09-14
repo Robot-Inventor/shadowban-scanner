@@ -5,7 +5,7 @@ import {
 } from "../../@types/core/reactProps/reactProps.guard";
 import { BasicTweetProps } from "../../@types/core/reactProps/reactProps";
 import { ReactProps } from "./reactProps";
-import { TweetStatus } from "../messageType";
+import { TweetStatus } from "../messageSummary";
 
 class TweetReactProps {
     private readonly tweet: Element;
