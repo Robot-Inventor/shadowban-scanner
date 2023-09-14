@@ -26,11 +26,11 @@
     "tweetNoProblem": {
         "message": "No problems was found with this tweet."
     },
-    "accountIsNotShadowbanned": {
-        "message": "✅Account is not shadowbanned."
+    "accountIsNotFlaggedAsSensitive": {
+        "message": "✅Account is not flagged as sensitive."
     },
-    "accountIsShadowbanned": {
-        "message": "🚫Account may be shadowbanned."
+    "accountIsShadowbannedOrFlaggedAsSensitive": {
+        "message": "🚫Account may be shadowbanned or flagged as sensitive."
     },
     "profileDoesNotContainSensitiveMedia": {
         "message": "✅Account's profile media (icon or header image) is not flagged as sensitive."
