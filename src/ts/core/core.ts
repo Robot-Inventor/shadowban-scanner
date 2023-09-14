@@ -18,10 +18,8 @@ class Core {
                 onMessageCallback();
             }
 
-            // eslint-disable-next-line function-paren-newline
             const userName = document.querySelector(
                 `:not([data-testid="tweet"]) [data-testid="UserName"]:not([${CHECKED_DATA_ATTRIBUTE}])`
-                // eslint-disable-next-line function-paren-newline
             );
             if (userName) {
                 const profileChecker = new ProfileChecker(userName);
