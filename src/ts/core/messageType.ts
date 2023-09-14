@@ -22,9 +22,11 @@ type AccountStatusString = "thisUserIsShadowbanned" | "thisUserIsNotShadowbanned
 
 class MessageSummary {
     static fromTweetStatus(status: TweetStatus): TweetStatusString {
-        if (!status.user.possiblySensitive && !status.tweet.possiblySensitive) return "tweetNoProblem";
+        const tweetHasProblem =
+            status.user.possiblySensitive || status.user.sensitiveMediaInProfile || status.tweet.possiblySensitive;
+        if (!tweetHasProblem) return "tweetNoProblem";
 
-        if (status.user.possiblySensitive) {
+        if (status.user.possiblySensitive || status.user.sensitiveMediaInProfile) {
             if (status.tweet.possiblySensitive) {
                 return status.tweet.possiblySensitiveEditable
                     ? "accountShadowbannedAndTweetFlaggedAsSensitive"
