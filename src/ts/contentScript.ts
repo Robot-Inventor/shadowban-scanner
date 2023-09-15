@@ -1,10 +1,13 @@
 import { EVENT_GENERATOR_ID, EVENT_GENERATOR_SETTINGS_ATTRIBUTE } from "./common/constants";
 import { DEFAULT_SETTINGS } from "./common/defaultSettings";
 import { Translator } from "./common/translator";
+import { migrateFromV1ToV2 } from "./common/migrator";
 
-void browser.storage.local.get(DEFAULT_SETTINGS).then((settings) => {
-    const pageScript = document.createElement("script");
-    pageScript.src = browser.runtime.getURL("dist/js/pageScript.js");
+// eslint-disable-next-line max-statements
+const main = async () => {
+    await migrateFromV1ToV2();
+
+    const settings = await browser.storage.local.get(DEFAULT_SETTINGS);
 
     const translator = new Translator(browser.i18n.getMessage);
 
@@ -15,7 +18,11 @@ void browser.storage.local.get(DEFAULT_SETTINGS).then((settings) => {
     eventGenerator.addEventListener("newMessage", () => {
         translator.translateElements();
     });
-
     document.body.appendChild(eventGenerator);
+
+    const pageScript = document.createElement("script");
+    pageScript.src = browser.runtime.getURL("dist/js/pageScript.js");
     document.body.appendChild(pageScript);
-});
+};
+
+void main();
