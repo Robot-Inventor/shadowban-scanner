@@ -1,12 +1,5 @@
 import { DEFAULT_SETTINGS } from "./common/defaultSettings";
-
-const migrateFromV1ToV2 = async () => {
-    const v1Settings = await browser.storage.local.get(null);
-    if (!("showMessageInAllTweets" in v1Settings)) return;
-
-    await browser.storage.local.set({ showMessagesInUnproblematicTweets: v1Settings.showMessageInAllTweets });
-    await browser.storage.local.remove("showMessageInAllTweets");
-};
+import { migrateFromV1ToV2 } from "./common/migrator";
 
 const translationTargets: NodeListOf<HTMLElement> = document.querySelectorAll("[data-translation]");
 for (const translationTarget of translationTargets) {
