@@ -1,6 +1,6 @@
-import { CHECKED_DATA_ATTRIBUTE, CURRENT_USERS_TWEET_CLASS_NAME, NO_PROBLEM_CLASS_NAME } from "../common/settings";
+import { CHECKED_DATA_ATTRIBUTE, CURRENT_USERS_TWEET_CLASS_NAME, NO_PROBLEM_CLASS_NAME } from "../common/constants";
 import { MessageElement, MessageElementTweetStatus } from "./messageElement";
-import { MessageSummary, TweetStatus, TweetStatusString } from "./messageType";
+import { MessageSummary, TweetStatus, TweetStatusString } from "./messageSummary";
 import { Color } from "./color";
 import { TweetReactProps } from "./reactProps/tweetReactProps";
 
@@ -60,7 +60,7 @@ class TweetChecker {
     }
 
     // eslint-disable-next-line max-statements
-    run() {
+    run(): HTMLElement {
         this.tweet.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
 
         const menuBar = this.getMenuBar();
@@ -82,6 +82,7 @@ class TweetChecker {
         }
 
         menuBar.insertAdjacentElement("beforebegin", messageElement.element);
+        return messageElement.element;
     }
 }
 

@@ -3,7 +3,7 @@ import {
     TRANSLATED_BY_AI_MESSAGE_CLASS_NAME,
     TRANSLATION_ATTRIBUTE,
     TWEMOJI_ATTRIBUTE
-} from "../common/settings";
+} from "../common/constants";
 import { ColorCode } from "./color";
 import { TranslationKey } from "./core";
 

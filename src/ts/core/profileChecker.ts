@@ -1,7 +1,7 @@
-import { CHECKED_DATA_ATTRIBUTE, NO_PROBLEM_CLASS_NAME } from "../common/settings";
+import { CHECKED_DATA_ATTRIBUTE, NO_PROBLEM_CLASS_NAME } from "../common/constants";
 import { Color } from "./color";
 import { MessageElement } from "./messageElement";
-import { MessageSummary } from "./messageType";
+import { MessageSummary } from "./messageSummary";
 import { ProfileReactProps } from "./reactProps/profileReactProps";
 
 class ProfileChecker {

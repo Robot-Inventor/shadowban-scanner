@@ -1,17 +1,13 @@
-import { Core, TranslationData } from "../core/core";
-import { TextFlow, TextFlowOptions } from "../common/textFlow";
+import { TranslationData, Translator } from "../common/translator";
+import { Core } from "../core/core";
 import { DEFAULT_SETTINGS } from "../common/defaultSettings";
 
 class UserScriptBase {
     constructor(translationData: TranslationData) {
-        const textFlowOptions: TextFlowOptions = {
-            ...DEFAULT_SETTINGS,
-            translator: (key) => translationData[key].message
-        };
-        const textFlow = new TextFlow(textFlowOptions);
+        const translator = new Translator((key) => translationData[key].message);
 
-        new Core(() => {
-            textFlow.run();
+        new Core(DEFAULT_SETTINGS, () => {
+            translator.translateElements();
         });
     }
 }
