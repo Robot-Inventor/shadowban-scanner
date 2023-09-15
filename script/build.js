@@ -34,8 +34,8 @@ for (const userScript of userScriptFiles) {
 // @match        https://mobile.twitter.com/*
 // @match        https://tweetdeck.twitter.com/*
 // @icon         https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/src/image/icon128.png
-// @downloadURL  https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/${userScript.replace("\\", "/")}
-// @updateURL    https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/${userScript.replace("\\", "/")}
+// @downloadURL  https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/${userScript.replaceAll("\\", "/")}
+// @updateURL    https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/${userScript.replaceAll("\\", "/")}
 // @grant        none
 // ==/UserScript==
 `.trim();
