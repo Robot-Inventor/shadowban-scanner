@@ -6,9 +6,11 @@ import { ProfileReactProps } from "./reactProps/profileReactProps";
 
 class ProfileChecker {
     private readonly userName: Element;
+    private readonly alwaysDetailedView: boolean;
 
-    constructor(userNameElement: Element) {
+    constructor(userNameElement: Element, alwaysDetailedView: boolean) {
         this.userName = userNameElement;
+        this.alwaysDetailedView = alwaysDetailedView;
     }
 
     run() {
@@ -24,7 +26,8 @@ class ProfileChecker {
                 // eslint-disable-next-line sort-keys
                 summary: MessageSummary.fromAccountStatus(isUserPossiblySensitive)
             },
-            color
+            color,
+            this.alwaysDetailedView
         );
         if (!isUserPossiblySensitive) {
             messageElement.element.classList.add(NO_PROBLEM_CLASS_NAME);
