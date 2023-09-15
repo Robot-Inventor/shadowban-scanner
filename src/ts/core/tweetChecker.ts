@@ -1,14 +1,17 @@
-import { CHECKED_DATA_ATTRIBUTE, CURRENT_USERS_TWEET_CLASS_NAME, NO_PROBLEM_CLASS_NAME } from "../common/constants";
+import { CHECKED_DATA_ATTRIBUTE, NO_PROBLEM_CLASS_NAME } from "../common/constants";
 import { MessageElement, MessageElementTweetStatus } from "./messageElement";
 import { MessageSummary, TweetStatus, TweetStatusString } from "./messageSummary";
 import { Color } from "./color";
+import { Settings } from "../@types/common/settings";
 import { TweetReactProps } from "./reactProps/tweetReactProps";
 
 class TweetChecker {
     private readonly tweet: Element;
+    private readonly options: Settings;
 
-    constructor(tweet: Element) {
+    constructor(tweet: Element, options: Settings) {
         this.tweet = tweet;
+        this.options = options;
     }
 
     private static tweetStatusToStatusData(
@@ -60,7 +63,7 @@ class TweetChecker {
     }
 
     // eslint-disable-next-line max-statements
-    run(): HTMLElement {
+    run() {
         this.tweet.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
 
         const menuBar = this.getMenuBar();
@@ -71,18 +74,21 @@ class TweetChecker {
         const color = Color.textColor;
         const statusData = TweetChecker.tweetStatusToStatusData(tweetStatus, messageSummary);
 
-        const messageElement = new MessageElement(statusData, color);
+        const messageElement = new MessageElement(statusData, color, this.options.alwaysDetailedView);
 
         if (statusData.detail.tweetSearchStatus === "tweetIsSearchable") {
             messageElement.element.classList.add(NO_PROBLEM_CLASS_NAME);
+
+            if (!this.options.showMessagesInUnproblematicTweets) {
+                messageElement.element.style.display = "none";
+            }
         }
 
-        if (tweetStatus.tweet.isTweetByCurrentUser) {
-            messageElement.element.classList.add(CURRENT_USERS_TWEET_CLASS_NAME);
+        if (!tweetStatus.tweet.isTweetByCurrentUser && this.options.enableOnlyForCurrentUsersTweets) {
+            messageElement.element.style.display = "none";
         }
 
         menuBar.insertAdjacentElement("beforebegin", messageElement.element);
-        return messageElement.element;
     }
 }
 

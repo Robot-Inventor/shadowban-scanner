@@ -29,6 +29,24 @@ type MessageElementStatus = MessageElementTweetStatus | MessageElementAccountSta
 class MessageElement {
     private readonly div: HTMLDivElement;
     private readonly status: MessageElementStatus;
+    private readonly alwaysDetailedView: boolean;
+
+    constructor(status: MessageElementStatus, color: ColorCode, alwaysDetailedView: boolean) {
+        this.status = status;
+        this.alwaysDetailedView = alwaysDetailedView;
+
+        this.div = document.createElement("div");
+        this.div.classList.add(MESSAGE_CLASS_NAME);
+        this.div.style.color = color;
+
+        const summary = document.createElement("span");
+        summary.setAttribute(TRANSLATION_ATTRIBUTE, status.summary);
+        this.div.appendChild(summary);
+
+        if (status.type === "tweet") {
+            this.insertMessagesForTweet();
+        }
+    }
 
     // eslint-disable-next-line max-statements
     private insertMessagesForTweet() {
@@ -45,10 +63,8 @@ class MessageElement {
         const translatedByAIMessage = document.createElement("div");
         translatedByAIMessage.setAttribute(TRANSLATION_ATTRIBUTE, "translatedByAI");
         translatedByAIMessage.classList.add(TRANSLATED_BY_AI_MESSAGE_CLASS_NAME);
-        translatedByAIMessage.style.display = "none";
 
         const ul = document.createElement("ul");
-        ul.style.display = "none";
         this.div.appendChild(ul);
 
         for (const item of DETAIL_ITEMS) {
@@ -58,32 +74,22 @@ class MessageElement {
             ul.appendChild(li);
         }
 
-        const button = document.createElement("button");
-        button.setAttribute(TRANSLATION_ATTRIBUTE, "showMore");
-        button.addEventListener("click", () => {
-            ul.style.display = "block";
-            translatedByAIMessage.style.display = "block";
-            button.remove();
-        });
-        this.div.appendChild(button);
+        if (!this.alwaysDetailedView) {
+            translatedByAIMessage.style.display = "none";
+            ul.style.display = "none";
+
+            const button = document.createElement("button");
+            button.setAttribute(TRANSLATION_ATTRIBUTE, "showMore");
+            button.addEventListener("click", () => {
+                ul.style.display = "block";
+                translatedByAIMessage.style.display = "block";
+                button.remove();
+            });
+
+            this.div.appendChild(button);
+        }
 
         this.div.appendChild(translatedByAIMessage);
-    }
-
-    constructor(status: MessageElementStatus, color: ColorCode) {
-        this.status = status;
-
-        this.div = document.createElement("div");
-        this.div.classList.add(MESSAGE_CLASS_NAME);
-        this.div.style.color = color;
-
-        const summary = document.createElement("span");
-        summary.setAttribute(TRANSLATION_ATTRIBUTE, status.summary);
-        this.div.appendChild(summary);
-
-        if (status.type === "tweet") {
-            this.insertMessagesForTweet();
-        }
     }
 
     get element() {
@@ -91,4 +97,4 @@ class MessageElement {
     }
 }
 
-export { MessageElementTweetStatus, MessageElementStatus, MessageElement };
+export { MessageElementTweetStatus, MessageElement };

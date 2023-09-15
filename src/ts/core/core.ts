@@ -1,5 +1,5 @@
 import "../../css/style.css";
-import { CHECKED_DATA_ATTRIBUTE, CURRENT_USERS_TWEET_CLASS_NAME, MESSAGE_CLASS_NAME } from "../common/constants";
+import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
 import { ProfileChecker } from "./profileChecker";
 import { Settings } from "../@types/common/settings";
 import { TweetChecker } from "./tweetChecker";
@@ -10,25 +10,12 @@ type TranslationKey = keyof TranslationData;
 type Translator = (key: TranslationKey) => string;
 
 class Core {
-    private readonly settings: Settings;
-
     constructor(settings: Settings, onMessageCallback: () => void) {
-        this.settings = settings;
-        this.loadOptionalStyles();
-
-        // eslint-disable-next-line max-statements
         const timelineObserver = new MutationObserver(() => {
             const tweets = document.querySelectorAll(`[data-testid="tweet"]:not([${CHECKED_DATA_ATTRIBUTE}]`);
             for (const tweet of tweets) {
-                const tweetChecker = new TweetChecker(tweet);
-                const messageElement = tweetChecker.run();
-
-                const button = messageElement.querySelector("button");
-                if (!button) throw new Error("Failed to get button of message element");
-                if (this.settings.alwaysDetailedView) {
-                    button.click();
-                }
-
+                const tweetChecker = new TweetChecker(tweet, settings);
+                tweetChecker.run();
                 onMessageCallback();
             }
 
@@ -36,7 +23,7 @@ class Core {
                 `:not([data-testid="tweet"]) [data-testid="UserName"]:not([${CHECKED_DATA_ATTRIBUTE}])`
             );
             if (userName) {
-                const profileChecker = new ProfileChecker(userName);
+                const profileChecker = new ProfileChecker(userName, settings.alwaysDetailedView);
                 profileChecker.run();
                 onMessageCallback();
             }
@@ -55,20 +42,6 @@ class Core {
             timelineObserver.observe(main, observerOptions);
         });
         loadingObserver.observe(document.body, observerOptions);
-    }
-
-    private loadOptionalStyles() {
-        if (!this.settings.showMessagesInUnproblematicTweets) {
-            const style = document.createElement("style");
-            style.textContent = ".shadowban-scanner-message-no-problem { display: none; }";
-            document.body.appendChild(style);
-        }
-
-        if (this.settings.enableOnlyForCurrentUsersTweets) {
-            const style = document.createElement("style");
-            style.textContent = `.${MESSAGE_CLASS_NAME}:not(.${CURRENT_USERS_TWEET_CLASS_NAME}) {display: none;}`;
-            document.body.appendChild(style);
-        }
     }
 }
 
