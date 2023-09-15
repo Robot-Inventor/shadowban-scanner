@@ -35,7 +35,7 @@ class Translator {
             if (element.hasAttribute(TWEMOJI_ATTRIBUTE)) {
                 element.innerHTML = Translator.convertEmojiToTwemoji(translatedText);
             } else {
-                element.textContent = translatedText;
+                element.innerHTML = translatedText;
             }
             element.removeAttribute(TRANSLATION_ATTRIBUTE);
         });
