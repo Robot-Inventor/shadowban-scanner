@@ -1,4 +1,6 @@
-# The Mechanism of Shadowban Scanner and Shadowbans
+# How Shadowban Scanner Works and About Shadowban
+
+This is a brief description of how Shadowban Scanner works and shadowbans. For more details on the determination method and technical information, please refer to [here (Japanese)](./technical-information.md).
 
 This document was translated from [Japanese](../ja/about-shadowban.md) to English by AI. Please let me know if there are any unnatural points.
 

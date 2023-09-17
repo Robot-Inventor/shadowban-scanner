@@ -42,11 +42,10 @@ Twitter의 Shadowban을 감지하는 확장 기능입니다.
 
 ## 검출 방법
 
-Twitter에서는 계정 단위와 트윗 단위로 ``possibly_sensitive``라는 플래그가 있습니다.
+탐지 방법 및 기술적 세부사항은 다음 문서를 참조하십시오.
 
-계정의 "possibly_sensitive" 플래그가 "true"인 경우, 해당 계정은 셰도우밴되어 있을 가능성이 높다고 생각됩니다. 셰도우밴된 경우, 조회자의 계정 설정에 따라 트윗이 검색 결과에 표시되지 않을 수 있습니다. 예를 들어, 조회자의 국가 설정이 "일본"으로 되어 있는 경우, 셰도우밴된 계정의 트윗이 검색 결과에 표시되지 않게 됩니다.
-
-또한, 트윗의 ``possibly_sensitive`` 플래그가 ``true``인 경우에도 해당 트윗이 검색 결과에 표시되지 않을 수 있습니다. 트윗의 센시티브 플래그는 두 단계로 나뉘며, 경미한 경우에는 [센시티브한 내용을 포함한 것을 표시하지 않음] 설정이 켜져 있는 계정의 검색 결과에 표시되지 않게 됩니다. 심각한 경우에는 검색 결과에 표시되지 않는 것에 더해 나이 제한이 적용되어 미성년자 계정이나 비로그인 상태에서 볼 수 없게 됩니다.
+- [How Shadowban Scanner Works and About Shadowban (English)](./doc/en/about-shadowban.md)
+- [Technical Information on Shadowban Scanner (Japanese)](./doc/en/technical-information.md)
 
 ## 개인정보 처리 방침
 
