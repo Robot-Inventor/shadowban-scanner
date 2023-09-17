@@ -40,11 +40,10 @@ When it comes to detecting shadowbans on an account level, like many other tools
 
 ## Detection Methods
 
-Twitter has a ``possibly_sensitive`` flag on a per-account and per-tweet basis.
+For more information on detection methods and technical details, please refer to the following documents.
 
-If the ``possibly_sensitive`` flag for an account is ``true``, the account is most likely shadowbanned. If it has been shadowbanned, tweets may not appear in search results depending on the viewer's account settings. For example, if the viewer's country setting is set to "Japan", tweets from shadowbanned accounts will not appear in search results.
-
-Also, if a tweet's ``possibly_sensitive`` flag is set to ``true``, the tweet may no longer appear in search results. There are two levels of sensitivity flags for tweets. The mildest level will prevent tweets from appearing in search results for accounts that have the Do not show sensitive content setting turned on. Severe ones, in addition to no longer appearing in search results, will also impose age restrictions, preventing underage accounts and non-logged-in users from viewing the tweet.
+- [How Shadowban Scanner Works and About Shadowban](./doc/en/about-shadowban.md)
+- [Technical Information on Shadowban Scanner (Japanese)](./doc/en/technical-information.md)
 
 ## Privacy Policy
 

@@ -42,11 +42,10 @@
 
 ## 檢測方法
 
-Twitter中存在著以帳號和推文為單位的``possibly_sensitive``標記。
+檢測方法和技術細節請參考以下文檔：
 
-如果帳號的``possibly_sensitive``標記為``true``，那麼該帳號很可能遭到了Shadowban。若帳號被Shadowban，根據訪問者的帳號設定，推文可能不會出現在搜尋結果中。舉例來說，如果訪問者的國家設定是「日本」，那麼被Shadowban的帳號的推文將不會在搜尋結果中顯示。
-
-此外，如果推文的 ``possibly_sensitive`` 标志设置为 ``true``，该推文也可能不会出现在搜索结果中。推文的敏感标志有两个级别，轻度级别会使带有敏感内容的推文不会出现在启用了 "不显示包含敏感内容的推文" 设置的帐户的搜索结果中。重度级别不仅会使推文不再出现在搜索结果中，还会对其施加年龄限制，这意味着未成年人的帐户或未登录状态下无法查看。
+- [How Shadowban Scanner Works and About Shadowban (English)](./doc/en/about-shadowban.md)
+- [Technical Information on Shadowban Scanner (Japanese)](./doc/en/technical-information.md)
 
 ## 隐私政策
 
