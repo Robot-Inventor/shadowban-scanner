@@ -42,4 +42,4 @@ class MessageSummary {
     }
 }
 
-export { TweetStatus, TweetStatusString, MessageSummary };
+export { TweetStatus, MessageSummary };

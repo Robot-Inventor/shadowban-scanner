@@ -23,7 +23,7 @@ class Core {
                 `:not([data-testid="tweet"]) [data-testid="UserName"]:not([${CHECKED_DATA_ATTRIBUTE}])`
             );
             if (userName) {
-                const profileChecker = new ProfileChecker(userName, settings.alwaysDetailedView);
+                const profileChecker = new ProfileChecker(userName);
                 profileChecker.run();
                 onMessageCallback();
             }

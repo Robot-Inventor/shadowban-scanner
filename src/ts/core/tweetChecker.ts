@@ -1,8 +1,9 @@
-import { CHECKED_DATA_ATTRIBUTE, NO_PROBLEM_CLASS_NAME } from "../common/constants";
-import { MessageElement, MessageElementTweetStatus } from "./messageElement";
-import { MessageSummary, TweetStatus, TweetStatusString } from "./messageSummary";
+import { MessageSummary, TweetStatus } from "./messageSummary";
+import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
 import { Color } from "./color";
+import { Message } from "./message";
 import { Settings } from "../@types/common/settings";
+import { TranslationKey } from "./core";
 import { TweetReactProps } from "./reactProps/tweetReactProps";
 
 class TweetChecker {
@@ -14,41 +15,46 @@ class TweetChecker {
         this.options = options;
     }
 
-    private static tweetStatusToStatusData(
-        tweetStatus: TweetStatus,
-        messageSummary: TweetStatusString
-    ): MessageElementTweetStatus {
-        /* eslint-disable sort-keys */
-        const statusData: MessageElementTweetStatus = {
-            type: "tweet",
-            summary: messageSummary,
-            detail: {
-                accountStatus: tweetStatus.user.possiblySensitive
-                    ? "accountIsShadowbannedOrFlaggedAsSensitive"
-                    : "accountIsNotFlaggedAsSensitive",
-                sensitiveMediaInProfile: tweetStatus.user.sensitiveMediaInProfile
-                    ? "profileContainsSensitiveMedia"
-                    : "profileDoesNotContainSensitiveMedia",
-                tweetSensitiveFlag: tweetStatus.tweet.possiblySensitive
-                    ? "tweetIsFlaggedAsSensitive"
-                    : "tweetIsNotFlaggedAsSensitive",
-                tweetAgeRestriction:
-                    tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable
-                        ? "tweetIsAgeRestricted"
-                        : "tweetIsNotAgeRestricted",
-                tweetSearchStatus: (() => {
-                    if (
-                        (tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable) ||
-                        tweetStatus.user.possiblySensitive
-                    ) {
-                        return "tweetIsNotSearchable";
-                    }
-                    return tweetStatus.tweet.possiblySensitive ? "tweetMayNotBeSearchable" : "tweetIsSearchable";
-                })()
+    private static tweetStatusToStatusData(tweetStatus: TweetStatus): {
+        isTweetSearchable: boolean;
+        messages: TranslationKey[];
+    } {
+        const accountStatus = tweetStatus.user.possiblySensitive
+            ? "accountIsShadowbannedOrFlaggedAsSensitive"
+            : "accountIsNotFlaggedAsSensitive";
+        const sensitiveMediaInProfile = tweetStatus.user.sensitiveMediaInProfile
+            ? "profileContainsSensitiveMedia"
+            : "profileDoesNotContainSensitiveMedia";
+        const tweetSensitiveFlag = tweetStatus.tweet.possiblySensitive
+            ? "tweetIsFlaggedAsSensitive"
+            : "tweetIsNotFlaggedAsSensitive";
+        const tweetAgeRestriction =
+            tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable
+                ? "tweetIsAgeRestricted"
+                : "tweetIsNotAgeRestricted";
+        const tweetSearchStatus = (() => {
+            if (
+                (tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable) ||
+                tweetStatus.user.possiblySensitive
+            ) {
+                return "tweetIsNotSearchable";
             }
-            /* eslint-enable sort-keys */
+            return tweetStatus.tweet.possiblySensitive ? "tweetMayNotBeSearchable" : "tweetIsSearchable";
+        })();
+
+        const messages = [
+            accountStatus,
+            sensitiveMediaInProfile,
+            tweetSensitiveFlag,
+            tweetAgeRestriction,
+            tweetSearchStatus
+        ] satisfies TranslationKey[];
+        const isTweetSearchable = tweetSearchStatus === "tweetIsSearchable";
+
+        return {
+            isTweetSearchable,
+            messages
         };
-        return statusData;
     }
 
     private getMenuBar(): Element {
@@ -69,26 +75,24 @@ class TweetChecker {
         const menuBar = this.getMenuBar();
         const tweetStatus = this.getTweetStatus();
 
+        if (!tweetStatus.tweet.isTweetByCurrentUser && this.options.enableOnlyForCurrentUsersTweets) return;
+
         const messageSummary = MessageSummary.fromTweetStatus(tweetStatus);
 
         const color = Color.textColor;
-        const statusData = TweetChecker.tweetStatusToStatusData(tweetStatus, messageSummary);
+        const statusData = TweetChecker.tweetStatusToStatusData(tweetStatus);
 
-        const messageElement = new MessageElement(statusData, color, this.options.alwaysDetailedView);
+        const { isTweetSearchable } = statusData;
+        if (isTweetSearchable && !this.options.showMessagesInUnproblematicTweets) return;
 
-        if (statusData.detail.tweetSearchStatus === "tweetIsSearchable") {
-            messageElement.element.classList.add(NO_PROBLEM_CLASS_NAME);
-
-            if (!this.options.showMessagesInUnproblematicTweets) {
-                messageElement.element.style.display = "none";
-            }
+        const message = new Message(messageSummary, color);
+        message.isAlert = !isTweetSearchable;
+        if (this.options.alwaysDetailedView) {
+            message.expand();
         }
-
-        if (!tweetStatus.tweet.isTweetByCurrentUser && this.options.enableOnlyForCurrentUsersTweets) {
-            messageElement.element.style.display = "none";
-        }
-
-        menuBar.insertAdjacentElement("beforebegin", messageElement.element);
+        message.addDetails(statusData.messages);
+        message.addNotes(["translatedByAI"]);
+        menuBar.insertAdjacentElement("beforebegin", message.getContainer());
     }
 }
 
