@@ -23,6 +23,10 @@
     background: none;
 }
 
+.shadowban-scanner-message .shadowban-scanner-collapsed-content {
+    display: none;
+}
+
 .shadowban-scanner-message ul {
     font-family: inherit;
     line-height: inherit;
@@ -34,13 +38,13 @@
     list-style: none;
 }
 
-.shadowban-scanner-translated-by-ai {
+.shadowban-scanner-message-note {
     opacity: 0.8;
     font-size: 0.8em;
     margin-top: 0.5em;
 }
 
-.shadowban-scanner-translated-by-ai a {
+.shadowban-scanner-message-note a {
     color: inherit;
 }
 
