@@ -66,7 +66,7 @@
 請執行以下指令以生成 Manifest 檔案或更改版本。您可以將 ``<manifestVersion>`` 設定為 2 或 3。此外，Manifest 檔案中的 ``version`` 欄位將使用 ``package.json`` 中的 ``version`` 欄位值。
 
 ```console
-node script/changeManifestVersion.js <manifestVersion>
+npm run switchManifest <manifestVersion>
 ```
 
 ### 建置

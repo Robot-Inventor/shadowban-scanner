@@ -64,7 +64,7 @@ To add a new language, see the [Localization Guide (English)](doc/localization.m
 To generate a Manifest file or change the version, run the following command. ``<manifestVersion>`` can be 2 or 3. Also, the ``version`` field in the Manifest file will be the value of the ``version`` field in ``package.json``.
 
 ```console
-node script/changeManifestVersion.js <manifestVersion>
+npm run switchManifest <manifestVersion>
 ```
 
 ### Build

@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "npx eslint ./src/ts/**/*.ts && node ./script/webExtLint.js",
+    "lint": "npx eslint ./src/ts/**/*.ts && npx knip && node ./script/webExtLint.js",
     "format": "npx prettier --write ./src/ts/**/*.ts",
     "format:check": "npx prettier --check ./src/ts/**/*.ts",
     "build": "npm run format && node ./script/build.js",
     "package": "node ./script/package.js",
-    "version": "npm run build && npm run package && git add ."
+    "version": "npm run build && npm run package && git add .",
+    "switchManifest": "node ./script/changeManifestVersion.js"
   },
   "repository": {
     "type": "git",

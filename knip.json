@@ -1,0 +1,17 @@
+{
+    "project": [
+        "src/**/*.ts",
+        "src/**/*.js",
+        "script/**/*.ts",
+        "script/**/*.js"
+    ],
+    "ignore": [
+        "src/polyfill/browserPolyfill.min.js"
+    ],
+    "ignoreDependencies": [
+        "web-ext",
+        "web-ext-types",
+        "webpack-cli",
+        "ts-auto-guard"
+    ]
+}
