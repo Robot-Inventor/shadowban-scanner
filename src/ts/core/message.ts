@@ -26,17 +26,16 @@ class Message {
     }
 
     private static getTextColor(): `rgb(${number}, ${number}, ${number})` {
-        const USER_NAME_SELECTOR = [
+        const TEXT_SELECTOR = [
             "[data-testid='User-Name'] div:first-child span",
             "[data-testid='UserName'] div:first-child span",
-            "[data-testid='tweetText']",
-            "main h2[role='heading']"
+            "[data-testid='tweetText']"
         ].join(",");
 
-        const userName = document.querySelector(USER_NAME_SELECTOR);
-        if (!userName) throw new Error("Failed to get user name span of tweet");
+        const text = document.querySelector(TEXT_SELECTOR);
+        if (!text) throw new Error("Failed to get user name span of tweet");
 
-        const { color } = getComputedStyle(userName);
+        const { color } = getComputedStyle(text);
         return color as `rgb(${number}, ${number}, ${number})`;
     }
 
