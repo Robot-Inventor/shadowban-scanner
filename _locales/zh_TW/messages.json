@@ -27,10 +27,10 @@
         "message": "這則推文並未發現任何問題。"
     },
     "accountIsNotFlaggedAsSensitive": {
-        "message": "✅帐户没有敏感标志。"
+        "message": "✅帳戶沒有敏感標誌。"
     },
     "accountIsShadowbannedOrFlaggedAsSensitive": {
-        "message": "🚫帐户可能被设有shadowban，或者带有敏感标志。"
+        "message": "🚫帳戶可能被設有shadowban，或有敏感標誌。"
     },
     "profileDoesNotContainSensitiveMedia": {
         "message": "✅帳戶的個人檔案媒體（圖示或標題圖片）未被設置為敏感內容。"
