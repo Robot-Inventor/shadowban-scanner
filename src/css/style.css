@@ -30,7 +30,7 @@
 .shadowban-scanner-message ul {
     font-family: inherit;
     line-height: inherit;
-    margin: 0.5rem 0 0 0;
+    margin: 0.75rem 0 0 0;
     padding: 0;
 }
 
@@ -41,6 +41,10 @@
 .shadowban-scanner-message-note {
     opacity: 0.8;
     font-size: 0.8em;
+    margin-top: 0.75em;
+}
+
+.shadowban-scanner-message-note + .shadowban-scanner-message-note {
     margin-top: 0.5em;
 }
 
