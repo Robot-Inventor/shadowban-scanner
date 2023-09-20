@@ -7,10 +7,18 @@ import { BasicTweetProps } from "../../@types/core/reactProps/reactProps";
 import { ReactProps } from "./reactProps";
 import { TweetStatus } from "../messageSummary";
 
+/**
+ * React props of the tweet.
+ */
 class TweetReactProps {
     private readonly tweet: Element;
     private readonly basicTweetProps: BasicTweetProps;
 
+    /**
+     * Parse the React props of the tweet.
+     * @param tweet element of the tweet
+     * @param menuBar element of the menu bar
+     */
     constructor(tweet: Element, menuBar: Element) {
         this.tweet = tweet;
 
@@ -19,6 +27,10 @@ class TweetReactProps {
         this.basicTweetProps = basicTweetProps.children[1].props.retweetWithCommentLink.state.quotedStatus;
     }
 
+    /**
+     * Get the React props of the tweet.
+     * @returns React props of the tweet
+     */
     get(): TweetStatus {
         const tweetData = this.basicTweetProps;
         const result: TweetStatus = {
@@ -37,6 +49,10 @@ class TweetReactProps {
         return result;
     }
 
+    /**
+     * Check whether the tweet is by the current user.
+     * @returns whether the tweet is by the current user
+     */
     get isTweetByCurrentUser(): boolean {
         const tweetAuthorScreenName = this.basicTweetProps.user.screen_name;
 

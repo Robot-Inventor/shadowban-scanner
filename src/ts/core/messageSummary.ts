@@ -20,7 +20,15 @@ type TweetStatusString =
 
 type AccountStatusString = "thisUserIsShadowbanned" | "thisUserIsNotShadowbanned";
 
+/**
+ * Summarize the message.
+ */
 class MessageSummary {
+    /**
+     * Get the message summary from the tweet status data.
+     * @param status tweet status data
+     * @returns message summary
+     */
     static fromTweetStatus(status: TweetStatus): TweetStatusString {
         const tweetHasProblem =
             status.user.possiblySensitive || status.user.sensitiveMediaInProfile || status.tweet.possiblySensitive;
@@ -37,6 +45,11 @@ class MessageSummary {
         return status.tweet.possiblySensitiveEditable ? "tweetFlaggedAsSensitive" : "tweetShadowbanned";
     }
 
+    /**
+     * Get the message summary from the account status data.
+     * @param isPossiblySensitive whether the account is possibly sensitive
+     * @returns message summary
+     */
     static fromAccountStatus(isPossiblySensitive: boolean): AccountStatusString {
         return isPossiblySensitive ? "thisUserIsShadowbanned" : "thisUserIsNotShadowbanned";
     }
