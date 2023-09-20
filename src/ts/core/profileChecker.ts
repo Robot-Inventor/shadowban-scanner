@@ -3,13 +3,23 @@ import { Message } from "./message";
 import { MessageSummary } from "./messageSummary";
 import { ProfileReactProps } from "./reactProps/profileReactProps";
 
+/**
+ * Check the user profile.
+ */
 class ProfileChecker {
     private readonly userName: Element;
 
+    /**
+     * Check the user profile.
+     * @param userNameElement element of the user name
+     */
     constructor(userNameElement: Element) {
         this.userName = userNameElement;
     }
 
+    /**
+     * Run the profile checker.
+     */
     run() {
         this.userName.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
         const reactProps = new ProfileReactProps(this.userName).get();

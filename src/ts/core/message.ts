@@ -8,11 +8,18 @@ import {
 } from "../common/constants";
 import { TranslationKey } from "../common/translator";
 
+/**
+ * Message class that generates a message element.
+ */
 class Message {
     private readonly container: HTMLDivElement;
     private readonly expandButton: HTMLButtonElement;
     private isExpanded = false;
 
+    /**
+     * Generate a message element.
+     * @param summary summary of the message
+     */
     constructor(summary: TranslationKey) {
         this.container = document.createElement("div");
         this.container.classList.add(MESSAGE_CLASS_NAME);
@@ -25,6 +32,10 @@ class Message {
         this.expandButton = this.addButton();
     }
 
+    /**
+     * Get the text color of the tweet.
+     * @returns text color of the tweet
+     */
     private static getTextColor(): `rgb(${number}, ${number}, ${number})` {
         const TEXT_SELECTOR = [
             "[data-testid='User-Name'] div:first-child span",
@@ -39,6 +50,10 @@ class Message {
         return color as `rgb(${number}, ${number}, ${number})`;
     }
 
+    /**
+     * Add the expand button.
+     * @returns expand button
+     */
     private addButton(): HTMLButtonElement {
         const button = document.createElement("button");
         button.setAttribute(TRANSLATION_ATTRIBUTE, "showMore");
@@ -54,10 +69,17 @@ class Message {
         return button;
     }
 
+    /**
+     * Expand the message.
+     */
     public expand() {
         this.expandButton.click();
     }
 
+    /**
+     * Add details to the message.
+     * @param details details to add
+     */
     public addDetails(details: TranslationKey[]) {
         const ul = document.createElement("ul");
         if (!this.isExpanded) {
@@ -74,6 +96,10 @@ class Message {
         this.container.appendChild(ul);
     }
 
+    /**
+     * Add notes to the message.
+     * @param notes notes to add
+     */
     public addNotes(notes: TranslationKey[]) {
         const fragment = document.createDocumentFragment();
 
@@ -90,14 +116,29 @@ class Message {
         this.container.appendChild(fragment);
     }
 
+    /**
+     * Get the message element.
+     * @returns message element
+     */
     public getContainer(): HTMLDivElement {
         return this.container;
     }
 
+    /**
+     * Get whether the message is alert.
+     * @returns whether the message is alert
+     */
     get isAlert(): boolean {
         return !this.container.classList.contains(NO_PROBLEM_CLASS_NAME);
     }
 
+    /**
+     * Set whether the message is alert.
+     *
+     * If set to true, the message will be displayed in red.
+     * If set to false, the message will be displayed in green.
+     * @param isAlert whether the message is alert
+     */
     set isAlert(isAlert: boolean) {
         this.container.classList.toggle(NO_PROBLEM_CLASS_NAME, !isAlert);
     }

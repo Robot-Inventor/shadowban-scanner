@@ -3,6 +3,9 @@ import { ProfileChecker } from "./profileChecker";
 import { Settings } from "../@types/common/settings";
 import { TweetChecker } from "./tweetChecker";
 
+/**
+ * Core of the extension.
+ */
 class Core {
     private readonly OBSERVER_OPTIONS = {
         childList: true,
@@ -12,12 +15,17 @@ class Core {
     private readonly settings: Settings;
     private readonly onMessageCallback: () => void;
 
+    /**
+     * Run the core process.
+     * @param settings settings
+     * @param onMessageCallback callback function called when the new message is inserted.
+     */
     constructor(settings: Settings, onMessageCallback: () => void) {
         this.settings = settings;
         this.onMessageCallback = onMessageCallback;
 
         const timelineObserver = new MutationObserver(() => {
-            this.mainObserverCallback();
+            this.timelineObserverCallback();
         });
 
         const loadingObserver = new MutationObserver(() => {
@@ -31,7 +39,10 @@ class Core {
         loadingObserver.observe(document.body, this.OBSERVER_OPTIONS);
     }
 
-    private mainObserverCallback() {
+    /**
+     * Callback function of the timeline observer.
+     */
+    private timelineObserverCallback() {
         const tweets = document.querySelectorAll(`[data-testid="tweet"]:not([${CHECKED_DATA_ATTRIBUTE}]`);
         for (const tweet of tweets) {
             const tweetChecker = new TweetChecker(tweet, this.settings);

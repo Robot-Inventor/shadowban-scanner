@@ -5,13 +5,25 @@ type TranslationData = typeof enTranslation;
 type TranslationKey = keyof TranslationData;
 type TranslationFunction = (key: TranslationKey) => string;
 
+/**
+ * Translator class
+ */
 class Translator {
     private readonly translationFunction: TranslationFunction;
 
+    /**
+     * Insert text into the UI using the given function.
+     * @param translationFunction translation function to use
+     */
     constructor(translationFunction: TranslationFunction) {
         this.translationFunction = translationFunction;
     }
 
+    /**
+     * Convert emoji text listed in {@link ALLOWED_TWEMOJI} to Twemoji image.
+     * @param text text to convert
+     * @returns converted text in HTML format
+     */
     private static convertEmojiToTwemoji(text: string): string {
         let result = text;
 
@@ -26,6 +38,9 @@ class Translator {
         return result;
     }
 
+    /**
+     * Run the translation process.
+     */
     translateElements() {
         const targetElements = document.querySelectorAll(`[${TRANSLATION_ATTRIBUTE}]`);
 

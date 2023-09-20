@@ -5,15 +5,28 @@ import { Settings } from "../@types/common/settings";
 import { TranslationKey } from "../common/translator";
 import { TweetReactProps } from "./reactProps/tweetReactProps";
 
+/**
+ * Check the tweet.
+ */
 class TweetChecker {
     private readonly tweet: Element;
     private readonly options: Settings;
 
+    /**
+     * Check the tweet.
+     * @param tweet element of the tweet
+     * @param options settings
+     */
     constructor(tweet: Element, options: Settings) {
         this.tweet = tweet;
         this.options = options;
     }
 
+    /**
+     * Convert the tweet status to the status data.
+     * @param tweetStatus tweet status
+     * @returns status data
+     */
     private static tweetStatusToStatusData(tweetStatus: TweetStatus): {
         isTweetSearchable: boolean;
         messages: TranslationKey[];
@@ -56,17 +69,28 @@ class TweetChecker {
         };
     }
 
+    /**
+     * Get the menu bar of the tweet.
+     * @returns menu bar of the tweet
+     */
     private getMenuBar(): Element {
         const menuBar = this.tweet.querySelector("div[role='group'][id]");
         if (!menuBar) throw new Error("Failed to get menu bar of tweet");
         return menuBar;
     }
 
+    /**
+     * Get the React props of the tweet.
+     * @returns React props of the tweet
+     */
     private getTweetStatus(): TweetStatus {
         const tweetReactProps = new TweetReactProps(this.tweet, this.getMenuBar());
         return tweetReactProps.get();
     }
 
+    /**
+     * Run the tweet checker.
+     */
     // eslint-disable-next-line max-statements
     run() {
         this.tweet.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
