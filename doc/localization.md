@@ -15,7 +15,7 @@
 ## Translation of Screenshots
 
 > **Note**
-> Translated versions of the screenshots are created by maintainer @Robot-Inventor.
+> Translated versions of the screenshots are created by maintainer [@Robot-Inventor](https://github.com/Robot-Inventor).
 
 1. Translate the screenshots to match the UI translation.
 
