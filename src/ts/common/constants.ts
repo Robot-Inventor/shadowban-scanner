@@ -7,7 +7,7 @@ const COLLAPSED_CONTENT_CLASS_NAME = "shadowban-scanner-collapsed-content";
 const TRANSLATION_ATTRIBUTE = "data-sb-translation";
 const TWEMOJI_ATTRIBUTE = "data-sb-enable-twemoji";
 const NO_PROBLEM_CLASS_NAME = "shadowban-scanner-message-no-problem";
-const ALLOWED_TWEMOJI = ["✅", "🚫"];
+const ALLOWED_TWEMOJI = ["✅", "🚫", "⚠️"];
 
 export {
     CHECKED_DATA_ATTRIBUTE,
