@@ -59,6 +59,9 @@
     "tweetIsNotSearchable": {
         "message": "🚫Tweet may not appear in search results."
     },
+    "falsePositivesAndFalseNegativesOccur": {
+        "message": "Shadowban Scanner, like other similar tools, can produce false positives and false negatives. For more information on how it works, please click <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/blob/main/doc/en/about-shadowban.md\" target=\"blank\">here</a>."
+    },
     "translatedByAI": {
         "message": "Translated from Japanese to English by AI. Please notify <a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>'s DM or <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub repository</a> if there are any unnatural points.",
         "description": "This field is used if the translation was done by AI. Otherwise, set this field to an empty string. Example sentence: \"Translated from Japanese to <language name> by AI. Please notify <a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>'s DM or <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub repository</a> if there are any unnatural points.\""
