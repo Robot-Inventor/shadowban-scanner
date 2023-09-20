@@ -59,6 +59,9 @@
     "tweetIsNotSearchable": {
         "message": "🚫트윗이 검색 결과에 표시되지 않을 가능성이 있습니다."
     },
+    "falsePositivesAndFalseNegativesOccur": {
+        "message": "Shadowban Scanner는 유사한 다른 도구와 마찬가지로 위양성 또는 위음성이 발생할 수 있습니다. 작동 방식에 대한 자세한 내용은 <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/blob/main/doc/en/about-shadowban.md\" target=\"blank\">여기</a>를 참조하세요."
+    },
     "translatedByAI": {
         "message": "AI에 의한 일본어에서 한국어로 번역되었습니다. 이상한 부분이 있으면 <a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>의 DM이나 <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub 저장소</a>로 알려주세요.",
         "description": "This field is used if the translation was done by AI. Otherwise, set this field to an empty string. Example sentence: \"Translated from Japanese to <language name> by AI. Please notify <a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>'s DM or <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub repository</a> if there are any unnatural points.\""
