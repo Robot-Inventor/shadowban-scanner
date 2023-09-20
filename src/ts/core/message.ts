@@ -6,24 +6,38 @@ import {
     TRANSLATION_ATTRIBUTE,
     TWEMOJI_ATTRIBUTE
 } from "../common/constants";
-import { ColorCode } from "./color";
-import { TranslationKey } from "./core";
+import { TranslationKey } from "../common/translator";
 
 class Message {
     private readonly container: HTMLDivElement;
     private readonly expandButton: HTMLButtonElement;
     private isExpanded = false;
 
-    constructor(summary: TranslationKey, color: ColorCode) {
+    constructor(summary: TranslationKey) {
         this.container = document.createElement("div");
         this.container.classList.add(MESSAGE_CLASS_NAME);
-        this.container.style.color = color;
+        this.container.style.color = Message.getTextColor();
 
         const summaryContainer = document.createElement("span");
         summaryContainer.setAttribute(TRANSLATION_ATTRIBUTE, summary);
         this.container.appendChild(summaryContainer);
 
         this.expandButton = this.addButton();
+    }
+
+    private static getTextColor(): `rgb(${number}, ${number}, ${number})` {
+        const USER_NAME_SELECTOR = [
+            "[data-testid='User-Name'] div:first-child span",
+            "[data-testid='UserName'] div:first-child span",
+            "[data-testid='tweetText']",
+            "main h2[role='heading']"
+        ].join(",");
+
+        const userName = document.querySelector(USER_NAME_SELECTOR);
+        if (!userName) throw new Error("Failed to get user name span of tweet");
+
+        const { color } = getComputedStyle(userName);
+        return color as `rgb(${number}, ${number}, ${number})`;
     }
 
     private addButton(): HTMLButtonElement {

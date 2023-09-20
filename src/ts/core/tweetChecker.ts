@@ -1,9 +1,8 @@
 import { MessageSummary, TweetStatus } from "./messageSummary";
 import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
-import { Color } from "./color";
 import { Message } from "./message";
 import { Settings } from "../@types/common/settings";
-import { TranslationKey } from "./core";
+import { TranslationKey } from "../common/translator";
 import { TweetReactProps } from "./reactProps/tweetReactProps";
 
 class TweetChecker {
@@ -79,13 +78,12 @@ class TweetChecker {
 
         const messageSummary = MessageSummary.fromTweetStatus(tweetStatus);
 
-        const color = Color.textColor;
         const statusData = TweetChecker.tweetStatusToStatusData(tweetStatus);
 
         const { isTweetSearchable } = statusData;
         if (isTweetSearchable && !this.options.showMessagesInUnproblematicTweets) return;
 
-        const message = new Message(messageSummary, color);
+        const message = new Message(messageSummary);
         message.isAlert = !isTweetSearchable;
         if (this.options.alwaysDetailedView) {
             message.expand();
