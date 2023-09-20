@@ -66,7 +66,7 @@ Twitter의 Shadowban을 감지하는 확장 기능입니다.
 Manifest 파일을 생성하거나 버전을 변경하려면 다음 명령을 실행하세요. ``<manifestVersion>``에는 2 또는 3을 지정할 수 있습니다. 또한 Manifest 파일 내의 ``version`` 필드는 ``package.json``의 ``version`` 필드 값을 사용합니다.
 
 ```console
-node script/changeManifestVersion.js <manifestVersion>
+npm run switchManifest <manifestVersion>
 ```
 
 ### 빌드

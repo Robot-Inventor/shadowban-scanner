@@ -64,7 +64,7 @@ Twitterのシャドウバンを検出する拡張機能です。
 Manifestファイルを生成するか、バージョンを変更する場合は次のコマンドを実行してください。``<manifestVersion>``には2または3を指定できます。また、Manifestファイル内の``version``フィールドは、``package.json``の``version``フィールドの値を使用します。
 
 ```console
-node script/changeManifestVersion.js <manifestVersion>
+npm run switchManifest <manifestVersion>
 ```
 
 ### ビルド

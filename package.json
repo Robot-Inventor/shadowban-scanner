@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "npx eslint ./src/ts/**/*.ts && node ./script/webExtLint.js",
+    "lint": "npx eslint ./src/ts/**/*.ts && npx knip && node ./script/webExtLint.js",
     "format": "npx prettier --write ./src/ts/**/*.ts",
     "format:check": "npx prettier --check ./src/ts/**/*.ts",
     "build": "npm run format && node ./script/build.js",
     "package": "node ./script/package.js",
-    "version": "npm run build && npm run package && git add ."
+    "version": "npm run build && npm run package && git add .",
+    "switchManifest": "node ./script/changeManifestVersion.js"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "css-loader": "^6.8.1",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^9.0.0",
+    "glob": "^10.3.4",
     "prettier": "^3.0.0",
     "style-loader": "^3.3.3",
     "ts-auto-guard": "^4.1.3",
@@ -46,6 +48,7 @@
     "webpack-cli": "^5.1.4"
   },
   "devDependencies": {
+    "knip": "^2.25.2",
     "web-ext-types": "^3.2.1"
   }
 }

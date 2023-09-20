@@ -7,12 +7,12 @@ try {
     execSync("npm run build");
 
     console.log("Switching to manifest v2.");
-    execSync("node ./script/changeManifestVersion.js 2");
+    execSync("npm run switchManifest 2");
     console.log("Linting...");
     execSync(`npx web-ext lint --ignore-files ${WEB_EXT_IGNORE_FILES}`);
 
     console.log("Switching to manifest v3.");
-    execSync("node ./script/changeManifestVersion.js 3");
+    execSync("npm run switchManifest 3");
     console.log("Linting...");
     execSync(`npx web-ext lint --ignore-files ${WEB_EXT_IGNORE_FILES}`);
     console.log("Done.");
