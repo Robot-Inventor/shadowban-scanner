@@ -1,4 +1,3 @@
-import "../../css/style.css";
 import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
 import { ProfileChecker } from "./profileChecker";
 import { Settings } from "../@types/common/settings";
