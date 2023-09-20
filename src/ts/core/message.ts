@@ -76,19 +76,19 @@ class Message {
     }
 
     public addNotes(notes: TranslationKey[]) {
-        const noteContainer = document.createElement("div");
-        noteContainer.classList.add(MESSAGE_NOTE_CLASS_NAME);
-        if (!this.isExpanded) {
-            noteContainer.classList.add(COLLAPSED_CONTENT_CLASS_NAME);
-        }
+        const fragment = document.createDocumentFragment();
 
         for (const note of notes) {
-            const noteElement = document.createElement("span");
+            const noteElement = document.createElement("div");
+            noteElement.classList.add(MESSAGE_NOTE_CLASS_NAME);
             noteElement.setAttribute(TRANSLATION_ATTRIBUTE, note);
-            noteContainer.appendChild(noteElement);
+            if (!this.isExpanded) {
+                noteElement.classList.add(COLLAPSED_CONTENT_CLASS_NAME);
+            }
+            fragment.appendChild(noteElement);
         }
 
-        this.container.appendChild(noteContainer);
+        this.container.appendChild(fragment);
     }
 
     public getContainer(): HTMLDivElement {
