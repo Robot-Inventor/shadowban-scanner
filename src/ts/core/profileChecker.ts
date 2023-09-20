@@ -1,5 +1,4 @@
 import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
-import { Color } from "./color";
 import { Message } from "./message";
 import { MessageSummary } from "./messageSummary";
 import { ProfileReactProps } from "./reactProps/profileReactProps";
@@ -16,7 +15,7 @@ class ProfileChecker {
         const reactProps = new ProfileReactProps(this.userName).get();
         const isUserPossiblySensitive = Boolean(reactProps.user.possibly_sensitive);
 
-        const message = new Message(MessageSummary.fromAccountStatus(isUserPossiblySensitive), Color.textColor);
+        const message = new Message(MessageSummary.fromAccountStatus(isUserPossiblySensitive));
         message.isAlert = isUserPossiblySensitive;
         message.expand();
 

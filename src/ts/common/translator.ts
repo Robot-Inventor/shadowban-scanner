@@ -42,4 +42,4 @@ class Translator {
     }
 }
 
-export { Translator, TranslationData };
+export { TranslationData, TranslationKey, Translator };

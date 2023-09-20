@@ -3,46 +3,52 @@ import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
 import { ProfileChecker } from "./profileChecker";
 import { Settings } from "../@types/common/settings";
 import { TweetChecker } from "./tweetChecker";
-import enTranslation from "../../../_locales/en/messages.json";
-
-type TranslationData = typeof enTranslation;
-type TranslationKey = keyof TranslationData;
-type Translator = (key: TranslationKey) => string;
 
 class Core {
+    private readonly OBSERVER_OPTIONS = {
+        childList: true,
+        subtree: true
+    } as const;
+
+    private readonly settings: Settings;
+    private readonly onMessageCallback: () => void;
+
     constructor(settings: Settings, onMessageCallback: () => void) {
+        this.settings = settings;
+        this.onMessageCallback = onMessageCallback;
+
         const timelineObserver = new MutationObserver(() => {
-            const tweets = document.querySelectorAll(`[data-testid="tweet"]:not([${CHECKED_DATA_ATTRIBUTE}]`);
-            for (const tweet of tweets) {
-                const tweetChecker = new TweetChecker(tweet, settings);
-                tweetChecker.run();
-                onMessageCallback();
-            }
-
-            const userName = document.querySelector(
-                `:not([data-testid="tweet"]) [data-testid="UserName"]:not([${CHECKED_DATA_ATTRIBUTE}])`
-            );
-            if (userName) {
-                const profileChecker = new ProfileChecker(userName);
-                profileChecker.run();
-                onMessageCallback();
-            }
+            this.mainObserverCallback();
         });
-
-        const observerOptions = {
-            childList: true,
-            subtree: true
-        };
 
         const loadingObserver = new MutationObserver(() => {
             const main = document.querySelector("main");
             if (!main) return;
 
             loadingObserver.disconnect();
-            timelineObserver.observe(main, observerOptions);
+            timelineObserver.observe(main, this.OBSERVER_OPTIONS);
         });
-        loadingObserver.observe(document.body, observerOptions);
+
+        loadingObserver.observe(document.body, this.OBSERVER_OPTIONS);
+    }
+
+    private mainObserverCallback() {
+        const tweets = document.querySelectorAll(`[data-testid="tweet"]:not([${CHECKED_DATA_ATTRIBUTE}]`);
+        for (const tweet of tweets) {
+            const tweetChecker = new TweetChecker(tweet, this.settings);
+            tweetChecker.run();
+            this.onMessageCallback();
+        }
+
+        const userName = document.querySelector(
+            `:not([data-testid="tweet"]) [data-testid="UserName"]:not([${CHECKED_DATA_ATTRIBUTE}])`
+        );
+        if (userName) {
+            const profileChecker = new ProfileChecker(userName);
+            profileChecker.run();
+            this.onMessageCallback();
+        }
     }
 }
 
-export { TranslationData, TranslationKey, Translator, Core };
+export { Core };
