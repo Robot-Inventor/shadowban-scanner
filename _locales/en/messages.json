@@ -73,7 +73,7 @@
         "message": "Always display detailed information"
     },
     "settingsShowMessagesInUnproblematicTweets": {
-        "message": "Display verification results for tweets that have no issues"
+        "message": "Display check results for tweets that have no issues"
     },
     "settingsEnableOnlyForCurrentUsersTweets": {
         "message": "Display check results only in your own tweets"
