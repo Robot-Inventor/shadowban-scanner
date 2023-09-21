@@ -25,8 +25,8 @@ The settings cannot be changed in the user script version. If you need detailed 
 
 ## Features
 
-- Detects shadowbans per account
-- Detect sensitive flags for profile media (icon and header image)
+- Detects shadowbans and sensitive flags per account
+- Detects sensitive flags for profile media (icon and header image)
 - Detects sensitive flags per tweet
 - Detects age restrictions on tweets
 
