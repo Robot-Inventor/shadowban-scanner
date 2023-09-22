@@ -47,7 +47,7 @@ For more information on detection methods and technical details, please refer to
 
 ## Privacy Policy
 
-This extension performs all processing on the user's computer. No data is transmitted to an external server. There is no attempt to access internal APIs by obtaining the user's credentials without their permission, as is the case with some extensions.
+This extension performs all processing on the user's computer. No data is transmitted to an external server. There is no attempt to access Twitter's internal APIs by obtaining the user's credentials without their permission, as is the case with some extensions.
 
 ## License
 
