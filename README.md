@@ -11,9 +11,9 @@ A browser extension that detects shadowbans on Twitter.
 ## Installation
 
 <p align="center">
-<a href="https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/" target="_blank"><img src="./doc/image/badge/chrome.svg" width="300px"></a>
-<a href="https://addons.mozilla.org/firefox/addon/shadowban-scanner/" target="_blank"><img src="./doc/image/badge/firefox.svg" width="300px"></a>
-<a href="https://microsoftedge.microsoft.com/addons/detail/shadowban-scanner/kfeecmboomhggeeceipnbbdjmhjoccbl" target="_blank"><img src="./doc/image/badge/edge.svg" width="300px"></a>
+<a href="https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/"><img src="./doc/image/badge/chrome.svg" width="300px"></a>
+<a href="https://addons.mozilla.org/firefox/addon/shadowban-scanner/"><img src="./doc/image/badge/firefox.svg" width="300px"></a>
+<a href="https://microsoftedge.microsoft.com/addons/detail/shadowban-scanner/kfeecmboomhggeeceipnbbdjmhjoccbl"><img src="./doc/image/badge/edge.svg" width="300px"></a>
 </p>
 
 ### User Scripts
