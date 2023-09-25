@@ -55,7 +55,7 @@ This extension performs all processing on the user's computer. No data is transm
 
 This extension is released under the MIT License.
 
-However, badge images of each extension store are not subject to the MIT license, and are instead subject to their own brand guidelines and licenses.
+However, the badge images of each extension store are not subject to the MIT license, and instead are subject to their own branding guidelines and licenses.
 
 ## Adding Language Localization
 
