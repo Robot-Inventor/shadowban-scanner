@@ -10,9 +10,11 @@ A browser extension that detects shadowbans on Twitter.
 
 ## Installation
 
-- [Chrome](https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/)
-- [Edge](https://microsoftedge.microsoft.com/addons/detail/shadowban-scanner/kfeecmboomhggeeceipnbbdjmhjoccbl)
-- [Firefox](https://addons.mozilla.org/firefox/addon/shadowban-scanner/)
+<p align="center">
+<a href="https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/"><img src="./doc/image/badge/chrome.svg" height="75px"></a>
+<a href="https://microsoftedge.microsoft.com/addons/detail/shadowban-scanner/kfeecmboomhggeeceipnbbdjmhjoccbl"><img src="./doc/image/badge/edge.svg" height="75px"></a>
+<a href="https://addons.mozilla.org/firefox/addon/shadowban-scanner/"><img src="./doc/image/badge/firefox.svg" height="75px"></a>
+</p>
 
 ### User Scripts
 
@@ -52,6 +54,8 @@ This extension performs all processing on the user's computer. No data is transm
 ## License
 
 This extension is released under the MIT License.
+
+However, the badge images of each extension store are not subject to the MIT license, and instead are subject to their own branding guidelines and licenses.
 
 ## Adding Language Localization
 

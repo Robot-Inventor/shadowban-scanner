@@ -12,9 +12,11 @@
 
 ## 安裝
 
-- [Chrome](https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/)
-- [Edge](https://microsoftedge.microsoft.com/addons/detail/shadowban-scanner/kfeecmboomhggeeceipnbbdjmhjoccbl)
-- [Firefox](https://addons.mozilla.org/firefox/addon/shadowban-scanner/)
+<p align="center">
+<a href="https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/"><img src="./doc/image/badge/chrome.svg" height="75px"></a>
+<a href="https://microsoftedge.microsoft.com/addons/detail/shadowban-scanner/kfeecmboomhggeeceipnbbdjmhjoccbl"><img src="./doc/image/badge/edge.svg" height="75px"></a>
+<a href="https://addons.mozilla.org/firefox/addon/shadowban-scanner/"><img src="./doc/image/badge/firefox.svg" height="75px"></a>
+</p>
 
 ### 使用者腳本
 
@@ -54,6 +56,8 @@
 ## 许可证
 
 该扩展程序采用MIT许可证发布。
+
+但是，每個擴展商店的徽章圖像不受 MIT 許可證的約束，而是受其自己的品牌指南和許可證的約束。
 
 ## 添加語言本地化
 

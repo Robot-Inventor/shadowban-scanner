@@ -10,9 +10,11 @@ Twitterのシャドウバンを検出する拡張機能です。
 
 ## インストール
 
-- [Chrome](https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/)
-- [Edge](https://microsoftedge.microsoft.com/addons/detail/shadowban-scanner/kfeecmboomhggeeceipnbbdjmhjoccbl)
-- [Firefox](https://addons.mozilla.org/firefox/addon/shadowban-scanner/)
+<p align="center">
+<a href="https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/"><img src="./doc/image/badge/chrome.svg" height="75px"></a>
+<a href="https://microsoftedge.microsoft.com/addons/detail/shadowban-scanner/kfeecmboomhggeeceipnbbdjmhjoccbl"><img src="./doc/image/badge/edge.svg" height="75px"></a>
+<a href="https://addons.mozilla.org/firefox/addon/shadowban-scanner/"><img src="./doc/image/badge/firefox.svg" height="75px"></a>
+</p>
 
 ### ユーザースクリプト
 
@@ -52,6 +54,8 @@ Twitterのシャドウバンを検出する拡張機能です。
 ## ライセンス
 
 この拡張機能はMITライセンスの下に公開されています。
+
+ただし、各拡張機能ストアのバッジ画像にMITライセンスは適用されず、代わりにそれぞれのブランドガイドラインやライセンスが適用されます。
 
 ## 言語ローカライゼーションの追加
 
