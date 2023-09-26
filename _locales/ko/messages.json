@@ -80,5 +80,8 @@
     },
     "settingsPleaseReload": {
         "message": "설정을 변경한 후 Twitter를 다시 로드해주세요"
+    },
+    "ShadowbanScannerUpdatedTov2": {
+        "message": "Shadowban Scanner has been updated to v2! Click <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/releases/tag/v2.0.0\" target=\"_blank\">here</a> for details."
     }
 }
