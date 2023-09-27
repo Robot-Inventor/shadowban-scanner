@@ -33,10 +33,10 @@
         "message": "🚫アカウントがシャドウバンされているか、センシティブフラグが付与されています"
     },
     "profileDoesNotContainSensitiveMedia": {
-        "message": "✅アカウントのプロフィールのメディア（アイコンやヘッダー画像）にセンシティブフラグは付与されていません"
+        "message": "✅プロフィールのメディアにセンシティブフラグは付与されていません"
     },
     "profileContainsSensitiveMedia": {
-        "message": "🚫アカウントのプロフィールのメディア（アイコンやヘッダー画像）にセンシティブフラグが付与されています"
+        "message": "🚫プロフィールのメディアにセンシティブフラグが付与されています"
     },
     "tweetIsNotFlaggedAsSensitive": {
         "message": "✅ツイートにセンシティブフラグは付与されていません"
