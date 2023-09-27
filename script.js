@@ -5,14 +5,14 @@ buttons.forEach((button) => {
     const isEdge = navigator.userAgent.toLowerCase().includes("edg");
 
     let download_link = "https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/";
-    let download_text = "Chromeにダウンロード";
+    let download_text = "Chromeにインストール";
 
     if (isFirefox) {
         download_link = "https://addons.mozilla.org/firefox/addon/shadowban-scanner/";
-        download_text = "Firefoxにダウンロード";
+        download_text = "Firefoxにインストール";
     } else if (isEdge) {
         download_link = "https://microsoftedge.microsoft.com/addons/detail/shadowban-scanner/kfeecmboomhggeeceipnbbdjmhjoccbl";
-        download_text = "Edgeにダウンロード";
+        download_text = "Edgeにインストール";
     }
 
     button.textContent = download_text;
