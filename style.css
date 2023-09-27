@@ -83,7 +83,7 @@ section h2 {
 }
 
 .secondary_section-item {
-    width:40rem;
+    width: calc((100% - 6rem) / 2);
     margin: auto;
     margin-top: 5rem;
     display: flex;
@@ -92,13 +92,13 @@ section h2 {
 
 .secondary_section-item_container {
     display: flex;
-    width: 90rem;
+    width: 100%;
     flex-wrap: wrap;
     gap: 3rem;
     margin: auto;
 }
 
-.secondary_section-item .material-symbols-outlined{
+.secondary_section-item .material-symbols-outlined {
     font-size: max(8vw, 8rem);
     color: #1d9bf0;
 }
