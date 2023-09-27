@@ -93,6 +93,7 @@ section h2 {
 .secondary_section-item_container {
     display: flex;
     width: 100%;
+    max-width: 90rem;
     flex-wrap: wrap;
     gap: 3rem;
     margin: auto;
