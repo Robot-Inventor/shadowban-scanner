@@ -44,9 +44,13 @@ Severe sensitivity assessment will make tweets not appear in search results, reg
 
 In the assessment of an account's sensitivity, tweets may become less visible or entirely hidden in search results in both of the two scenarios.
 
-The only (possibly) distinction lies in the ability to modify the setting "Mark media you post as having material that may be sensitive."
+The only (possibly) distinction lies in the ability to modify the setting "Mark media you post as having material that may be sensitive." If this setting cannot be changed, all media submitted will be judged sensitive.
 
-It appears that when icons or header images are categorized as sensitive, you lose the ability to modify this setting.
+It seems that you cannot change this setting if the icon or header image has received a sensitive judgment.
+
+However, it is unclear whether all media are sensitive because icons and headers are sensitive, or whether icons and headers are also sensitive because all media are sensitive.
+
+If the former is the case, changing the icon or header may remove the sensitive judgment, and if the latter is the case, changing the icon or header will have no effect.
 
 ## Differences Between Shadowban and Sensitivity Assessment
 
