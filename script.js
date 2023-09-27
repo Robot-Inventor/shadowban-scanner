@@ -18,6 +18,26 @@ buttons.forEach((button) => {
     button.textContent = download_text;
 
     button.addEventListener("click", () => {
-        open(download_link, "_blank");
+        const isMobile = Boolean(navigator.userAgent.match(/iPhone|Android.+Mobile/))
+        if (isMobile) {
+            Swal.fire({
+                title: "スマートフォンには対応していません",
+                text: "Shadowban Scannerは技術的な理由により、PCおよびAndroid版Firefox Nightlyでのみ利用できます。",
+                icon: "warning",
+                showCancelButton: true,
+                background: "#21272e",
+                color: "#fff",
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "とにかく続行する",
+                cancelButtonText: "キャンセル"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    open(download_link, "_blank");
+                }
+            })
+        } else {
+            open(download_link, "_blank");
+        }
     });
 });
