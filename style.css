@@ -102,6 +102,7 @@ section h2 {
 .secondary_section-item .material-symbols-outlined {
     font-size: max(8vw, 8rem);
     color: #1d9bf0;
+    user-select: none;
 }
 
 .secondary_section-item_text_container {
