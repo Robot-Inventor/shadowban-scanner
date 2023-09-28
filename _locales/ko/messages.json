@@ -33,10 +33,10 @@
         "message": "🚫계정이 셰도우밴되었거나, 또는 민감 플래그가 부여되었을 수 있습니다."
     },
     "profileDoesNotContainSensitiveMedia": {
-        "message": "✅계정의 프로필 미디어(아이콘 또는 헤더 이미지)에는 센시티브 플래그가 부여되지 않았습니다."
+        "message": "✅프로필의 미디어에 민감한 플래그가 부여되지 않았습니다."
     },
     "profileContainsSensitiveMedia": {
-        "message": "🚫계정의 프로필 미디어(아이콘 또는 헤더 이미지)에는 센시티브 플래그가 부여되어 있습니다."
+        "message": "🚫프로필의 미디어에 민감한 플래그가 지정되어 있습니다."
     },
     "tweetIsNotFlaggedAsSensitive": {
         "message": "✅트윗에는 센시티브 플래그가 부여되지 않았습니다."
