@@ -14,14 +14,14 @@
     "tweetFlaggedAsSensitive": {
         "message": "This tweet is flagged as sensitive and will not appear in search results depending on the viewer's preferences."
     },
-    "tweetShadowbanned": {
-        "message": "This tweet is age-restricted and cannot be viewed by users under the age of 18 or who are not logged in. This tweet may not appear in search results."
-    },
     "thisUserIsNotShadowbanned": {
         "message": "This user is not shadowbanned."
     },
     "thisUserIsShadowbanned": {
-        "message": "This user may be shadowbanned, so this tweet may not appear in search results."
+        "message": "This user may be shadowbanned and tweets may not appear in search results."
+    },
+    "tweetShadowbanned": {
+        "message": "This tweet is age-restricted and cannot be viewed by users under the age of 18 or who are not logged in. This tweet may not appear in search results."
     },
     "tweetNoProblem": {
         "message": "No problems was found with this tweet."
