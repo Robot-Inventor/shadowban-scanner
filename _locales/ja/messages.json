@@ -80,5 +80,8 @@
     },
     "settingsPleaseReload": {
         "message": "設定を変更したらTwitterを再読み込みしてください。"
+    },
+    "ShadowbanScannerUpdatedTov2": {
+        "message": "Shadowban Scannerがv2にアップデートされました！詳細は<a href=\"https://robot-inventor.github.io/article/2023/09/30/shadowban-scanner-v2-release/\" target=\"_blank\">こちら</a>"
     }
 }
