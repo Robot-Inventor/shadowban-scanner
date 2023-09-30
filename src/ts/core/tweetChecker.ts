@@ -113,7 +113,9 @@ class TweetChecker {
             message.expand();
         }
         message.addDetails(statusData.messages);
-        message.addNotes(["falsePositivesAndFalseNegativesOccur", "translatedByAI"]);
+        if (this.options.showNotesInMessages) {
+            message.addNotes(["falsePositivesAndFalseNegativesOccur", "translatedByAI"]);
+        }
         menuBar.insertAdjacentElement("beforebegin", message.getContainer());
     }
 }

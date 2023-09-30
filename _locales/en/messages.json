@@ -78,6 +78,9 @@
     "settingsEnableOnlyForCurrentUsersTweets": {
         "message": "Display check results only in your own tweets"
     },
+    "settingsShowNotesInMessages": {
+        "message": "Display notes at the bottom of the message"
+    },
     "settingsPleaseReload": {
         "message": "Please reload Twitter once you have changed the settings"
     },

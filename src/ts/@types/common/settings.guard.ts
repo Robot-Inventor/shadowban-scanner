@@ -13,6 +13,7 @@ export function isSettings(obj: unknown): obj is Settings {
         typeof typedObj["alwaysDetailedView"] === "boolean" &&
         typeof typedObj["enableOnlyForCurrentUsersTweets"] === "boolean" &&
         typeof typedObj["showMessagesInUnproblematicTweets"] === "boolean" &&
+        typeof typedObj["showNotesInMessages"] === "boolean" &&
         typeof typedObj["hasDisplayedV2UpdateBanner"] === "boolean"
     )
 }

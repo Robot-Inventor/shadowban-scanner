@@ -78,6 +78,9 @@
     "settingsEnableOnlyForCurrentUsersTweets": {
         "message": "僅在我的推文中顯示驗證結果"
     },
+    "settingsShowNotesInMessages": {
+        "message": "在訊息底部顯示註釋"
+    },
     "settingsPleaseReload": {
         "message": "若更改設定，請重新載入 Twitter"
     },

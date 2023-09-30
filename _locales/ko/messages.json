@@ -78,6 +78,9 @@
     "settingsEnableOnlyForCurrentUsersTweets": {
         "message": "내 트윗에만 검증 결과 표시"
     },
+    "settingsShowNotesInMessages": {
+        "message": "메시지 하단에 메모 표시"
+    },
     "settingsPleaseReload": {
         "message": "설정을 변경한 후 Twitter를 다시 로드해주세요"
     },

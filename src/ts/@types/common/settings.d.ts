@@ -3,5 +3,6 @@ export interface Settings {
     alwaysDetailedView: boolean;
     enableOnlyForCurrentUsersTweets: boolean;
     showMessagesInUnproblematicTweets: boolean;
+    showNotesInMessages: boolean;
     hasDisplayedV2UpdateBanner: boolean;
 }
