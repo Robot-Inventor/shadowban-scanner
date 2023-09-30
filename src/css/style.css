@@ -1,7 +1,9 @@
 .shadowban-scanner-message {
+    --message-background-color : rgb(255, 0, 0, 0.2);
+
     padding: 1em;
     border-radius: 0.5em;
-    background: rgb(255, 0, 0, 0.2);
+    background: var(--message-background-color);
     margin: 1em 0;
 }
 
@@ -13,7 +15,7 @@
 }
 
 .shadowban-scanner-message-no-problem {
-    background: rgb(0, 255, 0, 0.2);
+    --message-background-color: rgb(0, 255, 0, 0.2);
 }
 
 .shadowban-scanner-message button {
@@ -50,6 +52,11 @@
 
 .shadowban-scanner-message-note a {
     color: inherit;
+}
+
+.shadowban-scanner-message md-filled-button {
+    margin-top: 0.5em;
+    --md-filled-button-container-color: var(--message-background-color);
 }
 
 [data-sb-translation] {

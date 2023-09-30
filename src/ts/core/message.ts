@@ -1,3 +1,4 @@
+import "@material/web/button/filled-button";
 import {
     COLLAPSED_CONTENT_CLASS_NAME,
     MESSAGE_CLASS_NAME,
@@ -114,6 +115,26 @@ class Message {
         }
 
         this.container.appendChild(fragment);
+    }
+
+    /**
+     * Add a tweet button to the message.
+     * @param text text to tweet
+     */
+    public addTweetButton(text: string) {
+        const button = document.createElement("md-filled-button");
+        button.setAttribute(TRANSLATION_ATTRIBUTE, "tweetTheResults");
+        button.setAttribute("style", `--md-sys-color-on-primary: ${Message.getTextColor()};`);
+        button.textContent = "Tweet";
+        button.addEventListener("click", (event) => {
+            open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, "_blank");
+            event.stopPropagation();
+            return false;
+        });
+        if (!this.isExpanded) {
+            button.classList.add(COLLAPSED_CONTENT_CLASS_NAME);
+        }
+        this.container.appendChild(button);
     }
 
     /**

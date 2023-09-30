@@ -4,5 +4,6 @@ export interface Settings {
     enableOnlyForCurrentUsersTweets: boolean;
     showMessagesInUnproblematicTweets: boolean;
     showNotesInMessages: boolean;
+    showTweetButton: boolean;
     hasDisplayedV2UpdateBanner: boolean;
 }

@@ -27,10 +27,15 @@ class TweetChecker {
      * @param tweetStatus tweet status
      * @returns status data
      */
+    // eslint-disable-next-line max-lines-per-function
     private static tweetStatusToStatusData(tweetStatus: TweetStatus): {
         isTweetSearchable: boolean;
         messages: TranslationKey[];
+        shareText: string;
     } {
+        const isTweetAgeRestricted =
+            tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable;
+
         const accountStatus = tweetStatus.user.possiblySensitive
             ? "accountIsShadowbannedOrFlaggedAsSensitive"
             : "accountIsNotFlaggedAsSensitive";
@@ -40,19 +45,15 @@ class TweetChecker {
         const tweetSensitiveFlag = tweetStatus.tweet.possiblySensitive
             ? "tweetIsFlaggedAsSensitive"
             : "tweetIsNotFlaggedAsSensitive";
-        const tweetAgeRestriction =
-            tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable
-                ? "tweetIsAgeRestricted"
-                : "tweetIsNotAgeRestricted";
+        const tweetAgeRestriction = isTweetAgeRestricted ? "tweetIsAgeRestricted" : "tweetIsNotAgeRestricted";
         const tweetSearchStatus = (() => {
-            if (
-                (tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable) ||
-                tweetStatus.user.possiblySensitive
-            ) {
+            if (isTweetAgeRestricted || tweetStatus.user.possiblySensitive) {
                 return "tweetIsNotSearchable";
             }
             return tweetStatus.tweet.possiblySensitive ? "tweetMayNotBeSearchable" : "tweetIsSearchable";
         })();
+
+        const isTweetSearchable = tweetSearchStatus === "tweetIsSearchable";
 
         const messages = [
             accountStatus,
@@ -61,11 +62,26 @@ class TweetChecker {
             tweetAgeRestriction,
             tweetSearchStatus
         ] satisfies TranslationKey[];
-        const isTweetSearchable = tweetSearchStatus === "tweetIsSearchable";
+
+        const shareText = `
+${
+    tweetStatus.user.possiblySensitive
+        ? "🚫Account is flagged as sensitive or shadowbanned"
+        : "✅No sensitive flag on account"
+}
+${tweetStatus.user.sensitiveMediaInProfile ? "🚫Sensitive media in profile" : "✅No sensitive media in profile"}
+${tweetStatus.tweet.possiblySensitive ? "🚫Sensitive flag on tweet" : "✅No sensitive flag on tweet"}
+${isTweetAgeRestricted ? "🚫Age limit on the tweet" : "✅No age limit on the tweet"}
+${isTweetSearchable ? "✅Tweet will appear in search results" : "🚫Tweet may not appear in search results"}
+
+Shadowban Scanner by ろぼいん
+https://robot-inventor.github.io/shadowban-scanner/
+`.trim();
 
         return {
             isTweetSearchable,
-            messages
+            messages,
+            shareText
         };
     }
 
@@ -115,6 +131,9 @@ class TweetChecker {
         message.addDetails(statusData.messages);
         if (this.options.showNotesInMessages) {
             message.addNotes(["falsePositivesAndFalseNegativesOccur", "translatedByAI"]);
+        }
+        if (this.options.showTweetButton) {
+            message.addTweetButton(statusData.shareText);
         }
         menuBar.insertAdjacentElement("beforebegin", message.getContainer());
     }

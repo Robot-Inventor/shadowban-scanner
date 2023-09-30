@@ -69,6 +69,9 @@
     "showMore": {
         "message": "▶さらに表示"
     },
+    "tweetTheResults": {
+        "message": "結果をツイート"
+    },
     "settingsAlwaysDetailedView": {
         "message": "常に詳細情報を表示する"
     },
@@ -80,6 +83,9 @@
     },
     "settingsShowNotesInMessages": {
         "message": "メッセージ下部に注意書きを表示する"
+    },
+    "settingsShowTweetButton": {
+        "message": "結果をツイートするボタンを表示する"
     },
     "settingsPleaseReload": {
         "message": "設定を変更したらTwitterを再読み込みしてください。"
