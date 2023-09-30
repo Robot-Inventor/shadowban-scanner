@@ -28,7 +28,7 @@ module.exports = {
                 use: "ts-loader"
             },
             {
-                test: /\.css/,
+                test: /\.css$/,
                 use: [
                     "style-loader",
                     "css-loader"

@@ -1,3 +1,4 @@
+import "@material/web/checkbox/checkbox.js";
 import { DEFAULT_SETTINGS } from "./common/defaultSettings";
 import { migrateFromV1ToV2 } from "./common/migrator";
 
@@ -10,17 +11,18 @@ for (const translationTarget of translationTargets) {
 }
 
 void migrateFromV1ToV2().then(() => {
-    const inputElements: NodeListOf<HTMLInputElement> = document.querySelectorAll("input[type='checkbox']");
-    for (const inputElement of inputElements) {
+    const checkboxElements = document.querySelectorAll("md-checkbox");
+
+    for (const checkbox of checkboxElements) {
         void browser.storage.local.get(DEFAULT_SETTINGS).then((currentSettings) => {
-            if (!(inputElement.name in currentSettings))
+            if (!(checkbox.name in currentSettings))
                 // eslint-disable-next-line curly, nonblock-statement-body-position
-                throw new Error(`Failed to get ${inputElement.name} from storage`);
-            inputElement.checked = currentSettings[inputElement.name as keyof typeof DEFAULT_SETTINGS];
+                throw new Error(`Failed to get ${checkbox.name} from storage`);
+            checkbox.checked = currentSettings[checkbox.name as keyof typeof DEFAULT_SETTINGS];
         });
 
-        inputElement.addEventListener("input", () => {
-            void browser.storage.local.set({ [inputElement.name]: inputElement.checked });
+        checkbox.addEventListener("change", () => {
+            void browser.storage.local.set({ [checkbox.name]: checkbox.checked });
         });
     }
 });

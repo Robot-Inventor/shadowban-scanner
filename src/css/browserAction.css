@@ -1,12 +1,20 @@
 :root {
     --theme-background-color: #fff;
     --theme-font-color: #333;
+
+    --md-sys-color-primary: rgb(29, 155, 240);
+    --md-sys-color-on-surface-variant: #888;
+    --md-sys-color-on-surface: #aaa;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --theme-background-color: #121212;
         --theme-font-color: #fff;
+
+        --md-sys-color-primary: rgb(29, 155, 240);
+        --md-sys-color-on-surface-variant: #aaa;
+        --md-sys-color-on-surface: #888;
     }
 }
 
@@ -17,12 +25,16 @@
     font-family: sans-serif;
 }
 
+html {
+    font-size: 16px;
+}
+
 body {
-    padding: 1rem;
+    padding: 1.75rem;
     width: max-content;
     background: var(--theme-background-color);
     color: var(--theme-font-color);
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 #logo {
@@ -31,32 +43,35 @@ body {
 }
 
 h1 {
-    font-size: 1.4em;
+    font-size: 1.4rem;
 }
 
 #version-number {
     font-size: 0.7em;
-    margin-left: 0.5em;
+    margin-left: 0.5rem;
     color: inherit;
     text-decoration: none;
 }
 
 fieldset {
-    margin: 0.75em 0;
+    margin: 1rem 0;
     border: none;
 }
 
-h1 + fieldset {
-    margin-top: 0.5;
+fieldset > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.2rem 0;
 }
 
 label,
-input {
+md-checkbox {
     cursor: pointer;
 }
 
-label + input {
-    margin-left: 0.5em;
+md-checkbox {
+    margin-left: 0.75rem;
 }
 
 small {
