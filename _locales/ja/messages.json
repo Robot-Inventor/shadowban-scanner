@@ -78,6 +78,9 @@
     "settingsEnableOnlyForCurrentUsersTweets": {
         "message": "自分のツイートにのみ検証結果を表示する"
     },
+    "settingsShowNotesInMessages": {
+        "message": "メッセージ下部に注意書きを表示する"
+    },
     "settingsPleaseReload": {
         "message": "設定を変更したらTwitterを再読み込みしてください。"
     },

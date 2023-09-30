@@ -7,7 +7,8 @@ const DEFAULT_SETTINGS = {
     alwaysDetailedView: false,
     enableOnlyForCurrentUsersTweets: false,
     hasDisplayedV2UpdateBanner: false,
-    showMessagesInUnproblematicTweets: false
+    showMessagesInUnproblematicTweets: false,
+    showNotesInMessages: true
 } as const satisfies Settings;
 
 export { DEFAULT_SETTINGS };
