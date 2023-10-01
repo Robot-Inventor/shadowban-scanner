@@ -71,6 +71,42 @@ class Message {
     }
 
     /**
+     * Get element by selector.
+     * @param selector selector
+     * @returns result
+     */
+    private static async asyncQuerySelector(selector: string, parentElement?: HTMLElement): Promise<HTMLElement> {
+        return new Promise((resolve, reject) => {
+            const initialResult: HTMLElement | null = (parentElement || document).querySelector(selector);
+            if (initialResult) {
+                resolve(initialResult);
+                return;
+            }
+
+            const observer = new MutationObserver(() => {
+                const timeout = setTimeout(() => {
+                    observer.disconnect();
+                    reject(new Error(`Failed to get ${selector}`));
+                    // eslint-disable-next-line no-magic-numbers
+                }, 500);
+
+                const element: HTMLElement | null = (parentElement || document).querySelector(selector);
+
+                if (element) {
+                    observer.disconnect();
+                    clearTimeout(timeout);
+                    resolve(element);
+                }
+            });
+
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        });
+    }
+
+    /**
      * Expand the message.
      */
     public expand() {
@@ -118,17 +154,55 @@ class Message {
     }
 
     /**
+     * Quote specified tweet with specified text.
+     * @param sourceTweet tweet to quote
+     * @param text text to tweet
+     */
+    // eslint-disable-next-line max-statements
+    private static async quoteTweet(sourceTweet: HTMLElement, text: string) {
+        try {
+            const retweetButton = await Message.asyncQuerySelector(
+                "[data-testid='unretweet'], [data-testid='retweet']",
+                sourceTweet
+            );
+            retweetButton.click();
+
+            const quoteButton = await Message.asyncQuerySelector(
+                [
+                    // PC
+                    "[data-testid='Dropdown'] [href='/compose/tweet']",
+                    // Mobile
+                    "[data-testid='sheetDialog'] [href='/compose/tweet']"
+                ].join(",")
+            );
+            quoteButton.click();
+
+            const textBox = await Message.asyncQuerySelector(
+                "[data-viewportview='true'] [data-text='true'], textarea[data-testid='tweetTextarea_0']"
+            );
+            const isTextArea = textBox.tagName === "TEXTAREA";
+            const textBoxParent = isTextArea ? textBox : textBox.parentElement;
+            if (!textBoxParent) throw new Error("Failed to get text box of tweet");
+
+            textBoxParent.innerHTML = text;
+            textBoxParent.dispatchEvent(new Event("input", { bubbles: true }));
+        } catch (error) {
+            open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, "_blank");
+        }
+    }
+
+    /**
      * Add a tweet button to the message.
      * @param text text to tweet
      */
-    public addTweetButton(text: string) {
+    public addTweetButton(sourceTweet: HTMLElement, text: string) {
         const button = document.createElement("md-filled-button");
 
         button.setAttribute(TRANSLATION_ATTRIBUTE, "tweetTheResults");
         button.style.setProperty("--md-sys-color-on-primary", Message.getTextColor());
 
         button.addEventListener("click", (event) => {
-            open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, "_blank");
+            void Message.quoteTweet(sourceTweet, text);
             event.stopPropagation();
             return false;
         });

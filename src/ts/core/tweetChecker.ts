@@ -9,7 +9,7 @@ import { TweetReactProps } from "./reactProps/tweetReactProps";
  * Check the tweet.
  */
 class TweetChecker {
-    private readonly tweet: Element;
+    private readonly tweet: HTMLElement;
     private readonly options: Settings;
 
     /**
@@ -17,7 +17,7 @@ class TweetChecker {
      * @param tweet element of the tweet
      * @param options settings
      */
-    constructor(tweet: Element, options: Settings) {
+    constructor(tweet: HTMLElement, options: Settings) {
         this.tweet = tweet;
         this.options = options;
     }
@@ -133,7 +133,7 @@ https://robot-inventor.github.io/shadowban-scanner/
             message.addNotes(["falsePositivesAndFalseNegativesOccur", "translatedByAI"]);
         }
         if (this.options.showTweetButton) {
-            message.addTweetButton(statusData.shareText);
+            message.addTweetButton(this.tweet, statusData.shareText);
         }
         menuBar.insertAdjacentElement("beforebegin", message.getContainer());
     }
