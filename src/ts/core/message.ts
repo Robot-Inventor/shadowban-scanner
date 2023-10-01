@@ -126,7 +126,6 @@ class Message {
 
         button.setAttribute(TRANSLATION_ATTRIBUTE, "tweetTheResults");
         button.style.setProperty("--md-sys-color-on-primary", Message.getTextColor());
-        button.textContent = "Tweet";
 
         button.addEventListener("click", (event) => {
             open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, "_blank");
