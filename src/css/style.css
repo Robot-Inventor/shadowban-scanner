@@ -56,9 +56,11 @@
 
 .shadowban-scanner-message md-filled-button {
     margin-top: 0.5em;
+    width: 100%;
     --md-filled-button-container-color: var(--message-background-color);
     --md-ripple-hover-color: white;
     --md-ripple-pressed-color: white;
+    --_container-shadow-color: rgba(0, 0, 0, 0.3);
 }
 
 [data-sb-translation] {
