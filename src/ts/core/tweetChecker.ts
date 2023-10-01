@@ -71,7 +71,7 @@ ${
 }
 ${tweetStatus.user.sensitiveMediaInProfile ? "🚫Sensitive media in profile" : "✅No sensitive media in profile"}
 ${tweetStatus.tweet.possiblySensitive ? "🚫Sensitive flag on tweet" : "✅No sensitive flag on tweet"}
-${isTweetAgeRestricted ? "🚫Age limit on the tweet" : "✅No age limit on the tweet"}
+${isTweetAgeRestricted ? "🚫Age limit on tweet" : "✅No age limit on tweet"}
 ${isTweetSearchable ? "✅Tweet will appear in search results" : "🚫Tweet may not appear in search results"}
 
 Shadowban Scanner by ろぼいん
