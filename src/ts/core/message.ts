@@ -76,9 +76,12 @@ class Message {
      * @param parentElement parent element
      * @returns result
      */
-    private static async asyncQuerySelector(selector: string, parentElement?: HTMLElement): Promise<HTMLElement> {
+    private static async asyncQuerySelector(
+        selector: string,
+        parentElement: Element | Document = document
+    ): Promise<HTMLElement> {
         return new Promise((resolve, reject) => {
-            const initialResult: HTMLElement | null = (parentElement || document).querySelector(selector);
+            const initialResult: HTMLElement | null = parentElement.querySelector(selector);
             if (initialResult) {
                 resolve(initialResult);
                 return;
@@ -87,7 +90,7 @@ class Message {
             let timeout: NodeJS.Timeout | null = null;
 
             const observer = new MutationObserver(() => {
-                const element: HTMLElement | null = (parentElement || document).querySelector(selector);
+                const element: HTMLElement | null = parentElement.querySelector(selector);
 
                 if (element) {
                     observer.disconnect();
