@@ -84,21 +84,25 @@ class Message {
                 return;
             }
 
-            const observer = new MutationObserver(() => {
-                const timeout = setTimeout(() => {
-                    observer.disconnect();
-                    reject(new Error(`Failed to get ${selector}`));
-                    // eslint-disable-next-line no-magic-numbers
-                }, 500);
+            let timeout: NodeJS.Timeout | null = null;
 
+            const observer = new MutationObserver(() => {
                 const element: HTMLElement | null = (parentElement || document).querySelector(selector);
 
                 if (element) {
                     observer.disconnect();
-                    clearTimeout(timeout);
+                    if (timeout) {
+                        clearTimeout(timeout);
+                    }
                     resolve(element);
                 }
             });
+
+            timeout = setTimeout(() => {
+                observer.disconnect();
+                reject(new Error(`Failed to get ${selector}`));
+                // eslint-disable-next-line no-magic-numbers
+            }, 500);
 
             observer.observe(document.body, {
                 childList: true,
