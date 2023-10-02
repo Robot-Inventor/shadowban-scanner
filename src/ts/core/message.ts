@@ -73,6 +73,7 @@ class Message {
     /**
      * Get element by selector.
      * @param selector selector
+     * @param parentElement parent element
      * @returns result
      */
     private static async asyncQuerySelector(selector: string, parentElement?: HTMLElement): Promise<HTMLElement> {
@@ -193,6 +194,7 @@ class Message {
 
     /**
      * Add a tweet button to the message.
+     * @param sourceTweet tweet to quote
      * @param text text to tweet
      */
     public addTweetButton(sourceTweet: HTMLElement, text: string) {
