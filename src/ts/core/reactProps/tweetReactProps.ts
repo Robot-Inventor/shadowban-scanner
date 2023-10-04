@@ -43,7 +43,9 @@ class TweetReactProps {
             },
             user: {
                 possiblySensitive: Boolean(tweetData.user.possibly_sensitive),
-                sensitiveMediaInProfile: tweetData.user.profile_interstitial_type === "sensitive_media"
+                sensitiveMediaInProfile: ["sensitive_media", "offensive_profile_content"].includes(
+                    tweetData.user.profile_interstitial_type
+                )
             }
         };
 

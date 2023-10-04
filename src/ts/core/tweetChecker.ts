@@ -70,7 +70,11 @@ ${
         ? "🚫Account is flagged as sensitive or shadowbanned"
         : "✅No sensitive flag on account"
 }
-${tweetStatus.user.sensitiveMediaInProfile ? "🚫Sensitive media in profile" : "✅No sensitive media in profile"}
+${
+    tweetStatus.user.sensitiveMediaInProfile
+        ? "🚫Sensitive flag on profile media"
+        : "✅No sensitive flag on profile media"
+}
 ${tweetStatus.tweet.possiblySensitive ? "🚫Sensitive flag on tweet" : "✅No sensitive flag on tweet"}
 ${isTweetAgeRestricted ? "🚫Age limit on tweet" : "✅No age limit on tweet"}
 ${isTweetSearchable ? "✅Tweet will appear in search results" : "🚫Tweet may not appear in search results"}
