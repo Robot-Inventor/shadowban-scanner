@@ -76,7 +76,11 @@ ${isTweetAgeRestricted ? "🚫Age limit on tweet" : "✅No age limit on tweet"}
 ${isTweetSearchable ? "✅Tweet will appear in search results" : "🚫Tweet may not appear in search results"}
 
 Shadowban Scanner by ろぼいん
-https://robot-inventor.github.io/shadowban-scanner/
+${
+    navigator.language === "ja"
+        ? "https://robot-inventor.github.io/shadowban-scanner/"
+        : "https://robot-inventor.github.io/shadowban-scanner/en/"
+}
 `.trim();
 
         return {
