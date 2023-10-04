@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Shadowban Scanner (ko)
+// @name         Shadowban Scanner (한국어)
 // @namespace    https://github.com/Robot-Inventor/shadowban-scanner/
 // @version      2.0.0
 // @description  Twitter의 Shadowban을 감지하는 확장 기능입니다.

@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Shadowban Scanner (zh_TW)
+// @name         Shadowban Scanner (中文（台灣）)
 // @namespace    https://github.com/Robot-Inventor/shadowban-scanner/
 // @version      2.0.0
 // @description  這是一個用於檢測Twitter的Shadowban的擴充功能。

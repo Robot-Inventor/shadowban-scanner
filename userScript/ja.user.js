@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Shadowban Scanner (ja)
+// @name         Shadowban Scanner (日本語)
 // @namespace    https://github.com/Robot-Inventor/shadowban-scanner/
 // @version      2.0.0
 // @description  Twitterのシャドウバンを検出する拡張機能です。

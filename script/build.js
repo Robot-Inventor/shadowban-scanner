@@ -22,10 +22,12 @@ const userScriptFiles = glob.sync("./userScript/*.user.js");
 for (const userScript of userScriptFiles) {
     const scriptString = fs.readFileSync(userScript, "utf-8");
     const languageCode = path.basename(userScript, ".user.js");
+    const formattedLanguageCode = languageCode.toLowerCase().replace("_", "-");
+    const languageName = new Intl.DisplayNames([formattedLanguageCode], { type: "language" }).of(formattedLanguageCode) || formattedLanguageCode;
     const localizedMessages = fs.readFileSync(`./_locales/${languageCode}/messages.json`, "utf-8");
     const userScriptComment = `
 // ==UserScript==
-// @name         Shadowban Scanner (${languageCode})
+// @name         Shadowban Scanner (${languageName})
 // @namespace    https://github.com/Robot-Inventor/shadowban-scanner/
 // @version      ${packagejson.version}
 // @description  ${JSON.parse(localizedMessages)["manifest_description"]["message"]}
