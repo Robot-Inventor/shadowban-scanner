@@ -9,7 +9,7 @@ import { TweetReactProps } from "./reactProps/tweetReactProps";
  * Check the tweet.
  */
 class TweetChecker {
-    private readonly tweet: Element;
+    private readonly tweet: HTMLElement;
     private readonly options: Settings;
 
     /**
@@ -17,7 +17,7 @@ class TweetChecker {
      * @param tweet element of the tweet
      * @param options settings
      */
-    constructor(tweet: Element, options: Settings) {
+    constructor(tweet: HTMLElement, options: Settings) {
         this.tweet = tweet;
         this.options = options;
     }
@@ -27,10 +27,16 @@ class TweetChecker {
      * @param tweetStatus tweet status
      * @returns status data
      */
+    // eslint-disable-next-line max-lines-per-function
     private static tweetStatusToStatusData(tweetStatus: TweetStatus): {
         isTweetSearchable: boolean;
         messages: TranslationKey[];
+        shareText: string;
+        tweetPermalink: string;
     } {
+        const isTweetAgeRestricted =
+            tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable;
+
         const accountStatus = tweetStatus.user.possiblySensitive
             ? "accountIsShadowbannedOrFlaggedAsSensitive"
             : "accountIsNotFlaggedAsSensitive";
@@ -40,19 +46,15 @@ class TweetChecker {
         const tweetSensitiveFlag = tweetStatus.tweet.possiblySensitive
             ? "tweetIsFlaggedAsSensitive"
             : "tweetIsNotFlaggedAsSensitive";
-        const tweetAgeRestriction =
-            tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable
-                ? "tweetIsAgeRestricted"
-                : "tweetIsNotAgeRestricted";
+        const tweetAgeRestriction = isTweetAgeRestricted ? "tweetIsAgeRestricted" : "tweetIsNotAgeRestricted";
         const tweetSearchStatus = (() => {
-            if (
-                (tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable) ||
-                tweetStatus.user.possiblySensitive
-            ) {
+            if (isTweetAgeRestricted || tweetStatus.user.possiblySensitive) {
                 return "tweetIsNotSearchable";
             }
             return tweetStatus.tweet.possiblySensitive ? "tweetMayNotBeSearchable" : "tweetIsSearchable";
         })();
+
+        const isTweetSearchable = tweetSearchStatus === "tweetIsSearchable";
 
         const messages = [
             accountStatus,
@@ -61,11 +63,31 @@ class TweetChecker {
             tweetAgeRestriction,
             tweetSearchStatus
         ] satisfies TranslationKey[];
-        const isTweetSearchable = tweetSearchStatus === "tweetIsSearchable";
+
+        const shareText = `
+${
+    tweetStatus.user.possiblySensitive
+        ? "🚫Account is flagged as sensitive or shadowbanned"
+        : "✅No sensitive flag on account"
+}
+${tweetStatus.user.sensitiveMediaInProfile ? "🚫Sensitive media in profile" : "✅No sensitive media in profile"}
+${tweetStatus.tweet.possiblySensitive ? "🚫Sensitive flag on tweet" : "✅No sensitive flag on tweet"}
+${isTweetAgeRestricted ? "🚫Age limit on tweet" : "✅No age limit on tweet"}
+${isTweetSearchable ? "✅Tweet will appear in search results" : "🚫Tweet may not appear in search results"}
+
+Shadowban Scanner by ろぼいん
+${
+    navigator.language === "ja"
+        ? "https://robot-inventor.github.io/shadowban-scanner/"
+        : "https://robot-inventor.github.io/shadowban-scanner/en/"
+}
+`.trim();
 
         return {
             isTweetSearchable,
-            messages
+            messages,
+            shareText,
+            tweetPermalink: tweetStatus.tweet.tweetPermalink
         };
     }
 
@@ -115,6 +137,9 @@ class TweetChecker {
         message.addDetails(statusData.messages);
         if (this.options.showNotesInMessages) {
             message.addNotes(["falsePositivesAndFalseNegativesOccur", "translatedByAI"]);
+        }
+        if (this.options.showTweetButton) {
+            message.addTweetButton(this.tweet, statusData.tweetPermalink, statusData.shareText);
         }
         menuBar.insertAdjacentElement("beforebegin", message.getContainer());
     }

@@ -69,6 +69,9 @@
     "showMore": {
         "message": "▶더 보기"
     },
+    "tweetTheResults": {
+        "message": "결과 트윗하기"
+    },
     "settingsAlwaysDetailedView": {
         "message": "항상 상세 정보 표시"
     },
@@ -80,6 +83,9 @@
     },
     "settingsShowNotesInMessages": {
         "message": "메시지 하단에 메모 표시"
+    },
+    "settingsShowTweetButton": {
+        "message": "결과 트윗하기 버튼 표시"
     },
     "settingsPleaseReload": {
         "message": "설정을 변경한 후 Twitter를 다시 로드해주세요"

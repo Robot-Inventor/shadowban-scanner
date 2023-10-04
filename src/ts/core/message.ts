@@ -1,3 +1,4 @@
+import "@material/web/button/filled-button";
 import {
     COLLAPSED_CONTENT_CLASS_NAME,
     MESSAGE_CLASS_NAME,
@@ -70,6 +71,50 @@ class Message {
     }
 
     /**
+     * Get element by selector.
+     * @param selector selector
+     * @param parentElement parent element
+     * @returns result
+     */
+    private static async asyncQuerySelector(
+        selector: string,
+        parentElement: Element | Document = document
+    ): Promise<HTMLElement> {
+        return new Promise((resolve, reject) => {
+            const initialResult: HTMLElement | null = parentElement.querySelector(selector);
+            if (initialResult) {
+                resolve(initialResult);
+                return;
+            }
+
+            let timeout: NodeJS.Timeout | null = null;
+
+            const observer = new MutationObserver(() => {
+                const element: HTMLElement | null = parentElement.querySelector(selector);
+
+                if (element) {
+                    observer.disconnect();
+                    if (timeout) {
+                        clearTimeout(timeout);
+                    }
+                    resolve(element);
+                }
+            });
+
+            timeout = setTimeout(() => {
+                observer.disconnect();
+                reject(new Error(`Failed to get ${selector}`));
+                // eslint-disable-next-line no-magic-numbers
+            }, 500);
+
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        });
+    }
+
+    /**
      * Expand the message.
      */
     public expand() {
@@ -114,6 +159,71 @@ class Message {
         }
 
         this.container.appendChild(fragment);
+    }
+
+    /**
+     * Quote specified tweet with specified text.
+     * @param sourceTweet tweet to quote
+     * @param sourceTweetPermalink permalink of the tweet to quote
+     * @param text text to tweet
+     */
+    // eslint-disable-next-line max-statements
+    private static async quoteTweet(sourceTweet: HTMLElement, sourceTweetPermalink: string, text: string) {
+        try {
+            const retweetButton = await Message.asyncQuerySelector(
+                "[data-testid='unretweet'], [data-testid='retweet']",
+                sourceTweet
+            );
+            retweetButton.click();
+
+            const quoteButton = await Message.asyncQuerySelector(
+                [
+                    // PC
+                    "[data-testid='Dropdown'] [href='/compose/tweet']",
+                    // Mobile
+                    "[data-testid='sheetDialog'] [href='/compose/tweet']"
+                ].join(",")
+            );
+            quoteButton.click();
+
+            const textBox = await Message.asyncQuerySelector(
+                "[data-viewportview='true'] [data-text='true'], textarea[data-testid='tweetTextarea_0']"
+            );
+            const isTextArea = textBox.tagName === "TEXTAREA";
+            const textBoxParent = isTextArea ? textBox : textBox.parentElement;
+            if (!textBoxParent) throw new Error("Failed to get text box of tweet");
+
+            textBoxParent.innerHTML = text;
+            textBoxParent.dispatchEvent(new Event("input", { bubbles: true }));
+        } catch (error) {
+            const tweetText = `${text}\nhttps://twitter.com${sourceTweetPermalink}`;
+            open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`, "_blank");
+        }
+    }
+
+    /**
+     * Add a tweet button to the message.
+     * @param sourceTweet tweet to quote
+     * @param sourceTweetPermalink permalink of the tweet to quote
+     * @param text text to tweet
+     */
+    public addTweetButton(sourceTweet: HTMLElement, sourceTweetPermalink: string, text: string) {
+        const button = document.createElement("md-filled-button");
+
+        button.setAttribute(TRANSLATION_ATTRIBUTE, "tweetTheResults");
+        button.style.setProperty("--md-sys-color-on-primary", Message.getTextColor());
+
+        button.addEventListener("click", (event) => {
+            void Message.quoteTweet(sourceTweet, sourceTweetPermalink, text);
+            event.stopPropagation();
+            return false;
+        });
+
+        if (!this.isExpanded) {
+            button.classList.add(COLLAPSED_CONTENT_CLASS_NAME);
+        }
+
+        this.container.appendChild(button);
     }
 
     /**

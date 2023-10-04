@@ -34,6 +34,7 @@ export function isMenuBarReactPropsData(obj: unknown): obj is menubarReactProps 
             typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["possibly_sensitive_editable"] === null ||
             typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["possibly_sensitive_editable"] === false ||
             typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["possibly_sensitive_editable"] === true) &&
+        typeof typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["permalink"] === "string" &&
         (typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"] !== null &&
             typeof typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"] === "object" ||
             typeof typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"] === "function") &&

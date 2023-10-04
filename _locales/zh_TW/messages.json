@@ -69,6 +69,9 @@
     "showMore": {
         "message": "▶顯示更多"
     },
+    "tweetTheResults": {
+        "message": "發推特結果"
+    },
     "settingsAlwaysDetailedView": {
         "message": "始終顯示詳細資訊"
     },
@@ -80,6 +83,9 @@
     },
     "settingsShowNotesInMessages": {
         "message": "在訊息底部顯示註釋"
+    },
+    "settingsShowTweetButton": {
+        "message": "顯示按鈕以發推特結果"
     },
     "settingsPleaseReload": {
         "message": "若更改設定，請重新載入 Twitter"

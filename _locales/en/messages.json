@@ -69,6 +69,9 @@
     "showMore": {
         "message": "▶show more"
     },
+    "tweetTheResults": {
+        "message": "Tweet the results"
+    },
     "settingsAlwaysDetailedView": {
         "message": "Always display detailed information"
     },
@@ -80,6 +83,9 @@
     },
     "settingsShowNotesInMessages": {
         "message": "Display notes at the bottom of the message"
+    },
+    "settingsShowTweetButton": {
+        "message": "Display buttons to tweet the results"
     },
     "settingsPleaseReload": {
         "message": "Please reload Twitter once you have changed the settings"

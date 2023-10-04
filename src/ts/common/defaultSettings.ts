@@ -8,7 +8,8 @@ const DEFAULT_SETTINGS = {
     enableOnlyForCurrentUsersTweets: false,
     hasDisplayedV2UpdateBanner: false,
     showMessagesInUnproblematicTweets: false,
-    showNotesInMessages: true
+    showNotesInMessages: true,
+    showTweetButton: true
 } as const satisfies Settings;
 
 export { DEFAULT_SETTINGS };
