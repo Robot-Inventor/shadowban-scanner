@@ -5,6 +5,7 @@
     border-radius: 0.5em;
     background: var(--message-background-color);
     margin: 1em 0;
+    font-family: sans-serif;
 }
 
 .shadowban-scanner-message .twemoji {
