@@ -164,10 +164,11 @@ class Message {
     /**
      * Quote specified tweet with specified text.
      * @param sourceTweet tweet to quote
+     * @param sourceTweetPermalink permalink of the tweet to quote
      * @param text text to tweet
      */
     // eslint-disable-next-line max-statements
-    private static async quoteTweet(sourceTweet: HTMLElement, text: string) {
+    private static async quoteTweet(sourceTweet: HTMLElement, sourceTweetPermalink: string, text: string) {
         try {
             const retweetButton = await Message.asyncQuerySelector(
                 "[data-testid='unretweet'], [data-testid='retweet']",
@@ -195,23 +196,25 @@ class Message {
             textBoxParent.innerHTML = text;
             textBoxParent.dispatchEvent(new Event("input", { bubbles: true }));
         } catch (error) {
-            open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, "_blank");
+            const tweetText = `${text}\nhttps://twitter.com${sourceTweetPermalink}`;
+            open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`, "_blank");
         }
     }
 
     /**
      * Add a tweet button to the message.
      * @param sourceTweet tweet to quote
+     * @param sourceTweetPermalink permalink of the tweet to quote
      * @param text text to tweet
      */
-    public addTweetButton(sourceTweet: HTMLElement, text: string) {
+    public addTweetButton(sourceTweet: HTMLElement, sourceTweetPermalink: string, text: string) {
         const button = document.createElement("md-filled-button");
 
         button.setAttribute(TRANSLATION_ATTRIBUTE, "tweetTheResults");
         button.style.setProperty("--md-sys-color-on-primary", Message.getTextColor());
 
         button.addEventListener("click", (event) => {
-            void Message.quoteTweet(sourceTweet, text);
+            void Message.quoteTweet(sourceTweet, sourceTweetPermalink, text);
             event.stopPropagation();
             return false;
         });

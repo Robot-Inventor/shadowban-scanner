@@ -38,7 +38,8 @@ class TweetReactProps {
                 isTweetByCurrentUser: this.isTweetByCurrentUser,
                 possiblySensitive: Boolean(tweetData.possibly_sensitive),
                 // Ref: https://github.com/Robot-Inventor/shadowban-scanner/issues/16
-                possiblySensitiveEditable: !(tweetData.possibly_sensitive_editable === false)
+                possiblySensitiveEditable: !(tweetData.possibly_sensitive_editable === false),
+                tweetPermalink: tweetData.permalink
             },
             user: {
                 possiblySensitive: Boolean(tweetData.user.possibly_sensitive),

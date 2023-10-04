@@ -1,6 +1,7 @@
 interface BasicTweetProps {
     possibly_sensitive?: boolean | null;
     possibly_sensitive_editable?: boolean | null;
+    permalink: string;
     user: {
         possibly_sensitive?: boolean | null;
         screen_name: string;

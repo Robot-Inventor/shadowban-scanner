@@ -32,6 +32,7 @@ class TweetChecker {
         isTweetSearchable: boolean;
         messages: TranslationKey[];
         shareText: string;
+        tweetPermalink: string;
     } {
         const isTweetAgeRestricted =
             tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable;
@@ -81,7 +82,8 @@ https://robot-inventor.github.io/shadowban-scanner/
         return {
             isTweetSearchable,
             messages,
-            shareText
+            shareText,
+            tweetPermalink: tweetStatus.tweet.tweetPermalink
         };
     }
 
@@ -133,7 +135,7 @@ https://robot-inventor.github.io/shadowban-scanner/
             message.addNotes(["falsePositivesAndFalseNegativesOccur", "translatedByAI"]);
         }
         if (this.options.showTweetButton) {
-            message.addTweetButton(this.tweet, statusData.shareText);
+            message.addTweetButton(this.tweet, statusData.tweetPermalink, statusData.shareText);
         }
         menuBar.insertAdjacentElement("beforebegin", message.getContainer());
     }

@@ -3,6 +3,7 @@ interface TweetStatus {
         possiblySensitive: boolean;
         possiblySensitiveEditable: boolean;
         isTweetByCurrentUser: boolean;
+        tweetPermalink: string;
     };
     user: {
         possiblySensitive: boolean;
