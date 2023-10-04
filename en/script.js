@@ -5,14 +5,14 @@ buttons.forEach((button) => {
     const isEdge = navigator.userAgent.toLowerCase().includes("edg");
 
     let download_link = "https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/";
-    let download_text = "Chromeにインストール";
+    let download_text = "Install to Chrome";
 
     if (isFirefox) {
         download_link = "https://addons.mozilla.org/firefox/addon/shadowban-scanner/";
-        download_text = "Firefoxにインストール";
+        download_text = "Install to Firefox";
     } else if (isEdge) {
         download_link = "https://microsoftedge.microsoft.com/addons/detail/shadowban-scanner/kfeecmboomhggeeceipnbbdjmhjoccbl";
-        download_text = "Edgeにインストール";
+        download_text = "Install to Edge";
     }
 
     button.textContent = download_text;
@@ -21,16 +21,16 @@ buttons.forEach((button) => {
         const isMobile = Boolean(navigator.userAgent.match(/iPhone|Android.+Mobile/))
         if (isMobile) {
             Swal.fire({
-                title: "スマートフォンには対応していません",
-                text: "Shadowban Scannerは技術的な理由により、PCのブラウザーとAndroid版Firefox Nightlyでのみ利用できます。",
+                title: "Smartphones are not supported",
+                text: "Due to technical reasons, Shadowban Scanner is only available for PC browsers and Firefox Nightly for Android.",
                 icon: "warning",
                 showCancelButton: true,
                 background: "#21272e",
                 color: "#fff",
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "とにかく続行する",
-                cancelButtonText: "キャンセル"
+                confirmButtonText: "Continue anyway",
+                cancelButtonText: "Cancel"
             }).then((result) => {
                 if (result.isConfirmed) {
                     open(download_link, "_blank");
