@@ -40,8 +40,7 @@ class Message {
     private static getTextColor(): `rgb(${number}, ${number}, ${number})` {
         const TEXT_SELECTOR = [
             "[data-testid='User-Name'] div:first-child span",
-            "[data-testid='UserName'] div:first-child span",
-            "[data-testid='tweetText']"
+            "[data-testid='UserName'] div:first-child span"
         ].join(",");
 
         const text = document.querySelector(TEXT_SELECTOR);
