@@ -10,13 +10,16 @@ type TranslationFunction = (key: TranslationKey) => string;
  */
 class Translator {
     private readonly translationFunction: TranslationFunction;
+    private readonly twemojiEndpoint: string;
 
     /**
      * Insert text into the UI using the given function.
      * @param translationFunction translation function to use
+     * @param twemojiEndpoint endpoint URL of Twemoji
      */
-    constructor(translationFunction: TranslationFunction) {
+    constructor(translationFunction: TranslationFunction, twemojiEndpoint: string) {
         this.translationFunction = translationFunction;
+        this.twemojiEndpoint = twemojiEndpoint;
     }
 
     /**
@@ -24,14 +27,14 @@ class Translator {
      * @param text text to convert
      * @returns converted text in HTML format
      */
-    private static convertEmojiToTwemoji(text: string): string {
+    private convertEmojiToTwemoji(text: string): string {
         let result = text;
 
         for (const targetEmoji of ALLOWED_TWEMOJI) {
             // eslint-disable-next-line no-magic-numbers
             const codePoints = [...targetEmoji].map((emoji) => emoji.codePointAt(0)?.toString(16)).join("-");
-            // eslint-disable-next-line max-len
-            const img = `<img src="https://abs-0.twimg.com/emoji/v2/svg/${codePoints}.svg" alt="${targetEmoji}" class="twemoji">`;
+            const twemojiURL = new URL(`${codePoints}.svg`, this.twemojiEndpoint).href;
+            const img = `<img src="${twemojiURL}" alt="${targetEmoji}" class="twemoji">`;
             result = result.replaceAll(targetEmoji, img);
         }
 
@@ -48,7 +51,7 @@ class Translator {
             const translationKey = element.getAttribute(TRANSLATION_ATTRIBUTE) as keyof TranslationData;
             const translatedText = this.translationFunction(translationKey);
             if (element.hasAttribute(TWEMOJI_ATTRIBUTE)) {
-                element.innerHTML = Translator.convertEmojiToTwemoji(translatedText);
+                element.innerHTML = this.convertEmojiToTwemoji(translatedText);
             } else {
                 element.innerHTML = translatedText;
             }

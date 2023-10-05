@@ -29,7 +29,8 @@
         }
     ],
     "web_accessible_resources": [
-        "dist/js/pageScript.js"
+        "dist/js/pageScript.js",
+        "dist/image/*"
     ],
     "default_locale": "en",
     "browser_action": {

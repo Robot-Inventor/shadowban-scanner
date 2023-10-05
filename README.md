@@ -51,6 +51,8 @@ For more information on detection methods and technical details, please refer to
 
 This extension performs all processing on the user's computer. No data is transmitted to an external server. There is no attempt to access Twitter's internal APIs by obtaining the user's credentials without their permission, as is the case with some extensions.
 
+However, the user script version retrieves images from [https://abs-0.twimg.com/](https://abs-0.twimg.com/) to display emojis.
+
 ## License
 
 This extension is released under the MIT License.

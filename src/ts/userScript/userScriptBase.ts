@@ -8,7 +8,10 @@ import { DEFAULT_SETTINGS } from "../common/defaultSettings";
  */
 class UserScriptBase {
     constructor(translationData: TranslationData) {
-        const translator = new Translator((key) => translationData[key].message);
+        const translator = new Translator(
+            (key) => translationData[key].message,
+            "https://abs-0.twimg.com/emoji/v2/svg/"
+        );
 
         new Core(DEFAULT_SETTINGS, () => {
             translator.translateElements();
