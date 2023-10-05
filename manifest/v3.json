@@ -36,7 +36,8 @@
     "web_accessible_resources": [
         {
             "resources": [
-                "dist/js/pageScript.js"
+                "dist/js/pageScript.js",
+                "dist/image/*"
             ],
             "matches": [
                 "https://twitter.com/*",

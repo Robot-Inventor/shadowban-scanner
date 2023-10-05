@@ -61,7 +61,7 @@ const main = async () => {
         await browser.storage.local.set({ hasDisplayedV2UpdateBanner: true });
     }
 
-    const translator = new Translator(browser.i18n.getMessage);
+    const translator = new Translator(browser.i18n.getMessage, browser.runtime.getURL("dist/image/"));
 
     const eventGenerator = document.createElement("div");
     const settingsString = JSON.stringify(settings);
