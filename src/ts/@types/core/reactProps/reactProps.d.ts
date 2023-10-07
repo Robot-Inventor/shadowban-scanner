@@ -87,6 +87,7 @@ export interface FocalTweetOuterReactPropsData {
                                                 unknown,
                                                 unknown,
                                                 unknown,
+                                                unknown,
                                                 {
                                                     props: {
                                                         loggedInUser: {
