@@ -123,16 +123,16 @@ export function isFocalTweetOuterReactPropsData(obj: unknown): obj is FocalTweet
             typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"] === "object" ||
             typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"] === "function") &&
         Array.isArray(typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"]) &&
-        (typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][6] !== null &&
-            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][6] === "object" ||
-            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][6] === "function") &&
-        (typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][6]["props"] !== null &&
-            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][6]["props"] === "object" ||
-            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][6]["props"] === "function") &&
-        (typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][6]["props"]["loggedInUser"] !== null &&
-            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][6]["props"]["loggedInUser"] === "object" ||
-            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][6]["props"]["loggedInUser"] === "function") &&
-        typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][6]["props"]["loggedInUser"]["screen_name"] === "string"
+        (typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][7] !== null &&
+            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][7] === "object" ||
+            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][7] === "function") &&
+        (typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][7]["props"] !== null &&
+            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][7]["props"] === "object" ||
+            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][7]["props"] === "function") &&
+        (typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][7]["props"]["loggedInUser"] !== null &&
+            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][7]["props"]["loggedInUser"] === "object" ||
+            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][7]["props"]["loggedInUser"] === "function") &&
+        typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][7]["props"]["loggedInUser"]["screen_name"] === "string"
     )
 }
 

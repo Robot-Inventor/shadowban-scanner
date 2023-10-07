@@ -67,7 +67,7 @@ class TweetReactProps {
                     .loggedInUser.screen_name;
         } else if (isFocalTweetOuterReactPropsData(tweetReactProps)) {
             currentUserScreenName =
-                tweetReactProps.children[0][1].props.children[0].props.children[2].props.children[6].props.loggedInUser
+                tweetReactProps.children[0][1].props.children[0].props.children[2].props.children[7].props.loggedInUser
                     .screen_name;
         } else {
             throw new Error("Type of tweetReactProps is invalid.");
