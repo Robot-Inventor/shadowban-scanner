@@ -43,11 +43,11 @@ Shadowban Scannerでは、アカウントのシャドウバンを``TweetProps.us
 
 ### プロフィールのメディアのセンシティブ判定
 
-Shadowban Scannerでは、``TweetProps.user.profile_interstitial_type``が``sensitive_media``の場合、プロフィールのメディアがセンシティブ判定を受けていると表示します。（事実）
+Shadowban Scannerでは、``TweetProps.user.profile_interstitial_type``が``sensitive_media``か``offensive_profile_content``の場合、プロフィールのメディアがセンシティブ判定を受けていると表示します。（事実）
 
-``TweetProps.user.profile_interstitial_type``はプロフィールに関するフラグです。このフラグの値が``sensitive_media``の場合、プロフィールのメディアがセンシティブとみなされていることを示します。また、プロフィールのメディアはアイコンやヘッダー画像を指していると考えられます。（推定）
+``TweetProps.user.profile_interstitial_type``はプロフィールに関するフラグです。このフラグの値が``sensitive_media``か``offensive_profile_content``の場合、プロフィールのメディアがセンシティブとみなされていることを示します。また、プロフィールのメディアはアイコンやヘッダー画像を指していると考えられます。（推定）
 
-フラグの値が``sensitive_media``の場合、［ポストするメディアをセンシティブな内容を含むものとして設定する］という設定項目が変更できなくなります。また、投稿するすべてのメディアに対し、強制的にセンシティブフラグが付与されます。（断定・当該設定を変更できないと主張する複数のアカウントを調査した結果により判断）
+フラグの値が``sensitive_media``か``offensive_profile_content``の場合、［ポストするメディアをセンシティブな内容を含むものとして設定する］という設定項目が変更できなくなります。また、投稿するすべてのメディアに対し、強制的にセンシティブフラグが付与されます。（断定・当該設定を変更できないと主張する複数のアカウントを調査した結果により判断）
 
 <details>
 <summary><strong>推定の根拠</strong></summary>
@@ -83,7 +83,7 @@ Ya = {
 },
 ```
 
-``sensitive_media``には``Wa``か``Va``のいずれかが代入されています。``Wa``と``Va``はそれぞれ、``te().jf604336``と``te().b9a9cbdc``が代入されています。（事実）
+``sensitive_media``には``Wa``か``Va``のいずれかが代入されています。``Wa``と``Va``はそれぞれ、``te().jf604336``と``te().b9a9cbdc``が代入されています。また、``offensive_profile_content``には``Ka``か``Ha``のいずれかが代入されており、``Ka``と``Ha``はそれぞれ``te().jf604336``と``te().c9bfda48``が代入されています。（事実）
 
 次のコードは、日本語の翻訳データが含まれる``https://abs.twimg.com/responsive-web/client-web-legacy/i18n/ja.9d70063a.js``のうち、重要な部分とその周辺の抜粋です。（事実）
 
