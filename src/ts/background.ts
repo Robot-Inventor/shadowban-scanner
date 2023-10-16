@@ -1,17 +1,18 @@
 import { ONBOARDING_URL, RELEASE_NOTE_URL } from "./common/constants";
+import browser from "webextension-polyfill";
 
-chrome.runtime.onInstalled.addListener((details) => {
-    const isJapanese = chrome.i18n.getUILanguage() === "ja";
+browser.runtime.onInstalled.addListener((details) => {
+    const isJapanese = browser.i18n.getUILanguage() === "ja";
 
-    if (details.reason === chrome.runtime.OnInstalledReason.UPDATE) {
+    if (details.reason === "update") {
         const releaseNoteURL = isJapanese ? RELEASE_NOTE_URL.ja : RELEASE_NOTE_URL.en;
-        void chrome.tabs.create({ url: releaseNoteURL });
+        void browser.tabs.create({ url: releaseNoteURL });
 
         return;
     }
 
-    if (details.reason === chrome.runtime.OnInstalledReason.INSTALL) {
+    if (details.reason === "install") {
         const welcomeURL = isJapanese ? ONBOARDING_URL.ja : ONBOARDING_URL.en;
-        void chrome.tabs.create({ url: welcomeURL });
+        void browser.tabs.create({ url: welcomeURL });
     }
 });

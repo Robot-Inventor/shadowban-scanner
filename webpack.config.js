@@ -54,10 +54,6 @@ module.exports = {
                 {
                     from: "./src/image/",
                     to: "./image/[name][ext]"
-                },
-                {
-                    from: "./src/polyfill/",
-                    to: "./polyfill/[name][ext]"
                 }
             ]
         })

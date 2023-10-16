@@ -20,7 +20,6 @@
                 "https://tweetdeck.twitter.com/*"
             ],
             "js": [
-                "dist/polyfill/browserPolyfill.min.js",
                 "dist/js/contentScript.js"
             ],
             "css": [
@@ -30,7 +29,6 @@
     ],
     "background": {
         "scripts": [
-            "dist/polyfill/browserPolyfill.min.js",
             "dist/js/background.js"
         ],
         "persistent": false

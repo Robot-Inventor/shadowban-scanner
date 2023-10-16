@@ -1,3 +1,5 @@
+import browser from "webextension-polyfill";
+
 /**
  * Migrate settings from v1 to v2.
  * @returns {Promise<void>}
@@ -11,6 +13,7 @@ const migrateFromV1ToV2 = async () => {
 
     if (!("showMessageInAllTweets" in currentSettings)) return;
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     await browser.storage.local.set({ showMessagesInUnproblematicTweets: currentSettings.showMessageInAllTweets });
     await browser.storage.local.remove("showMessageInAllTweets");
 };

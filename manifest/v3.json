@@ -25,7 +25,6 @@
                 "https://tweetdeck.twitter.com/*"
             ],
             "js": [
-                "dist/polyfill/browserPolyfill.min.js",
                 "dist/js/contentScript.js"
             ],
             "css": [

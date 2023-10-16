@@ -1,5 +1,7 @@
 import "@material/web/checkbox/checkbox.js";
 import { DEFAULT_SETTINGS } from "./common/defaultSettings";
+import browser from "webextension-polyfill";
+import { isSettings } from "./@types/common/settings.guard";
 import { migrateFromV1ToV2 } from "./common/migrator";
 
 const translationTargets: NodeListOf<HTMLElement> = document.querySelectorAll("[data-translation]");
@@ -15,7 +17,7 @@ void migrateFromV1ToV2().then(() => {
 
     for (const checkbox of checkboxElements) {
         void browser.storage.local.get(DEFAULT_SETTINGS).then((currentSettings) => {
-            if (!(checkbox.name in currentSettings))
+            if (!isSettings(currentSettings))
                 // eslint-disable-next-line curly, nonblock-statement-body-position
                 throw new Error(`Failed to get ${checkbox.name} from storage`);
             checkbox.checked = currentSettings[checkbox.name as keyof typeof DEFAULT_SETTINGS];
