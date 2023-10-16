@@ -33,6 +33,10 @@
             ]
         }
     ],
+    "background": {
+        "service_worker": "dist/js/background.js",
+        "persistent": false
+    },
     "web_accessible_resources": [
         {
             "resources": [

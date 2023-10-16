@@ -3,10 +3,15 @@
  * @returns {Promise<void>}
  */
 const migrateFromV1ToV2 = async () => {
-    const v1Settings = await browser.storage.local.get(null);
-    if (!("showMessageInAllTweets" in v1Settings)) return;
+    const currentSettings = await browser.storage.local.get(null);
 
-    await browser.storage.local.set({ showMessagesInUnproblematicTweets: v1Settings.showMessageInAllTweets });
+    if ("hasDisplayedV2UpdateBanner" in currentSettings) {
+        await browser.storage.local.remove("hasDisplayedV2UpdateBanner");
+    }
+
+    if (!("showMessageInAllTweets" in currentSettings)) return;
+
+    await browser.storage.local.set({ showMessagesInUnproblematicTweets: currentSettings.showMessageInAllTweets });
     await browser.storage.local.remove("showMessageInAllTweets");
 };
 

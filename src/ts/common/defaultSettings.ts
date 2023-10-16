@@ -6,7 +6,6 @@ import { Settings } from "../@types/common/settings";
 const DEFAULT_SETTINGS = {
     alwaysDetailedView: false,
     enableOnlyForCurrentUsersTweets: false,
-    hasDisplayedV2UpdateBanner: false,
     showMessagesInUnproblematicTweets: false,
     showNotesInMessages: true,
     showTweetButton: true

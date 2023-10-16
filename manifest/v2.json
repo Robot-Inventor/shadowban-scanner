@@ -28,6 +28,13 @@
             ]
         }
     ],
+    "background": {
+        "scripts": [
+            "dist/polyfill/browserPolyfill.min.js",
+            "dist/js/background.js"
+        ],
+        "persistent": false
+    },
     "web_accessible_resources": [
         "dist/js/pageScript.js",
         "dist/image/*"
