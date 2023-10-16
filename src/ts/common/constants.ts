@@ -9,6 +9,15 @@ const TWEMOJI_ATTRIBUTE = "data-sb-enable-twemoji";
 const NO_PROBLEM_CLASS_NAME = "shadowban-scanner-message-no-problem";
 const ALLOWED_TWEMOJI = ["✅", "🚫", "⚠️"];
 
+const ONBOARDING_URL = {
+    en: "https://github.com/Robot-Inventor/shadowban-scanner/blob/main/README.md",
+    ja: "https://github.com/Robot-Inventor/shadowban-scanner/blob/main/README_ja.md"
+} as const;
+const RELEASE_NOTE_URL = {
+    en: "https://robot-inventor.github.io/article/2023/09/30/shadowban-scanner-v2-release/en/",
+    ja: "https://robot-inventor.github.io/article/2023/09/30/shadowban-scanner-v2-release/"
+} as const;
+
 export {
     CHECKED_DATA_ATTRIBUTE,
     EVENT_GENERATOR_ID,
@@ -19,5 +28,7 @@ export {
     TRANSLATION_ATTRIBUTE,
     TWEMOJI_ATTRIBUTE,
     NO_PROBLEM_CLASS_NAME,
-    ALLOWED_TWEMOJI
+    ALLOWED_TWEMOJI,
+    ONBOARDING_URL,
+    RELEASE_NOTE_URL
 };
