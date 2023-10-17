@@ -9,7 +9,7 @@
     "format": "npx prettier --write ./src/ts/**/*.ts",
     "format:check": "npx prettier --check ./src/ts/**/*.ts",
     "build": "npm run format && node ./script/build.js",
-    "package": "node ./script/package.js",
+    "package": "ts-node ./script/package.ts",
     "version": "npm run build && npm run package && git add .",
     "switchManifest": "node ./script/changeManifestVersion.js"
   },
