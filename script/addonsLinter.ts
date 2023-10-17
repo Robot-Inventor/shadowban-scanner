@@ -9,10 +9,10 @@ const main = async () => {
         config: {
             _: ["./"],
             logLevel: process.env.VERBOSE ? "debug" : "fatal",
-            shouldScanFile: (fileName) => {
+            shouldScanFile: (fileName, isDir) => {
                 if (!fileName) return true;
 
-                const normalizedFileName = path.normalize(fileName);
+                const normalizedFileName = isDir ? path.normalize(`${fileName}/`) : path.normalize(fileName);
 
                 return !WEB_EXT_IGNORE_FILES.includes(normalizedFileName);
             }
