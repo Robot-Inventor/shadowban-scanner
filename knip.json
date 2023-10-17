@@ -8,6 +8,10 @@
     "ignoreDependencies": [
         "web-ext",
         "webpack-cli",
-        "ts-auto-guard"
+        "ts-auto-guard",
+        "addons-linter"
+    ],
+    "ignore": [
+        "script/addonsLinter.ts"
     ]
 }
