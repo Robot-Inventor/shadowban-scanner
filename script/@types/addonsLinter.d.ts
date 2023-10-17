@@ -82,6 +82,8 @@ declare module "addons-linter" {
             disableXpiAutoclose?: boolean;
         } & (
             | {
+                  // Either shouldScanFile or scanFile must be specified
+
                   /**
                    * Exclude files
                    */
