@@ -1,5 +1,5 @@
 import { execSync } from "child_process";
-import glob from "glob";
+import { glob } from "glob";
 import fs from "fs";
 import packagejson from "../package.json";
 import path from "path";
