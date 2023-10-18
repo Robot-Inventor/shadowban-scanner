@@ -8,7 +8,7 @@
     "lint": "npx eslint ./src/ts/**/*.ts && npx knip && ts-node --files ./script/addonsLinter.ts",
     "format": "npx prettier --write ./src/ts/**/*.ts",
     "format:check": "npx prettier --check ./src/ts/**/*.ts",
-    "build": "npm run format && node ./script/build.js",
+    "build": "npm run format && node ./script/build.ts",
     "package": "ts-node ./script/package.ts",
     "version": "npm run build && npm run package && git add .",
     "switchManifest": "node ./script/changeManifestVersion.js"
