@@ -1,9 +1,9 @@
-const { execSync } = require("child_process");
-const glob = require("glob");
-const fs = require("fs");
-const packagejson = require("../package.json");
-const path = require("path");
-const colors = require("colors/safe");
+import { execSync } from "child_process";
+import { glob } from "glob";
+import fs from "fs";
+import packagejson from "../package.json";
+import path from "path";
+import colors from "colors/safe";
 
 try {
     console.log("Generating type guards...");
@@ -12,6 +12,7 @@ try {
     console.log("Building...");
     execSync("npx webpack");
 } catch (error) {
+    // @ts-expect-error
     console.error(colors.red(error.stdout.toString()));
     process.exit(1);
 }
@@ -23,7 +24,9 @@ for (const userScript of userScriptFiles) {
     const scriptString = fs.readFileSync(userScript, "utf-8");
     const languageCode = path.basename(userScript, ".user.js");
     const formattedLanguageCode = languageCode.toLowerCase().replace("_", "-");
-    const languageName = new Intl.DisplayNames([formattedLanguageCode], { type: "language" }).of(formattedLanguageCode) || formattedLanguageCode;
+    const languageName =
+        new Intl.DisplayNames([formattedLanguageCode], { type: "language" }).of(formattedLanguageCode) ||
+        formattedLanguageCode;
     const localizedMessages = fs.readFileSync(`./_locales/${languageCode}/messages.json`, "utf-8");
     const userScriptComment = `
 // ==UserScript==
@@ -36,8 +39,14 @@ for (const userScript of userScriptFiles) {
 // @match        https://mobile.twitter.com/*
 // @match        https://tweetdeck.twitter.com/*
 // @icon         https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/src/image/icon128.png
-// @downloadURL  https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/${userScript.replaceAll("\\", "/")}
-// @updateURL    https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/${userScript.replaceAll("\\", "/")}
+// @downloadURL  https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/${userScript.replaceAll(
+        "\\",
+        "/"
+    )}
+// @updateURL    https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/${userScript.replaceAll(
+        "\\",
+        "/"
+    )}
 // @grant        none
 // ==/UserScript==
 `.trim();

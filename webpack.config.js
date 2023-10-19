@@ -15,6 +15,7 @@ module.exports = {
         "./js/browserAction.js": "./src/ts/browserAction.ts",
         "./js/contentScript.js": "./src/ts/contentScript.ts",
         "./js/pageScript.js": "./src/ts/pageScript.ts",
+        "./js/background.js": "./src/ts/background.ts",
         ...userScriptEntries
     },
     output: {
@@ -53,10 +54,6 @@ module.exports = {
                 {
                     from: "./src/image/",
                     to: "./image/[name][ext]"
-                },
-                {
-                    from: "./src/polyfill/",
-                    to: "./polyfill/[name][ext]"
                 }
             ]
         })

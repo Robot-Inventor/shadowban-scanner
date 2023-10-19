@@ -5,13 +5,13 @@
         "script/**/*.ts",
         "script/**/*.js"
     ],
-    "ignore": [
-        "src/polyfill/browserPolyfill.min.js"
-    ],
     "ignoreDependencies": [
         "web-ext",
-        "web-ext-types",
         "webpack-cli",
-        "ts-auto-guard"
+        "ts-auto-guard",
+        "addons-linter"
+    ],
+    "ignore": [
+        "script/addonsLinter.ts"
     ]
 }

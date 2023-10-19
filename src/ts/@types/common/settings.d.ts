@@ -5,5 +5,4 @@ export interface Settings {
     showMessagesInUnproblematicTweets: boolean;
     showNotesInMessages: boolean;
     showTweetButton: boolean;
-    hasDisplayedV2UpdateBanner: boolean;
 }
