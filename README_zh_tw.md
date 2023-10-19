@@ -86,3 +86,7 @@ npm run build
 ```console
 npm run package
 ```
+
+## Release Procedure
+
+See [doc/release-procedure.md](doc/release-procedure.md).

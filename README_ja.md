@@ -84,3 +84,7 @@ npm run build
 ```console
 npm run package
 ```
+
+## リリース手順
+
+[doc/release-procedure.md](doc/release-procedure.md)を参照。
