@@ -52,6 +52,7 @@
     "webpack-cli": "^5.1.4"
   },
   "devDependencies": {
+    "@types/addons-linter": "^6.16.0",
     "@types/webextension-polyfill": "^0.10.4",
     "knip": "^2.25.2"
   }

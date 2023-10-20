@@ -9,6 +9,7 @@ const main = async () => {
         config: {
             _: ["./"],
             logLevel: process.env.VERBOSE ? "debug" : "fatal",
+            scanFile: ["./manifest.json"],
             shouldScanFile: (fileName, isDir) => {
                 if (!fileName) return true;
 
@@ -37,6 +38,7 @@ const main = async () => {
 
     console.log("Linting for Firefox...");
     const firefoxResult = await lintForFirefox.run();
+    console.log(JSON.stringify(firefoxResult, null, 4));
     if (firefoxResult.errors.length) {
         console.error(colors.red("Errors found when linting for Firefox."));
         process.exit(1);
