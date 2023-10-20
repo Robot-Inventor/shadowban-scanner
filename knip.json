@@ -9,7 +9,8 @@
         "web-ext",
         "webpack-cli",
         "ts-auto-guard",
-        "addons-linter"
+        "addons-linter",
+        "@types/addons-linter"
     ],
     "ignore": [
         "script/addonsLinter.ts"
