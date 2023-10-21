@@ -49,7 +49,8 @@
     "web-ext": "^7.6.2",
     "webextension-polyfill": "^0.10.0",
     "webpack": "^5.86.0",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-license-plugin": "^4.4.2"
   },
   "devDependencies": {
     "@types/addons-linter": "^6.16.0",

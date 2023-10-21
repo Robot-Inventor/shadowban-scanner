@@ -89,5 +89,14 @@
     },
     "settingsPleaseReload": {
         "message": "설정을 변경한 후 Twitter를 다시 로드해주세요"
+    },
+    "settingsPrivacyPolicy": {
+        "message": "Privacy policy"
+    },
+    "settingsPrivacyPolicyURL": {
+        "message": "https://github.com/Robot-Inventor/shadowban-scanner/blob/main/README_ko.md#%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4-%EC%B2%98%EB%A6%AC-%EB%B0%A9%EC%B9%A8"
+    },
+    "settingsOpenSourceLicenses": {
+        "message": "Open source licenses"
     }
 }

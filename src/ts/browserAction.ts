@@ -12,6 +12,14 @@ for (const translationTarget of translationTargets) {
     translationTarget.textContent = text;
 }
 
+const translationLinks: NodeListOf<HTMLAnchorElement> = document.querySelectorAll("[data-translation-link]");
+for (const translationLink of translationLinks) {
+    const translationAttribute = translationLink.dataset.translationLink;
+    if (!translationAttribute) throw new Error("Failed to get translation attribute");
+    const url = browser.i18n.getMessage(translationAttribute);
+    translationLink.setAttribute("href", url);
+}
+
 void migrateFromV1ToV2().then(() => {
     const checkboxElements = document.querySelectorAll("md-checkbox");
 
