@@ -65,9 +65,13 @@ fieldset > div {
     padding: 0.2rem 0;
 }
 
-label,
-md-checkbox {
+fieldset > div,
+fieldset > div > * {
     cursor: pointer;
+}
+
+fieldset > div > label {
+    flex-grow: 1;
 }
 
 md-checkbox {
