@@ -1,6 +1,7 @@
 const glob = require("glob");
 const path = require("path");
 const CopyFilePlugin = require("copy-webpack-plugin");
+const LicensePlugin = require("webpack-license-plugin");
 
 const userScripts = glob.sync("./src/ts/userScript/*.user.ts");
 const userScriptEntries = {};
@@ -16,6 +17,7 @@ module.exports = {
         "./js/contentScript.js": "./src/ts/contentScript.ts",
         "./js/pageScript.js": "./src/ts/pageScript.ts",
         "./js/background.js": "./src/ts/background.ts",
+        "./js/ossLicenses.js": "./src/ts/ossLicenses.ts",
         ...userScriptEntries
     },
     output: {
@@ -56,6 +58,11 @@ module.exports = {
                     to: "./image/[name][ext]"
                 }
             ]
-        })
+        }),
+        new LicensePlugin(
+            {
+                outputFilename: "./json/oss-licenses.json"
+            }
+        )
     ]
 };
