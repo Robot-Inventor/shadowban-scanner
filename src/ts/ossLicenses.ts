@@ -1,5 +1,17 @@
 import { isOSSLicenses } from "./@types/ossLicenses.guard";
 
+const normalizeRepositoryLink = (repository: string): string => {
+    if (repository.startsWith("git+")) {
+        return repository.replace(/^git\+/u, "");
+    }
+
+    if (!repository.match(/^https?:\/\//u)) {
+        return `https://github.com/${repository}`;
+    }
+
+    return repository;
+};
+
 // eslint-disable-next-line max-statements
 const main = async () => {
     const target = document.getElementById("third-party-licenses");
@@ -13,22 +25,29 @@ const main = async () => {
     if (!isOSSLicenses(OSSLicenses)) throw new Error("Invalid JSON");
 
     const fragment = document.createDocumentFragment();
+
     for (const license of OSSLicenses) {
-        const h3 = document.createElement("h3");
-        fragment.appendChild(h3);
+        const itemOuter = document.createElement("div");
+        itemOuter.className = "license-item-outer";
+        fragment.appendChild(itemOuter);
+
+        const h2 = document.createElement("h2");
+        itemOuter.appendChild(h2);
 
         const link = document.createElement("a");
-        link.href = license.repository;
+        link.href = normalizeRepositoryLink(license.repository);
+        link.target = "_blank";
         link.textContent = license.name;
-        h3.appendChild(link);
+        h2.appendChild(link);
 
         const licenseTextOuter = document.createElement("p");
-        fragment.appendChild(licenseTextOuter);
+        itemOuter.appendChild(licenseTextOuter);
 
         const licenseTextInner = document.createElement("pre");
         licenseTextInner.textContent = license.licenseText;
         licenseTextOuter.appendChild(licenseTextInner);
     }
+
     target.appendChild(fragment);
 };
 

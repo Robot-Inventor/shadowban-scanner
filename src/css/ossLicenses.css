@@ -8,13 +8,33 @@ html,
 body {
     font-family: sans-serif;
     width: 100%;
+    font-size: 100%;
+}
+
+body {
+    padding: 2rem 0;
 }
 
 main {
     margin: 0 auto;
-    max-width: 30rem;
+    max-width: 50rem;
 }
 
 section {
     margin-top: 2rem;
+}
+
+.license-item-outer {
+    padding: 1rem 0;
+    margin: 1rem 0;
+    border-top: 0.1rem solid #333;
+}
+
+.license-item-outer h2 {
+    margin-bottom: 1rem;
+}
+
+pre {
+    font-family: inherit;
+    font-size: inherit;
 }
