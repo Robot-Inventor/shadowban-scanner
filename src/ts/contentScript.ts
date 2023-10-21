@@ -2,12 +2,9 @@ import { EVENT_GENERATOR_ID, EVENT_GENERATOR_SETTINGS_ATTRIBUTE } from "./common
 import { DEFAULT_SETTINGS } from "./common/defaultSettings";
 import { Translator } from "./common/translator";
 import browser from "webextension-polyfill";
-import { migrateFromV1ToV2 } from "./common/migrator";
 
 // eslint-disable-next-line max-statements
 const main = async () => {
-    await migrateFromV1ToV2();
-
     const settings = await browser.storage.local.get(DEFAULT_SETTINGS);
 
     const translator = new Translator((key) => browser.i18n.getMessage(key), browser.runtime.getURL("dist/image/"));
