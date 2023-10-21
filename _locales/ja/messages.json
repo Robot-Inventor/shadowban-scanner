@@ -89,5 +89,14 @@
     },
     "settingsPleaseReload": {
         "message": "設定を変更したらTwitterを再読み込みしてください。"
+    },
+    "settingsPrivacyPolicy": {
+        "message": "プライバシーポリシー"
+    },
+    "settingsPrivacyPolicyURL": {
+        "message": "https://github.com/Robot-Inventor/shadowban-scanner/blob/main/README_ja.md#%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC"
+    },
+    "settingsOpenSourceLicenses": {
+        "message": "オープンソースライセンス"
     }
 }

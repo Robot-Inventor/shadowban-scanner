@@ -89,5 +89,14 @@
     },
     "settingsPleaseReload": {
         "message": "Please reload Twitter once you have changed the settings"
+    },
+    "settingsPrivacyPolicy": {
+        "message": "Privacy policy"
+    },
+    "settingsPrivacyPolicyURL": {
+        "message": "https://github.com/Robot-Inventor/shadowban-scanner#privacy-policy"
+    },
+    "settingsOpenSourceLicenses": {
+        "message": "Open source licenses"
     }
 }
