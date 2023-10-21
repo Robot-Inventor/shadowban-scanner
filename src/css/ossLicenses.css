@@ -1,3 +1,15 @@
+:root {
+    --theme-font-color: #333;
+    --theme-background-color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --theme-font-color: #fff;
+        --theme-background-color: #121212;
+    }
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,6 +21,8 @@ body {
     font-family: sans-serif;
     width: 100%;
     font-size: 100%;
+    color: var(--theme-font-color);
+    background: var(--theme-background-color);
 }
 
 body {
@@ -20,6 +34,10 @@ main {
     max-width: 50rem;
 }
 
+a {
+    color: inherit;
+}
+
 section {
     margin-top: 2rem;
 }
@@ -27,7 +45,7 @@ section {
 .license-item-outer {
     padding: 1rem 0;
     margin: 1rem 0;
-    border-top: 0.1rem solid #333;
+    border-top: 0.1rem solid var(--theme-font-color);
 }
 
 .license-item-outer h2 {
