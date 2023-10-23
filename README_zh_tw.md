@@ -49,11 +49,11 @@
 - [How Shadowban Scanner Works and About Shadowban (English)](./doc/en/about-shadowban.md)
 - [Technical Information on Shadowban Scanner (Japanese)](./doc/en/technical-information.md)
 
-## 隐私政策
+## Privacy Policy
 
-此擴展功能會在使用者的電腦上執行所有處理。數據不會被傳送到外部伺服器。而且，不會執行像某些擴展功能中觀察到的未經許可地獲取使用者認證資訊並訪問Twitter內部API的處理。
+As a rule, this extension performs all processing on the user's computer. No data is transmitted to an external server. It also does not access Twitter's internal API by obtaining the user's credentials without permission, as is the case with some extensions. Web pages not bundled in this extension are subject to their own terms of use and privacy policies.
 
-但是，使用者腳本版本從 [https://abs-0.twimg.com/](https://abs-0.twimg.com/) 檢索圖像以顯示表情符號。
+Note that the user script version retrieves images from [https://abs-0.twimg.com/](https://abs-0.twimg.com/) in order to display emojis.
 
 ## 许可证
 
