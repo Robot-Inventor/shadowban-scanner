@@ -55,33 +55,33 @@ As a rule, this extension performs all processing on the user's computer. No dat
 
 Note that the user script version retrieves images from [https://abs-0.twimg.com/](https://abs-0.twimg.com/) in order to display emojis.
 
-## 라이선스
+## License
 
-이 확장 기능은 MIT 라이선스에 따라 공개되어 있습니다.
+This extension is released under the MIT License.
 
-단, 각 확장 매장의 뱃지 이미지에는 MIT 라이선스가 적용되지 않으며, 대신 자체 브랜드 가이드라인 및 라이선스가 적용됩니다.
+However, the badge images of each extension store are not subject to the MIT license, and instead are subject to their own branding guidelines and licenses.
 
-## 언어 로컬라이제이션 추가
+## Adding Language Localization
 
-새로운 언어를 추가하려면 [번역 가이드(영어)](doc/localization.md)를 참조하십시오.
+To add a new language, see the [Localization Guide (English)](doc/localization.md).
 
-## 개발
+## Development
 
-### 개발
+### Manifest
 
-Manifest 파일을 생성하거나 버전을 변경하려면 다음 명령을 실행하세요. ``<manifestVersion>``에는 2 또는 3을 지정할 수 있습니다. 또한 Manifest 파일 내의 ``version`` 필드는 ``package.json``의 ``version`` 필드 값을 사용합니다.
+To generate a Manifest file or change the version, run the following command. ``<manifestVersion>`` can be 2 or 3. Also, the ``version`` field in the Manifest file will be the value of the ``version`` field in ``package.json``.
 
 ```console
 npm run switchManifest <manifestVersion>
 ```
 
-### 빌드
+### Build
 
 ```console
 npm run build
 ```
 
-### 패키징
+### Package
 
 ```console
 npm run package
