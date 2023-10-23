@@ -49,9 +49,9 @@ For more information on detection methods and technical details, please refer to
 
 ## Privacy Policy
 
-This extension performs all processing on the user's computer. No data is transmitted to an external server. There is no attempt to access Twitter's internal APIs by obtaining the user's credentials without their permission, as is the case with some extensions.
+As a rule, this extension performs all processing on the user's computer. No data is transmitted to an external server. It also does not access Twitter's internal API by obtaining the user's credentials without permission, as is the case with some extensions. Web pages not bundled in this extension are subject to their own terms of use and privacy policies.
 
-However, the user script version retrieves images from [https://abs-0.twimg.com/](https://abs-0.twimg.com/) to display emojis.
+Note that the user script version retrieves images from [https://abs-0.twimg.com/](https://abs-0.twimg.com/) in order to display emojis.
 
 ## License
 

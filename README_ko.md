@@ -49,11 +49,11 @@ Twitter의 Shadowban을 감지하는 확장 기능입니다.
 - [How Shadowban Scanner Works and About Shadowban (English)](./doc/en/about-shadowban.md)
 - [Technical Information on Shadowban Scanner (Japanese)](./doc/en/technical-information.md)
 
-## 개인정보 처리 방침
+## Privacy Policy
 
-이 확장 기능은 모든 처리를 사용자의 컴퓨터에서 실행합니다. 데이터는 외부 서버로 전송되지 않습니다. 또한 일부 확장 기능에서 볼 수 있는 것처럼 사용자의 인증 정보를 무단으로 획득하여 Twitter의 내부 API에 접근하는 처리도 없습니다.
+As a rule, this extension performs all processing on the user's computer. No data is transmitted to an external server. It also does not access Twitter's internal API by obtaining the user's credentials without permission, as is the case with some extensions. Web pages not bundled in this extension are subject to their own terms of use and privacy policies.
 
-그러나 사용자 스크립트 버전은 이모티콘을 표시하기 위해 [https://abs-0.twimg.com/](https://abs-0.twimg.com/)에서 이미지를 검색합니다.
+Note that the user script version retrieves images from [https://abs-0.twimg.com/](https://abs-0.twimg.com/) in order to display emojis.
 
 ## 라이선스
 
