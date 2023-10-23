@@ -36,9 +36,11 @@ class ProfileChecker {
         message.isAlert = isUserPossiblySensitive;
         message.expand();
 
-        const userDescription = document.querySelector("[data-testid='UserDescription']");
-        if (!userDescription) throw new Error("Failed to get user description of profile");
-        userDescription.insertAdjacentElement("afterend", message.getContainer());
+        const bioOrUserName =
+            document.querySelector("[data-testid='UserDescription']") ||
+            document.querySelector("[data-testid='UserName']");
+        if (!bioOrUserName) throw new Error("Failed to get user description of profile");
+        bioOrUserName.insertAdjacentElement("afterend", message.getContainer());
     }
 }
 
