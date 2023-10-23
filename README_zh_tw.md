@@ -55,33 +55,33 @@ As a rule, this extension performs all processing on the user's computer. No dat
 
 Note that the user script version retrieves images from [https://abs-0.twimg.com/](https://abs-0.twimg.com/) in order to display emojis.
 
-## 许可证
+## License
 
-该扩展程序采用MIT许可证发布。
+This extension is released under the MIT License.
 
-但是，每個擴展商店的徽章圖像不受 MIT 許可證的約束，而是受其自己的品牌指南和許可證的約束。
+However, the badge images of each extension store are not subject to the MIT license, and instead are subject to their own branding guidelines and licenses.
 
-## 添加語言本地化
+## Adding Language Localization
 
-請參考[翻譯指南（英文）](doc/localization.md)以添加新語言。
+To add a new language, see the [Localization Guide (English)](doc/localization.md).
 
-## 開発
+## Development
 
 ### Manifest
 
-請執行以下指令以生成 Manifest 檔案或更改版本。您可以將 ``<manifestVersion>`` 設定為 2 或 3。此外，Manifest 檔案中的 ``version`` 欄位將使用 ``package.json`` 中的 ``version`` 欄位值。
+To generate a Manifest file or change the version, run the following command. ``<manifestVersion>`` can be 2 or 3. Also, the ``version`` field in the Manifest file will be the value of the ``version`` field in ``package.json``.
 
 ```console
 npm run switchManifest <manifestVersion>
 ```
 
-### 建置
+### Build
 
 ```console
 npm run build
 ```
 
-### 封裝
+### Package
 
 ```console
 npm run package
