@@ -1,4 +1,4 @@
-import { ONBOARDING_URL, RELEASE_NOTE_URL } from "./common/constants";
+import { OFFBOARDING_URL, ONBOARDING_URL, RELEASE_NOTE_URL } from "./common/constants";
 import browser from "webextension-polyfill";
 import { migrateFromV1ToV2 } from "./migrator";
 
@@ -15,7 +15,8 @@ browser.runtime.onInstalled.addListener((details) => {
     }
 
     if (details.reason === "install") {
-        const welcomeURL = isJapanese ? ONBOARDING_URL.ja : ONBOARDING_URL.en;
-        void browser.tabs.create({ url: welcomeURL });
+        void browser.tabs.create({ url: ONBOARDING_URL });
     }
 });
+
+void browser.runtime.setUninstallURL(OFFBOARDING_URL);
