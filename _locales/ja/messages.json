@@ -78,6 +78,12 @@
     "settingsShowMessagesInUnproblematicTweets": {
         "message": "問題のないツイートにも検証結果を表示する"
     },
+    "settingsEnableForOtherUsersTweets": {
+        "message": "他のユーザーのツイートにも検証検証結果を表示する"
+    },
+    "settingsEnableForOtherUsersProfiles": {
+        "message": "他のユーザーのプロフィールにも検証結果を表示する"
+    },
     "settingsShowNotesInMessages": {
         "message": "メッセージ下部に注意書きを表示する"
     },
