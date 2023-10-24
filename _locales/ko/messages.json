@@ -78,9 +78,6 @@
     "settingsShowMessagesInUnproblematicTweets": {
         "message": "문제 없는 트윗에도 검증 결과를 표시합니다"
     },
-    "settingsEnableOnlyForCurrentUsersTweets": {
-        "message": "내 트윗에만 검증 결과 표시"
-    },
     "settingsShowNotesInMessages": {
         "message": "메시지 하단에 메모 표시"
     },

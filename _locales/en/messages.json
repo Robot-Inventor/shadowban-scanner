@@ -78,9 +78,6 @@
     "settingsShowMessagesInUnproblematicTweets": {
         "message": "Display check results for tweets that have no issues"
     },
-    "settingsEnableOnlyForCurrentUsersTweets": {
-        "message": "Display check results only in your own tweets"
-    },
     "settingsShowNotesInMessages": {
         "message": "Display notes at the bottom of the message"
     },

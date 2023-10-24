@@ -124,7 +124,7 @@ ${
         const menuBar = this.getMenuBar();
         const tweetStatus = this.getTweetStatus();
 
-        if (!tweetStatus.tweet.isTweetByCurrentUser && this.options.enableOnlyForCurrentUsersTweets) return;
+        if (!tweetStatus.tweet.isTweetByCurrentUser && !this.options.enableForOtherUsersTweets) return;
 
         const messageSummary = MessageSummary.fromTweetStatus(tweetStatus);
 
