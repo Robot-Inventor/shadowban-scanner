@@ -6,7 +6,7 @@ import { Settings } from "../@types/common/settings";
 const DEFAULT_SETTINGS = {
     alwaysDetailedView: false,
     enableForOtherUsersProfiles: true,
-    enableForOtherUsersTweets: false,
+    enableForOtherUsersTweets: true,
     showMessagesInUnproblematicTweets: false,
     showNotesInMessages: true,
     showTweetButton: true

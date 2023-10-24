@@ -24,8 +24,8 @@ const migrateFromV2ToV2Dot1 = async () => {
     if ("enableOnlyForCurrentUsersTweets" in currentSettings) {
         await browser.storage.local.remove("enableOnlyForCurrentUsersTweets");
 
-        if (!currentSettings.enableOnlyForCurrentUsersTweets) {
-            await browser.storage.local.set({ enableForOtherUsersTweets: true });
+        if (currentSettings.enableOnlyForCurrentUsersTweets) {
+            await browser.storage.local.set({ enableForOtherUsersTweets: false });
         }
     }
 };
