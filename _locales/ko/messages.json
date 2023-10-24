@@ -94,7 +94,7 @@
         "message": "Privacy policy"
     },
     "settingsPrivacyPolicyURL": {
-        "message": "https://github.com/Robot-Inventor/shadowban-scanner/blob/main/README_ko.md#%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4-%EC%B2%98%EB%A6%AC-%EB%B0%A9%EC%B9%A8"
+        "message": "https://github.com/Robot-Inventor/shadowban-scanner/blob/main/README_ko.md#privacy-policy"
     },
     "settingsOpenSourceLicenses": {
         "message": "Open source licenses"
