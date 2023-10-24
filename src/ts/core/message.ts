@@ -222,7 +222,8 @@ class Message {
             button.classList.add(COLLAPSED_CONTENT_CLASS_NAME);
         }
 
-        this.container.appendChild(button);
+        // eslint-disable-next-line capitalized-comments
+        // this.container.appendChild(button);
     }
 
     /**
