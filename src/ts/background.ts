@@ -2,21 +2,44 @@ import { ONBOARDING_URL, RELEASE_NOTE_URL } from "./common/constants";
 import { migrateFromV1ToV2, migrateFromV2ToV2Dot1 } from "./migrator";
 import browser from "webextension-polyfill";
 
+/**
+ * This function is called when the extension is updated.
+ * - If the extension is updated from v1 to v2, migrate settings from v1 to v2.
+ * - If the extension is updated from v2 to v2.1, migrate settings from v2 to v2.1.
+ * - If the extension is not under development, open the release note page.
+ * @param details details of the update
+ * @param isJapanese if the user's language is Japanese
+ */
+const onUpdated = (details: browser.Runtime.OnInstalledDetailsType, isJapanese: boolean) => {
+    void migrateFromV1ToV2();
+    void migrateFromV2ToV2Dot1();
+
+    // Do nothing while development
+    if (details.previousVersion === browser.runtime.getManifest().version) return;
+
+    const releaseNoteURL = isJapanese ? RELEASE_NOTE_URL.ja : RELEASE_NOTE_URL.en;
+    void browser.tabs.create({ url: releaseNoteURL });
+};
+
+/**
+ * This function is called when the extension is installed.
+ * This function opens the onboarding page.
+ * @param isJapanese if the user's language is Japanese
+ */
+const onInstalled = (isJapanese: boolean) => {
+    const welcomeURL = isJapanese ? ONBOARDING_URL.ja : ONBOARDING_URL.en;
+    void browser.tabs.create({ url: welcomeURL });
+};
+
 browser.runtime.onInstalled.addListener((details) => {
     const isJapanese = browser.i18n.getUILanguage() === "ja";
 
     if (details.reason === "update") {
-        void migrateFromV1ToV2();
-        void migrateFromV2ToV2Dot1();
-
-        const releaseNoteURL = isJapanese ? RELEASE_NOTE_URL.ja : RELEASE_NOTE_URL.en;
-        void browser.tabs.create({ url: releaseNoteURL });
-
+        onUpdated(details, isJapanese);
         return;
     }
 
     if (details.reason === "install") {
-        const welcomeURL = isJapanese ? ONBOARDING_URL.ja : ONBOARDING_URL.en;
-        void browser.tabs.create({ url: welcomeURL });
+        onInstalled(isJapanese);
     }
 });
