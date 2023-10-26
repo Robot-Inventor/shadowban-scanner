@@ -26,7 +26,7 @@ class ProfileChecker {
     // eslint-disable-next-line max-statements
     run() {
         const isCurrentUsersProfile = Boolean(document.querySelector("[data-testid='editProfileButton']"));
-        if (this.options.enableOnlyForCurrentUsersTweets && !isCurrentUsersProfile) return;
+        if (!this.options.enableForOtherUsersProfiles && !isCurrentUsersProfile) return;
 
         this.userName.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
         const reactProps = new ProfileReactProps(this.userName).get();

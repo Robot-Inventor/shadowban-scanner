@@ -76,10 +76,13 @@
         "message": "始終顯示詳細資訊"
     },
     "settingsShowMessagesInUnproblematicTweets": {
-        "message": "显示验证结果，即使是没有问题的推文"
+        "message": "顯示沒有問題的推文的檢查結果"
     },
-    "settingsEnableOnlyForCurrentUsersTweets": {
-        "message": "僅在我的推文中顯示驗證結果"
+    "settingsEnableForOtherUsersTweets": {
+        "message": "顯示其他用戶推文的檢查結果"
+    },
+    "settingsEnableForOtherUsersProfiles": {
+        "message": "顯示其他使用者個人資料的檢查結果"
     },
     "settingsShowNotesInMessages": {
         "message": "在訊息底部顯示註釋"
