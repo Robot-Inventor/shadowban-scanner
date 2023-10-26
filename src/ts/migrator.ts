@@ -2,7 +2,6 @@ import browser from "webextension-polyfill";
 
 /**
  * Migrate settings from v1 to v2.
- * @returns {Promise<void>}
  */
 const migrateFromV1ToV2 = async () => {
     const currentSettings = await browser.storage.local.get(null);
@@ -14,6 +13,9 @@ const migrateFromV1ToV2 = async () => {
     }
 };
 
+/**
+ * Migrate settings from v2 to v2.1.
+ */
 const migrateFromV2ToV2Dot1 = async () => {
     const currentSettings = await browser.storage.local.get(null);
 
