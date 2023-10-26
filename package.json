@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx eslint ./src/ts/**/*.ts && npx knip && ts-node --files ./script/addonsLinter.ts",
-    "format": "npx prettier --write ./src/ts/**/*.ts",
-    "format:check": "npx prettier --check ./src/ts/**/*.ts",
+    "format": "npx prettier --write ./src/ts/**/*.ts ./src/html/**/*.html ./src/css/**/*.css",
+    "format:check": "npx prettier --check ./src/ts/**/*.ts ./src/html/**/*.html ./src/css/**/*.css",
     "build": "npm run format && ts-node ./script/build.ts",
     "package": "ts-node ./script/package.ts",
     "version": "npm run build && npm run package && git add .",
