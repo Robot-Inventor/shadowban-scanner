@@ -61,7 +61,11 @@ module.exports = {
         }),
         new LicensePlugin(
             {
-                outputFilename: "./json/oss-licenses.json"
+                outputFilename: "./json/oss-licenses.json",
+                unacceptableLicenseTest: (licenseIdentifier) => {
+                    const acceptableLicenses = ["BSD-3-Clause", "Apache-2.0", "MIT", "0BSD", "MPL-2.0"];
+                    return !acceptableLicenses.includes(licenseIdentifier);
+                }
             }
         )
     ]
