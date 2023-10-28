@@ -1,5 +1,3 @@
-import path from "path";
-
 const WEB_EXT_IGNORE_FILES = [
     "./src/",
     "./script/",
@@ -14,6 +12,6 @@ const WEB_EXT_IGNORE_FILES = [
     "./tsconfig.json",
     "./webpack.config.js",
     "./doc/"
-].map((file) => path.normalize(file));
+];
 
 export { WEB_EXT_IGNORE_FILES };
