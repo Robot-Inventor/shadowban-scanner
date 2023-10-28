@@ -4,6 +4,8 @@ import { execSync } from "child_process";
 import linter from "addons-linter";
 import path from "path";
 
+const ignoreFiles = WEB_EXT_IGNORE_FILES.map((file) => path.normalize(file));
+
 const main = async () => {
     const linterConfigFirefox: linter.Options = {
         config: {
@@ -14,7 +16,7 @@ const main = async () => {
 
                 const normalizedFileName = isDir ? path.normalize(`${fileName}/`) : path.normalize(fileName);
 
-                return !WEB_EXT_IGNORE_FILES.includes(normalizedFileName);
+                return !ignoreFiles.includes(normalizedFileName);
             }
         }
     };
