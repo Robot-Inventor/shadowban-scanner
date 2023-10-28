@@ -27,6 +27,8 @@ const onUpdated = (details: browser.Runtime.OnInstalledDetailsType, isJapanese: 
  * @param isJapanese if the user's language is Japanese
  */
 const onInstalled = (isJapanese: boolean) => {
+    // Temporary disable onboarding page until it is created
+    return;
     const welcomeURL = isJapanese ? ONBOARDING_URL.ja : ONBOARDING_URL.en;
     void browser.tabs.create({ url: welcomeURL });
 };
