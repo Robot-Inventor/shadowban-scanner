@@ -10,7 +10,7 @@
     "format:check": "npx prettier --check ./src/ts/**/*.ts ./src/html/**/*.html ./src/css/**/*.css",
     "build": "npm run format && ts-node ./script/build.ts",
     "package": "ts-node ./script/package.ts",
-    "version": "npm run build && npm run package && git add .",
+    "version": "npm run package && git add .",
     "switchManifest": "ts-node ./script/changeManifestVersion.ts"
   },
   "repository": {
