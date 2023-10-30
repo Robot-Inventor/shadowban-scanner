@@ -78,6 +78,9 @@
     "settingsShowMessagesInUnproblematicTweets": {
         "message": "Display check results for tweets that have no issues"
     },
+    "settingsShowMessagesInUnproblematicProfiles": {
+        "message": "Display check results for profiles that have no issues"
+    },
     "settingsEnableForOtherUsersTweets": {
         "message": "Display check results for other users' tweets"
     },

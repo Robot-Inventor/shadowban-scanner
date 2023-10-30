@@ -32,6 +32,8 @@ class ProfileChecker {
         const reactProps = new ProfileReactProps(this.userName).get();
         const isUserPossiblySensitive = Boolean(reactProps.user.possibly_sensitive);
 
+        if (!isUserPossiblySensitive && !this.options.showMessagesInUnproblematicProfiles) return;
+
         const message = new Message(MessageSummary.fromAccountStatus(isUserPossiblySensitive));
         message.isAlert = isUserPossiblySensitive;
         message.expand();

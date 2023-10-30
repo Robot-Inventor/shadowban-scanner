@@ -78,6 +78,9 @@
     "settingsShowMessagesInUnproblematicTweets": {
         "message": "顯示沒有問題的推文的檢查結果"
     },
+    "settingsShowMessagesInUnproblematicProfiles": {
+        "message": "顯示沒有問題的設定檔的檢查結果"
+    },
     "settingsEnableForOtherUsersTweets": {
         "message": "顯示其他用戶推文的檢查結果"
     },
