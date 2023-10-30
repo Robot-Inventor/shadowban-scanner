@@ -78,6 +78,9 @@
     "settingsShowMessagesInUnproblematicTweets": {
         "message": "問題のないツイートにも検証結果を表示する"
     },
+    "settingsShowMessagesInUnproblematicProfiles": {
+        "message": "問題のないプロフィールにも検証結果を表示する"
+    },
     "settingsEnableForOtherUsersTweets": {
         "message": "他のユーザーのツイートにも検証結果を表示する"
     },

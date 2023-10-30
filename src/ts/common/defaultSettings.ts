@@ -7,6 +7,7 @@ const DEFAULT_SETTINGS = {
     alwaysDetailedView: false,
     enableForOtherUsersProfiles: true,
     enableForOtherUsersTweets: true,
+    showMessagesInUnproblematicProfiles: true,
     showMessagesInUnproblematicTweets: false,
     showNotesInMessages: true,
     showTweetButton: true

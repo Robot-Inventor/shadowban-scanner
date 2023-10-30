@@ -78,6 +78,9 @@
     "settingsShowMessagesInUnproblematicTweets": {
         "message": "문제가 없는 트윗의 확인 결과를 표시합니다"
     },
+    "settingsShowMessagesInUnproblematicProfiles": {
+        "message": "문제가 없는 프로필에 대한 확인 결과 표시"
+    },
     "settingsEnableForOtherUsersTweets": {
         "message": "다른 사용자의 트윗에 대한 확인 결과 표시"
     },
