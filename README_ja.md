@@ -50,7 +50,7 @@ Twitterのシャドウバンを検出する拡張機能です。
 ## プライバシーポリシー
 
 <!-- PRIVACY_POLICY_TEXT_START -->
-<!-- THIS SECTION IS GENERATED FROM _locales/ja/messages.json. DO NOT EDIT MANUALLY -->
+<!-- THIS SECTION IS GENERATED FROM ./_locales/ja/messages.json. DO NOT EDIT MANUALLY -->
 
 この拡張機能は、原則としてすべての処理をユーザーのコンピューター上で実行します。データが外部のサーバーに送信されることはありません。また、一部の拡張機能でみられるような、ユーザーの認証情報を無断で取得してTwitterの内部APIにアクセスする処理もありません。この拡張機能に同梱されていないWebページには、それぞれの利用規約やプライバシーポリシーが適用されます。
 
