@@ -13,6 +13,7 @@
         "@types/addons-linter"
     ],
     "ignore": [
-        "script/addonsLinter.ts"
+        "script/addonsLinter.ts",
+        "script/updatePrivacyPolicy.ts"
     ]
 }
