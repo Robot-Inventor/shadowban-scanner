@@ -18,6 +18,7 @@ module.exports = {
         "./js/pageScript.js": "./src/ts/pageScript.ts",
         "./js/background.js": "./src/ts/background.ts",
         "./js/ossLicenses.js": "./src/ts/ossLicenses.ts",
+        "./js/privacyPolicy.js": "./src/ts/privacyPolicy.ts",
         ...userScriptEntries
     },
     output: {

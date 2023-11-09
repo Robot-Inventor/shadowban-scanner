@@ -1,0 +1,35 @@
+:root {
+    --theme-font-color: #333;
+    --theme-background-color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --theme-font-color: #fff;
+        --theme-background-color: #121212;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    font-family: sans-serif;
+    width: 100%;
+    font-size: 100%;
+    color: var(--theme-font-color);
+    background: var(--theme-background-color);
+}
+
+body {
+    padding: 2rem 0;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 50rem;
+}
