@@ -30,7 +30,11 @@ class ProfileChecker {
 
         this.userName.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
         const reactProps = new ProfileReactProps(this.userName).get();
-        const isUserPossiblySensitive = Boolean(reactProps.user.possibly_sensitive);
+        const isUserPossiblySensitive =
+            Boolean(reactProps.user.possibly_sensitive) ||
+            Boolean(
+                ["sensitive_media", "offensive_profile_content"].includes(reactProps.user.profile_interstitial_type)
+            );
 
         if (!isUserPossiblySensitive && !this.options.showMessagesInUnproblematicProfiles) return;
 
