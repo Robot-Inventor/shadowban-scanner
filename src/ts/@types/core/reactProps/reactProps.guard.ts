@@ -154,6 +154,11 @@ export function isProfileReactPropsData(obj: unknown): obj is ProfileReactPropsD
             typeof typedObj["children"][1]["props"]["user"] === "function") &&
         (typedObj["children"][1]["props"]["user"]["possibly_sensitive"] === null ||
             typedObj["children"][1]["props"]["user"]["possibly_sensitive"] === false ||
-            typedObj["children"][1]["props"]["user"]["possibly_sensitive"] === true)
+            typedObj["children"][1]["props"]["user"]["possibly_sensitive"] === true) &&
+        (typedObj["children"][1]["props"]["user"]["profile_interstitial_type"] === "" ||
+            typedObj["children"][1]["props"]["user"]["profile_interstitial_type"] === "sensitive_media" ||
+            typedObj["children"][1]["props"]["user"]["profile_interstitial_type"] === "fake_account" ||
+            typedObj["children"][1]["props"]["user"]["profile_interstitial_type"] === "offensive_profile_content" ||
+            typedObj["children"][1]["props"]["user"]["profile_interstitial_type"] === "timeout")
     )
 }

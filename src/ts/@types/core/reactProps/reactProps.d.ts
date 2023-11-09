@@ -1,3 +1,5 @@
+type ProfileInterstitialType = "" | "sensitive_media" | "fake_account" | "offensive_profile_content" | "timeout";
+
 interface BasicTweetProps {
     possibly_sensitive?: boolean | null;
     possibly_sensitive_editable?: boolean | null;
@@ -5,7 +7,7 @@ interface BasicTweetProps {
     user: {
         possibly_sensitive?: boolean | null;
         screen_name: string;
-        profile_interstitial_type: "" | "sensitive_media" | "fake_account" | "offensive_profile_content" | "timeout";
+        profile_interstitial_type: ProfileInterstitialType;
     };
 }
 
@@ -116,6 +118,7 @@ export interface ProfileReactPropsData {
             props: {
                 user: {
                     possibly_sensitive: boolean | null;
+                    profile_interstitial_type: ProfileInterstitialType;
                 };
             };
         }
