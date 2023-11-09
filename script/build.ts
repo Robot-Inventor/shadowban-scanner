@@ -17,6 +17,9 @@ try {
     process.exit(1);
 }
 
+console.log("Updating privacy policy...");
+execSync("npx ts-node ./script/updatePrivacyPolicy.ts");
+
 console.log("Adding userScript comments...");
 const userScriptFiles = glob.sync("./userScript/*.user.js");
 

@@ -1,23 +1,11 @@
 import "@material/web/checkbox/checkbox.js";
 import { DEFAULT_SETTINGS } from "./common/defaultSettings";
+import { Translator } from "./common/translator";
 import browser from "webextension-polyfill";
 import { isSettings } from "./@types/common/settings.guard";
 
-const translationTargets: NodeListOf<HTMLElement> = document.querySelectorAll("[data-translation]");
-for (const translationTarget of translationTargets) {
-    const translationAttribute = translationTarget.dataset.translation;
-    if (!translationAttribute) throw new Error("Failed to get translation attribute");
-    const text = browser.i18n.getMessage(translationAttribute);
-    translationTarget.textContent = text;
-}
-
-const translationLinks: NodeListOf<HTMLAnchorElement> = document.querySelectorAll("[data-translation-link]");
-for (const translationLink of translationLinks) {
-    const translationAttribute = translationLink.dataset.translationLink;
-    if (!translationAttribute) throw new Error("Failed to get translation attribute");
-    const url = browser.i18n.getMessage(translationAttribute);
-    translationLink.setAttribute("href", url);
-}
+const translator = new Translator((key) => browser.i18n.getMessage(key), browser.runtime.getURL("dist/image/"));
+translator.translateElements();
 
 const checkboxElements = document.querySelectorAll("md-checkbox");
 

@@ -51,7 +51,12 @@
 
 ## Privacy Policy
 
+<!-- PRIVACY_POLICY_TEXT_START -->
+<!-- THIS SECTION IS GENERATED FROM ./_locales/zh_TW/messages.json. DO NOT EDIT MANUALLY -->
+
 As a rule, this extension performs all processing on the user's computer. No data is transmitted to an external server. It also does not access Twitter's internal API by obtaining the user's credentials without permission, as is the case with some extensions. Web pages not bundled in this extension are subject to their own terms of use and privacy policies.
+
+<!-- PRIVACY_POLICY_TEXT_END -->
 
 Note that the user script version retrieves images from [https://abs-0.twimg.com/](https://abs-0.twimg.com/) in order to display emojis.
 
