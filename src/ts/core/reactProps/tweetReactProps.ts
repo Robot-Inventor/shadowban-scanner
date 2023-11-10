@@ -75,6 +75,15 @@ class TweetReactProps {
 
         return tweetAuthorScreenName === currentUserScreenName;
     }
+
+    /**
+     * Check whether the tweet is focal.
+     * @returns whether the tweet is focal
+     */
+    get isFocal(): boolean {
+        const tweetReactProps = new ReactProps(this.tweet).get();
+        return isFocalTweetOuterReactPropsData(tweetReactProps);
+    }
 }
 
 export { TweetReactProps };
