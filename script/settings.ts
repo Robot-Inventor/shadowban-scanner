@@ -11,7 +11,9 @@ const WEB_EXT_IGNORE_FILES = [
     "./renovate.json",
     "./tsconfig.json",
     "./webpack.config.js",
-    "./doc/"
+    "./doc/",
+    "./knip.json",
+    "tsconfig.eslint.json"
 ];
 
 export { WEB_EXT_IGNORE_FILES };
