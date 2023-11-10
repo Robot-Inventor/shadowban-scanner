@@ -1,6 +1,6 @@
 import { ONBOARDING_URL, RELEASE_NOTE_URL } from "./common/constants";
-import { migrateFromV1ToV2, migrateFromV2ToV2Dot1 } from "./migrator";
 import browser from "webextension-polyfill";
+import { migrateFromV2ToV2Dot1 } from "./migrator";
 
 /**
  * This function is called when the extension is updated.
@@ -11,7 +11,6 @@ import browser from "webextension-polyfill";
  * @param isJapanese if the user's language is Japanese
  */
 const onUpdated = (details: browser.Runtime.OnInstalledDetailsType, isJapanese: boolean) => {
-    void migrateFromV1ToV2();
     void migrateFromV2ToV2Dot1();
 
     // Do nothing while development
