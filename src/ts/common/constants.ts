@@ -14,8 +14,8 @@ const ONBOARDING_URL = {
     ja: "https://github.com/Robot-Inventor/shadowban-scanner/blob/main/README_ja.md"
 } as const;
 const RELEASE_NOTE_URL = {
-    en: "https://robot-inventor.github.io/article/2023/10/29/shadowban-scanner-v2-1-release/en/",
-    ja: "https://robot-inventor.github.io/article/2023/10/29/shadowban-scanner-v2-1-release/"
+    en: "https://robot-inventor.github.io/article/2023/11/10/shadowban-scanner-v2-2-release/en/",
+    ja: "https://robot-inventor.github.io/article/2023/11/10/shadowban-scanner-v2-2-release/"
 } as const;
 
 export {
