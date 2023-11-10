@@ -8,6 +8,10 @@
     font-family: sans-serif;
 }
 
+.shadowban-scanner-message.reduce-margin-top {
+    margin-top: 0;
+}
+
 .shadowban-scanner-message .twemoji {
     height: 1em;
     width: 1em;

@@ -106,15 +106,6 @@ ${
     }
 
     /**
-     * Get the React props of the tweet.
-     * @returns React props of the tweet
-     */
-    private getTweetStatus(): TweetStatus {
-        const tweetReactProps = new TweetReactProps(this.tweet, this.getMenuBar());
-        return tweetReactProps.get();
-    }
-
-    /**
      * Run the tweet checker.
      */
     // eslint-disable-next-line max-statements
@@ -122,7 +113,8 @@ ${
         this.tweet.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
 
         const menuBar = this.getMenuBar();
-        const tweetStatus = this.getTweetStatus();
+        const tweetReactProps = new TweetReactProps(this.tweet, this.getMenuBar());
+        const tweetStatus = tweetReactProps.get();
 
         if (!tweetStatus.tweet.isTweetByCurrentUser && !this.options.enableForOtherUsersTweets) return;
 
@@ -133,7 +125,7 @@ ${
         const { isTweetSearchable } = statusData;
         if (isTweetSearchable && !this.options.showMessagesInUnproblematicTweets) return;
 
-        const message = new Message(messageSummary);
+        const message = new Message(messageSummary, tweetReactProps.isFocal);
         message.isAlert = !isTweetSearchable;
         if (this.options.alwaysDetailedView) {
             message.expand();

@@ -21,9 +21,12 @@ class Message {
      * Generate a message element.
      * @param summary summary of the message
      */
-    constructor(summary: TranslationKey) {
+    constructor(summary: TranslationKey, reduceMarginTop = false) {
         this.container = document.createElement("div");
         this.container.classList.add(MESSAGE_CLASS_NAME);
+        if (reduceMarginTop) {
+            this.container.classList.add("reduce-margin-top");
+        }
         this.container.style.color = Message.getTextColor();
 
         const summaryContainer = document.createElement("span");
