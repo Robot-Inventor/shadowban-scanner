@@ -72,20 +72,26 @@
     "tweetTheResults": {
         "message": "發推特結果"
     },
-    "settingsAlwaysDetailedView": {
-        "message": "始終顯示詳細資訊"
+    "settingsWhereToDisplayCheckResults": {
+        "message": "顯示檢查結果的位置"
     },
     "settingsShowMessagesInUnproblematicTweets": {
-        "message": "顯示沒有問題的推文的檢查結果"
+        "message": "在非問題推文中顯示"
     },
     "settingsShowMessagesInUnproblematicProfiles": {
-        "message": "顯示沒有問題的設定檔的檢查結果"
+        "message": "在非問題簡介中顯示"
     },
     "settingsEnableForOtherUsersTweets": {
-        "message": "顯示其他用戶推文的檢查結果"
+        "message": "在其他用戶的推文中顯示"
     },
     "settingsEnableForOtherUsersProfiles": {
-        "message": "顯示其他使用者個人資料的檢查結果"
+        "message": "在其他使用者的簡介中顯示"
+    },
+    "settingsOtherSettings": {
+        "message": "其他設定"
+    },
+    "settingsAlwaysDetailedView": {
+        "message": "始終顯示詳細資訊"
     },
     "settingsShowNotesInMessages": {
         "message": "在訊息底部顯示註釋"

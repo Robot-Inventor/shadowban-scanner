@@ -1,4 +1,6 @@
 :root {
+    --window-padding: 1.75rem;
+
     --theme-background-color: #fff;
     --theme-font-color: #333;
 
@@ -36,7 +38,7 @@ body {
 }
 
 body {
-    padding: 1.75rem;
+    padding: var(--window-padding);
     width: max-content;
     background: var(--theme-background-color);
     color: var(--theme-font-color);
@@ -50,6 +52,7 @@ body {
 
 h1 {
     font-size: 1.4rem;
+    width: max-content;
 }
 
 #version-number {
@@ -64,20 +67,53 @@ fieldset {
     border: none;
 }
 
-fieldset > div {
+.settings-separator {
+    --left-line-width: 0.75rem;
+
+    opacity: 0.7;
+    font-size: 0.9em;
+    position: relative;
+    left: var(--left-line-width);
+}
+
+.settings-separator:not(:first-of-type) {
+    margin-top: 1rem;
+}
+
+.settings-separator > hr {
+    border: none;
+    width: calc(100vw - var(--window-padding) * 2);
+    height: 0.1rem;
+    background: var(--theme-font-color);
+    position: absolute;
+    top: 50%;
+    transform: translate(calc(-1 * var(--left-line-width)), -50%);
+    z-index: 1;
+}
+
+.settings-separator > div {
+    width: max-content;
+    background: var(--theme-background-color);
+    position: relative;
+    z-index: 2;
+    padding: 0 0.5rem;
+}
+
+.settings-item {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin: 0.5rem 0;
+    padding: 0 1rem;
 }
 
-fieldset > div,
-fieldset > div > * {
+.settings-item,
+.settings-item > * {
     cursor: pointer;
 }
 
-fieldset > div > label {
+.settings-item > label {
     flex-grow: 1;
 }
 
@@ -93,7 +129,6 @@ small {
 
 #footer-links {
     display: block;
-    margin-top: 0.5rem;
 }
 
 #footer-links a {

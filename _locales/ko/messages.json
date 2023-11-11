@@ -72,20 +72,26 @@
     "tweetTheResults": {
         "message": "결과 트윗하기"
     },
-    "settingsAlwaysDetailedView": {
-        "message": "항상 상세 정보 표시"
+    "settingsWhereToDisplayCheckResults": {
+        "message": "검사 결과를 표시할 위치"
     },
     "settingsShowMessagesInUnproblematicTweets": {
-        "message": "문제가 없는 트윗의 확인 결과를 표시합니다"
+        "message": "문제가 없는 트윗에 표시"
     },
     "settingsShowMessagesInUnproblematicProfiles": {
-        "message": "문제가 없는 프로필에 대한 확인 결과 표시"
+        "message": "문제가 없는 프로필에 표시"
     },
     "settingsEnableForOtherUsersTweets": {
-        "message": "다른 사용자의 트윗에 대한 확인 결과 표시"
+        "message": "다른 사용자의 트윗에 표시"
     },
     "settingsEnableForOtherUsersProfiles": {
-        "message": "다른 사용자의 프로필에 대한 확인 결과 표시"
+        "message": "다른 사용자의 프로필에 표시"
+    },
+    "settingsOtherSettings": {
+        "message": "기타 설정"
+    },
+    "settingsAlwaysDetailedView": {
+        "message": "항상 상세 정보 표시"
     },
     "settingsShowNotesInMessages": {
         "message": "메시지 하단에 메모 표시"
