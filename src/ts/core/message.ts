@@ -25,7 +25,7 @@ class Message {
         this.container = document.createElement("div");
         this.container.classList.add(MESSAGE_CLASS_NAME);
         if (reduceMarginTop) {
-            this.container.classList.add("reduce-margin-top");
+            this.container.classList.add("focal-mode");
         }
         this.container.style.color = Message.getTextColor();
 
