@@ -72,26 +72,32 @@
     "tweetTheResults": {
         "message": "結果をツイート"
     },
-    "settingsAlwaysDetailedView": {
-        "message": "常に詳細情報を表示する"
+    "settingsWhereToDisplayCheckResults": {
+        "message": "検証結果を表示する場所"
     },
     "settingsShowMessagesInUnproblematicTweets": {
-        "message": "問題のないツイートにも検証結果を表示する"
+        "message": "問題のないツイートにも表示"
     },
     "settingsShowMessagesInUnproblematicProfiles": {
-        "message": "問題のないプロフィールにも検証結果を表示する"
+        "message": "問題のないプロフィールにも表示"
     },
     "settingsEnableForOtherUsersTweets": {
-        "message": "他のユーザーのツイートにも検証結果を表示する"
+        "message": "他のユーザーのツイートにも表示"
     },
     "settingsEnableForOtherUsersProfiles": {
-        "message": "他のユーザーのプロフィールにも検証結果を表示する"
+        "message": "他のユーザーのプロフィールにも表示"
+    },
+    "settingsOtherSettings": {
+        "message": "その他の設定"
+    },
+    "settingsAlwaysDetailedView": {
+        "message": "常に詳細情報を表示"
     },
     "settingsShowNotesInMessages": {
-        "message": "メッセージ下部に注意書きを表示する"
+        "message": "メッセージ下部に注意書きを表示"
     },
     "settingsShowTweetButton": {
-        "message": "結果をツイートするボタンを表示する"
+        "message": "結果をツイートするボタンを表示"
     },
     "settingsPleaseReload": {
         "message": "設定を変更したらTwitterを再読み込みしてください。"

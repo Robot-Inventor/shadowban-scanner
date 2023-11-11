@@ -72,20 +72,26 @@
     "tweetTheResults": {
         "message": "Tweet the results"
     },
-    "settingsAlwaysDetailedView": {
-        "message": "Always display detailed information"
+    "settingsWhereToDisplayCheckResults": {
+        "message": "Where to display check results"
     },
     "settingsShowMessagesInUnproblematicTweets": {
-        "message": "Display check results for tweets that have no issues"
+        "message": "Display in non-problematic tweets"
     },
     "settingsShowMessagesInUnproblematicProfiles": {
-        "message": "Display check results for profiles that have no issues"
+        "message": "Display in non-problematic profiles"
     },
     "settingsEnableForOtherUsersTweets": {
-        "message": "Display check results for other users' tweets"
+        "message": "Display in other users' tweets"
     },
     "settingsEnableForOtherUsersProfiles": {
-        "message": "Display check results for other users' profiles"
+        "message": "Display in other users' profiles"
+    },
+    "settingsOtherSettings": {
+        "message": "Other settings"
+    },
+    "settingsAlwaysDetailedView": {
+        "message": "Always display detailed information"
     },
     "settingsShowNotesInMessages": {
         "message": "Display notes at the bottom of the message"
