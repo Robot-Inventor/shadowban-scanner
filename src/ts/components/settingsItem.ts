@@ -3,7 +3,7 @@ import { customElement, property, query } from "lit/decorators.js";
 import { MdCheckbox } from "@material/web/checkbox/checkbox";
 
 @customElement("settings-item")
-export class SettingsItem extends LitElement {
+class SettingsItem extends LitElement {
     @query("md-checkbox")
     private checkbox!: MdCheckbox;
 
