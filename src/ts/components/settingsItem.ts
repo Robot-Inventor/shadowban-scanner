@@ -1,6 +1,7 @@
+import "@material/web/checkbox/checkbox.js";
 import { LitElement, css, html } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
-import { MdCheckbox } from "@material/web/checkbox/checkbox";
+import type { MdCheckbox } from "@material/web/checkbox/checkbox";
 
 @customElement("settings-item")
 class SettingsItem extends LitElement {
@@ -34,10 +35,10 @@ class SettingsItem extends LitElement {
     `;
 
     @property({ attribute: "settings-name", reflect: true, type: String })
-    settingsName = "";
+    public settingsName = "";
 
     @property({ attribute: true, reflect: true, type: Boolean })
-    checked = false;
+    public checked = false;
 
     protected render() {
         return html`
