@@ -1,5 +1,6 @@
 import "@material/web/checkbox/checkbox.js";
 import "./components/settingsItem";
+import "./components/settingsSeparator";
 import { DEFAULT_SETTINGS } from "./common/defaultSettings";
 import { Translator } from "./common/translator";
 import browser from "webextension-polyfill";
