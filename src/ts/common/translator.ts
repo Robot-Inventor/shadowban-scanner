@@ -1,4 +1,4 @@
-import { ALLOWED_TWEMOJI, TRANSLATION_ATTRIBUTE, TWEMOJI_ATTRIBUTE } from "./constants";
+import { ALLOWED_TWEMOJI, SHADOW_TRANSLATION_ATTRIBUTE, TRANSLATION_ATTRIBUTE, TWEMOJI_ATTRIBUTE } from "./constants";
 import enTranslation from "../../../_locales/en/messages.json";
 
 type TranslationData = typeof enTranslation;
@@ -45,7 +45,17 @@ class Translator {
      * Run the translation process.
      */
     translateElements() {
-        const targetElements = document.querySelectorAll(`[${TRANSLATION_ATTRIBUTE}]`);
+        const targetElements = [...document.querySelectorAll(`[${TRANSLATION_ATTRIBUTE}]`)];
+
+        const shadowTargets = document.querySelectorAll(`[${SHADOW_TRANSLATION_ATTRIBUTE}]`);
+        for (const shadowTarget of shadowTargets) {
+            const { shadowRoot } = shadowTarget;
+
+            if (shadowRoot) {
+                const shadowTargetElements = shadowRoot.querySelectorAll(`[${TRANSLATION_ATTRIBUTE}]`);
+                targetElements.push(...shadowTargetElements);
+            }
+        }
 
         targetElements.forEach((element) => {
             const translationKey = element.getAttribute(TRANSLATION_ATTRIBUTE) as keyof TranslationData;

@@ -1,5 +1,5 @@
+import { CHECKED_DATA_ATTRIBUTE, SHADOW_TRANSLATION_ATTRIBUTE } from "../common/constants";
 import { MessageSummary, TweetStatus } from "./messageSummary";
-import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
 import { Message } from "./message";
 import { Settings } from "../@types/common/settings";
 import { TranslationKey } from "../common/translator";
@@ -125,18 +125,28 @@ ${
         const { isTweetSearchable } = statusData;
         if (isTweetSearchable && !this.options.showMessagesInUnproblematicTweets) return;
 
+        const sbsMessage = document.createElement("sbs-message");
+        sbsMessage.summary = messageSummary;
+        sbsMessage.focalMode = tweetReactProps.isFocal;
+        sbsMessage.isAlert = !isTweetSearchable;
+        sbsMessage.setAttribute(SHADOW_TRANSLATION_ATTRIBUTE, "");
+
         const message = new Message(messageSummary, tweetReactProps.isFocal);
         message.isAlert = !isTweetSearchable;
         if (this.options.alwaysDetailedView) {
+            sbsMessage.expanded = true;
             message.expand();
         }
         message.addDetails(statusData.messages);
         if (this.options.showNotesInMessages) {
+            sbsMessage.notes = ["falsePositivesAndFalseNegativesOccur", "translatedByAI"];
             message.addNotes(["falsePositivesAndFalseNegativesOccur", "translatedByAI"]);
         }
         if (this.options.showTweetButton) {
+            sbsMessage.addTweetButton(this.tweet, statusData.tweetPermalink, statusData.shareText);
             message.addTweetButton(this.tweet, statusData.tweetPermalink, statusData.shareText);
         }
+        menuBar.insertAdjacentElement("beforebegin", sbsMessage);
         menuBar.insertAdjacentElement("beforebegin", message.getContainer());
     }
 }

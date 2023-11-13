@@ -9,6 +9,7 @@ import {
 } from "../common/constants";
 import { TranslationKey } from "../common/translator";
 
+// TODO: Rewrite Message class as a wrapper for SbsMessage.
 /**
  * Message class that generates a message element.
  */
