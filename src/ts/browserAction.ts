@@ -1,4 +1,5 @@
 import "@material/web/checkbox/checkbox.js";
+import "./components/settingsItem";
 import { DEFAULT_SETTINGS } from "./common/defaultSettings";
 import { Translator } from "./common/translator";
 import browser from "webextension-polyfill";
@@ -7,18 +8,19 @@ import { isSettings } from "./@types/common/settings.guard";
 const translator = new Translator((key) => browser.i18n.getMessage(key), browser.runtime.getURL("dist/image/"));
 translator.translateElements();
 
-const checkboxElements = document.querySelectorAll("md-checkbox");
+const settingsItems = document.querySelectorAll("settings-item");
 
-for (const checkbox of checkboxElements) {
+for (const item of settingsItems) {
     void browser.storage.local.get(DEFAULT_SETTINGS).then((currentSettings) => {
         if (!isSettings(currentSettings))
             // eslint-disable-next-line curly, nonblock-statement-body-position
-            throw new Error(`Failed to get ${checkbox.name} from storage`);
-        checkbox.checked = currentSettings[checkbox.name as keyof typeof DEFAULT_SETTINGS];
+            throw new Error(`Failed to get ${item.settingsName} from storage`);
+
+        item.checked = currentSettings[item.settingsName as keyof typeof DEFAULT_SETTINGS];
     });
 
-    checkbox.addEventListener("change", () => {
-        void browser.storage.local.set({ [checkbox.name]: checkbox.checked });
+    item.addEventListener("change", () => {
+        void browser.storage.local.set({ [item.settingsName]: item.checked });
     });
 }
 

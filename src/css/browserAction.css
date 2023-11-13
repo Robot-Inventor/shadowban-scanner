@@ -99,29 +99,6 @@ fieldset {
     padding: 0 0.5rem;
 }
 
-.settings-item {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0.5rem 0;
-    padding: 0 1rem;
-}
-
-.settings-item,
-.settings-item > * {
-    cursor: pointer;
-}
-
-.settings-item > label {
-    flex-grow: 1;
-}
-
-md-checkbox {
-    margin-left: 0.75rem;
-    flex-shrink: 0;
-}
-
 small {
     font-size: 0.8em;
     opacity: 0.7;
