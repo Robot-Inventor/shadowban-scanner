@@ -38,6 +38,7 @@ class ProfileChecker {
 
         if (!isUserPossiblySensitive && !this.options.showMessagesInUnproblematicProfiles) return;
 
+        // TODO: Rewrite with SbsMessageWrapper.
         const message = new Message(MessageSummary.fromAccountStatus(isUserPossiblySensitive));
         message.isAlert = isUserPossiblySensitive;
         message.expand();
