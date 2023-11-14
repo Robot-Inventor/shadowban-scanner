@@ -47,9 +47,8 @@ class Core {
             `[data-testid="tweet"]:not([${CHECKED_DATA_ATTRIBUTE}]`
         );
         for (const tweet of tweets) {
-            const tweetChecker = new TweetChecker(tweet, this.settings);
+            const tweetChecker = new TweetChecker(tweet, this.settings, this.onMessageCallback);
             tweetChecker.run();
-            this.onMessageCallback();
         }
 
         const userName = document.querySelector(

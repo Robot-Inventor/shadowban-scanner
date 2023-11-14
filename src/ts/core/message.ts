@@ -122,39 +122,62 @@ class Message {
     }
 
     /**
+     * Click the retweet button of the specified tweet.
+     * @param sourceTweet tweet to click the retweet button
+     */
+    private static async clickRetweetButton(sourceTweet: HTMLElement) {
+        const retweetButton = await asyncQuerySelector(
+            "[data-testid='unretweet'], [data-testid='retweet']",
+            sourceTweet
+        );
+        retweetButton.click();
+    }
+
+    /**
+     * Click the quote button.
+     * **This method should be called after {@link clickRetweetButton}.**
+     */
+    private static async clickQuoteButton() {
+        const quoteButton = await asyncQuerySelector(
+            [
+                // PC
+                "[data-testid='Dropdown'] [href='/compose/tweet']",
+                // Mobile
+                "[data-testid='sheetDialog'] [href='/compose/tweet']"
+            ].join(",")
+        );
+        quoteButton.click();
+    }
+
+    /**
+     * Get the text box of the tweet composer.
+     * This method should be called after {@link clickQuoteButton}.
+     * @returns text box of the tweet composer
+     */
+    private static async getTweetTextBox() {
+        const textBoxMarker = await asyncQuerySelector(
+            "[data-viewportview='true'] [data-text='true'], textarea[data-testid='tweetTextarea_0']"
+        );
+        const isTextArea = textBoxMarker.tagName === "TEXTAREA";
+        const textBox = isTextArea ? textBoxMarker : textBoxMarker.parentElement;
+        if (!textBox) throw new Error("Failed to get text box of tweet");
+        return textBox;
+    }
+
+    /**
      * Quote specified tweet with specified text.
      * @param sourceTweet tweet to quote
      * @param sourceTweetPermalink permalink of the tweet to quote
      * @param text text to tweet
      */
-    // eslint-disable-next-line max-statements
     private static async quoteTweet(sourceTweet: HTMLElement, sourceTweetPermalink: string, text: string) {
         try {
-            const retweetButton = await asyncQuerySelector(
-                "[data-testid='unretweet'], [data-testid='retweet']",
-                sourceTweet
-            );
-            retweetButton.click();
+            await Message.clickRetweetButton(sourceTweet);
+            await Message.clickQuoteButton();
 
-            const quoteButton = await asyncQuerySelector(
-                [
-                    // PC
-                    "[data-testid='Dropdown'] [href='/compose/tweet']",
-                    // Mobile
-                    "[data-testid='sheetDialog'] [href='/compose/tweet']"
-                ].join(",")
-            );
-            quoteButton.click();
-
-            const textBox = await asyncQuerySelector(
-                "[data-viewportview='true'] [data-text='true'], textarea[data-testid='tweetTextarea_0']"
-            );
-            const isTextArea = textBox.tagName === "TEXTAREA";
-            const textBoxParent = isTextArea ? textBox : textBox.parentElement;
-            if (!textBoxParent) throw new Error("Failed to get text box of tweet");
-
-            textBoxParent.innerHTML = text;
-            textBoxParent.dispatchEvent(new Event("input", { bubbles: true }));
+            const textBox = await Message.getTweetTextBox();
+            textBox.innerHTML = text;
+            textBox.dispatchEvent(new Event("input", { bubbles: true }));
         } catch (error) {
             const tweetText = `${text}\nhttps://twitter.com${sourceTweetPermalink}`;
             open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`, "_blank");

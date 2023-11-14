@@ -1,18 +1,18 @@
 import "@material/web/button/filled-button";
-import { LitElement, css, html } from "lit";
+import { LitElement, PropertyValues, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { COLLAPSED_CONTENT_CLASS_NAME } from "../common/constants";
 import { TranslationKey } from "../common/translator";
 
 @customElement("sbs-message")
-class SbsMessage extends LitElement {
+export class SbsMessage extends LitElement {
     @property({ reflect: true })
     public summary: TranslationKey = "tweetNoProblem";
 
-    @property({ reflect: true })
+    @property({ reflect: true, type: Array })
     public details: TranslationKey[] = [];
 
-    @property({ reflect: true })
+    @property({ reflect: true, type: Array })
     public notes: TranslationKey[] = [];
 
     @property({ reflect: true, type: Boolean })
@@ -26,6 +26,12 @@ class SbsMessage extends LitElement {
 
     @property({ reflect: true, type: Boolean })
     public isTweetButtonShown = false;
+
+    @property({ reflect: true, type: Boolean })
+    public isNoteShown = false;
+
+    @property({ attribute: false, reflect: true })
+    public onRenderedCallback?: () => void;
 
     public static styles = css`
         .shadowban-scanner-message {
@@ -98,16 +104,6 @@ class SbsMessage extends LitElement {
             --_container-shadow-color: rgba(0, 0, 0, 0.3);
         }
 
-        [data-sb-translation] {
-            display: inline-block;
-            min-width: 15em;
-            min-height: 1em;
-            border-radius: 0.25em;
-            background-image: linear-gradient(90deg, transparent 40%, rgba(175, 175, 175, 0.7) 80%, transparent 100%);
-            background-size: 200% 100%;
-            animation: loading-animation 1.5s linear infinite;
-        }
-
         @keyframes loading-animation {
             0% {
                 background-position: 200% 0%;
@@ -125,6 +121,19 @@ class SbsMessage extends LitElement {
         this.isExpanded = true;
     }
 
+    private tweetButtonClicked(event: Event) {
+        event.preventDefault();
+        const newEvent = new Event("tweetButtonClick", { bubbles: true, composed: true });
+        this.dispatchEvent(newEvent);
+    }
+
+    override firstUpdated(_changedProperties: PropertyValues) {
+        if (this.onRenderedCallback) {
+            this.onRenderedCallback();
+        }
+        super.firstUpdated(_changedProperties);
+    }
+
     // TODO: Get text color and apply it to md-filled-button. Use --md-sys-color-on-primary variable.
     protected render() {
         return html`
@@ -134,20 +143,26 @@ class SbsMessage extends LitElement {
                     ? ""
                     : html`<button @click="${this.expand.bind(this)}" data-sb-translation="showMore"></button>`}
                 <ul class="${this.isExpanded ? "" : COLLAPSED_CONTENT_CLASS_NAME}">
-                    ${this.details.map((detail) => html` <li data-sb-translation="${detail}"></li> `)}
+                    <!-- TODO: Add TWEMOJI_ATTRIBUTE to li elements -->
+                    ${this.details.map(
+                        (detail) => html` <li data-sb-enable-twemoji data-sb-translation="${detail}"></li> `
+                    )}
                 </ul>
-                ${this.notes.map(
-                    (note) => html`
-                        <div
-                            class="shadowban-scanner-message-note ${this.isExpanded
-                                ? ""
-                                : COLLAPSED_CONTENT_CLASS_NAME}"
-                            data-sb-translation="${note}"
-                        ></div>
-                    `
-                )}
+                ${this.isNoteShown
+                    ? this.notes.map(
+                          (note) => html`
+                              <div
+                                  class="shadowban-scanner-message-note ${this.isExpanded
+                                      ? ""
+                                      : COLLAPSED_CONTENT_CLASS_NAME}"
+                                  data-sb-translation="${note}"
+                              ></div>
+                          `
+                      )
+                    : ""}
                 ${this.isTweetButtonShown
                     ? html`<md-filled-button
+                          @click="${this.tweetButtonClicked.bind(this)}"
                           class="${this.isExpanded ? "" : COLLAPSED_CONTENT_CLASS_NAME}"
                           data-sb-translation="tweetTheResults"
                       ></md-filled-button>`
