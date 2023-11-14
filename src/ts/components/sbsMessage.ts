@@ -19,13 +19,13 @@ class SbsMessage extends LitElement {
     public isAlert = false;
 
     @property({ reflect: true, type: Boolean })
-    public expanded = false;
+    public isExpanded = false;
 
     @property({ reflect: true, type: Boolean })
-    public focalMode = false;
+    public isFocalMode = false;
 
     @property({ reflect: true, type: Boolean })
-    private isTweetButtonShown = false;
+    public isTweetButtonShown = false;
 
     public static styles = css`
         .shadowban-scanner-message {
@@ -122,12 +122,7 @@ class SbsMessage extends LitElement {
 
     private expand(event: Event) {
         event.preventDefault();
-        this.expanded = true;
-    }
-
-    // TODO: Implement tweet feature.
-    public addTweetButton(sourceTweet: HTMLElement, sourceTweetPermalink: string, text: string) {
-        this.isTweetButtonShown = true;
+        this.isExpanded = true;
     }
 
     // TODO: Get text color and apply it to md-filled-button. Use --md-sys-color-on-primary variable.
@@ -135,23 +130,25 @@ class SbsMessage extends LitElement {
         return html`
             <div class="shadowban-scanner-message ${this.isAlert ? "" : "shadowban-scanner-message-no-problem"}">
                 <span data-sb-translation="${this.summary}"></span>
-                ${this.expanded
+                ${this.isExpanded
                     ? ""
                     : html`<button @click="${this.expand.bind(this)}" data-sb-translation="showMore"></button>`}
-                <ul class="${this.expanded ? "" : COLLAPSED_CONTENT_CLASS_NAME}">
+                <ul class="${this.isExpanded ? "" : COLLAPSED_CONTENT_CLASS_NAME}">
                     ${this.details.map((detail) => html` <li data-sb-translation="${detail}"></li> `)}
                 </ul>
                 ${this.notes.map(
                     (note) => html`
                         <div
-                            class="shadowban-scanner-message-note ${this.expanded ? "" : COLLAPSED_CONTENT_CLASS_NAME}"
+                            class="shadowban-scanner-message-note ${this.isExpanded
+                                ? ""
+                                : COLLAPSED_CONTENT_CLASS_NAME}"
                             data-sb-translation="${note}"
                         ></div>
                     `
                 )}
                 ${this.isTweetButtonShown
                     ? html`<md-filled-button
-                          class="${this.expanded ? "" : COLLAPSED_CONTENT_CLASS_NAME}"
+                          class="${this.isExpanded ? "" : COLLAPSED_CONTENT_CLASS_NAME}"
                           data-sb-translation="tweetTheResults"
                       ></md-filled-button>`
                     : ""}

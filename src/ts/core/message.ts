@@ -8,6 +8,7 @@ import {
     TWEMOJI_ATTRIBUTE
 } from "../common/constants";
 import { TranslationKey } from "../common/translator";
+import { asyncQuerySelector } from "../util/asyncQuerySelector";
 
 // TODO: Rewrite Message class as a wrapper for SbsMessage.
 /**
@@ -74,50 +75,6 @@ class Message {
     }
 
     /**
-     * Get element by selector.
-     * @param selector selector
-     * @param parentElement parent element
-     * @returns result
-     */
-    private static async asyncQuerySelector(
-        selector: string,
-        parentElement: Element | Document = document
-    ): Promise<HTMLElement> {
-        return new Promise((resolve, reject) => {
-            const initialResult: HTMLElement | null = parentElement.querySelector(selector);
-            if (initialResult) {
-                resolve(initialResult);
-                return;
-            }
-
-            let timeout: NodeJS.Timeout | null = null;
-
-            const observer = new MutationObserver(() => {
-                const element: HTMLElement | null = parentElement.querySelector(selector);
-
-                if (element) {
-                    observer.disconnect();
-                    if (timeout) {
-                        clearTimeout(timeout);
-                    }
-                    resolve(element);
-                }
-            });
-
-            timeout = setTimeout(() => {
-                observer.disconnect();
-                reject(new Error(`Failed to get ${selector}`));
-                // eslint-disable-next-line no-magic-numbers
-            }, 500);
-
-            observer.observe(document.body, {
-                childList: true,
-                subtree: true
-            });
-        });
-    }
-
-    /**
      * Expand the message.
      */
     public expand() {
@@ -173,13 +130,13 @@ class Message {
     // eslint-disable-next-line max-statements
     private static async quoteTweet(sourceTweet: HTMLElement, sourceTweetPermalink: string, text: string) {
         try {
-            const retweetButton = await Message.asyncQuerySelector(
+            const retweetButton = await asyncQuerySelector(
                 "[data-testid='unretweet'], [data-testid='retweet']",
                 sourceTweet
             );
             retweetButton.click();
 
-            const quoteButton = await Message.asyncQuerySelector(
+            const quoteButton = await asyncQuerySelector(
                 [
                     // PC
                     "[data-testid='Dropdown'] [href='/compose/tweet']",
@@ -189,7 +146,7 @@ class Message {
             );
             quoteButton.click();
 
-            const textBox = await Message.asyncQuerySelector(
+            const textBox = await asyncQuerySelector(
                 "[data-viewportview='true'] [data-text='true'], textarea[data-testid='tweetTextarea_0']"
             );
             const isTextArea = textBox.tagName === "TEXTAREA";

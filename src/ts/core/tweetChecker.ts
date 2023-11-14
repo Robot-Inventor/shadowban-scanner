@@ -127,14 +127,14 @@ ${
 
         const sbsMessage = document.createElement("sbs-message");
         sbsMessage.summary = messageSummary;
-        sbsMessage.focalMode = tweetReactProps.isFocal;
+        sbsMessage.isFocalMode = tweetReactProps.isFocal;
         sbsMessage.isAlert = !isTweetSearchable;
         sbsMessage.setAttribute(SHADOW_TRANSLATION_ATTRIBUTE, "");
 
         const message = new Message(messageSummary, tweetReactProps.isFocal);
         message.isAlert = !isTweetSearchable;
         if (this.options.alwaysDetailedView) {
-            sbsMessage.expanded = true;
+            sbsMessage.isExpanded = true;
             message.expand();
         }
         message.addDetails(statusData.messages);
@@ -143,7 +143,7 @@ ${
             message.addNotes(["falsePositivesAndFalseNegativesOccur", "translatedByAI"]);
         }
         if (this.options.showTweetButton) {
-            sbsMessage.addTweetButton(this.tweet, statusData.tweetPermalink, statusData.shareText);
+            sbsMessage.isTweetButtonShown = true;
             message.addTweetButton(this.tweet, statusData.tweetPermalink, statusData.shareText);
         }
         menuBar.insertAdjacentElement("beforebegin", sbsMessage);
