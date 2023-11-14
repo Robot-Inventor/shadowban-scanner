@@ -3,6 +3,7 @@ import { LitElement, PropertyValues, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { COLLAPSED_CONTENT_CLASS_NAME } from "../common/constants";
 import { TranslationKey } from "../common/translator";
+import { classMap } from "lit/directives/class-map.js";
 
 @customElement("sbs-message")
 export class SbsMessage extends LitElement {
@@ -136,34 +137,40 @@ export class SbsMessage extends LitElement {
 
     // TODO: Get text color and apply it to md-filled-button. Use --md-sys-color-on-primary variable.
     protected render() {
+        const outerClasses = classMap({
+            "focal-mode": this.isFocalMode,
+            "shadowban-scanner-message": true,
+            "shadowban-scanner-message-no-problem": !this.isAlert
+        });
+
+        const notesClasses = classMap({
+            [COLLAPSED_CONTENT_CLASS_NAME]: !this.isExpanded,
+            "shadowban-scanner-message-note": true
+        });
+
+        const tweetButtonClasses = classMap({
+            [COLLAPSED_CONTENT_CLASS_NAME]: !this.isExpanded
+        });
+
         return html`
-            <div class="shadowban-scanner-message ${this.isAlert ? "" : "shadowban-scanner-message-no-problem"}">
-                <span data-sb-translation="${this.summary}"></span>
+            <div class=${outerClasses}>
+                <span data-sb-translation=${this.summary}></span>
                 ${this.isExpanded
                     ? ""
-                    : html`<button @click="${this.expand.bind(this)}" data-sb-translation="showMore"></button>`}
+                    : html`<button @click=${this.expand.bind(this)} data-sb-translation="showMore"></button>`}
                 <ul class="${this.isExpanded ? "" : COLLAPSED_CONTENT_CLASS_NAME}">
                     <!-- TODO: Add TWEMOJI_ATTRIBUTE to li elements -->
                     ${this.details.map(
-                        (detail) => html` <li data-sb-enable-twemoji data-sb-translation="${detail}"></li> `
+                        (detail) => html` <li data-sb-enable-twemoji data-sb-translation=${detail}></li> `
                     )}
                 </ul>
                 ${this.isNoteShown
-                    ? this.notes.map(
-                          (note) => html`
-                              <div
-                                  class="shadowban-scanner-message-note ${this.isExpanded
-                                      ? ""
-                                      : COLLAPSED_CONTENT_CLASS_NAME}"
-                                  data-sb-translation="${note}"
-                              ></div>
-                          `
-                      )
+                    ? this.notes.map((note) => html` <div class=${notesClasses} data-sb-translation=${note}></div> `)
                     : ""}
                 ${this.isTweetButtonShown
                     ? html`<md-filled-button
-                          @click="${this.tweetButtonClicked.bind(this)}"
-                          class="${this.isExpanded ? "" : COLLAPSED_CONTENT_CLASS_NAME}"
+                          @click=${this.tweetButtonClicked.bind(this)}
+                          class=${tweetButtonClasses}
                           data-sb-translation="tweetTheResults"
                       ></md-filled-button>`
                     : ""}
