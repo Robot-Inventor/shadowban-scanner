@@ -158,12 +158,13 @@ export class SbsMessage extends LitElement {
                 ${this.isExpanded
                     ? ""
                     : html`<button @click=${this.expand.bind(this)} data-sb-translation="showMore"></button>`}
-                <ul class="${this.isExpanded ? "" : COLLAPSED_CONTENT_CLASS_NAME}">
-                    <!-- TODO: Add TWEMOJI_ATTRIBUTE to li elements -->
-                    ${this.details.map(
-                        (detail) => html` <li data-sb-enable-twemoji data-sb-translation=${detail}></li> `
-                    )}
-                </ul>
+                ${this.details.length
+                    ? html`<ul class="${this.isExpanded ? "" : COLLAPSED_CONTENT_CLASS_NAME}">
+                          ${this.details.map(
+                              (detail) => html` <li data-sb-enable-twemoji data-sb-translation=${detail}></li> `
+                          )}
+                      </ul>`
+                    : ""}
                 ${this.isNoteShown
                     ? this.notes.map((note) => html` <div class=${notesClasses} data-sb-translation=${note}></div> `)
                     : ""}

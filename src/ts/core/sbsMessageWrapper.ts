@@ -2,7 +2,9 @@ import { SHADOW_TRANSLATION_ATTRIBUTE } from "../common/constants";
 import { TranslationKey } from "../common/translator";
 import { asyncQuerySelector } from "../util/asyncQuerySelector";
 
-interface SbsMessageWrapperOptions {
+interface SbsMessageWrapperOptionsForTweets {
+    type: "tweet";
+
     summary: TranslationKey;
     details: TranslationKey[];
     notes: TranslationKey[];
@@ -20,34 +22,47 @@ interface SbsMessageWrapperOptions {
     onRenderedCallback?: () => void;
 }
 
+interface SbsMessageWrapperOptionsForProfiles {
+    type: "profile";
+
+    summary: TranslationKey;
+    isAlert: boolean;
+    onRenderedCallback?: () => void;
+}
+
 class SbsMessageWrapper {
     private readonly sbsMessage: HTMLElement;
 
-    private readonly sourceTweet: HTMLElement;
-    private readonly sourceTweetPermalink: string;
-    private readonly tweetText: string;
+    private readonly sourceTweet?: HTMLElement;
+    private readonly sourceTweetPermalink?: string;
+    private readonly tweetText?: string;
 
     // eslint-disable-next-line max-statements
-    constructor(options: SbsMessageWrapperOptions) {
+    constructor(options: SbsMessageWrapperOptionsForTweets | SbsMessageWrapperOptionsForProfiles) {
         const sbsMessage = document.createElement("sbs-message");
 
         sbsMessage.summary = options.summary;
-        sbsMessage.details = options.details;
-        sbsMessage.notes = options.notes;
         sbsMessage.isAlert = options.isAlert;
-        sbsMessage.isFocalMode = options.isFocalMode;
-        sbsMessage.isExpanded = options.isExpanded;
-        sbsMessage.isTweetButtonShown = options.isTweetButtonShown;
-        sbsMessage.isNoteShown = options.isNoteShown;
         sbsMessage.onRenderedCallback = options.onRenderedCallback;
+
+        if (options.type === "tweet") {
+            sbsMessage.details = options.details;
+            sbsMessage.notes = options.notes;
+            sbsMessage.isFocalMode = options.isFocalMode;
+            sbsMessage.isExpanded = options.isExpanded;
+            sbsMessage.isTweetButtonShown = options.isTweetButtonShown;
+            sbsMessage.isNoteShown = options.isNoteShown;
+
+            this.sourceTweet = options.sourceTweet;
+            this.sourceTweetPermalink = options.sourceTweetPermalink;
+            this.tweetText = options.tweetText;
+        } else {
+            sbsMessage.isExpanded = true;
+        }
 
         sbsMessage.setAttribute(SHADOW_TRANSLATION_ATTRIBUTE, "");
         sbsMessage.addEventListener("tweetButtonClick", this.onTweetButtonClick.bind(this));
         this.sbsMessage = sbsMessage;
-
-        this.sourceTweet = options.sourceTweet;
-        this.sourceTweetPermalink = options.sourceTweetPermalink;
-        this.tweetText = options.tweetText;
     }
 
     /**
@@ -114,6 +129,10 @@ class SbsMessageWrapper {
     }
 
     private onTweetButtonClick() {
+        if (!this.sourceTweet || !this.sourceTweetPermalink || !this.tweetText) {
+            throw new Error("Tweet button clicked without source tweet");
+        }
+
         void SbsMessageWrapper.quoteTweet(this.sourceTweet, this.sourceTweetPermalink, this.tweetText);
     }
 

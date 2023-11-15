@@ -141,7 +141,9 @@ ${
             sourceTweet: this.tweet,
             sourceTweetPermalink: statusData.tweetPermalink,
             summary: messageSummary,
-            tweetText: statusData.shareText
+            tweetText: statusData.shareText,
+
+            type: "tweet"
         });
 
         sbsMessageWrapper.insertAdjacentElement(menuBar, "beforebegin");

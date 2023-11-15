@@ -1,7 +1,7 @@
 import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
-import { Message } from "./message";
 import { MessageSummary } from "./messageSummary";
 import { ProfileReactProps } from "./reactProps/profileReactProps";
+import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../@types/common/settings";
 
 /**
@@ -10,14 +10,16 @@ import { Settings } from "../@types/common/settings";
 class ProfileChecker {
     private readonly userName: Element;
     private readonly options: Settings;
+    private readonly onMessageCallback: () => void;
 
     /**
      * Check the user profile.
      * @param userNameElement element of the user name
      */
-    constructor(userNameElement: Element, options: Settings) {
+    constructor(userNameElement: Element, options: Settings, onMessageCallback: () => void) {
         this.userName = userNameElement;
         this.options = options;
+        this.onMessageCallback = onMessageCallback;
     }
 
     /**
@@ -38,16 +40,19 @@ class ProfileChecker {
 
         if (!isUserPossiblySensitive && !this.options.showMessagesInUnproblematicProfiles) return;
 
-        // TODO: Rewrite with SbsMessageWrapper.
-        const message = new Message(MessageSummary.fromAccountStatus(isUserPossiblySensitive));
-        message.isAlert = isUserPossiblySensitive;
-        message.expand();
+        const sbsMessageWrapper = new SbsMessageWrapper({
+            isAlert: isUserPossiblySensitive,
+            onRenderedCallback: this.onMessageCallback,
+            summary: MessageSummary.fromAccountStatus(isUserPossiblySensitive),
+
+            type: "profile"
+        });
 
         const bioOrUserName =
             document.querySelector("[data-testid='UserDescription']") ||
             document.querySelector("[data-testid='UserName']");
         if (!bioOrUserName) throw new Error("Failed to get user description of profile");
-        bioOrUserName.insertAdjacentElement("afterend", message.getContainer());
+        sbsMessageWrapper.insertAdjacentElement(bioOrUserName, "afterend");
     }
 }
 

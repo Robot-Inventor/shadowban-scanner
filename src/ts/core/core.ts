@@ -55,9 +55,8 @@ class Core {
             `:not([data-testid="tweet"]) [data-testid="UserName"]:not([${CHECKED_DATA_ATTRIBUTE}])`
         );
         if (userName) {
-            const profileChecker = new ProfileChecker(userName, this.settings);
+            const profileChecker = new ProfileChecker(userName, this.settings, this.onMessageCallback);
             profileChecker.run();
-            this.onMessageCallback();
         }
     }
 }
