@@ -34,6 +34,10 @@ export class SbsMessage extends LitElement {
     @property({ attribute: false, reflect: true })
     public onRenderedCallback?: () => void;
 
+    /**
+     * This is a comment to disable Knip.
+     * @public
+     */
     public static styles = css`
         .shadowban-scanner-message {
             --message-background-color: rgb(255, 0, 0, 0.2);
