@@ -1,7 +1,6 @@
 const CHECKED_DATA_ATTRIBUTE = "data-shadowban-checked";
 const EVENT_GENERATOR_ID = "shadowban-scanner-event-generator";
 const EVENT_GENERATOR_SETTINGS_ATTRIBUTE = "data-sb-settings";
-const COLLAPSED_CONTENT_CLASS_NAME = "shadowban-scanner-collapsed-content";
 const TRANSLATION_ATTRIBUTE = "data-sb-translation";
 const SHADOW_TRANSLATION_ATTRIBUTE = "data-sb-shadow-translation";
 const TWEMOJI_ATTRIBUTE = "data-sb-enable-twemoji";
@@ -20,7 +19,6 @@ export {
     CHECKED_DATA_ATTRIBUTE,
     EVENT_GENERATOR_ID,
     EVENT_GENERATOR_SETTINGS_ATTRIBUTE,
-    COLLAPSED_CONTENT_CLASS_NAME,
     TRANSLATION_ATTRIBUTE,
     SHADOW_TRANSLATION_ATTRIBUTE,
     TWEMOJI_ATTRIBUTE,

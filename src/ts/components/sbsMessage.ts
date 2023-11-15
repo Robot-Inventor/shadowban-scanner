@@ -1,7 +1,6 @@
 import "@material/web/button/filled-button";
 import { LitElement, PropertyValues, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { COLLAPSED_CONTENT_CLASS_NAME } from "../common/constants";
 import { TranslationKey } from "../common/translator";
 import { classMap } from "lit/directives/class-map.js";
 
@@ -148,12 +147,12 @@ export class SbsMessage extends LitElement {
         });
 
         const notesClasses = classMap({
-            [COLLAPSED_CONTENT_CLASS_NAME]: !this.isExpanded,
+            "shadowban-scanner-collapsed-content": !this.isExpanded,
             "shadowban-scanner-message-note": true
         });
 
         const tweetButtonClasses = classMap({
-            [COLLAPSED_CONTENT_CLASS_NAME]: !this.isExpanded
+            "shadowban-scanner-collapsed-content": !this.isExpanded
         });
 
         return html`
@@ -163,7 +162,7 @@ export class SbsMessage extends LitElement {
                     ? ""
                     : html`<button @click=${this.expand.bind(this)} data-sb-translation="showMore"></button>`}
                 ${this.details.length
-                    ? html`<ul class="${this.isExpanded ? "" : COLLAPSED_CONTENT_CLASS_NAME}">
+                    ? html`<ul class="${this.isExpanded ? "" : "shadowban-scanner-collapsed-content"}">
                           ${this.details.map(
                               (detail) => html` <li data-sb-enable-twemoji data-sb-translation=${detail}></li> `
                           )}
