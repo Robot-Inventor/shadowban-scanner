@@ -33,14 +33,19 @@ export class SbsMessage extends LitElement {
     @property({ attribute: false, reflect: true })
     public onRenderedCallback?: () => void;
 
+    @property({ reflect: true, type: String })
+    public textColor = "white";
+
     /**
      * This is a comment to disable Knip.
      * @public
      */
+    // TODO: Inherit font family from parent element
     public static styles = css`
         .shadowban-scanner-message {
             --message-background-color: rgb(255, 0, 0, 0.2);
 
+            color: var(--md-sys-color-on-primary);
             padding: 1em;
             border-radius: 0.5em;
             background: var(--message-background-color);
@@ -138,7 +143,6 @@ export class SbsMessage extends LitElement {
         super.firstUpdated(_changedProperties);
     }
 
-    // TODO: Get text color and apply it to md-filled-button. Use --md-sys-color-on-primary variable.
     protected render() {
         const outerClasses = classMap({
             "focal-mode": this.isFocalMode,
@@ -156,7 +160,7 @@ export class SbsMessage extends LitElement {
         });
 
         return html`
-            <div class=${outerClasses}>
+            <div class=${outerClasses} style="--md-sys-color-on-primary: ${this.textColor};">
                 <span data-sb-translation=${this.summary}></span>
                 ${this.isExpanded
                     ? ""

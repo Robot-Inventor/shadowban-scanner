@@ -41,6 +41,7 @@ class SbsMessageWrapper {
     constructor(options: SbsMessageWrapperOptionsForTweets | SbsMessageWrapperOptionsForProfiles) {
         const sbsMessage = document.createElement("sbs-message");
 
+        sbsMessage.textColor = SbsMessageWrapper.getTextColor();
         sbsMessage.summary = options.summary;
         sbsMessage.isAlert = options.isAlert;
         sbsMessage.onRenderedCallback = options.onRenderedCallback;
@@ -63,6 +64,23 @@ class SbsMessageWrapper {
         sbsMessage.setAttribute(SHADOW_TRANSLATION_ATTRIBUTE, "");
         sbsMessage.addEventListener("tweetButtonClick", this.onTweetButtonClick.bind(this));
         this.sbsMessage = sbsMessage;
+    }
+
+    /**
+     * Get the text color of the tweet.
+     * @returns text color of the tweet
+     */
+    private static getTextColor(): `rgb(${number}, ${number}, ${number})` {
+        const TEXT_SELECTOR = [
+            "[data-testid='User-Name'] div:first-child span",
+            "[data-testid='UserName'] div:first-child span"
+        ].join(",");
+
+        const text = document.querySelector(TEXT_SELECTOR);
+        if (!text) throw new Error("Failed to get user name span of tweet");
+
+        const { color } = getComputedStyle(text);
+        return color as `rgb(${number}, ${number}, ${number})`;
     }
 
     /**
