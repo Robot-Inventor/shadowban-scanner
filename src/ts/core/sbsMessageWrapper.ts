@@ -1,124 +1,68 @@
-import "@material/web/button/filled-button";
-import {
-    COLLAPSED_CONTENT_CLASS_NAME,
-    MESSAGE_CLASS_NAME,
-    MESSAGE_NOTE_CLASS_NAME,
-    NO_PROBLEM_CLASS_NAME,
-    TRANSLATION_ATTRIBUTE,
-    TWEMOJI_ATTRIBUTE
-} from "../common/constants";
+import { SHADOW_TRANSLATION_ATTRIBUTE } from "../common/constants";
 import { TranslationKey } from "../common/translator";
 import { asyncQuerySelector } from "../util/asyncQuerySelector";
 
-// TODO: Rewrite Message class as a wrapper for SbsMessage.
-/**
- * Message class that generates a message element.
- */
-class Message {
-    private readonly container: HTMLDivElement;
-    private readonly expandButton: HTMLButtonElement;
-    private isExpanded = false;
+interface SbsMessageWrapperOptionsForTweets {
+    type: "tweet";
 
-    /**
-     * Generate a message element.
-     * @param summary summary of the message
-     */
-    constructor(summary: TranslationKey, reduceMarginTop = false) {
-        this.container = document.createElement("div");
-        this.container.classList.add(MESSAGE_CLASS_NAME);
-        if (reduceMarginTop) {
-            this.container.classList.add("focal-mode");
-        }
-        this.container.style.color = Message.getTextColor();
+    summary: TranslationKey;
+    details: TranslationKey[];
+    notes: TranslationKey[];
 
-        const summaryContainer = document.createElement("span");
-        summaryContainer.setAttribute(TRANSLATION_ATTRIBUTE, summary);
-        this.container.appendChild(summaryContainer);
+    isAlert: boolean;
+    isFocalMode: boolean;
+    isExpanded: boolean;
+    isTweetButtonShown: boolean;
+    isNoteShown: boolean;
 
-        this.expandButton = this.addButton();
-    }
+    sourceTweet: HTMLElement;
+    sourceTweetPermalink: string;
+    tweetText: string;
 
-    /**
-     * Get the text color of the tweet.
-     * @returns text color of the tweet
-     */
-    private static getTextColor(): `rgb(${number}, ${number}, ${number})` {
-        const TEXT_SELECTOR = [
-            "[data-testid='User-Name'] div:first-child span",
-            "[data-testid='UserName'] div:first-child span"
-        ].join(",");
+    onRenderedCallback?: () => void;
+}
 
-        const text = document.querySelector(TEXT_SELECTOR);
-        if (!text) throw new Error("Failed to get user name span of tweet");
+interface SbsMessageWrapperOptionsForProfiles {
+    type: "profile";
 
-        const { color } = getComputedStyle(text);
-        return color as `rgb(${number}, ${number}, ${number})`;
-    }
+    summary: TranslationKey;
+    isAlert: boolean;
+    onRenderedCallback?: () => void;
+}
 
-    /**
-     * Add the expand button.
-     * @returns expand button
-     */
-    private addButton(): HTMLButtonElement {
-        const button = document.createElement("button");
-        button.setAttribute(TRANSLATION_ATTRIBUTE, "showMore");
-        button.addEventListener("click", () => {
-            button.remove();
-            this.container.querySelectorAll(`.${COLLAPSED_CONTENT_CLASS_NAME}`).forEach((element) => {
-                element.classList.remove(COLLAPSED_CONTENT_CLASS_NAME);
-            });
-            this.isExpanded = true;
-        });
-        this.container.appendChild(button);
+class SbsMessageWrapper {
+    private readonly sbsMessage: HTMLElement;
 
-        return button;
-    }
+    private readonly sourceTweet?: HTMLElement;
+    private readonly sourceTweetPermalink?: string;
+    private readonly tweetText?: string;
 
-    /**
-     * Expand the message.
-     */
-    public expand() {
-        this.expandButton.click();
-    }
+    // eslint-disable-next-line max-statements
+    constructor(options: SbsMessageWrapperOptionsForTweets | SbsMessageWrapperOptionsForProfiles) {
+        const sbsMessage = document.createElement("sbs-message");
 
-    /**
-     * Add details to the message.
-     * @param details details to add
-     */
-    public addDetails(details: TranslationKey[]) {
-        const ul = document.createElement("ul");
-        if (!this.isExpanded) {
-            ul.classList.add(COLLAPSED_CONTENT_CLASS_NAME);
+        sbsMessage.summary = options.summary;
+        sbsMessage.isAlert = options.isAlert;
+        sbsMessage.onRenderedCallback = options.onRenderedCallback;
+
+        if (options.type === "tweet") {
+            sbsMessage.details = options.details;
+            sbsMessage.notes = options.notes;
+            sbsMessage.isFocalMode = options.isFocalMode;
+            sbsMessage.isExpanded = options.isExpanded;
+            sbsMessage.isTweetButtonShown = options.isTweetButtonShown;
+            sbsMessage.isNoteShown = options.isNoteShown;
+
+            this.sourceTweet = options.sourceTweet;
+            this.sourceTweetPermalink = options.sourceTweetPermalink;
+            this.tweetText = options.tweetText;
+        } else {
+            sbsMessage.isExpanded = true;
         }
 
-        for (const detail of details) {
-            const li = document.createElement("li");
-            li.setAttribute(TRANSLATION_ATTRIBUTE, detail);
-            li.setAttribute(TWEMOJI_ATTRIBUTE, "true");
-            ul.appendChild(li);
-        }
-
-        this.container.appendChild(ul);
-    }
-
-    /**
-     * Add notes to the message.
-     * @param notes notes to add
-     */
-    public addNotes(notes: TranslationKey[]) {
-        const fragment = document.createDocumentFragment();
-
-        for (const note of notes) {
-            const noteElement = document.createElement("div");
-            noteElement.classList.add(MESSAGE_NOTE_CLASS_NAME);
-            noteElement.setAttribute(TRANSLATION_ATTRIBUTE, note);
-            if (!this.isExpanded) {
-                noteElement.classList.add(COLLAPSED_CONTENT_CLASS_NAME);
-            }
-            fragment.appendChild(noteElement);
-        }
-
-        this.container.appendChild(fragment);
+        sbsMessage.setAttribute(SHADOW_TRANSLATION_ATTRIBUTE, "");
+        sbsMessage.addEventListener("tweetButtonClick", this.onTweetButtonClick.bind(this));
+        this.sbsMessage = sbsMessage;
     }
 
     /**
@@ -172,10 +116,10 @@ class Message {
      */
     private static async quoteTweet(sourceTweet: HTMLElement, sourceTweetPermalink: string, text: string) {
         try {
-            await Message.clickRetweetButton(sourceTweet);
-            await Message.clickQuoteButton();
+            await SbsMessageWrapper.clickRetweetButton(sourceTweet);
+            await SbsMessageWrapper.clickQuoteButton();
 
-            const textBox = await Message.getTweetTextBox();
+            const textBox = await SbsMessageWrapper.getTweetTextBox();
             textBox.innerHTML = text;
             textBox.dispatchEvent(new Event("input", { bubbles: true }));
         } catch (error) {
@@ -184,57 +128,17 @@ class Message {
         }
     }
 
-    /**
-     * Add a tweet button to the message.
-     * @param sourceTweet tweet to quote
-     * @param sourceTweetPermalink permalink of the tweet to quote
-     * @param text text to tweet
-     */
-    public addTweetButton(sourceTweet: HTMLElement, sourceTweetPermalink: string, text: string) {
-        const button = document.createElement("md-filled-button");
-
-        button.setAttribute(TRANSLATION_ATTRIBUTE, "tweetTheResults");
-        button.style.setProperty("--md-sys-color-on-primary", Message.getTextColor());
-
-        button.addEventListener("click", (event) => {
-            void Message.quoteTweet(sourceTweet, sourceTweetPermalink, text);
-            event.stopPropagation();
-            return false;
-        });
-
-        if (!this.isExpanded) {
-            button.classList.add(COLLAPSED_CONTENT_CLASS_NAME);
+    private onTweetButtonClick() {
+        if (!this.sourceTweet || !this.sourceTweetPermalink || !this.tweetText) {
+            throw new Error("Tweet button clicked without source tweet");
         }
 
-        this.container.appendChild(button);
+        void SbsMessageWrapper.quoteTweet(this.sourceTweet, this.sourceTweetPermalink, this.tweetText);
     }
 
-    /**
-     * Get the message element.
-     * @returns message element
-     */
-    public getContainer(): HTMLDivElement {
-        return this.container;
-    }
-
-    /**
-     * Get whether the message is alert.
-     * @returns whether the message is alert
-     */
-    get isAlert(): boolean {
-        return !this.container.classList.contains(NO_PROBLEM_CLASS_NAME);
-    }
-
-    /**
-     * Set whether the message is alert.
-     *
-     * If set to true, the message will be displayed in red.
-     * If set to false, the message will be displayed in green.
-     * @param isAlert whether the message is alert
-     */
-    set isAlert(isAlert: boolean) {
-        this.container.classList.toggle(NO_PROBLEM_CLASS_NAME, !isAlert);
+    public insertAdjacentElement(target: Element, position: InsertPosition) {
+        target.insertAdjacentElement(position, this.sbsMessage);
     }
 }
 
-export { Message };
+export { SbsMessageWrapper };
