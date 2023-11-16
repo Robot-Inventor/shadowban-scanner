@@ -1,5 +1,5 @@
 import { ALLOWED_TWEMOJI, SHADOW_TRANSLATION_ATTRIBUTE, TRANSLATION_ATTRIBUTE, TWEMOJI_ATTRIBUTE } from "./constants";
-import { SbsMessage } from "../components/sbsMessage";
+import type { SbsMessage } from "../components/sbsMessage";
 import enTranslation from "../../../_locales/en/messages.json";
 
 type TranslationData = typeof enTranslation;

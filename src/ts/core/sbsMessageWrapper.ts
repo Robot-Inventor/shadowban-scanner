@@ -1,3 +1,4 @@
+import "../components/sbsMessage";
 import { SHADOW_TRANSLATION_ATTRIBUTE } from "../common/constants";
 import { TranslationKey } from "../common/translator";
 import { asyncQuerySelector } from "async-query";
