@@ -40,8 +40,11 @@ export class SbsMessage extends LitElement {
      * This is a comment to disable Knip.
      * @public
      */
-    // TODO: Inherit font family from parent element
     public static styles = css`
+        * {
+            font-family: inherit;
+        }
+
         .shadowban-scanner-message {
             --message-background-color: rgb(255, 0, 0, 0.2);
 
@@ -50,7 +53,6 @@ export class SbsMessage extends LitElement {
             border-radius: 0.5em;
             background: var(--message-background-color);
             margin: 1em 0 0 0;
-            font-family: sans-serif;
         }
 
         .shadowban-scanner-message.focal-mode {
@@ -80,7 +82,6 @@ export class SbsMessage extends LitElement {
         }
 
         .shadowban-scanner-message ul {
-            font-family: inherit;
             line-height: inherit;
             margin: 0.75rem 0 0 0;
             padding: 0;
