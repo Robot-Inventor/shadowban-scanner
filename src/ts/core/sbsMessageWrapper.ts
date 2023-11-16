@@ -1,6 +1,6 @@
 import { SHADOW_TRANSLATION_ATTRIBUTE } from "../common/constants";
 import { TranslationKey } from "../common/translator";
-import { asyncQuerySelector } from "../util/asyncQuerySelector";
+import { asyncQuerySelector } from "async-query";
 
 interface SbsMessageWrapperOptionsForTweets {
     type: "tweet";
@@ -88,10 +88,11 @@ class SbsMessageWrapper {
      * @param sourceTweet tweet to click the retweet button
      */
     private static async clickRetweetButton(sourceTweet: HTMLElement) {
-        const retweetButton = await asyncQuerySelector(
+        const retweetButton = await asyncQuerySelector<HTMLElement>(
             "[data-testid='unretweet'], [data-testid='retweet']",
             sourceTweet
         );
+        if (!retweetButton) throw new Error("Failed to get retweet button of tweet");
         retweetButton.click();
     }
 
@@ -100,7 +101,7 @@ class SbsMessageWrapper {
      * **This method should be called after {@link clickRetweetButton}.**
      */
     private static async clickQuoteButton() {
-        const quoteButton = await asyncQuerySelector(
+        const quoteButton = await asyncQuerySelector<HTMLElement>(
             [
                 // PC
                 "[data-testid='Dropdown'] [href='/compose/tweet']",
@@ -108,6 +109,7 @@ class SbsMessageWrapper {
                 "[data-testid='sheetDialog'] [href='/compose/tweet']"
             ].join(",")
         );
+        if (!quoteButton) throw new Error("Failed to get quote button of tweet");
         quoteButton.click();
     }
 
@@ -120,6 +122,7 @@ class SbsMessageWrapper {
         const textBoxMarker = await asyncQuerySelector(
             "[data-viewportview='true'] [data-text='true'], textarea[data-testid='tweetTextarea_0']"
         );
+        if (!textBoxMarker) throw new Error("Failed to get text box marker of tweet");
         const isTextArea = textBoxMarker.tagName === "TEXTAREA";
         const textBox = isTextArea ? textBoxMarker : textBoxMarker.parentElement;
         if (!textBox) throw new Error("Failed to get text box of tweet");

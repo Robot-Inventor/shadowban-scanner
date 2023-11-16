@@ -34,6 +34,7 @@
     "@typescript-eslint/eslint-plugin": "^6.2.0",
     "@typescript-eslint/parser": "^6.2.0",
     "addons-linter": "^6.15.0",
+    "async-query": "^1.0.0",
     "colors": "^1.4.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
