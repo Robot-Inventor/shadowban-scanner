@@ -71,6 +71,7 @@ class TweetChecker {
             tweetSearchStatus
         ] satisfies TranslationKey[];
 
+        // TODO: Support withheld_in_countries
         const shareText = `
 ${
     tweetStatus.user.possiblySensitive
