@@ -47,18 +47,16 @@ class Core {
             `[data-testid="tweet"]:not([${CHECKED_DATA_ATTRIBUTE}]`
         );
         for (const tweet of tweets) {
-            const tweetChecker = new TweetChecker(tweet, this.settings);
+            const tweetChecker = new TweetChecker(tweet, this.settings, this.onMessageCallback);
             tweetChecker.run();
-            this.onMessageCallback();
         }
 
         const userName = document.querySelector(
             `:not([data-testid="tweet"]) [data-testid="UserName"]:not([${CHECKED_DATA_ATTRIBUTE}])`
         );
         if (userName) {
-            const profileChecker = new ProfileChecker(userName, this.settings);
+            const profileChecker = new ProfileChecker(userName, this.settings, this.onMessageCallback);
             profileChecker.run();
-            this.onMessageCallback();
         }
     }
 }

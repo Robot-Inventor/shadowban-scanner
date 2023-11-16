@@ -1,6 +1,6 @@
 import { MessageSummary, TweetStatus } from "./messageSummary";
 import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
-import { Message } from "./message";
+import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../@types/common/settings";
 import { TranslationKey } from "../common/translator";
 import { TweetReactProps } from "./reactProps/tweetReactProps";
@@ -11,15 +11,17 @@ import { TweetReactProps } from "./reactProps/tweetReactProps";
 class TweetChecker {
     private readonly tweet: HTMLElement;
     private readonly options: Settings;
+    private readonly onMessageCallback: () => void;
 
     /**
      * Check the tweet.
      * @param tweet element of the tweet
      * @param options settings
      */
-    constructor(tweet: HTMLElement, options: Settings) {
+    constructor(tweet: HTMLElement, options: Settings, onMessageCallback: () => void) {
         this.tweet = tweet;
         this.options = options;
+        this.onMessageCallback = onMessageCallback;
     }
 
     /**
@@ -125,19 +127,26 @@ ${
         const { isTweetSearchable } = statusData;
         if (isTweetSearchable && !this.options.showMessagesInUnproblematicTweets) return;
 
-        const message = new Message(messageSummary, tweetReactProps.isFocal);
-        message.isAlert = !isTweetSearchable;
-        if (this.options.alwaysDetailedView) {
-            message.expand();
-        }
-        message.addDetails(statusData.messages);
-        if (this.options.showNotesInMessages) {
-            message.addNotes(["falsePositivesAndFalseNegativesOccur", "translatedByAI"]);
-        }
-        if (this.options.showTweetButton) {
-            message.addTweetButton(this.tweet, statusData.tweetPermalink, statusData.shareText);
-        }
-        menuBar.insertAdjacentElement("beforebegin", message.getContainer());
+        const sbsMessageWrapper = new SbsMessageWrapper({
+            details: statusData.messages,
+
+            isAlert: !isTweetSearchable,
+            isExpanded: this.options.alwaysDetailedView,
+            isFocalMode: tweetReactProps.isFocal,
+            isNoteShown: this.options.showNotesInMessages,
+            isTweetButtonShown: this.options.showTweetButton,
+
+            notes: ["falsePositivesAndFalseNegativesOccur", "translatedByAI"],
+            onRenderedCallback: this.onMessageCallback,
+            sourceTweet: this.tweet,
+            sourceTweetPermalink: statusData.tweetPermalink,
+            summary: messageSummary,
+            tweetText: statusData.shareText,
+
+            type: "tweet"
+        });
+
+        sbsMessageWrapper.insertAdjacentElement(menuBar, "beforebegin");
     }
 }
 

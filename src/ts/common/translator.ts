@@ -1,4 +1,5 @@
-import { ALLOWED_TWEMOJI, TRANSLATION_ATTRIBUTE, TWEMOJI_ATTRIBUTE } from "./constants";
+import { ALLOWED_TWEMOJI, SHADOW_TRANSLATION_ATTRIBUTE, TRANSLATION_ATTRIBUTE, TWEMOJI_ATTRIBUTE } from "./constants";
+import type { SbsMessage } from "../components/sbsMessage";
 import enTranslation from "../../../_locales/en/messages.json";
 
 type TranslationData = typeof enTranslation;
@@ -45,7 +46,19 @@ class Translator {
      * Run the translation process.
      */
     translateElements() {
-        const targetElements = document.querySelectorAll(`[${TRANSLATION_ATTRIBUTE}]`);
+        const targetElements = [...document.querySelectorAll(`[${TRANSLATION_ATTRIBUTE}]`)];
+
+        const shadowTargets = document.querySelectorAll<SbsMessage>(`sbs-message[${SHADOW_TRANSLATION_ATTRIBUTE}]`);
+        for (const shadowTarget of shadowTargets) {
+            const { shadowRoot } = shadowTarget;
+            if (!shadowRoot) return;
+
+            const shadowTargetElements = shadowRoot.querySelectorAll(`[${TRANSLATION_ATTRIBUTE}]`);
+            targetElements.push(...shadowTargetElements);
+            if (shadowTargetElements.length) {
+                shadowTarget.removeAttribute(SHADOW_TRANSLATION_ATTRIBUTE);
+            }
+        }
 
         targetElements.forEach((element) => {
             const translationKey = element.getAttribute(TRANSLATION_ATTRIBUTE) as keyof TranslationData;

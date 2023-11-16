@@ -13,7 +13,7 @@ for (const userScript of userScripts) {
 module.exports = {
     mode: "production",
     entry: {
-        "./js/browserAction.js": "./src/ts/browserAction.ts",
+        "./js/browserAction.js": "./src/ts/browserAction/browserAction.ts",
         "./js/contentScript.js": "./src/ts/contentScript.ts",
         "./js/pageScript.js": "./src/ts/pageScript.ts",
         "./js/background.js": "./src/ts/background.ts",
