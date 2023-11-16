@@ -47,7 +47,11 @@ export function isMenuBarReactPropsData(obj: unknown): obj is menubarReactProps 
             typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"]["profile_interstitial_type"] === "sensitive_media" ||
             typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"]["profile_interstitial_type"] === "fake_account" ||
             typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"]["profile_interstitial_type"] === "offensive_profile_content" ||
-            typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"]["profile_interstitial_type"] === "timeout")
+            typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"]["profile_interstitial_type"] === "timeout") &&
+        Array.isArray(typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"]["withheld_in_countries"]) &&
+        typedObj["children"][1]["props"]["retweetWithCommentLink"]["state"]["quotedStatus"]["user"]["withheld_in_countries"].every((e: any) =>
+            typeof e === "string"
+        )
     )
 }
 
@@ -159,6 +163,10 @@ export function isProfileReactPropsData(obj: unknown): obj is ProfileReactPropsD
             typedObj["children"][1]["props"]["user"]["profile_interstitial_type"] === "sensitive_media" ||
             typedObj["children"][1]["props"]["user"]["profile_interstitial_type"] === "fake_account" ||
             typedObj["children"][1]["props"]["user"]["profile_interstitial_type"] === "offensive_profile_content" ||
-            typedObj["children"][1]["props"]["user"]["profile_interstitial_type"] === "timeout")
+            typedObj["children"][1]["props"]["user"]["profile_interstitial_type"] === "timeout") &&
+        Array.isArray(typedObj["children"][1]["props"]["user"]["withheld_in_countries"]) &&
+        typedObj["children"][1]["props"]["user"]["withheld_in_countries"].every((e: any) =>
+            typeof e === "string"
+        )
     )
 }

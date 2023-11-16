@@ -38,6 +38,12 @@
     "profileContainsSensitiveMedia": {
         "message": "🚫個人資料媒體已設定為敏感標記。"
     },
+    "accountIsNotWithheldInCountries": {
+        "message": "✅帳戶在任何國家都不會被封鎖。"
+    },
+    "accountIsWithheldInCountries": {
+        "message": "🚫帳戶在以下國家/地區會被封鎖："
+    },
     "tweetIsNotFlaggedAsSensitive": {
         "message": "✅推文未添加敏感标志。"
     },

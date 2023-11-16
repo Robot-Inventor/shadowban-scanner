@@ -38,6 +38,12 @@
     "profileContainsSensitiveMedia": {
         "message": "🚫プロフィールのメディアにセンシティブフラグが付与されています"
     },
+    "accountIsNotWithheldInCountries": {
+        "message": "✅アカウントがブロックされている国はありません"
+    },
+    "accountIsWithheldInCountries": {
+        "message": "🚫アカウントは次の国でブロックされています： "
+    },
     "tweetIsNotFlaggedAsSensitive": {
         "message": "✅ツイートにセンシティブフラグは付与されていません"
     },

@@ -38,6 +38,12 @@
     "profileContainsSensitiveMedia": {
         "message": "🚫프로필의 미디어에 민감한 플래그가 지정되어 있습니다."
     },
+    "accountIsNotWithheldInCountries": {
+        "message": "✅계정은 모든 국가에서 차단되지 않습니다."
+    },
+    "accountIsWithheldInCountries": {
+        "message": "🚫계정은 다음 국가에서 차단됩니다: "
+    },
     "tweetIsNotFlaggedAsSensitive": {
         "message": "✅트윗에는 센시티브 플래그가 부여되지 않았습니다."
     },

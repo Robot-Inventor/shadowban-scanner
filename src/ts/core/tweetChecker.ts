@@ -29,12 +29,13 @@ class TweetChecker {
      * @param tweetStatus tweet status
      * @returns status data
      */
-    // eslint-disable-next-line max-lines-per-function
+    // eslint-disable-next-line max-lines-per-function, max-statements
     private static tweetStatusToStatusData(tweetStatus: TweetStatus): {
         isTweetSearchable: boolean;
         messages: TranslationKey[];
         shareText: string;
         tweetPermalink: string;
+        withheldInCountries?: string[];
     } {
         const isTweetAgeRestricted =
             tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable;
@@ -45,6 +46,9 @@ class TweetChecker {
         const sensitiveMediaInProfile = tweetStatus.user.sensitiveMediaInProfile
             ? "profileContainsSensitiveMedia"
             : "profileDoesNotContainSensitiveMedia";
+        const accountWithheldInCountries = tweetStatus.user.withheldInCountries.length
+            ? "accountIsWithheldInCountries"
+            : "accountIsNotWithheldInCountries";
         const tweetSensitiveFlag = tweetStatus.tweet.possiblySensitive
             ? "tweetIsFlaggedAsSensitive"
             : "tweetIsNotFlaggedAsSensitive";
@@ -61,6 +65,7 @@ class TweetChecker {
         const messages = [
             accountStatus,
             sensitiveMediaInProfile,
+            accountWithheldInCountries,
             tweetSensitiveFlag,
             tweetAgeRestriction,
             tweetSearchStatus
@@ -93,7 +98,8 @@ ${
             isTweetSearchable,
             messages,
             shareText,
-            tweetPermalink: tweetStatus.tweet.tweetPermalink
+            tweetPermalink: tweetStatus.tweet.tweetPermalink,
+            withheldInCountries: tweetStatus.user.withheldInCountries
         };
     }
 

@@ -38,6 +38,12 @@
     "profileContainsSensitiveMedia": {
         "message": "🚫Profile media is flagged as sensitive."
     },
+    "accountIsNotWithheldInCountries": {
+        "message": "✅Account is not blocked in any countries."
+    },
+    "accountIsWithheldInCountries": {
+        "message": "🚫Account is blocked in the following country(ies): "
+    },
     "tweetIsNotFlaggedAsSensitive": {
         "message": "✅Tweet is not flagged as sensitive."
     },

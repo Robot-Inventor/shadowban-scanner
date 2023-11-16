@@ -8,6 +8,7 @@ interface TweetStatus {
     user: {
         possiblySensitive: boolean;
         sensitiveMediaInProfile: boolean;
+        withheldInCountries: string[];
     };
 }
 
@@ -25,6 +26,7 @@ type AccountStatusString = "thisUserIsShadowbanned" | "thisUserIsNotShadowbanned
  * Summarize the message.
  */
 class MessageSummary {
+    // TODO: Reflect withheld_in_countries.
     /**
      * Get the message summary from the tweet status data.
      * @param status tweet status data
@@ -46,6 +48,7 @@ class MessageSummary {
         return status.tweet.possiblySensitiveEditable ? "tweetFlaggedAsSensitive" : "tweetShadowbanned";
     }
 
+    // TODO: Reflect withheld_in_countries.
     /**
      * Get the message summary from the account status data.
      * @param isPossiblySensitive whether the account is possibly sensitive
