@@ -7,7 +7,10 @@ import browser from "webextension-polyfill";
 const main = async () => {
     const settings = await browser.storage.local.get(DEFAULT_SETTINGS);
 
-    const translator = new Translator((key) => browser.i18n.getMessage(key), browser.runtime.getURL("dist/image/"));
+    const translator = new Translator(
+        (key, substitutions) => browser.i18n.getMessage(key, substitutions),
+        browser.runtime.getURL("dist/image/")
+    );
 
     const eventGenerator = document.createElement("div");
     const settingsString = JSON.stringify(settings);

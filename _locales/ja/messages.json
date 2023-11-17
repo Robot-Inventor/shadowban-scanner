@@ -42,7 +42,7 @@
         "message": "✅アカウントがブロックされている国はありません"
     },
     "accountIsWithheldInCountries": {
-        "message": "🚫アカウントは次の国でブロックされています： "
+        "message": "🚫アカウントは次の国でブロックされています：$1"
     },
     "tweetIsNotFlaggedAsSensitive": {
         "message": "✅ツイートにセンシティブフラグは付与されていません"

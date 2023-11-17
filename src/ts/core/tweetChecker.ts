@@ -1,9 +1,17 @@
 import { MessageSummary, TweetStatus } from "./messageSummary";
 import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
+import { SbsMessageDetails } from "../components/sbsMessage";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../@types/common/settings";
-import { TranslationKey } from "../common/translator";
 import { TweetReactProps } from "./reactProps/tweetReactProps";
+
+interface StatusData {
+    isTweetSearchable: boolean;
+    messages: SbsMessageDetails;
+    shareText: string;
+    tweetPermalink: string;
+    withheldInCountries?: string[];
+}
 
 /**
  * Check the tweet.
@@ -29,14 +37,9 @@ class TweetChecker {
      * @param tweetStatus tweet status
      * @returns status data
      */
+    // TODO: Add a link to Twitter documentation about withheld in the message.
     // eslint-disable-next-line max-lines-per-function, max-statements
-    private static tweetStatusToStatusData(tweetStatus: TweetStatus): {
-        isTweetSearchable: boolean;
-        messages: TranslationKey[];
-        shareText: string;
-        tweetPermalink: string;
-        withheldInCountries?: string[];
-    } {
+    private static tweetStatusToStatusData(tweetStatus: TweetStatus): StatusData {
         const isTweetAgeRestricted =
             tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable;
 
@@ -47,7 +50,17 @@ class TweetChecker {
             ? "profileContainsSensitiveMedia"
             : "profileDoesNotContainSensitiveMedia";
         const accountWithheldInCountries = tweetStatus.user.withheldInCountries.length
-            ? "accountIsWithheldInCountries"
+            ? ({
+                  messageName: "accountIsWithheldInCountries",
+                  substitutions: new Intl.ListFormat(navigator.language, {
+                      style: "narrow",
+                      type: "conjunction"
+                  }).format(
+                      tweetStatus.user.withheldInCountries.map(
+                          (country) => new Intl.DisplayNames([navigator.language], { type: "region" }).of(country) || ""
+                      )
+                  )
+              } as const)
             : "accountIsNotWithheldInCountries";
         const tweetSensitiveFlag = tweetStatus.tweet.possiblySensitive
             ? "tweetIsFlaggedAsSensitive"
@@ -69,7 +82,7 @@ class TweetChecker {
             tweetSensitiveFlag,
             tweetAgeRestriction,
             tweetSearchStatus
-        ] satisfies TranslationKey[];
+        ] satisfies StatusData["messages"];
 
         // TODO: Support withheld_in_countries
         const shareText = `

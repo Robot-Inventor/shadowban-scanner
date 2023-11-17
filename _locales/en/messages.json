@@ -42,7 +42,7 @@
         "message": "✅Account is not blocked in any countries."
     },
     "accountIsWithheldInCountries": {
-        "message": "🚫Account is blocked in the following country(ies): "
+        "message": "🚫Account is blocked in the following country(ies): $1"
     },
     "tweetIsNotFlaggedAsSensitive": {
         "message": "✅Tweet is not flagged as sensitive."
