@@ -84,7 +84,6 @@ class TweetChecker {
             tweetSearchStatus
         ] satisfies StatusData["messages"];
 
-        // TODO: Support withheld_in_countries
         const shareText = `
 ${
     tweetStatus.user.possiblySensitive
@@ -95,6 +94,11 @@ ${
     tweetStatus.user.sensitiveMediaInProfile
         ? "🚫Sensitive flag on profile media"
         : "✅No sensitive flag on profile media"
+}
+${
+    tweetStatus.user.withheldInCountries.length
+        ? `🚫Account is blocked in some countries`
+        : "✅Account is not blocked in any countries"
 }
 ${tweetStatus.tweet.possiblySensitive ? "🚫Sensitive flag on tweet" : "✅No sensitive flag on tweet"}
 ${isTweetAgeRestricted ? "🚫Age limit on tweet" : "✅No age limit on tweet"}
