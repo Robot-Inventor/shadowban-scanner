@@ -33,84 +33,130 @@ class TweetChecker {
     }
 
     /**
+     * Generate text to share the result.
+     * @param tweetStatus tweet status
+     * @returns generated share text
+     */
+    private static generateShareText(tweetStatus: TweetStatus, isTweetAgeRestricted: boolean) {
+        const isTweetSearchable = TweetChecker.checkTweetSearchability(tweetStatus);
+
+        const accountSensitiveFlag = tweetStatus.user.possiblySensitive
+            ? "🚫Account is flagged as sensitive or shadowbanned"
+            : "✅No sensitive flag on account";
+        const profileSensitiveFlag = tweetStatus.user.sensitiveMediaInProfile
+            ? "🚫Sensitive flag on profile media"
+            : "✅No sensitive flag on profile media";
+        const withheldInCountries = tweetStatus.user.withheldInCountries.length
+            ? `🚫Account is blocked in some countries`
+            : "✅Account is not blocked in any countries";
+        const tweetSensitiveFlag = tweetStatus.tweet.possiblySensitive
+            ? "🚫Sensitive flag on tweet"
+            : "✅No sensitive flag on tweet";
+        const tweetAgeRestriction = isTweetAgeRestricted ? "🚫Age limit on tweet" : "✅No age limit on tweet";
+        const tweetSearchStatus = isTweetSearchable
+            ? "✅Tweet will appear in search results"
+            : "🚫Tweet may not appear in search results";
+        const siteURL =
+            navigator.language === "ja"
+                ? "https://robot-inventor.github.io/shadowban-scanner/"
+                : "https://robot-inventor.github.io/shadowban-scanner/en/";
+
+        return `
+${accountSensitiveFlag}
+${profileSensitiveFlag}
+${withheldInCountries}
+${tweetSensitiveFlag}
+${tweetAgeRestriction}
+${tweetSearchStatus}
+
+Shadowban Scanner by ろぼいん
+${siteURL}
+        `.trim();
+    }
+
+    /**
+     * Format the country list into user's language and style.
+     * @param countries country codes
+     * @returns formatted country list
+     */
+    private static formatCountryList(countries: string[]) {
+        const userLanguage = navigator.language;
+        const listFormatter = new Intl.ListFormat(userLanguage, {
+            style: "narrow",
+            type: "conjunction"
+        });
+        const translator = new Intl.DisplayNames([userLanguage], { type: "region" });
+
+        const translatedCountries = countries.map((country) => translator.of(country) || "");
+        const formattedText = listFormatter.format(translatedCountries);
+
+        return formattedText;
+    }
+
+    private static convertAccountDataToTranslationKey(accountData: TweetStatus["user"]): SbsMessageDetails {
+        const accountStatus = accountData.possiblySensitive
+            ? "accountIsShadowbannedOrFlaggedAsSensitive"
+            : "accountIsNotFlaggedAsSensitive";
+
+        const sensitiveMediaInProfile = accountData.sensitiveMediaInProfile
+            ? "profileContainsSensitiveMedia"
+            : "profileDoesNotContainSensitiveMedia";
+
+        const accountWithheldInCountries = accountData.withheldInCountries.length
+            ? ({
+                  messageName: "accountIsWithheldInCountries",
+                  substitutions: TweetChecker.formatCountryList(accountData.withheldInCountries)
+              } as const)
+            : "accountIsNotWithheldInCountries";
+
+        return [accountStatus, sensitiveMediaInProfile, accountWithheldInCountries];
+    }
+
+    private static convertTweetDataToTranslationKey(
+        tweetData: TweetStatus,
+        isTweetAgeRestricted: boolean
+    ): SbsMessageDetails {
+        const tweetSensitiveFlag = tweetData.tweet.possiblySensitive
+            ? "tweetIsFlaggedAsSensitive"
+            : "tweetIsNotFlaggedAsSensitive";
+        const tweetAgeRestriction = isTweetAgeRestricted ? "tweetIsAgeRestricted" : "tweetIsNotAgeRestricted";
+        const tweetSearchStatus = (() => {
+            if (isTweetAgeRestricted || tweetData.user.possiblySensitive) {
+                return "tweetIsNotSearchable";
+            }
+            return tweetData.tweet.possiblySensitive ? "tweetMayNotBeSearchable" : "tweetIsSearchable";
+        })();
+
+        return [tweetSensitiveFlag, tweetAgeRestriction, tweetSearchStatus];
+    }
+
+    private static checkTweetSearchability(tweetStatus: TweetStatus): boolean {
+        const isTweetAgeRestricted =
+            tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable;
+
+        if (isTweetAgeRestricted || tweetStatus.user.possiblySensitive) {
+            return false;
+        }
+
+        return !tweetStatus.tweet.possiblySensitive;
+    }
+
+    /**
      * Convert the tweet status to the status data.
      * @param tweetStatus tweet status
      * @returns status data
      */
     // TODO: Add a link to Twitter documentation about withheld in the message.
-    // eslint-disable-next-line max-lines-per-function, max-statements
     private static tweetStatusToStatusData(tweetStatus: TweetStatus): StatusData {
         const isTweetAgeRestricted =
             tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable;
 
-        const accountStatus = tweetStatus.user.possiblySensitive
-            ? "accountIsShadowbannedOrFlaggedAsSensitive"
-            : "accountIsNotFlaggedAsSensitive";
-        const sensitiveMediaInProfile = tweetStatus.user.sensitiveMediaInProfile
-            ? "profileContainsSensitiveMedia"
-            : "profileDoesNotContainSensitiveMedia";
-        const accountWithheldInCountries = tweetStatus.user.withheldInCountries.length
-            ? ({
-                  messageName: "accountIsWithheldInCountries",
-                  substitutions: new Intl.ListFormat(navigator.language, {
-                      style: "narrow",
-                      type: "conjunction"
-                  }).format(
-                      tweetStatus.user.withheldInCountries.map(
-                          (country) => new Intl.DisplayNames([navigator.language], { type: "region" }).of(country) || ""
-                      )
-                  )
-              } as const)
-            : "accountIsNotWithheldInCountries";
-        const tweetSensitiveFlag = tweetStatus.tweet.possiblySensitive
-            ? "tweetIsFlaggedAsSensitive"
-            : "tweetIsNotFlaggedAsSensitive";
-        const tweetAgeRestriction = isTweetAgeRestricted ? "tweetIsAgeRestricted" : "tweetIsNotAgeRestricted";
-        const tweetSearchStatus = (() => {
-            if (isTweetAgeRestricted || tweetStatus.user.possiblySensitive) {
-                return "tweetIsNotSearchable";
-            }
-            return tweetStatus.tweet.possiblySensitive ? "tweetMayNotBeSearchable" : "tweetIsSearchable";
-        })();
+        const accountTranslations = TweetChecker.convertAccountDataToTranslationKey(tweetStatus.user);
+        const tweetTranslations = TweetChecker.convertTweetDataToTranslationKey(tweetStatus, isTweetAgeRestricted);
 
-        const isTweetSearchable = tweetSearchStatus === "tweetIsSearchable";
-
-        const messages = [
-            accountStatus,
-            sensitiveMediaInProfile,
-            accountWithheldInCountries,
-            tweetSensitiveFlag,
-            tweetAgeRestriction,
-            tweetSearchStatus
-        ] satisfies StatusData["messages"];
-
-        const shareText = `
-${
-    tweetStatus.user.possiblySensitive
-        ? "🚫Account is flagged as sensitive or shadowbanned"
-        : "✅No sensitive flag on account"
-}
-${
-    tweetStatus.user.sensitiveMediaInProfile
-        ? "🚫Sensitive flag on profile media"
-        : "✅No sensitive flag on profile media"
-}
-${
-    tweetStatus.user.withheldInCountries.length
-        ? `🚫Account is blocked in some countries`
-        : "✅Account is not blocked in any countries"
-}
-${tweetStatus.tweet.possiblySensitive ? "🚫Sensitive flag on tweet" : "✅No sensitive flag on tweet"}
-${isTweetAgeRestricted ? "🚫Age limit on tweet" : "✅No age limit on tweet"}
-${isTweetSearchable ? "✅Tweet will appear in search results" : "🚫Tweet may not appear in search results"}
-
-Shadowban Scanner by ろぼいん
-${
-    navigator.language === "ja"
-        ? "https://robot-inventor.github.io/shadowban-scanner/"
-        : "https://robot-inventor.github.io/shadowban-scanner/en/"
-}
-`.trim();
+        const isTweetSearchable = TweetChecker.checkTweetSearchability(tweetStatus);
+        const messages = [...accountTranslations, ...tweetTranslations];
+        const shareText = TweetChecker.generateShareText(tweetStatus, isTweetAgeRestricted);
 
         return {
             isTweetSearchable,
