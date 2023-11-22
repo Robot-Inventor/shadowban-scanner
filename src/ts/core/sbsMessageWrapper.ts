@@ -33,7 +33,6 @@ interface SbsMessageWrapperOptionsForProfiles {
     onRenderedCallback?: () => void;
 }
 
-// TODO: Support witheld_in_countries.
 class SbsMessageWrapper {
     private readonly sbsMessage: HTMLElement;
 

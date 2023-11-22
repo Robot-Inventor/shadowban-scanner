@@ -39,10 +39,10 @@
         "message": "🚫プロフィールのメディアにセンシティブフラグが付与されています"
     },
     "accountIsNotWithheldInCountries": {
-        "message": "✅アカウントがブロックされている国はありません"
+        "message": "✅アカウントがブロックされている国はありません（<a href=\"https://help.twitter.com/rules-and-policies/post-withheld-by-country\" target=\"_blank\">詳細</a>）"
     },
     "accountIsWithheldInCountries": {
-        "message": "🚫アカウントは次の国でブロックされています：$1"
+        "message": "🚫アカウントは次の国でブロックされています（<a href=\"https://help.twitter.com/rules-and-policies/post-withheld-by-country\" target=\"_blank\">詳細</a>）：$1"
     },
     "tweetIsNotFlaggedAsSensitive": {
         "message": "✅ツイートにセンシティブフラグは付与されていません"

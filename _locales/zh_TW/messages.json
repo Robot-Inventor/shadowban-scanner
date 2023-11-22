@@ -39,10 +39,10 @@
         "message": "🚫個人資料媒體已設定為敏感標記。"
     },
     "accountIsNotWithheldInCountries": {
-        "message": "✅帳戶在任何國家都不會被封鎖。"
+        "message": "✅帳戶在任何國家都不會被封鎖（<a href=\"https://help.twitter.com/rules-and-policies/post-withheld-by-country\" target=\"_blank\">詳細</a>）。"
     },
     "accountIsWithheldInCountries": {
-        "message": "🚫帳戶在以下國家/地區會被封鎖：$1"
+        "message": "🚫帳戶在以下國家/地區會被封鎖（<a href=\"https://help.twitter.com/rules-and-policies/post-withheld-by-country\" target=\"_blank\">詳細</a>）：$1"
     },
     "tweetIsNotFlaggedAsSensitive": {
         "message": "✅推文未添加敏感标志。"

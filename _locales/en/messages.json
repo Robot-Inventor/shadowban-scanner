@@ -39,10 +39,10 @@
         "message": "🚫Profile media is flagged as sensitive."
     },
     "accountIsNotWithheldInCountries": {
-        "message": "✅Account is not blocked in any countries."
+        "message": "✅Account is not blocked in any countries (<a href=\"https://help.twitter.com/rules-and-policies/post-withheld-by-country\" target=\"_blank\">details</a>)."
     },
     "accountIsWithheldInCountries": {
-        "message": "🚫Account is blocked in the following country(ies): $1"
+        "message": "🚫Account is blocked in the following country(ies) (<a href=\"https://help.twitter.com/rules-and-policies/post-withheld-by-country\" target=\"_blank\">details</a>): $1"
     },
     "tweetIsNotFlaggedAsSensitive": {
         "message": "✅Tweet is not flagged as sensitive."

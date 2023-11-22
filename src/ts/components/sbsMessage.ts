@@ -55,6 +55,10 @@ class SbsMessage extends LitElement {
             font-family: inherit;
         }
 
+        a {
+            color: inherit;
+        }
+
         .shadowban-scanner-message {
             --message-background-color: rgb(255, 0, 0, 0.2);
 
@@ -111,10 +115,6 @@ class SbsMessage extends LitElement {
             margin-top: 0.5em;
         }
 
-        .shadowban-scanner-message-note a {
-            color: inherit;
-        }
-
         .shadowban-scanner-message md-filled-button {
             margin-top: 0.5em;
             width: 100%;
@@ -136,13 +136,11 @@ class SbsMessage extends LitElement {
         }
     `;
 
-    private expand(event: Event) {
-        event.preventDefault();
+    private expand() {
         this.isExpanded = true;
     }
 
-    private tweetButtonClicked(event: Event) {
-        event.preventDefault();
+    private tweetButtonClicked() {
         const newEvent = new Event("tweetButtonClick", { bubbles: true, composed: true });
         this.dispatchEvent(newEvent);
     }
@@ -204,7 +202,10 @@ class SbsMessage extends LitElement {
             : "";
     }
 
-    // eslint-disable-next-line max-lines-per-function
+    private static cancelClickEvent(event: Event) {
+        event.stopPropagation();
+    }
+
     protected render() {
         const outerClasses = classMap({
             "focal-mode": this.isFocalMode,
@@ -213,7 +214,11 @@ class SbsMessage extends LitElement {
         });
 
         return html`
-            <div class=${outerClasses} style="--md-sys-color-on-primary: ${this.textColor};">
+            <div
+                class=${outerClasses}
+                style="--md-sys-color-on-primary: ${this.textColor};"
+                @click=${SbsMessage.cancelClickEvent.bind(this)}
+            >
                 <span data-sb-translation=${this.summary}></span>
                 ${this.getShowMoreButton()} ${this.getDetails()} ${this.getNotes()} ${this.getTweetButton()}
             </div>

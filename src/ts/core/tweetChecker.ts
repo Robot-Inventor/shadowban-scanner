@@ -146,7 +146,6 @@ ${siteURL}
      * @param tweetStatus tweet status
      * @returns status data
      */
-    // TODO: Add a link to Twitter documentation about withheld in the message.
     private static tweetStatusToStatusData(tweetStatus: TweetStatus): StatusData {
         const isTweetAgeRestricted =
             tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable;
