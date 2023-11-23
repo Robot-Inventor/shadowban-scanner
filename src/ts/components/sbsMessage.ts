@@ -124,6 +124,16 @@ class SbsMessage extends LitElement {
             --_container-shadow-color: rgba(0, 0, 0, 0.3);
         }
 
+        [data-sb-translation] {
+            display: inline-block;
+            min-width: 15em;
+            min-height: 1em;
+            border-radius: 0.25em;
+            background-image: linear-gradient(90deg, transparent 40%, rgba(175, 175, 175, 0.7) 80%, transparent 100%);
+            background-size: 200% 100%;
+            animation: loading-animation 1.5s linear infinite;
+        }
+
         @keyframes loading-animation {
             0% {
                 background-position: 200% 0%;
