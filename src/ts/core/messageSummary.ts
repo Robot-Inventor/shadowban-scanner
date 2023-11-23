@@ -17,6 +17,7 @@ type TweetStatusString =
     | "accountShadowbanned"
     | "tweetShadowbanned"
     | "accountAndTweetShadowbanned"
+    | "accountIsBlockedInSomeCountries"
     | "tweetFlaggedAsSensitive"
     | "accountShadowbannedAndTweetFlaggedAsSensitive";
 
@@ -26,7 +27,6 @@ type AccountStatusString = "thisUserIsShadowbanned" | "thisUserIsNotShadowbanned
  * Summarize the message.
  */
 class MessageSummary {
-    // TODO: Reflect withheld_in_countries.
     /**
      * Get the message summary from the tweet status data.
      * @param status tweet status data
@@ -34,8 +34,13 @@ class MessageSummary {
      */
     static fromTweetStatus(status: TweetStatus): TweetStatusString {
         const tweetHasProblem =
-            status.user.possiblySensitive || status.user.sensitiveMediaInProfile || status.tweet.possiblySensitive;
+            status.user.possiblySensitive ||
+            status.user.sensitiveMediaInProfile ||
+            Boolean(status.user.withheldInCountries.length) ||
+            status.tweet.possiblySensitive;
         if (!tweetHasProblem) return "tweetNoProblem";
+
+        if (status.user.withheldInCountries.length) return "accountIsBlockedInSomeCountries";
 
         if (status.user.possiblySensitive || status.user.sensitiveMediaInProfile) {
             if (status.tweet.possiblySensitive) {
@@ -43,12 +48,13 @@ class MessageSummary {
                     ? "accountShadowbannedAndTweetFlaggedAsSensitive"
                     : "accountAndTweetShadowbanned";
             }
+
             return "accountShadowbanned";
         }
+
         return status.tweet.possiblySensitiveEditable ? "tweetFlaggedAsSensitive" : "tweetShadowbanned";
     }
 
-    // TODO: Reflect withheld_in_countries.
     /**
      * Get the message summary from the account status data.
      * @param isPossiblySensitive whether the account is possibly sensitive

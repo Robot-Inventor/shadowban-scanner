@@ -11,6 +11,9 @@
     "accountAndTweetShadowbanned": {
         "message": "This tweet is age-restricted and cannot be viewed by users under the age of 18 or who are not logged in. This tweet may not appear in search results."
     },
+    "accountIsBlockedInSomeCountries": {
+        "message": "This user is blocked in some countries."
+    },
     "tweetFlaggedAsSensitive": {
         "message": "This tweet is flagged as sensitive and will not appear in search results depending on the viewer's preferences."
     },

@@ -11,6 +11,9 @@
     "accountAndTweetShadowbanned": {
         "message": "このツイートには年齢制限があり、18歳未満のユーザーやログインしていないユーザーは閲覧できません。また、検索結果に表示されない可能性があります。"
     },
+    "accountIsBlockedInSomeCountries": {
+        "message": "このユーザーは一部の国でブロックされています。"
+    },
     "tweetFlaggedAsSensitive": {
         "message": "このツイートにはセンシティブフラグが付与されており、閲覧者の設定によっては検索結果に表示されません。"
     },
