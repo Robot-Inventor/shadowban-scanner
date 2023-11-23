@@ -1,10 +1,8 @@
 import { ALLOWED_TWEMOJI, SHADOW_TRANSLATION_ATTRIBUTE, TRANSLATION_ATTRIBUTE, TWEMOJI_ATTRIBUTE } from "./constants";
-import type { SbsMessage } from "../components/sbsMessage";
-import enTranslation from "../../../_locales/en/messages.json";
 
-type TranslationData = typeof enTranslation;
-type TranslationKey = keyof TranslationData;
-type TranslationFunction = (key: TranslationKey) => string;
+import { TranslationData, TranslationFunction } from "../@types/common/translator";
+import type { SbsMessage } from "../components/sbsMessage";
+import { isTranslationSubstitutions } from "../@types/common/translator.guard";
 
 /**
  * Translator class
@@ -62,7 +60,12 @@ class Translator {
 
         targetElements.forEach((element) => {
             const translationKey = element.getAttribute(TRANSLATION_ATTRIBUTE) as keyof TranslationData;
-            const translatedText = this.translationFunction(translationKey);
+            const substitutions = element.getAttribute("data-sb-translation-substitutions");
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            const parsedSubstitutions = substitutions ? JSON.parse(substitutions) : null;
+            const translatedText = isTranslationSubstitutions(parsedSubstitutions)
+                ? this.translationFunction(translationKey, parsedSubstitutions)
+                : this.translationFunction(translationKey);
             if (element.hasAttribute(TWEMOJI_ATTRIBUTE)) {
                 element.innerHTML = this.convertEmojiToTwemoji(translatedText);
             } else {
@@ -73,4 +76,4 @@ class Translator {
     }
 }
 
-export { TranslationData, TranslationKey, Translator };
+export { TranslationData, Translator };

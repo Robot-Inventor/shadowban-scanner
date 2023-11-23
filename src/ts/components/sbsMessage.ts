@@ -1,16 +1,26 @@
 import "@material/web/button/filled-button";
 import { LitElement, PropertyValues, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { TranslationKey } from "../common/translator";
+import { TranslationKey } from "../@types/common/translator";
+import browser from "webextension-polyfill";
 import { classMap } from "lit/directives/class-map.js";
 
+type SbsMessageDetails = Array<
+    | TranslationKey
+    | {
+          messageName: TranslationKey;
+          // eslint-disable-next-line no-magic-numbers
+          substitutions: Parameters<typeof browser.i18n.getMessage>[1];
+      }
+>;
+
 @customElement("sbs-message")
-export class SbsMessage extends LitElement {
+class SbsMessage extends LitElement {
     @property({ reflect: true })
     public summary: TranslationKey = "tweetNoProblem";
 
     @property({ reflect: true, type: Array })
-    public details: TranslationKey[] = [];
+    public details: SbsMessageDetails = [];
 
     @property({ reflect: true, type: Array })
     public notes: TranslationKey[] = [];
@@ -43,6 +53,10 @@ export class SbsMessage extends LitElement {
     public static styles = css`
         * {
             font-family: inherit;
+        }
+
+        a {
+            color: inherit;
         }
 
         .shadowban-scanner-message {
@@ -101,10 +115,6 @@ export class SbsMessage extends LitElement {
             margin-top: 0.5em;
         }
 
-        .shadowban-scanner-message-note a {
-            color: inherit;
-        }
-
         .shadowban-scanner-message md-filled-button {
             margin-top: 0.5em;
             width: 100%;
@@ -126,13 +136,11 @@ export class SbsMessage extends LitElement {
         }
     `;
 
-    private expand(event: Event) {
-        event.preventDefault();
+    private expand() {
         this.isExpanded = true;
     }
 
-    private tweetButtonClicked(event: Event) {
-        event.preventDefault();
+    private tweetButtonClicked() {
         const newEvent = new Event("tweetButtonClick", { bubbles: true, composed: true });
         this.dispatchEvent(newEvent);
     }
@@ -144,6 +152,60 @@ export class SbsMessage extends LitElement {
         super.firstUpdated(_changedProperties);
     }
 
+    private getShowMoreButton() {
+        if (this.isExpanded) return "";
+
+        return html`<button @click=${this.expand.bind(this)} data-sb-translation="showMore"></button>`;
+    }
+
+    private getDetails() {
+        if (!this.details.length) return "";
+
+        return html`<ul class="${this.isExpanded ? "" : "shadowban-scanner-collapsed-content"}">
+            ${this.details.map((detail) => {
+                if (typeof detail === "string") {
+                    return html` <li data-sb-enable-twemoji data-sb-translation=${detail}></li> `;
+                }
+                return html`
+                    <li
+                        data-sb-enable-twemoji
+                        data-sb-translation=${detail.messageName}
+                        data-sb-translation-substitutions=${JSON.stringify(detail.substitutions)}
+                    ></li>
+                `;
+            })}
+        </ul>`;
+    }
+
+    private getNotes() {
+        if (!this.notes.length) return "";
+
+        const notesClasses = classMap({
+            "shadowban-scanner-collapsed-content": !this.isExpanded,
+            "shadowban-scanner-message-note": true
+        });
+
+        return this.notes.map((note) => html` <div class=${notesClasses} data-sb-translation=${note}></div> `);
+    }
+
+    private getTweetButton() {
+        const tweetButtonClasses = classMap({
+            "shadowban-scanner-collapsed-content": !this.isExpanded
+        });
+
+        return this.isTweetButtonShown
+            ? html`<md-filled-button
+                  @click=${this.tweetButtonClicked.bind(this)}
+                  class=${tweetButtonClasses}
+                  data-sb-translation="tweetTheResults"
+              ></md-filled-button>`
+            : "";
+    }
+
+    private static cancelClickEvent(event: Event) {
+        event.stopPropagation();
+    }
+
     protected render() {
         const outerClasses = classMap({
             "focal-mode": this.isFocalMode,
@@ -151,38 +213,14 @@ export class SbsMessage extends LitElement {
             "shadowban-scanner-message-no-problem": !this.isAlert
         });
 
-        const notesClasses = classMap({
-            "shadowban-scanner-collapsed-content": !this.isExpanded,
-            "shadowban-scanner-message-note": true
-        });
-
-        const tweetButtonClasses = classMap({
-            "shadowban-scanner-collapsed-content": !this.isExpanded
-        });
-
         return html`
-            <div class=${outerClasses} style="--md-sys-color-on-primary: ${this.textColor};">
+            <div
+                class=${outerClasses}
+                style="--md-sys-color-on-primary: ${this.textColor};"
+                @click=${SbsMessage.cancelClickEvent.bind(this)}
+            >
                 <span data-sb-translation=${this.summary}></span>
-                ${this.isExpanded
-                    ? ""
-                    : html`<button @click=${this.expand.bind(this)} data-sb-translation="showMore"></button>`}
-                ${this.details.length
-                    ? html`<ul class="${this.isExpanded ? "" : "shadowban-scanner-collapsed-content"}">
-                          ${this.details.map(
-                              (detail) => html` <li data-sb-enable-twemoji data-sb-translation=${detail}></li> `
-                          )}
-                      </ul>`
-                    : ""}
-                ${this.isNoteShown
-                    ? this.notes.map((note) => html` <div class=${notesClasses} data-sb-translation=${note}></div> `)
-                    : ""}
-                ${this.isTweetButtonShown
-                    ? html`<md-filled-button
-                          @click=${this.tweetButtonClicked.bind(this)}
-                          class=${tweetButtonClasses}
-                          data-sb-translation="tweetTheResults"
-                      ></md-filled-button>`
-                    : ""}
+                ${this.getShowMoreButton()} ${this.getDetails()} ${this.getNotes()} ${this.getTweetButton()}
             </div>
         `;
     }
@@ -193,3 +231,5 @@ declare global {
         "sbs-message": SbsMessage;
     }
 }
+
+export { SbsMessageDetails, SbsMessage };

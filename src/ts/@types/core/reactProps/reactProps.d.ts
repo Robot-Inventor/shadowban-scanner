@@ -8,6 +8,7 @@ interface BasicTweetProps {
         possibly_sensitive?: boolean | null;
         screen_name: string;
         profile_interstitial_type: ProfileInterstitialType;
+        withheld_in_countries: string[];
     };
 }
 
@@ -119,6 +120,7 @@ export interface ProfileReactPropsData {
                 user: {
                     possibly_sensitive: boolean | null;
                     profile_interstitial_type: ProfileInterstitialType;
+                    withheld_in_countries: string[];
                 };
             };
         }

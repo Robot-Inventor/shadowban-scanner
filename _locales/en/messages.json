@@ -11,6 +11,9 @@
     "accountAndTweetShadowbanned": {
         "message": "This tweet is age-restricted and cannot be viewed by users under the age of 18 or who are not logged in. This tweet may not appear in search results."
     },
+    "accountIsBlockedInSomeCountries": {
+        "message": "This user is blocked in some countries."
+    },
     "tweetFlaggedAsSensitive": {
         "message": "This tweet is flagged as sensitive and will not appear in search results depending on the viewer's preferences."
     },
@@ -37,6 +40,12 @@
     },
     "profileContainsSensitiveMedia": {
         "message": "🚫Profile media is flagged as sensitive."
+    },
+    "accountIsNotWithheldInCountries": {
+        "message": "✅Account is not blocked in any countries (<a href=\"https://help.twitter.com/rules-and-policies/post-withheld-by-country\" target=\"_blank\">details</a>)."
+    },
+    "accountIsWithheldInCountries": {
+        "message": "🚫Account is blocked in the following country(ies) (<a href=\"https://help.twitter.com/rules-and-policies/post-withheld-by-country\" target=\"_blank\">details</a>): $1"
     },
     "tweetIsNotFlaggedAsSensitive": {
         "message": "✅Tweet is not flagged as sensitive."

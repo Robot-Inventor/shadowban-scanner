@@ -8,6 +8,7 @@ interface TweetStatus {
     user: {
         possiblySensitive: boolean;
         sensitiveMediaInProfile: boolean;
+        withheldInCountries: string[];
     };
 }
 
@@ -16,6 +17,7 @@ type TweetStatusString =
     | "accountShadowbanned"
     | "tweetShadowbanned"
     | "accountAndTweetShadowbanned"
+    | "accountIsBlockedInSomeCountries"
     | "tweetFlaggedAsSensitive"
     | "accountShadowbannedAndTweetFlaggedAsSensitive";
 
@@ -32,8 +34,13 @@ class MessageSummary {
      */
     static fromTweetStatus(status: TweetStatus): TweetStatusString {
         const tweetHasProblem =
-            status.user.possiblySensitive || status.user.sensitiveMediaInProfile || status.tweet.possiblySensitive;
+            status.user.possiblySensitive ||
+            status.user.sensitiveMediaInProfile ||
+            Boolean(status.user.withheldInCountries.length) ||
+            status.tweet.possiblySensitive;
         if (!tweetHasProblem) return "tweetNoProblem";
+
+        if (status.user.withheldInCountries.length) return "accountIsBlockedInSomeCountries";
 
         if (status.user.possiblySensitive || status.user.sensitiveMediaInProfile) {
             if (status.tweet.possiblySensitive) {
@@ -41,8 +48,10 @@ class MessageSummary {
                     ? "accountShadowbannedAndTweetFlaggedAsSensitive"
                     : "accountAndTweetShadowbanned";
             }
+
             return "accountShadowbanned";
         }
+
         return status.tweet.possiblySensitiveEditable ? "tweetFlaggedAsSensitive" : "tweetShadowbanned";
     }
 
