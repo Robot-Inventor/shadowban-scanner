@@ -86,6 +86,24 @@ npm run switchManifest <manifestVersion>
 npm run build
 ```
 
+### Watch
+
+```console
+npm run watch
+```
+
+### Lint
+
+```console
+npm run lint
+```
+
+### Format
+
+```console
+npm run format
+```
+
 ### Package
 
 ```console

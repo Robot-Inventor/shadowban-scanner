@@ -7,13 +7,14 @@
     ],
     "ignoreDependencies": [
         "web-ext",
-        "webpack-cli",
         "ts-auto-guard",
         "addons-linter",
-        "@types/addons-linter"
+        "@types/addons-linter",
+        "colors"
     ],
     "ignore": [
         "script/addonsLinter.ts",
-        "script/updatePrivacyPolicy.ts"
+        "script/updatePrivacyPolicy.ts",
+        "script/addUserScriptsComment.ts"
     ]
 }
