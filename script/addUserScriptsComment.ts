@@ -1,24 +1,7 @@
-import { execSync } from "child_process";
 import { glob } from "glob";
 import fs from "fs";
 import packagejson from "../package.json";
 import path from "path";
-import colors from "colors/safe";
-
-try {
-    console.log("Generating type guards...");
-    execSync("npx ts-auto-guard ./src/ts/@types/**/*.ts");
-
-    console.log("Building...");
-    execSync("npx webpack");
-} catch (error) {
-    // @ts-expect-error
-    console.error(colors.red(error.stdout.toString()));
-    process.exit(1);
-}
-
-console.log("Updating privacy policy...");
-execSync("npx ts-node ./script/updatePrivacyPolicy.ts");
 
 console.log("Adding userScript comments...");
 const userScriptFiles = glob.sync("./userScript/*.user.js");
@@ -56,3 +39,5 @@ for (const userScript of userScriptFiles) {
     const newScriptString = userScriptComment + "\n\n" + scriptString;
     fs.writeFileSync(userScript, newScriptString);
 }
+
+console.log("Done!");

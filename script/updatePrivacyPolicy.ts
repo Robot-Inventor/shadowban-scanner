@@ -4,6 +4,7 @@ import fs from "fs";
 const START_MARKER = "<!-- PRIVACY_POLICY_TEXT_START -->";
 const END_MARKER = "<!-- PRIVACY_POLICY_TEXT_END -->";
 
+console.log("Updating privacy policy...");
 const files = glob.sync("./README*.md");
 
 for (const file of files) {
@@ -28,3 +29,5 @@ ${END_MARKER}
 
     fs.writeFileSync(file, updatedReadmeText);
 }
+
+console.log("Done!");

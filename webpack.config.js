@@ -1,5 +1,7 @@
 const glob = require("glob");
 const path = require("path");
+const { exec } = require("child_process");
+const chokidar = require("chokidar");
 const CopyFilePlugin = require("copy-webpack-plugin");
 const LicensePlugin = require("webpack-license-plugin");
 
@@ -8,6 +10,67 @@ const userScriptEntries = {};
 for (const userScript of userScripts) {
     const key = `../userScript/${path.basename(userScript, ".ts")}.js`;
     userScriptEntries[key] = `./${userScript}`;
+}
+
+class RunCommandsPlugin {
+    apply(compiler) {
+        let watcher;
+        let isWatchMode = false;
+
+        compiler.hooks.beforeCompile.tapAsync("RunCommandsPlugin", (params, callback) => {
+            if (!isWatchMode) {
+                console.log("Generating type guards...");
+                exec("npx ts-auto-guard ./src/ts/@types/**/*.ts", (err, stdout, stderr) => {
+                    if (err) {
+                        console.error(`Error: ${err}`);
+                    } else {
+                        console.log(stdout);
+                    }
+                    callback();
+                });
+            } else {
+                callback();
+            }
+        });
+
+        compiler.hooks.watchRun.tap("RunCommandsPlugin", () => {
+            isWatchMode = true;
+            if (!watcher) {
+                watcher = chokidar.watch("src/ts/@types/**/*.d.ts");
+
+                watcher.on("change", (path) => {
+                    console.log(`File ${path} has been changed`);
+                    console.log("Generating type guards...");
+                    exec("npx ts-auto-guard ./src/ts/@types/**/*.ts", (err, stdout, stderr) => {
+                        if (err) {
+                            console.error(`Error: ${err}`);
+                        } else {
+                            console.log(stdout);
+                        }
+                    });
+                });
+            }
+        });
+
+        compiler.hooks.afterEmit.tapAsync("RunCommandsPlugin", (compilation, callback) => {
+            exec("npx ts-node ./script/updatePrivacyPolicy.ts", (err, stdout, stderr) => {
+                if (err) {
+                    console.error(`Error: ${err}`);
+                } else {
+                    console.log(stdout);
+                }
+            });
+
+            exec("npx ts-node ./script/addUserScriptsComment.ts", (err, stdout, stderr) => {
+                if (err) {
+                    console.error(`Error: ${err}`);
+                } else {
+                    console.log(stdout);
+                }
+                callback();
+            });
+        });
+    }
 }
 
 module.exports = {
@@ -43,7 +106,11 @@ module.exports = {
     resolve: {
         extensions: [".ts", ".js"]
     },
+    watchOptions: {
+        ignored: /src\/ts\/@types\/.*(?<!\.d\.ts)$/,
+    },
     plugins: [
+        new RunCommandsPlugin(),
         new CopyFilePlugin({
             patterns: [
                 {

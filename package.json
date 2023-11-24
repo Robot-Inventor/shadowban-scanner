@@ -8,7 +8,8 @@
     "lint": "npx eslint ./src/ts/**/*.ts && npx knip && ts-node --files ./script/addonsLinter.ts",
     "format": "npx prettier --write ./src/ts/**/*.ts ./src/html/**/*.html ./src/css/**/*.css",
     "format:check": "npx prettier --check ./src/ts/**/*.ts ./src/html/**/*.html ./src/css/**/*.css",
-    "build": "npm run format && ts-node ./script/build.ts",
+    "build": "npx webpack",
+    "watch": "npx webpack --watch",
     "package": "ts-node ./script/package.ts",
     "version": "npm run package && git add .",
     "switchManifest": "ts-node ./script/changeManifestVersion.ts"
@@ -35,6 +36,7 @@
     "@typescript-eslint/parser": "^6.2.0",
     "addons-linter": "^6.15.0",
     "async-query": "^1.0.0",
+    "chokidar": "^3.5.3",
     "colors": "^1.4.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
