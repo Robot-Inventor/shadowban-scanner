@@ -13,42 +13,46 @@ for (const userScript of userScripts) {
 }
 
 class RunCommandsPlugin {
+    generateTypeGuards(callback) {
+        console.log("Generating type guards...");
+        exec("npx ts-auto-guard ./src/ts/@types/**/*.ts", (err, stdout, stderr) => {
+            if (err) {
+                console.error(`Error: ${err}`);
+            } else {
+                console.log(stdout);
+                if (callback) {
+                    callback();
+                }
+            }
+        });
+    }
+
     apply(compiler) {
         let watcher;
         let isWatchMode = false;
 
         compiler.hooks.beforeCompile.tapAsync("RunCommandsPlugin", (params, callback) => {
-            if (!isWatchMode) {
-                console.log("Generating type guards...");
-                exec("npx ts-auto-guard ./src/ts/@types/**/*.ts", (err, stdout, stderr) => {
-                    if (err) {
-                        console.error(`Error: ${err}`);
-                    } else {
-                        console.log(stdout);
-                    }
-                    callback();
-                });
-            } else {
+            if (isWatchMode) {
                 callback();
+                return;
             }
+
+            this.generateTypeGuards(callback);
         });
 
-        compiler.hooks.watchRun.tap("RunCommandsPlugin", () => {
+        compiler.hooks.watchRun.tapAsync("RunCommandsPlugin", (params, callback) => {
             isWatchMode = true;
             if (!watcher) {
                 watcher = chokidar.watch("src/ts/@types/**/*.d.ts");
 
                 watcher.on("change", (path) => {
-                    console.log(`File ${path} has been changed`);
-                    console.log("Generating type guards...");
-                    exec("npx ts-auto-guard ./src/ts/@types/**/*.ts", (err, stdout, stderr) => {
-                        if (err) {
-                            console.error(`Error: ${err}`);
-                        } else {
-                            console.log(stdout);
-                        }
-                    });
+                    console.log(`Type definition file changed: ${path}`);
+                    this.generateTypeGuards();
                 });
+
+                this.generateTypeGuards(callback);
+            } else {
+                callback();
             }
         });
 
