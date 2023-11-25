@@ -215,6 +215,12 @@ ${siteURL}
             type: "tweet"
         });
 
+        const analyticsButton = this.tweet.querySelector("[data-testid='analyticsButton']");
+        if (analyticsButton) {
+            sbsMessageWrapper.insertAdjacentElement(analyticsButton.parentElement as Element, "beforebegin");
+            return;
+        }
+
         sbsMessageWrapper.insertAdjacentElement(menuBar, "beforebegin");
     }
 }
