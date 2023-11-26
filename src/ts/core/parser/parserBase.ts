@@ -2,7 +2,7 @@
  * ReactProps class.
  */
 class ParserBase {
-    private readonly element: Element;
+    protected readonly element: Element;
     private readonly reactPropsName: string;
 
     /**
@@ -18,9 +18,9 @@ class ParserBase {
      * Get the React props.
      * @returns React props
      */
-    get(): unknown {
+    protected getProps(element: Element = this.element): unknown {
         // @ts-expect-error this.reactPropsName is a property name of this.element
-        return this.element[this.reactPropsName];
+        return element[this.reactPropsName];
     }
 }
 

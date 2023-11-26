@@ -4,24 +4,15 @@ import { isProfileReactPropsData } from "../../@types/core/reactProps/reactProps
 /**
  * React props of the user profile.
  */
-class ProfileParser {
-    private readonly userName: Element;
-
-    /**
-     * Parse the React props of the user profile.
-     * @param userNameElement element of the user name
-     */
-    constructor(userNameElement: Element) {
-        this.userName = userNameElement;
-    }
-
+class ProfileParser extends ParserBase {
     /**
      * Get the React props of the user profile.
      * @returns React props of the user profile
      */
-    get() {
-        const reactProps = new ParserBase(this.userName).get();
+    public get() {
+        const reactProps = this.getProps();
         if (!isProfileReactPropsData(reactProps)) throw new Error("Type of reactProps is invalid.");
+
         return reactProps.children[1].props;
     }
 }

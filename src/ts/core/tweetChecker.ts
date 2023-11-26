@@ -143,24 +143,13 @@ ${siteURL}
     }
 
     /**
-     * Get the menu bar of the tweet.
-     * @returns menu bar of the tweet
-     */
-    private getMenuBar(): Element {
-        const menuBar = this.tweet.querySelector("div[role='group'][id]");
-        if (!menuBar) throw new Error("Failed to get menu bar of tweet");
-        return menuBar;
-    }
-
-    /**
      * Run the tweet checker.
      */
     // eslint-disable-next-line max-statements
     run() {
         this.tweet.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
 
-        const menuBar = this.getMenuBar();
-        const tweetReactProps = new TweetParser(this.tweet, this.getMenuBar());
+        const tweetReactProps = new TweetParser(this.tweet);
         const tweetStatus = tweetReactProps.get();
         const isTweetSearchable = TweetChecker.checkTweetSearchability(tweetStatus);
 
@@ -197,7 +186,7 @@ ${siteURL}
             return;
         }
 
-        sbsMessageWrapper.insertAdjacentElement(menuBar, "beforebegin");
+        sbsMessageWrapper.insertAdjacentElement(tweetReactProps.getMenuBar(), "beforebegin");
     }
 }
 
