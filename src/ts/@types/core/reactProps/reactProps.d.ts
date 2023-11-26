@@ -1,15 +1,17 @@
 type ProfileInterstitialType = "" | "sensitive_media" | "fake_account" | "offensive_profile_content" | "timeout";
 
+interface UserProps {
+    possibly_sensitive?: boolean | null;
+    screen_name: string;
+    profile_interstitial_type: ProfileInterstitialType;
+    withheld_in_countries: string[];
+}
+
 interface BasicTweetProps {
     possibly_sensitive?: boolean | null;
     possibly_sensitive_editable?: boolean | null;
     permalink: string;
-    user: {
-        possibly_sensitive?: boolean | null;
-        screen_name: string;
-        profile_interstitial_type: ProfileInterstitialType;
-        withheld_in_countries: string[];
-    };
+    user: UserProps;
 }
 
 /** @see {isMenuBarReactPropsData} ts-auto-guard:type-guard */
@@ -117,11 +119,7 @@ export interface ProfileReactPropsData {
         unknown,
         {
             props: {
-                user: {
-                    possibly_sensitive: boolean | null;
-                    profile_interstitial_type: ProfileInterstitialType;
-                    withheld_in_countries: string[];
-                };
+                user: UserProps;
             };
         }
     ];

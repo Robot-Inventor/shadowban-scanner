@@ -5,7 +5,6 @@ import {
 } from "../../@types/core/reactProps/reactProps.guard";
 import { BasicTweetProps } from "../../@types/core/reactProps/reactProps";
 import { ParserBase } from "./parserBase";
-import { TweetStatus } from "../messageSummary";
 
 /**
  * React props of the tweet.
@@ -43,27 +42,10 @@ class TweetParser extends ParserBase {
      * Get the React props of the tweet.
      * @returns React props of the tweet
      */
-    public get(): TweetStatus {
+    public parse() {
         const basicProps = this.basicTweetProps;
 
-        const result: TweetStatus = {
-            tweet: {
-                isTweetByCurrentUser: this.isTweetByCurrentUser,
-                possiblySensitive: Boolean(basicProps.possibly_sensitive),
-                // Ref: https://github.com/Robot-Inventor/shadowban-scanner/issues/16
-                possiblySensitiveEditable: !(basicProps.possibly_sensitive_editable === false),
-                tweetPermalink: basicProps.permalink
-            },
-            user: {
-                possiblySensitive: Boolean(basicProps.user.possibly_sensitive),
-                sensitiveMediaInProfile: ["sensitive_media", "offensive_profile_content"].includes(
-                    basicProps.user.profile_interstitial_type
-                ),
-                withheldInCountries: basicProps.user.withheld_in_countries
-            }
-        };
-
-        return result;
+        return basicProps;
     }
 
     /**

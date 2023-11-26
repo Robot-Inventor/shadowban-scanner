@@ -1,5 +1,6 @@
-import { MessageSummary, TweetStatus } from "./messageSummary";
+import { PropsAnalyzer, TweetAnalysisResult } from "./propsAnalyzer";
 import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
+import { MessageSummary } from "./messageSummary";
 import { SbsMessageDetails } from "../components/sbsMessage";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../@types/common/settings";
@@ -25,36 +26,26 @@ class TweetChecker {
     }
 
     /**
-     * Returns whether the tweet is age restricted.
-     * @param tweetStatus tweet status
-     * @returns whether the tweet is age restricted
-     */
-    private static getTweetAgeRestriction(tweetStatus: TweetStatus) {
-        return tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable;
-    }
-
-    /**
      * Generate text to share the result.
-     * @param tweetStatus tweet status
+     * @param analyzer tweet status
      * @returns generated share text
      */
-    private static generateShareText(tweetStatus: TweetStatus) {
-        const isTweetSearchable = TweetChecker.checkTweetSearchability(tweetStatus);
-        const isTweetAgeRestricted = TweetChecker.getTweetAgeRestriction(tweetStatus);
+    private static generateShareText(analyzer: TweetAnalysisResult) {
+        const isTweetSearchable = analyzer.tweet.searchability === "searchable";
 
-        const accountSensitiveFlag = tweetStatus.user.possiblySensitive
+        const accountSensitiveFlag = analyzer.user.shadowbanned
             ? "🚫Account is flagged as sensitive or shadowbanned"
             : "✅No sensitive flag on account";
-        const profileSensitiveFlag = tweetStatus.user.sensitiveMediaInProfile
+        const profileSensitiveFlag = analyzer.user.sensitiveMediaInProfile
             ? "🚫Sensitive flag on profile media"
             : "✅No sensitive flag on profile media";
-        const withheldInCountries = tweetStatus.user.withheldInCountries.length
+        const withheldInCountries = analyzer.user.withheldInCountries.length
             ? `🚫Account is blocked in some countries`
             : "✅Account is not blocked in any countries";
-        const tweetSensitiveFlag = tweetStatus.tweet.possiblySensitive
+        const tweetSensitiveFlag = analyzer.tweet.possiblySensitive
             ? "🚫Sensitive flag on tweet"
             : "✅No sensitive flag on tweet";
-        const tweetAgeRestriction = isTweetAgeRestricted ? "🚫Age limit on tweet" : "✅No age limit on tweet";
+        const tweetAgeRestriction = analyzer.tweet.ageRestriction ? "🚫Age limit on tweet" : "✅No age limit on tweet";
         const tweetSearchStatus = isTweetSearchable
             ? "✅Tweet will appear in search results"
             : "🚫Tweet may not appear in search results";
@@ -95,51 +86,38 @@ ${siteURL}
         return formattedText;
     }
 
-    private static convertAccountDataToTranslationKey(accountData: TweetStatus["user"]): SbsMessageDetails {
-        const accountStatus = accountData.possiblySensitive
+    private static convertAccountDataToTranslationKey(analyzer: TweetAnalysisResult): SbsMessageDetails {
+        const accountStatus = analyzer.user.shadowbanned
             ? "accountIsShadowbannedOrFlaggedAsSensitive"
             : "accountIsNotFlaggedAsSensitive";
 
-        const sensitiveMediaInProfile = accountData.sensitiveMediaInProfile
+        const sensitiveMediaInProfile = analyzer.user.sensitiveMediaInProfile
             ? "profileContainsSensitiveMedia"
             : "profileDoesNotContainSensitiveMedia";
 
-        const accountWithheldInCountries = accountData.withheldInCountries.length
+        const accountWithheldInCountries = analyzer.user.withheldInCountries.length
             ? ({
                   messageName: "accountIsWithheldInCountries",
-                  substitutions: TweetChecker.formatCountryList(accountData.withheldInCountries)
+                  substitutions: TweetChecker.formatCountryList(analyzer.user.withheldInCountries)
               } as const)
             : "accountIsNotWithheldInCountries";
 
         return [accountStatus, sensitiveMediaInProfile, accountWithheldInCountries];
     }
 
-    private static convertTweetDataToTranslationKey(tweetData: TweetStatus): SbsMessageDetails {
-        const isTweetAgeRestricted = TweetChecker.getTweetAgeRestriction(tweetData);
-
-        const tweetSensitiveFlag = tweetData.tweet.possiblySensitive
+    private static convertTweetDataToTranslationKey(analyzer: TweetAnalysisResult): SbsMessageDetails {
+        const tweetSensitiveFlag = analyzer.tweet.possiblySensitive
             ? "tweetIsFlaggedAsSensitive"
             : "tweetIsNotFlaggedAsSensitive";
-        const tweetAgeRestriction = isTweetAgeRestricted ? "tweetIsAgeRestricted" : "tweetIsNotAgeRestricted";
-        const tweetSearchStatus = (() => {
-            if (isTweetAgeRestricted || tweetData.user.possiblySensitive) {
-                return "tweetIsNotSearchable";
-            }
-            return tweetData.tweet.possiblySensitive ? "tweetMayNotBeSearchable" : "tweetIsSearchable";
-        })();
+        const tweetAgeRestriction = analyzer.tweet.ageRestriction ? "tweetIsAgeRestricted" : "tweetIsNotAgeRestricted";
+        const tweetSearchStatusTable = {
+            possiblyUnsearchable: "tweetMayNotBeSearchable",
+            searchable: "tweetIsSearchable",
+            unsearchable: "tweetIsNotSearchable"
+        } as const;
+        const tweetSearchStatus = tweetSearchStatusTable[analyzer.tweet.searchability];
 
         return [tweetSensitiveFlag, tweetAgeRestriction, tweetSearchStatus];
-    }
-
-    private static checkTweetSearchability(tweetStatus: TweetStatus): boolean {
-        const isTweetAgeRestricted =
-            tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable;
-
-        if (isTweetAgeRestricted || tweetStatus.user.possiblySensitive) {
-            return false;
-        }
-
-        return !tweetStatus.tweet.possiblySensitive;
     }
 
     /**
@@ -149,33 +127,34 @@ ${siteURL}
     run() {
         this.tweet.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
 
-        const tweetReactProps = new TweetParser(this.tweet);
-        const tweetStatus = tweetReactProps.get();
-        const isTweetSearchable = TweetChecker.checkTweetSearchability(tweetStatus);
+        const tweetParser = new TweetParser(this.tweet);
+        const tweetReactProps = tweetParser.parse();
+        const tweetAnalyzer = PropsAnalyzer.analyzeTweetProps(tweetReactProps);
+        const isTweetSearchable = tweetAnalyzer.tweet.searchability === "searchable";
 
-        if (!tweetStatus.tweet.isTweetByCurrentUser && !this.options.enableForOtherUsersTweets) return;
+        if (!tweetParser.isTweetByCurrentUser && !this.options.enableForOtherUsersTweets) return;
         if (isTweetSearchable && !this.options.showMessagesInUnproblematicTweets) return;
 
-        const messageSummary = MessageSummary.fromTweetStatus(tweetStatus);
+        const messageSummary = MessageSummary.fromTweetStatus(tweetAnalyzer);
 
-        const accountTranslations = TweetChecker.convertAccountDataToTranslationKey(tweetStatus.user);
-        const tweetTranslations = TweetChecker.convertTweetDataToTranslationKey(tweetStatus);
+        const accountTranslations = TweetChecker.convertAccountDataToTranslationKey(tweetAnalyzer);
+        const tweetTranslations = TweetChecker.convertTweetDataToTranslationKey(tweetAnalyzer);
 
         const sbsMessageWrapper = new SbsMessageWrapper({
             details: [...accountTranslations, ...tweetTranslations],
 
             isAlert: !isTweetSearchable,
             isExpanded: this.options.alwaysDetailedView,
-            isFocalMode: tweetReactProps.isFocal,
+            isFocalMode: tweetParser.isFocal,
             isNoteShown: this.options.showNotesInMessages,
             isTweetButtonShown: this.options.showTweetButton,
 
             notes: ["falsePositivesAndFalseNegativesOccur", "translatedByAI"],
             onRenderedCallback: this.onMessageCallback,
             sourceTweet: this.tweet,
-            sourceTweetPermalink: tweetStatus.tweet.tweetPermalink,
+            sourceTweetPermalink: tweetAnalyzer.tweet.permalink,
             summary: messageSummary,
-            tweetText: TweetChecker.generateShareText(tweetStatus),
+            tweetText: TweetChecker.generateShareText(tweetAnalyzer),
 
             type: "tweet"
         });
@@ -186,7 +165,7 @@ ${siteURL}
             return;
         }
 
-        sbsMessageWrapper.insertAdjacentElement(tweetReactProps.getMenuBar(), "beforebegin");
+        sbsMessageWrapper.insertAdjacentElement(tweetParser.getMenuBar(), "beforebegin");
     }
 }
 

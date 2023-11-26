@@ -9,11 +9,11 @@ class ProfileParser extends ParserBase {
      * Get the React props of the user profile.
      * @returns React props of the user profile
      */
-    public get() {
+    public parse() {
         const reactProps = this.getProps();
         if (!isProfileReactPropsData(reactProps)) throw new Error("Type of reactProps is invalid.");
 
-        return reactProps.children[1].props;
+        return reactProps.children[1].props.user;
     }
 }
 
