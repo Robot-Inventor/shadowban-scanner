@@ -1,16 +1,4 @@
-interface TweetStatus {
-    tweet: {
-        possiblySensitive: boolean;
-        possiblySensitiveEditable: boolean;
-        isTweetByCurrentUser: boolean;
-        tweetPermalink: string;
-    };
-    user: {
-        possiblySensitive: boolean;
-        sensitiveMediaInProfile: boolean;
-        withheldInCountries: string[];
-    };
-}
+import { TweetAnalysisResult } from "./propsAnalyzer";
 
 type TweetStatusString =
     | "tweetNoProblem"
@@ -32,9 +20,9 @@ class MessageSummary {
      * @param status tweet status data
      * @returns message summary
      */
-    static fromTweetStatus(status: TweetStatus): TweetStatusString {
+    static fromTweetStatus(status: TweetAnalysisResult): TweetStatusString {
         const tweetHasProblem =
-            status.user.possiblySensitive ||
+            status.user.shadowbanned ||
             status.user.sensitiveMediaInProfile ||
             Boolean(status.user.withheldInCountries.length) ||
             status.tweet.possiblySensitive;
@@ -42,17 +30,17 @@ class MessageSummary {
 
         if (status.user.withheldInCountries.length) return "accountIsBlockedInSomeCountries";
 
-        if (status.user.possiblySensitive || status.user.sensitiveMediaInProfile) {
+        if (status.user.shadowbanned || status.user.sensitiveMediaInProfile) {
             if (status.tweet.possiblySensitive) {
-                return status.tweet.possiblySensitiveEditable
-                    ? "accountShadowbannedAndTweetFlaggedAsSensitive"
-                    : "accountAndTweetShadowbanned";
+                return status.tweet.ageRestriction
+                    ? "accountAndTweetShadowbanned"
+                    : "accountShadowbannedAndTweetFlaggedAsSensitive";
             }
 
             return "accountShadowbanned";
         }
 
-        return status.tweet.possiblySensitiveEditable ? "tweetFlaggedAsSensitive" : "tweetShadowbanned";
+        return status.tweet.ageRestriction ? "tweetShadowbanned" : "tweetFlaggedAsSensitive";
     }
 
     /**
@@ -65,4 +53,4 @@ class MessageSummary {
     }
 }
 
-export { TweetStatus, MessageSummary };
+export { MessageSummary };

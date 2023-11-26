@@ -1,6 +1,7 @@
 import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
 import { MessageSummary } from "./messageSummary";
 import { ProfileParser } from "./parser/profileParser";
+import { PropsAnalyzer } from "./propsAnalyzer";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../@types/common/settings";
 
@@ -30,19 +31,15 @@ class ProfileChecker {
         if (!this.options.enableForOtherUsersProfiles && !isCurrentUsersProfile) return;
 
         this.userName.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
-        const reactProps = new ProfileParser(this.userName).get();
-        const isUserPossiblySensitive =
-            Boolean(reactProps.user.possibly_sensitive) ||
-            Boolean(
-                ["sensitive_media", "offensive_profile_content"].includes(reactProps.user.profile_interstitial_type)
-            );
+        const reactProps = new ProfileParser(this.userName).parse();
+        const profileAnalyzer = PropsAnalyzer.analyzeProfileProps(reactProps);
 
-        if (!isUserPossiblySensitive && !this.options.showMessagesInUnproblematicProfiles) return;
+        if (!profileAnalyzer.user.shadowbanned && !this.options.showMessagesInUnproblematicProfiles) return;
 
         const sbsMessageWrapper = new SbsMessageWrapper({
-            isAlert: isUserPossiblySensitive,
+            isAlert: profileAnalyzer.user.shadowbanned,
             onRenderedCallback: this.onMessageCallback,
-            summary: MessageSummary.fromAccountStatus(isUserPossiblySensitive),
+            summary: MessageSummary.fromAccountStatus(profileAnalyzer.user.shadowbanned),
 
             type: "profile"
         });
