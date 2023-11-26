@@ -25,7 +25,6 @@ class ProfileChecker {
     /**
      * Run the profile checker.
      */
-    // eslint-disable-next-line max-statements
     run() {
         const isCurrentUsersProfile = Boolean(document.querySelector("[data-testid='editProfileButton']"));
         if (!this.options.enableForOtherUsersProfiles && !isCurrentUsersProfile) return;
@@ -52,6 +51,7 @@ class ProfileChecker {
             document.querySelector("[data-testid='UserDescription']") ||
             document.querySelector("[data-testid='UserName']");
         if (!bioOrUserName) throw new Error("Failed to get user description of profile");
+
         sbsMessageWrapper.insertAdjacentElement(bioOrUserName, "afterend");
     }
 }

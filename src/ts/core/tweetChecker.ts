@@ -5,14 +5,6 @@ import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../@types/common/settings";
 import { TweetReactProps } from "./reactProps/tweetReactProps";
 
-interface StatusData {
-    isTweetSearchable: boolean;
-    messages: SbsMessageDetails;
-    shareText: string;
-    tweetPermalink: string;
-    withheldInCountries?: string[];
-}
-
 /**
  * Check the tweet.
  */
@@ -33,12 +25,22 @@ class TweetChecker {
     }
 
     /**
+     * Returns whether the tweet is age restricted.
+     * @param tweetStatus tweet status
+     * @returns whether the tweet is age restricted
+     */
+    private static getTweetAgeRestriction(tweetStatus: TweetStatus) {
+        return tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable;
+    }
+
+    /**
      * Generate text to share the result.
      * @param tweetStatus tweet status
      * @returns generated share text
      */
-    private static generateShareText(tweetStatus: TweetStatus, isTweetAgeRestricted: boolean) {
+    private static generateShareText(tweetStatus: TweetStatus) {
         const isTweetSearchable = TweetChecker.checkTweetSearchability(tweetStatus);
+        const isTweetAgeRestricted = TweetChecker.getTweetAgeRestriction(tweetStatus);
 
         const accountSensitiveFlag = tweetStatus.user.possiblySensitive
             ? "🚫Account is flagged as sensitive or shadowbanned"
@@ -112,10 +114,9 @@ ${siteURL}
         return [accountStatus, sensitiveMediaInProfile, accountWithheldInCountries];
     }
 
-    private static convertTweetDataToTranslationKey(
-        tweetData: TweetStatus,
-        isTweetAgeRestricted: boolean
-    ): SbsMessageDetails {
+    private static convertTweetDataToTranslationKey(tweetData: TweetStatus): SbsMessageDetails {
+        const isTweetAgeRestricted = TweetChecker.getTweetAgeRestriction(tweetData);
+
         const tweetSensitiveFlag = tweetData.tweet.possiblySensitive
             ? "tweetIsFlaggedAsSensitive"
             : "tweetIsNotFlaggedAsSensitive";
@@ -142,31 +143,6 @@ ${siteURL}
     }
 
     /**
-     * Convert the tweet status to the status data.
-     * @param tweetStatus tweet status
-     * @returns status data
-     */
-    private static tweetStatusToStatusData(tweetStatus: TweetStatus): StatusData {
-        const isTweetAgeRestricted =
-            tweetStatus.tweet.possiblySensitive && !tweetStatus.tweet.possiblySensitiveEditable;
-
-        const accountTranslations = TweetChecker.convertAccountDataToTranslationKey(tweetStatus.user);
-        const tweetTranslations = TweetChecker.convertTweetDataToTranslationKey(tweetStatus, isTweetAgeRestricted);
-
-        const isTweetSearchable = TweetChecker.checkTweetSearchability(tweetStatus);
-        const messages = [...accountTranslations, ...tweetTranslations];
-        const shareText = TweetChecker.generateShareText(tweetStatus, isTweetAgeRestricted);
-
-        return {
-            isTweetSearchable,
-            messages,
-            shareText,
-            tweetPermalink: tweetStatus.tweet.tweetPermalink,
-            withheldInCountries: tweetStatus.user.withheldInCountries
-        };
-    }
-
-    /**
      * Get the menu bar of the tweet.
      * @returns menu bar of the tweet
      */
@@ -186,18 +162,18 @@ ${siteURL}
         const menuBar = this.getMenuBar();
         const tweetReactProps = new TweetReactProps(this.tweet, this.getMenuBar());
         const tweetStatus = tweetReactProps.get();
+        const isTweetSearchable = TweetChecker.checkTweetSearchability(tweetStatus);
 
         if (!tweetStatus.tweet.isTweetByCurrentUser && !this.options.enableForOtherUsersTweets) return;
+        if (isTweetSearchable && !this.options.showMessagesInUnproblematicTweets) return;
 
         const messageSummary = MessageSummary.fromTweetStatus(tweetStatus);
 
-        const statusData = TweetChecker.tweetStatusToStatusData(tweetStatus);
-
-        const { isTweetSearchable } = statusData;
-        if (isTweetSearchable && !this.options.showMessagesInUnproblematicTweets) return;
+        const accountTranslations = TweetChecker.convertAccountDataToTranslationKey(tweetStatus.user);
+        const tweetTranslations = TweetChecker.convertTweetDataToTranslationKey(tweetStatus);
 
         const sbsMessageWrapper = new SbsMessageWrapper({
-            details: statusData.messages,
+            details: [...accountTranslations, ...tweetTranslations],
 
             isAlert: !isTweetSearchable,
             isExpanded: this.options.alwaysDetailedView,
@@ -208,9 +184,9 @@ ${siteURL}
             notes: ["falsePositivesAndFalseNegativesOccur", "translatedByAI"],
             onRenderedCallback: this.onMessageCallback,
             sourceTweet: this.tweet,
-            sourceTweetPermalink: statusData.tweetPermalink,
+            sourceTweetPermalink: tweetStatus.tweet.tweetPermalink,
             summary: messageSummary,
-            tweetText: statusData.shareText,
+            tweetText: TweetChecker.generateShareText(tweetStatus),
 
             type: "tweet"
         });

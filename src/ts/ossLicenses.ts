@@ -32,8 +32,7 @@ const main = async () => {
     }
 
     const response = await fetch("../json/oss-licenses.json");
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const OSSLicenses = await response.json();
+    const OSSLicenses = (await response.json()) as unknown;
     if (!isOSSLicenses(OSSLicenses)) throw new Error("Invalid JSON");
 
     const fragment = document.createDocumentFragment();
