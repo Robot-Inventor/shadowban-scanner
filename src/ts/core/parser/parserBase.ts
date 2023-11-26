@@ -1,8 +1,8 @@
 /**
  * ReactProps class.
  */
-class ReactProps {
-    private readonly element: Element;
+class ParserBase {
+    protected readonly element: Element;
     private readonly reactPropsName: string;
 
     /**
@@ -18,10 +18,10 @@ class ReactProps {
      * Get the React props.
      * @returns React props
      */
-    get(): unknown {
+    protected getProps(element: Element = this.element): unknown {
         // @ts-expect-error this.reactPropsName is a property name of this.element
-        return this.element[this.reactPropsName];
+        return element[this.reactPropsName];
     }
 }
 
-export { ReactProps };
+export { ParserBase };

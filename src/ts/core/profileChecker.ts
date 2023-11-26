@@ -1,6 +1,6 @@
 import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
 import { MessageSummary } from "./messageSummary";
-import { ProfileReactProps } from "./reactProps/profileReactProps";
+import { ProfileParser } from "./parser/profileParser";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../@types/common/settings";
 
@@ -30,7 +30,7 @@ class ProfileChecker {
         if (!this.options.enableForOtherUsersProfiles && !isCurrentUsersProfile) return;
 
         this.userName.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
-        const reactProps = new ProfileReactProps(this.userName).get();
+        const reactProps = new ProfileParser(this.userName).get();
         const isUserPossiblySensitive =
             Boolean(reactProps.user.possibly_sensitive) ||
             Boolean(
