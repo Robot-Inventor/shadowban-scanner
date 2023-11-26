@@ -2,15 +2,13 @@ import "@material/web/button/filled-button";
 import { LitElement, PropertyValues, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { TranslationKey } from "../@types/common/translator";
-import browser from "webextension-polyfill";
 import { classMap } from "lit/directives/class-map.js";
 
 type SbsMessageDetails = Array<
     | TranslationKey
     | {
           messageName: TranslationKey;
-          // eslint-disable-next-line no-magic-numbers
-          substitutions: Parameters<typeof browser.i18n.getMessage>[1];
+          substitutions: string | string[] | undefined;
       }
 >;
 

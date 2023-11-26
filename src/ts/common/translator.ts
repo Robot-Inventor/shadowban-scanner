@@ -61,8 +61,7 @@ class Translator {
         targetElements.forEach((element) => {
             const translationKey = element.getAttribute(TRANSLATION_ATTRIBUTE) as keyof TranslationData;
             const substitutions = element.getAttribute("data-sb-translation-substitutions");
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            const parsedSubstitutions = substitutions ? JSON.parse(substitutions) : null;
+            const parsedSubstitutions = substitutions ? (JSON.parse(substitutions) as unknown) : null;
             const translatedText = isTranslationSubstitutions(parsedSubstitutions)
                 ? this.translationFunction(translationKey, parsedSubstitutions)
                 : this.translationFunction(translationKey);
