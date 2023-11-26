@@ -3,7 +3,7 @@ import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
 import { SbsMessageDetails } from "../components/sbsMessage";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../@types/common/settings";
-import { TweetReactProps } from "./parser/tweetReactProps";
+import { TweetParser } from "./parser/tweetParser";
 
 /**
  * Check the tweet.
@@ -160,7 +160,7 @@ ${siteURL}
         this.tweet.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
 
         const menuBar = this.getMenuBar();
-        const tweetReactProps = new TweetReactProps(this.tweet, this.getMenuBar());
+        const tweetReactProps = new TweetParser(this.tweet, this.getMenuBar());
         const tweetStatus = tweetReactProps.get();
         const isTweetSearchable = TweetChecker.checkTweetSearchability(tweetStatus);
 

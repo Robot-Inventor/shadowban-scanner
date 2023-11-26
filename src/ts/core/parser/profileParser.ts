@@ -1,10 +1,10 @@
-import { ReactProps } from "./reactProps";
+import { ParserBase } from "./parserBase";
 import { isProfileReactPropsData } from "../../@types/core/reactProps/reactProps.guard";
 
 /**
  * React props of the user profile.
  */
-class ProfileReactProps {
+class ProfileParser {
     private readonly userName: Element;
 
     /**
@@ -20,10 +20,10 @@ class ProfileReactProps {
      * @returns React props of the user profile
      */
     get() {
-        const reactProps = new ReactProps(this.userName).get();
+        const reactProps = new ParserBase(this.userName).get();
         if (!isProfileReactPropsData(reactProps)) throw new Error("Type of reactProps is invalid.");
         return reactProps.children[1].props;
     }
 }
 
-export { ProfileReactProps };
+export { ProfileParser };

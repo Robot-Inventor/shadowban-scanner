@@ -1,7 +1,7 @@
 /**
  * ReactProps class.
  */
-class ReactProps {
+class ParserBase {
     private readonly element: Element;
     private readonly reactPropsName: string;
 
@@ -24,4 +24,4 @@ class ReactProps {
     }
 }
 
-export { ReactProps };
+export { ParserBase };

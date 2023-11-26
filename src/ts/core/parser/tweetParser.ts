@@ -4,13 +4,13 @@ import {
     isTweetOuterReactPropsData
 } from "../../@types/core/reactProps/reactProps.guard";
 import { BasicTweetProps } from "../../@types/core/reactProps/reactProps";
-import { ReactProps } from "./reactProps";
+import { ParserBase } from "./parserBase";
 import { TweetStatus } from "../messageSummary";
 
 /**
  * React props of the tweet.
  */
-class TweetReactProps {
+class TweetParser {
     private readonly tweet: Element;
     private readonly basicTweetProps: BasicTweetProps;
 
@@ -22,7 +22,7 @@ class TweetReactProps {
     constructor(tweet: Element, menuBar: Element) {
         this.tweet = tweet;
 
-        const basicTweetProps = new ReactProps(menuBar).get();
+        const basicTweetProps = new ParserBase(menuBar).get();
         if (!isMenuBarReactPropsData(basicTweetProps)) throw new Error("Type of basicTweetProps is invalid.");
         this.basicTweetProps = basicTweetProps.children[1].props.retweetWithCommentLink.state.quotedStatus;
     }
@@ -60,7 +60,7 @@ class TweetReactProps {
     get isTweetByCurrentUser(): boolean {
         const tweetAuthorScreenName = this.basicTweetProps.user.screen_name;
 
-        const tweetReactProps = new ReactProps(this.tweet).get();
+        const tweetReactProps = new ParserBase(this.tweet).get();
         let currentUserScreenName = "";
         if (isTweetOuterReactPropsData(tweetReactProps)) {
             currentUserScreenName =
@@ -82,9 +82,9 @@ class TweetReactProps {
      * @returns whether the tweet is focal
      */
     get isFocal(): boolean {
-        const tweetReactProps = new ReactProps(this.tweet).get();
+        const tweetReactProps = new ParserBase(this.tweet).get();
         return isFocalTweetOuterReactPropsData(tweetReactProps);
     }
 }
 
-export { TweetReactProps };
+export { TweetParser };
