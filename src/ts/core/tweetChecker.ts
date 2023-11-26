@@ -3,7 +3,7 @@ import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
 import { SbsMessageDetails } from "../components/sbsMessage";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../@types/common/settings";
-import { TweetReactProps } from "./reactProps/tweetReactProps";
+import { TweetReactProps } from "./parser/tweetReactProps";
 
 /**
  * Check the tweet.

@@ -1,6 +1,6 @@
 import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
 import { MessageSummary } from "./messageSummary";
-import { ProfileReactProps } from "./reactProps/profileReactProps";
+import { ProfileReactProps } from "./parser/profileReactProps";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../@types/common/settings";
 
