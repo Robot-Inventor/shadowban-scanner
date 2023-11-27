@@ -1,4 +1,5 @@
 import { ParserBase } from "./parserBase";
+import type { UserProps } from "../../@types/core/reactProps/reactProps";
 import { isProfileReactPropsData } from "../../@types/core/reactProps/reactProps.guard";
 
 /**
@@ -9,7 +10,7 @@ class ProfileParser extends ParserBase {
      * Get the React props of the user profile.
      * @returns React props of the user profile
      */
-    public parse() {
+    public parse(): UserProps {
         const reactProps = this.getProps();
         if (!isProfileReactPropsData(reactProps)) throw new Error("Type of reactProps is invalid.");
 

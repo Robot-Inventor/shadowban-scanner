@@ -90,7 +90,7 @@ class SbsMessageWrapper {
      * Click the retweet button of the specified tweet.
      * @param sourceTweet tweet to click the retweet button
      */
-    private static async clickRetweetButton(sourceTweet: HTMLElement) {
+    private static async clickRetweetButton(sourceTweet: HTMLElement): Promise<void> {
         const retweetButton = await asyncQuerySelector<HTMLElement>(
             "[data-testid='unretweet'], [data-testid='retweet']",
             sourceTweet
@@ -103,7 +103,7 @@ class SbsMessageWrapper {
      * Click the quote button.
      * **This method should be called after {@link clickRetweetButton}.**
      */
-    private static async clickQuoteButton() {
+    private static async clickQuoteButton(): Promise<void> {
         const quoteButton = await asyncQuerySelector<HTMLElement>(
             [
                 // PC
@@ -121,7 +121,7 @@ class SbsMessageWrapper {
      * This method should be called after {@link clickQuoteButton}.
      * @returns text box of the tweet composer
      */
-    private static async getTweetTextBox() {
+    private static async getTweetTextBox(): Promise<Element> {
         const textBoxMarker = await asyncQuerySelector(
             "[data-viewportview='true'] [data-text='true'], textarea[data-testid='tweetTextarea_0']"
         );
@@ -138,7 +138,11 @@ class SbsMessageWrapper {
      * @param sourceTweetPermalink permalink of the tweet to quote
      * @param text text to tweet
      */
-    private static async quoteTweet(sourceTweet: HTMLElement, sourceTweetPermalink: string, text: string) {
+    private static async quoteTweet(
+        sourceTweet: HTMLElement,
+        sourceTweetPermalink: string,
+        text: string
+    ): Promise<void> {
         try {
             await SbsMessageWrapper.clickRetweetButton(sourceTweet);
             await SbsMessageWrapper.clickQuoteButton();
@@ -152,7 +156,7 @@ class SbsMessageWrapper {
         }
     }
 
-    private onTweetButtonClick() {
+    private onTweetButtonClick(): void {
         if (!this.sourceTweet || !this.sourceTweetPermalink || !this.tweetText) {
             throw new Error("Tweet button clicked without source tweet");
         }
@@ -160,7 +164,7 @@ class SbsMessageWrapper {
         void SbsMessageWrapper.quoteTweet(this.sourceTweet, this.sourceTweetPermalink, this.tweetText);
     }
 
-    public insertAdjacentElement(target: Element, position: InsertPosition) {
+    public insertAdjacentElement(target: Element, position: InsertPosition): void {
         target.insertAdjacentElement(position, this.sbsMessage);
     }
 }

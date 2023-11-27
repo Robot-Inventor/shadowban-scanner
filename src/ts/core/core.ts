@@ -42,7 +42,7 @@ class Core {
     /**
      * Callback function of the timeline observer.
      */
-    private timelineObserverCallback() {
+    private timelineObserverCallback(): void {
         const tweets: NodeListOf<HTMLElement> = document.querySelectorAll(
             `[data-testid="tweet"]:not([${CHECKED_DATA_ATTRIBUTE}]`
         );

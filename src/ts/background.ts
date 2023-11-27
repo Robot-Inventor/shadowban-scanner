@@ -10,7 +10,7 @@ import { migrateFromV2ToV2Dot1 } from "./migrator";
  * @param details details of the update
  * @param isJapanese if the user's language is Japanese
  */
-const onUpdated = (details: browser.Runtime.OnInstalledDetailsType, isJapanese: boolean) => {
+const onUpdated = (details: browser.Runtime.OnInstalledDetailsType, isJapanese: boolean): void => {
     void migrateFromV2ToV2Dot1();
 
     // Do nothing while development
@@ -25,7 +25,7 @@ const onUpdated = (details: browser.Runtime.OnInstalledDetailsType, isJapanese: 
  * This function opens the onboarding page.
  * @param isJapanese if the user's language is Japanese
  */
-const onInstalled = (isJapanese: boolean) => {
+const onInstalled = (isJapanese: boolean): void => {
     // Temporary disable onboarding page until it is created
     return;
     const welcomeURL = isJapanese ? ONBOARDING_URL.ja : ONBOARDING_URL.en;

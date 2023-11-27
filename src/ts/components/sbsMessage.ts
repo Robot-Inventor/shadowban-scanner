@@ -144,29 +144,29 @@ class SbsMessage extends LitElement {
         }
     `;
 
-    private expand() {
+    private expand(): void {
         this.isExpanded = true;
     }
 
-    private tweetButtonClicked() {
+    private tweetButtonClicked(): void {
         const newEvent = new Event("tweetButtonClick", { bubbles: true, composed: true });
         this.dispatchEvent(newEvent);
     }
 
-    override firstUpdated(_changedProperties: PropertyValues) {
+    override firstUpdated(_changedProperties: PropertyValues): void {
         if (this.onRenderedCallback) {
             this.onRenderedCallback();
         }
         super.firstUpdated(_changedProperties);
     }
 
-    private getShowMoreButton() {
+    private getShowMoreButton(): "" | ReturnType<typeof html> {
         if (this.isExpanded) return "";
 
         return html`<button @click=${this.expand.bind(this)} data-sb-translation="showMore"></button>`;
     }
 
-    private getDetails() {
+    private getDetails(): "" | ReturnType<typeof html> {
         if (!this.details.length) return "";
 
         return html`<ul class="${this.isExpanded ? "" : "shadowban-scanner-collapsed-content"}">
@@ -185,7 +185,7 @@ class SbsMessage extends LitElement {
         </ul>`;
     }
 
-    private getNotes() {
+    private getNotes(): "" | ReturnType<typeof html>[] {
         if (!this.notes.length) return "";
 
         const notesClasses = classMap({
@@ -196,7 +196,7 @@ class SbsMessage extends LitElement {
         return this.notes.map((note) => html` <div class=${notesClasses} data-sb-translation=${note}></div> `);
     }
 
-    private getTweetButton() {
+    private getTweetButton(): "" | ReturnType<typeof html> {
         const tweetButtonClasses = classMap({
             "shadowban-scanner-collapsed-content": !this.isExpanded
         });
@@ -210,11 +210,11 @@ class SbsMessage extends LitElement {
             : "";
     }
 
-    private static cancelClickEvent(event: Event) {
+    private static cancelClickEvent(event: Event): void {
         event.stopPropagation();
     }
 
-    protected render() {
+    protected render(): ReturnType<typeof html> {
         const outerClasses = classMap({
             "focal-mode": this.isFocalMode,
             "shadowban-scanner-message": true,

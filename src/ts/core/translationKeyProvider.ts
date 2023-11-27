@@ -1,6 +1,7 @@
 import { ProfileAnalysisResult, TweetAnalysisResult } from "./propsAnalyzer";
 import { SbsMessageWrapperOptionsForProfiles, SbsMessageWrapperOptionsForTweets } from "./sbsMessageWrapper";
 import { SbsMessageDetails } from "../components/sbsMessage";
+import type { TranslationKey } from "../@types/common/translator";
 
 class TranslationKeyProvider {
     public static fromProfileAnalyzer(
@@ -18,7 +19,7 @@ class TranslationKeyProvider {
      * @param status tweet analysis result
      * @returns message summary
      */
-    private static summarizeForTweet(analyzer: TweetAnalysisResult) {
+    private static summarizeForTweet(analyzer: TweetAnalysisResult): TranslationKey {
         const tweetHasProblem =
             analyzer.user.shadowbanned ||
             analyzer.user.sensitiveMediaInProfile ||
@@ -46,7 +47,7 @@ class TranslationKeyProvider {
      * @param countries country codes
      * @returns formatted country list
      */
-    private static formatCountryList(countries: string[]) {
+    private static formatCountryList(countries: string[]): string {
         const userLanguage = navigator.language;
         const listFormatter = new Intl.ListFormat(userLanguage, {
             style: "narrow",

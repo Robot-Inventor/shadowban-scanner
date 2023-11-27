@@ -10,7 +10,7 @@ if (!settingsString) throw new Error("Settings not found");
 const settings: unknown = JSON.parse(settingsString);
 if (!isSettings(settings)) throw new Error("Invalid settings");
 
-const dispatchMessageEvent = () => {
+const dispatchMessageEvent = (): void => {
     eventGenerator.dispatchEvent(new CustomEvent("newMessage"));
 };
 
