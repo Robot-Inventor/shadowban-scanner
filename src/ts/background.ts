@@ -33,7 +33,7 @@ const onInstalled = (isJapanese: boolean) => {
 };
 
 browser.runtime.onInstalled.addListener((details) => {
-    const isJapanese = browser.i18n.getUILanguage() === "ja";
+    const isJapanese = browser.i18n.getUILanguage().toLowerCase().startsWith("ja");
 
     if (details.reason === "update") {
         onUpdated(details, isJapanese);
