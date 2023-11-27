@@ -97,6 +97,7 @@
                 "nestedBinaryExpressions": false
             }
         ],
-        "no-new": "off"
+        "no-new": "off",
+        "@typescript-eslint/explicit-function-return-type": "error"
     }
 }
