@@ -4,7 +4,7 @@ import { Translator } from "./common/translator";
 import browser from "webextension-polyfill";
 
 // eslint-disable-next-line max-statements
-const main = async () => {
+const main = async (): Promise<void> => {
     const settings = await browser.storage.local.get(DEFAULT_SETTINGS);
 
     const translator = new Translator(

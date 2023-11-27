@@ -3,7 +3,7 @@ import browser from "webextension-polyfill";
 /**
  * Migrate settings from v2 to v2.1.
  */
-const migrateFromV2ToV2Dot1 = async () => {
+const migrateFromV2ToV2Dot1 = async (): Promise<void> => {
     const currentSettings = await browser.storage.local.get(null);
 
     if ("hasDisplayedV2UpdateBanner" in currentSettings) {

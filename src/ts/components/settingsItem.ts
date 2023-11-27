@@ -40,7 +40,7 @@ class SettingsItem extends LitElement {
     @property({ attribute: true, reflect: true, type: Boolean })
     public checked = false;
 
-    protected render() {
+    protected render(): ReturnType<typeof html> {
         return html`
             <div class="settings-item">
                 <label for="${this.settingsName}">
@@ -56,7 +56,7 @@ class SettingsItem extends LitElement {
         `;
     }
 
-    private changeHandler() {
+    private changeHandler(): void {
         this.checked = this.checkbox.checked ?? false;
         const event = new Event("change", { bubbles: true, composed: true });
         this.dispatchEvent(event);
@@ -68,3 +68,5 @@ declare global {
         "settings-item": SettingsItem;
     }
 }
+
+export { SettingsItem };

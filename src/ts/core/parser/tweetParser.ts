@@ -42,7 +42,7 @@ class TweetParser extends ParserBase {
      * Get the React props of the tweet.
      * @returns React props of the tweet
      */
-    public parse() {
+    public parse(): BasicTweetProps {
         const basicProps = this.basicTweetProps;
 
         return basicProps;

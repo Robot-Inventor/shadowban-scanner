@@ -6,7 +6,7 @@ class SharedTextGenerator {
      * @param analyzer tweet status
      * @returns generated share text
      */
-    public static generateShareText(analyzer: TweetAnalysisResult) {
+    public static generateShareText(analyzer: TweetAnalysisResult): string {
         const isTweetSearchable = analyzer.tweet.searchability === "searchable";
 
         const accountSensitiveFlag = analyzer.user.shadowbanned

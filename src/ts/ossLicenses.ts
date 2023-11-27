@@ -25,7 +25,7 @@ const normalizeRepositoryLink = (repository: string): string => {
 };
 
 // eslint-disable-next-line max-statements
-const main = async () => {
+const main = async (): Promise<void> => {
     const target = document.getElementById("third-party-licenses");
     if (!target) {
         throw new Error("Missing target element");

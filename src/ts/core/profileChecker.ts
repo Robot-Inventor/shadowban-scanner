@@ -26,7 +26,7 @@ class ProfileChecker {
     /**
      * Run the profile checker.
      */
-    run() {
+    run(): void {
         const isCurrentUsersProfile = Boolean(document.querySelector("[data-testid='editProfileButton']"));
         if (!this.options.enableForOtherUsersProfiles && !isCurrentUsersProfile) return;
 

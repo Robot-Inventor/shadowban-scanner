@@ -3,6 +3,10 @@ import "../components/settingsSeparator";
 import { DEFAULT_SETTINGS } from "../common/defaultSettings";
 import { SETTINGS_ITEMS } from "./settingsItems";
 import { Settings } from "../@types/common/settings";
+// eslint-disable-next-line no-duplicate-imports
+import type { SettingsItem } from "../components/settingsItem";
+// eslint-disable-next-line no-duplicate-imports
+import type { SettingsSeparator } from "../components/settingsSeparator";
 import { TRANSLATION_ATTRIBUTE } from "../common/constants";
 import { Translator } from "../common/translator";
 import browser from "webextension-polyfill";
@@ -12,7 +16,7 @@ import { isSettings } from "../@types/common/settings.guard";
  * Load settings from local storage.
  * @returns settings
  */
-const loadSettingsFromStorage = async () => {
+const loadSettingsFromStorage = async (): Promise<Settings> => {
     const settings = await browser.storage.local.get(DEFAULT_SETTINGS);
     if (!isSettings(settings)) throw new Error("Failed to get settings from storage");
 
@@ -24,7 +28,7 @@ const loadSettingsFromStorage = async () => {
  * @param translationKey translation key
  * @returns created settings separator
  */
-const createSettingsSeparator = (translationKey: string) => {
+const createSettingsSeparator = (translationKey: string): SettingsSeparator => {
     const separator = document.createElement("settings-separator");
     separator.setAttribute(TRANSLATION_ATTRIBUTE, translationKey);
 
@@ -38,7 +42,7 @@ const createSettingsSeparator = (translationKey: string) => {
  * @param checked settings status
  * @returns created settings item
  */
-const createSettingsItem = (settingsName: string, translationKey: string, checked: boolean) => {
+const createSettingsItem = (settingsName: string, translationKey: string, checked: boolean): SettingsItem => {
     const item = document.createElement("settings-item");
     item.settingsName = settingsName;
     item.setAttribute(TRANSLATION_ATTRIBUTE, translationKey);
@@ -53,7 +57,7 @@ const createSettingsItem = (settingsName: string, translationKey: string, checke
 /**
  * Run translation.
  */
-const runTranslation = () => {
+const runTranslation = (): void => {
     const translator = new Translator((key) => browser.i18n.getMessage(key), browser.runtime.getURL("dist/image/"));
     translator.translateElements();
 };
@@ -64,7 +68,10 @@ const runTranslation = () => {
  * @param data settings item data
  * @returns created element
  */
-const createItemsFromData = (settings: Settings, data: (typeof SETTINGS_ITEMS)[number]) => {
+const createItemsFromData = (
+    settings: Settings,
+    data: (typeof SETTINGS_ITEMS)[number]
+): SettingsSeparator | SettingsItem => {
     if (data.type === "separator") {
         return createSettingsSeparator(data.translationKey);
     } else if (data.type === "checkbox") {
@@ -77,7 +84,7 @@ const createItemsFromData = (settings: Settings, data: (typeof SETTINGS_ITEMS)[n
 /**
  * Load settings UI.
  */
-const loadSettings = async () => {
+const loadSettings = async (): Promise<void> => {
     const settings = await loadSettingsFromStorage();
 
     const fieldset = document.querySelector("fieldset");

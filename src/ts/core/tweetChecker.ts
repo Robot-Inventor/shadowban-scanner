@@ -29,7 +29,7 @@ class TweetChecker {
      * Run the tweet checker.
      */
     // eslint-disable-next-line max-statements
-    run() {
+    run(): void {
         this.tweet.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
 
         const tweetParser = new TweetParser(this.tweet);

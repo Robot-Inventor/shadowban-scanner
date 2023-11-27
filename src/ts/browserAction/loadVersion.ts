@@ -1,6 +1,6 @@
 import browser from "webextension-polyfill";
 
-const loadVersion = () => {
+const loadVersion = (): void => {
     const { version } = browser.runtime.getManifest();
     const versionElement = document.getElementById("version-number");
     if (!versionElement) throw new Error("Failed to get #version-number element");

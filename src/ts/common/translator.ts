@@ -43,7 +43,7 @@ class Translator {
     /**
      * Run the translation process.
      */
-    translateElements() {
+    translateElements(): void {
         const targetElements = [...document.querySelectorAll(`[${TRANSLATION_ATTRIBUTE}]`)];
 
         const shadowTargets = document.querySelectorAll<SbsMessage>(`sbs-message[${SHADOW_TRANSLATION_ATTRIBUTE}]`);

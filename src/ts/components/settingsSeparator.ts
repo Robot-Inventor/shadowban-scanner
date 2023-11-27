@@ -35,7 +35,7 @@ class SettingsSeparator extends LitElement {
     `;
 
     // eslint-disable-next-line class-methods-use-this
-    protected render() {
+    protected render(): ReturnType<typeof html> {
         return html`
             <div class="settings-separator">
                 <hr />
@@ -52,3 +52,5 @@ declare global {
         "settings-separator": SettingsSeparator;
     }
 }
+
+export { SettingsSeparator };
