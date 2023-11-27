@@ -1,9 +1,9 @@
 import { PropsAnalyzer, TweetAnalysisResult } from "./propsAnalyzer";
 import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
-import { MessageSummary } from "./messageSummary";
 import { SbsMessageDetails } from "../components/sbsMessage";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../@types/common/settings";
+import { TranslationKeyProvider } from "./translationKeyProvider";
 import { TweetParser } from "./parser/tweetParser";
 
 /**
@@ -135,13 +135,10 @@ ${siteURL}
         if (!tweetParser.isTweetByCurrentUser && !this.options.enableForOtherUsersTweets) return;
         if (isTweetSearchable && !this.options.showMessagesInUnproblematicTweets) return;
 
-        const messageSummary = MessageSummary.fromTweetStatus(tweetAnalyzer);
-
-        const accountTranslations = TweetChecker.convertAccountDataToTranslationKey(tweetAnalyzer);
-        const tweetTranslations = TweetChecker.convertTweetDataToTranslationKey(tweetAnalyzer);
+        const translations = TranslationKeyProvider.fromTweetAnalyzer(tweetAnalyzer);
 
         const sbsMessageWrapper = new SbsMessageWrapper({
-            details: [...accountTranslations, ...tweetTranslations],
+            ...translations,
 
             isAlert: !isTweetSearchable,
             isExpanded: this.options.alwaysDetailedView,
@@ -153,7 +150,6 @@ ${siteURL}
             onRenderedCallback: this.onMessageCallback,
             sourceTweet: this.tweet,
             sourceTweetPermalink: tweetAnalyzer.tweet.permalink,
-            summary: messageSummary,
             tweetText: TweetChecker.generateShareText(tweetAnalyzer),
 
             type: "tweet"
