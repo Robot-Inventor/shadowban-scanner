@@ -1,9 +1,9 @@
 import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
-import { MessageSummary } from "./messageSummary";
 import { ProfileParser } from "./parser/profileParser";
 import { PropsAnalyzer } from "./propsAnalyzer";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../@types/common/settings";
+import { TranslationKeyProvider } from "./translationKeyProvider";
 
 /**
  * Check the user profile.
@@ -31,15 +31,16 @@ class ProfileChecker {
         if (!this.options.enableForOtherUsersProfiles && !isCurrentUsersProfile) return;
 
         this.userName.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
-        const reactProps = new ProfileParser(this.userName).parse();
-        const profileAnalyzer = PropsAnalyzer.analyzeProfileProps(reactProps);
+        const profileAnalyzer = PropsAnalyzer.analyzeProfileProps(new ProfileParser(this.userName).parse());
 
         if (!profileAnalyzer.user.shadowbanned && !this.options.showMessagesInUnproblematicProfiles) return;
 
+        const translations = TranslationKeyProvider.fromProfileAnalyzer(profileAnalyzer);
+
         const sbsMessageWrapper = new SbsMessageWrapper({
+            ...translations,
             isAlert: profileAnalyzer.user.shadowbanned,
             onRenderedCallback: this.onMessageCallback,
-            summary: MessageSummary.fromAccountStatus(profileAnalyzer.user.shadowbanned),
 
             type: "profile"
         });

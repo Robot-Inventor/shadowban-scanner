@@ -165,4 +165,4 @@ class SbsMessageWrapper {
     }
 }
 
-export { SbsMessageWrapper };
+export { SbsMessageWrapperOptionsForTweets, SbsMessageWrapperOptionsForProfiles, SbsMessageWrapper };

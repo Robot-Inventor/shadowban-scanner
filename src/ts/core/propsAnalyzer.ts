@@ -64,4 +64,4 @@ class PropsAnalyzer {
     }
 }
 
-export { TweetAnalysisResult, PropsAnalyzer };
+export { ProfileAnalysisResult, TweetAnalysisResult, PropsAnalyzer };
