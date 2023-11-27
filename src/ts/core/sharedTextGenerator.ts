@@ -31,10 +31,9 @@ class SharedTextGenerator {
             ? "✅Tweet will appear in search results"
             : "🚫Tweet may not appear in search results";
 
-        const siteURL =
-            navigator.language === "ja"
-                ? "https://robot-inventor.github.io/shadowban-scanner/"
-                : "https://robot-inventor.github.io/shadowban-scanner/en/";
+        const siteURL = navigator.language.toLowerCase().startsWith("ja")
+            ? "https://robot-inventor.github.io/shadowban-scanner/"
+            : "https://robot-inventor.github.io/shadowban-scanner/en/";
 
         return `
 ${accountSensitiveFlag}
