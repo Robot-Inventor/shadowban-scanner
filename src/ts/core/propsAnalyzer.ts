@@ -1,5 +1,5 @@
-import type { ProfileParser } from "./parser/profileParser";
 import type { TweetParser } from "./parser/tweetParser";
+import { UserProps } from "../@types/core/reactProps/reactProps";
 
 interface ProfileAnalysisResult {
     user: {
@@ -12,14 +12,21 @@ interface ProfileAnalysisResult {
 interface TweetAnalysisResult extends ProfileAnalysisResult {
     tweet: {
         ageRestriction: boolean;
-        permalink: string;
         possiblySensitive: boolean;
         searchability: "searchable" | "unsearchable" | "possiblyUnsearchable";
+    };
+
+    meta: {
+        sourceTweetPermalink: string;
+        isFocal: boolean;
+        isTweetByCurrentUser: boolean;
+        sourceTweet: HTMLElement;
+        menuBar: HTMLElement;
     };
 }
 
 class PropsAnalyzer {
-    public static analyzeProfileProps(props: ReturnType<ProfileParser["parse"]>): ProfileAnalysisResult {
+    public static analyzeProfileProps(props: UserProps): ProfileAnalysisResult {
         const possiblySensitive = Boolean(props.possibly_sensitive);
         const sensitiveMediaInProfile = Boolean(
             ["sensitive_media", "offensive_profile_content"].includes(props.profile_interstitial_type)
@@ -36,7 +43,9 @@ class PropsAnalyzer {
         };
     }
 
-    public static analyzeTweetProps(props: ReturnType<TweetParser["parse"]>): TweetAnalysisResult {
+    public static analyzeTweetProps(parser: TweetParser): TweetAnalysisResult {
+        const props = parser.parse();
+
         const userAnalysisResult = PropsAnalyzer.analyzeProfileProps(props.user);
         const possiblySensitive = Boolean(props.possibly_sensitive);
         // Ref: https://github.com/Robot-Inventor/shadowban-scanner/issues/16
@@ -54,9 +63,17 @@ class PropsAnalyzer {
 
         return {
             ...userAnalysisResult,
+
+            meta: {
+                isFocal: parser.isFocal,
+                isTweetByCurrentUser: parser.isTweetByCurrentUser,
+                menuBar: parser.getMenuBar(),
+                sourceTweet: parser.sourceElement,
+                sourceTweetPermalink: props.permalink
+            },
+
             tweet: {
                 ageRestriction,
-                permalink: props.permalink,
                 possiblySensitive,
                 searchability
             }

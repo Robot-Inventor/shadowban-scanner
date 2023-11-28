@@ -1,6 +1,6 @@
 import { TweetAnalysisResult } from "./propsAnalyzer";
 
-class SharedTextGenerator {
+class ShareTextGenerator {
     /**
      * Generate text to share the result.
      * @param analyzer tweet status
@@ -49,4 +49,4 @@ ${siteURL}
     }
 }
 
-export { SharedTextGenerator };
+export { ShareTextGenerator };

@@ -1,9 +1,8 @@
 import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
+import { MessageDataGenerator } from "../messageDataGenerator";
 import { PropsAnalyzer } from "./propsAnalyzer";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../@types/common/settings";
-import { SharedTextGenerator } from "./sharedTextGenerator";
-import { TranslationKeyProvider } from "./translationKeyProvider";
 import { TweetParser } from "./parser/tweetParser";
 
 /**
@@ -32,33 +31,15 @@ class TweetChecker {
     run(): void {
         this.tweet.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
 
-        const tweetParser = new TweetParser(this.tweet);
-        const tweetReactProps = tweetParser.parse();
-        const tweetAnalyzer = PropsAnalyzer.analyzeTweetProps(tweetReactProps);
-        const isTweetSearchable = tweetAnalyzer.tweet.searchability === "searchable";
+        const parser = new TweetParser(this.tweet);
+        const analyzer = PropsAnalyzer.analyzeTweetProps(parser);
+        const isTweetSearchable = analyzer.tweet.searchability === "searchable";
 
-        if (!tweetParser.isTweetByCurrentUser && !this.options.enableForOtherUsersTweets) return;
+        if (!analyzer.meta.isTweetByCurrentUser && !this.options.enableForOtherUsersTweets) return;
         if (isTweetSearchable && !this.options.showMessagesInUnproblematicTweets) return;
 
-        const translations = TranslationKeyProvider.fromTweetAnalyzer(tweetAnalyzer);
-
-        const sbsMessageWrapper = new SbsMessageWrapper({
-            ...translations,
-
-            isAlert: !isTweetSearchable,
-            isExpanded: this.options.alwaysDetailedView,
-            isFocalMode: tweetParser.isFocal,
-            isNoteShown: this.options.showNotesInMessages,
-            isTweetButtonShown: this.options.showTweetButton,
-
-            notes: ["falsePositivesAndFalseNegativesOccur", "translatedByAI"],
-            onRenderedCallback: this.onMessageCallback,
-            sourceTweet: this.tweet,
-            sourceTweetPermalink: tweetAnalyzer.tweet.permalink,
-            tweetText: SharedTextGenerator.generateShareText(tweetAnalyzer),
-
-            type: "tweet"
-        });
+        const messageData = MessageDataGenerator.generateForTweet(analyzer, this.onMessageCallback, this.options);
+        const sbsMessageWrapper = new SbsMessageWrapper(messageData);
 
         const analyticsButton = this.tweet.querySelector("[data-testid='analyticsButton']");
         if (analyticsButton) {
@@ -66,7 +47,7 @@ class TweetChecker {
             return;
         }
 
-        sbsMessageWrapper.insertAdjacentElement(tweetParser.getMenuBar(), "beforebegin");
+        sbsMessageWrapper.insertAdjacentElement(analyzer.meta.menuBar, "beforebegin");
     }
 }
 
