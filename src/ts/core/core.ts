@@ -1,5 +1,5 @@
 import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
-import { MessageDataGenerator } from "../messageDataGenerator";
+import { MessageDataGenerator } from "./messageDataGenerator";
 import { ProfileParser } from "./parser/profileParser";
 import { PropsAnalyzer } from "./propsAnalyzer";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
