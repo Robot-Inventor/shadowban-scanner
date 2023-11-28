@@ -1,7 +1,10 @@
 import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
-import { ProfileChecker } from "./profileChecker";
+import { MessageDataGenerator } from "../messageDataGenerator";
+import { ProfileParser } from "./parser/profileParser";
+import { PropsAnalyzer } from "./propsAnalyzer";
+import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../@types/common/settings";
-import { TweetChecker } from "./tweetChecker";
+import { TweetParser } from "./parser/tweetParser";
 
 /**
  * Core of the extension.
@@ -39,24 +42,61 @@ class Core {
         loadingObserver.observe(document.body, this.OBSERVER_OPTIONS);
     }
 
+    private checkProfile(userName: HTMLElement): void {
+        userName.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
+
+        const isCurrentUsersProfile = Boolean(document.querySelector("[data-testid='editProfileButton']"));
+        if (isCurrentUsersProfile && !this.settings.enableForOtherUsersProfiles) return;
+
+        const profileAnalyzer = PropsAnalyzer.analyzeProfileProps(new ProfileParser(userName).parse());
+        if (!profileAnalyzer.user.shadowbanned && !this.settings.showMessagesInUnproblematicProfiles) return;
+
+        const messageData = MessageDataGenerator.generateForProfile(profileAnalyzer, this.onMessageCallback);
+        const sbsMessageWrapper = new SbsMessageWrapper(messageData);
+
+        const bioOrUserName =
+            document.querySelector("[data-testid='UserDescription']") ||
+            document.querySelector("[data-testid='UserName']");
+        if (!bioOrUserName) throw new Error("Failed to get user description of profile");
+
+        sbsMessageWrapper.insertAdjacentElement(bioOrUserName, "afterend");
+    }
+
+    // eslint-disable-next-line max-statements
+    private checkTweet(tweet: HTMLElement): void {
+        tweet.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
+
+        const analyzer = PropsAnalyzer.analyzeTweetProps(new TweetParser(tweet));
+
+        if (!analyzer.meta.isTweetByCurrentUser && !this.settings.enableForOtherUsersTweets) return;
+        if (analyzer.tweet.searchability === "searchable" && !this.settings.showMessagesInUnproblematicTweets) return;
+
+        const messageData = MessageDataGenerator.generateForTweet(analyzer, this.onMessageCallback, this.settings);
+        const sbsMessageWrapper = new SbsMessageWrapper(messageData);
+
+        const analyticsButton = tweet.querySelector("[data-testid='analyticsButton']");
+        if (analyticsButton) {
+            sbsMessageWrapper.insertAdjacentElement(analyticsButton.parentElement as Element, "beforebegin");
+            return;
+        }
+
+        sbsMessageWrapper.insertAdjacentElement(analyzer.meta.menuBar, "beforebegin");
+    }
+
     /**
      * Callback function of the timeline observer.
      */
     private timelineObserverCallback(): void {
-        const tweets: NodeListOf<HTMLElement> = document.querySelectorAll(
-            `[data-testid="tweet"]:not([${CHECKED_DATA_ATTRIBUTE}]`
-        );
+        const tweets = document.querySelectorAll<HTMLElement>(`[data-testid="tweet"]:not([${CHECKED_DATA_ATTRIBUTE}]`);
         for (const tweet of tweets) {
-            const tweetChecker = new TweetChecker(tweet, this.settings, this.onMessageCallback);
-            tweetChecker.run();
+            this.checkTweet(tweet);
         }
 
         const userName = document.querySelector<HTMLElement>(
             `:not([data-testid="tweet"]) [data-testid="UserName"]:not([${CHECKED_DATA_ATTRIBUTE}])`
         );
         if (userName) {
-            const profileChecker = new ProfileChecker(userName, this.settings, this.onMessageCallback);
-            profileChecker.run();
+            this.checkProfile(userName);
         }
     }
 }
