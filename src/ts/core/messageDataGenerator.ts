@@ -1,8 +1,8 @@
-import { ProfileAnalysisResult, TweetAnalysisResult } from "./core/propsAnalyzer";
-import { SbsMessageWrapperOptionsForProfiles, SbsMessageWrapperOptionsForTweets } from "./core/sbsMessageWrapper";
-import { Settings } from "./@types/common/settings";
-import { ShareTextGenerator } from "./core/shareTextGenerator";
-import { TranslationKeyProvider } from "./core/translationKeyProvider";
+import { ProfileAnalysisResult, TweetAnalysisResult } from "./propsAnalyzer";
+import { SbsMessageWrapperOptionsForProfiles, SbsMessageWrapperOptionsForTweets } from "./sbsMessageWrapper";
+import { Settings } from "../@types/common/settings";
+import { ShareTextGenerator } from "./shareTextGenerator";
+import { TranslationKeyProvider } from "./translationKeyProvider";
 
 class MessageDataGenerator {
     public static generateForProfile(
