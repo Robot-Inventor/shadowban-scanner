@@ -51,7 +51,7 @@ class Core {
             tweetChecker.run();
         }
 
-        const userName = document.querySelector(
+        const userName = document.querySelector<HTMLElement>(
             `:not([data-testid="tweet"]) [data-testid="UserName"]:not([${CHECKED_DATA_ATTRIBUTE}])`
         );
         if (userName) {
