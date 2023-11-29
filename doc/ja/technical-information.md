@@ -27,6 +27,7 @@ interface TweetProps {
         possibly_sensitive?: boolean | null;
         screen_name: string;
         profile_interstitial_type: "" | "sensitive_media" | "fake_account" | "offensive_profile_content" | "timeout";
+        withheld_in_countries: string[]
     };
 }
 ```
@@ -111,6 +112,17 @@ t('i622ef86', 'Twitterルールに違反している可能性があります。�
 他のメッセージの主語が「アカウント」なのにもかかわらず、このメッセージはアカウントではなく「プロフィール」について言及しています（事実）。また、``sensitive_media``という名称から、このメッセージはプロフィールのメディアがセンシティブという意味だと考えられます。（推定）
 
 </details>
+
+### アカウントがブロックされている国の検出
+
+Shadowban Scannerでは、アカウントがブロックされている国を``TweetProps.user.withheld_in_countries``の値で判定しています。この値が空の配列でない場合、Shadowban Scannerは、アカウントがブロックされている国があるとみなします。（事実）
+
+``TweetProps.user.withheld_in_countries``はアカウントがブロックされている国のリストです。このリストには、アカウントがブロックされている国の国コードが格納されています。（事実）
+
+#### 参考
+
+- [特定の国でコンテンツが表示制限される状況の理解](https://help.twitter.com/ja/rules-and-policies/post-withheld-by-country)
+- [Tweet object | Docs | Twitter Developer Platform](https://developer.twitter.com/en/docs/twitter-api/v1/data-dictionary/object-model/tweet#:~:text=withheld_copyright%22%3A%20true-,withheld_in_countries,-Array%20of%20String)
 
 ### ツイートのセンシティブ判定と年齢制限判定
 
