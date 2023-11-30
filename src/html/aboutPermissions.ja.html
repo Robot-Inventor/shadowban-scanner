@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>【重要】Shadowban Scannerの権限について</title>
+        <link rel="icon" href="../image/icon.svg" />
+    </head>
+    <body>
+        <main>
+            <h1>【重要】Shadowban Scannerの権限について</h1>
+            <h2>要約</h2>
+            <ul>
+                <li>
+                    Twitter（X）の仕様変更に対応するため、Shadowban
+                    Scannerの次回のアップデートでは<b>必要な権限が追加</b>されます
+                </li>
+                <li>
+                    権限は追加されますが、<b>実質的には何も変わりません</b>。<b
+                        >Twitterの仕様変更で動作しなくなっていたのが、元に戻るだけです</b
+                    >
+                </li>
+                <li>
+                    数日以内に、権限の追加に同意するかどうかを尋ねるダイアログがブラウザーに表示されるため、<b
+                        >同意をお願いします</b
+                    >
+                </li>
+                <li>
+                    <b>同意は必須ではありません</b>が、ブラウザーの仕様の関係で、<b
+                        >同意しないとShadowban Scannerをアップデートできなくなります</b
+                    >
+                </li>
+            </ul>
+            <p>ご不明な点やご質問については、以下のTwitterアカウントかメールまでお気軽にご連絡ください。</p>
+            <ul>
+                <li>Twitter：<a href="https://twitter.com/keita_roboin" target="_blank">@keita_roboin</a></li>
+                <li>メール：<a href="mailto:info.robot.inventor@gmail.com">info.robot.inventor@gmail.com</a></li>
+            </ul>
+            <h2>詳細</h2>
+            <p>
+                数日以内に、Shadowban
+                Scannerの追加の権限を承認するかどうかを尋ねるダイアログがブラウザーに表示されます。権限の承認をお願いします。
+            </p>
+            <p>権限の追加が必要な理由は、Twitterの仕様変更に対応するためです。詳細は、以下の説明で解説します。</p>
+            <h3>なぜ新しい権限が必要なのか</h3>
+            <p>
+                Twitter（X）の仕様変更に対応するため、Shadowban
+                Scannerの次回のアップデートでは、<b>必要な権限が追加</b>されます。今までは、以下のホスト権限を使用していました。
+            </p>
+            <ul>
+                <li>https://twitter.com/*</li>
+                <li>https://mobile.twitter.com/*</li>
+                <li>https://tweetdeck.twitter.com/*</li>
+            </ul>
+            <p>
+                これは、Shadowban
+                Scannerが上記のURLで読み込まれ、動作することを意味しています。これらは、TwitterとTweetDeckのURLです。
+            </p>
+            <p>
+                しかし、最近のTwitterの仕様変更で、TweetDeck（X Pro）のURLが変更されました。<b
+                    >Shadowban Scannerは上記のURLでしか動作できないため、TweetDeckでは動作しなくなってしまいました。</b
+                >
+            </p>
+            <p>そこで、次回のアップデートでは、ホスト権限を次のように変更します。</p>
+            <ul>
+                <li>https://*.twitter.com/*</li>
+                <li>https://*.x.com/*</li>
+            </ul>
+            <p>
+                これは、Shadowban
+                Scannerが、TweetDeckの新しいURLを含め、TwitterのすべてのURLにアクセス可能になることを意味します。x.comが含まれているのは、Twitterの将来的なURLの変更に対応するためです。
+            </p>
+            <p>
+                <b>権限の変更後も、Shadowban ScannerはTwitterとTweetDeckでのみ有効</b
+                >になります。Twitterのヘルプページなどでは無効になるため、<b
+                    >実質的には以前と何も変わりません。仕様変更で動かなくなったのが元に戻るだけです。</b
+                >
+            </p>
+            <h3>権限を承認しないとどうなるか</h3>
+            <p>
+                <b>権限の承認は必須ではありません</b>が、ブラウザーの仕様の関係で、<b
+                    >権限を承認しないとShadowban Scannerをアップデートできなくなります</b
+                >。
+            </p>
+            <p>
+                これはブラウザーの仕様のため、私にはどうすることもできません。他の方法も探しましたが、この方法しかありませんでした。
+            </p>
+            <h3>TweetDeckで使いたい人にだけ追加の権限を求めることはできないのか</h3>
+            <p>
+                できません。TweetDeckに対応するためには、Shadowban
+                Scannerのすべてのユーザーに権限の追加を求めるダイアログを表示する必要があります。
+            </p>
+            <p>
+                正確には、以前はそういったこともできたのですが、ブラウザーの仕様変更（Manifest
+                V3の導入）によりできなくなってしまいました。
+            </p>
+            <h2>連絡先</h2>
+            <p>ご不明な点やご質問については、以下のTwitterアカウントかメールまでお気軽にご連絡ください。</p>
+            <ul>
+                <li>Twitter：<a href="https://twitter.com/keita_roboin" target="_blank">@keita_roboin</a></li>
+                <li>メール：<a href="mailto:info.robot.inventor@gmail.com">info.robot.inventor@gmail.com</a></li>
+            </ul>
+        </main>
+        <style>
+            * {
+                font-family: sans-serif;
+                margin: 0;
+                padding: 0;
+                line-height: 175%;
+            }
+
+            body {
+                padding: 1rem;
+                font-size: 100%;
+            }
+
+            main {
+                margin: auto;
+                max-width: 35rem;
+            }
+
+            h1 {
+                line-height: 150%;
+                color: #ce5c5c;
+            }
+
+            h2,
+            h3 {
+                margin-top: 2rem;
+            }
+
+            p {
+                margin-top: 1rem;
+            }
+
+            h2 + p,
+            h3 + p {
+                margin-top: 0.5rem;
+            }
+
+            ul {
+                margin-left: 2rem;
+            }
+
+            p + ul {
+                margin-top: 1rem;
+            }
+
+            ul + p {
+                margin-top: 1rem;
+            }
+        </style>
+    </body>
+</html>
