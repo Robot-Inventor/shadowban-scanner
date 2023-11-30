@@ -16,6 +16,7 @@ const onUpdated = (details: browser.Runtime.OnInstalledDetailsType, isJapanese: 
     // Do nothing while development
     if (details.previousVersion === browser.runtime.getManifest().version) return;
 
+    // DELETE THIS WHEN THE NEXT VERSION OF V3.0
     const ABOUT_PERMISSIONS_URL = {
         en: browser.runtime.getURL("dist/html/aboutPermissions.en.html"),
         ja: browser.runtime.getURL("dist/html/aboutPermissions.ja.html")
