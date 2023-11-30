@@ -6,7 +6,7 @@ loadVersion();
 
 // DELETE THIS WHEN THE NEXT VERSION OF V3.0
 // eslint-disable-next-line max-statements
-const adjustMessageWidth = () => {
+const adjustMessageWidth = (): void => {
     const fieldset = document.querySelector("fieldset");
     const information = document.querySelector<HTMLElement>("#information");
     if (!information) throw new Error("information is null");
