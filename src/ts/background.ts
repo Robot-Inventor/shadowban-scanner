@@ -1,4 +1,4 @@
-import { ONBOARDING_URL } from "./common/constants";
+import { ONBOARDING_URL, RELEASE_NOTE_URL } from "./common/constants";
 import browser from "webextension-polyfill";
 import { migrateFromV2ToV2Dot1 } from "./migrator";
 
@@ -16,12 +16,14 @@ const onUpdated = (details: browser.Runtime.OnInstalledDetailsType, isJapanese: 
     // Do nothing while development
     if (details.previousVersion === browser.runtime.getManifest().version) return;
 
-    const aboutPermissionsURL = {
+    const ABOUT_PERMISSIONS_URL = {
         en: browser.runtime.getURL("dist/html/aboutPermissions.en.html"),
         ja: browser.runtime.getURL("dist/html/aboutPermissions.ja.html")
     };
 
-    const releaseNoteURL = isJapanese ? aboutPermissionsURL.ja : aboutPermissionsURL.en;
+    const releaseNoteURL = isJapanese ? RELEASE_NOTE_URL.ja : RELEASE_NOTE_URL.en;
+    const aboutPermissionsURL = isJapanese ? ABOUT_PERMISSIONS_URL.ja : ABOUT_PERMISSIONS_URL.en;
+    void browser.tabs.create({ url: aboutPermissionsURL });
     void browser.tabs.create({ url: releaseNoteURL });
 };
 
