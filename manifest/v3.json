@@ -10,8 +10,9 @@
         "128": "dist/image/icon128.png"
     },
     "host_permissions": [
-        "https://*.twitter.com/*",
-        "https://*.x.com/*"
+        "https://twitter.com/*",
+        "https://mobile.twitter.com/*",
+        "https://tweetdeck.twitter.com/*"
     ],
     "permissions": [
         "storage"
@@ -19,8 +20,9 @@
     "content_scripts": [
         {
             "matches": [
-                "https://*.twitter.com/*",
-                "https://*.x.com/*"
+                "https://twitter.com/*",
+                "https://mobile.twitter.com/*",
+                "https://tweetdeck.twitter.com/*"
             ],
             "js": [
                 "dist/js/contentScript.js"
