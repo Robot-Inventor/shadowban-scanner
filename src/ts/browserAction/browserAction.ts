@@ -32,4 +32,4 @@ const adjustMessageWidth = (): void => {
 adjustMessageWidth();
 // Re-get the width because the width that Firefox can get at script execution time is not accurate.
 // eslint-disable-next-line no-magic-numbers
-setTimeout(adjustMessageWidth, 500);
+setTimeout(adjustMessageWidth, 250);
