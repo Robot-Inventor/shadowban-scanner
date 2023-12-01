@@ -130,11 +130,11 @@
         "message": "As a rule, this extension performs all processing on the user's computer. No data is transmitted to an external server. It also does not access Twitter's internal API by obtaining the user's credentials without permission, as is the case with some extensions. Web pages not bundled in this extension are subject to their own terms of use and privacy policies."
     },
     "settingsAdditionalPermissions": {
-        "message": "[Important] In order to comply with Twitter's specification changes, the next update of Shadowban Scanner will require additional permissions. Please click <a href=\"./aboutPermissions.en.html\" target=\"_blank\">here</a> for details.",
+        "message": "[重要提示] 为了遵守Twitter的规范更改，Shadowban Scanner的下一个更新将需要额外的权限。请点击<a href=\"./aboutPermissions.en.html\" target=\"_blank\">这里</a>查看详细信息。",
         "description": "DELETE THIS WHEN THE NEXT VERSION OF V3.0"
     },
     "settingsUnableUpdate": {
-        "message": "[Important] Your Shadowban Scanner is an older version; to update your Shadowban Scanner, you will need to approve additional permissions to accommodate Twitter's specification changes. Please click <a href=\"./aboutPermissions.en.html\" target=\"_blank\">here</a> for details.",
+        "message": "[重要提示] 您的Shadowban Scanner是旧版本；为了更新您的Shadowban Scanner，您需要批准额外的权限以适应Twitter的规范更改。请点击<a href=\"./aboutPermissions.en.html\" target=\"_blank\">这里</a>查看详细信息。",
         "description": "DELETE THIS WHEN THE NEXT VERSION OF V3.0"
     }
 }
