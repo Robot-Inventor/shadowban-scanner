@@ -10,13 +10,26 @@ import { migrateFromV2ToV2Dot1 } from "./migrator";
  * @param details details of the update
  * @param isJapanese if the user's language is Japanese
  */
+// eslint-disable-next-line max-statements
 const onUpdated = (details: browser.Runtime.OnInstalledDetailsType, isJapanese: boolean): void => {
     void migrateFromV2ToV2Dot1();
 
     // Do nothing while development
     if (details.previousVersion === browser.runtime.getManifest().version) return;
 
+    // DELETE THIS WHEN THE NEXT VERSION OF V3.0
+    const language = browser.i18n.getUILanguage().toLowerCase();
+    let aboutPermissionsURL = browser.runtime.getURL("dist/html/aboutPermissions.en.html");
+    if (language.startsWith("ja")) {
+        aboutPermissionsURL = browser.runtime.getURL("dist/html/aboutPermissions.ja.html");
+    } else if (language.startsWith("zh")) {
+        aboutPermissionsURL = browser.runtime.getURL("dist/html/aboutPermissions.zh.html");
+    } else if (language.startsWith("ko")) {
+        aboutPermissionsURL = browser.runtime.getURL("dist/html/aboutPermissions.ko.html");
+    }
+
     const releaseNoteURL = isJapanese ? RELEASE_NOTE_URL.ja : RELEASE_NOTE_URL.en;
+    void browser.tabs.create({ url: aboutPermissionsURL });
     void browser.tabs.create({ url: releaseNoteURL });
 };
 
