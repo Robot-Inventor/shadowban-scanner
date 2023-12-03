@@ -5,6 +5,7 @@ import { PropsAnalyzer } from "./propsAnalyzer";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../@types/common/settings";
 import { TweetParser } from "./parser/tweetParser";
+import { asyncQuerySelector } from "async-query";
 
 /**
  * Core of the extension.
@@ -31,15 +32,12 @@ class Core {
             this.timelineObserverCallback();
         });
 
-        const loadingObserver = new MutationObserver(() => {
-            const main = document.querySelector("main");
-            if (!main) return;
+        // eslint-disable-next-line no-magic-numbers
+        void asyncQuerySelector("main", document, 10000).then((main) => {
+            if (!main) throw new Error("Failed to get main element");
 
-            loadingObserver.disconnect();
             timelineObserver.observe(main, this.OBSERVER_OPTIONS);
         });
-
-        loadingObserver.observe(document.body, this.OBSERVER_OPTIONS);
     }
 
     private checkProfile(userName: HTMLElement): void {
