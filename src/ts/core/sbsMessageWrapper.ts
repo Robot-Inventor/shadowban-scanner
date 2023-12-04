@@ -34,6 +34,9 @@ interface SbsMessageWrapperOptionsForProfiles {
 }
 
 class SbsMessageWrapper {
+    // eslint-disable-next-line no-magic-numbers
+    private readonly ASYNC_QUERY_TIMEOUT_MS = 7500;
+
     private readonly sbsMessage: HTMLElement;
 
     private readonly sourceTweet?: HTMLElement;
@@ -90,10 +93,11 @@ class SbsMessageWrapper {
      * Click the retweet button of the specified tweet.
      * @param sourceTweet tweet to click the retweet button
      */
-    private static async clickRetweetButton(sourceTweet: HTMLElement): Promise<void> {
+    private async clickRetweetButton(sourceTweet: HTMLElement): Promise<void> {
         const retweetButton = await asyncQuerySelector<HTMLElement>(
             "[data-testid='unretweet'], [data-testid='retweet']",
-            sourceTweet
+            sourceTweet,
+            this.ASYNC_QUERY_TIMEOUT_MS
         );
         if (!retweetButton) throw new Error("Failed to get retweet button of tweet");
         retweetButton.click();
@@ -103,14 +107,16 @@ class SbsMessageWrapper {
      * Click the quote button.
      * **This method should be called after {@link clickRetweetButton}.**
      */
-    private static async clickQuoteButton(): Promise<void> {
+    private async clickQuoteButton(): Promise<void> {
         const quoteButton = await asyncQuerySelector<HTMLElement>(
             [
                 // PC
                 "[data-testid='Dropdown'] [href='/compose/tweet']",
                 // Mobile
                 "[data-testid='sheetDialog'] [href='/compose/tweet']"
-            ].join(",")
+            ].join(","),
+            document,
+            this.ASYNC_QUERY_TIMEOUT_MS
         );
         if (!quoteButton) throw new Error("Failed to get quote button of tweet");
         quoteButton.click();
@@ -121,9 +127,11 @@ class SbsMessageWrapper {
      * This method should be called after {@link clickQuoteButton}.
      * @returns text box of the tweet composer
      */
-    private static async getTweetTextBox(): Promise<Element> {
+    private async getTweetTextBox(): Promise<Element> {
         const textBoxMarker = await asyncQuerySelector(
-            "[data-viewportview='true'] [data-text='true'], textarea[data-testid='tweetTextarea_0']"
+            "[data-viewportview='true'] [data-text='true'], textarea[data-testid='tweetTextarea_0']",
+            document,
+            this.ASYNC_QUERY_TIMEOUT_MS
         );
         if (!textBoxMarker) throw new Error("Failed to get text box marker of tweet");
         const isTextArea = textBoxMarker.tagName === "TEXTAREA";
@@ -138,16 +146,12 @@ class SbsMessageWrapper {
      * @param sourceTweetPermalink permalink of the tweet to quote
      * @param text text to tweet
      */
-    private static async quoteTweet(
-        sourceTweet: HTMLElement,
-        sourceTweetPermalink: string,
-        text: string
-    ): Promise<void> {
+    private async quoteTweet(sourceTweet: HTMLElement, sourceTweetPermalink: string, text: string): Promise<void> {
         try {
-            await SbsMessageWrapper.clickRetweetButton(sourceTweet);
-            await SbsMessageWrapper.clickQuoteButton();
+            await this.clickRetweetButton(sourceTweet);
+            await this.clickQuoteButton();
 
-            const textBox = await SbsMessageWrapper.getTweetTextBox();
+            const textBox = await this.getTweetTextBox();
             textBox.innerHTML = text;
             textBox.dispatchEvent(new Event("input", { bubbles: true }));
         } catch (error) {
@@ -161,7 +165,7 @@ class SbsMessageWrapper {
             throw new Error("Tweet button clicked without source tweet");
         }
 
-        void SbsMessageWrapper.quoteTweet(this.sourceTweet, this.sourceTweetPermalink, this.tweetText);
+        void this.quoteTweet(this.sourceTweet, this.sourceTweetPermalink, this.tweetText);
     }
 
     public insertAdjacentElement(target: Element, position: InsertPosition): void {
