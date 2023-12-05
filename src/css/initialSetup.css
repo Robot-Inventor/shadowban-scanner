@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+    font-size: 100%;
+    background: radial-gradient(#1c1f63, #111 50%);
+    color: white;
+    position: relative;
+}
+
+main {
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    display: grid;
+    grid-template-rows: auto auto auto 1fr;
+}
+
+#shadowban-scanner-installed {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+h1 {
+    font-size: 4rem;
+    text-align: center;
+    background: linear-gradient(-45deg, #1ec4db, #6a6cf2);
+    background-clip: border-box;
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5em;
+}
+
+#instruction {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+#settings-buttons {
+    margin: auto;
+    margin-top: 1rem;
+    height: 100%;
+    max-height: 20rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 50rem;
+}
+
+.settings-button-item {
+    --button-margin: 1rem;
+
+    width: calc(100% - var(--button-margin) * 2);
+    height: 100%;
+    margin: 0 var(--button-margin);
+    background: rgb(255, 255, 255, 20%);
+    backdrop-filter: blur(3rem);
+    border-radius: 0.5rem;
+    border: 0.1rem solid rgb(255, 255, 255, 30%);
+    cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0.5em;
+    transition: 0.3s;
+}
+
+.settings-button-item:hover,
+.settings-button-item:focus {
+    background: rgb(255, 255, 255, 30%);
+    border: 0.1rem solid rgb(255, 255, 255, 40%);
+    transform: scale(1.01);
+}
+
+.settings-button-item img {
+    display: block;
+    margin: auto;
+    height: 50%;
+    width: auto;
+    filter: invert();
+}

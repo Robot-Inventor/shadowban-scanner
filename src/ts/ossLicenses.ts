@@ -12,6 +12,8 @@ https://github.com/twitter/twemoji/blob/master/LICENSE-GRAPHICS`.trim(),
     }
 ] as const;
 
+// TODO: Add Material Symbols' license
+
 const normalizeRepositoryLink = (repository: string): string => {
     if (repository.startsWith("git+")) {
         return repository.replace(/^git\+/u, "");

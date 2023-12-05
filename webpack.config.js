@@ -86,6 +86,7 @@ module.exports = {
         "./js/background.js": "./src/ts/background.ts",
         "./js/ossLicenses.js": "./src/ts/ossLicenses.ts",
         "./js/privacyPolicy.js": "./src/ts/privacyPolicy.ts",
+        "./js/initialSetup.js": "./src/ts/initialSetup.ts",
         ...userScriptEntries
     },
     output: {
