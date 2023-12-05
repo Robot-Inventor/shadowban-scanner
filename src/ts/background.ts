@@ -41,6 +41,7 @@ const onUpdated = (details: browser.Runtime.OnInstalledDetailsType, isJapanese: 
 const onInstalled = (isJapanese: boolean): void => {
     // Temporary disable onboarding page until it is created
     return;
+    // TODO: Open initial setup page when the extension is installed.
     const welcomeURL = isJapanese ? ONBOARDING_URL.ja : ONBOARDING_URL.en;
     void browser.tabs.create({ url: welcomeURL });
 };
