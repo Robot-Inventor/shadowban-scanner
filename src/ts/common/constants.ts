@@ -6,10 +6,7 @@ const SHADOW_TRANSLATION_ATTRIBUTE = "data-sb-shadow-translation";
 const TWEMOJI_ATTRIBUTE = "data-sb-enable-twemoji";
 const ALLOWED_TWEMOJI = ["✅", "🚫", "⚠️"];
 
-const ONBOARDING_URL = {
-    en: "https://github.com/Robot-Inventor/shadowban-scanner/blob/main/README.md",
-    ja: "https://github.com/Robot-Inventor/shadowban-scanner/blob/main/README_ja.md"
-} as const;
+const ONBOARDING_PATH = "dist/html/initialSetup.html";
 const RELEASE_NOTE_URL = {
     en: "https://robot-inventor.github.io/article/2023/11/10/shadowban-scanner-v2-2-release/en/",
     ja: "https://robot-inventor.github.io/article/2023/11/10/shadowban-scanner-v2-2-release/"
@@ -23,6 +20,6 @@ export {
     SHADOW_TRANSLATION_ATTRIBUTE,
     TWEMOJI_ATTRIBUTE,
     ALLOWED_TWEMOJI,
-    ONBOARDING_URL,
+    ONBOARDING_PATH,
     RELEASE_NOTE_URL
 };
