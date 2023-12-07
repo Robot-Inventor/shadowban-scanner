@@ -136,5 +136,41 @@
     "settingsUnableUpdate": {
         "message": "[重要提示] 您的Shadowban Scanner是旧版本；为了更新您的Shadowban Scanner，您需要批准额外的权限以适应Twitter的规范更改。请点击<a href=\"./aboutPermissions.zh.html\" target=\"_blank\">这里</a>查看详细信息。",
         "description": "DELETE THIS WHEN THE NEXT VERSION OF V3.0"
+    },
+    "shadowbanScannerHasBeenInstalled": {
+        "message": "Shadowban Scannerがインストールされました"
+    },
+    "letsStartWithASimpleInitialSetup": {
+        "message": "簡単な初期設定を始めましょう"
+    },
+    "pleaseSelectOneOfThem": {
+        "message": "どちらかを選択してください。設定はあとから変えられます。"
+    },
+    "displayForAllTweetsAndAccounts": {
+        "message": "すべてのツイートとアカウントに検査結果を表示"
+    },
+    "displayOnlyForProblematicTweets": {
+        "message": "問題のあるツイートとアカウントにだけ検査結果を表示"
+    },
+    "displayOnlyInYourOwnTweets": {
+        "message": "自分のツイートにのみ検査結果を表示"
+    },
+    "displayInAllUsersTweets": {
+        "message": "すべてのユーザーのツイートに検査結果を表示"
+    },
+    "back": {
+        "message": "戻る"
+    },
+    "next": {
+        "message": "次へ"
+    },
+    "initialSetupCompleted": {
+        "message": "初期設定が完了しました！<br>使い方の説明を開きますか？"
+    },
+    "open": {
+        "message": "開く"
+    },
+    "exitWithoutOpening": {
+        "message": "開かずに終了"
     }
 }

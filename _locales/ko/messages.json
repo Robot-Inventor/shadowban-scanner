@@ -136,5 +136,41 @@
     "settingsUnableUpdate": {
         "message": "[중요] 귀하의 Shadowban Scanner는 이전 버전입니다. Shadowban Scanner를 업데이트하려면 Twitter의 명세 변경을 수용하기 위해 추가 권한을 승인해야 합니다. 자세한 내용은 여기를 클릭하세요: <a href=\"./aboutPermissions.ko.html\" target=\"_blank\">여기</a>.",
         "description": "DELETE THIS WHEN THE NEXT VERSION OF V3.0"
+    },
+    "shadowbanScannerHasBeenInstalled": {
+        "message": "Shadowban Scannerがインストールされました"
+    },
+    "letsStartWithASimpleInitialSetup": {
+        "message": "簡単な初期設定を始めましょう"
+    },
+    "pleaseSelectOneOfThem": {
+        "message": "どちらかを選択してください。設定はあとから変えられます。"
+    },
+    "displayForAllTweetsAndAccounts": {
+        "message": "すべてのツイートとアカウントに検査結果を表示"
+    },
+    "displayOnlyForProblematicTweets": {
+        "message": "問題のあるツイートとアカウントにだけ検査結果を表示"
+    },
+    "displayOnlyInYourOwnTweets": {
+        "message": "自分のツイートにのみ検査結果を表示"
+    },
+    "displayInAllUsersTweets": {
+        "message": "すべてのユーザーのツイートに検査結果を表示"
+    },
+    "back": {
+        "message": "戻る"
+    },
+    "next": {
+        "message": "次へ"
+    },
+    "initialSetupCompleted": {
+        "message": "初期設定が完了しました！<br>使い方の説明を開きますか？"
+    },
+    "open": {
+        "message": "開く"
+    },
+    "exitWithoutOpening": {
+        "message": "開かずに終了"
     }
 }
