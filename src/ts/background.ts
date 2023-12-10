@@ -14,19 +14,7 @@ const onUpdated = (details: browser.Runtime.OnInstalledDetailsType, isJapanese: 
     // Do nothing while development
     if (details.previousVersion === browser.runtime.getManifest().version) return;
 
-    // DELETE THIS WHEN THE NEXT VERSION OF V3.0
-    const language = browser.i18n.getUILanguage().toLowerCase();
-    let aboutPermissionsURL = browser.runtime.getURL("dist/html/aboutPermissions.en.html");
-    if (language.startsWith("ja")) {
-        aboutPermissionsURL = browser.runtime.getURL("dist/html/aboutPermissions.ja.html");
-    } else if (language.startsWith("zh")) {
-        aboutPermissionsURL = browser.runtime.getURL("dist/html/aboutPermissions.zh.html");
-    } else if (language.startsWith("ko")) {
-        aboutPermissionsURL = browser.runtime.getURL("dist/html/aboutPermissions.ko.html");
-    }
-
     const releaseNoteURL = isJapanese ? RELEASE_NOTE_URL.ja : RELEASE_NOTE_URL.en;
-    void browser.tabs.create({ url: aboutPermissionsURL });
     void browser.tabs.create({ url: releaseNoteURL });
 };
 

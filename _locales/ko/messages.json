@@ -129,14 +129,6 @@
     "privacyPolicyText": {
         "message": "As a rule, this extension performs all processing on the user's computer. No data is transmitted to an external server. It also does not access Twitter's internal API by obtaining the user's credentials without permission, as is the case with some extensions. Web pages not bundled in this extension are subject to their own terms of use and privacy policies."
     },
-    "settingsAdditionalPermissions": {
-        "message": "[중요] Twitter의 명세 변경을 준수하기 위해 Shadowban Scanner의 다음 업데이트에는 추가 권한이 필요합니다. 자세한 내용은 여기를 클릭하세요: <a href=\"./aboutPermissions.ko.html\" target=\"_blank\">여기</a>.",
-        "description": "DELETE THIS WHEN THE NEXT VERSION OF V3.0"
-    },
-    "settingsUnableUpdate": {
-        "message": "[중요] 귀하의 Shadowban Scanner는 이전 버전입니다. Shadowban Scanner를 업데이트하려면 Twitter의 명세 변경을 수용하기 위해 추가 권한을 승인해야 합니다. 자세한 내용은 여기를 클릭하세요: <a href=\"./aboutPermissions.ko.html\" target=\"_blank\">여기</a>.",
-        "description": "DELETE THIS WHEN THE NEXT VERSION OF V3.0"
-    },
     "initialSetup": {
         "message": "초기 설정 - Shadowban Scanner"
     },
