@@ -4,9 +4,8 @@
 // @version      3.0.0
 // @description  Twitterのシャドウバンを検出する拡張機能です。
 // @author       Robot-Inventor (ろぼいん / @keita_roboin)
-// @match        https://twitter.com/*
-// @match        https://mobile.twitter.com/*
-// @match        https://tweetdeck.twitter.com/*
+// @match        https://*.twitter.com/*
+// @match        https://*.x.com/*
 // @icon         https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/src/image/icon128.png
 // @downloadURL  https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/ja.user.js
 // @updateURL    https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/ja.user.js

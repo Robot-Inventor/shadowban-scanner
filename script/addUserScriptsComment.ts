@@ -21,9 +21,8 @@ for (const userScript of userScriptFiles) {
 // @version      ${packagejson.version}
 // @description  ${JSON.parse(localizedMessages)["manifest_description"]["message"]}
 // @author       Robot-Inventor (ろぼいん / @keita_roboin)
-// @match        https://twitter.com/*
-// @match        https://mobile.twitter.com/*
-// @match        https://tweetdeck.twitter.com/*
+// @match        https://*.twitter.com/*
+// @match        https://*.x.com/*
 // @icon         https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/src/image/icon128.png
 // @downloadURL  https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/${userScript.replaceAll(
         "\\",

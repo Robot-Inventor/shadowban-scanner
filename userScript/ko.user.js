@@ -4,9 +4,8 @@
 // @version      3.0.0
 // @description  Twitter의 Shadowban을 감지하는 확장 기능입니다.
 // @author       Robot-Inventor (ろぼいん / @keita_roboin)
-// @match        https://twitter.com/*
-// @match        https://mobile.twitter.com/*
-// @match        https://tweetdeck.twitter.com/*
+// @match        https://*.twitter.com/*
+// @match        https://*.x.com/*
 // @icon         https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/src/image/icon128.png
 // @downloadURL  https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/ko.user.js
 // @updateURL    https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/ko.user.js
