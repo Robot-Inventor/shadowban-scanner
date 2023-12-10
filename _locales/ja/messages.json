@@ -129,14 +129,6 @@
     "privacyPolicyText": {
         "message": "この拡張機能は、原則としてすべての処理をユーザーのコンピューター上で実行します。データが外部のサーバーに送信されることはありません。また、一部の拡張機能でみられるような、ユーザーの認証情報を無断で取得してTwitterの内部APIにアクセスする処理もありません。この拡張機能に同梱されていないWebページには、それぞれの利用規約やプライバシーポリシーが適用されます。"
     },
-    "settingsAdditionalPermissions": {
-        "message": "【重要】Twitterの仕様変更に対応するため、Shadowban Scannerの次回のアップデートでは追加の権限が必要になります。詳細は<a href=\"./aboutPermissions.ja.html\" target=\"_blank\">こちら</a>をご覧ください。",
-        "description": "DELETE THIS WHEN THE NEXT VERSION OF V3.0"
-    },
-    "settingsUnableUpdate": {
-        "message": "【重要】お使いのShadowban Scannerは古いバージョンです。Shadowban Scannerをアップデートするには、Twitterの仕様変更に対応するための追加の権限が必要です。詳細は<a href=\"./aboutPermissions.ja.html\" target=\"_blank\">こちら</a>をご覧ください。",
-        "description": "DELETE THIS WHEN THE NEXT VERSION OF V3.0"
-    },
     "initialSetup": {
         "message": "初期設定 - Shadowban Scanner"
     },
