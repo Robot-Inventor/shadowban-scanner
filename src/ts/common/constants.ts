@@ -8,8 +8,8 @@ const ALLOWED_TWEMOJI = ["✅", "🚫", "⚠️"];
 
 const ONBOARDING_PATH = "dist/html/initialSetup.html";
 const RELEASE_NOTE_URL = {
-    en: "https://robot-inventor.github.io/article/2023/11/10/shadowban-scanner-v2-2-release/en/",
-    ja: "https://robot-inventor.github.io/article/2023/11/10/shadowban-scanner-v2-2-release/"
+    en: "https://roboin.io/article/2023/11/10/shadowban-scanner-v2-2-release/en/",
+    ja: "https://roboin.io/article/2023/11/10/shadowban-scanner-v2-2-release/"
 } as const;
 const INSTRUCTION_URL = {
     en: "https://roboin.io/article/2023/09/30/detect-twitter-shadowban/en/#usage",
