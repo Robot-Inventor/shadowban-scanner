@@ -19,10 +19,10 @@ buttons.forEach((button) => {
 
     button.addEventListener("click", () => {
         const isMobile = Boolean(navigator.userAgent.match(/iPhone|Android.+Mobile/))
-        if (isMobile) {
+        if (isMobile && !isFirefox) {
             Swal.fire({
                 title: "Smartphones are not supported",
-                text: "Due to technical reasons, Shadowban Scanner is only available for PC browsers and Firefox Nightly for Android.",
+                text: "Due to technical reasons, Shadowban Scanner is only available for PC browsers and Firefox for Android.",
                 icon: "warning",
                 showCancelButton: true,
                 background: "#21272e",

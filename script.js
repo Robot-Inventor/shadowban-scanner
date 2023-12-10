@@ -19,10 +19,10 @@ buttons.forEach((button) => {
 
     button.addEventListener("click", () => {
         const isMobile = Boolean(navigator.userAgent.match(/iPhone|Android.+Mobile/))
-        if (isMobile) {
+        if (isMobile && !isFirefox) {
             Swal.fire({
                 title: "スマートフォンには対応していません",
-                text: "Shadowban Scannerは技術的な理由により、PCのブラウザーとAndroid版Firefox Nightlyでのみ利用できます。",
+                text: "Shadowban Scannerは技術的な理由により、PCのブラウザーとAndroid版Firefoxでのみ利用できます。",
                 icon: "warning",
                 showCancelButton: true,
                 background: "#21272e",
