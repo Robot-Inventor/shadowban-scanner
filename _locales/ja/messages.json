@@ -137,6 +137,9 @@
         "message": "【重要】お使いのShadowban Scannerは古いバージョンです。Shadowban Scannerをアップデートするには、Twitterの仕様変更に対応するための追加の権限が必要です。詳細は<a href=\"./aboutPermissions.ja.html\" target=\"_blank\">こちら</a>をご覧ください。",
         "description": "DELETE THIS WHEN THE NEXT VERSION OF V3.0"
     },
+    "initialSetup": {
+        "message": "初期設定 - Shadowban Scanner"
+    },
     "shadowbanScannerHasBeenInstalled": {
         "message": "Shadowban Scannerがインストールされました"
     },

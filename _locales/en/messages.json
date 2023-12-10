@@ -137,40 +137,43 @@
         "message": "[Important] Your Shadowban Scanner is an older version; to update your Shadowban Scanner, you will need to approve additional permissions to accommodate Twitter's specification changes. Please click <a href=\"./aboutPermissions.en.html\" target=\"_blank\">here</a> for details.",
         "description": "DELETE THIS WHEN THE NEXT VERSION OF V3.0"
     },
+    "initialSetup": {
+        "message": "Initial setup - Shadowban Scanner"
+    },
     "shadowbanScannerHasBeenInstalled": {
-        "message": "Shadowban Scannerがインストールされました"
+        "message": "Shadowban Scanner installed"
     },
     "letsStartWithASimpleInitialSetup": {
-        "message": "簡単な初期設定を始めましょう"
+        "message": "Let's start with a simple initial setup"
     },
     "pleaseSelectOneOfThem": {
-        "message": "どちらかを選択してください。設定はあとから変えられます。"
+        "message": "Please choose one. The settings can be changed later."
     },
     "displayForAllTweetsAndAccounts": {
-        "message": "すべてのツイートとアカウントに検査結果を表示"
+        "message": "Show scan results for all tweets and accounts"
     },
     "displayOnlyForProblematicTweets": {
-        "message": "問題のあるツイートとアカウントにだけ検査結果を表示"
+        "message": "Show scan results only for problematic tweets and accounts"
     },
     "displayOnlyInYourOwnTweets": {
-        "message": "自分のツイートにのみ検査結果を表示"
+        "message": "Show scan results only for my tweets"
     },
     "displayInAllUsersTweets": {
-        "message": "すべてのユーザーのツイートに検査結果を表示"
+        "message": "Show scan results for all users' tweets"
     },
     "back": {
-        "message": "戻る"
+        "message": "Back"
     },
     "next": {
-        "message": "次へ"
+        "message": "Next"
     },
     "initialSetupCompleted": {
-        "message": "初期設定が完了しました！<br>使い方の説明を開きますか？"
+        "message": "Initial setup complete!<br>Do you want to open the usage instructions?"
     },
     "open": {
-        "message": "開く"
+        "message": "Open"
     },
     "exitWithoutOpening": {
-        "message": "開かずに終了"
+        "message": "Close without opening"
     }
 }

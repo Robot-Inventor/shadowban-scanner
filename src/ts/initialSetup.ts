@@ -3,8 +3,6 @@ import { TRANSLATION_ATTRIBUTE } from "./common/constants";
 import { Translator } from "./common/translator";
 import browser from "webextension-polyfill";
 
-// TODO: translate messages.json
-
 type InitialSetupItem = {
     options: {
         default: boolean;

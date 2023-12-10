@@ -137,40 +137,43 @@
         "message": "[重要提示] 您的Shadowban Scanner是旧版本；为了更新您的Shadowban Scanner，您需要批准额外的权限以适应Twitter的规范更改。请点击<a href=\"./aboutPermissions.zh.html\" target=\"_blank\">这里</a>查看详细信息。",
         "description": "DELETE THIS WHEN THE NEXT VERSION OF V3.0"
     },
+    "initialSetup": {
+        "message": "初始設定 - Shadowban Scanner"
+    },
     "shadowbanScannerHasBeenInstalled": {
-        "message": "Shadowban Scannerがインストールされました"
+        "message": "Shadowban Scanner已安裝"
     },
     "letsStartWithASimpleInitialSetup": {
-        "message": "簡単な初期設定を始めましょう"
+        "message": "簡單的初始設定開始吧"
     },
     "pleaseSelectOneOfThem": {
-        "message": "どちらかを選択してください。設定はあとから変えられます。"
+        "message": "請選擇一個。設定可以後續更改。"
     },
     "displayForAllTweetsAndAccounts": {
-        "message": "すべてのツイートとアカウントに検査結果を表示"
+        "message": "顯示所有推文和帳戶的掃描結果"
     },
     "displayOnlyForProblematicTweets": {
-        "message": "問題のあるツイートとアカウントにだけ検査結果を表示"
+        "message": "僅顯示問題推文和帳戶的掃描結果"
     },
     "displayOnlyInYourOwnTweets": {
-        "message": "自分のツイートにのみ検査結果を表示"
+        "message": "僅顯示我自己的推文的掃描結果"
     },
     "displayInAllUsersTweets": {
-        "message": "すべてのユーザーのツイートに検査結果を表示"
+        "message": "顯示所有用戶推文的掃描結果"
     },
     "back": {
-        "message": "戻る"
+        "message": "返回"
     },
     "next": {
-        "message": "次へ"
+        "message": "下一步"
     },
     "initialSetupCompleted": {
-        "message": "初期設定が完了しました！<br>使い方の説明を開きますか？"
+        "message": "初始設定完成！<br>是否要開啟使用說明？"
     },
     "open": {
-        "message": "開く"
+        "message": "開啟"
     },
     "exitWithoutOpening": {
-        "message": "開かずに終了"
+        "message": "不開啟並結束"
     }
 }
