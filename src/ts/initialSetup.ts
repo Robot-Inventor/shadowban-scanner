@@ -1,5 +1,5 @@
+import { INSTRUCTION_URL, TRANSLATION_ATTRIBUTE } from "./common/constants";
 import { Settings } from "./@types/common/settings";
-import { TRANSLATION_ATTRIBUTE } from "./common/constants";
 import { Translator } from "./common/translator";
 import browser from "webextension-polyfill";
 
@@ -138,10 +138,9 @@ const showCompletionMessage = (buttonsOuter: Element, translator: Translator): v
     const openUsagesPageButton = createButton("open", "../image/open_in_new.svg");
     openUsagesPageButton.addEventListener("click", () => {
         void closeCurrentTab();
-        // TODO: create English page
+        const isJapanese = browser.i18n.getUILanguage().toLowerCase().startsWith("ja");
         void browser.tabs.create({
-            // eslint-disable-next-line max-len
-            url: "https://roboin.io/article/2023/09/30/detect-twitter-shadowban/#%E4%BD%BF%E3%81%84%E6%96%B9"
+            url: INSTRUCTION_URL[isJapanese ? "ja" : "en"]
         });
     });
 

@@ -11,6 +11,10 @@ const RELEASE_NOTE_URL = {
     en: "https://robot-inventor.github.io/article/2023/11/10/shadowban-scanner-v2-2-release/en/",
     ja: "https://robot-inventor.github.io/article/2023/11/10/shadowban-scanner-v2-2-release/"
 } as const;
+const INSTRUCTION_URL = {
+    en: "https://roboin.io/article/2023/09/30/detect-twitter-shadowban/en/#usage",
+    ja: "https://roboin.io/article/2023/09/30/detect-twitter-shadowban/#%E4%BD%BF%E3%81%84%E6%96%B9"
+} as const;
 
 export {
     CHECKED_DATA_ATTRIBUTE,
@@ -21,5 +25,6 @@ export {
     TWEMOJI_ATTRIBUTE,
     ALLOWED_TWEMOJI,
     ONBOARDING_PATH,
-    RELEASE_NOTE_URL
+    RELEASE_NOTE_URL,
+    INSTRUCTION_URL
 };
