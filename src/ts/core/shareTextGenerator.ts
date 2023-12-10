@@ -30,8 +30,8 @@ class ShareTextGenerator {
         const tweetSearchStatus = isTweetSearchable ? "✅Tweet searchable" : "🚫Tweet may not be searchable";
 
         const siteURL = navigator.language.toLowerCase().startsWith("ja")
-            ? "https://robot-inventor.github.io/shadowban-scanner/"
-            : "https://robot-inventor.github.io/shadowban-scanner/en/";
+            ? "https://shadowban-scanner.roboin.io/"
+            : "https://shadowban-scanner.roboin.io/en/";
 
         return `
 ${accountSensitiveFlag}
