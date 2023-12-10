@@ -35,7 +35,7 @@ interface SbsMessageWrapperOptionsForProfiles {
 
 class SbsMessageWrapper {
     // eslint-disable-next-line no-magic-numbers
-    private readonly ASYNC_QUERY_TIMEOUT_MS = 7500;
+    private readonly ASYNC_QUERY_TIMEOUT_MS = 750;
 
     private readonly sbsMessage: HTMLElement;
 
