@@ -1,16 +1,5 @@
+import { additionalLicenses } from "./additional-licenses";
 import { isOSSLicenses } from "./@types/ossLicenses.guard";
-
-const twemojiLicense = [
-    {
-        license: "CC-BY 4.0",
-        licenseText: `
-Twemoji is licensed under the CC-BY 4.0.
-
-https://github.com/twitter/twemoji/blob/master/LICENSE-GRAPHICS`.trim(),
-        name: "twemoji",
-        repository: "https://github.com/twitter/twemoji"
-    }
-] as const;
 
 const normalizeRepositoryLink = (repository: string): string => {
     if (repository.startsWith("git+")) {
@@ -37,7 +26,7 @@ const main = async (): Promise<void> => {
 
     const fragment = document.createDocumentFragment();
 
-    for (const license of [...OSSLicenses, ...twemojiLicense]) {
+    for (const license of [...OSSLicenses, ...additionalLicenses]) {
         const itemOuter = document.createElement("div");
         itemOuter.className = "license-item-outer";
         fragment.appendChild(itemOuter);

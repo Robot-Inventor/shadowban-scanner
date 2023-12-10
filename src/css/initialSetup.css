@@ -1,0 +1,141 @@
+/* TODO: support mobile layout */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+    font-size: 100%;
+    background: radial-gradient(#1c1f63, #111 50%);
+    color: white;
+    position: relative;
+}
+
+main {
+    width: max-content;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    display: grid;
+    grid-template-rows: auto auto auto 1fr auto;
+    grid-template-columns: auto;
+}
+
+#shadowban-scanner-installed {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+h1 {
+    font-size: 4rem;
+    text-align: center;
+    background: linear-gradient(-45deg, #1ec4db, #6a6cf2);
+    background-clip: border-box;
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5em;
+}
+
+#instruction {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+#settings-buttons {
+    --settings-buttons-margin-top: 1rem;
+
+    margin: auto;
+    margin-top: var(--settings-buttons-margin-top);
+    height: calc(100% - var(--settings-buttons-margin-top));
+    max-height: 20rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 50rem;
+}
+
+.settings-button-item {
+    --button-margin: 1rem;
+    --button-padding: 0.5rem;
+    --button-default-border-width: 0.1rem;
+
+    width: calc(100% - var(--button-margin) * 2);
+    height: 100%;
+    margin: 0 var(--button-margin);
+    background: rgb(255, 255, 255, 20%);
+    backdrop-filter: blur(3rem);
+    border-radius: 0.5rem;
+    border: var(--button-default-border-width) solid rgb(255, 255, 255, 30%);
+    cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: var(--button-padding);
+    transition:
+        background 0.3s,
+        transform 0.3s,
+        border-color 0.3s;
+}
+
+.settings-button-item:hover,
+.settings-button-item:focus {
+    background: rgb(255, 255, 255, 30%);
+    border-color: rgb(255, 255, 255, 40%);
+    transform: scale(1.01);
+}
+
+.settings-button-item.selected {
+    --button-selected-border-width: 0.3rem;
+    border: solid var(--button-selected-border-width) #bedfec;
+    padding: calc(var(--button-padding) - var(--button-selected-border-width) + var(--button-default-border-width));
+}
+
+.settings-button-item img {
+    display: block;
+    margin: auto;
+    height: 50%;
+    width: auto;
+    filter: invert();
+}
+
+#navigation-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.basic-secondary-button,
+.basic-primary-button {
+    cursor: pointer;
+    color: white;
+    font-size: 100%;
+    padding: 0.5em 1em;
+    border-radius: 0.25em;
+}
+
+.basic-secondary-button:disabled,
+.basic-primary-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.basic-secondary-button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 0.1rem solid rgba(255, 255, 255, 0.2);
+}
+
+.basic-primary-button {
+    background: linear-gradient(-45deg, #1ec4db, #6a6cf2);
+    border: none;
+}

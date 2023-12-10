@@ -84,12 +84,7 @@
                 "named": "never"
             }
         ],
-        "no-plusplus": [
-            "error",
-            {
-                "allowForLoopAfterthoughts": true
-            }
-        ],
+        "no-plusplus": "off",
         "no-extra-parens": [
             "error",
             "all",

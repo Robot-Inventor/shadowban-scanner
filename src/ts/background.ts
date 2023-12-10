@@ -1,4 +1,4 @@
-import { ONBOARDING_URL, RELEASE_NOTE_URL } from "./common/constants";
+import { ONBOARDING_PATH, RELEASE_NOTE_URL } from "./common/constants";
 import browser from "webextension-polyfill";
 import { migrateFromV2ToV2Dot1 } from "./migrator";
 
@@ -38,11 +38,9 @@ const onUpdated = (details: browser.Runtime.OnInstalledDetailsType, isJapanese: 
  * This function opens the onboarding page.
  * @param isJapanese if the user's language is Japanese
  */
-const onInstalled = (isJapanese: boolean): void => {
-    // Temporary disable onboarding page until it is created
-    return;
-    const welcomeURL = isJapanese ? ONBOARDING_URL.ja : ONBOARDING_URL.en;
-    void browser.tabs.create({ url: welcomeURL });
+const onInstalled = (): void => {
+    const url = browser.runtime.getURL(ONBOARDING_PATH);
+    void browser.tabs.create({ url });
 };
 
 browser.runtime.onInstalled.addListener((details) => {
@@ -54,6 +52,6 @@ browser.runtime.onInstalled.addListener((details) => {
     }
 
     if (details.reason === "install") {
-        onInstalled(isJapanese);
+        onInstalled();
     }
 });

@@ -136,5 +136,44 @@
     "settingsUnableUpdate": {
         "message": "[Important] Your Shadowban Scanner is an older version; to update your Shadowban Scanner, you will need to approve additional permissions to accommodate Twitter's specification changes. Please click <a href=\"./aboutPermissions.en.html\" target=\"_blank\">here</a> for details.",
         "description": "DELETE THIS WHEN THE NEXT VERSION OF V3.0"
+    },
+    "initialSetup": {
+        "message": "Initial setup - Shadowban Scanner"
+    },
+    "shadowbanScannerHasBeenInstalled": {
+        "message": "Shadowban Scanner installed"
+    },
+    "letsStartWithASimpleInitialSetup": {
+        "message": "Let's start with a simple initial setup"
+    },
+    "pleaseSelectOneOfThem": {
+        "message": "Please choose one. The settings can be changed later."
+    },
+    "displayForAllTweetsAndAccounts": {
+        "message": "Show scan results for all tweets and accounts"
+    },
+    "displayOnlyForProblematicTweets": {
+        "message": "Show scan results only for problematic tweets and accounts"
+    },
+    "displayOnlyInYourOwnTweets": {
+        "message": "Show scan results only for my tweets"
+    },
+    "displayInAllUsersTweets": {
+        "message": "Show scan results for all users' tweets"
+    },
+    "back": {
+        "message": "Back"
+    },
+    "next": {
+        "message": "Next"
+    },
+    "initialSetupCompleted": {
+        "message": "Initial setup complete!<br>Do you want to open the usage instructions?"
+    },
+    "open": {
+        "message": "Open"
+    },
+    "exitWithoutOpening": {
+        "message": "Close without opening"
     }
 }
