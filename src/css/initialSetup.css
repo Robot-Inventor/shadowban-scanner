@@ -19,6 +19,7 @@ body {
 
 main {
     width: max-content;
+    max-width: 100%;
     height: 80%;
     position: absolute;
     top: 50%;
@@ -36,6 +37,7 @@ main {
 }
 
 h1 {
+    line-height: 110%;
     font-size: 4rem;
     text-align: center;
     background: linear-gradient(-45deg, #1ec4db, #6a6cf2);
@@ -62,6 +64,7 @@ h1 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     max-width: 50rem;
+    gap: 1rem;
 }
 
 .settings-button-item {
@@ -71,7 +74,6 @@ h1 {
 
     width: calc(100% - var(--button-margin) * 2);
     height: 100%;
-    margin: 0 var(--button-margin);
     background: rgb(255, 255, 255, 20%);
     backdrop-filter: blur(3rem);
     border-radius: 0.5rem;
@@ -85,6 +87,31 @@ h1 {
         background 0.3s,
         transform 0.3s,
         border-color 0.3s;
+}
+
+@media (orientation: portrait) {
+    h1 {
+        font-size: 3rem;
+        margin-top: 1rem;
+    }
+
+    main {
+        height: 100%;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    #settings-buttons {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        max-height: none;
+        padding: 2rem 0;
+        max-width: 100%;
+    }
+
+    .settings-button-item {
+        width: calc(100% - var(--button-padding));
+    }
 }
 
 .settings-button-item:hover,
@@ -105,6 +132,7 @@ h1 {
     margin: auto;
     height: 50%;
     width: auto;
+    max-width: 100%;
     filter: invert();
 }
 
