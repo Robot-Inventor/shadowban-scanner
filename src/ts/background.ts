@@ -1,6 +1,5 @@
 import { ONBOARDING_PATH, RELEASE_NOTE_URL } from "./common/constants";
 import browser from "webextension-polyfill";
-import { migrateFromV2ToV2Dot1 } from "./migrator";
 
 /**
  * This function is called when the extension is updated.
@@ -12,8 +11,6 @@ import { migrateFromV2ToV2Dot1 } from "./migrator";
  */
 // eslint-disable-next-line max-statements
 const onUpdated = (details: browser.Runtime.OnInstalledDetailsType, isJapanese: boolean): void => {
-    void migrateFromV2ToV2Dot1();
-
     // Do nothing while development
     if (details.previousVersion === browser.runtime.getManifest().version) return;
 
