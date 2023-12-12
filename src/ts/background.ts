@@ -11,6 +11,8 @@ import browser from "webextension-polyfill";
  */
 // eslint-disable-next-line max-statements
 const onUpdated = (details: browser.Runtime.OnInstalledDetailsType, isJapanese: boolean): void => {
+    // Temporary disable release note page because v3.0.1 is a small release.
+    return;
     // Do nothing while development
     if (details.previousVersion === browser.runtime.getManifest().version) return;
 
