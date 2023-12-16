@@ -40,9 +40,8 @@
                 "dist/image/*"
             ],
             "matches": [
-                "https://twitter.com/*",
-                "https://mobile.twitter.com/*",
-                "https://tweetdeck.twitter.com/*"
+                "https://*.twitter.com/*",
+                "https://*.x.com/*"
             ]
         }
     ],
