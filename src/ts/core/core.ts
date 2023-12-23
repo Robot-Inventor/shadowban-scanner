@@ -1,9 +1,10 @@
-import { CHECKED_DATA_ATTRIBUTE } from "../common/constants";
+import { CHECKED_DATA_ATTRIBUTE, TRANSLATION_ATTRIBUTE } from "../common/constants";
 import { MessageDataGenerator } from "./messageDataGenerator";
 import { ProfileParser } from "./parser/profileParser";
 import { PropsAnalyzer } from "./propsAnalyzer";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../@types/common/settings";
+import { TombstoneParser } from "./parser/tombstoneParser";
 import { TweetParser } from "./parser/tweetParser";
 import { asyncQuerySelector } from "async-query";
 
@@ -81,9 +82,29 @@ class Core {
         sbsMessageWrapper.insertAdjacentElement(analyzer.meta.menuBar, "beforebegin");
     }
 
+    // eslint-disable-next-line max-statements
+    private static necromancer(tombstone: HTMLElement): void {
+        tombstone.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
+
+        const tweetId = PropsAnalyzer.analyzeTombstoneProps(new TombstoneParser(tombstone).parse());
+        const tweetURL = `https://twitter.com/i/status/${tweetId}`;
+        const link = document.createElement("a");
+        link.href = tweetURL;
+        link.target = "_blank";
+        link.setAttribute(TRANSLATION_ATTRIBUTE, "viewTweet");
+        link.classList.add("shadowban-scanner-tombstone-necromancer");
+
+        const helpLink = tombstone.querySelector("a");
+        if (!helpLink) throw new Error("Failed to get help link");
+
+        link.style.color = getComputedStyle(helpLink).color;
+        helpLink.insertAdjacentElement("afterend", link);
+    }
+
     /**
      * Callback function of the timeline observer.
      */
+    // eslint-disable-next-line max-statements
     private timelineObserverCallback(): void {
         const tweets = document.querySelectorAll<HTMLElement>(`[data-testid="tweet"]:not([${CHECKED_DATA_ATTRIBUTE}]`);
         for (const tweet of tweets) {
@@ -95,6 +116,19 @@ class Core {
         );
         if (userName) {
             this.checkProfile(userName);
+        }
+
+        const cellInnerDivs = document.querySelectorAll<HTMLElement>(
+            `[data-testid='cellInnerDiv']:not([${CHECKED_DATA_ATTRIBUTE}])`
+        );
+        for (const cellInnerDiv of cellInnerDivs) {
+            cellInnerDiv.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
+            const isTombstone = Boolean(
+                cellInnerDiv.querySelector("a[href='https://help.twitter.com/rules-and-policies/notices-on-twitter']")
+            );
+            if (!isTombstone) return;
+
+            Core.necromancer(cellInnerDiv);
         }
     }
 }

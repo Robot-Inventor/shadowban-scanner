@@ -1,5 +1,5 @@
+import { CellInnerDivProps, UserProps } from "../@types/core/reactProps/reactProps";
 import type { TweetParser } from "./parser/tweetParser";
-import { UserProps } from "../@types/core/reactProps/reactProps";
 
 interface ProfileAnalysisResult {
     user: {
@@ -78,6 +78,15 @@ class PropsAnalyzer {
                 searchability
             }
         };
+    }
+
+    public static analyzeTombstoneProps(props: CellInnerDivProps): string {
+        // eslint-disable-next-line no-underscore-dangle
+        const { key } = props.children._owner;
+        // Extract tweet ID from `conversationthread-${string}-tweet-${string}`
+        // eslint-disable-next-line prefer-destructuring
+        const tweetId = key.split("-")[3];
+        return tweetId;
     }
 }
 

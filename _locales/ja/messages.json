@@ -81,6 +81,9 @@
     "tweetTheResults": {
         "message": "結果をツイート"
     },
+    "viewTweet": {
+        "message": "ツイートを表示"
+    },
     "settingsWhereToDisplayCheckResults": {
         "message": "検証結果を表示する場所"
     },

@@ -81,6 +81,9 @@
     "tweetTheResults": {
         "message": "發推特結果"
     },
+    "viewTweet": {
+        "message": "查看推文"
+    },
     "settingsWhereToDisplayCheckResults": {
         "message": "顯示檢查結果的位置"
     },
