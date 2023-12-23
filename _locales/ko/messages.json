@@ -81,6 +81,9 @@
     "tweetTheResults": {
         "message": "결과 트윗하기"
     },
+    "viewTweet": {
+        "message": "트윗 보기"
+    },
     "settingsWhereToDisplayCheckResults": {
         "message": "검사 결과를 표시할 위치"
     },

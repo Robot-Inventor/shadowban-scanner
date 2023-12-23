@@ -1,5 +1,14 @@
 type ProfileInterstitialType = "" | "sensitive_media" | "fake_account" | "offensive_profile_content" | "timeout";
 
+/** @see {isCellInnerDivProps} ts-auto-guard:type-guard */
+interface CellInnerDivProps {
+    children: {
+        _owner: {
+            key: string;
+        };
+    };
+}
+
 interface UserProps {
     possibly_sensitive?: boolean | null;
     screen_name: string;

@@ -81,6 +81,9 @@
     "tweetTheResults": {
         "message": "Tweet the results"
     },
+    "viewTweet": {
+        "message": "View Tweet"
+    },
     "settingsWhereToDisplayCheckResults": {
         "message": "Where to display check results"
     },
