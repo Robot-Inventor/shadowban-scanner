@@ -129,7 +129,7 @@ class SbsMessageWrapper {
      */
     private async getTweetTextBox(): Promise<Element> {
         const textBoxMarker = await asyncQuerySelector(
-            "[data-viewportview='true'] [data-text='true'], textarea[data-testid='tweetTextarea_0']",
+            "[role='dialog'] [data-text='true'], textarea[data-testid='tweetTextarea_0']",
             document,
             this.ASYNC_QUERY_TIMEOUT_MS
         );
