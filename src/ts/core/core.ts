@@ -126,9 +126,9 @@ class Core {
             const isTombstone = Boolean(
                 cellInnerDiv.querySelector("a[href='https://help.twitter.com/rules-and-policies/notices-on-twitter']")
             );
-            if (!isTombstone) return;
-
-            Core.necromancer(cellInnerDiv);
+            if (isTombstone) {
+                Core.necromancer(cellInnerDiv);
+            }
         }
     }
 }
