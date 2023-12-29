@@ -34,10 +34,13 @@
 - 檢測因法律原因封鎖您帳戶的國家/地區
 - 偵測推文層級的敏感標籤
 - 偵測推文的年齡限制
+- 新增按鈕以顯示隱藏的推文
 
 ![帳戶層級Shadowban偵測的截圖](doc/image/screenshot2_zh_tw.png)
 
 ![推文層級Shadowban偵測的截圖](doc/image/screenshot1_zh_tw.png)
+
+![隱藏推文的螢幕截圖](doc/image/screenshot3_zh_tw.png)
 
 ## 精確性
 
