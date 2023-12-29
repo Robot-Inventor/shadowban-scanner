@@ -32,10 +32,13 @@ The settings cannot be changed in the user script version. If you need detailed 
 - Detects countries that block accounts for legal reasons
 - Detects sensitive flags per tweet
 - Detects age restrictions on tweets
+- Adds buttons to show hidden tweets
 
 ![Screenshot of per-account shadowban detection](doc/image/screenshot2_en.png)
 
 ![Screenshot of per-tweet shadowban detection](doc/image/screenshot1_en.png)
+
+![Screenshot of a hidden tweet](doc/image/screenshot3_en.png)
 
 ## Accuracy
 
