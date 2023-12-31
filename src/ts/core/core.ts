@@ -106,7 +106,7 @@ class Core {
      */
     // eslint-disable-next-line max-statements
     private timelineObserverCallback(): void {
-        const tweets = document.querySelectorAll<HTMLElement>(`[data-testid="tweet"]:not([${CHECKED_DATA_ATTRIBUTE}]`);
+        const tweets = document.querySelectorAll<HTMLElement>(`[data-testid="tweet"]:not([${CHECKED_DATA_ATTRIBUTE}])`);
         for (const tweet of tweets) {
             this.checkTweet(tweet);
         }
