@@ -128,15 +128,18 @@ class SbsMessageWrapper {
      * @returns text box of the tweet composer
      */
     private async getTweetTextBox(): Promise<Element> {
-        const textBoxMarker = await asyncQuerySelector(
-            "[role='dialog'] [data-text='true'], textarea[data-testid='tweetTextarea_0']",
-            document,
-            this.ASYNC_QUERY_TIMEOUT_MS
-        );
+        const isTweetDeck = location.hostname === "pro.twitter.com";
+        const selector = isTweetDeck
+            ? "[role='dialog'] [data-text='true'], [role='dialog'] textarea[data-testid='tweetTextarea_0']"
+            : "[role='dialog'] [data-text='true'], textarea[data-testid='tweetTextarea_0']";
+
+        const textBoxMarker = await asyncQuerySelector(selector, document, this.ASYNC_QUERY_TIMEOUT_MS);
         if (!textBoxMarker) throw new Error("Failed to get text box marker of tweet");
+
         const isTextArea = textBoxMarker.tagName === "TEXTAREA";
         const textBox = isTextArea ? textBoxMarker : textBoxMarker.parentElement;
         if (!textBox) throw new Error("Failed to get text box of tweet");
+
         return textBox;
     }
 
