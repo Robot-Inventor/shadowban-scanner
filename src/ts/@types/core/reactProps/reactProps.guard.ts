@@ -13,10 +13,11 @@ export function isCellInnerDivProps(obj: unknown): obj is CellInnerDivProps {
         (typedObj["children"] !== null &&
             typeof typedObj["children"] === "object" ||
             typeof typedObj["children"] === "function") &&
-        (typedObj["children"]["_owner"] !== null &&
-            typeof typedObj["children"]["_owner"] === "object" ||
-            typeof typedObj["children"]["_owner"] === "function") &&
-        typeof typedObj["children"]["_owner"]["key"] === "string"
+        (typeof typedObj["children"]["_owner"] === "undefined" ||
+            (typedObj["children"]["_owner"] !== null &&
+                typeof typedObj["children"]["_owner"] === "object" ||
+                typeof typedObj["children"]["_owner"] === "function") &&
+            typeof typedObj["children"]["_owner"]["key"] === "string")
     )
 }
 

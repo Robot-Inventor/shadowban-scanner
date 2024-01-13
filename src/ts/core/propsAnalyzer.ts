@@ -80,7 +80,10 @@ class PropsAnalyzer {
         };
     }
 
-    public static analyzeTombstoneProps(props: CellInnerDivProps): string {
+    public static analyzeTombstoneProps(props: CellInnerDivProps): string | undefined {
+        // eslint-disable-next-line no-underscore-dangle, no-undefined
+        if (!props.children._owner) return undefined;
+
         // eslint-disable-next-line no-underscore-dangle
         const { key } = props.children._owner;
         // Extract tweet ID from `conversationthread-${string}-tweet-${string}`
