@@ -83,10 +83,11 @@ class Core {
     }
 
     // eslint-disable-next-line max-statements
-    private static necromancer(tombstone: HTMLElement): void {
+    private necromancer(tombstone: HTMLElement): void {
         tombstone.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
 
         const tweetId = PropsAnalyzer.analyzeTombstoneProps(new TombstoneParser(tombstone).parse());
+        if (!tweetId) return;
         const tweetURL = `https://twitter.com/i/status/${tweetId}`;
         const link = document.createElement("a");
         link.href = tweetURL;
@@ -99,6 +100,7 @@ class Core {
 
         link.style.color = getComputedStyle(helpLink).color;
         helpLink.insertAdjacentElement("afterend", link);
+        this.onMessageCallback();
     }
 
     /**
@@ -127,7 +129,7 @@ class Core {
                 cellInnerDiv.querySelector("a[href='https://help.twitter.com/rules-and-policies/notices-on-twitter']")
             );
             if (isTombstone) {
-                Core.necromancer(cellInnerDiv);
+                this.necromancer(cellInnerDiv);
             }
         }
     }

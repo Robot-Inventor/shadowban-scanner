@@ -3,7 +3,7 @@ type ProfileInterstitialType = "" | "sensitive_media" | "fake_account" | "offens
 /** @see {isCellInnerDivProps} ts-auto-guard:type-guard */
 interface CellInnerDivProps {
     children: {
-        _owner: {
+        _owner?: {
             key: string;
         };
     };
