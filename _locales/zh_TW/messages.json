@@ -1,85 +1,85 @@
 {
     "manifest_description": {
-        "message": "這是一個用於檢測Twitter的Shadowban的擴充功能。"
+        "message": "這是一個用於檢查 Twitter/X 的 Shadowban 的擴充功能。"
     },
     "accountShadowbanned": {
-        "message": "這個使用者可能已經被進行了Shadowban，因此他的推文可能不會顯示在搜尋結果中。"
+        "message": "此使用者可能已被 Shadowban，因此他的推文可能不會顯示在搜尋結果中。"
     },
     "accountShadowbannedAndTweetFlaggedAsSensitive": {
-        "message": "這個使用者可能已經被進行了Shadowban，因此他的推文可能不會顯示在搜尋結果中。此外，該推文被標記為敏感內容。"
+        "message": "此使用者可能已被 Shadowban，因此他的推文可能不會顯示在搜尋結果中。此外，此推文已被標記為敏感內容。"
     },
     "accountAndTweetShadowbanned": {
-        "message": "這則推文有年齡限制，未滿18歲的使用者或未登入的使用者將無法閱讀。此外，它可能不會出現在搜尋結果中。"
+        "message": "此推文有年齡限制，未滿 18 歲或未登入的使用者將不會看到。此外，它可能不會出現在搜尋結果中。"
     },
     "accountIsBlockedInSomeCountries": {
-        "message": "此使用者在某些國家被封鎖。"
+        "message": "此使用者在某些國家/地區被封鎖。"
     },
     "tweetFlaggedAsSensitive": {
-        "message": "這則推文已被標註為敏感內容，根據閱讀者的設定，可能不會在搜尋結果中顯示。"
+        "message": "此推文已被標註為敏感內容，根據使用者的設定，它可能不會顯示在搜尋結果中。"
     },
     "thisUserIsNotShadowbanned": {
-        "message": "这个使用者没有被Shadowban。"
+        "message": "此使用者沒有被 Shadowban。"
     },
     "thisUserIsShadowbanned": {
-        "message": "這個使用者可能已經被進行了Shadowban，因此他的推文可能不會顯示在搜尋結果中。"
+        "message": "此使用者可能已被 Shadowban，因此他們發佈的推文可能不會顯示在搜尋結果中。"
     },
     "tweetShadowbanned": {
-        "message": "這則推文有年齡限制，未滿18歲的使用者或未登入的使用者將無法閱讀。此外，它可能不會出現在搜尋結果中。"
+        "message": "此推文有年齡限制，未滿 18 歲或未登入的使用者將不會看到。此外，它可能不會出現在搜尋結果中。"
     },
     "tweetNoProblem": {
-        "message": "這則推文並未發現任何問題。"
+        "message": "此推文沒有發現任何問題。"
     },
     "accountIsNotFlaggedAsSensitive": {
-        "message": "✅帳戶沒有敏感標誌。"
+        "message": "✅此使用者沒有標記為敏感內容。"
     },
     "accountIsShadowbannedOrFlaggedAsSensitive": {
-        "message": "🚫帳戶可能被設有shadowban，或有敏感標誌。"
+        "message": "🚫此使用者可能已被 Shadowban 或標記為敏感內容。"
     },
     "profileDoesNotContainSensitiveMedia": {
-        "message": "✅個人資料媒體未設定為敏感標記。"
+        "message": "✅此使用者的個人檔案媒體（頭像或標頭圖片）沒有標記為敏感內容。"
     },
     "profileContainsSensitiveMedia": {
-        "message": "🚫個人資料媒體已設定為敏感標記。"
+        "message": "🚫此使用者的個人檔案媒體（頭像或標頭圖片）已被標記為敏感內容。"
     },
     "accountIsNotWithheldInCountries": {
-        "message": "✅帳戶在任何國家都不會被封鎖（<a href=\"https://help.twitter.com/rules-and-policies/post-withheld-by-country\" target=\"_blank\">詳細</a>）。"
+        "message": "✅此使用者沒有被任何國家/地區封鎖（<a href=\"https://help.twitter.com/rules-and-policies/post-withheld-by-country\" target=\"_blank\">詳細說明</a>）。"
     },
     "accountIsWithheldInCountries": {
-        "message": "🚫帳戶在以下國家/地區會被封鎖（<a href=\"https://help.twitter.com/rules-and-policies/post-withheld-by-country\" target=\"_blank\">詳細</a>）：$1"
+        "message": "🚫此使用者被以下國家/地區封鎖（<a href=\"https://help.twitter.com/rules-and-policies/post-withheld-by-country\" target=\"_blank\">詳細說明</a>）：$1"
     },
     "tweetIsNotFlaggedAsSensitive": {
-        "message": "✅推文未添加敏感标志。"
+        "message": "✅此推文沒有標記為敏感內容。"
     },
     "tweetIsFlaggedAsSensitive": {
-        "message": "🚫推文已添加敏感标志。"
+        "message": "🚫此推文已被標記為敏感內容。"
     },
     "tweetIsNotAgeRestricted": {
-        "message": "✅這則推文無年齡限制。"
+        "message": "✅此推文沒有年齡限制。"
     },
     "tweetIsAgeRestricted": {
-        "message": "🚫這則推文有年齡限制。"
+        "message": "🚫此推文有年齡限制。"
     },
     "tweetIsSearchable": {
-        "message": "✅推文會顯示在搜索結果中。"
+        "message": "✅此推文會顯示在搜尋結果中。"
     },
     "tweetMayNotBeSearchable": {
-        "message": "⚠️根據使用者的設定，推文可能不會顯示在搜索結果中。"
+        "message": "⚠️根據使用者的設定，此推文可能不會顯示在搜尋結果中。"
     },
     "tweetIsNotSearchable": {
-        "message": "🚫有可能推文不會在搜索結果中顯示。"
+        "message": "🚫此推文可能不會顯示在搜尋結果中。"
     },
     "falsePositivesAndFalseNegativesOccur": {
-        "message": "Shadowban Scanner與其他相似的工具一樣，有可能產生偽陽性或偽陰性的情況。有關其運作方式的詳細信息，請參考<a href=\"https://github.com/Robot-Inventor/shadowban-scanner/blob/main/doc/en/about-shadowban.md\" target=\"blank\">這裡</a>。"
+        "message": "Shadowban Scanner 和其他功能類似的工具一樣，可能會產生誤判的情況。有關運作方式的詳細資訊，請參考<a href=\"https://github.com/Robot-Inventor/shadowban-scanner/blob/main/doc/en/about-shadowban.md\" target=\"blank\">這裡</a>。"
     },
     "translatedByAI": {
-        "message": "這段文字由AI翻譯自日語成繁體中文。如有任何不自然之處，請通知<a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>的DM或<a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub存儲庫</a>。",
+        "message": "",
         "description": "This field is used if the translation was done by AI. Otherwise, set this field to an empty string. Example sentence: \"Translated from Japanese to <language name> by AI. Please notify <a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>'s DM or <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub repository</a> if there are any unnatural points.\""
     },
     "showMore": {
         "message": "▶顯示更多"
     },
     "tweetTheResults": {
-        "message": "發推特結果"
+        "message": "分享結果"
     },
     "viewTweet": {
         "message": "查看推文"
@@ -88,73 +88,73 @@
         "message": "顯示檢查結果的位置"
     },
     "settingsShowMessagesInUnproblematicTweets": {
-        "message": "在非問題推文中顯示"
+        "message": "在沒有問題的推文中顯示"
     },
     "settingsShowMessagesInUnproblematicProfiles": {
-        "message": "在非問題簡介中顯示"
+        "message": "在沒有問題的使用者的個人資料中顯示"
     },
     "settingsEnableForOtherUsersTweets": {
-        "message": "在其他用戶的推文中顯示"
+        "message": "在其他使用者的推文中顯示"
     },
     "settingsEnableForOtherUsersProfiles": {
-        "message": "在其他使用者的簡介中顯示"
+        "message": "在其他使用者的個人資料中顯示"
     },
     "settingsOtherSettings": {
         "message": "其他設定"
     },
     "settingsAlwaysDetailedView": {
-        "message": "始終顯示詳細資訊"
+        "message": "永遠顯示詳細資訊"
     },
     "settingsShowNotesInMessages": {
         "message": "在訊息底部顯示註釋"
     },
     "settingsShowTweetButton": {
-        "message": "顯示按鈕以發推特結果"
+        "message": "顯示分享按鈕"
     },
     "settingsPleaseReload": {
-        "message": "若更改設定，請重新載入 Twitter"
+        "message": "如更改過設定，請重新載入 Twitter/X"
     },
     "settingsPrivacyPolicy": {
-        "message": "Privacy policy"
+        "message": "隱私政策"
     },
     "settingsPrivacyPolicyURL": {
         "message": "https://github.com/Robot-Inventor/shadowban-scanner/blob/main/README_zh_tw.md#privacy-policy"
     },
     "settingsOpenSourceLicenses": {
-        "message": "Open source licenses"
+        "message": "開放原始碼授權"
     },
     "privacyPolicyPageTitle": {
-        "message": "Privacy Policy - Shadowban Scanner"
+        "message": "隱私政策 - Shadowban Scanner"
     },
     "privacyPolicy": {
-        "message": "Privacy Policy"
+        "message": "隱私政策"
     },
     "privacyPolicyText": {
-        "message": "As a rule, this extension performs all processing on the user's computer. No data is transmitted to an external server. It also does not access Twitter's internal API by obtaining the user's credentials without permission, as is the case with some extensions. Web pages not bundled in this extension are subject to their own terms of use and privacy policies."
+        "message": "此擴充功能原則上會在使用者的電腦上處理所有資料，不會傳送到外部伺服器，而且此擴充功能不會在未經使用者許可的情況下使用登入認證存取 Twitter/X 的內部 API。對於此擴充功能沒有對應的網頁，將適用各自的使用條款和隱私政策。"
     },
     "initialSetup": {
         "message": "初始設定 - Shadowban Scanner"
     },
     "shadowbanScannerHasBeenInstalled": {
-        "message": "Shadowban Scanner已安裝"
+        "message": "已安裝 Shadowban Scanner"
     },
     "letsStartWithASimpleInitialSetup": {
-        "message": "簡單的初始設定開始吧"
+        "message": "先從簡單的初始設定開始吧"
     },
     "pleaseSelectOneOfThem": {
-        "message": "請選擇一個。設定可以後續更改。"
+        "message": "請選擇其中一個。這個設定之後可以再更改。"
     },
     "displayForAllTweetsAndAccounts": {
-        "message": "顯示所有推文和帳戶的掃描結果"
+        "message": "顯示所有推文和帳戶的檢查結果"
     },
     "displayOnlyForProblematicTweets": {
-        "message": "僅顯示問題推文和帳戶的掃描結果"
+        "message": "僅顯示問題推文和帳戶的檢查結果"
     },
     "displayOnlyInYourOwnTweets": {
-        "message": "僅顯示我自己的推文的掃描結果"
+        "message": "僅顯示我自己的推文的檢查結果"
     },
     "displayInAllUsersTweets": {
-        "message": "顯示所有用戶推文的掃描結果"
+        "message": "顯示所有使用者推文的檢查結果"
     },
     "back": {
         "message": "返回"
@@ -163,12 +163,12 @@
         "message": "下一步"
     },
     "initialSetupCompleted": {
-        "message": "初始設定完成！<br>是否要開啟使用說明？"
+        "message": "已完成初始設定！<br>是否要開啟使用說明？"
     },
     "open": {
         "message": "開啟"
     },
     "exitWithoutOpening": {
-        "message": "不開啟並結束"
+        "message": "不需要並關閉"
     }
 }
