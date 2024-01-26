@@ -3,10 +3,10 @@
         "message": "這是一個用於檢查 Twitter/X 的 Shadowban 的擴充功能。"
     },
     "accountShadowbanned": {
-        "message": "此使用者可能已被 Shadowban，因此他的推文可能不會顯示在搜尋結果中。"
+        "message": "此使用者可能已被 Shadowban，因此他們的推文可能不會顯示在搜尋結果中。"
     },
     "accountShadowbannedAndTweetFlaggedAsSensitive": {
-        "message": "此使用者可能已被 Shadowban，因此他的推文可能不會顯示在搜尋結果中。此外，此推文已被標記為敏感內容。"
+        "message": "此使用者可能已被 Shadowban，因此他們的推文可能不會顯示在搜尋結果中。此外，此推文已被標記為敏感內容。"
     },
     "accountAndTweetShadowbanned": {
         "message": "此推文有年齡限制，未滿 18 歲或未登入的使用者將不會看到。此外，它可能不會出現在搜尋結果中。"
@@ -145,10 +145,10 @@
         "message": "請選擇其中一個。這個設定之後可以再更改。"
     },
     "displayForAllTweetsAndAccounts": {
-        "message": "顯示所有推文和帳戶的檢查結果"
+        "message": "顯示所有推文和使用者的檢查結果"
     },
     "displayOnlyForProblematicTweets": {
-        "message": "僅顯示問題推文和帳戶的檢查結果"
+        "message": "僅顯示問題推文和使用者的檢查結果"
     },
     "displayOnlyInYourOwnTweets": {
         "message": "僅顯示我自己的推文的檢查結果"
