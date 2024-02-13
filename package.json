@@ -59,6 +59,6 @@
   "devDependencies": {
     "@types/addons-linter": "^6.16.0",
     "@types/webextension-polyfill": "^0.10.4",
-    "knip": "^4.0.0"
+    "knip": "^5.0.0"
   }
 }
