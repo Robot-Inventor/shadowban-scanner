@@ -111,9 +111,9 @@ class SbsMessageWrapper {
         const quoteButton = await asyncQuerySelector<HTMLElement>(
             [
                 // PC
-                "[data-testid='Dropdown'] [href='/compose/tweet']",
+                "[data-testid='Dropdown'] [href='/compose/post']",
                 // Mobile
-                "[data-testid='sheetDialog'] [href='/compose/tweet']"
+                "[data-testid='sheetDialog'] [href='/compose/post']"
             ].join(","),
             document,
             this.ASYNC_QUERY_TIMEOUT_MS
