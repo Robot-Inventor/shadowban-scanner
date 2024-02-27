@@ -36,7 +36,7 @@
             </div>
         `}};t.SbsMessage=l,l.styles=o.css`
         * {
-            font-family: inherit;
+            font-family: sans-serif;
         }
 
         a {

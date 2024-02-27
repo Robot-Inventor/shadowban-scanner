@@ -50,7 +50,7 @@ class SbsMessage extends LitElement {
      */
     public static styles = css`
         * {
-            font-family: inherit;
+            font-family: sans-serif;
         }
 
         a {
