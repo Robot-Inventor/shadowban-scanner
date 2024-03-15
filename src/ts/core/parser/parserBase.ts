@@ -16,6 +16,7 @@ class ParserBase {
 
     /**
      * Get the React props.
+     * @param element element to parse
      * @returns React props
      */
     protected getProps(element: Element = this.sourceElement): unknown {

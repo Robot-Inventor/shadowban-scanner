@@ -44,10 +44,6 @@ class SbsMessage extends LitElement {
     @property({ reflect: true, type: String })
     public textColor = "white";
 
-    /**
-     * This is a comment to disable Knip.
-     * @public
-     */
     public static styles = css`
         * {
             font-family: sans-serif;
