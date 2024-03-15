@@ -8,7 +8,7 @@ class SettingsItem extends LitElement {
     @query("md-checkbox")
     private checkbox!: MdCheckbox;
 
-    static styles = css`
+    public static styles = css`
         .settings-item {
             display: flex;
             flex-direction: row;

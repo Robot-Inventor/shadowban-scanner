@@ -9,7 +9,7 @@ class ParserBase {
      * Parse the React props.
      * @param element element to parse
      */
-    constructor(element: HTMLElement) {
+    public constructor(element: HTMLElement) {
         this.sourceElement = element;
         [this.reactPropsName] = Object.getOwnPropertyNames(element).filter((name) => name.startsWith("__reactProps$"));
     }

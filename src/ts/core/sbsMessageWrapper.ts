@@ -44,7 +44,7 @@ class SbsMessageWrapper {
     private readonly tweetText?: string;
 
     // eslint-disable-next-line max-statements
-    constructor(options: SbsMessageWrapperOptionsForTweets | SbsMessageWrapperOptionsForProfiles) {
+    public constructor(options: SbsMessageWrapperOptionsForTweets | SbsMessageWrapperOptionsForProfiles) {
         const sbsMessage = document.createElement("sbs-message");
 
         sbsMessage.textColor = SbsMessageWrapper.getTextColor();

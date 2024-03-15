@@ -25,7 +25,7 @@ class Core {
      * @param settings settings
      * @param onMessageCallback callback function called when the new message is inserted.
      */
-    constructor(settings: Settings, onMessageCallback: () => void) {
+    public constructor(settings: Settings, onMessageCallback: () => void) {
         this.settings = settings;
         this.onMessageCallback = onMessageCallback;
 
