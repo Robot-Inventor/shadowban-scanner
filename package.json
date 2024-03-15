@@ -59,6 +59,7 @@
   "devDependencies": {
     "@types/addons-linter": "^6.16.0",
     "@types/webextension-polyfill": "^0.10.4",
+    "eslint-plugin-jsdoc": "^48.2.1",
     "knip": "^5.0.0"
   }
 }

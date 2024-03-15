@@ -3,11 +3,13 @@
         "eslint:all",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:jsdoc/recommended-typescript-error",
         "prettier"
     ],
     "parser": "@typescript-eslint/parser",
     "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "jsdoc"
     ],
     "root": true,
     "parserOptions": {
