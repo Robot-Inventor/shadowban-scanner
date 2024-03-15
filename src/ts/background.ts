@@ -23,7 +23,6 @@ const onUpdated = (details: browser.Runtime.OnInstalledDetailsType, isJapanese: 
 /**
  * This function is called when the extension is installed.
  * This function opens the onboarding page.
- * @param isJapanese if the user's language is Japanese
  */
 const onInstalled = (): void => {
     const url = browser.runtime.getURL(ONBOARDING_PATH);

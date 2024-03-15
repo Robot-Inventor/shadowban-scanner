@@ -16,7 +16,7 @@ class TranslationKeyProvider {
 
     /**
      * Get the message summary from the tweet analysis result.
-     * @param status tweet analysis result
+     * @param analyzer tweet analysis result
      * @returns message summary
      */
     private static summarizeForTweet(analyzer: TweetAnalysisResult): TranslationKey {
@@ -61,6 +61,11 @@ class TranslationKeyProvider {
         return formattedText;
     }
 
+    /**
+     * Get the account details from the tweet analysis result.
+     * @param analyzer tweet analysis result
+     * @returns account details
+     */
     private static getAccountDetails(analyzer: TweetAnalysisResult): SbsMessageDetails {
         const accountStatus = analyzer.user.shadowbanned
             ? "accountIsShadowbannedOrFlaggedAsSensitive"
