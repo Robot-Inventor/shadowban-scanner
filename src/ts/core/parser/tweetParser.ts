@@ -16,7 +16,7 @@ class TweetParser extends ParserBase {
      * Parse the React props of the tweet.
      * @param tweet element of the tweet
      */
-    constructor(tweet: HTMLElement) {
+    public constructor(tweet: HTMLElement) {
         super(tweet);
 
         const menuBar = this.getMenuBar();

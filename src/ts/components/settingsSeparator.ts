@@ -3,7 +3,7 @@ import { customElement } from "lit/decorators.js";
 
 @customElement("settings-separator")
 class SettingsSeparator extends LitElement {
-    static styles = css`
+    public static styles = css`
         .settings-separator {
             --left-line-width: 0.75rem;
 

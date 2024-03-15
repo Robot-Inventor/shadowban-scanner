@@ -7,7 +7,7 @@ import { DEFAULT_SETTINGS } from "../common/defaultSettings";
  * Base class of the user script.
  */
 class UserScriptBase {
-    constructor(translationData: TranslationData) {
+    public constructor(translationData: TranslationData) {
         const translator = new Translator((key, substitutions) => {
             if (substitutions) {
                 const substitutionsArray = typeof substitutions === "string" ? [substitutions] : substitutions;

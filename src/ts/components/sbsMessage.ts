@@ -149,7 +149,7 @@ class SbsMessage extends LitElement {
         this.dispatchEvent(newEvent);
     }
 
-    override firstUpdated(_changedProperties: PropertyValues): void {
+    public override firstUpdated(_changedProperties: PropertyValues): void {
         if (this.onRenderedCallback) {
             this.onRenderedCallback();
         }

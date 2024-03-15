@@ -16,7 +16,7 @@ class Translator {
      * @param translationFunction translation function to use
      * @param twemojiEndpoint endpoint URL of Twemoji
      */
-    constructor(translationFunction: TranslationFunction, twemojiEndpoint: string) {
+    public constructor(translationFunction: TranslationFunction, twemojiEndpoint: string) {
         this.translationFunction = translationFunction;
         this.twemojiEndpoint = twemojiEndpoint;
     }
@@ -43,7 +43,7 @@ class Translator {
     /**
      * Run the translation process.
      */
-    translateElements(): void {
+    public translateElements(): void {
         const targetElements = [...document.querySelectorAll(`[${TRANSLATION_ATTRIBUTE}]`)];
 
         const shadowTargets = document.querySelectorAll<SbsMessage>(`sbs-message[${SHADOW_TRANSLATION_ATTRIBUTE}]`);
