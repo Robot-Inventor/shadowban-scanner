@@ -15,7 +15,7 @@ for (const userScript of userScripts) {
 class RunCommandsPlugin {
     generateTypeGuards(callback) {
         console.log("Generating type guards...");
-        exec("npx ts-auto-guard ./src/ts/@types/**/*.ts", (err, stdout, stderr) => {
+        exec("npx ts-auto-guard ./src/types/**/*.ts", (err, stdout, stderr) => {
             if (err) {
                 console.error(`Error: ${err}`);
             } else {
@@ -43,7 +43,7 @@ class RunCommandsPlugin {
         compiler.hooks.watchRun.tapAsync("RunCommandsPlugin", (params, callback) => {
             isWatchMode = true;
             if (!watcher) {
-                watcher = chokidar.watch("src/ts/@types/**/*.d.ts");
+                watcher = chokidar.watch("src/types/**/*.d.ts");
 
                 watcher.on("change", (path) => {
                     console.log(`Type definition file changed: ${path}`);
@@ -112,7 +112,7 @@ module.exports = {
         extensions: [".ts", ".js"]
     },
     watchOptions: {
-        ignored: /src\/ts\/@types\/.*(?<!\.d\.ts)$/,
+        ignored: /src\/ts\/types\/.*(?<!\.d\.ts)$/,
     },
     plugins: [
         new RunCommandsPlugin(),

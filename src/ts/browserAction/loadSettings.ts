@@ -2,7 +2,7 @@ import "../components/settingsItem";
 import "../components/settingsSeparator";
 import { DEFAULT_SETTINGS } from "../common/defaultSettings";
 import { SETTINGS_ITEMS } from "./settingsItems";
-import { Settings } from "../@types/common/settings";
+import { Settings } from "../../types/common/settings";
 // eslint-disable-next-line no-duplicate-imports
 import type { SettingsItem } from "../components/settingsItem";
 // eslint-disable-next-line no-duplicate-imports
@@ -10,7 +10,7 @@ import type { SettingsSeparator } from "../components/settingsSeparator";
 import { TRANSLATION_ATTRIBUTE } from "../common/constants";
 import { Translator } from "../common/translator";
 import browser from "webextension-polyfill";
-import { isSettings } from "../@types/common/settings.guard";
+import { isSettings } from "../../types/common/settings.guard";
 
 /**
  * Load settings from local storage.

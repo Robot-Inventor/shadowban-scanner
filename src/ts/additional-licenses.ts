@@ -1,4 +1,4 @@
-import { OSSLicenses } from "./@types/ossLicenses";
+import { OSSLicenses } from "../types/ossLicenses";
 
 const twemojiLicense: OSSLicenses[number] = {
     license: "CC-BY 4.0",

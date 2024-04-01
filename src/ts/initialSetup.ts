@@ -1,5 +1,5 @@
 import { INSTRUCTION_URL, TRANSLATION_ATTRIBUTE } from "./common/constants";
-import { Settings } from "./@types/common/settings";
+import { Settings } from "../types/common/settings";
 import { Translator } from "./common/translator";
 import browser from "webextension-polyfill";
 

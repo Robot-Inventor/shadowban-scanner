@@ -3,7 +3,7 @@ import { MessageDataGenerator } from "./messageDataGenerator";
 import { ProfileParser } from "./parser/profileParser";
 import { PropsAnalyzer } from "./propsAnalyzer";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
-import { Settings } from "../@types/common/settings";
+import { Settings } from "../../types/common/settings";
 import { TombstoneParser } from "./parser/tombstoneParser";
 import { TweetParser } from "./parser/tweetParser";
 import { asyncQuerySelector } from "async-query";

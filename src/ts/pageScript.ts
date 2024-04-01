@@ -1,6 +1,6 @@
 import { EVENT_GENERATOR_ID, EVENT_GENERATOR_SETTINGS_ATTRIBUTE } from "./common/constants";
 import { Core } from "./core/core";
-import { isSettings } from "./@types/common/settings.guard";
+import { isSettings } from "../types/common/settings.guard";
 
 const eventGenerator = document.getElementById(EVENT_GENERATOR_ID);
 if (!eventGenerator) throw new Error("Event generator not found");

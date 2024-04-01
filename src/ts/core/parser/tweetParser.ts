@@ -2,8 +2,8 @@ import {
     isFocalTweetOuterReactPropsData,
     isMenuBarReactPropsData,
     isTweetOuterReactPropsData
-} from "../../@types/core/reactProps/reactProps.guard";
-import { BasicTweetProps } from "../../@types/core/reactProps/reactProps";
+} from "../../../types/core/reactProps/reactProps.guard";
+import { BasicTweetProps } from "../../../types/core/reactProps/reactProps";
 import { ParserBase } from "./parserBase";
 
 /**

@@ -2,7 +2,7 @@ import "../components/sbsMessage";
 import { SHADOW_TRANSLATION_ATTRIBUTE } from "../common/constants";
 // eslint-disable-next-line no-duplicate-imports
 import type { SbsMessageDetails } from "../components/sbsMessage";
-import { TranslationKey } from "../@types/common/translator";
+import { TranslationKey } from "../../types/common/translator";
 import { asyncQuerySelector } from "async-query";
 
 interface SbsMessageWrapperOptionsForTweets {
