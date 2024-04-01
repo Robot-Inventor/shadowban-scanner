@@ -112,7 +112,7 @@ module.exports = {
         extensions: [".ts", ".js"]
     },
     watchOptions: {
-        ignored: /src\/ts\/types\/.*(?<!\.d\.ts)$/,
+        ignored: /src\/types\/.*(?<!\.d\.ts)$/,
     },
     plugins: [
         new RunCommandsPlugin(),
