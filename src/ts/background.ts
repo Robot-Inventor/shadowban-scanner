@@ -9,7 +9,6 @@ import browser from "webextension-polyfill";
  * @param details details of the update
  * @param isJapanese if the user's language is Japanese
  */
-// eslint-disable-next-line max-statements
 const onUpdated = (details: browser.Runtime.OnInstalledDetailsType, isJapanese: boolean): void => {
     // Temporary disable release note page
     return;
