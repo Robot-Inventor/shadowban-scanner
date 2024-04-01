@@ -1,7 +1,7 @@
 import { ProfileAnalysisResult, TweetAnalysisResult } from "./propsAnalyzer";
 import { SbsMessageWrapperOptionsForProfiles, SbsMessageWrapperOptionsForTweets } from "./sbsMessageWrapper";
 import { SbsMessageDetails } from "../components/sbsMessage";
-import type { TranslationKey } from "../@types/common/translator";
+import type { TranslationKey } from "../../types/common/translator";
 
 class TranslationKeyProvider {
     public static fromProfileAnalyzer(

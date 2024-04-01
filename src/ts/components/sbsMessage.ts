@@ -1,7 +1,7 @@
 import "@material/web/button/filled-button";
 import { LitElement, PropertyValues, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { TranslationKey } from "../@types/common/translator";
+import { TranslationKey } from "../../types/common/translator";
 import { classMap } from "lit/directives/class-map.js";
 
 type SbsMessageDetails = Array<

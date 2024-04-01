@@ -1,6 +1,6 @@
 import { ProfileAnalysisResult, TweetAnalysisResult } from "./propsAnalyzer";
 import { SbsMessageWrapperOptionsForProfiles, SbsMessageWrapperOptionsForTweets } from "./sbsMessageWrapper";
-import { Settings } from "../@types/common/settings";
+import { Settings } from "../../types/common/settings";
 import { ShareTextGenerator } from "./shareTextGenerator";
 import { TranslationKeyProvider } from "./translationKeyProvider";
 

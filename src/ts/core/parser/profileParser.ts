@@ -1,6 +1,6 @@
 import { ParserBase } from "./parserBase";
-import type { UserProps } from "../../@types/core/reactProps/reactProps";
-import { isProfileReactPropsData } from "../../@types/core/reactProps/reactProps.guard";
+import type { UserProps } from "../../../types/core/reactProps/reactProps";
+import { isProfileReactPropsData } from "../../../types/core/reactProps/reactProps.guard";
 
 /**
  * React props of the user profile.

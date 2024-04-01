@@ -1,6 +1,6 @@
-import { CellInnerDivProps } from "../../@types/core/reactProps/reactProps";
+import { CellInnerDivProps } from "../../../types/core/reactProps/reactProps";
 import { ParserBase } from "./parserBase";
-import { isCellInnerDivProps } from "../../@types/core/reactProps/reactProps.guard";
+import { isCellInnerDivProps } from "../../../types/core/reactProps/reactProps.guard";
 
 class TombstoneParser extends ParserBase {
     public parse(): CellInnerDivProps {

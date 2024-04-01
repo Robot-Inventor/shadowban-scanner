@@ -1,4 +1,4 @@
-import { CellInnerDivProps, UserProps } from "../@types/core/reactProps/reactProps";
+import { CellInnerDivProps, UserProps } from "../../types/core/reactProps/reactProps";
 import type { TweetParser } from "./parser/tweetParser";
 
 interface ProfileAnalysisResult {
