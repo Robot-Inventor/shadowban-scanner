@@ -154,7 +154,7 @@ const showCompletionMessage = (buttonsOuter: Element, translator: Translator): v
     translator.translateElements();
 };
 
-// eslint-disable-next-line max-statements, max-lines-per-function
+// eslint-disable-next-line max-statements
 const main = (): void => {
     const buttonsOuter = document.querySelector("#settings-buttons");
     if (!buttonsOuter) throw new Error("no #settings-buttons");
