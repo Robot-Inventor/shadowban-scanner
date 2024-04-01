@@ -19,6 +19,7 @@
         ],
         "sourceType": "module"
     },
+    "reportUnusedDisableDirectives": true,
     "rules": {
         "array-element-newline": [
             "error",
