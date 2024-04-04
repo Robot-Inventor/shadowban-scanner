@@ -13,7 +13,7 @@ class MessageDataGenerator {
 
         return {
             ...translations,
-            isAlert: analyzer.user.shadowbanned,
+            isAlert: analyzer.user.hasAnyProblem,
             onRenderedCallback,
             type: "profile"
         };
@@ -32,7 +32,7 @@ class MessageDataGenerator {
             ...translations,
             ...meta,
 
-            isAlert: analyzer.tweet.searchability !== "searchable",
+            isAlert: analyzer.tweet.hasAnyProblem,
             isExpanded: options.alwaysDetailedView,
             isNoteShown: options.showNotesInMessages,
             isTweetButtonShown: options.showTweetButton,

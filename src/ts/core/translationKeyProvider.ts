@@ -7,7 +7,14 @@ class TranslationKeyProvider {
     public static fromProfileAnalyzer(
         analyzer: ProfileAnalysisResult
     ): Pick<SbsMessageWrapperOptionsForProfiles, "summary"> {
-        const summary = analyzer.user.shadowbanned ? "thisUserIsShadowbanned" : "thisUserIsNotShadowbanned";
+        let summary: TranslationKey | null = null;
+        if (analyzer.user.shadowbanned) {
+            summary = "thisUserIsShadowbanned";
+        } else if (analyzer.user.withheldInCountries.length) {
+            summary = "accountIsBlockedInSomeCountries";
+        } else {
+            summary = "thisUserIsNotShadowbanned";
+        }
 
         return {
             summary

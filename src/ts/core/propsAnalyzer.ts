@@ -3,6 +3,7 @@ import type { TweetParser } from "./parser/tweetParser";
 
 interface ProfileAnalysisResult {
     user: {
+        hasAnyProblem: boolean;
         sensitiveMediaInProfile: boolean;
         shadowbanned: boolean;
         withheldInCountries: string[];
@@ -12,6 +13,7 @@ interface ProfileAnalysisResult {
 interface TweetAnalysisResult extends ProfileAnalysisResult {
     tweet: {
         ageRestriction: boolean;
+        hasAnyProblem: boolean;
         possiblySensitive: boolean;
         searchability: "searchable" | "unsearchable" | "possiblyUnsearchable";
     };
@@ -36,6 +38,8 @@ class PropsAnalyzer {
 
         return {
             user: {
+                // eslint-disable-next-line no-magic-numbers
+                hasAnyProblem: shadowbanned || withheldInCountries.length > 0,
                 sensitiveMediaInProfile,
                 shadowbanned,
                 withheldInCountries
@@ -74,6 +78,7 @@ class PropsAnalyzer {
 
             tweet: {
                 ageRestriction,
+                hasAnyProblem: searchability !== "searchable" || userAnalysisResult.user.hasAnyProblem,
                 possiblySensitive,
                 searchability
             }
