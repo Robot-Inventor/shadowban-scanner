@@ -13,7 +13,8 @@ class MessageDataGenerator {
 
         return {
             ...translations,
-            isAlert: analyzer.user.shadowbanned,
+            // eslint-disable-next-line no-magic-numbers
+            isAlert: analyzer.user.shadowbanned || analyzer.user.withheldInCountries.length > 0,
             onRenderedCallback,
             type: "profile"
         };
