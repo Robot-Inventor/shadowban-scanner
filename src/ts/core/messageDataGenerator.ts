@@ -13,7 +13,6 @@ class MessageDataGenerator {
 
         return {
             ...translations,
-            // eslint-disable-next-line no-magic-numbers
             isAlert: analyzer.user.hasAnyProblem,
             onRenderedCallback,
             type: "profile"
@@ -33,7 +32,6 @@ class MessageDataGenerator {
             ...translations,
             ...meta,
 
-            // eslint-disable-next-line no-magic-numbers
             isAlert: analyzer.tweet.hasAnyProblem,
             isExpanded: options.alwaysDetailedView,
             isNoteShown: options.showNotesInMessages,

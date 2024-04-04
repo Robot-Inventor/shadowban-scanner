@@ -78,7 +78,6 @@ class PropsAnalyzer {
 
             tweet: {
                 ageRestriction,
-                // eslint-disable-next-line no-magic-numbers
                 hasAnyProblem: searchability !== "searchable" || userAnalysisResult.user.hasAnyProblem,
                 possiblySensitive,
                 searchability
