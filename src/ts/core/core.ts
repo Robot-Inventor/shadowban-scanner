@@ -48,7 +48,7 @@ class Core {
         if (isCurrentUsersProfile && !this.settings.enableForOtherUsersProfiles) return;
 
         const profileAnalyzer = PropsAnalyzer.analyzeProfileProps(new ProfileParser(userName).parse());
-        if (!profileAnalyzer.user.shadowbanned && !this.settings.showMessagesInUnproblematicProfiles) return;
+        if (!(profileAnalyzer.user.hasAnyProblem || this.settings.showMessagesInUnproblematicProfiles)) return;
 
         const messageData = MessageDataGenerator.generateForProfile(profileAnalyzer, this.onMessageCallback);
         const sbsMessageWrapper = new SbsMessageWrapper(messageData);
@@ -68,7 +68,9 @@ class Core {
         const analyzer = PropsAnalyzer.analyzeTweetProps(new TweetParser(tweet));
 
         if (!analyzer.meta.isTweetByCurrentUser && !this.settings.enableForOtherUsersTweets) return;
-        if (analyzer.tweet.searchability === "searchable" && !this.settings.showMessagesInUnproblematicTweets) return;
+        if (!(analyzer.tweet.hasAnyProblem || this.settings.showMessagesInUnproblematicTweets)) {
+            return;
+        }
 
         const messageData = MessageDataGenerator.generateForTweet(analyzer, this.onMessageCallback, this.settings);
         const sbsMessageWrapper = new SbsMessageWrapper(messageData);
