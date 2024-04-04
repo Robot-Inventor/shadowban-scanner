@@ -33,7 +33,8 @@ class MessageDataGenerator {
             ...translations,
             ...meta,
 
-            isAlert: analyzer.tweet.searchability !== "searchable",
+            // eslint-disable-next-line no-magic-numbers
+            isAlert: analyzer.tweet.searchability !== "searchable" || analyzer.user.withheldInCountries.length > 0,
             isExpanded: options.alwaysDetailedView,
             isNoteShown: options.showNotesInMessages,
             isTweetButtonShown: options.showTweetButton,
