@@ -7,7 +7,6 @@ import { Settings } from "../../types/common/settings";
 import { Timeline } from "twi-ext";
 import { TombstoneParser } from "./parser/tombstoneParser";
 import { TweetParser } from "./parser/tweetParser";
-import { asyncQuerySelector } from "async-query";
 
 /**
  * Core of the extension.
@@ -29,17 +28,6 @@ class Core {
     public constructor(settings: Settings, onMessageCallback: () => void) {
         this.settings = settings;
         this.onMessageCallback = onMessageCallback;
-
-        const timelineObserver = new MutationObserver(() => {
-            this.timelineObserverCallback();
-        });
-
-        // eslint-disable-next-line no-magic-numbers
-        void asyncQuerySelector("main", document, 10000).then((main) => {
-            if (!main) throw new Error("Failed to get main element");
-
-            timelineObserver.observe(main, this.OBSERVER_OPTIONS);
-        });
 
         const timeline = new Timeline();
         timeline.onNewTweet((tweet) => {
