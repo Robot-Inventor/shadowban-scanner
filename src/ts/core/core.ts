@@ -4,6 +4,7 @@ import { ProfileParser } from "./parser/profileParser";
 import { PropsAnalyzer } from "./propsAnalyzer";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../../types/common/settings";
+import { Timeline } from "twi-ext";
 import { TombstoneParser } from "./parser/tombstoneParser";
 import { TweetParser } from "./parser/tweetParser";
 import { asyncQuerySelector } from "async-query";
@@ -39,6 +40,12 @@ class Core {
 
             timelineObserver.observe(main, this.OBSERVER_OPTIONS);
         });
+
+        const timeline = new Timeline();
+        timeline.onNewTweet((tweet) => {
+            this.checkTweet(tweet);
+            this.timelineObserverCallback();
+        });
     }
 
     private checkProfile(userName: HTMLElement): void {
@@ -61,10 +68,7 @@ class Core {
         sbsMessageWrapper.insertAdjacentElement(bioOrUserName, "afterend");
     }
 
-    // eslint-disable-next-line max-statements
     private checkTweet(tweet: HTMLElement): void {
-        tweet.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
-
         const analyzer = PropsAnalyzer.analyzeTweetProps(new TweetParser(tweet));
 
         if (!analyzer.meta.isTweetByCurrentUser && !this.settings.enableForOtherUsersTweets) return;
@@ -106,13 +110,7 @@ class Core {
     /**
      * Callback function of the timeline observer.
      */
-    // eslint-disable-next-line max-statements
     private timelineObserverCallback(): void {
-        const tweets = document.querySelectorAll<HTMLElement>(`[data-testid="tweet"]:not([${CHECKED_DATA_ATTRIBUTE}])`);
-        for (const tweet of tweets) {
-            this.checkTweet(tweet);
-        }
-
         const userName = document.querySelector<HTMLElement>(
             `:not([data-testid="tweet"]) [data-testid="UserName"]:not([${CHECKED_DATA_ATTRIBUTE}])`
         );
