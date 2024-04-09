@@ -10,7 +10,8 @@
         "ts-auto-guard",
         "addons-linter",
         "@types/addons-linter",
-        "colors"
+        "colors",
+        "@pnpm/logger"
     ],
     "ignore": [
         "script/addonsLinter.ts",
