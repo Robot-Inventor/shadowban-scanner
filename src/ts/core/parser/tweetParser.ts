@@ -5,6 +5,7 @@ import {
 } from "../../../types/core/reactProps/reactProps.guard";
 import { BasicTweetProps } from "../../../types/core/reactProps/reactProps";
 import { ParserBase } from "./parserBase";
+import type { Tweet } from "twi-ext";
 
 /**
  * React props of the tweet.
@@ -16,14 +17,9 @@ class TweetParser extends ParserBase {
      * Parse the React props of the tweet.
      * @param tweet element of the tweet
      */
-    public constructor(tweet: HTMLElement) {
-        super(tweet);
-
-        const menuBar = this.getMenuBar();
-        const menuBarProps = this.getProps(menuBar);
-        if (!isMenuBarReactPropsData(menuBarProps)) throw new Error("Type of basicTweetProps is invalid.");
-
-        this.basicTweetProps = menuBarProps.children[1].props.retweetWithCommentLink.state.quotedStatus;
+    public constructor(tweet: Tweet) {
+        super(tweet.element);
+        this.basicTweetProps = tweet.props;
     }
 
     /**

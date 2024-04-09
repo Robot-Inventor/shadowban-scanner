@@ -5,6 +5,7 @@ import { PropsAnalyzer } from "./propsAnalyzer";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../../types/common/settings";
 import { Timeline } from "twi-ext";
+import type { Tweet } from "twi-ext";
 import { TombstoneParser } from "./parser/tombstoneParser";
 import { TweetParser } from "./parser/tweetParser";
 
@@ -56,7 +57,7 @@ class Core {
         sbsMessageWrapper.insertAdjacentElement(bioOrUserName, "afterend");
     }
 
-    private checkTweet(tweet: HTMLElement): void {
+    private checkTweet(tweet: Tweet): void {
         const analyzer = PropsAnalyzer.analyzeTweetProps(new TweetParser(tweet));
 
         if (!analyzer.meta.isTweetByCurrentUser && !this.settings.enableForOtherUsersTweets) return;
@@ -65,7 +66,7 @@ class Core {
         const messageData = MessageDataGenerator.generateForTweet(analyzer, this.onMessageCallback, this.settings);
         const sbsMessageWrapper = new SbsMessageWrapper(messageData);
 
-        const analyticsButton = tweet.querySelector("[data-testid='analyticsButton']");
+        const analyticsButton = tweet.element.querySelector("[data-testid='analyticsButton']");
         if (analyticsButton) {
             sbsMessageWrapper.insertAdjacentElement(analyticsButton.parentElement as Element, "beforebegin");
             return;
