@@ -54,6 +54,7 @@ class TweetParser extends ParserBase {
     public get isTweetByCurrentUser(): boolean {
         const tweetAuthorScreenName = this.basicTweetProps.user.screen_name;
         const tweetReactProps = this.getProps();
+        // eslint-disable-next-line no-useless-assignment
         let currentUserScreenName = "";
 
         if (isTweetOuterReactPropsData(tweetReactProps)) {
