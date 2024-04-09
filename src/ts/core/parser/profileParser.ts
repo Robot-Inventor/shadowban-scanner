@@ -1,5 +1,5 @@
 import { ParserBase } from "./parserBase";
-import type { UserProps } from "../../../types/core/reactProps/reactProps";
+import type { UserProps } from "twi-ext";
 import { isProfileReactPropsData } from "../../../types/core/reactProps/reactProps.guard";
 
 /**

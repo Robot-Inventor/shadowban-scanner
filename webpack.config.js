@@ -43,7 +43,7 @@ class RunCommandsPlugin {
         compiler.hooks.watchRun.tapAsync("RunCommandsPlugin", (params, callback) => {
             isWatchMode = true;
             if (!watcher) {
-                watcher = chokidar.watch("src/types/**/*.d.ts");
+                watcher = chokidar.watch("src/types/**/*.ts");
 
                 watcher.on("change", (path) => {
                     console.log(`Type definition file changed: ${path}`);
@@ -112,7 +112,7 @@ module.exports = {
         extensions: [".ts", ".js"]
     },
     watchOptions: {
-        ignored: /src\/types\/.*(?<!\.d\.ts)$/,
+        ignored: "src/types/**/*.guard.ts",
     },
     plugins: [
         new RunCommandsPlugin(),
