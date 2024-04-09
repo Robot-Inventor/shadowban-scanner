@@ -1,11 +1,9 @@
+import type { BasicTweetProps, Tweet } from "twi-ext";
 import {
     isFocalTweetOuterReactPropsData,
-    isMenuBarReactPropsData,
     isTweetOuterReactPropsData
 } from "../../../types/core/reactProps/reactProps.guard";
-import { BasicTweetProps } from "../../../types/core/reactProps/reactProps";
 import { ParserBase } from "./parserBase";
-import type { Tweet } from "twi-ext";
 
 /**
  * React props of the tweet.

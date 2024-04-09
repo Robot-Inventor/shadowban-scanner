@@ -1,11 +1,10 @@
 import { CHECKED_DATA_ATTRIBUTE, TRANSLATION_ATTRIBUTE } from "../common/constants";
+import { Timeline, Tweet } from "twi-ext";
 import { MessageDataGenerator } from "./messageDataGenerator";
 import { ProfileParser } from "./parser/profileParser";
 import { PropsAnalyzer } from "./propsAnalyzer";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../../types/common/settings";
-import { Timeline } from "twi-ext";
-import type { Tweet } from "twi-ext";
 import { TombstoneParser } from "./parser/tombstoneParser";
 import { TweetParser } from "./parser/tweetParser";
 
