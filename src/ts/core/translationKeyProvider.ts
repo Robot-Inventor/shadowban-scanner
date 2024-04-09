@@ -7,6 +7,7 @@ class TranslationKeyProvider {
     public static fromProfileAnalyzer(
         analyzer: ProfileAnalysisResult
     ): Pick<SbsMessageWrapperOptionsForProfiles, "summary"> {
+        // eslint-disable-next-line no-useless-assignment
         let summary: TranslationKey | null = null;
         if (analyzer.user.shadowbanned) {
             summary = "thisUserIsShadowbanned";
