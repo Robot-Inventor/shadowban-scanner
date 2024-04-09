@@ -1,9 +1,9 @@
-import eslint from "@eslint/js";
-import tseslint from 'typescript-eslint';
-import jsdoc from "eslint-plugin-jsdoc";
-import eslintConfigPrettier from "eslint-config-prettier";
+const eslint = require("@eslint/js");
+const tseslint = require('typescript-eslint');
+const jsdoc = require("eslint-plugin-jsdoc");
+const eslintConfigPrettier = require("eslint-config-prettier");
 
-export default tseslint.config(
+module.exports = tseslint.config(
     eslint.configs.all,
     jsdoc.configs["flat/recommended-typescript-error"],
     eslintConfigPrettier,
@@ -12,7 +12,7 @@ export default tseslint.config(
         languageOptions: {
             parserOptions: {
                 project: true,
-                tsconfigRootDir: import.meta.dirname,
+                tsconfigRootDir: __dirname,
             },
         },
         plugins: {
