@@ -12,11 +12,6 @@ import { TweetParser } from "./parser/tweetParser";
  * Core of the extension.
  */
 class Core {
-    private readonly OBSERVER_OPTIONS = {
-        childList: true,
-        subtree: true
-    } as const;
-
     private readonly settings: Settings;
     private readonly onMessageCallback: () => void;
 
@@ -62,16 +57,20 @@ class Core {
         if (!analyzer.meta.isTweetByCurrentUser && !this.settings.enableForOtherUsersTweets) return;
         if (!(analyzer.tweet.hasAnyProblem || this.settings.showMessagesInUnproblematicTweets)) return;
 
-        const messageData = MessageDataGenerator.generateForTweet(analyzer, this.onMessageCallback, this.settings);
+        const messageData = MessageDataGenerator.generateForTweet(
+            tweet,
+            analyzer,
+            this.onMessageCallback,
+            this.settings
+        );
         const sbsMessageWrapper = new SbsMessageWrapper(messageData);
 
-        const analyticsButton = tweet.element.querySelector("[data-testid='analyticsButton']");
-        if (analyticsButton) {
-            sbsMessageWrapper.insertAdjacentElement(analyticsButton.parentElement as Element, "beforebegin");
-            return;
-        }
+        const landmarkElement =
+            tweet.element.querySelector<HTMLElement>("[data-testid='analyticsButton']") ||
+            tweet.element.querySelector<HTMLElement>("div[role='group'][id]");
 
-        sbsMessageWrapper.insertAdjacentElement(analyzer.meta.menuBar, "beforebegin");
+        if (!landmarkElement) throw new Error("Failed to get landmark element of tweet");
+        sbsMessageWrapper.insertAdjacentElement(landmarkElement, "beforebegin");
     }
 
     // eslint-disable-next-line max-statements

@@ -3,6 +3,7 @@ import { SbsMessageWrapperOptionsForProfiles, SbsMessageWrapperOptionsForTweets 
 import { Settings } from "../../types/common/settings";
 import { ShareTextGenerator } from "./shareTextGenerator";
 import { TranslationKeyProvider } from "./translationKeyProvider";
+import type { Tweet } from "twi-ext";
 
 class MessageDataGenerator {
     public static generateForProfile(
@@ -19,7 +20,9 @@ class MessageDataGenerator {
         };
     }
 
+    // eslint-disable-next-line max-params
     public static generateForTweet(
+        tweet: Tweet,
         analyzer: TweetAnalysisResult,
         onRenderedCallback: () => void,
         options: Settings
@@ -39,8 +42,7 @@ class MessageDataGenerator {
 
             notes: ["falsePositivesAndFalseNegativesOccur", "translatedByAI"],
             onRenderedCallback,
-            sourceTweet: meta.sourceTweet,
-            sourceTweetPermalink: meta.sourceTweetPermalink,
+            tweet,
             tweetText,
 
             type: "tweet"

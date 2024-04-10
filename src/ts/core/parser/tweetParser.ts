@@ -21,17 +21,6 @@ class TweetParser extends ParserBase {
     }
 
     /**
-     * Get the menu bar of the tweet.
-     * @returns menu bar of the tweet
-     */
-    public getMenuBar(): HTMLElement {
-        const menuBar = this.sourceElement.querySelector<HTMLElement>("div[role='group'][id]");
-        if (!menuBar) throw new Error("Failed to get menu bar of tweet");
-
-        return menuBar;
-    }
-
-    /**
      * Get the React props of the tweet.
      * @returns React props of the tweet
      */

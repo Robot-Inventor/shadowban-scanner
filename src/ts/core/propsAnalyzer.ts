@@ -20,11 +20,8 @@ interface TweetAnalysisResult extends ProfileAnalysisResult {
     };
 
     meta: {
-        sourceTweetPermalink: string;
         isFocal: boolean;
         isTweetByCurrentUser: boolean;
-        sourceTweet: HTMLElement;
-        menuBar: HTMLElement;
     };
 }
 
@@ -71,10 +68,7 @@ class PropsAnalyzer {
 
             meta: {
                 isFocal: parser.isFocal,
-                isTweetByCurrentUser: parser.isTweetByCurrentUser,
-                menuBar: parser.getMenuBar(),
-                sourceTweet: parser.sourceElement,
-                sourceTweetPermalink: props.permalink
+                isTweetByCurrentUser: parser.isTweetByCurrentUser
             },
 
             tweet: {
