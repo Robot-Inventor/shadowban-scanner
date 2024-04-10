@@ -17,6 +17,6 @@
         "script/addonsLinter.ts",
         "script/updatePrivacyPolicy.ts",
         "script/addUserScriptsComment.ts",
-        "script/changeManifestVersion.ts"
+        "script/copyManifest.ts"
     ]
 }

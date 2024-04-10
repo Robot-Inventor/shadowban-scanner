@@ -28,7 +28,7 @@ class RunCommandsPlugin {
     }
 
     updateManifest() {
-        exec("npx ts-node ./script/changeManifestVersion.ts", (err, stdout, stderr) => {
+        exec("npx ts-node ./script/copyManifest.ts", (err, stdout, stderr) => {
             if (err) {
                 console.error(`Error: ${err}`);
             } else {
