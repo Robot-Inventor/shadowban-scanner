@@ -1,3 +1,9 @@
+// If the user came from a different website or directly accessed, and their browser language is not Japanese,
+// redirect them to the English version.
+if ((!document.referrer || new URL(document.referrer).hostname !== location.hostname) && !navigator.language.toLowerCase().startsWith("ja")) {
+    location.href = "/en/";
+}
+
 const buttons = document.querySelectorAll("button.download_button");
 
 buttons.forEach((button) => {
