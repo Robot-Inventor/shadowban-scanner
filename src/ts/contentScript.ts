@@ -9,7 +9,7 @@ const main = async (): Promise<void> => {
 
     const translator = new Translator(
         (key, substitutions) => browser.i18n.getMessage(key, substitutions),
-        browser.runtime.getURL("dist/image/")
+        browser.runtime.getURL("image/")
     );
 
     const eventGenerator = document.createElement("div");
@@ -22,7 +22,7 @@ const main = async (): Promise<void> => {
     document.body.appendChild(eventGenerator);
 
     const pageScript = document.createElement("script");
-    pageScript.src = browser.runtime.getURL("dist/js/pageScript.js");
+    pageScript.src = browser.runtime.getURL("js/pageScript.js");
     document.body.appendChild(pageScript);
 };
 

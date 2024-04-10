@@ -10,7 +10,7 @@ const files = glob.sync("./README*.md");
 for (const file of files) {
     const readmeText = fs.readFileSync(file, "utf8");
     const languageCode = file.replace(/README_?/, "").replace(".md", "") || "en";
-    const messagePath = `./_locales/${languageCode.replace(/(_\w+)/, (match) => match.toUpperCase())}/messages.json`;
+    const messagePath = `./src/_locales/${languageCode.replace(/(_\w+)/, (match) => match.toUpperCase())}/messages.json`;
     const privacyPolicyText = JSON.parse(fs.readFileSync(messagePath, "utf8")).privacyPolicyText.message;
 
     const newPrivacyPolicySection = `

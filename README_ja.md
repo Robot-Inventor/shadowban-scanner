@@ -54,7 +54,7 @@ Twitterのシャドウバンを検出する拡張機能です。
 ## プライバシーポリシー
 
 <!-- PRIVACY_POLICY_TEXT_START -->
-<!-- THIS SECTION IS GENERATED FROM ./_locales/ja/messages.json. DO NOT EDIT MANUALLY -->
+<!-- THIS SECTION IS GENERATED FROM ./src/_locales/ja/messages.json. DO NOT EDIT MANUALLY -->
 
 この拡張機能は、原則としてすべての処理をユーザーのコンピューター上で実行します。データが外部のサーバーに送信されることはありません。また、一部の拡張機能でみられるような、ユーザーの認証情報を無断で取得してTwitterの内部APIにアクセスする処理もありません。この拡張機能に同梱されていないWebページには、それぞれの利用規約やプライバシーポリシーが適用されます。
 
@@ -73,14 +73,6 @@ Twitterのシャドウバンを検出する拡張機能です。
 新しい言語を追加するには[翻訳ガイド（英語）](doc/localization.md)を参照してください。
 
 ## 開発
-
-### Manifest
-
-Manifestファイルを生成するか、バージョンを変更する場合は次のコマンドを実行してください。``<manifestVersion>``には2または3を指定できます。また、Manifestファイル内の``version``フィールドは、``package.json``の``version``フィールドの値を使用します。
-
-```console
-npm run switchManifest <manifestVersion>
-```
 
 ### ビルド
 

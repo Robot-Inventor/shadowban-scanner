@@ -54,7 +54,7 @@
 ## Privacy Policy
 
 <!-- PRIVACY_POLICY_TEXT_START -->
-<!-- THIS SECTION IS GENERATED FROM ./_locales/zh_TW/messages.json. DO NOT EDIT MANUALLY -->
+<!-- THIS SECTION IS GENERATED FROM ./src/_locales/zh_TW/messages.json. DO NOT EDIT MANUALLY -->
 
 此擴充功能原則上會在使用者的電腦上處理所有資料，不會傳送到外部伺服器，而且此擴充功能不會在未經使用者許可的情況下使用登入認證存取 Twitter/X 的內部 API。對於此擴充功能沒有對應的網頁，將適用各自的使用條款和隱私政策。
 
@@ -73,14 +73,6 @@ However, the badge images of each extension store are not subject to the MIT lic
 To add a new language, see the [Localization Guide (English)](doc/localization.md).
 
 ## Development
-
-### Manifest
-
-To generate a Manifest file or change the version, run the following command. ``<manifestVersion>`` can be 2 or 3. Also, the ``version`` field in the Manifest file will be the value of the ``version`` field in ``package.json``.
-
-```console
-npm run switchManifest <manifestVersion>
-```
 
 ### Build
 

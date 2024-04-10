@@ -11,8 +11,7 @@
     "build": "npx webpack",
     "watch": "npx webpack --watch",
     "package": "ts-node ./script/package.ts",
-    "version": "npm run package && git add .",
-    "switchManifest": "ts-node ./script/changeManifestVersion.ts"
+    "version": "npm run package && git add ."
   },
   "repository": {
     "type": "git",

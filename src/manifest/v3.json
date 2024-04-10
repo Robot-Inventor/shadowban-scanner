@@ -5,9 +5,9 @@
     "version": "1.0.0",
     "description": "__MSG_manifest_description__",
     "icons": {
-        "16": "dist/image/icon16.png",
-        "48": "dist/image/icon48.png",
-        "128": "dist/image/icon128.png"
+        "16": "image/icon16.png",
+        "48": "image/icon48.png",
+        "128": "image/icon128.png"
     },
     "host_permissions": [
         "https://*.twitter.com/*",
@@ -23,21 +23,21 @@
                 "https://*.x.com/*"
             ],
             "js": [
-                "dist/js/contentScript.js"
+                "js/contentScript.js"
             ],
             "css": [
-                "dist/css/style.css"
+                "css/style.css"
             ]
         }
     ],
     "background": {
-        "service_worker": "dist/js/background.js"
+        "service_worker": "js/background.js"
     },
     "web_accessible_resources": [
         {
             "resources": [
-                "dist/js/pageScript.js",
-                "dist/image/*"
+                "js/pageScript.js",
+                "image/*"
             ],
             "matches": [
                 "https://*.twitter.com/*",
@@ -48,11 +48,11 @@
     "default_locale": "en",
     "action": {
         "default_icon": {
-            "16": "dist/image/icon16.png",
-            "48": "dist/image/icon48.png",
-            "128": "dist/image/icon128.png"
+            "16": "image/icon16.png",
+            "48": "image/icon48.png",
+            "128": "image/icon128.png"
         },
-        "default_popup": "dist/html/browserAction.html",
+        "default_popup": "html/browserAction.html",
         "default_title": "Shadowban Scanner"
     },
     "browser_specific_settings": {
