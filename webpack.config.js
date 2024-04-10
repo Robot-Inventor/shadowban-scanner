@@ -28,7 +28,7 @@ class RunCommandsPlugin {
     }
 
     updateManifest() {
-        exec("npx ts-node ./script/changeManifestVersion.ts", (err, stdout, stderr) => {
+        exec("npx ts-node ./script/copyManifest.ts", (err, stdout, stderr) => {
             if (err) {
                 console.error(`Error: ${err}`);
             } else {
@@ -53,7 +53,15 @@ class RunCommandsPlugin {
 
         compiler.hooks.watchRun.tapAsync("RunCommandsPlugin", (params, callback) => {
             isWatchMode = true;
-            if (!typeWatcher || !manifestWatcher) {
+            if (!manifestWatcher || !typeWatcher) {
+                manifestWatcher = chokidar.watch("src/manifest/**/*.json");
+                manifestWatcher.on("change", (path) => {
+                    console.log(`Manifest file changed: ${path}`);
+                    this.updateManifest();
+                });
+
+                this.updateManifest();
+
                 typeWatcher = chokidar.watch("src/types/**/*.d.ts");
 
                 typeWatcher.on("change", (path) => {
@@ -62,14 +70,6 @@ class RunCommandsPlugin {
                 });
 
                 this.generateTypeGuards(callback);
-
-                manifestWatcher = chokidar.watch("src/manifest/**/*.json");
-                manifestWatcher.on("change", (path) => {
-                    console.log(`Manifest file changed: ${path}`);
-                    this.updateManifest();
-                });
-
-                this.updateManifest();
             } else {
                 callback();
             }
