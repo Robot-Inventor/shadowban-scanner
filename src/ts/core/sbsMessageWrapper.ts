@@ -33,9 +33,6 @@ interface SbsMessageWrapperOptionsForProfiles {
 }
 
 class SbsMessageWrapper {
-    // eslint-disable-next-line no-magic-numbers
-    private readonly ASYNC_QUERY_TIMEOUT_MS = 750;
-
     private readonly sbsMessage: HTMLElement;
     private readonly tweet: Tweet | null = null;
     private readonly tweetText?: string;
@@ -91,7 +88,7 @@ class SbsMessageWrapper {
             throw new Error("Tweet button clicked without source tweet");
         }
 
-        void this.tweet.quoteTweet(this.tweetText, this.ASYNC_QUERY_TIMEOUT_MS);
+        void this.tweet.quoteTweet(this.tweetText);
     }
 
     public insertAdjacentElement(target: Element, position: InsertPosition): void {
