@@ -54,7 +54,7 @@
 ## Privacy Policy
 
 <!-- PRIVACY_POLICY_TEXT_START -->
-<!-- THIS SECTION IS GENERATED FROM ./_locales/zh_TW/messages.json. DO NOT EDIT MANUALLY -->
+<!-- THIS SECTION IS GENERATED FROM ./src/_locales/zh_TW/messages.json. DO NOT EDIT MANUALLY -->
 
 此擴充功能原則上會在使用者的電腦上處理所有資料，不會傳送到外部伺服器，而且此擴充功能不會在未經使用者許可的情況下使用登入認證存取 Twitter/X 的內部 API。對於此擴充功能沒有對應的網頁，將適用各自的使用條款和隱私政策。
 

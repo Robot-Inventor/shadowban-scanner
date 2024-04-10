@@ -13,7 +13,7 @@ for (const userScript of userScriptFiles) {
     const languageName =
         new Intl.DisplayNames([formattedLanguageCode], { type: "language" }).of(formattedLanguageCode) ||
         formattedLanguageCode;
-    const localizedMessages = fs.readFileSync(`./_locales/${languageCode}/messages.json`, "utf-8");
+    const localizedMessages = fs.readFileSync(`./src/_locales/${languageCode}/messages.json`, "utf-8");
     const userScriptComment = `
 // ==UserScript==
 // @name         Shadowban Scanner (${languageName})

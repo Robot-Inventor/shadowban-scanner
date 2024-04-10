@@ -121,15 +121,20 @@ for (const key in scripts) {
 const copyTargets = [
     {
         from: "./src/css/",
-        to: "./css/[name][ext]"
+        to: "css/[name][ext]"
     },
     {
         from: "./src/html/",
-        to: "./html/[name][ext]"
+        to: "html/[name][ext]"
     },
     {
         from: "./src/image/",
-        to: "./image/[name][ext]"
+        to: "image/[name][ext]"
+    },
+    {
+        context: "./src/_locales/",
+        from: "**/*",
+        to: "_locales/"
     }
 ];
 
