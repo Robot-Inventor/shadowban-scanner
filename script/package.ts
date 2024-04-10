@@ -5,9 +5,9 @@ execSync("npm run build");
 
 console.log("Packaging for Chrome...");
 process.chdir("dist/chrome");
-execSync(`npx web-ext build --artifacts-dir "../../web-ext-artifacts/manifestV2"`);
+execSync(`npx web-ext build --artifacts-dir "../../web-ext-artifacts/manifestV3"`);
 
 console.log("Packaging for Firefox...");
 process.chdir("../firefox");
-execSync(`npx web-ext build --artifacts-dir "../../web-ext-artifacts/manifestV3"`);
+execSync(`npx web-ext build --artifacts-dir "../../web-ext-artifacts/manifestV2"`);
 console.log("Done.");
