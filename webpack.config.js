@@ -132,6 +132,10 @@ const copyTargets = [
         to: "image/[name][ext]"
     },
     {
+        from: "LICENSE",
+        to: ""
+    },
+    {
         context: "./src/_locales/",
         from: "**/*",
         to: "_locales/"
