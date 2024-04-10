@@ -2,7 +2,7 @@
 
 ## UI Translation
 
-1. Create ``./_locales/<languageCode>/messages.json``.
+1. Create ``./src/_locales/<languageCode>/messages.json``.
 2. Copy the contents of the existing translation file.
 3. Translate the text.
 
