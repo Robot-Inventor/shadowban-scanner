@@ -1,22 +1,14 @@
-import { WEB_EXT_IGNORE_FILES } from "./settings";
 import colors from "colors/safe";
 import { execSync } from "child_process";
 import linter from "addons-linter";
-import path from "path";
-
-const ignoreFiles = WEB_EXT_IGNORE_FILES.map((file) => path.normalize(file));
 
 const main = async () => {
     const linterConfigFirefox: linter.Options = {
         config: {
-            _: ["./"],
+            _: ["./dist/firefox/"],
             logLevel: process.env.VERBOSE ? "debug" : "fatal",
             shouldScanFile: (fileName, isDir) => {
-                if (!fileName) return true;
-
-                const normalizedFileName = isDir ? path.normalize(`${fileName}/`) : path.normalize(fileName);
-
-                return !ignoreFiles.includes(normalizedFileName);
+                return true;
             }
         }
     };
@@ -24,6 +16,7 @@ const main = async () => {
     const linterConfigChrome: linter.Options = {
         config: {
             ...linterConfigFirefox.config,
+            _: ["./dist/chrome/"],
             enableBackgroundServiceWorker: true
         }
     };
@@ -34,18 +27,12 @@ const main = async () => {
     console.log("Building...");
     execSync("npm run build");
 
-    console.log("Switching to manifest v2.");
-    execSync("npm run switchManifest 2");
-
     console.log("Linting for Firefox...");
     const firefoxResult = await lintForFirefox.run();
     if (firefoxResult.errors.length) {
         console.error(colors.red("Errors found when linting for Firefox."));
         process.exit(1);
     }
-
-    console.log("Switching to manifest v3.");
-    execSync("npm run switchManifest 3");
 
     console.log("Linting for Chrome...");
     const chromeResult = await lintForChrome.run();

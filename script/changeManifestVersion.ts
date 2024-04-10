@@ -1,22 +1,17 @@
 import fs from "fs";
 
 import packageJson from "../package.json";
-import manifestV2 from "../manifest/v2.json";
-import manifestV3 from "../manifest/v3.json";
+import manifestV2 from "../src/manifest/v2.json";
+import manifestV3 from "../src/manifest/v3.json";
 
 const { version } = packageJson;
-const arg = process.argv[2];
 
-if (arg == "2") {
-    manifestV2.version = version;
-    const manifestText = JSON.stringify(manifestV2, null, 4);
-    fs.writeFileSync("./manifest.json", manifestText);
-    console.log(`Switched to manifest v${arg}.`);
-} else if (arg == "3") {
-    manifestV3.version = version;
-    const manifestText = JSON.stringify(manifestV3, null, 4);
-    fs.writeFileSync("./manifest.json", manifestText);
-    console.log(`Switched to manifest v${arg}.`);
-} else {
-    throw new Error("Invalid argument. Manifest version must be 2 or 3.");
-}
+manifestV2.version = version;
+const manifestV2Text = JSON.stringify(manifestV2, null, 4);
+fs.writeFileSync("./dist/firefox/manifest.json", manifestV2Text);
+console.log(`Generated manifest v2 file.`);
+
+manifestV3.version = version;
+const manifestV3Text = JSON.stringify(manifestV3, null, 4);
+fs.writeFileSync("./dist/chrome/manifest.json", manifestV3Text);
+console.log(`Generated manifest v3 file.`);

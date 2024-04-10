@@ -129,8 +129,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# manifest file
-manifest.json
-
 # Package files
 web-ext-artifacts

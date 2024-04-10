@@ -27,8 +27,19 @@ class RunCommandsPlugin {
         });
     }
 
+    updateManifest() {
+        exec("npx ts-node ./script/changeManifestVersion.ts", (err, stdout, stderr) => {
+            if (err) {
+                console.error(`Error: ${err}`);
+            } else {
+                console.log(stdout);
+            }
+        });
+    }
+
     apply(compiler) {
-        let watcher;
+        let typeWatcher;
+        let manifestWatcher;
         let isWatchMode = false;
 
         compiler.hooks.beforeCompile.tapAsync("RunCommandsPlugin", (params, callback) => {
@@ -42,21 +53,30 @@ class RunCommandsPlugin {
 
         compiler.hooks.watchRun.tapAsync("RunCommandsPlugin", (params, callback) => {
             isWatchMode = true;
-            if (!watcher) {
-                watcher = chokidar.watch("src/types/**/*.ts");
+            if (!typeWatcher || !manifestWatcher) {
+                typeWatcher = chokidar.watch("src/types/**/*.ts");
 
-                watcher.on("change", (path) => {
+                typeWatcher.on("change", (path) => {
                     console.log(`Type definition file changed: ${path}`);
                     this.generateTypeGuards();
                 });
 
                 this.generateTypeGuards(callback);
+
+                manifestWatcher = chokidar.watch("src/manifest/**/*.json");
+                manifestWatcher.on("change", () => {
+                    this.updateManifest();
+                });
+
+                this.updateManifest();
             } else {
                 callback();
             }
         });
 
         compiler.hooks.afterEmit.tapAsync("RunCommandsPlugin", (compilation, callback) => {
+            this.updateManifest();
+
             exec("npx ts-node ./script/updatePrivacyPolicy.ts", (err, stdout, stderr) => {
                 if (err) {
                     console.error(`Error: ${err}`);
@@ -77,16 +97,67 @@ class RunCommandsPlugin {
     }
 }
 
+const scripts = {
+    "js/browserAction.js": "./src/ts/browserAction/browserAction.ts",
+    "js/contentScript.js": "./src/ts/contentScript.ts",
+    "js/pageScript.js": "./src/ts/pageScript.ts",
+    "js/background.js": "./src/ts/background.ts",
+    "js/ossLicenses.js": "./src/ts/ossLicenses.ts",
+    "js/privacyPolicy.js": "./src/ts/privacyPolicy.ts",
+    "js/initialSetup.js": "./src/ts/initialSetup.ts",
+}
+
+const chromeScripts = {};
+for (const key in scripts) {
+    chromeScripts[`./chrome/${key}`] = scripts[key];
+}
+
+const firefoxScripts = {};
+for (const key in scripts) {
+    firefoxScripts[`./firefox/${key}`] = scripts[key];
+}
+
+const copyTargets = [
+    {
+        from: "./src/css/",
+        to: "./css/[name][ext]"
+    },
+    {
+        from: "./src/html/",
+        to: "./html/[name][ext]"
+    },
+    {
+        from: "./src/image/",
+        to: "./image/[name][ext]"
+    }
+];
+
+const chromeCopyTargets = [];
+for (const target of copyTargets) {
+    chromeCopyTargets.push({
+        ...target,
+        to: `./chrome/${target.to}`
+    });
+}
+
+const firefoxCopyTargets = [];
+for (const target of copyTargets) {
+    firefoxCopyTargets.push({
+        ...target,
+        to: `./firefox/${target.to}`
+    });
+}
+
+const unacceptableLicenseTest = (licenseIdentifier) => {
+    const acceptableLicenses = ["BSD-3-Clause", "Apache-2.0", "MIT", "0BSD", "MPL-2.0"];
+    return !acceptableLicenses.includes(licenseIdentifier);
+}
+
 module.exports = {
     mode: "production",
     entry: {
-        "./js/browserAction.js": "./src/ts/browserAction/browserAction.ts",
-        "./js/contentScript.js": "./src/ts/contentScript.ts",
-        "./js/pageScript.js": "./src/ts/pageScript.ts",
-        "./js/background.js": "./src/ts/background.ts",
-        "./js/ossLicenses.js": "./src/ts/ossLicenses.ts",
-        "./js/privacyPolicy.js": "./src/ts/privacyPolicy.ts",
-        "./js/initialSetup.js": "./src/ts/initialSetup.ts",
+        ...chromeScripts,
+        ...firefoxScripts,
         ...userScriptEntries
     },
     output: {
@@ -118,27 +189,20 @@ module.exports = {
         new RunCommandsPlugin(),
         new CopyFilePlugin({
             patterns: [
-                {
-                    from: "./src/css/",
-                    to: "./css/[name][ext]"
-                },
-                {
-                    from: "./src/html/",
-                    to: "./html/[name][ext]"
-                },
-                {
-                    from: "./src/image/",
-                    to: "./image/[name][ext]"
-                }
+                ...chromeCopyTargets,
+                ...firefoxCopyTargets
             ]
         }),
         new LicensePlugin(
             {
-                outputFilename: "./json/oss-licenses.json",
-                unacceptableLicenseTest: (licenseIdentifier) => {
-                    const acceptableLicenses = ["BSD-3-Clause", "Apache-2.0", "MIT", "0BSD", "MPL-2.0"];
-                    return !acceptableLicenses.includes(licenseIdentifier);
-                }
+                outputFilename: "./chrome/json/oss-licenses.json",
+                unacceptableLicenseTest
+            }
+        ),
+        new LicensePlugin(
+            {
+                outputFilename: "./firefox/json/oss-licenses.json",
+                unacceptableLicenseTest
             }
         )
     ]
