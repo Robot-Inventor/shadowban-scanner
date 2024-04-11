@@ -2,7 +2,7 @@
  * Generated type guards for "reactProps.d.ts".
  * WARNING: Do not manually change this file.
  */
-import { CellInnerDivProps, TweetOuterReactPropsData, FocalTweetOuterReactPropsData, ProfileReactPropsData } from "./reactProps";
+import { CellInnerDivProps, FocalTweetOuterReactPropsData, ProfileReactPropsData } from "./reactProps";
 
 export function isCellInnerDivProps(obj: unknown): obj is CellInnerDivProps {
     const typedObj = obj as CellInnerDivProps
@@ -18,49 +18,6 @@ export function isCellInnerDivProps(obj: unknown): obj is CellInnerDivProps {
                 typeof typedObj["children"]["_owner"] === "object" ||
                 typeof typedObj["children"]["_owner"] === "function") &&
             typeof typedObj["children"]["_owner"]["key"] === "string")
-    )
-}
-
-export function isTweetOuterReactPropsData(obj: unknown): obj is TweetOuterReactPropsData {
-    const typedObj = obj as TweetOuterReactPropsData
-    return (
-        (typedObj !== null &&
-            typeof typedObj === "object" ||
-            typeof typedObj === "function") &&
-        Array.isArray(typedObj["children"]) &&
-        Array.isArray(typedObj["children"][0]) &&
-        (typedObj["children"][0][1] !== null &&
-            typeof typedObj["children"][0][1] === "object" ||
-            typeof typedObj["children"][0][1] === "function") &&
-        (typedObj["children"][0][1]["props"] !== null &&
-            typeof typedObj["children"][0][1]["props"] === "object" ||
-            typeof typedObj["children"][0][1]["props"] === "function") &&
-        Array.isArray(typedObj["children"][0][1]["props"]["children"]) &&
-        (typedObj["children"][0][1]["props"]["children"][0] !== null &&
-            typeof typedObj["children"][0][1]["props"]["children"][0] === "object" ||
-            typeof typedObj["children"][0][1]["props"]["children"][0] === "function") &&
-        (typedObj["children"][0][1]["props"]["children"][0]["props"] !== null &&
-            typeof typedObj["children"][0][1]["props"]["children"][0]["props"] === "object" ||
-            typeof typedObj["children"][0][1]["props"]["children"][0]["props"] === "function") &&
-        Array.isArray(typedObj["children"][0][1]["props"]["children"][0]["props"]["children"]) &&
-        (typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][1] !== null &&
-            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][1] === "object" ||
-            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][1] === "function") &&
-        (typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][1]["props"] !== null &&
-            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][1]["props"] === "object" ||
-            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][1]["props"] === "function") &&
-        Array.isArray(typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][1]["props"]["children"]) &&
-        Array.isArray(typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][1]["props"]["children"][1]) &&
-        (typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][1]["props"]["children"][1][2] !== null &&
-            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][1]["props"]["children"][1][2] === "object" ||
-            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][1]["props"]["children"][1][2] === "function") &&
-        (typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][1]["props"]["children"][1][2]["props"] !== null &&
-            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][1]["props"]["children"][1][2]["props"] === "object" ||
-            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][1]["props"]["children"][1][2]["props"] === "function") &&
-        (typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][1]["props"]["children"][1][2]["props"]["loggedInUser"] !== null &&
-            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][1]["props"]["children"][1][2]["props"]["loggedInUser"] === "object" ||
-            typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][1]["props"]["children"][1][2]["props"]["loggedInUser"] === "function") &&
-        typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][1]["props"]["children"][1][2]["props"]["loggedInUser"]["screen_name"] === "string"
     )
 }
 

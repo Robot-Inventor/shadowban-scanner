@@ -1,9 +1,6 @@
 import type { BasicTweetProps, Tweet } from "twi-ext";
-import {
-    isFocalTweetOuterReactPropsData,
-    isTweetOuterReactPropsData
-} from "../../../types/core/reactProps/reactProps.guard";
 import { ParserBase } from "./parserBase";
+import { isFocalTweetOuterReactPropsData } from "../../../types/core/reactProps/reactProps.guard";
 
 /**
  * React props of the tweet.
@@ -28,31 +25,6 @@ class TweetParser extends ParserBase {
         const basicProps = this.basicTweetProps;
 
         return basicProps;
-    }
-
-    /**
-     * Check whether the tweet is by the current user.
-     * @returns whether the tweet is by the current user
-     */
-    public get isTweetByCurrentUser(): boolean {
-        const tweetAuthorScreenName = this.basicTweetProps.user.screen_name;
-        const tweetReactProps = this.getProps();
-        // eslint-disable-next-line no-useless-assignment
-        let currentUserScreenName = "";
-
-        if (isTweetOuterReactPropsData(tweetReactProps)) {
-            currentUserScreenName =
-                tweetReactProps.children[0][1].props.children[0].props.children[1].props.children[1][2].props
-                    .loggedInUser.screen_name;
-        } else if (isFocalTweetOuterReactPropsData(tweetReactProps)) {
-            currentUserScreenName =
-                tweetReactProps.children[0][1].props.children[0].props.children[2].props.children[7].props.loggedInUser
-                    .screen_name;
-        } else {
-            throw new Error("Type of tweetReactProps is invalid.");
-        }
-
-        return tweetAuthorScreenName === currentUserScreenName;
     }
 
     /**

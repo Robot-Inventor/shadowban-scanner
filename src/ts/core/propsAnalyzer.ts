@@ -21,7 +21,6 @@ interface TweetAnalysisResult extends ProfileAnalysisResult {
 
     meta: {
         isFocal: boolean;
-        isTweetByCurrentUser: boolean;
     };
 }
 
@@ -67,8 +66,7 @@ class PropsAnalyzer {
             ...userAnalysisResult,
 
             meta: {
-                isFocal: parser.isFocal,
-                isTweetByCurrentUser: parser.isTweetByCurrentUser
+                isFocal: parser.isFocal
             },
 
             tweet: {
