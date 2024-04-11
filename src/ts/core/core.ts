@@ -54,7 +54,7 @@ class Core {
     private checkTweet(tweet: Tweet): void {
         const analyzer = PropsAnalyzer.analyzeTweetProps(new TweetParser(tweet));
 
-        if (!analyzer.meta.isTweetByCurrentUser && !this.settings.enableForOtherUsersTweets) return;
+        if (!tweet.metadata.isPostedByCurrentUser && !this.settings.enableForOtherUsersTweets) return;
         if (!(analyzer.tweet.hasAnyProblem || this.settings.showMessagesInUnproblematicTweets)) return;
 
         const messageData = MessageDataGenerator.generateForTweet(

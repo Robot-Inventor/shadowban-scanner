@@ -15,46 +15,6 @@ interface CellInnerDivProps {
     };
 }
 
-/** @see {isTweetOuterReactPropsData} ts-auto-guard:type-guard */
-export interface TweetOuterReactPropsData {
-    children: [
-        [
-            unknown,
-            {
-                props: {
-                    children: [
-                        {
-                            props: {
-                                children: [
-                                    unknown,
-                                    {
-                                        props: {
-                                            children: [
-                                                unknown,
-                                                [
-                                                    unknown,
-                                                    unknown,
-                                                    {
-                                                        props: {
-                                                            loggedInUser: {
-                                                                screen_name: string;
-                                                            };
-                                                        };
-                                                    }
-                                                ]
-                                            ];
-                                        };
-                                    }
-                                ];
-                            };
-                        }
-                    ];
-                };
-            }
-        ]
-    ];
-}
-
 /** @see {isFocalTweetOuterReactPropsData} ts-auto-guard:type-guard */
 export interface FocalTweetOuterReactPropsData {
     children: [
