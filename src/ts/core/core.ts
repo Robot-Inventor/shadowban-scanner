@@ -66,7 +66,7 @@ class Core {
         const sbsMessageWrapper = new SbsMessageWrapper(messageData);
 
         const landmarkElement =
-            tweet.element.querySelector<HTMLElement>("[data-testid='analyticsButton']") ||
+            tweet.element.querySelector<HTMLElement>("[data-testid='analyticsButton']")?.parentElement ||
             tweet.element.querySelector<HTMLElement>("div[role='group'][id]");
 
         if (!landmarkElement) throw new Error("Failed to get landmark element of tweet");
