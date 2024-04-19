@@ -57,15 +57,3 @@ export interface FocalTweetOuterReactPropsData {
         ]
     ];
 }
-
-/** @see {isProfileReactPropsData} ts-auto-guard:type-guard */
-export interface ProfileReactPropsData {
-    children: [
-        unknown,
-        {
-            props: {
-                user: UserProps;
-            };
-        }
-    ];
-}

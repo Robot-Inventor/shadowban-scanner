@@ -1,20 +1,19 @@
 import type { BasicTweetProps, Tweet } from "twi-ext";
-import { ParserBase } from "./parserBase";
+import { getReactProps } from "./utility";
 import { isFocalTweetOuterReactPropsData } from "../../../types/core/reactProps/reactProps.guard";
 
 /**
  * React props of the tweet.
  */
-class TweetParser extends ParserBase {
-    private readonly basicTweetProps: BasicTweetProps;
+class TweetParser {
+    private readonly tweet: Tweet;
 
     /**
      * Parse the React props of the tweet.
      * @param tweet element of the tweet
      */
     public constructor(tweet: Tweet) {
-        super(tweet.element);
-        this.basicTweetProps = tweet.props;
+        this.tweet = tweet;
     }
 
     /**
@@ -22,9 +21,7 @@ class TweetParser extends ParserBase {
      * @returns React props of the tweet
      */
     public parse(): BasicTweetProps {
-        const basicProps = this.basicTweetProps;
-
-        return basicProps;
+        return this.tweet.props;
     }
 
     /**
@@ -32,7 +29,7 @@ class TweetParser extends ParserBase {
      * @returns whether the tweet is focal
      */
     public get isFocal(): boolean {
-        const tweetReactProps = this.getProps();
+        const tweetReactProps = getReactProps(this.tweet.element);
         return isFocalTweetOuterReactPropsData(tweetReactProps);
     }
 }
