@@ -1,7 +1,6 @@
 import { CHECKED_DATA_ATTRIBUTE, TRANSLATION_ATTRIBUTE } from "../common/constants";
-import { Timeline, Tweet } from "twi-ext";
+import { Profile, Timeline, Tweet } from "twi-ext";
 import { MessageDataGenerator } from "./messageDataGenerator";
-import { ProfileParser } from "./parser/profileParser";
 import { PropsAnalyzer } from "./propsAnalyzer";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import { Settings } from "../../types/common/settings";
@@ -29,15 +28,16 @@ class Core {
             this.checkTweet(tweet);
             this.timelineObserverCallback();
         });
+        timeline.onNewProfile((profile) => {
+            this.checkProfile(profile);
+        });
     }
 
-    private checkProfile(userName: HTMLElement): void {
-        userName.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
-
+    private checkProfile(profile: Profile): void {
         const isCurrentUsersProfile = Boolean(document.querySelector("[data-testid='editProfileButton']"));
         if (isCurrentUsersProfile && !this.settings.enableForOtherUsersProfiles) return;
 
-        const profileAnalyzer = PropsAnalyzer.analyzeProfileProps(new ProfileParser(userName).parse());
+        const profileAnalyzer = PropsAnalyzer.analyzeProfileProps(profile.props);
         if (!(profileAnalyzer.user.hasAnyProblem || this.settings.showMessagesInUnproblematicProfiles)) return;
 
         const messageData = MessageDataGenerator.generateForProfile(profileAnalyzer, this.onMessageCallback);
@@ -98,13 +98,6 @@ class Core {
      * Callback function of the timeline observer.
      */
     private timelineObserverCallback(): void {
-        const userName = document.querySelector<HTMLElement>(
-            `:not([data-testid="tweet"]) [data-testid="UserName"]:not([${CHECKED_DATA_ATTRIBUTE}])`
-        );
-        if (userName) {
-            this.checkProfile(userName);
-        }
-
         const cellInnerDivs = document.querySelectorAll<HTMLElement>(
             `[data-testid='cellInnerDiv']:not([${CHECKED_DATA_ATTRIBUTE}])`
         );

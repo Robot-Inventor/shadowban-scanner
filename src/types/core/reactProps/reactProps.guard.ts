@@ -2,7 +2,7 @@
  * Generated type guards for "reactProps.d.ts".
  * WARNING: Do not manually change this file.
  */
-import { CellInnerDivProps, FocalTweetOuterReactPropsData, ProfileReactPropsData } from "./reactProps";
+import { CellInnerDivProps, FocalTweetOuterReactPropsData } from "./reactProps";
 
 export function isCellInnerDivProps(obj: unknown): obj is CellInnerDivProps {
     const typedObj = obj as CellInnerDivProps
@@ -60,38 +60,5 @@ export function isFocalTweetOuterReactPropsData(obj: unknown): obj is FocalTweet
             typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][7]["props"]["loggedInUser"] === "object" ||
             typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][7]["props"]["loggedInUser"] === "function") &&
         typeof typedObj["children"][0][1]["props"]["children"][0]["props"]["children"][2]["props"]["children"][7]["props"]["loggedInUser"]["screen_name"] === "string"
-    )
-}
-
-export function isProfileReactPropsData(obj: unknown): obj is ProfileReactPropsData {
-    const typedObj = obj as ProfileReactPropsData
-    return (
-        (typedObj !== null &&
-            typeof typedObj === "object" ||
-            typeof typedObj === "function") &&
-        Array.isArray(typedObj["children"]) &&
-        (typedObj["children"][1] !== null &&
-            typeof typedObj["children"][1] === "object" ||
-            typeof typedObj["children"][1] === "function") &&
-        (typedObj["children"][1]["props"] !== null &&
-            typeof typedObj["children"][1]["props"] === "object" ||
-            typeof typedObj["children"][1]["props"] === "function") &&
-        (typedObj["children"][1]["props"]["user"] !== null &&
-            typeof typedObj["children"][1]["props"]["user"] === "object" ||
-            typeof typedObj["children"][1]["props"]["user"] === "function") &&
-        (typeof typedObj["children"][1]["props"]["user"]["possibly_sensitive"] === "undefined" ||
-            typedObj["children"][1]["props"]["user"]["possibly_sensitive"] === null ||
-            typedObj["children"][1]["props"]["user"]["possibly_sensitive"] === false ||
-            typedObj["children"][1]["props"]["user"]["possibly_sensitive"] === true) &&
-        typeof typedObj["children"][1]["props"]["user"]["screen_name"] === "string" &&
-        (typedObj["children"][1]["props"]["user"]["profile_interstitial_type"] === "" ||
-            typedObj["children"][1]["props"]["user"]["profile_interstitial_type"] === "sensitive_media" ||
-            typedObj["children"][1]["props"]["user"]["profile_interstitial_type"] === "fake_account" ||
-            typedObj["children"][1]["props"]["user"]["profile_interstitial_type"] === "offensive_profile_content" ||
-            typedObj["children"][1]["props"]["user"]["profile_interstitial_type"] === "timeout") &&
-        Array.isArray(typedObj["children"][1]["props"]["user"]["withheld_in_countries"]) &&
-        typedObj["children"][1]["props"]["user"]["withheld_in_countries"].every((e: any) =>
-            typeof e === "string"
-        )
     )
 }
