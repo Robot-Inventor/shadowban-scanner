@@ -4,10 +4,12 @@ console.log("Building...");
 execSync("npm run build");
 
 console.log("Packaging for Chrome...");
-process.chdir("dist/chrome");
-execSync(`npx web-ext build --artifacts-dir "../../web-ext-artifacts/manifestV3"`);
+execSync(
+    `npx web-ext build --source-dir "./dist/chrome/" --artifacts-dir "./web-ext-artifacts/manifestV3" --filename "shadowban_scanner-{version}-manifestV3.zip"`
+);
 
 console.log("Packaging for Firefox...");
-process.chdir("../firefox");
-execSync(`npx web-ext build --artifacts-dir "../../web-ext-artifacts/manifestV2"`);
+execSync(
+    `npx web-ext build --source-dir "./dist/firefox/" --artifacts-dir "./web-ext-artifacts/manifestV2" --filename "shadowban_scanner-{version}-manifestV2.zip"`
+);
 console.log("Done.");
