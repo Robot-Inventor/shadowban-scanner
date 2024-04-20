@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Shadowban Scanner",
+    "name": "Shadowban Scanner for Twitter / X",
     "short_name": "Shadowban Scanner",
     "version": "1.0.0",
     "description": "__MSG_manifest_description__",
