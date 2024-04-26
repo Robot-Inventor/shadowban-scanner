@@ -1,6 +1,11 @@
+import Swal from "sweetalert2";
+
 // If the user came from a different website or directly accessed, and their browser language is Japanese,
 // redirect them to the Japanese version.
-if ((!document.referrer || new URL(document.referrer).hostname !== location.hostname) && navigator.language.toLowerCase().startsWith("ja")) {
+if (
+    (!document.referrer || new URL(document.referrer).hostname !== location.hostname) &&
+    navigator.language.toLowerCase().startsWith("ja")
+) {
     location.href = "/";
 }
 
@@ -17,14 +22,15 @@ buttons.forEach((button) => {
         download_link = "https://addons.mozilla.org/firefox/addon/shadowban-scanner/";
         download_text = "Install to Firefox";
     } else if (isEdge) {
-        download_link = "https://microsoftedge.microsoft.com/addons/detail/shadowban-scanner/kfeecmboomhggeeceipnbbdjmhjoccbl";
+        download_link =
+            "https://microsoftedge.microsoft.com/addons/detail/shadowban-scanner/kfeecmboomhggeeceipnbbdjmhjoccbl";
         download_text = "Install to Edge";
     }
 
     button.textContent = download_text;
 
     button.addEventListener("click", () => {
-        const isMobile = Boolean(navigator.userAgent.match(/iPhone|Android.+Mobile/))
+        const isMobile = Boolean(navigator.userAgent.match(/iPhone|Android.+Mobile/));
         if (isMobile && !isFirefox) {
             Swal.fire({
                 title: "Smartphones are not supported",
@@ -41,7 +47,7 @@ buttons.forEach((button) => {
                 if (result.isConfirmed) {
                     open(download_link, "_blank");
                 }
-            })
+            });
         } else {
             open(download_link, "_blank");
         }
