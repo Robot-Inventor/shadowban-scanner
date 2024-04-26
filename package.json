@@ -1,10 +1,13 @@
 {
   "scripts": {
     "build": "webpack",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "format": "prettier --write ./src/",
+    "format:check": "prettier --check ./src/"
   },
   "dependencies": {
     "copy-webpack-plugin": "^12.0.2",
+    "prettier": "^3.2.5",
     "sweetalert2": "^11.10.8",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.5",
