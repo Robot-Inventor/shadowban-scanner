@@ -1,15 +1,32 @@
+import LanguageDetector from "i18next-browser-languagedetector";
 import Swal from "sweetalert2";
+import i18next from "i18next";
+import translationEn from "../translations/en.json";
+import translationJa from "../translations/ja.json";
 
-/*
- * If the user came from a different website or directly accessed, and their browser language is not Japanese,
- * redirect them to the English version.
- */
-if (
-    (!document.referrer || new URL(document.referrer).hostname !== location.hostname) &&
-    !navigator.language.toLowerCase().startsWith("ja")
-) {
-    location.href = "/en/";
-}
+void i18next.use(LanguageDetector).init({
+    detection: {
+        convertDetectedLanguage: (lng) => lng.split("-")[0],
+        order: ["querystring", "navigator", "htmlTag", "path", "subdomain", "cookie", "localStorage", "sessionStorage"]
+    },
+    fallbackLng: "en",
+    resources: {
+        en: translationEn,
+        ja: translationJa
+    },
+    supportedLngs: ["en", "ja"]
+});
+
+const translationTargets = document.querySelectorAll("[data-translation]");
+translationTargets.forEach((target) => {
+    const key = target.getAttribute("data-translation")!;
+    const targetAttribute = target.getAttribute("data-translation-attribute");
+    if (targetAttribute) {
+        target.setAttribute(targetAttribute, i18next.t(key));
+    } else {
+        target.innerHTML = i18next.t(key);
+    }
+});
 
 const buttons = document.querySelectorAll("button.download_button");
 
@@ -19,15 +36,15 @@ buttons.forEach((button) => {
     const isEdge = navigator.userAgent.toLowerCase().includes("edg");
 
     let downloadLink = "https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/";
-    let downloadText = "Chromeにインストール";
+    let downloadText = i18next.t("installToChrome");
 
     if (isFirefox) {
         downloadLink = "https://addons.mozilla.org/firefox/addon/shadowban-scanner/";
-        downloadText = "Firefoxにインストール";
+        downloadText = i18next.t("installToFirefox");
     } else if (isEdge) {
         downloadLink =
             "https://microsoftedge.microsoft.com/addons/detail/shadowban-scanner/kfeecmboomhggeeceipnbbdjmhjoccbl";
-        downloadText = "Edgeにインストール";
+        downloadText = i18next.t("installToEdge");
     }
 
     button.textContent = downloadText;
@@ -38,14 +55,14 @@ buttons.forEach((button) => {
             void Swal.fire({
                 background: "#21272e",
                 cancelButtonColor: "#d33",
-                cancelButtonText: "キャンセル",
+                cancelButtonText: i18next.t("cancel"),
                 color: "#fff",
                 confirmButtonColor: "#3085d6",
-                confirmButtonText: "とにかく続行する",
+                confirmButtonText: i18next.t("continueAnyway"),
                 icon: "warning",
                 showCancelButton: true,
-                text: "Shadowban Scannerは技術的な理由により、PCのブラウザーとAndroid版Firefoxでのみ利用できます。",
-                title: "スマートフォンには対応していません"
+                text: i18next.t("smartphonesAreNotSupportedDescription"),
+                title: i18next.t("smartphonesAreNotSupported")
             }).then((result) => {
                 if (result.isConfirmed) {
                     open(downloadLink, "_blank");

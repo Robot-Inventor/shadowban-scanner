@@ -10,6 +10,8 @@
     "@robot-inventor/eslint-config": "^0.1.1",
     "copy-webpack-plugin": "^12.0.2",
     "eslint": "^9.1.1",
+    "i18next": "^23.11.2",
+    "i18next-browser-languagedetector": "^7.2.1",
     "prettier": "^3.2.5",
     "sweetalert2": "^11.10.8",
     "ts-loader": "^9.5.1",
