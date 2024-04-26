@@ -45,6 +45,11 @@ module.exports = {
                     context: "./src/js/",
                     from: "**/*",
                     to: "./js/"
+                },
+                {
+                    context: "./public/",
+                    from: "**/*",
+                    to: "./"
                 }
             ]
         })
