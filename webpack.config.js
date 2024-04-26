@@ -3,8 +3,8 @@ const CopyFilePlugin = require("copy-webpack-plugin");
 module.exports = {
     mode: "production",
     entry: {
-        "js/script.js": "./src/ts/script.js",
-        "js/en/script.js": "./src/ts/en/script.js"
+        "js/script.js": "./src/ts/script.ts",
+        "js/en/script.js": "./src/ts/en/script.ts"
     },
     output: {
         filename: "[name]",
@@ -40,11 +40,6 @@ module.exports = {
                     context: "./src/css/",
                     from: "**/*",
                     to: "./css/"
-                },
-                {
-                    context: "./src/js/",
-                    from: "**/*",
-                    to: "./js/"
                 },
                 {
                     context: "./public/",
