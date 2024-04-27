@@ -1,4 +1,7 @@
 const CopyFilePlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const translationJa = require("./src/translations/ja.json");
+const translationEn = require("./src/translations/en.json");
 
 module.exports = {
     mode: "production",
@@ -31,11 +34,6 @@ module.exports = {
         new CopyFilePlugin({
             patterns: [
                 {
-                    context: "./src/html/",
-                    from: "**/*",
-                    to: "./"
-                },
-                {
                     context: "./src/css/",
                     from: "**/*",
                     to: "./css/"
@@ -46,6 +44,21 @@ module.exports = {
                     to: "./"
                 }
             ]
+        }),
+        new HtmlWebpackPlugin({
+            template: "./src/html/index.html",
+            filename: "./index.html",
+            ...translationJa
+        }),
+        new HtmlWebpackPlugin({
+            template: "./src/html/index.html",
+            filename: "./ja/index.html",
+            ...translationJa
+        }),
+        new HtmlWebpackPlugin({
+            template: "./src/html/index.html",
+            filename: "./en/index.html",
+            ...translationEn
         })
     ]
 };
