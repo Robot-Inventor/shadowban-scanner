@@ -32,6 +32,7 @@ header img {
     display: grid;
     grid-template-rows: 1fr auto 1fr;
     padding: 3rem;
+    background: radial-gradient(circle at center bottom, #404ad2, #040912 30%);
 }
 
 #top_text_container {
@@ -125,6 +126,7 @@ section h2 {
 
 #download_section {
     padding: 3rem;
+    background: radial-gradient(circle at center bottom, #404ad2, #040912 30%);
 }
 
 #supported_browsers {
@@ -206,6 +208,10 @@ footer a {
 
     .secondary_section-item .material-symbols-outlined {
         margin: auto;
+    }
+
+    #download_section {
+        background: radial-gradient(circle at center bottom, #404ad2, #040912 50%);
     }
 
     #supported_browsers {
