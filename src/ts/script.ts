@@ -65,6 +65,8 @@ const onLanguageChanged = (): void => {
         history.replaceState(null, "", `/${i18next.language}/`);
     }
 
+    document.documentElement.lang = i18next.language;
+
     const translationTargets = document.querySelectorAll("[data-translation]");
     translationTargets.forEach((target) => {
         const key = target.getAttribute("data-translation")!;
