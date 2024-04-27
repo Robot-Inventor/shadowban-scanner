@@ -20,11 +20,33 @@ header {
     padding: 1rem;
     position: fixed;
     z-index: 1;
+    display: flex;
+    justify-content: space-between;
 }
 
 header img {
     height: 100%;
     z-index: 100;
+}
+
+#language_switcher {
+    cursor: pointer;
+}
+
+#language_switcher > * {
+    vertical-align: middle;
+}
+
+#language_switcher-select {
+    font-size: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+}
+
+#language_switcher-select > option {
+    color: inherit;
+    background: #202229;
 }
 
 #top_section {
@@ -173,6 +195,11 @@ footer a {
 }
 
 @media (orientation: portrait) {
+    #language_switcher {
+        aspect-ratio: 1/1;
+        overflow: hidden;
+    }
+
     #top_section {
         grid-template-rows: 1fr auto auto 1fr;
     }

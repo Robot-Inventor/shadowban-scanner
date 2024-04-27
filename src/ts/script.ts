@@ -4,63 +4,15 @@ import i18next from "i18next";
 import translationEn from "../translations/en.json";
 import translationJa from "../translations/ja.json";
 
-// eslint-disable-next-line max-statements, max-lines-per-function
-const main = async (): Promise<void> => {
+const isCrawler = (): boolean => {
     const crawlerUserAgents = ["googlebot", "bingbot", "google-inspectiontool", "y!j", "yahoo!"];
-    const isCrawler = crawlerUserAgents.some((crawlerUserAgent) =>
+    const result = crawlerUserAgents.some((crawlerUserAgent) =>
         navigator.userAgent.toLowerCase().includes(crawlerUserAgent)
     );
+    return result;
+};
 
-    const languageDetectionOrderDefault = [
-        "querystring",
-        "navigator",
-        "htmlTag",
-        "path",
-        "subdomain",
-        "cookie",
-        "localStorage",
-        "sessionStorage"
-    ];
-
-    const languageDetectionOrderCrawler = [
-        "querystring",
-        "path",
-        "navigator",
-        "htmlTag",
-        "subdomain",
-        "cookie",
-        "localStorage",
-        "sessionStorage"
-    ];
-
-    await i18next.use(LanguageDetector).init({
-        detection: {
-            convertDetectedLanguage: (lng) => lng.split("-")[0],
-            order: isCrawler ? languageDetectionOrderCrawler : languageDetectionOrderDefault
-        },
-        fallbackLng: "en",
-        resources: {
-            en: translationEn,
-            ja: translationJa
-        },
-        supportedLngs: ["en", "ja"]
-    });
-
-    if (!isCrawler) {
-        history.replaceState(null, "", `/${i18next.language}/`);
-    }
-
-    const translationTargets = document.querySelectorAll("[data-translation]");
-    translationTargets.forEach((target) => {
-        const key = target.getAttribute("data-translation")!;
-        const targetAttribute = target.getAttribute("data-translation-attribute");
-        if (targetAttribute) {
-            target.setAttribute(targetAttribute, i18next.t(key));
-        } else {
-            target.innerHTML = i18next.t(key);
-        }
-    });
-
+const initializeDownloadButtons = (): void => {
     const buttons = document.querySelectorAll("button.download_button");
 
     // eslint-disable-next-line max-statements
@@ -106,6 +58,84 @@ const main = async (): Promise<void> => {
             }
         });
     });
+};
+
+const onLanguageChanged = (): void => {
+    if (!isCrawler()) {
+        history.replaceState(null, "", `/${i18next.language}/`);
+    }
+
+    const translationTargets = document.querySelectorAll("[data-translation]");
+    translationTargets.forEach((target) => {
+        const key = target.getAttribute("data-translation")!;
+        const targetAttribute = target.getAttribute("data-translation-attribute");
+        if (targetAttribute) {
+            target.setAttribute(targetAttribute, i18next.t(key));
+        } else {
+            target.innerHTML = i18next.t(key);
+        }
+    });
+
+    initializeDownloadButtons();
+};
+
+const initializeLanguageSwitcher = (): void => {
+    const languageSwitcher = document.querySelector("#language_switcher")!;
+    const languageSwitcherSelect = document.querySelector<HTMLSelectElement>("#language_switcher-select")!;
+    languageSwitcherSelect.value = i18next.language;
+
+    languageSwitcher.addEventListener("click", () => {
+        languageSwitcherSelect.showPicker();
+    });
+
+    languageSwitcherSelect.addEventListener("change", () => {
+        void i18next.changeLanguage(languageSwitcherSelect.value);
+    });
+};
+
+const main = async (): Promise<void> => {
+    const languageDetectionOrderDefault = [
+        "querystring",
+        "cookie",
+        "localStorage",
+        "sessionStorage",
+        "navigator",
+        "htmlTag",
+        "path",
+        "subdomain"
+    ];
+
+    const languageDetectionOrderCrawler = [
+        "querystring",
+        "path",
+        "cookie",
+        "localStorage",
+        "sessionStorage",
+        "navigator",
+        "htmlTag",
+        "subdomain",
+        "cookie",
+        "localStorage",
+        "sessionStorage"
+    ];
+
+    await i18next.use(LanguageDetector).init({
+        detection: {
+            convertDetectedLanguage: (lng) => lng.split("-")[0],
+            order: isCrawler() ? languageDetectionOrderCrawler : languageDetectionOrderDefault
+        },
+        fallbackLng: "en",
+        resources: {
+            en: translationEn,
+            ja: translationJa
+        },
+        supportedLngs: ["en", "ja"]
+    });
+
+    onLanguageChanged();
+    i18next.on("languageChanged", onLanguageChanged);
+
+    initializeLanguageSwitcher();
 };
 
 void main();

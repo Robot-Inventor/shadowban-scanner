@@ -62,12 +62,20 @@ The website is available in multiple languages. The translations are stored in t
     };
     ```
 
-5. Add a new language URL to the `src/html/index.html` file:
+5. Add a new language to the `src/html/index.html` file:
 
     ```html
     <link rel="alternate" hreflang="en" href="https://shadowban-scanner.roboin.io/en/" />
     <link rel="alternate" hreflang="ja" href="https://shadowban-scanner.roboin.io/ja/" />
     <link rel="alternate" hreflang="x-default" href="https://shadowban-scanner.roboin.io/" />
+    <!-- ... -->
+    <div id="language_switcher">
+        <span class="material-symbols-outlined">language</span>
+        <select id="language_switcher-select">
+            <option value="ja">日本語</option>
+            <option value="en">English</option>
+        </select>
+    </div>
     ```
 
 6. Submit a pull request with the changes and the maintainer will add the translated images to the website.
