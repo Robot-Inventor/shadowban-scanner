@@ -1,7 +1,9 @@
 {
     "translation": {
+        "url": "https://shadowban-scanner.roboin.io/",
         "title": "Shadowban Scanner - シャドウバンやセンシティブ判定を検出できる拡張機能",
         "description": "Twitter（X）のシャドウバンやセンシティブ判定を検出できる拡張機能「Shadowban Scanner」の公式サイトです。",
+        "ogImage": "https://shadowban-scanner.roboin.io/image/ogp_ja.png",
         "topImage": "/image/top-ja.svg",
         "catchphrase": "アカウントの状態を確認しよう",
         "install": "インストール",

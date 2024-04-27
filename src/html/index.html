@@ -32,31 +32,31 @@
         />
         <link rel="stylesheet" href="/css/style.css" />
         <link rel="alternate" hreflang="en" href="https://shadowban-scanner.roboin.io/en/?lng=en" />
-        <link rel="alternate" hreflang="ja" href="https://shadowban-scanner.roboin.io/?lng=ja" />
+        <link rel="alternate" hreflang="ja" href="https://shadowban-scanner.roboin.io/ja/?lng=ja" />
         <link rel="alternate" hreflang="x-default" href="https://shadowban-scanner.roboin.io/" />
-        <title data-translation="title">Shadowban Scanner - シャドウバンやセンシティブ判定を検出できる拡張機能</title>
+        <title data-translation="title"><%= htmlWebpackPlugin.options.translation.title %></title>
         <meta
             name="description"
             data-translation="description"
             data-translation-attribute="content"
-            content="Twitter（X）のシャドウバンやセンシティブ判定を検出できる拡張機能「Shadowban Scanner」の公式サイトです。"
+            content="<%= htmlWebpackPlugin.options.translation.description %>"
         />
-        <meta property="og:url" content="https://shadowban-scanner.roboin.io/" />
+        <meta property="og:url" content="<%= htmlWebpackPlugin.options.translation.url %>" />
         <meta property="og:type" content="website" />
         <meta
             property="og:title"
             data-translation="title"
             data-translation-attribute="content"
-            content="Shadowban Scanner - シャドウバンやセンシティブ判定を検出できる拡張機能"
+            content="<%= htmlWebpackPlugin.options.translation.title %>"
         />
         <meta
             property="og:description"
             data-translation="description"
             data-translation-attribute="content"
-            content="Twitter（X）のシャドウバンやセンシティブ判定を検出できる拡張機能「Shadowban Scanner」の公式サイトです。"
+            content="<%= htmlWebpackPlugin.options.translation.description %>"
         />
         <meta property="og:site_name" content="Shadowban Scanner" />
-        <meta property="og:image" content="https://shadowban-scanner.roboin.io/image/ogp_ja.png" />
+        <meta property="og:image" content="<%= htmlWebpackPlugin.options.translation.ogImage %>" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@keita_roboin" />
     </head>
@@ -65,8 +65,12 @@
         <main>
             <section id="top_section">
                 <div id="top_text_container">
-                    <div id="top_text" data-translation="catchphrase">アカウントの状態を確認しよう</div>
-                    <button class="download_button" data-translation="install">インストール</button>
+                    <div id="top_text" data-translation="catchphrase">
+                        <%= htmlWebpackPlugin.options.translation.catchphrase %>
+                    </div>
+                    <button class="download_button" data-translation="install">
+                        <%= htmlWebpackPlugin.options.translation.install %>
+                    </button>
                 </div>
                 <img
                     id="top_image"
@@ -76,16 +80,20 @@
                 />
             </section>
             <section id="secondary_section">
-                <h2 data-translation="featuresOfShadowbanScanner">Shadowban Scannerの機能</h2>
+                <h2 data-translation="featuresOfShadowbanScanner">
+                    <%= htmlWebpackPlugin.options.translation.featuresOfShadowbanScanner %>
+                </h2>
                 <div class="secondary_section-item_container">
                     <div class="secondary_section-item">
                         <div class="material-symbols-outlined">person</div>
                         <div class="secondary_section-item_text_container">
                             <h3 data-translation="detectAccountsShadowbanAndSensitiveFlags">
-                                アカウントのシャドウバンとセンシティブ判定を検出
+                                <%= htmlWebpackPlugin.options.translation.detectAccountsShadowbanAndSensitiveFlags %>
                             </h3>
                             <p data-translation="detectAccountsShadowbanAndSensitiveFlagsDescription">
-                                Twitterアカウントがシャドウバンされているかどうかを確認します。また、アカウントがセンシティブ判定を受けているかどうか確認します。自分のアカウントも、他の人のアカウントも確認できます。
+                                <%=
+                                htmlWebpackPlugin.options.translation.detectAccountsShadowbanAndSensitiveFlagsDescription
+                                %>
                             </p>
                         </div>
                     </div>
@@ -93,10 +101,13 @@
                         <div class="material-symbols-outlined">speaker_notes</div>
                         <div class="secondary_section-item_text_container">
                             <h3 data-translation="detectTweetsSensitiveFlagsAndAgeRestrictions">
-                                ツイートのセンシティブ判定と年齢制限を検出
+                                <%= htmlWebpackPlugin.options.translation.detectTweetsSensitiveFlagsAndAgeRestrictions
+                                %>
                             </h3>
                             <p data-translation="detectTweetsSensitiveFlagsAndAgeRestrictionsDescription">
-                                ツイートがセンシティブ判定を受けているか確認します。また、年齢制限がかかっているかどうかも判定できます。
+                                <%=
+                                htmlWebpackPlugin.options.translation.detectTweetsSensitiveFlagsAndAgeRestrictionsDescription
+                                %>
                             </p>
                         </div>
                     </div>
@@ -104,10 +115,11 @@
                         <div class="material-symbols-outlined">photo_library</div>
                         <div class="secondary_section-item_text_container">
                             <h3 data-translation="detectSensitiveFlagsInProfileMedia">
-                                プロフィールのメディアのセンシティブ判定を検出
+                                <%= htmlWebpackPlugin.options.translation.detectSensitiveFlagsInProfileMedia %>
                             </h3>
                             <p data-translation="detectSensitiveFlagsInProfileMediaDescription">
-                                Twitterアカウントのプロフィールのメディアがセンシティブ判定を受けているか確認できます。
+                                <%= htmlWebpackPlugin.options.translation.detectSensitiveFlagsInProfileMediaDescription
+                                %>
                             </p>
                         </div>
                     </div>
@@ -115,10 +127,11 @@
                         <div class="material-symbols-outlined">south_america</div>
                         <div class="secondary_section-item_text_container">
                             <h3 data-translation="detectCountriesBlockingYourAccount">
-                                アカウントをブロックしている国を検出
+                                <%= htmlWebpackPlugin.options.translation.detectCountriesBlockingYourAccount %>
                             </h3>
                             <p data-translation="detectCountriesBlockingYourAccountDescription">
-                                一部の国は、法的な理由でアカウントをブロックしていることがあります。ブロックされている国があるか、またその国がどこかを確認できます。
+                                <%= htmlWebpackPlugin.options.translation.detectCountriesBlockingYourAccountDescription
+                                %>
                             </p>
                         </div>
                     </div>
@@ -126,63 +139,66 @@
                         <div class="material-symbols-outlined">visibility_off</div>
                         <div class="secondary_section-item_text_container">
                             <h3 data-translation="addButtonToShowHiddenTweets">
-                                非表示にされたツイートを表示するボタンを追加
+                                <%= htmlWebpackPlugin.options.translation.addButtonToShowHiddenTweets %>
                             </h3>
                             <p data-translation="addButtonToShowHiddenTweetsDescription">
-                                Twitterでは、外部リンクを含む一部のツイートが非表示にされることがあります。非表示にされたツイートを表示するボタンを追加します。
+                                <%= htmlWebpackPlugin.options.translation.addButtonToShowHiddenTweetsDescription %>
                             </p>
                         </div>
                     </div>
                     <div class="secondary_section-item">
                         <div class="material-symbols-outlined">cloud_off</div>
                         <div class="secondary_section-item_text_container">
-                            <h3 data-translation="noAccessToExternalWebsites">外部サイトへのアクセスなし</h3>
+                            <h3 data-translation="noAccessToExternalWebsites">
+                                <%= htmlWebpackPlugin.options.translation.noAccessToExternalWebsites %>
+                            </h3>
                             <p data-translation="noAccessToExternalWebsitesDescription">
-                                Shadowban
-                                Scannerは、ツイートやプロフィールに結果を直接表示します。外部サイトに移動する必要はありません。また、外部サーバーやTwitterの内部APIにはアクセスしません。あなたのプライバシーとデータを守ります。
+                                <%= htmlWebpackPlugin.options.translation.noAccessToExternalWebsitesDescription %>
                             </p>
                         </div>
                     </div>
                     <div class="secondary_section-item">
                         <div class="material-symbols-outlined">code</div>
                         <div class="secondary_section-item_text_container">
-                            <h3 data-translation="openSource">オープンソース</h3>
+                            <h3 data-translation="openSource">
+                                <%= htmlWebpackPlugin.options.translation.openSource %>
+                            </h3>
                             <p data-translation="openSourceDescription">
-                                ソースコードは<a
-                                    href="https://github.com/Robot-Inventor/shadowban-scanner/"
-                                    target="_blank"
-                                    >GitHub</a
-                                >で公開されています。すべての機能を完全に無料で利用できます。
+                                <%= htmlWebpackPlugin.options.translation.openSourceDescription %>
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
             <section id="download_section">
-                <h2 data-translation="installNow">今すぐインストール</h2>
+                <h2 data-translation="installNow"><%= htmlWebpackPlugin.options.translation.installNow %></h2>
                 <p id="supported_browsers" data-translation="supportedBrowsers">
-                    Shadowban ScannerはChrome、Edge、Firefoxに対応しています。
+                    <%= htmlWebpackPlugin.options.translation.supportedBrowsers %>
                 </p>
-                <button class="download_button suggest" data-translation="install">インストール</button>
-                <h3 data-translation="doYouUseAnotherBrowser">他のブラウザーを使っていますか？</h3>
+                <button class="download_button suggest" data-translation="install">
+                    <%= htmlWebpackPlugin.options.translation.install %>
+                </button>
+                <h3 data-translation="doYouUseAnotherBrowser">
+                    <%= htmlWebpackPlugin.options.translation.doYouUseAnotherBrowser %>
+                </h3>
                 <div id="download_links">
                     <a
                         href="https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/"
                         target="_blank"
                         data-translation="chromeVersion"
-                        >Chrome版</a
+                        ><%= htmlWebpackPlugin.options.translation.chromeVersion %></a
                     >
                     <a
                         href="https://microsoftedge.microsoft.com/addons/detail/shadowban-scanner/kfeecmboomhggeeceipnbbdjmhjoccbl"
                         target="_blank"
                         data-translation="edgeVersion"
-                        >Edge版</a
+                        ><%= htmlWebpackPlugin.options.translation.edgeVersion %></a
                     >
                     <a
                         href="https://addons.mozilla.org/firefox/addon/shadowban-scanner/"
                         target="_blank"
                         data-translation="firefoxVersion"
-                        >Firefox版</a
+                        ><%= htmlWebpackPlugin.options.translation.firefoxVersion %></a
                     >
                 </div>
             </section>
@@ -190,11 +206,9 @@
         <footer>
             <p>Copyright © 2023 ろぼいん All rights reserved.</p>
             <p>
-                <a href="https://roboin.io/privacy/" data-translation="privacyPolicy">プライバシーポリシー</a>・<a
-                    href="https://github.com/Robot-Inventor/shadowban-scanner/"
-                    target="_blank"
-                    >GitHub</a
-                >
+                <a href="https://roboin.io/privacy/" data-translation="privacyPolicy"
+                    ><%= htmlWebpackPlugin.options.translation.privacyPolicy %></a
+                >・<a href="https://github.com/Robot-Inventor/shadowban-scanner/" target="_blank">GitHub</a>
             </p>
         </footer>
         <script src="/js/script.js"></script>
