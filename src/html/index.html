@@ -31,8 +31,8 @@
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
         />
         <link rel="stylesheet" href="/css/style.css" />
-        <link rel="alternate" hreflang="en" href="https://shadowban-scanner.roboin.io/en/?lng=en" />
-        <link rel="alternate" hreflang="ja" href="https://shadowban-scanner.roboin.io/ja/?lng=ja" />
+        <link rel="alternate" hreflang="en" href="https://shadowban-scanner.roboin.io/en/" />
+        <link rel="alternate" hreflang="ja" href="https://shadowban-scanner.roboin.io/ja/" />
         <link rel="alternate" hreflang="x-default" href="https://shadowban-scanner.roboin.io/" />
         <title data-translation="title"><%= htmlWebpackPlugin.options.translation.title %></title>
         <meta
@@ -41,7 +41,12 @@
             data-translation-attribute="content"
             content="<%= htmlWebpackPlugin.options.translation.description %>"
         />
-        <meta property="og:url" content="<%= htmlWebpackPlugin.options.translation.url %>" />
+        <meta
+            property="og:url"
+            data-translation="url"
+            data-translation-attribute="content"
+            content="<%= htmlWebpackPlugin.options.translation.url %>"
+        />
         <meta property="og:type" content="website" />
         <meta
             property="og:title"

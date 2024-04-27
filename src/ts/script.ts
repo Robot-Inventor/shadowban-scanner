@@ -4,10 +4,37 @@ import i18next from "i18next";
 import translationEn from "../translations/en.json";
 import translationJa from "../translations/ja.json";
 
+const crawlerUserAgents = ["googlebot", "bingbot", "google-inspectiontool", "y!j", "yahoo!"];
+const isCrawler = crawlerUserAgents.some((crawlerUserAgent) =>
+    navigator.userAgent.toLowerCase().includes(crawlerUserAgent)
+);
+
+const languageDetectionOrderDefault = [
+    "querystring",
+    "navigator",
+    "htmlTag",
+    "path",
+    "subdomain",
+    "cookie",
+    "localStorage",
+    "sessionStorage"
+];
+
+const languageDetectionOrderCrawler = [
+    "querystring",
+    "path",
+    "navigator",
+    "htmlTag",
+    "subdomain",
+    "cookie",
+    "localStorage",
+    "sessionStorage"
+];
+
 void i18next.use(LanguageDetector).init({
     detection: {
         convertDetectedLanguage: (lng) => lng.split("-")[0],
-        order: ["querystring", "navigator", "htmlTag", "path", "subdomain", "cookie", "localStorage", "sessionStorage"]
+        order: isCrawler ? languageDetectionOrderCrawler : languageDetectionOrderDefault
     },
     fallbackLng: "en",
     resources: {
@@ -16,6 +43,10 @@ void i18next.use(LanguageDetector).init({
     },
     supportedLngs: ["en", "ja"]
 });
+
+if (!isCrawler) {
+    history.replaceState(null, "", `/${i18next.language}/`);
+}
 
 const translationTargets = document.querySelectorAll("[data-translation]");
 translationTargets.forEach((target) => {
