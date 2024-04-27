@@ -47,8 +47,6 @@ const main = async (): Promise<void> => {
     });
 
     if (!isCrawler) {
-        console.log(i18next.language);
-        console.log(i18next.resolvedLanguage);
         history.replaceState(null, "", `/${i18next.language}/`);
     }
 
