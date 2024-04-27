@@ -2,6 +2,7 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
+    "dev": "webpack serve",
     "format": "prettier --write ./src/",
     "format:check": "prettier --check ./src/",
     "lint": "eslint ./src/ts/**/*.ts"
@@ -18,6 +19,7 @@
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.5",
     "webpack": "^5.91.0",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
   }
 }
