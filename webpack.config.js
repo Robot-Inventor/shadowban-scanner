@@ -12,6 +12,16 @@ module.exports = {
         filename: "[name]",
         clean: true
     },
+    devServer: {
+        static: {
+            directory: "./dist"
+        },
+        port: 8080,
+        client: {
+            overlay: false,
+            progress: true
+        }
+    },
     module: {
         rules: [
             {
