@@ -13,6 +13,10 @@ body {
     font-family: "Noto Sans JP", sans-serif;
 }
 
+.material-symbols-outlined {
+    user-select: none;
+}
+
 header {
     width: 100%;
     height: 4rem;
@@ -125,7 +129,6 @@ section h2 {
 .secondary_section-item .material-symbols-outlined {
     font-size: max(8vw, 8rem);
     color: #1d9bf0;
-    user-select: none;
 }
 
 .secondary_section-item_text_container {
