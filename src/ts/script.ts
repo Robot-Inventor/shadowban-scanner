@@ -6,10 +6,10 @@ import translationJa from "../translations/ja.json";
 
 const isCrawler = (): boolean => {
     const crawlerUserAgents = ["googlebot", "bingbot", "google-inspectiontool", "y!j", "yahoo!"];
-    const isCrawler = crawlerUserAgents.some((crawlerUserAgent) =>
+    const result = crawlerUserAgents.some((crawlerUserAgent) =>
         navigator.userAgent.toLowerCase().includes(crawlerUserAgent)
     );
-    return isCrawler;
+    return result;
 };
 
 const initializeDownloadButtons = (): void => {
@@ -89,11 +89,10 @@ const initializeLanguageSwitcher = (): void => {
     });
 
     languageSwitcherSelect.addEventListener("change", () => {
-        i18next.changeLanguage(languageSwitcherSelect.value);
+        void i18next.changeLanguage(languageSwitcherSelect.value);
     });
 };
 
-// eslint-disable-next-line max-statements, max-lines-per-function
 const main = async (): Promise<void> => {
     const languageDetectionOrderDefault = [
         "querystring",
