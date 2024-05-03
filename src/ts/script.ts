@@ -20,15 +20,14 @@ const initializeDownloadButtons = (): void => {
         const isFirefox = navigator.userAgent.toLowerCase().includes("firefox");
         const isEdge = navigator.userAgent.toLowerCase().includes("edg");
 
-        let downloadLink = "https://chrome.google.com/webstore/detail/enlganfikppbjhabhkkilafmkhifadjd/";
+        let downloadLink = "https://chromewebstore.google.com/detail/enlganfikppbjhabhkkilafmkhifadjd";
         let downloadText = i18next.t("installToChrome");
 
         if (isFirefox) {
-            downloadLink = "https://addons.mozilla.org/firefox/addon/shadowban-scanner/";
+            downloadLink = "https://addons.mozilla.org/firefox/addon/{8fee6fa8-6d95-4b9e-9c51-324c207fabff}/";
             downloadText = i18next.t("installToFirefox");
         } else if (isEdge) {
-            downloadLink =
-                "https://microsoftedge.microsoft.com/addons/detail/shadowban-scanner/kfeecmboomhggeeceipnbbdjmhjoccbl";
+            downloadLink = "https://microsoftedge.microsoft.com/addons/detail/kfeecmboomhggeeceipnbbdjmhjoccbl";
             downloadText = i18next.t("installToEdge");
         }
 
