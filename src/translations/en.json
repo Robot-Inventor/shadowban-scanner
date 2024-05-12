@@ -2,7 +2,7 @@
     "translation": {
         "languageCode": "en",
         "url": "https://shadowban-scanner.roboin.io/en/",
-        "title": "Shadowban Scanner - An extension for detecting shadowbans and sensitive flags",
+        "title": "Shadowban Scanner for Twitter / X",
         "description": "This is the official website of Shadowban Scanner, an extension that can detect Twitter (X) shadowbans and sensitive flags.",
         "ogImage": "https://shadowban-scanner.roboin.io/image/ogp_en.png",
         "topImage": "/image/top-en.svg",

@@ -2,7 +2,7 @@
     "translation": {
         "languageCode": "ja",
         "url": "https://shadowban-scanner.roboin.io/ja/",
-        "title": "Shadowban Scanner - シャドウバンやセンシティブ判定を検出できる拡張機能",
+        "title": "Shadowban Scanner for Twitter / X",
         "description": "Twitter（X）のシャドウバンやセンシティブ判定を検出できる拡張機能「Shadowban Scanner」の公式サイトです。",
         "ogImage": "https://shadowban-scanner.roboin.io/image/ogp_ja.png",
         "topImage": "/image/top-ja.svg",
