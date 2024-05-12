@@ -13,7 +13,7 @@
     "eslint": "^9.1.1",
     "html-webpack-plugin": "^5.6.0",
     "i18next": "^23.11.2",
-    "i18next-browser-languagedetector": "^7.2.1",
+    "i18next-browser-languagedetector": "^8.0.0",
     "prettier": "^3.2.5",
     "sweetalert2": "^11.10.8",
     "ts-loader": "^9.5.1",
