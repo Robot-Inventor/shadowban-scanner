@@ -28,7 +28,7 @@ class RunCommandsPlugin {
     }
 
     updateManifest() {
-        exec("npx ts-node ./script/copyManifest.ts", (err, stdout, stderr) => {
+        exec("npx tsx ./script/copyManifest.ts", (err, stdout, stderr) => {
             if (err) {
                 console.error(`Error: ${err}`);
             } else {
@@ -78,7 +78,7 @@ class RunCommandsPlugin {
         compiler.hooks.afterEmit.tapAsync("RunCommandsPlugin", (compilation, callback) => {
             this.updateManifest();
 
-            exec("npx ts-node ./script/updatePrivacyPolicy.ts", (err, stdout, stderr) => {
+            exec("npx tsx ./script/updatePrivacyPolicy.ts", (err, stdout, stderr) => {
                 if (err) {
                     console.error(`Error: ${err}`);
                 } else {
@@ -86,7 +86,7 @@ class RunCommandsPlugin {
                 }
             });
 
-            exec("npx ts-node ./script/addUserScriptsComment.ts", (err, stdout, stderr) => {
+            exec("npx tsx ./script/addUserScriptsComment.ts", (err, stdout, stderr) => {
                 if (err) {
                     console.error(`Error: ${err}`);
                 } else {

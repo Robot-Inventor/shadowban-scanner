@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "npx eslint ./src/ts/**/*.ts && npx knip && ts-node --files ./script/addonsLinter.ts",
+    "lint": "npx eslint ./src/ts/**/*.ts && npx knip && tsx ./script/addonsLinter.ts",
     "format": "npx prettier --write ./src/ts/**/*.ts ./src/html/**/*.html ./src/css/**/*.css",
     "format:check": "npx prettier --check ./src/ts/**/*.ts ./src/html/**/*.html ./src/css/**/*.css",
     "build": "npx webpack",
     "watch": "npx webpack --watch",
-    "package": "ts-node ./script/package.ts",
+    "package": "tsx ./script/package.ts",
     "version": "npm run package && git add ."
   },
   "repository": {
@@ -44,7 +44,6 @@
     "style-loader": "^4.0.0",
     "ts-auto-guard": "^4.1.3",
     "ts-loader": "^9.4.3",
-    "ts-node": "^10.9.1",
     "twi-ext": "^0.8.0",
     "typescript": "^5.1.3",
     "web-ext": "^7.6.2",
@@ -57,6 +56,7 @@
     "@robot-inventor/eslint-config": "^0.1.1",
     "@types/addons-linter": "^6.16.0",
     "@types/webextension-polyfill": "^0.10.4",
-    "knip": "^5.0.0"
+    "knip": "^5.0.0",
+    "tsx": "^4.10.1"
   }
 }
