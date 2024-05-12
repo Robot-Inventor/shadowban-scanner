@@ -8,9 +8,6 @@
     "ignoreDependencies": [
         "web-ext",
         "ts-auto-guard",
-        "addons-linter",
-        "@types/addons-linter",
-        "colors",
         "@pnpm/logger"
     ],
     "ignore": [
