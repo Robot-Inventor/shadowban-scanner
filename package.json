@@ -10,6 +10,7 @@
     "format:check": "npx prettier --check ./src/ts/**/*.ts ./src/html/**/*.html ./src/css/**/*.css",
     "build": "npx webpack",
     "watch": "npx webpack --watch",
+    "ci:build": "npx webpack --env updateUserScripts",
     "package": "tsx ./script/package.ts",
     "version": "npm run package && git add ."
   },
