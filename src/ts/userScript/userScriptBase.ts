@@ -1,7 +1,8 @@
 import "../../css/style.css";
-import { TranslationData, Translator } from "../common/translator";
 import { Core } from "../core/core";
 import { DEFAULT_SETTINGS } from "../common/defaultSettings";
+import type { TranslationData } from "../../types/common/translator";
+import { Translator } from "../common/translator";
 
 /**
  * Base class of the user script.

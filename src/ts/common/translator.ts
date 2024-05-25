@@ -75,4 +75,4 @@ class Translator {
     }
 }
 
-export { TranslationData, Translator };
+export { Translator };
