@@ -31,6 +31,6 @@ jobs:
                   title: "ci: update userscripts"
                   base: main
                   body: |
-                      This PR was automatically generated to update the userscripts. It contains the latest changes from the main branch, and should be merged when the new rekease is ready.
+                      This PR was automatically generated to update the userscripts. It contains the latest changes from the main branch, and should be merged when the new release is ready.
                   branch: update-userscripts
                   reviewers: Robot-Inventor
