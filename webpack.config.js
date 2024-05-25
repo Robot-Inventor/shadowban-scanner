@@ -13,6 +13,10 @@ for (const userScript of userScripts) {
 }
 
 class RunCommandsPlugin {
+    constructor(env) {
+        this.env = env;
+    }
+
     generateTypeGuards(callback) {
         console.log("Generating type guards...");
         exec("npx ts-auto-guard ./src/types/**/*.ts", (err, stdout, stderr) => {
@@ -86,14 +90,18 @@ class RunCommandsPlugin {
                 }
             });
 
-            exec("npx tsx ./script/addUserScriptsComment.ts", (err, stdout, stderr) => {
-                if (err) {
-                    console.error(`Error: ${err}`);
-                } else {
-                    console.log(stdout);
-                }
+            if (this.env.updateUserScripts) {
+                exec("npx tsx ./script/addUserScriptsComment.ts", (err, stdout, stderr) => {
+                    if (err) {
+                        console.error(`Error: ${err}`);
+                    } else {
+                        console.log(stdout);
+                    }
+                    callback();
+                });
+            } else {
                 callback();
-            });
+            }
         });
     }
 }
@@ -163,57 +171,59 @@ const unacceptableLicenseTest = (licenseIdentifier) => {
     return !acceptableLicenses.includes(licenseIdentifier);
 }
 
-module.exports = {
-    mode: "production",
-    entry: {
-        ...chromeScripts,
-        ...firefoxScripts,
-        ...userScriptEntries
-    },
-    output: {
-        filename: "[name]",
-        clean: true
-    },
-    module: {
-        rules: [
-            {
-                test: /\.ts$/,
-                use: "ts-loader"
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    "style-loader",
-                    "css-loader"
-                ]
-            }
-        ]
-    },
-    resolve: {
-        extensions: [".ts", ".js"]
-    },
-    watchOptions: {
-        ignored: /src\/types\/.*(?<!\.d\.ts)$/,
-    },
-    plugins: [
-        new RunCommandsPlugin(),
-        new CopyFilePlugin({
-            patterns: [
-                ...chromeCopyTargets,
-                ...firefoxCopyTargets
+module.exports = (env) => {
+    return {
+        mode: "production",
+        entry: {
+            ...chromeScripts,
+            ...firefoxScripts,
+            ...(env.updateUserScripts ? userScriptEntries : {})
+        },
+        output: {
+            filename: "[name]",
+            clean: true
+        },
+        module: {
+            rules: [
+                {
+                    test: /\.ts$/,
+                    use: "ts-loader"
+                },
+                {
+                    test: /\.css$/,
+                    use: [
+                        "style-loader",
+                        "css-loader"
+                    ]
+                }
             ]
-        }),
-        new LicensePlugin(
-            {
-                outputFilename: "./chrome/json/oss-licenses.json",
-                unacceptableLicenseTest
-            }
-        ),
-        new LicensePlugin(
-            {
-                outputFilename: "./firefox/json/oss-licenses.json",
-                unacceptableLicenseTest
-            }
-        )
-    ]
+        },
+        resolve: {
+            extensions: [".ts", ".js"]
+        },
+        watchOptions: {
+            ignored: /src\/types\/.*(?<!\.d\.ts)$/,
+        },
+        plugins: [
+            new RunCommandsPlugin(env),
+            new CopyFilePlugin({
+                patterns: [
+                    ...chromeCopyTargets,
+                    ...firefoxCopyTargets
+                ]
+            }),
+            new LicensePlugin(
+                {
+                    outputFilename: "./chrome/json/oss-licenses.json",
+                    unacceptableLicenseTest
+                }
+            ),
+            new LicensePlugin(
+                {
+                    outputFilename: "./firefox/json/oss-licenses.json",
+                    unacceptableLicenseTest
+                }
+            )
+        ]
+    }
 };

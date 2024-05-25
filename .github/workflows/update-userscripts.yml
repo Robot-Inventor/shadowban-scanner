@@ -1,0 +1,36 @@
+name: Update userscripts
+
+on:
+    push:
+        branches: [main]
+
+jobs:
+    format:
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                node-version: [21.x]
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - run: npm ci
+
+            - run: npm run ci:build
+
+            - uses: peter-evans/create-pull-request@v6
+              with:
+                  commit-message: "ci: update userscripts"
+                  delete-branch: true
+                  title: "ci: update userscripts"
+                  base: main
+                  body: |
+                      This PR was automatically generated to update the userscripts.
+                  branch: update-userscripts
+                  reviewers: Robot-Inventor
