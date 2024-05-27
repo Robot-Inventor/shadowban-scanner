@@ -3,15 +3,11 @@ import browser from "webextension-polyfill";
 
 /**
  * This function is called when the extension is updated.
- * - If the extension is updated from v1 to v2, migrate settings from v1 to v2.
- * - If the extension is updated from v2 to v2.1, migrate settings from v2 to v2.1.
  * - If the extension is not under development, open the release note page.
  * @param details details of the update
  * @param isJapanese if the user's language is Japanese
  */
 const onUpdated = (details: browser.Runtime.OnInstalledDetailsType, isJapanese: boolean): void => {
-    // Temporary disable release note page
-    return;
     // Do nothing while development
     if (details.previousVersion === browser.runtime.getManifest().version) return;
 
