@@ -3,7 +3,7 @@ import { SbsMessageWrapperOptionsForProfiles, SbsMessageWrapperOptionsForTweets 
 import { Settings } from "../../types/common/settings";
 import { ShareTextGenerator } from "./shareTextGenerator";
 import { TranslationKeyProvider } from "./translationKeyProvider";
-import { Tweet } from "twi-ext";
+import type { Tweet } from "twi-ext";
 
 class MessageDataGenerator {
     public static generateForProfile(
