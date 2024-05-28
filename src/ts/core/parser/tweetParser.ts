@@ -1,6 +1,4 @@
 import type { BasicTweetProps, Tweet } from "twi-ext";
-import { getReactProps } from "./utility";
-import { isFocalTweetOuterReactPropsData } from "../../../types/core/reactProps/reactProps.guard";
 
 /**
  * React props of the tweet.
@@ -22,15 +20,6 @@ class TweetParser {
      */
     public parse(): BasicTweetProps {
         return this.tweet.props;
-    }
-
-    /**
-     * Check whether the tweet is focal.
-     * @returns whether the tweet is focal
-     */
-    public get isFocal(): boolean {
-        const tweetReactProps = getReactProps(this.tweet.element);
-        return isFocalTweetOuterReactPropsData(tweetReactProps);
     }
 }
 

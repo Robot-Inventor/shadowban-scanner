@@ -3,7 +3,7 @@ import { SbsMessageWrapperOptionsForProfiles, SbsMessageWrapperOptionsForTweets 
 import { Settings } from "../../types/common/settings";
 import { ShareTextGenerator } from "./shareTextGenerator";
 import { TranslationKeyProvider } from "./translationKeyProvider";
-import type { Tweet } from "twi-ext";
+import { Tweet } from "twi-ext";
 
 class MessageDataGenerator {
     public static generateForProfile(
@@ -29,11 +29,9 @@ class MessageDataGenerator {
     ): SbsMessageWrapperOptionsForTweets {
         const translations = TranslationKeyProvider.fromTweetAnalyzer(analyzer);
         const tweetText = ShareTextGenerator.generateShareText(analyzer);
-        const { meta } = analyzer;
 
         return {
             ...translations,
-            ...meta,
 
             isAlert: analyzer.tweet.hasAnyProblem,
             isExpanded: options.alwaysDetailedView,
