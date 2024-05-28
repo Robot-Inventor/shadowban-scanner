@@ -29,11 +29,9 @@ class MessageDataGenerator {
     ): SbsMessageWrapperOptionsForTweets {
         const translations = TranslationKeyProvider.fromTweetAnalyzer(analyzer);
         const tweetText = ShareTextGenerator.generateShareText(analyzer);
-        const { meta } = analyzer;
 
         return {
             ...translations,
-            ...meta,
 
             isAlert: analyzer.tweet.hasAnyProblem,
             isExpanded: options.alwaysDetailedView,

@@ -14,7 +14,6 @@ interface SbsMessageWrapperOptionsForTweets {
     notes: TranslationKey[];
 
     isAlert: boolean;
-    isFocal: boolean;
     isExpanded: boolean;
     isTweetButtonShown: boolean;
     isNoteShown: boolean;
@@ -51,7 +50,7 @@ class SbsMessageWrapper {
             this.tweet = options.tweet;
             sbsMessage.details = options.details;
             sbsMessage.notes = options.notes;
-            sbsMessage.isFocalMode = options.isFocal;
+            sbsMessage.isFocalMode = options.tweet.metadata.isFocalMode;
             sbsMessage.isExpanded = options.isExpanded;
             sbsMessage.isTweetButtonShown = options.isTweetButtonShown;
             sbsMessage.isNoteShown = options.isNoteShown;

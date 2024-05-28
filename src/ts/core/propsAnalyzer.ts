@@ -18,10 +18,6 @@ interface TweetAnalysisResult extends ProfileAnalysisResult {
         possiblySensitive: boolean;
         searchability: "searchable" | "unsearchable" | "possiblyUnsearchable";
     };
-
-    meta: {
-        isFocal: boolean;
-    };
 }
 
 class PropsAnalyzer {
@@ -64,10 +60,6 @@ class PropsAnalyzer {
 
         return {
             ...userAnalysisResult,
-
-            meta: {
-                isFocal: parser.isFocal
-            },
 
             tweet: {
                 ageRestriction,
