@@ -76,11 +76,8 @@ class PropsAnalyzer {
         // eslint-disable-next-line no-underscore-dangle, no-undefined
         if (!cellInnerDivProps.children._owner) return undefined;
 
-        const showReplyContext = Array.isArray(grandchildProps.children)
-            ? grandchildProps.children[0].props.entry.conversationPosition.showReplyContext
-            : grandchildProps.children.props.entry.conversationPosition.showReplyContext;
         // eslint-disable-next-line no-undefined
-        if (showReplyContext) return undefined;
+        if (grandchildProps.children[0].props.entry.conversationPosition.showReplyContext) return undefined;
 
         // eslint-disable-next-line no-underscore-dangle
         const { key } = cellInnerDivProps.children._owner;
