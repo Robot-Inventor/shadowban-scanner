@@ -1,6 +1,6 @@
-import { CellInnerDivProps } from "../../../types/core/reactProps/reactProps";
+import { CellInnerDivProps, TombstoneGrandchildProps } from "../../../types/core/reactProps/reactProps";
+import { isCellInnerDivProps, isTombstoneGrandchildProps } from "../../../types/core/reactProps/reactProps.guard";
 import { getReactProps } from "./utility";
-import { isCellInnerDivProps } from "../../../types/core/reactProps/reactProps.guard";
 
 class TombstoneParser {
     private readonly element: HTMLElement;
@@ -9,11 +9,17 @@ class TombstoneParser {
         this.element = element;
     }
 
-    public parse(): CellInnerDivProps {
-        const props = getReactProps(this.element);
-        if (!isCellInnerDivProps(props)) throw new Error("Type of props is invalid.");
+    public parse(): [CellInnerDivProps, TombstoneGrandchildProps] {
+        const cellInnerDivProps = getReactProps(this.element);
+        if (!isCellInnerDivProps(cellInnerDivProps)) throw new Error("Type of props is invalid.");
 
-        return props;
+        const grandchild = this.element.querySelector<HTMLElement>("div > div");
+        if (!grandchild) throw new Error("Failed to get the tombstone's grandchild element.");
+
+        const grandchildProps = getReactProps(grandchild);
+        if (!isTombstoneGrandchildProps(grandchildProps)) throw new Error("Type of grandchild props is invalid.");
+
+        return [cellInnerDivProps, grandchildProps];
     }
 }
 
