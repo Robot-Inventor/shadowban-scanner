@@ -7,25 +7,39 @@ export interface CellInnerDivProps {
     };
 }
 
+interface TombstoneGrandchildPropsChildren {
+    props: {
+        entry: {
+            type: "tombstone";
+            conversationPosition: {
+                /**
+                 * If true, the account may be suspended.
+                 * If false, the account may exist but the tweet is hidden.
+                 */
+                showReplyContext: boolean;
+            };
+        };
+    };
+}
+
+/**
+ * (tombstones' cell inner div) > div > div    <- This element is the tombstone's grandchild and has detailed information.
+ * @see {isTombstoneGrandchildPropsSimpleChildren} ts-auto-guard:type-guard
+ */
+export interface TombstoneGrandchildPropsSimpleChildren {
+    children: TombstoneGrandchildPropsChildren;
+}
+
+/**
+ * (tombstones' cell inner div) > div > div    <- This element is the tombstone's grandchild and has detailed information.
+ * @see {isTombstoneGrandchildPropsArrayChildren} ts-auto-guard:type-guard
+ */
+export interface TombstoneGrandchildPropsArrayChildren {
+    children: [TombstoneGrandchildPropsChildren];
+}
+
 /**
  * (tombstones' cell inner div) > div > div    <- This element is the tombstone's grandchild and has detailed information.
  * @see {isTombstoneGrandchildProps} ts-auto-guard:type-guard
  */
-export interface TombstoneGrandchildProps {
-    children: [
-        {
-            props: {
-                entry: {
-                    type: "tombstone";
-                    conversationPosition: {
-                        /**
-                         * If true, the account may be suspended.
-                         * If false, the account may exist but the tweet is hidden.
-                         */
-                        showReplyContext: boolean;
-                    };
-                };
-            };
-        }
-    ];
-}
+export type TombstoneGrandchildProps = TombstoneGrandchildPropsSimpleChildren | TombstoneGrandchildPropsArrayChildren;
