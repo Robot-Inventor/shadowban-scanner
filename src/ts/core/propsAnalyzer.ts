@@ -1,4 +1,4 @@
-import type { CellInnerDivProps } from "../../types/core/reactProps/reactProps";
+import type { CellInnerDivProps, TombstoneGrandchildProps } from "../../types/core/reactProps/reactProps";
 import type { TweetParser } from "./parser/tweetParser";
 import type { UserProps } from "twi-ext";
 
@@ -70,12 +70,17 @@ class PropsAnalyzer {
         };
     }
 
-    public static analyzeTombstoneProps(props: CellInnerDivProps): string | undefined {
+    public static analyzeTombstoneProps(props: [CellInnerDivProps, TombstoneGrandchildProps]): string | undefined {
+        const [cellInnerDivProps, grandchildProps] = props;
+
         // eslint-disable-next-line no-underscore-dangle, no-undefined
-        if (!props.children._owner) return undefined;
+        if (!cellInnerDivProps.children._owner) return undefined;
+
+        // eslint-disable-next-line no-undefined
+        if (grandchildProps.children[0].props.entry.conversationPosition.showReplyContext) return undefined;
 
         // eslint-disable-next-line no-underscore-dangle
-        const { key } = props.children._owner;
+        const { key } = cellInnerDivProps.children._owner;
         // Extract tweet ID from `conversationthread-${string}-tweet-${string}`
         // eslint-disable-next-line prefer-destructuring
         const tweetId = key.split("-")[3];

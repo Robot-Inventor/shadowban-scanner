@@ -6,3 +6,26 @@ export interface CellInnerDivProps {
         };
     };
 }
+
+/**
+ * (tombstones' cell inner div) > div > div    <- This element is the tombstone's grandchild and has detailed information.
+ * @see {isTombstoneGrandchildProps} ts-auto-guard:type-guard
+ */
+export interface TombstoneGrandchildProps {
+    children: [
+        {
+            props: {
+                entry: {
+                    type: "tombstone";
+                    conversationPosition: {
+                        /**
+                         * If true, the account may be suspended.
+                         * If false, the account may exist but the tweet is hidden.
+                         */
+                        showReplyContext: boolean;
+                    };
+                };
+            };
+        }
+    ];
+}
