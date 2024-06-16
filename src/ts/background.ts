@@ -8,6 +8,8 @@ import browser from "webextension-polyfill";
  * @param isJapanese if the user's language is Japanese
  */
 const onUpdated = (details: browser.Runtime.OnInstalledDetailsType, isJapanese: boolean): void => {
+    // Temporarily disable the release note page
+    return;
     // Do nothing while development
     if (details.previousVersion === browser.runtime.getManifest().version) return;
 
