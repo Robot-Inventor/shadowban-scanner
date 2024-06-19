@@ -68,41 +68,9 @@ This extension is released under the MIT License.
 
 However, the badge images of each extension store are not subject to the MIT license, and instead are subject to their own branding guidelines and licenses.
 
-## Adding Language Localization
+## Contributing
 
-To add a new language, see the [Localization Guide (English)](doc/localization.md).
-
-## Development
-
-### Build
-
-```console
-npm run build
-```
-
-### Watch
-
-```console
-npm run watch
-```
-
-### Lint
-
-```console
-npm run lint
-```
-
-### Format
-
-```console
-npm run format
-```
-
-### Package
-
-```console
-npm run package
-```
+To change the code or improve documentation and translations, see the [Contributing Guide](CONTRIBUTING.md).
 
 ## Release Procedure
 
