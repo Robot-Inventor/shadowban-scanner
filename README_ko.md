@@ -10,6 +10,10 @@ Twitter의 Shadowban을 감지하는 확장 기능입니다.
 
 ※이 문서는 인공지능을 사용하여 일본어에서 한국어로 번역되었습니다. 부자연스러운 점이 있다면 보고해주세요.
 
+<p align="center">
+<a href="https://www.buymeacoffee.com/keita_roboin"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=keita_roboin&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff" /></a>
+</p>
+
 ## 설치
 
 <p align="center">
