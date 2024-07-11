@@ -215,13 +215,15 @@ module.exports = (env) => {
             new LicensePlugin(
                 {
                     outputFilename: "./chrome/json/oss-licenses.json",
-                    unacceptableLicenseTest
+                    unacceptableLicenseTest,
+                    includeNoticeText: true
                 }
             ),
             new LicensePlugin(
                 {
                     outputFilename: "./firefox/json/oss-licenses.json",
-                    unacceptableLicenseTest
+                    unacceptableLicenseTest,
+                    includeNoticeText: true
                 }
             )
         ]
