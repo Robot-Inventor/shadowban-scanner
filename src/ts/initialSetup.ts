@@ -165,7 +165,7 @@ const main = (): void => {
 
     const translator = new Translator(
         (messageName, substitutions) => browser.i18n.getMessage(messageName, substitutions),
-        browser.runtime.getURL("dist/image/")
+        browser.runtime.getURL("image/")
     );
     translator.translateElements();
 
