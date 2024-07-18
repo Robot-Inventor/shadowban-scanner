@@ -6,7 +6,7 @@ const SHADOW_TRANSLATION_ATTRIBUTE = "data-sb-shadow-translation";
 const TWEMOJI_ATTRIBUTE = "data-sb-enable-twemoji";
 const ALLOWED_TWEMOJI = ["✅", "🚫", "⚠️"];
 
-const ONBOARDING_PATH = "dist/html/initialSetup.html";
+const ONBOARDING_PATH = "html/initialSetup.html";
 const RELEASE_NOTE_URL = {
     en: "https://roboin.io/article/2024/05/27/shadowban-scanner-reaches-over-10000-users/en/",
     ja: "https://roboin.io/article/2024/05/27/shadowban-scanner-reaches-over-10000-users/"

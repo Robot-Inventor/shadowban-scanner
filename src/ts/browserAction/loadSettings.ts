@@ -58,7 +58,7 @@ const createSettingsItem = (settingsName: string, translationKey: string, checke
  * Run translation.
  */
 const runTranslation = (): void => {
-    const translator = new Translator((key) => browser.i18n.getMessage(key), browser.runtime.getURL("dist/image/"));
+    const translator = new Translator((key) => browser.i18n.getMessage(key), browser.runtime.getURL("image/"));
     translator.translateElements();
 };
 
