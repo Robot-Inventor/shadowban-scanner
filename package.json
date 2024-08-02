@@ -8,7 +8,7 @@
     "lint": "eslint ./src/ts/**/*.ts"
   },
   "dependencies": {
-    "@robot-inventor/eslint-config": "^0.2.0",
+    "@robot-inventor/eslint-config": "^1.0.0",
     "copy-webpack-plugin": "^12.0.2",
     "eslint": "^9.1.1",
     "html-webpack-plugin": "^5.6.0",
