@@ -7,6 +7,7 @@ import { Translator } from "../common/translator";
 /**
  * Base class of the user script.
  */
+// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 class UserScriptBase {
     public constructor(translationData: TranslationData) {
         const translator = new Translator((key, substitutions) => {
@@ -16,7 +17,7 @@ class UserScriptBase {
                 // eslint-disable-next-line id-length
                 for (let i = 0; i < substitutionsArray.length; i++) {
                     // eslint-disable-next-line no-magic-numbers
-                    result = result.replace(`$${i + 1}`, substitutionsArray[i]);
+                    result = result.replace(`$${String(i + 1)}`, substitutionsArray[i]);
                 }
                 return result;
             }

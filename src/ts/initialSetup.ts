@@ -205,4 +205,5 @@ const main = (): void => {
         }
     });
 };
-void main();
+
+main();

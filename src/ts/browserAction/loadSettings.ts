@@ -72,13 +72,16 @@ const createItemsFromData = (
     settings: Settings,
     data: (typeof SETTINGS_ITEMS)[number]
 ): SettingsSeparator | SettingsItem => {
-    if (data.type === "separator") {
-        return createSettingsSeparator(data.translationKey);
-    } else if (data.type === "checkbox") {
-        return createSettingsItem(data.settingsName, data.translationKey, settings[data.settingsName]);
-    }
+    switch (data.type) {
+        case "separator":
+            return createSettingsSeparator(data.translationKey);
 
-    throw new Error("Invalid data");
+        case "checkbox":
+            return createSettingsItem(data.settingsName, data.translationKey, settings[data.settingsName]);
+
+        default:
+            throw new Error("Invalid type");
+    }
 };
 
 /**

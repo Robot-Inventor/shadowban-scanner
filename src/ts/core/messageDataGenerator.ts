@@ -5,6 +5,7 @@ import { ShareTextGenerator } from "./shareTextGenerator";
 import { TranslationKeyProvider } from "./translationKeyProvider";
 import type { Tweet } from "twi-ext";
 
+// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 class MessageDataGenerator {
     public static generateForProfile(
         analyzer: ProfileAnalysisResult,

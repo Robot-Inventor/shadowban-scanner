@@ -57,7 +57,7 @@ class SettingsItem extends LitElement {
     }
 
     private changeHandler(): void {
-        this.checked = this.checkbox.checked ?? false;
+        this.checked = this.checkbox.checked;
         const event = new Event("change", { bubbles: true, composed: true });
         this.dispatchEvent(event);
     }

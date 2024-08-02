@@ -20,6 +20,7 @@ interface TweetAnalysisResult extends ProfileAnalysisResult {
     };
 }
 
+// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 class PropsAnalyzer {
     public static analyzeProfileProps(props: UserProps): ProfileAnalysisResult {
         const possiblySensitive = Boolean(props.possibly_sensitive);
