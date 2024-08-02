@@ -46,7 +46,6 @@ class SbsMessageWrapper {
         sbsMessage.onRenderedCallback = options.onRenderedCallback;
 
         if (options.type === "tweet") {
-            if (!options.tweet) throw new Error("Tweet data is missing");
             this.tweet = options.tweet;
             sbsMessage.details = options.details;
             sbsMessage.notes = options.notes;

@@ -3,6 +3,7 @@ import { SbsMessageWrapperOptionsForProfiles, SbsMessageWrapperOptionsForTweets 
 import { SbsMessageDetails } from "../components/sbsMessage";
 import type { TranslationKey } from "../../types/common/translator";
 
+// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 class TranslationKeyProvider {
     public static fromProfileAnalyzer(
         analyzer: ProfileAnalysisResult
