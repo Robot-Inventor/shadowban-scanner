@@ -68,7 +68,10 @@ const onLanguageChanged = (): void => {
 
     const translationTargets = document.querySelectorAll("[data-translation]");
     translationTargets.forEach((target) => {
-        const key = target.getAttribute("data-translation")!;
+        const key = target.getAttribute("data-translation");
+        if (!key) {
+            throw new Error("data-translation attribute is not set.");
+        }
         const targetAttribute = target.getAttribute("data-translation-attribute");
         if (targetAttribute) {
             target.setAttribute(targetAttribute, i18next.t(key));
@@ -81,8 +84,14 @@ const onLanguageChanged = (): void => {
 };
 
 const initializeLanguageSwitcher = (): void => {
-    const languageSwitcher = document.querySelector("#language_switcher")!;
-    const languageSwitcherSelect = document.querySelector<HTMLSelectElement>("#language_switcher-select")!;
+    const languageSwitcher = document.querySelector("#language_switcher");
+    if (!languageSwitcher) {
+        throw new Error("Language switcher element is not found.");
+    }
+    const languageSwitcherSelect = document.querySelector<HTMLSelectElement>("#language_switcher-select");
+    if (!languageSwitcherSelect) {
+        throw new Error("Language switcher select element is not found.");
+    }
     languageSwitcherSelect.value = i18next.language;
 
     languageSwitcher.addEventListener("click", () => {
