@@ -2,7 +2,7 @@ import "../components/settingsItem";
 import "../components/settingsSeparator";
 import { DEFAULT_SETTINGS } from "../common/defaultSettings";
 import { SETTINGS_ITEMS } from "./settingsItems";
-import { Settings } from "../../types/common/settings";
+import type { Settings } from "../../types/common/settings";
 // eslint-disable-next-line no-duplicate-imports
 import type { SettingsItem } from "../components/settingsItem";
 // eslint-disable-next-line no-duplicate-imports

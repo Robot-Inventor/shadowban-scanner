@@ -1,6 +1,6 @@
-import { ProfileAnalysisResult, TweetAnalysisResult } from "./propsAnalyzer";
-import { SbsMessageWrapperOptionsForProfiles, SbsMessageWrapperOptionsForTweets } from "./sbsMessageWrapper";
-import { SbsMessageDetails } from "../components/sbsMessage";
+import type { ProfileAnalysisResult, TweetAnalysisResult } from "./propsAnalyzer";
+import type { SbsMessageWrapperOptionsForProfiles, SbsMessageWrapperOptionsForTweets } from "./sbsMessageWrapper";
+import type { SbsMessageDetails } from "../components/sbsMessage";
 import type { TranslationKey } from "../../types/common/translator";
 
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class
