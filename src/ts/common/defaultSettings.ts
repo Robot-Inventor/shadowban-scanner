@@ -1,4 +1,4 @@
-import { Settings } from "../../types/common/settings";
+import type { Settings } from "../../types/common/settings";
 
 /**
  * Default settings used in the extension's initial state and user scripts.
