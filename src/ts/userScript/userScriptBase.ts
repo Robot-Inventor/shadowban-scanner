@@ -4,30 +4,24 @@ import { DEFAULT_SETTINGS } from "../common/defaultSettings";
 import type { TranslationData } from "../../types/common/translator";
 import { Translator } from "../common/translator";
 
-/**
- * Base class of the user script.
- */
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class
-class UserScriptBase {
-    public constructor(translationData: TranslationData) {
-        const translator = new Translator((key, substitutions) => {
-            if (substitutions) {
-                const substitutionsArray = typeof substitutions === "string" ? [substitutions] : substitutions;
-                let result = translationData[key].message;
-                // eslint-disable-next-line id-length
-                for (let i = 0; i < substitutionsArray.length; i++) {
-                    // eslint-disable-next-line no-magic-numbers
-                    result = result.replace(`$${String(i + 1)}`, substitutionsArray[i]);
-                }
-                return result;
+const createUserScript = (translationData: TranslationData): void => {
+    const translator = new Translator((key, substitutions) => {
+        if (substitutions) {
+            const substitutionsArray = typeof substitutions === "string" ? [substitutions] : substitutions;
+            let result = translationData[key].message;
+            // eslint-disable-next-line id-length
+            for (let i = 0; i < substitutionsArray.length; i++) {
+                // eslint-disable-next-line no-magic-numbers
+                result = result.replace(`$${String(i + 1)}`, substitutionsArray[i]);
             }
-            return translationData[key].message;
-        }, "https://abs-0.twimg.com/emoji/v2/svg/");
+            return result;
+        }
+        return translationData[key].message;
+    }, "https://abs-0.twimg.com/emoji/v2/svg/");
 
-        new Core(DEFAULT_SETTINGS, () => {
-            translator.translateElements();
-        });
-    }
-}
+    new Core(DEFAULT_SETTINGS, () => {
+        translator.translateElements();
+    });
+};
 
-export { UserScriptBase };
+export { createUserScript };
