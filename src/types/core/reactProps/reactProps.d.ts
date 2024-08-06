@@ -8,7 +8,7 @@ export interface CellInnerDivProps {
 }
 
 /**
- * (tombstones' cell inner div) > div > div    <- This element is the tombstone's grandchild and has detailed information.
+ * (tombstones' cell inner div) > div > div  <- This element is the tombstone's grandchild and has detailed information.
  * @see {isTombstoneGrandchildProps} ts-auto-guard:type-guard
  */
 export interface TombstoneGrandchildProps {

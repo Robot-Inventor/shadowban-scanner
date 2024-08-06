@@ -1,3 +1,10 @@
 const { eslintConfigNoJSDoc } = require("@robot-inventor/eslint-config");
 
-module.exports = eslintConfigNoJSDoc;
+module.exports = [
+    {
+        ignores: [
+            "**/*.guard.ts",
+        ]
+    },
+    ...eslintConfigNoJSDoc
+];

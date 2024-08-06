@@ -1,4 +1,4 @@
-import enTranslation from "../../../src/_locales/en/messages.json";
+import type enTranslation from "../../../src/_locales/en/messages.json";
 
 type TranslationData = typeof enTranslation;
 type TranslationKey = keyof TranslationData;
