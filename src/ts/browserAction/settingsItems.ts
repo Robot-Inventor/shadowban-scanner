@@ -1,3 +1,19 @@
+import type { Settings } from "../../types/common/settings";
+import type { TranslationKey } from "../../types/common/translator";
+
+interface SettingsItem {
+    settingsName: keyof Settings;
+    translationKey: TranslationKey;
+    type: "checkbox";
+}
+
+interface SettingsSeparator {
+    translationKey: TranslationKey;
+    type: "separator";
+}
+
+type SettingsItems = (SettingsItem | SettingsSeparator)[];
+
 const SETTINGS_ITEMS = [
     {
         translationKey: "settingsWhereToDisplayCheckResults",
@@ -41,7 +57,12 @@ const SETTINGS_ITEMS = [
         settingsName: "showTweetButton",
         translationKey: "settingsShowTweetButton",
         type: "checkbox"
+    },
+    {
+        settingsName: "enableOnXPro",
+        translationKey: "settingsEnableOnXPro",
+        type: "checkbox"
     }
-] as const;
+] as const satisfies SettingsItems;
 
 export { SETTINGS_ITEMS };

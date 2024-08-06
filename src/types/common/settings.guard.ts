@@ -16,6 +16,7 @@ export function isSettings(obj: unknown): obj is Settings {
         typeof typedObj["showMessagesInUnproblematicProfiles"] === "boolean" &&
         typeof typedObj["showMessagesInUnproblematicTweets"] === "boolean" &&
         typeof typedObj["showNotesInMessages"] === "boolean" &&
-        typeof typedObj["showTweetButton"] === "boolean"
+        typeof typedObj["showTweetButton"] === "boolean" &&
+        typeof typedObj["enableOnXPro"] === "boolean"
     )
 }

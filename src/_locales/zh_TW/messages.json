@@ -111,6 +111,10 @@
     "settingsShowTweetButton": {
         "message": "顯示分享按鈕"
     },
+    "settingsEnableOnXPro": {
+        "message": "在 X Pro 上執行",
+        "description": "This field was translated by machine translation."
+    },
     "settingsPleaseReload": {
         "message": "如更改過設定，請重新載入 Twitter/X"
     },

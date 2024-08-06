@@ -111,6 +111,9 @@
     "settingsShowTweetButton": {
         "message": "Display buttons to tweet the results"
     },
+    "settingsEnableOnXPro": {
+        "message": "Run on X Pro"
+    },
     "settingsPleaseReload": {
         "message": "Please reload Twitter once you have changed the settings"
     },

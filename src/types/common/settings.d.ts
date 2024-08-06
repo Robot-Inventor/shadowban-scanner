@@ -7,4 +7,5 @@ export interface Settings {
     showMessagesInUnproblematicTweets: boolean;
     showNotesInMessages: boolean;
     showTweetButton: boolean;
+    enableOnXPro: boolean;
 }
