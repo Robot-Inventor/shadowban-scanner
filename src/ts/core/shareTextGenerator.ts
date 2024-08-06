@@ -1,40 +1,33 @@
 import type { TweetAnalysisResult } from "./propsAnalyzer";
 
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class
-class ShareTextGenerator {
-    /**
-     * Generate text to share the result.
-     * @param analyzer tweet status
-     * @returns generated share text
-     */
-    public static generateShareText(analyzer: TweetAnalysisResult): string {
-        const isTweetSearchable = analyzer.tweet.searchability === "searchable";
+const generateShareText = (analyzer: TweetAnalysisResult): string => {
+    const isTweetSearchable = analyzer.tweet.searchability === "searchable";
 
-        const accountSensitiveFlag = analyzer.user.shadowbanned
-            ? "🚫Account flagged as sensitive or shadowbanned"
-            : "✅Account not flagged as sensitive";
+    const accountSensitiveFlag = analyzer.user.shadowbanned
+        ? "🚫Account flagged as sensitive or shadowbanned"
+        : "✅Account not flagged as sensitive";
 
-        const profileSensitiveFlag = analyzer.user.sensitiveMediaInProfile
-            ? "🚫Sensitive flag on profile media"
-            : "✅No sensitive flag on profile media";
+    const profileSensitiveFlag = analyzer.user.sensitiveMediaInProfile
+        ? "🚫Sensitive flag on profile media"
+        : "✅No sensitive flag on profile media";
 
-        const withheldInCountries = analyzer.user.withheldInCountries.length
-            ? `🚫Account blocked in some countries`
-            : "✅Account not blocked in any countries";
+    const withheldInCountries = analyzer.user.withheldInCountries.length
+        ? `🚫Account blocked in some countries`
+        : "✅Account not blocked in any countries";
 
-        const tweetSensitiveFlag = analyzer.tweet.possiblySensitive
-            ? "🚫Sensitive flag on tweet"
-            : "✅No sensitive flag on tweet";
+    const tweetSensitiveFlag = analyzer.tweet.possiblySensitive
+        ? "🚫Sensitive flag on tweet"
+        : "✅No sensitive flag on tweet";
 
-        const tweetAgeRestriction = analyzer.tweet.ageRestriction ? "🚫Age limit on tweet" : "✅No age limit on tweet";
+    const tweetAgeRestriction = analyzer.tweet.ageRestriction ? "🚫Age limit on tweet" : "✅No age limit on tweet";
 
-        const tweetSearchStatus = isTweetSearchable ? "✅Tweet searchable" : "🚫Tweet may not be searchable";
+    const tweetSearchStatus = isTweetSearchable ? "✅Tweet searchable" : "🚫Tweet may not be searchable";
 
-        const siteURL = navigator.language.toLowerCase().startsWith("ja")
-            ? "https://shadowban-scanner.roboin.io/ja/"
-            : "https://shadowban-scanner.roboin.io/en/";
+    const siteURL = navigator.language.toLowerCase().startsWith("ja")
+        ? "https://shadowban-scanner.roboin.io/ja/"
+        : "https://shadowban-scanner.roboin.io/en/";
 
-        return `
+    return `
 ${accountSensitiveFlag}
 ${profileSensitiveFlag}
 ${withheldInCountries}
@@ -44,8 +37,7 @@ ${tweetSearchStatus}
 
 Shadowban Scanner by ろぼいん
 ${siteURL}
-        `.trim();
-    }
-}
+    `.trim();
+};
 
-export { ShareTextGenerator };
+export { generateShareText };

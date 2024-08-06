@@ -1,52 +1,49 @@
 import type { ProfileAnalysisResult, TweetAnalysisResult } from "./propsAnalyzer";
 import type { SbsMessageWrapperOptionsForProfiles, SbsMessageWrapperOptionsForTweets } from "./sbsMessageWrapper";
+import { getTranslationKeyFromProfileAnalyzer, getTranslationKeyFromTweetAnalyzer } from "./translationKeyProvider";
 import type { Settings } from "../../types/common/settings";
-import { ShareTextGenerator } from "./shareTextGenerator";
-import { TranslationKeyProvider } from "./translationKeyProvider";
 import type { Tweet } from "twi-ext";
+import { generateShareText } from "./shareTextGenerator";
 
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class
-class MessageDataGenerator {
-    public static generateForProfile(
-        analyzer: ProfileAnalysisResult,
-        onRenderedCallback: () => void
-    ): SbsMessageWrapperOptionsForProfiles {
-        const translations = TranslationKeyProvider.fromProfileAnalyzer(analyzer);
+const generateMessageDataForProfile = (
+    analyzer: ProfileAnalysisResult,
+    onRenderedCallback: () => void
+): SbsMessageWrapperOptionsForProfiles => {
+    const translations = getTranslationKeyFromProfileAnalyzer(analyzer);
 
-        return {
-            ...translations,
-            isAlert: analyzer.user.hasAnyProblem,
-            onRenderedCallback,
-            type: "profile"
-        };
-    }
+    return {
+        ...translations,
+        isAlert: analyzer.user.hasAnyProblem,
+        onRenderedCallback,
+        type: "profile"
+    };
+};
 
+const generateMessageDataForTweet = (
+    tweet: Tweet,
+    analyzer: TweetAnalysisResult,
+    onRenderedCallback: () => void,
+    options: Settings
     // eslint-disable-next-line max-params
-    public static generateForTweet(
-        tweet: Tweet,
-        analyzer: TweetAnalysisResult,
-        onRenderedCallback: () => void,
-        options: Settings
-    ): SbsMessageWrapperOptionsForTweets {
-        const translations = TranslationKeyProvider.fromTweetAnalyzer(analyzer);
-        const tweetText = ShareTextGenerator.generateShareText(analyzer);
+): SbsMessageWrapperOptionsForTweets => {
+    const translations = getTranslationKeyFromTweetAnalyzer(analyzer);
+    const tweetText = generateShareText(analyzer);
 
-        return {
-            ...translations,
+    return {
+        ...translations,
 
-            isAlert: analyzer.tweet.hasAnyProblem,
-            isExpanded: options.alwaysDetailedView,
-            isNoteShown: options.showNotesInMessages,
-            isTweetButtonShown: options.showTweetButton,
+        isAlert: analyzer.tweet.hasAnyProblem,
+        isExpanded: options.alwaysDetailedView,
+        isNoteShown: options.showNotesInMessages,
+        isTweetButtonShown: options.showTweetButton,
 
-            notes: ["falsePositivesAndFalseNegativesOccur", "translatedByAI"],
-            onRenderedCallback,
-            tweet,
-            tweetText,
+        notes: ["falsePositivesAndFalseNegativesOccur", "translatedByAI"],
+        onRenderedCallback,
+        tweet,
+        tweetText,
 
-            type: "tweet"
-        };
-    }
-}
+        type: "tweet"
+    };
+};
 
-export { MessageDataGenerator };
+export { generateMessageDataForProfile, generateMessageDataForTweet };

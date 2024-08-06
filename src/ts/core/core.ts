@@ -1,7 +1,7 @@
 import { CHECKED_DATA_ATTRIBUTE, TRANSLATION_ATTRIBUTE } from "../common/constants";
 import { type Profile, Timeline, type Tweet } from "twi-ext";
-import { MessageDataGenerator } from "./messageDataGenerator";
-import { PropsAnalyzer } from "./propsAnalyzer";
+import { analyzeProfileProps, analyzeTombstoneProps, analyzeTweetProps } from "./propsAnalyzer";
+import { generateMessageDataForProfile, generateMessageDataForTweet } from "./messageDataGenerator";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
 import type { Settings } from "../../types/common/settings";
 import { TombstoneParser } from "./parser/tombstoneParser";
@@ -37,10 +37,10 @@ class Core {
         const isCurrentUsersProfile = Boolean(document.querySelector("[data-testid='editProfileButton']"));
         if (isCurrentUsersProfile && !this.settings.enableForOtherUsersProfiles) return;
 
-        const profileAnalyzer = PropsAnalyzer.analyzeProfileProps(profile.props);
+        const profileAnalyzer = analyzeProfileProps(profile.props);
         if (!(profileAnalyzer.user.hasAnyProblem || this.settings.showMessagesInUnproblematicProfiles)) return;
 
-        const messageData = MessageDataGenerator.generateForProfile(profileAnalyzer, this.onMessageCallback);
+        const messageData = generateMessageDataForProfile(profileAnalyzer, this.onMessageCallback);
         const sbsMessageWrapper = new SbsMessageWrapper(messageData);
 
         const bioOrUserName =
@@ -52,17 +52,12 @@ class Core {
     }
 
     private checkTweet(tweet: Tweet): void {
-        const analyzer = PropsAnalyzer.analyzeTweetProps(new TweetParser(tweet));
+        const analyzer = analyzeTweetProps(new TweetParser(tweet));
 
         if (!tweet.metadata.isPostedByCurrentUser && !this.settings.enableForOtherUsersTweets) return;
         if (!(analyzer.tweet.hasAnyProblem || this.settings.showMessagesInUnproblematicTweets)) return;
 
-        const messageData = MessageDataGenerator.generateForTweet(
-            tweet,
-            analyzer,
-            this.onMessageCallback,
-            this.settings
-        );
+        const messageData = generateMessageDataForTweet(tweet, analyzer, this.onMessageCallback, this.settings);
         const sbsMessageWrapper = new SbsMessageWrapper(messageData);
 
         const landmarkElement =
@@ -77,7 +72,7 @@ class Core {
     private necromancer(tombstone: HTMLElement): void {
         tombstone.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
 
-        const tweetId = PropsAnalyzer.analyzeTombstoneProps(new TombstoneParser(tombstone).parse());
+        const tweetId = analyzeTombstoneProps(new TombstoneParser(tombstone).parse());
         if (!tweetId) return;
         const tweetURL = `https://twitter.com/i/status/${tweetId}`;
         const link = document.createElement("a");
