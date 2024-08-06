@@ -1,9 +1,9 @@
-const glob = require("glob");
-const path = require("path");
-const { exec } = require("child_process");
-const chokidar = require("chokidar");
-const CopyFilePlugin = require("copy-webpack-plugin");
-const LicensePlugin = require("webpack-license-plugin");
+import { glob } from "glob";
+import path from "path";
+import { exec } from "child_process";
+import chokidar from "chokidar"
+import CopyFilePlugin from "copy-webpack-plugin"
+import LicensePlugin from "webpack-license-plugin"
 
 const userScripts = glob.sync("./src/ts/userScript/*.user.ts");
 const userScriptEntries = {};
@@ -171,7 +171,7 @@ const unacceptableLicenseTest = (licenseIdentifier) => {
     return !acceptableLicenses.includes(licenseIdentifier);
 }
 
-module.exports = (env) => {
+export default (env) => {
     return {
         mode: "production",
         entry: {
