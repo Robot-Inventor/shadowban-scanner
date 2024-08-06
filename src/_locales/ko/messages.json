@@ -111,6 +111,9 @@
     "settingsShowTweetButton": {
         "message": "결과 트윗하기 버튼 표시"
     },
+    "settingsEnableOnXPro": {
+        "message": "X Pro에서 실행"
+    },
     "settingsPleaseReload": {
         "message": "설정을 변경한 후 Twitter를 다시 로드해주세요"
     },

@@ -7,6 +7,8 @@ import browser from "webextension-polyfill";
 const main = async (): Promise<void> => {
     const settings = await browser.storage.local.get(DEFAULT_SETTINGS);
 
+    if (["pro.twitter.com", "pro.x.com"].includes(location.hostname) && !settings.enableOnXPro) return;
+
     const translator = new Translator(
         (key, substitutions) => browser.i18n.getMessage(key, substitutions),
         browser.runtime.getURL("image/")
