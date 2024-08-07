@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "experimentalDecorators": true,
+    "useDefineForClassFields": false,
     "module": "ESNext",
     "moduleResolution": "Node",
     "typeRoots": [
