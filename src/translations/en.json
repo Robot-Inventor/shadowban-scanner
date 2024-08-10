@@ -33,9 +33,10 @@
         "installToChrome": "Install to Chrome",
         "installToFirefox": "Install to Firefox",
         "installToEdge": "Install to Edge",
+        "installToKiwiBrowser": "Install to Kiwi Browser",
         "cancel": "Cancel",
         "continueAnyway": "Continue anyway",
         "smartphonesAreNotSupported": "Not supported on smartphones",
-        "smartphonesAreNotSupportedDescription": "For technical reasons, Shadowban Scanner is only available for PC browsers and Android Firefox."
+        "smartphonesAreNotSupportedDescription": "For technical reasons, Shadowban Scanner is only available for PC browsers, Android Firefox and Android Kiwi Browser."
     }
 }
