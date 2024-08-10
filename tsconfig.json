@@ -3,8 +3,8 @@
     "target": "ESNext",
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "module": "Preserve",
+    "moduleResolution": "Bundler",
     "typeRoots": [
       "node_modules/@types",
       "node_modules/web-ext-types"
