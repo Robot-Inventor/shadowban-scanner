@@ -18,7 +18,6 @@ export interface TombstoneGrandchildProps {
                 entry: {
                     type: "tombstone";
                     conversationPosition: {
-                        // eslint-disable-next-line jsdoc/lines-before-block
                         /**
                          * If true, the account may be suspended.
                          * If false, the account may exist but the tweet is hidden.
