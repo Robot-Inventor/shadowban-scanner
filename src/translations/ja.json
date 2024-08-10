@@ -33,9 +33,10 @@
         "installToChrome": "Chromeにインストール",
         "installToFirefox": "Firefoxにインストール",
         "installToEdge": "Edgeにインストール",
+        "installToKiwiBrowser": "Kiwi Browserにインストール",
         "cancel": "キャンセル",
         "continueAnyway": "とにかく続行する",
         "smartphonesAreNotSupported": "スマートフォンには対応していません",
-        "smartphonesAreNotSupportedDescription": "Shadowban Scannerは技術的な理由により、PCのブラウザーとAndroid版Firefoxでのみ利用できます。"
+        "smartphonesAreNotSupportedDescription": "Shadowban Scannerは技術的な理由により、PCのブラウザーとAndroid版Firefox、Android版Kiwi Browserでのみ利用できます。"
     }
 }
