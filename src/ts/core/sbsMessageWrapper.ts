@@ -1,3 +1,4 @@
+// eslint-disable-next-line import-x/no-unassigned-import
 import "../components/sbsMessage";
 import { SHADOW_TRANSLATION_ATTRIBUTE } from "../common/constants";
 // eslint-disable-next-line no-duplicate-imports
@@ -94,4 +95,4 @@ class SbsMessageWrapper {
     }
 }
 
-export { SbsMessageWrapperOptionsForTweets, SbsMessageWrapperOptionsForProfiles, SbsMessageWrapper };
+export { type SbsMessageWrapperOptionsForTweets, type SbsMessageWrapperOptionsForProfiles, SbsMessageWrapper };

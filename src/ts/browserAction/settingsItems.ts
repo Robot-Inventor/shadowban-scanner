@@ -12,7 +12,7 @@ interface SettingsSeparator {
     type: "separator";
 }
 
-type SettingsItems = (SettingsItem | SettingsSeparator)[];
+type SettingsItems = Array<SettingsItem | SettingsSeparator>;
 
 const SETTINGS_ITEMS = [
     {

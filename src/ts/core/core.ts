@@ -44,7 +44,7 @@ class Core {
         const sbsMessageWrapper = new SbsMessageWrapper(messageData);
 
         const bioOrUserName =
-            document.querySelector("[data-testid='UserDescription']") ||
+            document.querySelector("[data-testid='UserDescription']") ??
             document.querySelector("[data-testid='UserName']");
         if (!bioOrUserName) throw new Error("Failed to get user description of profile");
 
@@ -61,7 +61,7 @@ class Core {
         const sbsMessageWrapper = new SbsMessageWrapper(messageData);
 
         const landmarkElement =
-            tweet.element.querySelector<HTMLElement>("[data-testid='analyticsButton']")?.parentElement ||
+            tweet.element.querySelector<HTMLElement>("[data-testid='analyticsButton']")?.parentElement ??
             tweet.element.querySelector<HTMLElement>("div[role='group'][id]");
 
         if (!landmarkElement) throw new Error("Failed to get landmark element of tweet");

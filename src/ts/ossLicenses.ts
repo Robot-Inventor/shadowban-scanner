@@ -6,7 +6,7 @@ const normalizeRepositoryLink = (repository: string): string => {
         return repository.replace(/^git\+/u, "");
     }
 
-    if (!repository.match(/^https?:\/\//u)) {
+    if (!/^https?:\/\//u.exec(repository)) {
         return `https://github.com/${repository}`;
     }
 

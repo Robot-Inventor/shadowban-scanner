@@ -1,4 +1,6 @@
+// eslint-disable-next-line import-x/no-unassigned-import
 import "../components/settingsItem";
+// eslint-disable-next-line import-x/no-unassigned-import
 import "../components/settingsSeparator";
 import { DEFAULT_SETTINGS } from "../common/defaultSettings";
 import { SETTINGS_ITEMS } from "./settingsItems";

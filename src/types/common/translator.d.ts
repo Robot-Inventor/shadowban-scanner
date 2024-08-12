@@ -1,4 +1,4 @@
-import type enTranslation from "../../../src/_locales/en/messages.json";
+import type enTranslation from "../../_locales/en/messages.json";
 
 type TranslationData = typeof enTranslation;
 type TranslationKey = keyof TranslationData;
@@ -8,4 +8,4 @@ type TranslationFunction = (messageName: TranslationKey, substitutions?: string 
 // eslint-disable-next-line no-magic-numbers
 type TranslationSubstitutions = Parameters<TranslationFunction>[1];
 
-export { TranslationData, TranslationKey, TranslationFunction, TranslationSubstitutions };
+export type { TranslationData, TranslationKey, TranslationFunction, TranslationSubstitutions };

@@ -1,3 +1,4 @@
+// eslint-disable-next-line import-x/no-unassigned-import
 import "@material/web/checkbox/checkbox.js";
 import { LitElement, css, html } from "lit";
 import { customElement, property, query } from "lit/decorators.js";

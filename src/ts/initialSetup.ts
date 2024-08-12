@@ -3,15 +3,15 @@ import type { Settings } from "../types/common/settings";
 import { Translator } from "./common/translator";
 import browser from "webextension-polyfill";
 
-type InitialSetupItem = {
-    options: {
+interface InitialSetupItem {
+    options: Array<{
         default: boolean;
         icon: string;
         label: string;
         value: boolean;
-    }[];
+    }>;
     settingsKey: keyof Settings;
-};
+}
 
 const INITIAL_SETUP_ITEMS = [
     {

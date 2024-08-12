@@ -1,5 +1,5 @@
 /** @see {isCellInnerDivProps} ts-auto-guard:type-guard */
-export interface CellInnerDivProps {
+interface CellInnerDivProps {
     children: {
         _owner?: {
             key: string;
@@ -11,7 +11,7 @@ export interface CellInnerDivProps {
  * (tombstones' cell inner div) > div > div  <- This element is the tombstone's grandchild and has detailed information.
  * @see {isTombstoneGrandchildProps} ts-auto-guard:type-guard
  */
-export interface TombstoneGrandchildProps {
+interface TombstoneGrandchildProps {
     children: [
         {
             props: {
@@ -29,3 +29,5 @@ export interface TombstoneGrandchildProps {
         }
     ];
 }
+
+export type { CellInnerDivProps, TombstoneGrandchildProps };
