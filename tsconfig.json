@@ -1,6 +1,7 @@
 {
   "extends": "@robot-inventor/tsconfig-base/bundler.json",
   "compilerOptions": {
+    "declaration": false,
     "experimentalDecorators": true,
     "useDefineForClassFields": false
   }
