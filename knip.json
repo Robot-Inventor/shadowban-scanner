@@ -7,8 +7,7 @@
     ],
     "ignoreDependencies": [
         "web-ext",
-        "ts-auto-guard",
-        "@pnpm/logger"
+        "ts-auto-guard"
     ],
     "ignore": [
         "script/addonsLinter.ts",
