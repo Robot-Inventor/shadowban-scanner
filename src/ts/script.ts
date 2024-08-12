@@ -1,6 +1,6 @@
+import i18next, { changeLanguage, t as translate } from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import Swal from "sweetalert2";
-import i18next from "i18next";
 import translationEn from "../translations/en.json";
 import translationJa from "../translations/ja.json";
 
@@ -36,39 +36,39 @@ const initializeDownloadButtons = (): void => {
         const isEdge = navigator.userAgent.toLowerCase().includes("edg");
         const isKiwiBrowser =
             // Ref: https://github.com/kiwibrowser/src.next/issues/164#issuecomment-1480239313
-            window.chrome && window.chrome.app && navigator.userAgent.toLowerCase().includes("android");
+            Boolean(window.chrome?.app) && navigator.userAgent.toLowerCase().includes("android");
 
         let downloadLink: string = DOWNLOAD_LINKS.chrome;
-        let downloadText = i18next.t("installToChrome");
+        let downloadText = translate("installToChrome");
 
         if (isFirefox) {
             downloadLink = DOWNLOAD_LINKS.firefox;
-            downloadText = i18next.t("installToFirefox");
+            downloadText = translate("installToFirefox");
         } else if (isEdge) {
             downloadLink = DOWNLOAD_LINKS.edge;
-            downloadText = i18next.t("installToEdge");
+            downloadText = translate("installToEdge");
         } else if (isKiwiBrowser) {
             downloadLink = DOWNLOAD_LINKS.chrome;
-            downloadText = i18next.t("installToKiwiBrowser");
+            downloadText = translate("installToKiwiBrowser");
         }
 
         button.textContent = downloadText;
 
         // eslint-disable-next-line @typescript-eslint/no-misused-promises
         button.addEventListener("click", async () => {
-            const isMobile = Boolean(navigator.userAgent.match(/iPhone|Android.+Mobile/u));
+            const isMobile = Boolean(/iPhone|Android.+Mobile/u.exec(navigator.userAgent));
             if (isMobile && !isFirefox && !isKiwiBrowser) {
                 const result = await Swal.fire({
                     background: "#21272e",
                     cancelButtonColor: "#d33",
-                    cancelButtonText: i18next.t("cancel"),
+                    cancelButtonText: translate("cancel"),
                     color: "#fff",
                     confirmButtonColor: "#3085d6",
-                    confirmButtonText: i18next.t("continueAnyway"),
+                    confirmButtonText: translate("continueAnyway"),
                     icon: "warning",
                     showCancelButton: true,
-                    text: i18next.t("smartphonesAreNotSupportedDescription"),
-                    title: i18next.t("smartphonesAreNotSupported")
+                    text: translate("smartphonesAreNotSupportedDescription"),
+                    title: translate("smartphonesAreNotSupported")
                 });
                 if (result.isConfirmed) {
                     open(downloadLink, "_blank");
@@ -90,14 +90,14 @@ const onLanguageChanged = (): void => {
     const translationTargets = document.querySelectorAll("[data-translation]");
     translationTargets.forEach((target) => {
         const key = target.getAttribute("data-translation");
-        if (!key) {
+        if (typeof key !== "string" || key === "") {
             throw new Error("data-translation attribute is not set.");
         }
         const targetAttribute = target.getAttribute("data-translation-attribute");
-        if (targetAttribute) {
-            target.setAttribute(targetAttribute, i18next.t(key));
+        if (typeof targetAttribute === "string" && targetAttribute !== "") {
+            target.setAttribute(targetAttribute, translate(key));
         } else {
-            target.innerHTML = i18next.t(key);
+            target.innerHTML = translate(key);
         }
     });
 
@@ -120,7 +120,7 @@ const initializeLanguageSwitcher = (): void => {
     });
 
     languageSwitcherSelect.addEventListener("change", () => {
-        void i18next.changeLanguage(languageSwitcherSelect.value);
+        void changeLanguage(languageSwitcherSelect.value);
     });
 };
 
@@ -150,6 +150,7 @@ const main = async (): Promise<void> => {
         "sessionStorage"
     ];
 
+    // eslint-disable-next-line import-x/no-named-as-default-member
     await i18next.use(LanguageDetector).init({
         detection: {
             convertDetectedLanguage: (lng) => lng.split("-")[0],
