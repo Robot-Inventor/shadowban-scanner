@@ -36,7 +36,7 @@ const initializeDownloadButtons = (): void => {
         const isEdge = navigator.userAgent.toLowerCase().includes("edg");
         const isKiwiBrowser =
             // Ref: https://github.com/kiwibrowser/src.next/issues/164#issuecomment-1480239313
-            Boolean(window.chrome?.app) && navigator.userAgent.toLowerCase().includes("android");
+            window.chrome?.app && navigator.userAgent.toLowerCase().includes("android");
 
         let downloadLink: string = DOWNLOAD_LINKS.chrome;
         let downloadText = translate("installToChrome");
@@ -90,11 +90,11 @@ const onLanguageChanged = (): void => {
     const translationTargets = document.querySelectorAll("[data-translation]");
     translationTargets.forEach((target) => {
         const key = target.getAttribute("data-translation");
-        if (typeof key !== "string" || key === "") {
+        if (!key) {
             throw new Error("data-translation attribute is not set.");
         }
         const targetAttribute = target.getAttribute("data-translation-attribute");
-        if (typeof targetAttribute === "string" && targetAttribute !== "") {
+        if (targetAttribute) {
             target.setAttribute(targetAttribute, translate(key));
         } else {
             target.innerHTML = translate(key);
