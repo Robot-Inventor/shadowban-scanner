@@ -52,7 +52,7 @@ const formatCountryList = (countries: string[]): string => {
     });
     const translator = new Intl.DisplayNames([userLanguage], { type: "region" });
 
-    const translatedCountries = countries.map((country) => translator.of(country) || "");
+    const translatedCountries = countries.map((country) => translator.of(country) ?? "");
     const formattedText = listFormatter.format(translatedCountries);
 
     return formattedText;

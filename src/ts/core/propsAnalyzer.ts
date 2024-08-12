@@ -86,4 +86,10 @@ const analyzeTombstoneProps = (props: [CellInnerDivProps, TombstoneGrandchildPro
     return tweetId;
 };
 
-export { ProfileAnalysisResult, TweetAnalysisResult, analyzeProfileProps, analyzeTweetProps, analyzeTombstoneProps };
+export {
+    type ProfileAnalysisResult,
+    type TweetAnalysisResult,
+    analyzeProfileProps,
+    analyzeTweetProps,
+    analyzeTombstoneProps
+};

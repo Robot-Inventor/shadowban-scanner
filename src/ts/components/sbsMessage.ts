@@ -1,3 +1,4 @@
+// eslint-disable-next-line import-x/no-unassigned-import
 import "@material/web/button/filled-button";
 import { LitElement, type PropertyValues, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
@@ -181,7 +182,7 @@ class SbsMessage extends LitElement {
         </ul>`;
     }
 
-    private getNotes(): "" | ReturnType<typeof html>[] {
+    private getNotes(): "" | Array<ReturnType<typeof html>> {
         if (!this.notes.length) return "";
 
         const notesClasses = classMap({
@@ -236,4 +237,4 @@ declare global {
     }
 }
 
-export { SbsMessageDetails, SbsMessage };
+export { type SbsMessageDetails, SbsMessage };
