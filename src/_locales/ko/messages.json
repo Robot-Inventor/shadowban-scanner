@@ -87,6 +87,9 @@
     "settingsWhereToDisplayCheckResults": {
         "message": "검사 결과를 표시할 위치"
     },
+    "settingsAlwaysShowMessagesIfYourAccountShadowbanned": {
+        "message": "당신의 계정이 shadowban되면, 메시지는 항상 표시됩니다."
+    },
     "settingsShowMessagesInUnproblematicTweets": {
         "message": "문제가 없는 트윗에 표시"
     },

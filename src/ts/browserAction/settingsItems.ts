@@ -12,12 +12,21 @@ interface SettingsSeparator {
     type: "separator";
 }
 
-type SettingsItems = Array<SettingsItem | SettingsSeparator>;
+interface SettingsDescription {
+    translationKey: TranslationKey;
+    type: "description";
+}
+
+type SettingsItems = Array<SettingsItem | SettingsSeparator | SettingsDescription>;
 
 const SETTINGS_ITEMS = [
     {
         translationKey: "settingsWhereToDisplayCheckResults",
         type: "separator"
+    },
+    {
+        translationKey: "settingsAlwaysShowMessagesIfYourAccountShadowbanned",
+        type: "description"
     },
     {
         settingsName: "showMessagesInUnproblematicTweets",

@@ -71,6 +71,11 @@ settings-separator:not(:first-of-type) {
     margin-top: 1rem;
 }
 
+settings-description {
+    margin: 0.5rem 1rem;
+    width: calc(100% - 2rem);
+}
+
 small {
     font-size: 0.8em;
     opacity: 0.7;

@@ -87,6 +87,9 @@
     "settingsWhereToDisplayCheckResults": {
         "message": "Where to display check results"
     },
+    "settingsAlwaysShowMessagesIfYourAccountShadowbanned": {
+        "message": "If your account is shadowbanned, you will always see messages."
+    },
     "settingsShowMessagesInUnproblematicTweets": {
         "message": "Display in non-problematic tweets"
     },

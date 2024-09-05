@@ -87,6 +87,9 @@
     "settingsWhereToDisplayCheckResults": {
         "message": "検証結果を表示する場所"
     },
+    "settingsAlwaysShowMessagesIfYourAccountShadowbanned": {
+        "message": "自分のアカウントがシャドウバンされている場合は常にメッセージが表示されます。"
+    },
     "settingsShowMessagesInUnproblematicTweets": {
         "message": "問題のないツイートにも表示"
     },

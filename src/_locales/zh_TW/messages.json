@@ -87,6 +87,10 @@
     "settingsWhereToDisplayCheckResults": {
         "message": "顯示檢查結果的位置"
     },
+    "settingsAlwaysShowMessagesIfYourAccountShadowbanned": {
+        "message": "如果你的帳號被shadowban，訊息會一直顯示。",
+        "description": "This field was translated by machine translation."
+    },
     "settingsShowMessagesInUnproblematicTweets": {
         "message": "在沒有問題的推文中顯示"
     },
