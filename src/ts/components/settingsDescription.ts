@@ -8,17 +8,16 @@ class SettingsDescription extends LitElement {
             display: block;
         }
 
+        /* Ref: https://stackoverflow.com/questions/9769587/set-div-to-have-its-siblings-width/48226415#48226415 */
         .container {
-            display: block;
-            position: relative;
-            width: 100%;
-            height: 3rem;
+            display: flex;
         }
 
         .settings-description {
             opacity: 0.7;
             font-size: 0.9rem;
-            position: absolute;
+            flex-grow: 1;
+            width: 0;
         }
     `;
 
