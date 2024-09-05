@@ -121,13 +121,16 @@
         "message": "설정을 변경한 후 Twitter를 다시 로드해주세요"
     },
     "settingsPrivacyPolicy": {
-        "message": "Privacy policy"
+        "message": "Privacy Policy"
     },
     "settingsPrivacyPolicyURL": {
         "message": "https://github.com/Robot-Inventor/shadowban-scanner/blob/main/README_ko.md#privacy-policy"
     },
     "settingsOpenSourceLicenses": {
-        "message": "Open source licenses"
+        "message": "Open Source Licenses"
+    },
+    "settingsFollowTheDeveloper": {
+        "message": "Follow the Developer"
     },
     "privacyPolicyPageTitle": {
         "message": "Privacy Policy - Shadowban Scanner"

@@ -131,6 +131,10 @@
     "settingsOpenSourceLicenses": {
         "message": "開放原始碼授權"
     },
+    "settingsFollowTheDeveloper": {
+        "message": "跟隨開發者",
+        "description": "This field was translated by machine translation."
+    },
     "privacyPolicyPageTitle": {
         "message": "隱私政策 - Shadowban Scanner"
     },

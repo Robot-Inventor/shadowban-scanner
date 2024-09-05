@@ -121,13 +121,16 @@
         "message": "Please reload Twitter once you have changed the settings"
     },
     "settingsPrivacyPolicy": {
-        "message": "Privacy policy"
+        "message": "Privacy Policy"
     },
     "settingsPrivacyPolicyURL": {
         "message": "https://github.com/Robot-Inventor/shadowban-scanner#privacy-policy"
     },
     "settingsOpenSourceLicenses": {
-        "message": "Open source licenses"
+        "message": "Open Source Licenses"
+    },
+    "settingsFollowTheDeveloper": {
+        "message": "Follow the Developer"
     },
     "privacyPolicyPageTitle": {
         "message": "Privacy Policy - Shadowban Scanner"

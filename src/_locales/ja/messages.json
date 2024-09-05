@@ -129,6 +129,9 @@
     "settingsOpenSourceLicenses": {
         "message": "オープンソースライセンス"
     },
+    "settingsFollowTheDeveloper": {
+        "message": "作者をフォロー"
+    },
     "privacyPolicyPageTitle": {
         "message": "プライバシーポリシー - Shadowban Scanner"
     },
