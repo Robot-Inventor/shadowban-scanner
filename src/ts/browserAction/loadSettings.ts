@@ -1,10 +1,14 @@
 // eslint-disable-next-line import-x/no-unassigned-import
 import "../components/settingsItem";
 // eslint-disable-next-line import-x/no-unassigned-import
+import "../components/settingsDescription";
+// eslint-disable-next-line import-x/no-unassigned-import
 import "../components/settingsSeparator";
 import { DEFAULT_SETTINGS } from "../common/defaultSettings";
 import { SETTINGS_ITEMS } from "./settingsItems";
 import type { Settings } from "../../types/common/settings";
+// eslint-disable-next-line no-duplicate-imports
+import type { SettingsDescription } from "../components/settingsDescription";
 // eslint-disable-next-line no-duplicate-imports
 import type { SettingsItem } from "../components/settingsItem";
 // eslint-disable-next-line no-duplicate-imports
@@ -35,6 +39,13 @@ const createSettingsSeparator = (translationKey: string): SettingsSeparator => {
     separator.setAttribute(TRANSLATION_ATTRIBUTE, translationKey);
 
     return separator;
+};
+
+const createSettingsDescription = (translationKey: string): SettingsDescription => {
+    const description = document.createElement("settings-description");
+    description.setAttribute(TRANSLATION_ATTRIBUTE, translationKey);
+
+    return description;
 };
 
 /**
@@ -73,10 +84,13 @@ const runTranslation = (): void => {
 const createItemsFromData = (
     settings: Settings,
     data: (typeof SETTINGS_ITEMS)[number]
-): SettingsSeparator | SettingsItem => {
+): SettingsSeparator | SettingsDescription | SettingsItem => {
     switch (data.type) {
         case "separator":
             return createSettingsSeparator(data.translationKey);
+
+        case "description":
+            return createSettingsDescription(data.translationKey);
 
         case "checkbox":
             return createSettingsItem(data.settingsName, data.translationKey, settings[data.settingsName]);
