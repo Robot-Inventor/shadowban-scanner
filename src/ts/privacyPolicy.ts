@@ -1,5 +1,5 @@
+import { i18n, runtime } from "webextension-polyfill";
 import { Translator } from "./common/translator";
-import browser from "webextension-polyfill";
 
-const translator = new Translator((key) => browser.i18n.getMessage(key), browser.runtime.getURL("image/"));
+const translator = new Translator((key) => i18n.getMessage(key), runtime.getURL("image/"));
 translator.translateElements();

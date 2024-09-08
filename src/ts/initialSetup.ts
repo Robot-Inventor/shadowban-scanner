@@ -1,7 +1,7 @@
 import { INSTRUCTION_URL, TRANSLATION_ATTRIBUTE } from "./common/constants";
+import { i18n, runtime, storage, tabs } from "webextension-polyfill";
 import type { Settings } from "../types/common/settings";
 import { Translator } from "./common/translator";
-import browser from "webextension-polyfill";
 
 interface InitialSetupItem {
     options: Array<{
@@ -125,10 +125,10 @@ const updateInstructionToCompletionMessage = (translator: Translator): void => {
 };
 
 const closeCurrentTab = async (): Promise<void> => {
-    const tabs = await browser.tabs.query({ active: true, currentWindow: true });
-    const [currentTab] = tabs;
+    const activeTabs = await tabs.query({ active: true, currentWindow: true });
+    const [currentTab] = activeTabs;
     if (!currentTab.id) throw new Error("no current tab");
-    void browser.tabs.remove(currentTab.id);
+    void tabs.remove(currentTab.id);
 };
 
 const showCompletionMessage = (buttonsOuter: Element, translator: Translator): void => {
@@ -138,8 +138,8 @@ const showCompletionMessage = (buttonsOuter: Element, translator: Translator): v
     const openUsagesPageButton = createButton("open", "../image/open_in_new.svg");
     openUsagesPageButton.addEventListener("click", () => {
         void closeCurrentTab();
-        const isJapanese = browser.i18n.getUILanguage().toLowerCase().startsWith("ja");
-        void browser.tabs.create({
+        const isJapanese = i18n.getUILanguage().toLowerCase().startsWith("ja");
+        void tabs.create({
             url: INSTRUCTION_URL[isJapanese ? "ja" : "en"]
         });
     });
@@ -164,8 +164,8 @@ const main = (): void => {
     if (!nextButton) throw new Error("no #next-button");
 
     const translator = new Translator(
-        (messageName, substitutions) => browser.i18n.getMessage(messageName, substitutions),
-        browser.runtime.getURL("image/")
+        (messageName, substitutions) => i18n.getMessage(messageName, substitutions),
+        runtime.getURL("image/")
     );
     translator.translateElements();
 
@@ -179,7 +179,7 @@ const main = (): void => {
         const { settingsKey } = selectedButton.dataset;
         const { settingsValue } = selectedButton.dataset;
         if (!settingsKey || !settingsValue) throw new Error("no settingsKey or settingsValue");
-        void browser.storage.local.set({ [settingsKey]: settingsValue === "true" });
+        void storage.local.set({ [settingsKey]: settingsValue === "true" });
 
         // eslint-disable-next-line no-magic-numbers
         if (setupItemIndex < INITIAL_SETUP_ITEMS.length - 1) {
