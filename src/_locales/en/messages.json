@@ -123,11 +123,11 @@
     "settingsPrivacyPolicy": {
         "message": "Privacy Policy"
     },
-    "settingsPrivacyPolicyURL": {
-        "message": "https://github.com/Robot-Inventor/shadowban-scanner#privacy-policy"
-    },
     "settingsOpenSourceLicenses": {
         "message": "Open Source Licenses"
+    },
+    "settingsSupportDevelopment": {
+        "message": "<a href=\"https://github.com/Robot-Inventor/shadowban-scanner/blob/main/doc/en/how-to-support.md\" target=\"_blank\">Support Development</a>"
     },
     "settingsFollowTheDeveloper": {
         "message": "Follow the Developer"
