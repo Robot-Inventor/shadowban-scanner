@@ -74,8 +74,7 @@ settings-separator:not(:first-of-type) {
 }
 
 settings-description {
-    margin: 0.5rem 1rem;
-    width: calc(100% - 2rem);
+    margin: 1rem 0;
 }
 
 small {
