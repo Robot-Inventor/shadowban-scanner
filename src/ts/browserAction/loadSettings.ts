@@ -4,6 +4,7 @@ import "../components/settingsItem";
 import "../components/settingsDescription";
 // eslint-disable-next-line import-x/no-unassigned-import
 import "../components/settingsSeparator";
+import { i18n, runtime, storage } from "webextension-polyfill";
 import { DEFAULT_SETTINGS } from "../common/defaultSettings";
 import { SETTINGS_ITEMS } from "./settingsItems";
 import type { Settings } from "../../types/common/settings";
@@ -15,7 +16,6 @@ import type { SettingsItem } from "../components/settingsItem";
 import type { SettingsSeparator } from "../components/settingsSeparator";
 import { TRANSLATION_ATTRIBUTE } from "../common/constants";
 import { Translator } from "../common/translator";
-import browser from "webextension-polyfill";
 import { isSettings } from "../../types/common/settings.guard";
 
 /**
@@ -23,7 +23,7 @@ import { isSettings } from "../../types/common/settings.guard";
  * @returns settings
  */
 const loadSettingsFromStorage = async (): Promise<Settings> => {
-    const settings = await browser.storage.local.get(DEFAULT_SETTINGS);
+    const settings = await storage.local.get(DEFAULT_SETTINGS);
     if (!isSettings(settings)) throw new Error("Failed to get settings from storage");
 
     return settings;
@@ -61,7 +61,7 @@ const createSettingsItem = (settingsName: string, translationKey: string, checke
     item.setAttribute(TRANSLATION_ATTRIBUTE, translationKey);
     item.checked = checked;
     item.addEventListener("change", () => {
-        void browser.storage.local.set({ [item.settingsName]: item.checked });
+        void storage.local.set({ [item.settingsName]: item.checked });
     });
 
     return item;
@@ -71,7 +71,7 @@ const createSettingsItem = (settingsName: string, translationKey: string, checke
  * Run translation.
  */
 const runTranslation = (): void => {
-    const translator = new Translator((key) => browser.i18n.getMessage(key), browser.runtime.getURL("image/"));
+    const translator = new Translator((key) => i18n.getMessage(key), runtime.getURL("image/"));
     translator.translateElements();
 };
 
