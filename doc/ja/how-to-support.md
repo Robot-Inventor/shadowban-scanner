@@ -1,6 +1,6 @@
 # Shadowban Scannerの開発を支援する方法
 
-Shadowban Scannerは、作者の趣味のプロジェクトですが、開発や運用には多くの時間がかかっています。余裕のある方は、開発を支援していただけると助かります。[Buy Me a Coffee](https://www.buymeacoffee.com/keita_roboin)または[GitHub Sponsors](https://github.com/sponsors/Robot-Inventor)での支援をお願いします。
+Shadowban Scannerは作者の趣味のプロジェクトですが、開発や運用には多くの時間がかかっています。余裕のある方は、開発を支援していただけると助かります。[Buy Me a Coffee](https://www.buymeacoffee.com/keita_roboin)または[GitHub Sponsors](https://github.com/sponsors/Robot-Inventor)での支援をお願いします。
 
 <a href="https://www.buymeacoffee.com/keita_roboin" target="_blank" rel="noopener noreferrer"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&amp;emoji=☕&amp;slug=keita_roboin&amp;button_colour=FFDD00&amp;font_colour=000000&amp;font_family=Arial&amp;outline_colour=000000&amp;coffee_colour=ffffff" width="200px"></a>
 
