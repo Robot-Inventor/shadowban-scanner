@@ -14,7 +14,6 @@ class SettingsDescription extends LitElement {
         }
 
         .settings-description {
-            opacity: 0.7;
             font-size: 0.9rem;
             flex-grow: 1;
             width: 0;
