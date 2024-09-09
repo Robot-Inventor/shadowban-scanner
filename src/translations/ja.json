@@ -6,6 +6,7 @@
         "description": "Twitter（X）のシャドウバンやセンシティブ判定を検出できる拡張機能「Shadowban Scanner」の公式サイトです。",
         "ogImage": "https://shadowban-scanner.roboin.io/image/ogp_ja.png",
         "topImage": "/image/top-ja.svg",
+        "overTwentyThousandUsers": "2万ユーザー突破 🚀",
         "catchphrase": "アカウントの状態を確認しよう",
         "install": "インストール",
         "featuresOfShadowbanScanner": "Shadowban Scannerの機能",

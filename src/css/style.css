@@ -61,6 +61,25 @@ header img {
     background: radial-gradient(circle at center bottom, #404ad2, #040912 30%);
 }
 
+#featured_badge {
+    grid-column: 1 / 4;
+    grid-row: 1;
+    position: relative;
+}
+
+#featured_badge-inner {
+    width: max-content;
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translate(-50%);
+    background: rgba(173, 205, 255, 0.5);
+    padding: 0.25em 1em;
+    border-radius: 1em;
+    font-weight: bold;
+    border: solid 0.1em rgba(255, 255, 255, 0.5);
+}
+
 #top_text_container {
     grid-row: 2;
     grid-column: 2;
