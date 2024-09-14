@@ -58,7 +58,9 @@ class RunCommandsPlugin {
         compiler.hooks.watchRun.tapAsync("RunCommandsPlugin", (params, callback) => {
             isWatchMode = true;
             if (!manifestWatcher || !typeWatcher) {
-                manifestWatcher = chokidar.watch("src/manifest/**/*.json");
+                manifestWatcher = chokidar.watch("src/manifest/", {
+                    ignored: (path, stats) => stats?.isFile() && !path.endsWith(".json")
+                });
                 manifestWatcher.on("change", (path) => {
                     console.log(`Manifest file changed: ${path}`);
                     this.updateManifest();
@@ -66,7 +68,9 @@ class RunCommandsPlugin {
 
                 this.updateManifest();
 
-                typeWatcher = chokidar.watch("src/types/**/*.d.ts");
+                typeWatcher = chokidar.watch("src/types/", {
+                    ignored: (path, stats) => stats?.isFile() && !path.endsWith(".d.ts")
+                });
 
                 typeWatcher.on("change", (path) => {
                     console.log(`Type definition file changed: ${path}`);
