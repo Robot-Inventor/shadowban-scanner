@@ -8,4 +8,5 @@ export interface Settings {
     showNotesInMessages: boolean;
     showTweetButton: boolean;
     enableOnXPro: boolean;
+    showReleaseNotes: boolean;
 }

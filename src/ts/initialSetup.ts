@@ -1,7 +1,8 @@
 import { INSTRUCTION_URL, TRANSLATION_ATTRIBUTE } from "./common/constants";
-import { i18n, runtime, storage, tabs } from "webextension-polyfill";
+import { i18n, runtime, tabs } from "webextension-polyfill";
 import type { Settings } from "../types/common/settings";
 import { Translator } from "./common/translator";
+import { writeSettingsToStorage } from "./common/settings";
 
 interface InitialSetupItem {
     options: Array<{
@@ -179,7 +180,7 @@ const main = (): void => {
         const { settingsKey } = selectedButton.dataset;
         const { settingsValue } = selectedButton.dataset;
         if (!settingsKey || !settingsValue) throw new Error("no settingsKey or settingsValue");
-        void storage.local.set({ [settingsKey]: settingsValue === "true" });
+        void writeSettingsToStorage({ [settingsKey]: settingsValue === "true" });
 
         // eslint-disable-next-line no-magic-numbers
         if (setupItemIndex < INITIAL_SETUP_ITEMS.length - 1) {

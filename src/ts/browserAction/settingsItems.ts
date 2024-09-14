@@ -71,6 +71,11 @@ const SETTINGS_ITEMS = [
         settingsName: "enableOnXPro",
         translationKey: "settingsEnableOnXPro",
         type: "checkbox"
+    },
+    {
+        settingsName: "showReleaseNotes",
+        translationKey: "settingsShowReleaseNotes",
+        type: "checkbox"
     }
 ] as const satisfies SettingsItems;
 

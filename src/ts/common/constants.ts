@@ -4,7 +4,8 @@ const EVENT_GENERATOR_SETTINGS_ATTRIBUTE = "data-sb-settings";
 const TRANSLATION_ATTRIBUTE = "data-sb-translation";
 const SHADOW_TRANSLATION_ATTRIBUTE = "data-sb-shadow-translation";
 const TWEMOJI_ATTRIBUTE = "data-sb-enable-twemoji";
-const ALLOWED_TWEMOJI = ["✅", "🚫", "⚠️"];
+const ALLOWED_TWEMOJI = ["✅", "🚫", "⚠️"] as const;
+const SHOW_RELEASE_NOTES = false;
 
 const ONBOARDING_PATH = "html/initialSetup.html";
 const RELEASE_NOTE_URL = {
@@ -24,6 +25,7 @@ export {
     SHADOW_TRANSLATION_ATTRIBUTE,
     TWEMOJI_ATTRIBUTE,
     ALLOWED_TWEMOJI,
+    SHOW_RELEASE_NOTES,
     ONBOARDING_PATH,
     RELEASE_NOTE_URL,
     INSTRUCTION_URL

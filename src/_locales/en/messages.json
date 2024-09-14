@@ -117,6 +117,9 @@
     "settingsEnableOnXPro": {
         "message": "Enable on X Pro"
     },
+    "settingsShowReleaseNotes": {
+        "message": "Show release notes after update"
+    },
     "settingsPleaseReload": {
         "message": "Please reload Twitter once you have changed the settings"
     },

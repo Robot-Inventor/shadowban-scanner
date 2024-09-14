@@ -1,6 +1,6 @@
 import { EVENT_GENERATOR_ID, EVENT_GENERATOR_SETTINGS_ATTRIBUTE } from "./common/constants";
 import { i18n, runtime, storage } from "webextension-polyfill";
-import { DEFAULT_SETTINGS } from "./common/defaultSettings";
+import { DEFAULT_SETTINGS } from "./common/settings";
 import { Translator } from "./common/translator";
 
 // eslint-disable-next-line max-statements
