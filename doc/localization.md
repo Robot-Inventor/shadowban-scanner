@@ -1,29 +1,33 @@
 # Localization Guide
 
-## UI Translation
+## Translating the UI
 
-1. Create ``./src/_locales/<languageCode>/messages.json``.
-2. Copy the contents of the existing translation file.
+1. Create a new file: `./src/_locales/<languageCode>/messages.json`.
+2. Copy the contents of an existing translation file.
 3. Translate the text.
 
-## User Script Creation
+## Creating a User Script
 
-1. Create ``./src/ts/userScript/<languageCode>.user.ts``.
-2. Copy the existing code.
-3. Rewrite the import source of the translation file.
+1. Create a new file: `./src/ts/userScript/<languageCode>.user.ts`.
+2. Copy the contents of an existing script.
+3. Update the import path to reference the translated file.
 
-## Translation of Screenshots
+## Translating Screenshots (Optional)
 
 > [!NOTE]
-> Translated versions of the screenshots are created by maintainer [@Robot-Inventor](https://github.com/Robot-Inventor).
+> Translated screenshots are provided by the maintainer [@Robot-Inventor](https://github.com/Robot-Inventor).
 
-1. Translate the screenshots to match the UI translation.
+1. Update the screenshots to match the UI translation.
 
-## Document Translation
+## Translating Documentation (Optional)
 
-1. Create ``./README_<languageCode>.md``.
+1. Create a new file: `./README_<languageCode>.md`.
 2. Copy the contents of the existing README file.
 3. Translate the text.
 4. Replace the screenshots with the translated versions.
 5. Add a link to the new language's README in the README files of other languages.
 6. Add a link to the new language's user script in all README files.
+
+## Translating the Website (Optional)
+
+For more information, see the [gh-pages branch](https://github.com/Robot-Inventor/shadowban-scanner/tree/gh-pages).
