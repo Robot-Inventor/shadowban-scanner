@@ -117,6 +117,9 @@
     "settingsEnableOnXPro": {
         "message": "X Pro上で実行する"
     },
+    "settingsShowReleaseNotes": {
+        "message": "アップデート後にリリースノートを表示"
+    },
     "settingsPleaseReload": {
         "message": "設定を変更したらTwitterを再読み込みしてください。"
     },
