@@ -1,11 +1,11 @@
 body[data-color-scheme="light"] {
-    --sb-background-green: #b9f6ca;
+    --sb-background-green: #70d28b;
     --sb-background-red: #f99f9f;
 }
 
 body[data-color-scheme="dark"] {
-    --sb-background-green: #144c23;
-    --sb-background-red: #5b221f;
+    --sb-background-green: #0c411a;
+    --sb-background-red: #702d27;
 }
 
 .shadowban-scanner-tombstone-necromancer {
