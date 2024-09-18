@@ -50,12 +50,17 @@ class SbsMessage extends LitElement {
             font-family: sans-serif;
         }
 
+        :host {
+            --message-background-color-red: rgb(255, 0, 0, 0.2);
+            --message-background-color-green: rgb(0, 255, 0, 0.2);
+        }
+
         a {
             color: inherit;
         }
 
         .shadowban-scanner-message {
-            --message-background-color: rgb(255, 0, 0, 0.2);
+            --message-background-color: var(--message-background-color-red);
 
             color: var(--md-sys-color-on-primary);
             padding: 1em;
@@ -76,7 +81,7 @@ class SbsMessage extends LitElement {
         }
 
         .shadowban-scanner-message-no-problem {
-            --message-background-color: rgb(0, 255, 0, 0.2);
+            --message-background-color: var(--message-background-color-green);
         }
 
         .shadowban-scanner-message button {

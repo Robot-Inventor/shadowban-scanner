@@ -1,5 +1,5 @@
 import { CHECKED_DATA_ATTRIBUTE, TRANSLATION_ATTRIBUTE } from "../common/constants";
-import { type Profile, Timeline, type Tweet } from "twi-ext";
+import { type Profile, Timeline, type Tweet, getColorScheme } from "twi-ext";
 import { analyzeProfileProps, analyzeTombstoneProps, analyzeTweetProps } from "./propsAnalyzer";
 import { generateMessageDataForProfile, generateMessageDataForTweet } from "./messageDataGenerator";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
@@ -31,6 +31,9 @@ class Core {
         timeline.onNewProfile((profile) => {
             this.checkProfile(profile);
         });
+
+        const colorScheme = getColorScheme() === "light" ? "light" : "dark";
+        document.body.setAttribute("data-color-scheme", colorScheme);
     }
 
     private checkProfile(profile: Profile): void {
