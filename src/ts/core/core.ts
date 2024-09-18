@@ -54,11 +54,17 @@ class Core {
         sbsMessageWrapper.insertAdjacentElement(bioOrUserName, "afterend");
     }
 
+    // eslint-disable-next-line max-statements
     private checkTweet(tweet: Tweet): void {
         const analyzer = analyzeTweetProps(new TweetParser(tweet));
 
         if (!tweet.metadata.isPostedByCurrentUser && !this.settings.enableForOtherUsersTweets) return;
         if (!(analyzer.tweet.hasAnyProblem || this.settings.showMessagesInUnproblematicTweets)) return;
+
+        if (!tweet.metadata.isFocalMode && this.settings.enableCompactMode) {
+            tweet.element.dataset.sbCompactMode = analyzer.tweet.hasAnyProblem ? "red" : "green";
+            return;
+        }
 
         const messageData = generateMessageDataForTweet(tweet, analyzer, this.onMessageCallback, this.settings);
         const sbsMessageWrapper = new SbsMessageWrapper(messageData);

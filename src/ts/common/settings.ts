@@ -7,6 +7,7 @@ import { storage } from "webextension-polyfill";
  */
 const DEFAULT_SETTINGS = {
     alwaysDetailedView: false,
+    enableCompactMode: false,
     enableForOtherUsersProfiles: true,
     enableForOtherUsersTweets: true,
     enableOnXPro: true,

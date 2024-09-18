@@ -105,6 +105,9 @@
     "settingsOtherSettings": {
         "message": "その他の設定"
     },
+    "settingsEnableCompactMode": {
+        "message": "コンパクトモードを有効化"
+    },
     "settingsAlwaysDetailedView": {
         "message": "常に詳細情報を表示"
     },

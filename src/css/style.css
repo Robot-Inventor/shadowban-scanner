@@ -23,6 +23,18 @@ sbs-message {
     --message-background-color-green: var(--sb-background-green);
 }
 
+[data-sb-compact-mode] {
+    border-left: solid 0.3rem;
+}
+
+[data-sb-compact-mode="green"] {
+    border-left-color: var(--sb-background-green);
+}
+
+[data-sb-compact-mode="red"] {
+    border-left-color: var(--sb-background-red);
+}
+
 [data-sb-translation] {
     display: inline-block;
     min-width: 15em;

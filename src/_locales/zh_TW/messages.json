@@ -106,6 +106,9 @@
     "settingsOtherSettings": {
         "message": "其他設定"
     },
+    "settingsEnableCompactMode": {
+        "message": "啟用精簡模式"
+    },
     "settingsAlwaysDetailedView": {
         "message": "永遠顯示詳細資訊"
     },
