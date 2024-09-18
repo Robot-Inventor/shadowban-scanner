@@ -53,6 +53,11 @@ const SETTINGS_ITEMS = [
         type: "separator"
     },
     {
+        settingsName: "enableCompactMode",
+        translationKey: "settingsEnableCompactMode",
+        type: "checkbox"
+    },
+    {
         settingsName: "alwaysDetailedView",
         translationKey: "settingsAlwaysDetailedView",
         type: "checkbox"

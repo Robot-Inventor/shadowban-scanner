@@ -105,6 +105,9 @@
     "settingsOtherSettings": {
         "message": "Other settings"
     },
+    "settingsEnableCompactMode": {
+        "message": "Enable compact mode"
+    },
     "settingsAlwaysDetailedView": {
         "message": "Always display detailed information"
     },

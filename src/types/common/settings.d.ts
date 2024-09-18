@@ -7,6 +7,7 @@ export interface Settings {
     showMessagesInUnproblematicTweets: boolean;
     showNotesInMessages: boolean;
     showTweetButton: boolean;
+    enableCompactMode: boolean;
     enableOnXPro: boolean;
     showReleaseNotes: boolean;
 }
