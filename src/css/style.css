@@ -1,3 +1,13 @@
+body[data-color-scheme="light"] {
+    --sb-background-green: #b9f6ca;
+    --sb-background-red: #f99f9f;
+}
+
+body[data-color-scheme="dark"] {
+    --sb-background-green: #144c23;
+    --sb-background-red: #5b221f;
+}
+
 .shadowban-scanner-tombstone-necromancer {
     display: inline-block;
     margin: 0 2rem;
@@ -6,6 +16,11 @@
 
 .shadowban-scanner-tombstone-necromancer:hover {
     text-decoration: underline;
+}
+
+sbs-message {
+    --message-background-color-red: var(--sb-background-red);
+    --message-background-color-green: var(--sb-background-green);
 }
 
 [data-sb-translation] {
