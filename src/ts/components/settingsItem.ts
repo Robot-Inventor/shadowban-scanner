@@ -29,7 +29,6 @@ class SettingsItem extends LitElement {
         }
 
         md-checkbox {
-            --md-sys-color-secondary: transparent;
             margin-left: 0.75rem;
             flex-shrink: 0;
         }
