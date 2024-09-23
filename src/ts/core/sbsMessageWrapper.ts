@@ -6,10 +6,7 @@ import type { SbsMessageDetails } from "../components/sbsMessage";
 import type { TranslationKey } from "../../types/common/translator";
 import type { Tweet } from "twi-ext";
 
-interface SbsMessageWrapperOptionsForTweets {
-    type: "tweet";
-
-    tweet: Tweet;
+interface SbsMessageWrapperOptionsBase {
     summary: TranslationKey;
     details: SbsMessageDetails;
     notes: TranslationKey[];
@@ -24,12 +21,13 @@ interface SbsMessageWrapperOptionsForTweets {
     onRenderedCallback?: () => void;
 }
 
-interface SbsMessageWrapperOptionsForProfiles {
-    type: "profile";
+interface SbsMessageWrapperOptionsForTweets extends SbsMessageWrapperOptionsBase {
+    type: "tweet";
+    tweet: Tweet;
+}
 
-    summary: TranslationKey;
-    isAlert: boolean;
-    onRenderedCallback?: () => void;
+interface SbsMessageWrapperOptionsForProfiles extends SbsMessageWrapperOptionsBase {
+    type: "profile";
 }
 
 class SbsMessageWrapper {
@@ -46,18 +44,17 @@ class SbsMessageWrapper {
         sbsMessage.isAlert = options.isAlert;
         sbsMessage.onRenderedCallback = options.onRenderedCallback;
 
+        sbsMessage.details = options.details;
+        sbsMessage.notes = options.notes;
+        sbsMessage.isExpanded = options.isExpanded;
+        sbsMessage.isTweetButtonShown = options.isTweetButtonShown;
+        sbsMessage.isNoteShown = options.isNoteShown;
+
+        this.tweetText = options.tweetText;
+
         if (options.type === "tweet") {
             this.tweet = options.tweet;
-            sbsMessage.details = options.details;
-            sbsMessage.notes = options.notes;
             sbsMessage.isFocalMode = options.tweet.metadata.isFocalMode;
-            sbsMessage.isExpanded = options.isExpanded;
-            sbsMessage.isTweetButtonShown = options.isTweetButtonShown;
-            sbsMessage.isNoteShown = options.isNoteShown;
-
-            this.tweetText = options.tweetText;
-        } else {
-            sbsMessage.isExpanded = true;
         }
 
         sbsMessage.setAttribute(SHADOW_TRANSLATION_ATTRIBUTE, "");
@@ -83,6 +80,7 @@ class SbsMessageWrapper {
     }
 
     private onTweetButtonClick(): void {
+        // TODO: プロフィールの検証結果をツイートする機能を追加する
         if (!(this.tweet && this.tweetText)) {
             throw new Error("Tweet button clicked without source tweet");
         }

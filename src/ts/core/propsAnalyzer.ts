@@ -6,6 +6,7 @@ interface ProfileAnalysisResult {
     user: {
         hasAnyProblem: boolean;
         sensitiveMediaInProfile: boolean;
+        screenName: string;
         shadowbanned: boolean;
         withheldInCountries: string[];
     };
@@ -32,6 +33,7 @@ const analyzeProfileProps = (props: UserProps): ProfileAnalysisResult => {
         user: {
             // eslint-disable-next-line no-magic-numbers
             hasAnyProblem: shadowbanned || withheldInCountries.length > 0,
+            screenName: props.screen_name,
             sensitiveMediaInProfile,
             shadowbanned,
             withheldInCountries
