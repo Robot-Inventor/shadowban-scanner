@@ -1,10 +1,10 @@
 // eslint-disable-next-line import-x/no-unassigned-import
 import "../components/sbsMessage";
+import { type Tweet, composeNewTweet } from "twi-ext";
 import { SHADOW_TRANSLATION_ATTRIBUTE } from "../common/constants";
 // eslint-disable-next-line no-duplicate-imports
 import type { SbsMessageDetails } from "../components/sbsMessage";
 import type { TranslationKey } from "../../types/common/translator";
-import type { Tweet } from "twi-ext";
 
 interface SbsMessageWrapperOptionsBase {
     summary: TranslationKey;
@@ -33,7 +33,7 @@ interface SbsMessageWrapperOptionsForProfiles extends SbsMessageWrapperOptionsBa
 class SbsMessageWrapper {
     private readonly sbsMessage: HTMLElement;
     private readonly tweet: Tweet | null = null;
-    private readonly tweetText?: string;
+    private readonly tweetText: string;
 
     // eslint-disable-next-line max-statements
     public constructor(options: SbsMessageWrapperOptionsForTweets | SbsMessageWrapperOptionsForProfiles) {
@@ -80,12 +80,15 @@ class SbsMessageWrapper {
     }
 
     private onTweetButtonClick(): void {
-        // TODO: プロフィールの検証結果をツイートする機能を追加する
-        if (!(this.tweet && this.tweetText)) {
-            throw new Error("Tweet button clicked without source tweet");
-        }
+        if (this.tweet) {
+            if (!this.tweetText) {
+                throw new Error("Tweet button clicked without source tweet");
+            }
 
-        void this.tweet.quoteTweet(this.tweetText);
+            void this.tweet.quoteTweet(this.tweetText);
+        } else {
+            void composeNewTweet(this.tweetText);
+        }
     }
 
     public insertAdjacentElement(target: Element, position: InsertPosition): void {
