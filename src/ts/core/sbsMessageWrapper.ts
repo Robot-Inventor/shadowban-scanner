@@ -87,7 +87,8 @@ class SbsMessageWrapper {
 
             void this.tweet.quoteTweet(this.tweetText);
         } else {
-            void composeNewTweet(this.tweetText);
+            // eslint-disable-next-line no-magic-numbers
+            void composeNewTweet(this.tweetText, 2000);
         }
     }
 
