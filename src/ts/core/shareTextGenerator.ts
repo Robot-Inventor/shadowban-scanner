@@ -58,7 +58,7 @@ const generateShareTextForProfile = (analyzer: ProfileAnalysisResult): string =>
         : "https://shadowban-scanner.roboin.io/en/";
 
     return `
-Account status for @${analyzer.user.screenName}
+Account status for ${analyzer.user.isLoggedInUser ? `@${analyzer.user.screenName}` : `@ ${analyzer.user.screenName}`}
 
 ${accountSensitiveFlag}
 ${profileSensitiveFlag}
