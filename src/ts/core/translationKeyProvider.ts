@@ -3,24 +3,6 @@ import type { SbsMessageWrapperOptionsForProfiles, SbsMessageWrapperOptionsForTw
 import type { SbsMessageDetails } from "../components/sbsMessage";
 import type { TranslationKey } from "../../types/common/translator";
 
-const getTranslationKeyFromProfileAnalyzer = (
-    analyzer: ProfileAnalysisResult
-): Pick<SbsMessageWrapperOptionsForProfiles, "summary"> => {
-    // eslint-disable-next-line no-useless-assignment
-    let summary: TranslationKey | null = null;
-    if (analyzer.user.shadowbanned) {
-        summary = "thisUserIsShadowbanned";
-    } else if (analyzer.user.withheldInCountries.length) {
-        summary = "accountIsBlockedInSomeCountries";
-    } else {
-        summary = "thisUserIsNotShadowbanned";
-    }
-
-    return {
-        summary
-    };
-};
-
 const summarizeForTweet = (analyzer: TweetAnalysisResult): TranslationKey => {
     const tweetHasProblem =
         analyzer.user.shadowbanned ||
@@ -58,7 +40,7 @@ const formatCountryList = (countries: string[]): string => {
     return formattedText;
 };
 
-const getAccountDetails = (analyzer: TweetAnalysisResult): SbsMessageDetails => {
+const getAccountDetails = (analyzer: TweetAnalysisResult | ProfileAnalysisResult): SbsMessageDetails => {
     const accountStatus = analyzer.user.shadowbanned
         ? "accountIsShadowbannedOrFlaggedAsSensitive"
         : "accountIsNotFlaggedAsSensitive";
@@ -90,6 +72,27 @@ const getTweetDetails = (analyzer: TweetAnalysisResult): SbsMessageDetails => {
     const tweetSearchStatus = tweetSearchStatusTable[analyzer.tweet.searchability];
 
     return [tweetSensitiveFlag, tweetAgeRestriction, tweetSearchStatus];
+};
+
+const getTranslationKeyFromProfileAnalyzer = (
+    analyzer: ProfileAnalysisResult
+): Pick<SbsMessageWrapperOptionsForProfiles, "summary" | "details"> => {
+    const details = getAccountDetails(analyzer);
+
+    // eslint-disable-next-line no-useless-assignment
+    let summary: TranslationKey | null = null;
+    if (analyzer.user.shadowbanned) {
+        summary = "thisUserIsShadowbanned";
+    } else if (analyzer.user.withheldInCountries.length) {
+        summary = "accountIsBlockedInSomeCountries";
+    } else {
+        summary = "thisUserIsNotShadowbanned";
+    }
+
+    return {
+        details,
+        summary
+    };
 };
 
 const getTranslationKeyFromTweetAnalyzer = (

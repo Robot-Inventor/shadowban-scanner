@@ -1,15 +1,12 @@
 // eslint-disable-next-line import-x/no-unassigned-import
 import "../components/sbsMessage";
+import { type Tweet, composeNewTweet } from "twi-ext";
 import { SHADOW_TRANSLATION_ATTRIBUTE } from "../common/constants";
 // eslint-disable-next-line no-duplicate-imports
 import type { SbsMessageDetails } from "../components/sbsMessage";
 import type { TranslationKey } from "../../types/common/translator";
-import type { Tweet } from "twi-ext";
 
-interface SbsMessageWrapperOptionsForTweets {
-    type: "tweet";
-
-    tweet: Tweet;
+interface SbsMessageWrapperOptionsBase {
     summary: TranslationKey;
     details: SbsMessageDetails;
     notes: TranslationKey[];
@@ -24,18 +21,19 @@ interface SbsMessageWrapperOptionsForTweets {
     onRenderedCallback?: () => void;
 }
 
-interface SbsMessageWrapperOptionsForProfiles {
-    type: "profile";
+interface SbsMessageWrapperOptionsForTweets extends SbsMessageWrapperOptionsBase {
+    type: "tweet";
+    tweet: Tweet;
+}
 
-    summary: TranslationKey;
-    isAlert: boolean;
-    onRenderedCallback?: () => void;
+interface SbsMessageWrapperOptionsForProfiles extends SbsMessageWrapperOptionsBase {
+    type: "profile";
 }
 
 class SbsMessageWrapper {
     private readonly sbsMessage: HTMLElement;
     private readonly tweet: Tweet | null = null;
-    private readonly tweetText?: string;
+    private readonly tweetText: string;
 
     // eslint-disable-next-line max-statements
     public constructor(options: SbsMessageWrapperOptionsForTweets | SbsMessageWrapperOptionsForProfiles) {
@@ -46,18 +44,17 @@ class SbsMessageWrapper {
         sbsMessage.isAlert = options.isAlert;
         sbsMessage.onRenderedCallback = options.onRenderedCallback;
 
+        sbsMessage.details = options.details;
+        sbsMessage.notes = options.notes;
+        sbsMessage.isExpanded = options.isExpanded;
+        sbsMessage.isTweetButtonShown = options.isTweetButtonShown;
+        sbsMessage.isNoteShown = options.isNoteShown;
+
+        this.tweetText = options.tweetText;
+
         if (options.type === "tweet") {
             this.tweet = options.tweet;
-            sbsMessage.details = options.details;
-            sbsMessage.notes = options.notes;
             sbsMessage.isFocalMode = options.tweet.metadata.isFocalMode;
-            sbsMessage.isExpanded = options.isExpanded;
-            sbsMessage.isTweetButtonShown = options.isTweetButtonShown;
-            sbsMessage.isNoteShown = options.isNoteShown;
-
-            this.tweetText = options.tweetText;
-        } else {
-            sbsMessage.isExpanded = true;
         }
 
         sbsMessage.setAttribute(SHADOW_TRANSLATION_ATTRIBUTE, "");
@@ -83,11 +80,16 @@ class SbsMessageWrapper {
     }
 
     private onTweetButtonClick(): void {
-        if (!(this.tweet && this.tweetText)) {
-            throw new Error("Tweet button clicked without source tweet");
-        }
+        if (this.tweet) {
+            if (!this.tweetText) {
+                throw new Error("Tweet button clicked without source tweet");
+            }
 
-        void this.tweet.quoteTweet(this.tweetText);
+            void this.tweet.quoteTweet(this.tweetText);
+        } else {
+            // eslint-disable-next-line no-magic-numbers
+            void composeNewTweet(this.tweetText, 2000);
+        }
     }
 
     public insertAdjacentElement(target: Element, position: InsertPosition): void {

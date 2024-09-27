@@ -6,8 +6,10 @@ interface ProfileAnalysisResult {
     user: {
         hasAnyProblem: boolean;
         sensitiveMediaInProfile: boolean;
+        screenName: string;
         shadowbanned: boolean;
         withheldInCountries: string[];
+        isLoggedInUser: boolean;
     };
 }
 
@@ -32,6 +34,8 @@ const analyzeProfileProps = (props: UserProps): ProfileAnalysisResult => {
         user: {
             // eslint-disable-next-line no-magic-numbers
             hasAnyProblem: shadowbanned || withheldInCountries.length > 0,
+            isLoggedInUser: Boolean(document.querySelector('[data-testid="editProfileButton"')),
+            screenName: props.screen_name,
             sensitiveMediaInProfile,
             shadowbanned,
             withheldInCountries

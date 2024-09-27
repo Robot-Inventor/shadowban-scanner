@@ -43,7 +43,7 @@ class Core {
         const profileAnalyzer = analyzeProfileProps(profile.props);
         if (!(profileAnalyzer.user.hasAnyProblem || this.settings.showMessagesInUnproblematicProfiles)) return;
 
-        const messageData = generateMessageDataForProfile(profileAnalyzer, this.onMessageCallback);
+        const messageData = generateMessageDataForProfile(profileAnalyzer, this.onMessageCallback, this.settings);
         const sbsMessageWrapper = new SbsMessageWrapper(messageData);
 
         const bioOrUserName =
