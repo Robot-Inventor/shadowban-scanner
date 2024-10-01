@@ -3,80 +3,80 @@
         "message": "A browser extension that detects shadowbans on Twitter."
     },
     "accountShadowbanned": {
-        "message": "This user may be shadowbanned, so this tweet may not appear in search results."
+        "message": "This user may be shadowbanned, so their tweets might not appear in search results."
     },
     "accountShadowbannedAndTweetFlaggedAsSensitive": {
-        "message": "This user may be shadowbanned so this tweet may not appear in search results. Also, this tweet is flagged as sensitive."
+        "message": "This user may be shadowbanned, so their tweet might not appear in search results. Additionally, this tweet is flagged as sensitive."
     },
     "accountAndTweetShadowbanned": {
-        "message": "This tweet is age-restricted and cannot be viewed by users under the age of 18 or who are not logged in. This tweet may not appear in search results."
+        "message": "This tweet is age-restricted and cannot be viewed by users under 18 or those who are not logged in. It may also not appear in search results."
     },
     "accountIsBlockedInSomeCountries": {
         "message": "This user is blocked in some countries."
     },
     "tweetFlaggedAsSensitive": {
-        "message": "This tweet is flagged as sensitive and will not appear in search results depending on the viewer's preferences."
+        "message": "This tweet is flagged as sensitive and may not appear in search results depending on the viewer's settings."
     },
     "thisUserIsNotShadowbanned": {
         "message": "This user is not shadowbanned."
     },
     "thisUserIsShadowbanned": {
-        "message": "This user may be shadowbanned and tweets may not appear in search results."
+        "message": "This user may be shadowbanned, and their tweets might not appear in search results."
     },
     "tweetShadowbanned": {
-        "message": "This tweet is age-restricted and cannot be viewed by users under the age of 18 or who are not logged in. This tweet may not appear in search results."
+        "message": "This tweet is age-restricted and cannot be viewed by users under 18 or those who are not logged in. It may also not appear in search results."
     },
     "tweetNoProblem": {
-        "message": "No problems was found with this tweet."
+        "message": "No issues were found with this tweet."
     },
     "accountIsNotFlaggedAsSensitive": {
-        "message": "✅Account is not flagged as sensitive."
+        "message": "✅Account is not flagged as sensitive"
     },
     "accountIsShadowbannedOrFlaggedAsSensitive": {
-        "message": "🚫Account may be shadowbanned or flagged as sensitive."
+        "message": "🚫Account may be shadowbanned or flagged as sensitive"
     },
     "profileDoesNotContainSensitiveMedia": {
-        "message": "✅Profile media is not flagged as sensitive."
+        "message": "✅Profile media is not flagged as sensitive"
     },
     "profileContainsSensitiveMedia": {
-        "message": "🚫Profile media is flagged as sensitive."
+        "message": "🚫Profile media is flagged as sensitive"
     },
     "accountIsNotWithheldInCountries": {
-        "message": "✅Account is not blocked in any countries (<a href=\"https://help.twitter.com/rules-and-policies/post-withheld-by-country\" target=\"_blank\">details</a>)."
+        "message": "✅Account is not blocked in any countries (<a href=\"https://help.twitter.com/rules-and-policies/post-withheld-by-country\" target=\"_blank\">details</a>)"
     },
     "accountIsWithheldInCountries": {
-        "message": "🚫Account is blocked in the following country(ies) (<a href=\"https://help.twitter.com/rules-and-policies/post-withheld-by-country\" target=\"_blank\">details</a>): $1"
+        "message": "🚫Account is blocked in the following countries (<a href=\"https://help.twitter.com/rules-and-policies/post-withheld-by-country\" target=\"_blank\">details</a>): $1"
     },
     "tweetIsNotFlaggedAsSensitive": {
-        "message": "✅Tweet is not flagged as sensitive."
+        "message": "✅Tweet is not flagged as sensitive"
     },
     "tweetIsFlaggedAsSensitive": {
-        "message": "🚫Tweet is flagged as sensitive."
+        "message": "🚫Tweet is flagged as sensitive"
     },
     "tweetIsNotAgeRestricted": {
-        "message": "✅Tweet has no age limit."
+        "message": "✅Tweet has no age restrictions"
     },
     "tweetIsAgeRestricted": {
-        "message": "🚫Tweet has age limit."
+        "message": "🚫Tweet has age restrictions"
     },
     "tweetIsSearchable": {
-        "message": "✅Tweet will appear in search results."
+        "message": "✅Tweet will appear in search results"
     },
     "tweetMayNotBeSearchable": {
-        "message": "⚠️Tweet may not appear in search results depending on viewer preferences."
+        "message": "⚠️Tweet may not appear in search results depending on viewer settings"
     },
     "tweetIsNotSearchable": {
-        "message": "🚫Tweet may not appear in search results."
+        "message": "🚫Tweet may not appear in search results"
     },
     "falsePositivesAndFalseNegativesOccur": {
-        "message": "Shadowban Scanner, like other similar tools, can produce false positives and false negatives. For more information on how it works, please click <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/blob/main/doc/en/about-shadowban.md\" target=\"blank\">here</a>."
+        "message": "Like other similar tools, Shadowban Scanner can produce false positives and false negatives. For more details on how it works, click <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/blob/main/doc/en/about-shadowban.md\" target=\"blank\">here</a>."
     },
     "translatedByAI": {
-        "message": "Translated from Japanese to English by AI. Please notify <a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>'s DM or <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub repository</a> if there are any unnatural points.",
-        "description": "This field is used if the translation was done by AI. Otherwise, set this field to an empty string. Example sentence: \"Translated from Japanese to <language name> by AI. Please notify <a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>'s DM or <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub repository</a> if there are any unnatural points.\""
+        "message": "Translated from Japanese to English by AI. If you notice any issues, please contact <a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a> via DM or visit the <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub repository</a>.",
+        "description": "This field is used if the translation was done by AI. Otherwise, set this field to an empty string. Example sentence: \"Translated from Japanese to <language name> by AI. If you notice any issues, please contact <a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a> via DM or visit the <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub repository</a>.\""
     },
     "showMore": {
-        "message": "▶show more"
+        "message": "▶Show more"
     },
     "tweetTheResults": {
         "message": "Tweet the results"
@@ -85,16 +85,16 @@
         "message": "View Tweet"
     },
     "settingsWhereToDisplayCheckResults": {
-        "message": "Where to display check results"
+        "message": "Where to display scan results"
     },
     "settingsAlwaysShowMessagesIfYourAccountShadowbanned": {
-        "message": "If your account is shadowbanned, you will always see messages."
+        "message": "Always display scan results if your account is shadowbanned."
     },
     "settingsShowMessagesInUnproblematicTweets": {
-        "message": "Display in non-problematic tweets"
+        "message": "Display scan results in non-problematic tweets"
     },
     "settingsShowMessagesInUnproblematicProfiles": {
-        "message": "Display in non-problematic profiles"
+        "message": "Display scan results in non-problematic profiles"
     },
     "settingsEnableForOtherUsersTweets": {
         "message": "Display in other users' tweets"
@@ -121,10 +121,10 @@
         "message": "Enable on X Pro"
     },
     "settingsShowReleaseNotes": {
-        "message": "Show release notes after update"
+        "message": "Show release notes after updates"
     },
     "settingsPleaseReload": {
-        "message": "Please reload Twitter once you have changed the settings"
+        "message": "Please reload Twitter after changing settings."
     },
     "settingsPrivacyPolicy": {
         "message": "Privacy Policy"
@@ -145,31 +145,31 @@
         "message": "Privacy Policy"
     },
     "privacyPolicyText": {
-        "message": "As a rule, this extension performs all processing on the user's computer. No data is transmitted to an external server. It also does not access Twitter's internal API by obtaining the user's credentials without permission, as is the case with some extensions. Web pages not bundled in this extension are subject to their own terms of use and privacy policies."
+        "message": "As a rule, this extension performs all processing on the user's computer. No data is transmitted to external servers. It also does not access Twitter's internal API by obtaining user credentials without permission, as seen with some other extensions. Any web pages not included in this extension are subject to their own terms of use and privacy policies."
     },
     "initialSetup": {
-        "message": "Initial setup - Shadowban Scanner"
+        "message": "Initial Setup - Shadowban Scanner"
     },
     "shadowbanScannerHasBeenInstalled": {
-        "message": "Shadowban Scanner installed"
+        "message": "Shadowban Scanner has been installed."
     },
     "letsStartWithASimpleInitialSetup": {
-        "message": "Let's start with a simple initial setup"
+        "message": "Let's begin with a simple initial setup."
     },
     "pleaseSelectOneOfThem": {
-        "message": "Please choose one. The settings can be changed later."
+        "message": "Please select one. You can change these settings later."
     },
     "displayForAllTweetsAndAccounts": {
-        "message": "Show scan results for all tweets and accounts"
+        "message": "Display scan results for all tweets and accounts"
     },
     "displayOnlyForProblematicTweets": {
-        "message": "Show scan results only for problematic tweets and accounts"
+        "message": "Display scan results only for problematic tweets and accounts"
     },
     "displayOnlyInYourOwnTweets": {
-        "message": "Show scan results only for my tweets"
+        "message": "Display scan results only for your own tweets"
     },
     "displayInAllUsersTweets": {
-        "message": "Show scan results for all users' tweets"
+        "message": "Display scan results for all users' tweets"
     },
     "back": {
         "message": "Back"
@@ -178,7 +178,7 @@
         "message": "Next"
     },
     "initialSetupCompleted": {
-        "message": "Initial setup complete!<br>Do you want to open the usage instructions?"
+        "message": "Initial setup completed!<br>Would you like to open the usage instructions?"
     },
     "open": {
         "message": "Open"
