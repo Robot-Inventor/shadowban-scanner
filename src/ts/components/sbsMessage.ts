@@ -150,8 +150,15 @@ class SbsMessage extends LitElement {
         this.isExpanded = true;
     }
 
-    private tweetButtonClicked(): void {
+    private tweetButtonClicked(event: Event): void {
+        event.preventDefault();
         const newEvent = new Event("tweetButtonClick", { bubbles: true, composed: true });
+        this.dispatchEvent(newEvent);
+    }
+
+    private tweetButtonTouched(event: Event): void {
+        event.preventDefault();
+        const newEvent = new Event("tweetButtonTouch", { bubbles: true, composed: true });
         this.dispatchEvent(newEvent);
     }
 
@@ -206,6 +213,7 @@ class SbsMessage extends LitElement {
         return this.isTweetButtonShown
             ? html`<md-filled-button
                   @click=${this.tweetButtonClicked.bind(this)}
+                  @touchend=${this.tweetButtonTouched.bind(this)}
                   class=${tweetButtonClasses}
                   data-sb-translation="tweetTheResults"
               ></md-filled-button>`
