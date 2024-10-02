@@ -59,6 +59,7 @@ class SbsMessageWrapper {
 
         sbsMessage.setAttribute(SHADOW_TRANSLATION_ATTRIBUTE, "");
         sbsMessage.addEventListener("tweetButtonClick", this.onTweetButtonClick.bind(this));
+        sbsMessage.addEventListener("tweetButtonTouch", this.onTweetButtonTouch.bind(this));
         this.sbsMessage = sbsMessage;
     }
 
@@ -85,10 +86,28 @@ class SbsMessageWrapper {
                 throw new Error("Tweet button clicked without source tweet");
             }
 
-            void this.tweet.quoteTweet(this.tweetText);
+            // eslint-disable-next-line no-magic-numbers
+            void this.tweet.quoteTweet(this.tweetText, 2000);
         } else {
             // eslint-disable-next-line no-magic-numbers
             void composeNewTweet(this.tweetText, 2000);
+        }
+    }
+
+    private onTweetButtonTouch(): void {
+        if (this.tweet) {
+            if (!this.tweetText) {
+                throw new Error("Tweet button clicked without source tweet");
+            }
+
+            // eslint-disable-next-line no-magic-numbers
+            void this.tweet.quoteTweet(this.tweetText, 2000);
+        } else {
+            // On touch devices, clicking the tweet button fails to open the compose screen in the same tab.
+            // Therefore, open the compose screen in a new tab.
+
+            // eslint-disable-next-line no-magic-numbers
+            void composeNewTweet(this.tweetText, 2000, true);
         }
     }
 
