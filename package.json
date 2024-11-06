@@ -57,6 +57,7 @@
     "@types/addons-linter": "^6.16.0",
     "@types/webextension-polyfill": "^0.12.0",
     "cross-env": "^7.0.3",
+    "fork-ts-checker-webpack-plugin": "^9.0.2",
     "knip": "^5.0.0",
     "tsx": "^4.10.1"
   }

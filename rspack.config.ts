@@ -1,4 +1,5 @@
 import { type Compiler, CopyRspackPlugin, type CopyRspackPluginOptions } from "@rspack/core";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import LicensePlugin from "webpack-license-plugin";
 import { defineConfig } from "@rspack/cli";
 import { exec } from "child_process";
@@ -198,7 +199,7 @@ const isProduction = process.env.NODE_ENV === "production";
 /* eslint-disable sort-keys */
 // eslint-disable-next-line max-lines-per-function
 const config = defineConfig((env) => ({
-    mode: "production",
+    mode: isProduction ? "production" : "development",
     devtool: isProduction ? false : "source-map",
     entry: {
         ...chromeScripts,
@@ -258,7 +259,8 @@ const config = defineConfig((env) => ({
             outputFilename: "./firefox/json/oss-licenses.json",
             unacceptableLicenseTest,
             includeNoticeText: true
-        })
+        }),
+        new ForkTsCheckerWebpackPlugin()
     ]
 }));
 /* eslint-enable sort-keys */
