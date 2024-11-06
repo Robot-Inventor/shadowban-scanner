@@ -3,6 +3,7 @@
   "compilerOptions": {
     "declaration": false,
     "experimentalDecorators": true,
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "isolatedModules": true
   }
 }

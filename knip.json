@@ -1,14 +1,6 @@
 {
-    "project": [
-        "src/**/*.ts",
-        "src/**/*.js",
-        "script/**/*.ts",
-        "script/**/*.js"
-    ],
-    "ignoreDependencies": [
-        "web-ext",
-        "ts-auto-guard"
-    ],
+    "project": ["src/**/*.ts", "src/**/*.js", "script/**/*.ts", "script/**/*.js"],
+    "ignoreDependencies": ["web-ext", "ts-auto-guard"],
     "ignore": [
         "script/addonsLinter.ts",
         "script/updatePrivacyPolicy.ts",
