@@ -9,25 +9,13 @@
         "48": "image/icon48.png",
         "128": "image/icon128.png"
     },
-    "host_permissions": [
-        "https://*.twitter.com/*",
-        "https://*.x.com/*"
-    ],
-    "permissions": [
-        "storage"
-    ],
+    "host_permissions": ["https://*.twitter.com/*", "https://*.x.com/*"],
+    "permissions": ["storage"],
     "content_scripts": [
         {
-            "matches": [
-                "https://*.twitter.com/*",
-                "https://*.x.com/*"
-            ],
-            "js": [
-                "js/contentScript.js"
-            ],
-            "css": [
-                "css/style.css"
-            ]
+            "matches": ["https://*.twitter.com/*", "https://*.x.com/*"],
+            "js": ["js/contentScript.js"],
+            "css": ["css/style.css"]
         }
     ],
     "background": {
@@ -35,14 +23,8 @@
     },
     "web_accessible_resources": [
         {
-            "resources": [
-                "js/pageScript.js",
-                "image/*"
-            ],
-            "matches": [
-                "https://*.twitter.com/*",
-                "https://*.x.com/*"
-            ]
+            "resources": ["js/pageScript.js", "image/*"],
+            "matches": ["https://*.twitter.com/*", "https://*.x.com/*"]
         }
     ],
     "default_locale": "en",
