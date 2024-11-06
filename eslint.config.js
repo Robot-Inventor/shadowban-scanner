@@ -1,3 +1,3 @@
-const { eslintConfigNoJSDoc } = require("@robot-inventor/eslint-config");
+import { eslintConfigNoJSDoc } from "@robot-inventor/eslint-config";
 
-module.exports = eslintConfigNoJSDoc;
+export default eslintConfigNoJSDoc;
