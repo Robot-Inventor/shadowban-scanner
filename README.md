@@ -37,16 +37,17 @@ The website is available in multiple languages. The translations are stored in t
     });
     ```
 
-4. Add a new language to the `webpack.config.js` file in the `HtmlWebpackPlugin` configuration:
+4. Add a new language to the `rspack.config.ts` file in the `HtmlWebpackPlugin` configuration:
 
     ```javascript
-    const translationJa = require("./src/translations/ja.json");
-    const translationEn = require("./src/translations/en.json");
+    import translationJa from "./src/translations/ja.json" with { type: "json" };
+    import translationEn from "./src/translations/en.json" with { type: "json" };
 
-    module.exports = {
+    const isProduction = process.env.NODE_ENV === "production";
+    const config = defineConfig({
         // ...
         plugins: [
-            // ...
+            //...
             new HtmlWebpackPlugin({
                 template: "./src/html/index.html",
                 filename: "./index.html",
@@ -63,7 +64,9 @@ The website is available in multiple languages. The translations are stored in t
                 ...translationEn
             })
         ]
-    };
+    });
+
+    export default config;
     ```
 
 5. Add a new language to the `src/html/index.html` file:
