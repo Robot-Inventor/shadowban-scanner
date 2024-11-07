@@ -59,10 +59,6 @@ const config = defineConfig({
                     context: "./public/",
                     from: "**/*",
                     to: "./"
-                },
-                {
-                    from: "./src/html/download/index.html",
-                    to: "./download/index.html"
                 }
             ]
         }),
