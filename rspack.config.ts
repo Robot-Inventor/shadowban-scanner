@@ -84,6 +84,7 @@ class RunCommandsPlugin {
             }
         });
 
+        // eslint-disable-next-line max-statements
         compiler.hooks.watchRun.tapAsync("RunCommandsPlugin", (_params, callback) => {
             isWatchMode = true;
 
@@ -105,7 +106,7 @@ class RunCommandsPlugin {
                     // eslint-disable-next-line no-console
                     console.log(`Type definition file changed: ${pathString}`);
                     RunCommandsPlugin.generateTypeGuards(() => {
-                        if (compiler && compiler.watching) {
+                        if (compiler.watching) {
                             compiler.watching.invalidate();
                         }
                     });

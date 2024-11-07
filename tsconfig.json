@@ -4,6 +4,12 @@
     "declaration": false,
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
-    "isolatedModules": true
-  }
+    "isolatedModules": true,
+    "rootDir": "."
+  },
+  "include": [
+    "./rspack.config.ts",
+    "./src/**/*.ts",
+    "./script/**/*.ts"
+  ]
 }

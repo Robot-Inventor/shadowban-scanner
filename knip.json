@@ -5,6 +5,7 @@
         "script/addonsLinter.ts",
         "script/updatePrivacyPolicy.ts",
         "script/addUserScriptsComment.ts",
+        "script/util.ts",
         "script/copyManifest.ts",
         "src/ts/userScript/*.ts"
     ]
