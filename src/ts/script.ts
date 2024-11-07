@@ -1,5 +1,7 @@
+import { detectBrowser, getExtensionStoreLink } from "./util";
 import i18next, { changeLanguage, t as translate } from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
+import { SUPPORTED_MOBILE_BROWSERS } from "./constants";
 import Swal from "sweetalert2";
 import translationEn from "../translations/en.json";
 import translationJa from "../translations/ja.json";
@@ -12,12 +14,6 @@ declare global {
     }
 }
 
-const DOWNLOAD_LINKS = {
-    chrome: "https://chromewebstore.google.com/detail/enlganfikppbjhabhkkilafmkhifadjd",
-    edge: "https://microsoftedge.microsoft.com/addons/detail/kfeecmboomhggeeceipnbbdjmhjoccbl",
-    firefox: "https://addons.mozilla.org/firefox/addon/{8fee6fa8-6d95-4b9e-9c51-324c207fabff}/"
-} as const;
-
 const isCrawler = (): boolean => {
     const crawlerUserAgents = ["googlebot", "bingbot", "google-inspectiontool", "y!j", "yahoo!"];
     const result = crawlerUserAgents.some((crawlerUserAgent) =>
@@ -26,29 +22,19 @@ const isCrawler = (): boolean => {
     return result;
 };
 
-// eslint-disable-next-line max-lines-per-function
 const initializeDownloadButtons = (): void => {
     const buttons = document.querySelectorAll("button.download_button");
 
-    // eslint-disable-next-line max-statements
     buttons.forEach((button) => {
-        const isFirefox = navigator.userAgent.toLowerCase().includes("firefox");
-        const isEdge = navigator.userAgent.toLowerCase().includes("edg");
-        const isKiwiBrowser =
-            // Ref: https://github.com/kiwibrowser/src.next/issues/164#issuecomment-1480239313
-            window.chrome?.app && navigator.userAgent.toLowerCase().includes("android");
+        const browser = detectBrowser();
+        const downloadLink = getExtensionStoreLink();
+        let downloadText: string = translate("installToChrome");
 
-        let downloadLink: string = DOWNLOAD_LINKS.chrome;
-        let downloadText = translate("installToChrome");
-
-        if (isFirefox) {
-            downloadLink = DOWNLOAD_LINKS.firefox;
+        if (browser === "firefox") {
             downloadText = translate("installToFirefox");
-        } else if (isEdge) {
-            downloadLink = DOWNLOAD_LINKS.edge;
+        } else if (browser === "edge") {
             downloadText = translate("installToEdge");
-        } else if (isKiwiBrowser) {
-            downloadLink = DOWNLOAD_LINKS.chrome;
+        } else if (browser === "kiwiBrowser") {
             downloadText = translate("installToKiwiBrowser");
         }
 
@@ -57,7 +43,10 @@ const initializeDownloadButtons = (): void => {
         // eslint-disable-next-line @typescript-eslint/no-misused-promises
         button.addEventListener("click", async () => {
             const isMobile = Boolean(/iPhone|Android.+Mobile/u.exec(navigator.userAgent));
-            if (isMobile && !isFirefox && !isKiwiBrowser) {
+            if (
+                isMobile &&
+                !SUPPORTED_MOBILE_BROWSERS.includes(browser as (typeof SUPPORTED_MOBILE_BROWSERS)[number])
+            ) {
                 const result = await Swal.fire({
                     background: "#21272e",
                     cancelButtonColor: "#d33",
