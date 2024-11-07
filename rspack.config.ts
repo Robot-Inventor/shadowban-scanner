@@ -1,6 +1,5 @@
-import { CopyRspackPlugin } from "@rspack/core";
+import { CopyRspackPlugin, HtmlRspackPlugin } from "@rspack/core";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
-import HtmlWebpackPlugin from "html-webpack-plugin";
 import { defineConfig } from "@rspack/cli";
 import translationJa from "./src/translations/ja.json" with { type: "json" };
 import translationEn from "./src/translations/en.json" with { type: "json" };
@@ -62,27 +61,37 @@ const config = defineConfig({
                 }
             ]
         }),
-        new HtmlWebpackPlugin({
+        new HtmlRspackPlugin({
             template: "./src/html/index.html",
             filename: "./index.html",
+            minify: true,
             chunks: ["js/script.js"],
-            ...translationJa
+            templateParameters: {
+                ...translationJa
+            }
         }),
-        new HtmlWebpackPlugin({
+        new HtmlRspackPlugin({
             template: "./src/html/index.html",
             filename: "./ja/index.html",
+            minify: true,
             chunks: ["js/script.js"],
-            ...translationJa
+            templateParameters: {
+                ...translationJa
+            }
         }),
-        new HtmlWebpackPlugin({
+        new HtmlRspackPlugin({
             template: "./src/html/index.html",
             filename: "./en/index.html",
+            minify: true,
             chunks: ["js/script.js"],
-            ...translationEn
+            templateParameters: {
+                ...translationEn
+            }
         }),
-        new HtmlWebpackPlugin({
+        new HtmlRspackPlugin({
             template: "./src/html/download/index.html",
             filename: "./download/index.html",
+            minify: true,
             chunks: ["js/redirect.js"]
         }),
         new ForkTsCheckerWebpackPlugin()
