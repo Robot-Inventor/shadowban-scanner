@@ -10,7 +10,8 @@ const config = defineConfig({
     mode: isProduction ? "production" : "development",
     devtool: isProduction ? false : "source-map",
     entry: {
-        "js/script.js": "./src/ts/script.ts"
+        "js/script.js": "./src/ts/script.ts",
+        "js/redirect.js": "./src/ts/redirect.ts"
     },
     output: {
         filename: "[name]",
@@ -58,23 +59,35 @@ const config = defineConfig({
                     context: "./public/",
                     from: "**/*",
                     to: "./"
+                },
+                {
+                    from: "./src/html/download/index.html",
+                    to: "./download/index.html"
                 }
             ]
         }),
         new HtmlWebpackPlugin({
             template: "./src/html/index.html",
             filename: "./index.html",
+            chunks: ["js/script.js"],
             ...translationJa
         }),
         new HtmlWebpackPlugin({
             template: "./src/html/index.html",
             filename: "./ja/index.html",
+            chunks: ["js/script.js"],
             ...translationJa
         }),
         new HtmlWebpackPlugin({
             template: "./src/html/index.html",
             filename: "./en/index.html",
+            chunks: ["js/script.js"],
             ...translationEn
+        }),
+        new HtmlWebpackPlugin({
+            template: "./src/html/download/index.html",
+            filename: "./download/index.html",
+            chunks: ["js/redirect.js"]
         }),
         new ForkTsCheckerWebpackPlugin()
     ]
