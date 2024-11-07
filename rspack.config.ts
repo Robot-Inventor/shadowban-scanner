@@ -16,12 +16,14 @@ for (const userScript of userScripts) {
 
 class RunCommandsPlugin {
     private readonly env: Record<string, unknown>;
+    private isFirstRun = true;
+    private localesWatcher: null | ReturnType<typeof watch> = null;
 
     public constructor(env: Record<string, unknown>) {
         this.env = env;
     }
 
-    public static generateTypeGuards(callback?: () => void): void {
+    private static generateTypeGuards(callback?: () => void): void {
         // eslint-disable-next-line no-console
         console.log("Generating type guards...");
         exec("npx ts-auto-guard ./src/types/**/*.ts", (err, stdout) => {
@@ -38,7 +40,7 @@ class RunCommandsPlugin {
         });
     }
 
-    public static updateManifest(): void {
+    private static updateManifest(): void {
         exec("npx tsx ./script/copyManifest.ts", (err, stdout) => {
             if (err) {
                 // eslint-disable-next-line no-console
@@ -50,6 +52,21 @@ class RunCommandsPlugin {
         });
     }
 
+    private static updatePrivacyPolicy(callback?: () => void): void {
+        exec("npx tsx ./script/updatePrivacyPolicy.ts", (err, stdout) => {
+            if (err) {
+                // eslint-disable-next-line no-console
+                console.error(`Error: ${err.message}`);
+            } else {
+                // eslint-disable-next-line no-console
+                console.log(stdout);
+                if (callback) {
+                    callback();
+                }
+            }
+        });
+    }
+
     // eslint-disable-next-line max-lines-per-function
     public apply(compiler: Compiler): void {
         let typeWatcher: null | ReturnType<typeof watch> = null;
@@ -57,17 +74,20 @@ class RunCommandsPlugin {
         let isWatchMode = false;
 
         compiler.hooks.beforeCompile.tapAsync("RunCommandsPlugin", (_params, callback) => {
-            if (isWatchMode) {
+            if (!isWatchMode) {
+                RunCommandsPlugin.generateTypeGuards(callback);
+            } else if (this.isFirstRun) {
+                // `this.isFirstRun` is also used in the afterEmit hook, so it should be set to false in there.
+                RunCommandsPlugin.generateTypeGuards(callback);
+            } else {
                 callback();
-                return;
             }
-
-            RunCommandsPlugin.generateTypeGuards(callback);
         });
 
         compiler.hooks.watchRun.tapAsync("RunCommandsPlugin", (_params, callback) => {
             isWatchMode = true;
-            if (!manifestWatcher || !typeWatcher) {
+
+            if (!manifestWatcher || !typeWatcher || !this.localesWatcher) {
                 manifestWatcher = watch("src/manifest/", {
                     ignored: (pathString, stats) => Boolean(stats && stats.isFile() && !pathString.endsWith(".json"))
                 });
@@ -77,8 +97,6 @@ class RunCommandsPlugin {
                     RunCommandsPlugin.updateManifest();
                 });
 
-                RunCommandsPlugin.updateManifest();
-
                 typeWatcher = watch("src/types/", {
                     ignored: (pathString, stats) => Boolean(stats && stats.isFile() && !pathString.endsWith(".d.ts"))
                 });
@@ -86,27 +104,39 @@ class RunCommandsPlugin {
                 typeWatcher.on("change", (pathString: string) => {
                     // eslint-disable-next-line no-console
                     console.log(`Type definition file changed: ${pathString}`);
-                    RunCommandsPlugin.generateTypeGuards();
+                    RunCommandsPlugin.generateTypeGuards(() => {
+                        if (compiler && compiler.watching) {
+                            compiler.watching.invalidate();
+                        }
+                    });
                 });
 
-                RunCommandsPlugin.generateTypeGuards(callback);
+                if (!this.localesWatcher) {
+                    this.localesWatcher = watch("src/_locales/", {
+                        ignored: (pathString, stats) =>
+                            Boolean(stats && stats.isFile() && !pathString.endsWith(".json"))
+                    });
+                    this.localesWatcher.on("change", (pathString: string) => {
+                        // eslint-disable-next-line no-console
+                        console.log(`Locale file changed: ${pathString}`);
+                        RunCommandsPlugin.updatePrivacyPolicy();
+                    });
+                }
+                callback();
             } else {
                 callback();
             }
         });
 
         compiler.hooks.afterEmit.tapAsync("RunCommandsPlugin", (_compilation, callback) => {
-            RunCommandsPlugin.updateManifest();
-
-            exec("npx tsx ./script/updatePrivacyPolicy.ts", (err, stdout) => {
-                if (err) {
-                    // eslint-disable-next-line no-console
-                    console.error(`Error: ${err.message}`);
-                } else {
-                    // eslint-disable-next-line no-console
-                    console.log(stdout);
-                }
-            });
+            if (!isWatchMode) {
+                RunCommandsPlugin.updateManifest();
+                RunCommandsPlugin.updatePrivacyPolicy();
+            } else if (this.isFirstRun) {
+                this.isFirstRun = false;
+                RunCommandsPlugin.updateManifest();
+                RunCommandsPlugin.updatePrivacyPolicy();
+            }
 
             if (this.env.updateUserScripts) {
                 exec("npx tsx ./script/addUserScriptsComment.ts", (err, stdout) => {

@@ -30,4 +30,4 @@ ${END_MARKER}
     fs.writeFileSync(file, updatedReadmeText);
 }
 
-console.log("Done!");
+console.log("Updated privacy policy");
