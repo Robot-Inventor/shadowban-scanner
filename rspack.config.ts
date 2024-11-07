@@ -16,8 +16,6 @@ for (const userScript of userScripts) {
 
 class RunCommandsPlugin {
     private readonly env: Record<string, unknown>;
-    private isFirstRun = true;
-    private localesWatcher: null | ReturnType<typeof watch> = null;
 
     public constructor(env: Record<string, unknown>) {
         this.env = env;
@@ -69,14 +67,16 @@ class RunCommandsPlugin {
 
     // eslint-disable-next-line max-lines-per-function
     public apply(compiler: Compiler): void {
+        let isFirstRun = true;
         let typeWatcher: null | ReturnType<typeof watch> = null;
         let manifestWatcher: null | ReturnType<typeof watch> = null;
+        let localesWatcher: null | ReturnType<typeof watch> = null;
         let isWatchMode = false;
 
         compiler.hooks.beforeCompile.tapAsync("RunCommandsPlugin", (_params, callback) => {
             if (!isWatchMode) {
                 RunCommandsPlugin.generateTypeGuards(callback);
-            } else if (this.isFirstRun) {
+            } else if (isFirstRun) {
                 // `this.isFirstRun` is also used in the afterEmit hook, so it should be set to false in there.
                 RunCommandsPlugin.generateTypeGuards(callback);
             } else {
@@ -88,7 +88,7 @@ class RunCommandsPlugin {
         compiler.hooks.watchRun.tapAsync("RunCommandsPlugin", (_params, callback) => {
             isWatchMode = true;
 
-            if (!manifestWatcher || !typeWatcher || !this.localesWatcher) {
+            if (!manifestWatcher || !typeWatcher || !localesWatcher) {
                 manifestWatcher = watch("src/manifest/", {
                     ignored: (pathString, stats) => Boolean(stats && stats.isFile() && !pathString.endsWith(".json"))
                 });
@@ -112,12 +112,12 @@ class RunCommandsPlugin {
                     });
                 });
 
-                if (!this.localesWatcher) {
-                    this.localesWatcher = watch("src/_locales/", {
+                if (!localesWatcher) {
+                    localesWatcher = watch("src/_locales/", {
                         ignored: (pathString, stats) =>
                             Boolean(stats && stats.isFile() && !pathString.endsWith(".json"))
                     });
-                    this.localesWatcher.on("change", (pathString: string) => {
+                    localesWatcher.on("change", (pathString: string) => {
                         // eslint-disable-next-line no-console
                         console.log(`Locale file changed: ${pathString}`);
                         RunCommandsPlugin.updatePrivacyPolicy();
@@ -130,14 +130,12 @@ class RunCommandsPlugin {
         });
 
         compiler.hooks.afterEmit.tapAsync("RunCommandsPlugin", (_compilation, callback) => {
-            if (!isWatchMode) {
-                RunCommandsPlugin.updateManifest();
-                RunCommandsPlugin.updatePrivacyPolicy();
-            } else if (this.isFirstRun) {
-                this.isFirstRun = false;
+            if (!isWatchMode || isFirstRun) {
                 RunCommandsPlugin.updateManifest();
                 RunCommandsPlugin.updatePrivacyPolicy();
             }
+
+            isFirstRun = false;
 
             if (this.env.updateUserScripts) {
                 exec("npx tsx ./script/addUserScriptsComment.ts", (err, stdout) => {
