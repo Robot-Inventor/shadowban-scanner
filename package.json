@@ -10,7 +10,6 @@
   "dependencies": {
     "@robot-inventor/eslint-config": "^6.0.0",
     "eslint": "^9.1.1",
-    "html-webpack-plugin": "^5.6.0",
     "i18next": "^23.11.2",
     "i18next-browser-languagedetector": "^8.0.0",
     "prettier": "^3.2.5",

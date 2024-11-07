@@ -147,8 +147,8 @@ const main = async (): Promise<void> => {
         },
         fallbackLng: "en",
         resources: {
-            en: translationEn,
-            ja: translationJa
+            en: { translation: { ...translationEn } },
+            ja: { translation: { ...translationJa } }
         },
         supportedLngs: ["en", "ja"]
     });

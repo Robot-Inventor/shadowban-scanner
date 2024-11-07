@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="<%= htmlWebpackPlugin.options.translation.languageCode %>">
+<html lang="<%= languageCode %>">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -34,34 +34,29 @@
         <link rel="alternate" hreflang="en" href="https://shadowban-scanner.roboin.io/en/" />
         <link rel="alternate" hreflang="ja" href="https://shadowban-scanner.roboin.io/ja/" />
         <link rel="alternate" hreflang="x-default" href="https://shadowban-scanner.roboin.io/" />
-        <title data-translation="title"><%= htmlWebpackPlugin.options.translation.title %></title>
+        <title data-translation="title"><%= title %></title>
         <meta
             name="description"
             data-translation="description"
             data-translation-attribute="content"
-            content="<%= htmlWebpackPlugin.options.translation.description %>"
+            content="<%= description %>"
         />
-        <meta
-            property="og:url"
-            data-translation="url"
-            data-translation-attribute="content"
-            content="<%= htmlWebpackPlugin.options.translation.url %>"
-        />
+        <meta property="og:url" data-translation="url" data-translation-attribute="content" content="<%= url %>" />
         <meta property="og:type" content="website" />
         <meta
             property="og:title"
             data-translation="title"
             data-translation-attribute="content"
-            content="<%= htmlWebpackPlugin.options.translation.title %>"
+            content="<%= title %>"
         />
         <meta
             property="og:description"
             data-translation="description"
             data-translation-attribute="content"
-            content="<%= htmlWebpackPlugin.options.translation.description %>"
+            content="<%= description %>"
         />
         <meta property="og:site_name" content="Shadowban Scanner" />
-        <meta property="og:image" content="<%= htmlWebpackPlugin.options.translation.ogImage %>" />
+        <meta property="og:image" content="<%= ogImage %>" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@keita_roboin" />
     </head>
@@ -80,16 +75,12 @@
             <section id="top_section">
                 <div id="featured_badge">
                     <div id="featured_badge-inner" data-translation="overTwentyThousandUsers">
-                        <%= htmlWebpackPlugin.options.translation.overTwentyThousandUsers %>
+                        <%= overTwentyThousandUsers %>
                     </div>
                 </div>
                 <div id="top_text_container">
-                    <div id="top_text" data-translation="catchphrase">
-                        <%= htmlWebpackPlugin.options.translation.catchphrase %>
-                    </div>
-                    <button class="download_button" data-translation="install">
-                        <%= htmlWebpackPlugin.options.translation.install %>
-                    </button>
+                    <div id="top_text" data-translation="catchphrase"><%= catchphrase %></div>
+                    <button class="download_button" data-translation="install"><%= install %></button>
                 </div>
                 <img
                     id="top_image"
@@ -99,20 +90,16 @@
                 />
             </section>
             <section id="secondary_section">
-                <h2 data-translation="featuresOfShadowbanScanner">
-                    <%= htmlWebpackPlugin.options.translation.featuresOfShadowbanScanner %>
-                </h2>
+                <h2 data-translation="featuresOfShadowbanScanner"><%= featuresOfShadowbanScanner %></h2>
                 <div class="secondary_section-item_container">
                     <div class="secondary_section-item">
                         <div class="material-symbols-outlined" translate="no">person</div>
                         <div class="secondary_section-item_text_container">
                             <h3 data-translation="detectAccountsShadowbanAndSensitiveFlags">
-                                <%= htmlWebpackPlugin.options.translation.detectAccountsShadowbanAndSensitiveFlags %>
+                                <%= detectAccountsShadowbanAndSensitiveFlags %>
                             </h3>
                             <p data-translation="detectAccountsShadowbanAndSensitiveFlagsDescription">
-                                <%=
-                                htmlWebpackPlugin.options.translation.detectAccountsShadowbanAndSensitiveFlagsDescription
-                                %>
+                                <%= detectAccountsShadowbanAndSensitiveFlagsDescription %>
                             </p>
                         </div>
                     </div>
@@ -120,13 +107,10 @@
                         <div class="material-symbols-outlined" translate="no">speaker_notes</div>
                         <div class="secondary_section-item_text_container">
                             <h3 data-translation="detectTweetsSensitiveFlagsAndAgeRestrictions">
-                                <%= htmlWebpackPlugin.options.translation.detectTweetsSensitiveFlagsAndAgeRestrictions
-                                %>
+                                <%= detectTweetsSensitiveFlagsAndAgeRestrictions %>
                             </h3>
                             <p data-translation="detectTweetsSensitiveFlagsAndAgeRestrictionsDescription">
-                                <%=
-                                htmlWebpackPlugin.options.translation.detectTweetsSensitiveFlagsAndAgeRestrictionsDescription
-                                %>
+                                <%= detectTweetsSensitiveFlagsAndAgeRestrictionsDescription %>
                             </p>
                         </div>
                     </div>
@@ -134,11 +118,10 @@
                         <div class="material-symbols-outlined" translate="no">photo_library</div>
                         <div class="secondary_section-item_text_container">
                             <h3 data-translation="detectSensitiveFlagsInProfileMedia">
-                                <%= htmlWebpackPlugin.options.translation.detectSensitiveFlagsInProfileMedia %>
+                                <%= detectSensitiveFlagsInProfileMedia %>
                             </h3>
                             <p data-translation="detectSensitiveFlagsInProfileMediaDescription">
-                                <%= htmlWebpackPlugin.options.translation.detectSensitiveFlagsInProfileMediaDescription
-                                %>
+                                <%= detectSensitiveFlagsInProfileMediaDescription %>
                             </p>
                         </div>
                     </div>
@@ -146,152 +129,122 @@
                         <div class="material-symbols-outlined" translate="no">south_america</div>
                         <div class="secondary_section-item_text_container">
                             <h3 data-translation="detectCountriesBlockingYourAccount">
-                                <%= htmlWebpackPlugin.options.translation.detectCountriesBlockingYourAccount %>
+                                <%= detectCountriesBlockingYourAccount %>
                             </h3>
                             <p data-translation="detectCountriesBlockingYourAccountDescription">
-                                <%= htmlWebpackPlugin.options.translation.detectCountriesBlockingYourAccountDescription
-                                %>
+                                <%= detectCountriesBlockingYourAccountDescription %>
                             </p>
                         </div>
                     </div>
                     <div class="secondary_section-item">
                         <div class="material-symbols-outlined" translate="no">visibility_off</div>
                         <div class="secondary_section-item_text_container">
-                            <h3 data-translation="addButtonToShowHiddenTweets">
-                                <%= htmlWebpackPlugin.options.translation.addButtonToShowHiddenTweets %>
-                            </h3>
+                            <h3 data-translation="addButtonToShowHiddenTweets"><%= addButtonToShowHiddenTweets %></h3>
                             <p data-translation="addButtonToShowHiddenTweetsDescription">
-                                <%= htmlWebpackPlugin.options.translation.addButtonToShowHiddenTweetsDescription %>
+                                <%= addButtonToShowHiddenTweetsDescription %>
                             </p>
                         </div>
                     </div>
                     <div class="secondary_section-item">
                         <div class="material-symbols-outlined" translate="no">cloud_off</div>
                         <div class="secondary_section-item_text_container">
-                            <h3 data-translation="noAccessToExternalWebsites">
-                                <%= htmlWebpackPlugin.options.translation.noAccessToExternalWebsites %>
-                            </h3>
+                            <h3 data-translation="noAccessToExternalWebsites"><%= noAccessToExternalWebsites %></h3>
                             <p data-translation="noAccessToExternalWebsitesDescription">
-                                <%= htmlWebpackPlugin.options.translation.noAccessToExternalWebsitesDescription %>
+                                <%= noAccessToExternalWebsitesDescription %>
                             </p>
                         </div>
                     </div>
                     <div class="secondary_section-item">
                         <div class="material-symbols-outlined" translate="no">code</div>
                         <div class="secondary_section-item_text_container">
-                            <h3 data-translation="openSource">
-                                <%= htmlWebpackPlugin.options.translation.openSource %>
-                            </h3>
-                            <p data-translation="openSourceDescription">
-                                <%= htmlWebpackPlugin.options.translation.openSourceDescription %>
-                            </p>
+                            <h3 data-translation="openSource"><%= openSource %></h3>
+                            <p data-translation="openSourceDescription"><%= openSourceDescription %></p>
                         </div>
                     </div>
                 </div>
             </section>
             <section id="download_section">
-                <h2 data-translation="installNow"><%= htmlWebpackPlugin.options.translation.installNow %></h2>
-                <p id="supported_browsers" data-translation="supportedBrowsers">
-                    <%= htmlWebpackPlugin.options.translation.supportedBrowsers %>
-                </p>
-                <button class="download_button suggest" data-translation="install">
-                    <%= htmlWebpackPlugin.options.translation.install %>
-                </button>
-                <h3 data-translation="doYouUseAnotherBrowser">
-                    <%= htmlWebpackPlugin.options.translation.doYouUseAnotherBrowser %>
-                </h3>
+                <h2 data-translation="installNow"><%= installNow %></h2>
+                <p id="supported_browsers" data-translation="supportedBrowsers"><%= supportedBrowsers %></p>
+                <button class="download_button suggest" data-translation="install"><%= install %></button>
+                <h3 data-translation="doYouUseAnotherBrowser"><%= doYouUseAnotherBrowser %></h3>
                 <div id="download_links">
                     <a
                         href="https://chromewebstore.google.com/detail/enlganfikppbjhabhkkilafmkhifadjd"
                         target="_blank"
                         data-translation="chromeVersion"
-                        ><%= htmlWebpackPlugin.options.translation.chromeVersion %></a
+                        ><%= chromeVersion %></a
                     >
                     <a
                         href="https://microsoftedge.microsoft.com/addons/detail/kfeecmboomhggeeceipnbbdjmhjoccbl"
                         target="_blank"
                         data-translation="edgeVersion"
-                        ><%= htmlWebpackPlugin.options.translation.edgeVersion %></a
+                        ><%= edgeVersion %></a
                     >
                     <a
                         href="https://addons.mozilla.org/firefox/addon/{8fee6fa8-6d95-4b9e-9c51-324c207fabff}/"
                         target="_blank"
                         data-translation="firefoxVersion"
-                        ><%= htmlWebpackPlugin.options.translation.firefoxVersion %></a
+                        ><%= firefoxVersion %></a
                     >
                 </div>
             </section>
             <section id="faq_section">
-                <h2 data-translation="faq"><%= htmlWebpackPlugin.options.translation.faq %></h2>
+                <h2 data-translation="faq"><%= faq %></h2>
                 <div class="faq_section-item">
-                    <h3 data-translation="isShadowbanScannerFree">
-                        <%= htmlWebpackPlugin.options.translation.isShadowbanScannerFree %>
-                    </h3>
-                    <p data-translation="isShadowbanScannerFreeAnswer">
-                        <%= htmlWebpackPlugin.options.translation.isShadowbanScannerFreeAnswer %>
-                    </p>
+                    <h3 data-translation="isShadowbanScannerFree"><%= isShadowbanScannerFree %></h3>
+                    <p data-translation="isShadowbanScannerFreeAnswer"><%= isShadowbanScannerFreeAnswer %></p>
                 </div>
                 <div class="faq_section-item">
-                    <h3 data-translation="whyIsShadowbanScannerFree">
-                        <%= htmlWebpackPlugin.options.translation.whyIsShadowbanScannerFree %>
-                    </h3>
-                    <p data-translation="whyIsShadowbanScannerFreeAnswer">
-                        <%= htmlWebpackPlugin.options.translation.whyIsShadowbanScannerFreeAnswer %>
-                    </p>
+                    <h3 data-translation="whyIsShadowbanScannerFree"><%= whyIsShadowbanScannerFree %></h3>
+                    <p data-translation="whyIsShadowbanScannerFreeAnswer"><%= whyIsShadowbanScannerFreeAnswer %></p>
                 </div>
                 <div class="faq_section-item">
-                    <h3 data-translation="areThereWaysToSupportDevelopment">
-                        <%= htmlWebpackPlugin.options.translation.areThereWaysToSupportDevelopment %>
-                    </h3>
+                    <h3 data-translation="areThereWaysToSupportDevelopment"><%= areThereWaysToSupportDevelopment %></h3>
                     <p data-translation="areThereWaysToSupportDevelopmentAnswer1">
-                        <%= htmlWebpackPlugin.options.translation.areThereWaysToSupportDevelopmentAnswer1 %>
+                        <%= areThereWaysToSupportDevelopmentAnswer1 %>
                     </p>
                     <p data-translation="areThereWaysToSupportDevelopmentAnswer2">
-                        <%= htmlWebpackPlugin.options.translation.areThereWaysToSupportDevelopmentAnswer2 %>
+                        <%= areThereWaysToSupportDevelopmentAnswer2 %>
                     </p>
                 </div>
                 <div class="faq_section-item">
-                    <h3 data-translation="howAccurateIsShadowbanScanner">
-                        <%= htmlWebpackPlugin.options.translation.howAccurateIsShadowbanScanner %>
-                    </h3>
+                    <h3 data-translation="howAccurateIsShadowbanScanner"><%= howAccurateIsShadowbanScanner %></h3>
                     <p data-translation="howAccurateIsShadowbanScannerAnswer1">
-                        <%= htmlWebpackPlugin.options.translation.howAccurateIsShadowbanScannerAnswer1 %>
+                        <%= howAccurateIsShadowbanScannerAnswer1 %>
                     </p>
                     <p data-translation="howAccurateIsShadowbanScannerAnswer2">
-                        <%= htmlWebpackPlugin.options.translation.howAccurateIsShadowbanScannerAnswer2 %>
+                        <%= howAccurateIsShadowbanScannerAnswer2 %>
                     </p>
                 </div>
                 <div class="faq_section-item">
                     <h3 data-translation="doesShadowbanScannerTransmitUserDataExternally">
-                        <%= htmlWebpackPlugin.options.translation.doesShadowbanScannerTransmitUserDataExternally %>
+                        <%= doesShadowbanScannerTransmitUserDataExternally %>
                     </h3>
                     <p data-translation="doesShadowbanScannerTransmitUserDataExternallyAnswer">
-                        <%= htmlWebpackPlugin.options.translation.doesShadowbanScannerTransmitUserDataExternallyAnswer
-                        %>
+                        <%= doesShadowbanScannerTransmitUserDataExternallyAnswer %>
                     </p>
                 </div>
                 <div class="faq_section-item">
                     <h3 data-translation="doINeedAnAccountForShadowbanScanner">
-                        <%= htmlWebpackPlugin.options.translation.doINeedAnAccountForShadowbanScanner %>
+                        <%= doINeedAnAccountForShadowbanScanner %>
                     </h3>
                     <p data-translation="doINeedAnAccountForShadowbanScannerAnswer">
-                        <%= htmlWebpackPlugin.options.translation.doINeedAnAccountForShadowbanScannerAnswer %>
+                        <%= doINeedAnAccountForShadowbanScannerAnswer %>
                     </p>
                 </div>
                 <div class="faq_section-item">
                     <h3 data-translation="howDoesShadowbanScannerEnsureSafety">
-                        <%= htmlWebpackPlugin.options.translation.howDoesShadowbanScannerEnsureSafety %>
+                        <%= howDoesShadowbanScannerEnsureSafety %>
                     </h3>
                     <p data-translation="howDoesShadowbanScannerEnsureSafetyAnswer">
-                        <%= htmlWebpackPlugin.options.translation.howDoesShadowbanScannerEnsureSafetyAnswer %>
+                        <%= howDoesShadowbanScannerEnsureSafetyAnswer %>
                     </p>
                 </div>
                 <div class="faq_section-item">
-                    <h3 data-translation="isTheSourceCodePubliclyAvailable">
-                        <%= htmlWebpackPlugin.options.translation.isTheSourceCodePubliclyAvailable %>
-                    </h3>
+                    <h3 data-translation="isTheSourceCodePubliclyAvailable"><%= isTheSourceCodePubliclyAvailable %></h3>
                     <p data-translation="isTheSourceCodePubliclyAvailableAnswer">
-                        <%= htmlWebpackPlugin.options.translation.isTheSourceCodePubliclyAvailableAnswer %>
+                        <%= isTheSourceCodePubliclyAvailableAnswer %>
                     </p>
                 </div>
             </section>
@@ -305,9 +258,11 @@
             </p>
             <p>Copyright © 2023 ろぼいん All rights reserved.</p>
             <p>
-                <a href="https://roboin.io/privacy/" data-translation="privacyPolicy"
-                    ><%= htmlWebpackPlugin.options.translation.privacyPolicy %></a
-                >・<a href="https://github.com/Robot-Inventor/shadowban-scanner/" target="_blank">GitHub</a>
+                <a href="https://roboin.io/privacy/" data-translation="privacyPolicy"><%= privacyPolicy %></a>・<a
+                    href="https://github.com/Robot-Inventor/shadowban-scanner/"
+                    target="_blank"
+                    >GitHub</a
+                >
             </p>
         </footer>
     </body>
