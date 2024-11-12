@@ -69,6 +69,40 @@ const initializeDownloadButtons = (): void => {
     });
 };
 
+// eslint-disable-next-line no-magic-numbers
+const easeOutQuart = (time: number): number => 1 - (1 - time) ** 4;
+
+interface AnimateCountOptions {
+    elementId: string;
+    endValue: number;
+    duration: number;
+    locale: string;
+}
+
+const animateCount = ({ elementId, endValue, duration, locale }: AnimateCountOptions): void => {
+    const start = 0;
+
+    const targetElement = document.getElementById(elementId);
+    if (!targetElement) return;
+    const startTime = performance.now();
+
+    const updateCount = (currentTime: number): void => {
+        const elapsed = currentTime - startTime;
+        // eslint-disable-next-line no-magic-numbers
+        const time = Math.min(elapsed / duration, 1);
+        const easedT = easeOutQuart(time);
+        const current = Math.floor(easedT * (endValue - start) + start);
+        targetElement.textContent = translate("userCountSurpassed", { count: current, lng: locale });
+
+        // eslint-disable-next-line no-magic-numbers
+        if (time < 1) {
+            requestAnimationFrame(updateCount);
+        }
+    };
+
+    requestAnimationFrame(updateCount);
+};
+
 const onLanguageChanged = (): void => {
     if (!isCrawler()) {
         history.replaceState(null, "", `/${i18next.language}/`);
@@ -91,6 +125,16 @@ const onLanguageChanged = (): void => {
     });
 
     initializeDownloadButtons();
+
+    const numberOfUsers = 20000;
+    const userCountAnimationDuration = 1500;
+    const animateCountOptions = {
+        duration: userCountAnimationDuration,
+        elementId: "featured_badge-inner",
+        endValue: numberOfUsers,
+        locale: i18next.language
+    } as const satisfies AnimateCountOptions;
+    animateCount(animateCountOptions);
 };
 
 const initializeLanguageSwitcher = (): void => {
