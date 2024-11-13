@@ -1,6 +1,6 @@
 import fs from "fs";
 import { glob } from "glob";
-import { isPlainObject } from "./util";
+import { isPlainObject } from "@robot-inventor/ts-utils";
 
 const START_MARKER = "<!-- PRIVACY_POLICY_TEXT_START -->";
 const END_MARKER = "<!-- PRIVACY_POLICY_TEXT_END -->";

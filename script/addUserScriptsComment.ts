@@ -1,6 +1,6 @@
 import fs from "fs";
 import { glob } from "glob";
-import { isPlainObject } from "./util";
+import { isPlainObject } from "@robot-inventor/ts-utils";
 import packagejson from "../package.json";
 import path from "path";
 
