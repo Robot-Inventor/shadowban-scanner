@@ -1,12 +1,5 @@
 {
-    "project": ["src/**/*.ts", "src/**/*.js", "script/**/*.ts", "script/**/*.js"],
-    "ignoreDependencies": ["web-ext", "ts-auto-guard"],
-    "ignore": [
-        "script/addonsLinter.ts",
-        "script/updatePrivacyPolicy.ts",
-        "script/addUserScriptsComment.ts",
-        "script/util.ts",
-        "script/copyManifest.ts",
-        "src/ts/userScript/*.ts"
-    ]
+    "project": ["src/**/*.ts", "script/**/*.ts"],
+    "entry": ["src/ts/background.ts", "src/ts/contentScript.ts", "src/ts/userScript/*.ts", "script/**/*.ts"],
+    "ignoreDependencies": ["web-ext", "ts-auto-guard"]
 }
