@@ -18,7 +18,7 @@
     "webpack-dev-server": "^5.0.4"
   },
   "devDependencies": {
-    "@robot-inventor/tsconfig-base": "^2.0.0",
+    "@robot-inventor/tsconfig-base": "^3.0.0",
     "@rspack/cli": "^1.0.14",
     "@rspack/core": "^1.0.14",
     "cross-env": "^7.0.3",
