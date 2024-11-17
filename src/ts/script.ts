@@ -3,6 +3,7 @@ import i18next, { changeLanguage, t as translate } from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { SUPPORTED_MOBILE_BROWSERS } from "./constants";
 import Swal from "sweetalert2";
+import { isNonEmptyArray } from "@robot-inventor/ts-utils";
 import translationEn from "../translations/en.json";
 import translationJa from "../translations/ja.json";
 
@@ -186,7 +187,10 @@ const main = async (): Promise<void> => {
     // eslint-disable-next-line import-x/no-named-as-default-member
     await i18next.use(LanguageDetector).init({
         detection: {
-            convertDetectedLanguage: (lng) => lng.split("-")[0],
+            convertDetectedLanguage: (lng) => {
+                const splitLng = lng.split("-");
+                return isNonEmptyArray(splitLng) ? splitLng[0] : lng;
+            },
             order: isCrawler() ? languageDetectionOrderCrawler : languageDetectionOrderDefault
         },
         fallbackLng: "en",
