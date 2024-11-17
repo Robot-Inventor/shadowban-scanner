@@ -43,7 +43,7 @@
     "prettier": "^3.0.0",
     "style-loader": "^4.0.0",
     "ts-auto-guard": "^5.0.0",
-    "twi-ext": "^0.12.0",
+    "twi-ext": "^0.13.0",
     "typescript": "^5.1.3",
     "web-ext": "^8.0.0",
     "webextension-polyfill": "^0.12.0",
