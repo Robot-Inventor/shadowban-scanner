@@ -1,4 +1,5 @@
 import { INSTRUCTION_URL, TRANSLATION_ATTRIBUTE } from "./common/constants";
+import { type NonEmptyArray, isNonEmptyArray } from "@robot-inventor/ts-utils";
 import { i18n, runtime, tabs } from "webextension-polyfill";
 import type { Settings } from "../types/common/settings";
 import { Translator } from "./common/translator";
@@ -49,7 +50,7 @@ const INITIAL_SETUP_ITEMS = [
         ],
         settingsKey: "enableForOtherUsersTweets"
     }
-] satisfies InitialSetupItem[];
+] satisfies NonEmptyArray<InitialSetupItem>;
 
 const removeButtons = (buttonsOuter: Element): void => {
     while (buttonsOuter.firstChild) {
@@ -81,8 +82,8 @@ const insertButtons = (buttonsOuter: Element, translator: Translator, setupItem:
             button.classList.add("selected");
         }
 
-        button.dataset.settingsKey = setupItem.settingsKey;
-        button.dataset.settingsValue = option.value.toString();
+        button.dataset["settingsKey"] = setupItem.settingsKey;
+        button.dataset["settingsValue"] = option.value.toString();
 
         button.addEventListener("click", () => {
             document.querySelectorAll(".settings-button-item").forEach((element) => {
@@ -127,8 +128,11 @@ const updateInstructionToCompletionMessage = (translator: Translator): void => {
 
 const closeCurrentTab = async (): Promise<void> => {
     const activeTabs = await tabs.query({ active: true, currentWindow: true });
+    if (!isNonEmptyArray(activeTabs)) return;
+
     const [currentTab] = activeTabs;
     if (!currentTab.id) throw new Error("no current tab");
+
     void tabs.remove(currentTab.id);
 };
 
@@ -155,7 +159,7 @@ const showCompletionMessage = (buttonsOuter: Element, translator: Translator): v
     translator.translateElements();
 };
 
-// eslint-disable-next-line max-statements
+// eslint-disable-next-line max-statements, max-lines-per-function
 const main = (): void => {
     const buttonsOuter = document.querySelector("#settings-buttons");
     if (!buttonsOuter) throw new Error("no #settings-buttons");
@@ -185,7 +189,9 @@ const main = (): void => {
         // eslint-disable-next-line no-magic-numbers
         if (setupItemIndex < INITIAL_SETUP_ITEMS.length - 1) {
             setupItemIndex++;
-            insertButtons(buttonsOuter, translator, INITIAL_SETUP_ITEMS[setupItemIndex]);
+            const setupItem = INITIAL_SETUP_ITEMS[setupItemIndex];
+            if (!setupItem) throw new Error("no setupItem");
+            insertButtons(buttonsOuter, translator, setupItem);
         } else {
             setupItemIndex++;
             showCompletionMessage(buttonsOuter, translator);
@@ -196,7 +202,9 @@ const main = (): void => {
         // eslint-disable-next-line no-magic-numbers
         if (setupItemIndex > 0) {
             setupItemIndex--;
-            insertButtons(buttonsOuter, translator, INITIAL_SETUP_ITEMS[setupItemIndex]);
+            const setupItem = INITIAL_SETUP_ITEMS[setupItemIndex];
+            if (!setupItem) throw new Error("no setupItem");
+            insertButtons(buttonsOuter, translator, setupItem);
             updateNavigationButtonsStatus(backButton, nextButton, setupItemIndex, INITIAL_SETUP_ITEMS.length);
         }
 

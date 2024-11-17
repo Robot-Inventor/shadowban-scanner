@@ -2,12 +2,19 @@ import { EVENT_GENERATOR_ID, EVENT_GENERATOR_SETTINGS_ATTRIBUTE } from "./common
 import { i18n, runtime, storage } from "webextension-polyfill";
 import { DEFAULT_SETTINGS } from "./common/settings";
 import { Translator } from "./common/translator";
+import { isSettings } from "../types/common/settings.guard";
 
 // eslint-disable-next-line max-statements
 const main = async (): Promise<void> => {
     const settings = await storage.local.get(DEFAULT_SETTINGS);
 
-    if (["pro.twitter.com", "pro.x.com"].includes(location.hostname) && !settings.enableOnXPro) return;
+    if (
+        ["pro.twitter.com", "pro.x.com"].includes(location.hostname) &&
+        isSettings(settings) &&
+        !settings.enableOnXPro
+    ) {
+        return;
+    }
 
     const translator = new Translator(
         (key, substitutions) => i18n.getMessage(key, substitutions),

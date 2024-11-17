@@ -62,7 +62,7 @@ class Core {
         if (!(analyzer.tweet.hasAnyProblem || this.settings.showMessagesInUnproblematicTweets)) return;
 
         if (!tweet.metadata.isFocalMode && this.settings.enableCompactMode) {
-            tweet.element.dataset.sbCompactMode = analyzer.tweet.hasAnyProblem ? "red" : "green";
+            tweet.element.dataset["sbCompactMode"] = analyzer.tweet.hasAnyProblem ? "red" : "green";
             return;
         }
 

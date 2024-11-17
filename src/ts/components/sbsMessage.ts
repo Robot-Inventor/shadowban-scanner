@@ -40,12 +40,12 @@ class SbsMessage extends LitElement {
     public isNoteShown = false;
 
     @property({ attribute: false, reflect: true })
-    public onRenderedCallback?: () => void;
+    public onRenderedCallback?: undefined | (() => void);
 
     @property({ reflect: true, type: String })
     public textColor = "white";
 
-    public static styles = css`
+    public static override styles = css`
         * {
             font-family: sans-serif;
         }
@@ -224,7 +224,7 @@ class SbsMessage extends LitElement {
         event.stopPropagation();
     }
 
-    protected render(): ReturnType<typeof html> {
+    protected override render(): ReturnType<typeof html> {
         const outerClasses = classMap({
             "focal-mode": this.isFocalMode,
             "shadowban-scanner-message": true,

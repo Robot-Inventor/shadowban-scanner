@@ -18,12 +18,12 @@ for (const file of files) {
     const parsedMessages: unknown = JSON.parse(fs.readFileSync(messagePath, "utf8"));
     if (
         !isPlainObject(parsedMessages) ||
-        !isPlainObject(parsedMessages.privacyPolicyText) ||
-        typeof parsedMessages.privacyPolicyText.message !== "string"
+        !isPlainObject(parsedMessages["privacyPolicyText"]) ||
+        typeof parsedMessages["privacyPolicyText"]["message"] !== "string"
     ) {
         throw new Error(`Privacy policy text not found in ${messagePath}`);
     }
-    const privacyPolicyText = parsedMessages.privacyPolicyText.message;
+    const privacyPolicyText = parsedMessages["privacyPolicyText"]["message"];
 
     const newPrivacyPolicySection = `
 ${START_MARKER}

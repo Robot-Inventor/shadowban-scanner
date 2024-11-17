@@ -137,7 +137,7 @@ class RunCommandsPlugin {
 
             isFirstRun = false;
 
-            if (this.env.updateUserScripts) {
+            if (this.env["updateUserScripts"]) {
                 exec("npx tsx ./script/addUserScriptsComment.ts", (err, stdout) => {
                     if (err) {
                         // eslint-disable-next-line no-console
@@ -224,7 +224,7 @@ const unacceptableLicenseTest = (licenseIdentifier: string): boolean => {
     return !acceptableLicenses.includes(licenseIdentifier);
 };
 
-const isProduction = process.env.NODE_ENV === "production";
+const isProduction = process.env["NODE_ENV"] === "production";
 /* eslint-disable sort-keys */
 // eslint-disable-next-line max-lines-per-function
 const config = defineConfig((env) => ({
@@ -233,7 +233,7 @@ const config = defineConfig((env) => ({
     entry: {
         ...chromeScripts,
         ...firefoxScripts,
-        ...(env.updateUserScripts ? userScriptEntries : {})
+        ...(env["updateUserScripts"] ? userScriptEntries : {})
     },
     output: {
         filename: "[name]",

@@ -10,7 +10,7 @@ const main = async (): Promise<void> => {
         config: {
             // eslint-disable-next-line id-length
             _: ["./dist/firefox/"],
-            logLevel: process.env.VERBOSE ? "debug" : "fatal",
+            logLevel: process.env["VERBOSE"] ? "debug" : "fatal",
             shouldScanFile: () => true
         }
     };
