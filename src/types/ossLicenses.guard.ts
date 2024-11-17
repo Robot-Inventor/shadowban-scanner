@@ -13,11 +13,9 @@ export function isOSSLicenses(obj: unknown): obj is OSSLicenses {
                 typeof e === "object" ||
                 typeof e === "function") &&
             typeof e["name"] === "string" &&
-            (typeof e["version"] === "undefined" ||
-                typeof e["version"] === "string") &&
+            typeof e["version"] === "string" &&
             typeof e["repository"] === "string" &&
-            (typeof e["source"] === "undefined" ||
-                typeof e["source"] === "string") &&
+            typeof e["source"] === "string" &&
             typeof e["license"] === "string" &&
             typeof e["licenseText"] === "string"
         )

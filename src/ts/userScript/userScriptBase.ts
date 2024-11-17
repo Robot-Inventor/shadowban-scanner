@@ -10,10 +10,9 @@ const createUserScript = (translationData: TranslationData): void => {
         if (substitutions) {
             const substitutionsArray = typeof substitutions === "string" ? [substitutions] : substitutions;
             let result = translationData[key].message;
-            // eslint-disable-next-line id-length
-            for (let i = 0; i < substitutionsArray.length; i++) {
+            for (const [index, value] of substitutionsArray.entries()) {
                 // eslint-disable-next-line no-magic-numbers
-                result = result.replace(`$${String(i + 1)}`, substitutionsArray[i]);
+                result = result.replace(`$${String(index + 1)}`, value);
             }
             return result;
         }

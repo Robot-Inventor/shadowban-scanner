@@ -9,7 +9,7 @@ class SettingsItem extends LitElement {
     @query("md-checkbox")
     private checkbox!: MdCheckbox;
 
-    public static styles = css`
+    public static override styles = css`
         .settings-item {
             display: flex;
             flex-direction: row;
@@ -40,7 +40,7 @@ class SettingsItem extends LitElement {
     @property({ attribute: true, reflect: true, type: Boolean })
     public checked = false;
 
-    protected render(): ReturnType<typeof html> {
+    protected override render(): ReturnType<typeof html> {
         return html`
             <div class="settings-item">
                 <label for="${this.settingsName}">

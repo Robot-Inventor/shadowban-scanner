@@ -3,7 +3,7 @@ import { customElement } from "lit/decorators.js";
 
 @customElement("settings-separator")
 class SettingsSeparator extends LitElement {
-    public static styles = css`
+    public static override styles = css`
         .settings-separator {
             --left-line-width: 0.75rem;
 
@@ -35,7 +35,7 @@ class SettingsSeparator extends LitElement {
     `;
 
     // eslint-disable-next-line class-methods-use-this
-    protected render(): ReturnType<typeof html> {
+    protected override render(): ReturnType<typeof html> {
         return html`
             <div class="settings-separator">
                 <hr />

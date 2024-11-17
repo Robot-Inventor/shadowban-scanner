@@ -3,7 +3,7 @@ import { customElement } from "lit/decorators.js";
 
 @customElement("settings-description")
 class SettingsDescription extends LitElement {
-    public static styles = css`
+    public static override styles = css`
         :host {
             display: block;
         }
@@ -21,7 +21,7 @@ class SettingsDescription extends LitElement {
     `;
 
     // eslint-disable-next-line class-methods-use-this
-    protected render(): ReturnType<typeof html> {
+    protected override render(): ReturnType<typeof html> {
         return html`
             <div class="container">
                 <div class="settings-description">

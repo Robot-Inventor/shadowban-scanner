@@ -22,8 +22,8 @@ for (const userScript of userScriptFiles) {
     );
     if (
         !isPlainObject(localizedMessages) ||
-        !isPlainObject(localizedMessages.manifest_description) ||
-        typeof localizedMessages.manifest_description.message !== "string"
+        !isPlainObject(localizedMessages["manifest_description"]) ||
+        typeof localizedMessages["manifest_description"]["message"] !== "string"
     ) {
         throw new Error(`Invalid localized messages for ${languageCode}`);
     }
@@ -33,7 +33,7 @@ for (const userScript of userScriptFiles) {
 // @name         Shadowban Scanner (${languageName})
 // @namespace    https://github.com/Robot-Inventor/shadowban-scanner/
 // @version      ${packagejson.version}
-// @description  ${localizedMessages.manifest_description.message}
+// @description  ${localizedMessages["manifest_description"]["message"]}
 // @author       Robot-Inventor (ろぼいん / @keita_roboin)
 // @match        https://*.twitter.com/*
 // @match        https://*.x.com/*
