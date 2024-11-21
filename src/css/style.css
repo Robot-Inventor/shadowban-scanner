@@ -206,16 +206,15 @@ section h2 {
 }
 
 #download_links {
-    text-align: center;
     margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
-#download_links a {
-    color: inherit;
-}
-
-#download_links a:not(:last-child) {
-    margin-right: 1rem;
+#download_links img {
+    height: 4rem;
 }
 
 #faq_section {
@@ -316,5 +315,19 @@ footer a {
 
     #supported_browsers {
         width: 100%;
+    }
+
+    #download_links {
+        flex-direction: column;
+    }
+
+    #download_links a {
+        display: block;
+        width: 50%;
+    }
+
+    #download_links img {
+        width: 100%;
+        height: auto;
     }
 }

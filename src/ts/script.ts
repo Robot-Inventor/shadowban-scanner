@@ -1,4 +1,9 @@
-import { NUMBER_OF_USERS, SUPPORTED_MOBILE_BROWSERS } from "./constants";
+import {
+    EXTENSION_STORE_LINKS,
+    type ExtensionStoreType,
+    NUMBER_OF_USERS,
+    SUPPORTED_MOBILE_BROWSERS
+} from "./constants";
 import { detectBrowser, getExtensionStoreLink } from "./util";
 import i18next, { changeLanguage, t as translate } from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
@@ -68,6 +73,34 @@ const initializeDownloadButtons = (): void => {
             }
         });
     });
+};
+
+// eslint-disable-next-line max-statements
+const initializeDownloadLinks = (): void => {
+    const storeTypes = Object.keys(EXTENSION_STORE_LINKS) as ExtensionStoreType[];
+
+    const downloadLinksSection = document.getElementById("download_links");
+    if (!downloadLinksSection) {
+        throw new Error("Download links section is not found.");
+    }
+
+    const fragment = document.createDocumentFragment();
+
+    for (const storeName of storeTypes) {
+        const link = document.createElement("a");
+        link.href = EXTENSION_STORE_LINKS[storeName];
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+
+        const badge = document.createElement("img");
+        badge.src = `/image/badge/${storeName}.svg`;
+        badge.alt = storeName;
+
+        link.appendChild(badge);
+        fragment.appendChild(link);
+    }
+
+    downloadLinksSection.appendChild(fragment);
 };
 
 // eslint-disable-next-line no-magic-numbers
@@ -204,6 +237,7 @@ const main = async (): Promise<void> => {
     i18next.on("languageChanged", onLanguageChanged);
 
     initializeLanguageSwitcher();
+    initializeDownloadLinks();
 };
 
 void main();
