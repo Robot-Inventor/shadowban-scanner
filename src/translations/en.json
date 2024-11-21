@@ -7,6 +7,7 @@
     "topImage": "/image/top-en.svg",
     "userCountSurpassed": "Surpassed {{count, number}} Users 🎉",
     "catchphrase": "Check your account status",
+    "subheadline": "Shadowban Scanner is a browser extension that detects shadowbans and sensitive content flags on X without the need to visit external websites.",
     "install": "Install",
     "featuresOfShadowbanScanner": "Features of Shadowban Scanner",
     "detectAccountsShadowbanAndSensitiveFlags": "Detect account shadowbans and sensitive content flags",

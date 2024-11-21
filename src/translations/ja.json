@@ -7,6 +7,7 @@
     "topImage": "/image/top-ja.svg",
     "userCountSurpassed": "{{count, number}}ユーザー突破 🎉",
     "catchphrase": "アカウントの状態を確認しよう",
+    "subheadline": "Shadowban Scannerは外部サイトへ移動せずにXのシャドウバンやセンシティブ判定を検出できるブラウザー拡張機能です。",
     "install": "インストール",
     "featuresOfShadowbanScanner": "Shadowban Scannerの機能",
     "detectAccountsShadowbanAndSensitiveFlags": "アカウントのシャドウバンとセンシティブ判定を検出",
