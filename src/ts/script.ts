@@ -1,7 +1,7 @@
+import { NUMBER_OF_USERS, SUPPORTED_MOBILE_BROWSERS } from "./constants";
 import { detectBrowser, getExtensionStoreLink } from "./util";
 import i18next, { changeLanguage, t as translate } from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-import { SUPPORTED_MOBILE_BROWSERS } from "./constants";
 import Swal from "sweetalert2";
 import { isNonEmptyArray } from "@robot-inventor/ts-utils";
 import translationEn from "../translations/en.json";
@@ -127,12 +127,11 @@ const onLanguageChanged = (): void => {
 
     initializeDownloadButtons();
 
-    const numberOfUsers = 20000;
     const userCountAnimationDuration = 1500;
     const animateCountOptions = {
         duration: userCountAnimationDuration,
         elementId: "featured_badge-inner",
-        endValue: numberOfUsers,
+        endValue: NUMBER_OF_USERS,
         locale: i18next.language
     } as const satisfies AnimateCountOptions;
     animateCount(animateCountOptions);
