@@ -247,8 +247,9 @@ section h2 {
 
 footer {
     width: 100%;
-    height: 15rem;
+    min-height: 15rem;
     padding-top: 2rem;
+    padding-bottom: 5rem;
     text-align: center;
     background: black;
 }
@@ -259,6 +260,16 @@ footer a {
 
 footer > * {
     margin-top: 1rem;
+}
+
+#footer_badge_container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.footer_badge {
+    height: 2rem;
 }
 
 @media (orientation: portrait) {
@@ -333,5 +344,14 @@ footer > * {
     #download_links img {
         width: 100%;
         height: auto;
+    }
+
+    #footer_badge_container {
+        flex-direction: column;
+    }
+
+    .footer_badge {
+        height: auto;
+        width: 50%;
     }
 }
