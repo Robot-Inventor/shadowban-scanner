@@ -98,7 +98,7 @@ header img {
 #top_text {
     font-size: max(5vmin, 2rem);
     font-weight: bold;
-    margin-bottom: 0.75em;
+    margin-bottom: 1.75rem;
     background: linear-gradient(-45deg, #24d0f3, #404ad2);
     background-clip: border-box;
     -webkit-background-clip: text;
