@@ -250,11 +250,15 @@ footer {
     height: 15rem;
     padding-top: 2rem;
     text-align: center;
-    background: #151920;
+    background: black;
 }
 
 footer a {
     color: inherit;
+}
+
+footer > * {
+    margin-top: 1rem;
 }
 
 @media (orientation: portrait) {
