@@ -16,7 +16,7 @@ body {
     width: 100%;
     min-height: 100vh;
     background: #040912;
-    color: rgb(235, 237, 242);
+    color: rgb(235 237 242);
     font-family: "Mona Sans", "Noto Sans JP", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -29,6 +29,7 @@ main {
 
 a {
     text-decoration: underline 0.1rem;
+    color: inherit;
 }
 
 .material-symbols-outlined {
@@ -38,7 +39,7 @@ a {
 header {
     width: 100%;
     height: var(--header-height);
-    background: rgba(9, 13, 21, 0.7);
+    background: rgb(9 13 21 / 70%);
     backdrop-filter: blur(10px);
     border-bottom: solid 1px #1c2f44;
     padding: 1rem;
@@ -94,11 +95,12 @@ header img {
 
 #featured_badge {
     width: max-content;
-    background: rgba(173, 205, 255, 0.5);
+    background: rgb(173 205 255 / 50%);
     padding: 0.25em 1em;
     border-radius: 1em;
     font-weight: bold;
-    border: solid 0.1rem rgba(194, 206, 244, 0.5);
+    border: solid 0.1rem rgb(194 206 244 / 50%);
+
     /* `font-feature-settings: "palt";`に対応しているフォントでないと、アニメーション時にカクつく */
     font-family: "Noto Sans JP", sans-serif;
     font-feature-settings: "palt";
@@ -175,6 +177,7 @@ header img {
 
 .rounded_button::before {
     content: "chevron_right";
+    /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
     font-family: "Material Symbols Outlined";
     position: absolute;
     display: block;
@@ -185,7 +188,7 @@ header img {
 }
 
 .rounded_button:not(.filled_button):hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgb(255 255 255 / 10%);
 }
 
 .filled_button {
@@ -207,7 +210,7 @@ header img {
 #top_image {
     width: 100%;
     max-height: 70vh;
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 20%, rgba(255, 255, 255, 0.5) 50%, rgb(255, 255, 255) 75%);
+    mask-image: linear-gradient(to bottom, rgb(0 0 0 / 0%) 20%, rgb(255 255 255 / 50%) 50%, rgb(255 255 255) 75%);
     mask-size: 100% 100%;
     mask-repeat: no-repeat;
     object-fit: cover;
@@ -253,10 +256,6 @@ section h2 {
     margin: auto;
 }
 
-.secondary_section-item_text_container a {
-    color: inherit;
-}
-
 .secondary_section-item h3 {
     font-size: max(1vw, 1.5rem);
     margin-bottom: 1em;
@@ -270,7 +269,7 @@ section h2 {
     padding: 3rem;
     background: radial-gradient(circle at center bottom, #404ad2, #040912 30%);
     border-top: 2px solid transparent;
-    border-image: linear-gradient(to right, rgba(38, 60, 87, 0) 0%, rgb(161, 178, 217) 50%, rgba(38, 60, 87, 0) 100%) 1;
+    border-image: linear-gradient(to right, rgb(38 60 87 / 0%) 0%, rgb(161 178 217) 50%, rgb(38 60 87 / 0%) 100%) 1;
 }
 
 #supported_browsers {
@@ -340,13 +339,10 @@ footer {
     text-align: center;
     background: var(--blue-black);
     border-top: 2px solid transparent;
-    border-image: linear-gradient(to right, rgba(38, 60, 87, 0) 0%, rgb(161, 178, 217) 50%, rgba(38, 60, 87, 0) 100%) 1;
+    border-image: linear-gradient(to right, rgb(38 60 87 / 0%) 0%, rgb(161 178 217) 50%, rgb(38 60 87 / 0%) 100%) 1;
 }
 
-footer a {
-    color: inherit;
-}
-
+/* stylelint-disable-next-line no-descending-specificity */
 footer > * {
     margin-top: 1rem;
 }
@@ -379,13 +375,21 @@ footer > * {
         height: 100%;
     }
 
+    .rounded_button {
+        padding: 0.75rem 1.5rem;
+    }
+
+    .rounded_button::before {
+        content: "";
+    }
+
     #top_section-inner .rounded_button {
         display: block;
         margin: auto;
     }
 
     #featured_badge {
-        margin: 0 auto 1.5rem auto;
+        margin: 0 auto 1.5rem;
     }
 
     #top_text_container {
@@ -411,17 +415,8 @@ footer > * {
         width: 100%;
     }
 
-    .rounded_button {
-        padding: 0.75rem 1.5rem;
-    }
-
-    .rounded_button::before {
-        content: "";
-    }
-
     #top_image_container {
         width: 100%;
-        height: 100%;
         margin-top: -3rem;
         height: max-content;
     }

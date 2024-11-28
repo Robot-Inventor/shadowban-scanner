@@ -5,7 +5,7 @@
     "dev": "cross-env NODE_OPTIONS=--experimental-transform-types NODE_ENV=development rspack serve",
     "format": "prettier --write ./src/",
     "format:check": "prettier --check ./src/",
-    "lint": "eslint ./src/ts/**/*.ts"
+    "lint": "eslint ./src/ts/**/*.ts && stylelint ./src/css/**/*.css"
   },
   "dependencies": {
     "@robot-inventor/eslint-config": "^6.0.0",
@@ -24,6 +24,8 @@
     "@rspack/core": "^1.0.14",
     "cross-env": "^7.0.3",
     "css-loader": "^7.1.2",
-    "fork-ts-checker-webpack-plugin": "^9.0.2"
+    "fork-ts-checker-webpack-plugin": "^9.0.2",
+    "stylelint": "^16.10.0",
+    "stylelint-config-standard": "^36.0.1"
   }
 }
