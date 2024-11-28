@@ -40,8 +40,8 @@ header {
     width: 100%;
     height: var(--header-height);
     background: rgb(9 13 21 / 70%);
-    backdrop-filter: blur(10px);
-    border-bottom: solid 1px #1c2f44;
+    backdrop-filter: blur(30px);
+    border-bottom: solid 1px #335174;
     padding: 1rem;
     position: fixed;
     z-index: 999;
