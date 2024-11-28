@@ -9,6 +9,7 @@
     "catchphrase": "Check your account status",
     "subheadline": "Shadowban Scanner is a browser extension that detects shadowbans and sensitive content flags on X without the need to visit external websites.",
     "install": "Install",
+    "viewSourceCode": "View source code",
     "featuresOfShadowbanScanner": "Features of Shadowban Scanner",
     "detectAccountsShadowbanAndSensitiveFlags": "Detect account shadowbans and sensitive content flags",
     "detectAccountsShadowbanAndSensitiveFlagsDescription": "Check if a Twitter account is shadowbanned or flagged as sensitive. You can check both your account and other people's accounts.",

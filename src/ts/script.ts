@@ -163,7 +163,7 @@ const onLanguageChanged = (): void => {
     const userCountAnimationDuration = 1500;
     const animateCountOptions = {
         duration: userCountAnimationDuration,
-        elementId: "featured_badge-inner",
+        elementId: "featured_badge",
         endValue: NUMBER_OF_USERS,
         locale: i18next.language
     } as const satisfies AnimateCountOptions;

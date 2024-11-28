@@ -1,5 +1,7 @@
 :root {
     --header-height: 4rem;
+    --blue-black: #0d0e14;
+    --gray-text: #c2c8d5;
 }
 
 * {
@@ -13,9 +15,19 @@ body {
     width: 100%;
     min-height: 100vh;
     background: #040912;
-    color: white;
-    font-family: "Noto Sans JP", sans-serif;
-    font-weight: 300;
+    color: rgb(235, 237, 242);
+    font-family: "Mona Sans", "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-variation-settings: "wdth" 100;
+}
+
+main {
+    margin-top: var(--header-height);
+}
+
+a {
+    text-decoration: underline 0.1rem;
 }
 
 .material-symbols-outlined {
@@ -25,10 +37,12 @@ body {
 header {
     width: 100%;
     height: var(--header-height);
-    background: #202229;
+    background: rgba(9, 13, 21, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: solid 1px #1c2f44;
     padding: 1rem;
     position: fixed;
-    z-index: 1;
+    z-index: 999;
     display: flex;
     justify-content: space-between;
     top: 0;
@@ -61,84 +75,143 @@ header img {
 }
 
 #top_section {
-    height: 100vh;
-    display: grid;
-    grid-template-rows: 1fr auto 1fr;
+    height: calc(100vh - var(--header-height));
     padding: 3rem;
     background: radial-gradient(circle at center bottom, #404ad2, #040912 30%);
+    display: flex;
+    align-items: center;
+}
+
+#top_section-inner {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
 }
 
 #featured_badge {
-    grid-column: 1 / 4;
-    grid-row: 1;
-    position: relative;
-}
-
-#featured_badge-inner {
     width: max-content;
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translate(-50%);
     background: rgba(173, 205, 255, 0.5);
     padding: 0.25em 1em;
     border-radius: 1em;
     font-weight: bold;
-    border: solid 0.1em rgba(255, 255, 255, 0.5);
+    border: solid 0.1rem rgba(194, 206, 244, 0.5);
+    /* `font-feature-settings: "palt";`に対応しているフォントでないと、アニメーション時にカクつく */
+    font-family: "Noto Sans JP", sans-serif;
+    font-feature-settings: "palt";
+    margin-bottom: 3rem;
 }
 
 #top_text_container {
-    grid-row: 2;
-    grid-column: 2;
+    width: 50%;
     height: max-content;
-    margin: auto;
-    padding-right: 3rem;
+    z-index: 1;
+    container-type: inline-size;
 }
 
 #top_text {
-    font-size: max(5vmin, 2rem);
-    font-weight: bold;
-    margin-bottom: 1.75rem;
-    background: linear-gradient(-45deg, #24d0f3, #404ad2);
-    background-clip: border-box;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: max(5vmin, 3rem);
+    font-weight: 800;
+    line-height: 120%;
+    margin-bottom: 0.5rem;
+}
+
+.auto_break_text {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
 }
 
 #subheadline {
-    opacity: 0.7;
-    max-width: 50%;
+    color: var(--gray-text);
     font-weight: 500;
-    margin-bottom: 2rem;
+    line-height: 160%;
+    margin-bottom: 3rem;
 }
 
-.download_button {
-    background: #1d9bf0;
+#top_text_buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+@container (inline-size < 25rem) {
+    #top_text_buttons {
+        flex-direction: column;
+    }
+
+    #top_text_buttons > * {
+        width: 100%;
+    }
+}
+
+.rounded_button {
     border: none;
-    font-size: 1.2rem;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
+    font-size: 1rem;
+    padding: 0.75rem 3rem 0.75rem 1.5rem;
+    border-radius: 2rem;
     cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+    transition: background 0.2s;
+    text-align: center;
+}
+
+.rounded_button::before {
+    content: "chevron_right";
+    font-family: "Material Symbols Outlined";
+    position: absolute;
+    display: block;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+}
+
+.rounded_button:not(.filled_button):hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.filled_button {
+    background: white;
+    color: #333;
+}
+
+.filled_button:hover {
+    background: #e4e4e4;
+}
+
+#top_image_container {
+    position: relative;
+    width: 40%;
+    max-width: 30rem;
+    height: 100%;
 }
 
 #top_image {
-    max-width: 100%;
-    max-height: 40vh;
-    grid-row: 2;
-    grid-column: 3;
-    filter: drop-shadow(0.25rem 0.25rem 0.5rem rgba(255, 255, 255, 0.2));
+    width: 100%;
+    max-height: 70vh;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 20%, rgba(255, 255, 255, 0.5) 50%, rgb(255, 255, 255) 75%);
+    mask-size: 100% 100%;
+    mask-repeat: no-repeat;
+    object-fit: cover;
+    object-position: bottom;
 }
 
 section h2 {
     width: 100%;
     text-align: center;
     font-size: max(4vmin, 1.8rem);
+    font-weight: 800;
 }
 
 #secondary_section {
     width: 100%;
-    background: #151920;
+    background: var(--blue-black);
     padding: 3rem;
 }
 
@@ -161,7 +234,6 @@ section h2 {
 
 .secondary_section-item .material-symbols-outlined {
     font-size: max(8vw, 8rem);
-    color: #1d9bf0;
 }
 
 .secondary_section-item_text_container {
@@ -179,12 +251,14 @@ section h2 {
 }
 
 .secondary_section-item p {
-    color: rgb(255, 255, 255, 0.8);
+    color: var(--gray-text);
 }
 
 #download_section {
     padding: 3rem;
     background: radial-gradient(circle at center bottom, #404ad2, #040912 30%);
+    border-top: 2px solid transparent;
+    border-image: linear-gradient(to right, rgba(38, 60, 87, 0) 0%, rgb(38, 60, 87) 50%, rgba(38, 60, 87, 0) 100%) 1;
 }
 
 #supported_browsers {
@@ -193,7 +267,7 @@ section h2 {
     margin: 3rem auto;
 }
 
-#download_section .download_button.suggest {
+#download_section .download_button {
     margin: auto;
     display: block;
 }
@@ -219,7 +293,7 @@ section h2 {
 
 #faq_section {
     padding: 3rem;
-    background: #151920;
+    background: var(--blue-black);
 }
 
 #faq_section h3 {
@@ -235,6 +309,7 @@ section h2 {
 
 .faq_section-item p {
     margin-bottom: 1em;
+    color: var(--gray-text);
 }
 
 .faq_section-item a {
@@ -251,7 +326,9 @@ footer {
     padding-top: 2rem;
     padding-bottom: 5rem;
     text-align: center;
-    background: black;
+    background: var(--blue-black);
+    border-top: 2px solid transparent;
+    border-image: linear-gradient(to right, rgba(38, 60, 87, 0) 0%, rgb(38, 60, 87) 50%, rgba(38, 60, 87, 0) 100%) 1;
 }
 
 footer a {
@@ -278,33 +355,66 @@ footer > * {
         overflow: hidden;
     }
 
-    main {
-        margin-top: var(--header-height);
-    }
-
     #top_section {
-        grid-template-rows: 1fr auto auto 1fr;
-        height: calc(100vh - var(--header-height));
+        height: auto;
+        min-height: calc(100vh - var(--header-height));
     }
 
-    #top_section .download_button {
+    #top_section-inner {
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 0;
+        height: 100%;
+    }
+
+    #top_section-inner .rounded_button {
         display: block;
         margin: auto;
     }
 
+    #featured_badge {
+        margin: 0 auto 1.5rem auto;
+    }
+
     #top_text_container {
         padding-right: 0;
-        margin-bottom: 3rem;
-        grid-row: 2;
+        width: 100%;
+    }
+
+    #top_text {
+        margin-bottom: 1rem;
+        font-size: 2.5rem;
     }
 
     #subheadline {
         max-width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    #top_text_buttons {
+        flex-direction: column;
+    }
+
+    #top_text_buttons > .rounded_button {
+        width: 100%;
+    }
+
+    .rounded_button {
+        padding: 0.75rem 1.5rem;
+    }
+
+    .rounded_button::before {
+        content: "";
+    }
+
+    #top_image_container {
+        width: 100%;
+        height: 100%;
+        margin-top: -3rem;
+        height: max-content;
     }
 
     #top_image {
-        grid-row: 3;
-        grid-column: 2;
         margin: auto;
     }
 
@@ -329,6 +439,10 @@ footer > * {
     }
 
     #supported_browsers {
+        width: 100%;
+    }
+
+    #download_section .rounded_button {
         width: 100%;
     }
 
