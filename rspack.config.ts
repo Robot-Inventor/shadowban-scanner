@@ -13,7 +13,7 @@ const config = defineConfig({
         "js/redirect.js": "./src/ts/redirect.ts"
     },
     output: {
-        filename: (pathData) => `js/${pathData.contentHash}.js`,
+        filename: (pathData) => `js/${pathData.chunk?.name}.js?${pathData.contentHash}`,
         clean: true
     },
     devServer: {
@@ -63,7 +63,7 @@ const config = defineConfig({
         }),
         new CssExtractRspackPlugin({
             runtime: false,
-            filename: (pathData) => `css/${pathData.contentHash}.css`
+            filename: (pathData) => `css/${pathData.chunk?.name}.css?${pathData.contentHash}`
         }),
         new HtmlRspackPlugin({
             template: "./src/html/index.html",
