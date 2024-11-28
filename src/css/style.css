@@ -3,6 +3,16 @@
     --blue-black: #0d0e14;
     --gray-text: #c2c8d5;
     --gray-text-dark: #a2a5b0;
+
+    --transition-duration-short: 0.2s;
+    --transition-duration-medium: 0.3s;
+}
+
+@media (prefers-reduced-motion) {
+    :root {
+        --transition-duration-short: 0s;
+        --transition-duration-medium: 0s;
+    }
 }
 
 * {
@@ -171,7 +181,7 @@ header img {
     position: relative;
     color: inherit;
     text-decoration: none;
-    transition: background 0.2s;
+    transition: background var(--transition-duration-short);
     text-align: center;
 }
 
