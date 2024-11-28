@@ -26,7 +26,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300..700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Mona+Sans:wght@200..900&family=Noto+Sans+JP:wght@100..900&display=swap"
             rel="stylesheet"
         />
         <link
@@ -76,20 +76,34 @@
         </header>
         <main>
             <section id="top_section">
-                <div id="featured_badge">
-                    <div id="featured_badge-inner" data-i18n="userCountSurpassed"><%= userCountSurpassed %></div>
+                <div id="top_section-inner">
+                    <div id="top_text_container">
+                        <div id="featured_badge" data-i18n="userCountSurpassed"><%= userCountSurpassed %></div>
+                        <div id="top_text" class="auto_break_text" data-translation="catchphrase">
+                            <%= catchphrase %>
+                        </div>
+                        <div id="subheadline" data-translation="subheadline"><%= subheadline %></div>
+                        <div id="top_text_buttons">
+                            <button class="rounded_button filled_button download_button"><%= install %></button>
+                            <a
+                                href="https://github.com/Robot-Inventor/shadowban-scanner/"
+                                target="_blank"
+                                rel="noreferrer noopener"
+                                class="rounded_button"
+                                data-translation="viewSourceCode"
+                                ><%= viewSourceCode %></a
+                            >
+                        </div>
+                    </div>
+                    <div id="top_image_container">
+                        <img
+                            id="top_image"
+                            data-translation="topImage"
+                            data-translation-attribute="src"
+                            src="/image/top-ja.svg"
+                        />
+                    </div>
                 </div>
-                <div id="top_text_container">
-                    <div id="top_text" data-translation="catchphrase"><%= catchphrase %></div>
-                    <div id="subheadline" data-translation="subheadline"><%= subheadline %></div>
-                    <button class="download_button" data-translation="install"><%= install %></button>
-                </div>
-                <img
-                    id="top_image"
-                    data-translation="topImage"
-                    data-translation-attribute="src"
-                    src="/image/top-ja.svg"
-                />
             </section>
             <section id="secondary_section">
                 <h2 data-translation="featuresOfShadowbanScanner"><%= featuresOfShadowbanScanner %></h2>
@@ -168,7 +182,9 @@
             <section id="download_section">
                 <h2 data-translation="installNow"><%= installNow %></h2>
                 <p id="supported_browsers" data-translation="supportedBrowsers"><%= supportedBrowsers %></p>
-                <button class="download_button suggest" data-translation="install"><%= install %></button>
+                <button class="rounded_button filled_button download_button" data-translation="install">
+                    <%= install %>
+                </button>
                 <h3 data-translation="doYouUseAnotherBrowser"><%= doYouUseAnotherBrowser %></h3>
                 <div id="download_links"></div>
             </section>
