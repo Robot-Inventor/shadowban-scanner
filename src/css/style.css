@@ -140,13 +140,21 @@ header img {
     gap: 1rem;
 }
 
-@container (inline-size < 25rem) {
+@container (inline-size < 30rem) {
     #top_text_buttons {
         flex-direction: column;
     }
 
     #top_text_buttons > * {
         width: 100%;
+    }
+
+    #top_text_buttons > .rounded_button {
+        padding: 0.75rem 1.5rem;
+    }
+
+    #top_text_buttons > .rounded_button::before {
+        display: none;
     }
 }
 
