@@ -2,6 +2,7 @@
     --header-height: 4rem;
     --blue-black: #0d0e14;
     --gray-text: #c2c8d5;
+    --gray-text-dark: #a2a5b0;
 }
 
 * {
@@ -116,6 +117,9 @@ header img {
     font-weight: 800;
     line-height: 120%;
     margin-bottom: 0.5rem;
+    background: linear-gradient(to bottom, white, var(--gray-text-dark));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .auto_break_text {
