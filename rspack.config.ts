@@ -65,6 +65,7 @@ const config = defineConfig({
             template: "./src/html/index.html",
             filename: "./index.html",
             minify: true,
+            hash: true,
             chunks: ["js/script.js"],
             templateParameters: {
                 ...translationJa
@@ -74,6 +75,7 @@ const config = defineConfig({
             template: "./src/html/index.html",
             filename: "./ja/index.html",
             minify: true,
+            hash: true,
             chunks: ["js/script.js"],
             templateParameters: {
                 ...translationJa
@@ -83,6 +85,7 @@ const config = defineConfig({
             template: "./src/html/index.html",
             filename: "./en/index.html",
             minify: true,
+            hash: true,
             chunks: ["js/script.js"],
             templateParameters: {
                 ...translationEn
@@ -92,6 +95,7 @@ const config = defineConfig({
             template: "./src/html/download/index.html",
             filename: "./download/index.html",
             minify: true,
+            hash: true,
             chunks: ["js/redirect.js"]
         }),
         new ForkTsCheckerWebpackPlugin()
