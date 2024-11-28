@@ -1,3 +1,5 @@
+// eslint-disable-next-line import-x/no-unassigned-import
+import "../css/style.css";
 import {
     EXTENSION_STORE_LINKS,
     type ExtensionStoreType,

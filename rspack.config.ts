@@ -1,4 +1,4 @@
-import { CopyRspackPlugin, HtmlRspackPlugin } from "@rspack/core";
+import { CopyRspackPlugin, CssExtractRspackPlugin, HtmlRspackPlugin } from "@rspack/core";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import { defineConfig } from "@rspack/cli";
 import translationJa from "./src/translations/ja.json" with { type: "json" };
@@ -13,7 +13,7 @@ const config = defineConfig({
         "js/redirect.js": "./src/ts/redirect.ts"
     },
     output: {
-        filename: "[name]",
+        filename: (pathData) => `js/${pathData.contentHash}.js`,
         clean: true
     },
     devServer: {
@@ -40,6 +40,11 @@ const config = defineConfig({
                     }
                 },
                 type: "javascript/auto"
+            },
+            {
+                test: /\.css$/i,
+                use: [CssExtractRspackPlugin.loader, "css-loader"],
+                type: "javascript/auto"
             }
         ]
     },
@@ -50,22 +55,20 @@ const config = defineConfig({
         new CopyRspackPlugin({
             patterns: [
                 {
-                    context: "./src/css/",
-                    from: "**/*",
-                    to: "./css/"
-                },
-                {
                     context: "./public/",
                     from: "**/*",
                     to: "./"
                 }
             ]
         }),
+        new CssExtractRspackPlugin({
+            runtime: false,
+            filename: (pathData) => `css/${pathData.contentHash}.css`
+        }),
         new HtmlRspackPlugin({
             template: "./src/html/index.html",
             filename: "./index.html",
             minify: true,
-            hash: true,
             chunks: ["js/script.js"],
             templateParameters: {
                 ...translationJa
@@ -75,7 +78,6 @@ const config = defineConfig({
             template: "./src/html/index.html",
             filename: "./ja/index.html",
             minify: true,
-            hash: true,
             chunks: ["js/script.js"],
             templateParameters: {
                 ...translationJa
@@ -85,7 +87,6 @@ const config = defineConfig({
             template: "./src/html/index.html",
             filename: "./en/index.html",
             minify: true,
-            hash: true,
             chunks: ["js/script.js"],
             templateParameters: {
                 ...translationEn
@@ -95,7 +96,6 @@ const config = defineConfig({
             template: "./src/html/download/index.html",
             filename: "./download/index.html",
             minify: true,
-            hash: true,
             chunks: ["js/redirect.js"]
         }),
         new ForkTsCheckerWebpackPlugin()
