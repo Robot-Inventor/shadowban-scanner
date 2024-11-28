@@ -258,7 +258,7 @@ section h2 {
     padding: 3rem;
     background: radial-gradient(circle at center bottom, #404ad2, #040912 30%);
     border-top: 2px solid transparent;
-    border-image: linear-gradient(to right, rgba(38, 60, 87, 0) 0%, rgb(38, 60, 87) 50%, rgba(38, 60, 87, 0) 100%) 1;
+    border-image: linear-gradient(to right, rgba(38, 60, 87, 0) 0%, rgb(161, 178, 217) 50%, rgba(38, 60, 87, 0) 100%) 1;
 }
 
 #supported_browsers {
@@ -328,7 +328,7 @@ footer {
     text-align: center;
     background: var(--blue-black);
     border-top: 2px solid transparent;
-    border-image: linear-gradient(to right, rgba(38, 60, 87, 0) 0%, rgb(38, 60, 87) 50%, rgba(38, 60, 87, 0) 100%) 1;
+    border-image: linear-gradient(to right, rgba(38, 60, 87, 0) 0%, rgb(161, 178, 217) 50%, rgba(38, 60, 87, 0) 100%) 1;
 }
 
 footer a {
