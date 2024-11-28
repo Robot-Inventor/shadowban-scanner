@@ -39,6 +39,11 @@ main {
 a {
     text-decoration: underline 0.1rem;
     color: inherit;
+    transition: color var(--transition-duration-medium);
+}
+
+a:hover {
+    color: #5f85f8;
 }
 
 .material-symbols-outlined {
@@ -198,6 +203,7 @@ header img {
 
 .rounded_button:not(.filled_button):hover {
     background: rgb(255 255 255 / 10%);
+    color: inherit;
 }
 
 .filled_button {
@@ -330,10 +336,6 @@ section h2 {
 .faq_section-item p {
     margin-bottom: 1em;
     color: var(--gray-text);
-}
-
-.faq_section-item a {
-    color: inherit;
 }
 
 #user_count {
