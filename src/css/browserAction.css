@@ -4,28 +4,28 @@
     --window-padding: 1.75rem;
     --container-outside-text-padding-left: 0.25rem;
 
-    --theme-background-color: #f2f3f6;
-    --theme-secondary-background-color: white;
-    --theme-secondary-background-color-variant: #fafafc;
-    --theme-font-color: rgb(51, 51, 51);
-    --theme-secondary-font-color: rgb(51, 51, 51, 0.7);
+    --md-surface-container: #f2f3f6;
+    --md-surface: white;
+    --md-surface-variant: #fafafc;
+    --md-on-surface: rgb(51, 51, 51);
+    --md-on-surface-variant: rgb(51, 51, 51, 0.7);
 
     --md-sys-color-primary: rgb(73, 113, 214);
-    --md-sys-color-on-primary: var(--theme-secondary-background-color);
+    --md-sys-color-on-primary: var(--md-surface);
     --md-sys-color-on-surface-variant: #888;
     --md-sys-color-on-surface: #aaa;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --theme-background-color: #0d0e14;
-        --theme-secondary-background-color: #1f2029;
-        --theme-secondary-background-color-variant: #2a2b37;
-        --theme-font-color: #ebedf2;
-        --theme-secondary-font-color: #a8b2c7;
+        --md-surface-container: #0d0e14;
+        --md-surface: #1f2029;
+        --md-surface-variant: #2a2b37;
+        --md-on-surface: #ebedf2;
+        --md-on-surface-variant: #a8b2c7;
 
         --md-sys-color-primary: rgb(98, 125, 194);
-        --md-sys-color-on-primary: var(--theme-secondary-background-color);
+        --md-sys-color-on-primary: var(--md-surface);
         --md-sys-color-on-surface-variant: #aaa;
         --md-sys-color-on-surface: #888;
     }
@@ -41,8 +41,8 @@
 body {
     padding: var(--window-padding);
     width: max-content;
-    background: var(--theme-background-color);
-    color: var(--theme-font-color);
+    background: var(--md-surface-container);
+    color: var(--md-on-surface);
     font-size: 1rem;
 }
 
@@ -61,7 +61,7 @@ h1 {
     margin-left: 0.5rem;
     color: inherit;
     text-decoration: none;
-    color: var(--theme-secondary-font-color);
+    color: var(--md-on-surface-variant);
 }
 
 fieldset {
@@ -92,7 +92,7 @@ settings-description {
 
 small {
     font-size: 0.8em;
-    color: var(--theme-secondary-font-color);
+    color: var(--md-on-surface-variant);
     padding-left: var(--container-outside-text-padding-left);
 }
 
