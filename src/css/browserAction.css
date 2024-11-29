@@ -1,22 +1,31 @@
 :root {
-    --window-padding: 1.75rem;
+    font-size: 16px;
 
-    --theme-background-color: #fff;
+    --window-padding: 1.75rem;
+    --container-outside-text-padding-left: 0.25rem;
+
+    --theme-background-color: #f2f3f6;
+    --theme-secondary-background-color: white;
+    --theme-secondary-background-color-variant: #fafafc;
     --theme-font-color: rgb(51, 51, 51);
     --theme-secondary-font-color: rgb(51, 51, 51, 0.7);
 
-    --md-sys-color-primary: rgb(29, 155, 240);
+    --md-sys-color-primary: rgb(73, 113, 214);
+    --md-sys-color-on-primary: var(--theme-secondary-background-color);
     --md-sys-color-on-surface-variant: #888;
     --md-sys-color-on-surface: #aaa;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --theme-background-color: #121212;
-        --theme-font-color: rgb(255, 255, 255);
-        --theme-secondary-font-color: rgb(255, 255, 255, 0.7);
+        --theme-background-color: #0d0e14;
+        --theme-secondary-background-color: #1f2029;
+        --theme-secondary-background-color-variant: #2a2b37;
+        --theme-font-color: #ebedf2;
+        --theme-secondary-font-color: #a8b2c7;
 
-        --md-sys-color-primary: rgb(29, 155, 240);
+        --md-sys-color-primary: rgb(98, 125, 194);
+        --md-sys-color-on-primary: var(--theme-secondary-background-color);
         --md-sys-color-on-surface-variant: #aaa;
         --md-sys-color-on-surface: #888;
     }
@@ -27,16 +36,6 @@
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-}
-
-html {
-    font-size: 16px;
-}
-
-html,
-body {
-    max-width: 100%;
-    max-height: 100%;
 }
 
 body {
@@ -62,24 +61,39 @@ h1 {
     margin-left: 0.5rem;
     color: inherit;
     text-decoration: none;
+    color: var(--theme-secondary-font-color);
 }
 
 fieldset {
-    margin: 1rem 0;
+    margin: 1.5rem 0;
     border: none;
 }
 
-settings-separator:not(:first-of-type) {
-    margin-top: 1rem;
+settings-item {
+    margin: 0.15rem 0;
+}
+
+*:not(settings-item) + settings-item {
+    border-radius: 1rem 1rem 0.25rem 0.25rem;
+}
+
+settings-group-title {
+    padding-left: var(--container-outside-text-padding-left);
+}
+
+settings-group-title:not(:first-child) {
+    margin: 1.5rem 0 0.5rem 0;
 }
 
 settings-description {
-    margin: 1rem 0;
+    margin: 0.25rem 0 0.5rem 0;
+    padding-left: var(--container-outside-text-padding-left);
 }
 
 small {
     font-size: 0.8em;
     color: var(--theme-secondary-font-color);
+    padding-left: var(--container-outside-text-padding-left);
 }
 
 #footer-links {

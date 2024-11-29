@@ -3,33 +3,38 @@ import "../components/settingsItem";
 // eslint-disable-next-line import-x/no-unassigned-import
 import "../components/settingsDescription";
 // eslint-disable-next-line import-x/no-unassigned-import
-import "../components/settingsSeparator";
+import "../components/settingsGroupTitle";
+import { SETTINGS_ITEMS, type SettingsData, type SettingsItemData } from "./settingsItems";
 import { i18n, runtime } from "webextension-polyfill";
 import { loadSettingsFromStorage, writeSettingsToStorage } from "../common/settings";
-import { SETTINGS_ITEMS } from "./settingsItems";
 import type { Settings } from "../../types/common/settings";
 // eslint-disable-next-line no-duplicate-imports
 import type { SettingsDescription } from "../components/settingsDescription";
 // eslint-disable-next-line no-duplicate-imports
-import type { SettingsItem } from "../components/settingsItem";
+import type { SettingsGroupTitle } from "../components/settingsGroupTitle";
 // eslint-disable-next-line no-duplicate-imports
-import type { SettingsSeparator } from "../components/settingsSeparator";
+import type { SettingsItem } from "../components/settingsItem";
 import { TRANSLATION_ATTRIBUTE } from "../common/constants";
 import { Translator } from "../common/translator";
 
 /**
- * Create new settings separator element.
+ * Create new settings group title element.
  * @param translationKey translation key
  * @returns created settings separator
  */
-const createSettingsSeparator = (translationKey: string): SettingsSeparator => {
-    const separator = document.createElement("settings-separator");
+const createGroupTitle = (translationKey: string): SettingsGroupTitle => {
+    const separator = document.createElement("settings-group-title");
     separator.setAttribute(TRANSLATION_ATTRIBUTE, translationKey);
 
     return separator;
 };
 
-const createSettingsDescription = (translationKey: string): SettingsDescription => {
+/**
+ * Create new settings description element.
+ * @param translationKey translation key
+ * @returns created settings description
+ */
+const createGroupDescription = (translationKey: string): SettingsDescription => {
     const description = document.createElement("settings-description");
     description.setAttribute(TRANSLATION_ATTRIBUTE, translationKey);
 
@@ -37,17 +42,26 @@ const createSettingsDescription = (translationKey: string): SettingsDescription 
 };
 
 /**
- * Create new settings item element.
- * @param settingsName settings name
- * @param translationKey translation key
- * @param checked settings status
- * @returns created settings item
+ * Create a new settings item element.
+ * @param settingsItemData Settings item data
+ * @param checked Settings status
+ * @param isFirstItem Whether this is the first item
+ * @param isLastItem Whether this is the last item
+ * @returns The created settings item
  */
-const createSettingsItem = (settingsName: string, translationKey: string, checked: boolean): SettingsItem => {
+const createSettingsItem = (
+    settingsItemData: SettingsItemData,
+    checked: boolean,
+    isFirstItem: boolean,
+    isLastItem: boolean
+    // eslint-disable-next-line max-params
+): SettingsItem => {
     const item = document.createElement("settings-item");
-    item.settingsName = settingsName;
-    item.setAttribute(TRANSLATION_ATTRIBUTE, translationKey);
+    item.settingsName = settingsItemData.settingsName;
+    item.setAttribute(TRANSLATION_ATTRIBUTE, settingsItemData.translationKey);
     item.checked = checked;
+    item.isFirstItem = isFirstItem;
+    item.isLastItem = isLastItem;
     item.addEventListener("change", () => {
         void writeSettingsToStorage({ [item.settingsName]: item.checked });
     });
@@ -64,28 +78,28 @@ const runTranslation = (): void => {
 };
 
 /**
- * Create settings item or separator element from data.
+ * Create settings items from group.
  * @param settings settings
- * @param data settings item data
- * @returns created element
+ * @param group settings item group
+ * @returns created elements
  */
-const createItemsFromData = (
-    settings: Settings,
-    data: (typeof SETTINGS_ITEMS)[number]
-): SettingsSeparator | SettingsDescription | SettingsItem => {
-    switch (data.type) {
-        case "separator":
-            return createSettingsSeparator(data.translationKey);
-
-        case "description":
-            return createSettingsDescription(data.translationKey);
-
-        case "checkbox":
-            return createSettingsItem(data.settingsName, data.translationKey, settings[data.settingsName]);
-
-        default:
-            throw new Error("Invalid type");
+const createItemsFromGroup = (settings: Settings, group: SettingsData[number]): DocumentFragment => {
+    const fragment = document.createDocumentFragment();
+    fragment.appendChild(createGroupTitle(group.groupName));
+    if (group.description) {
+        fragment.appendChild(createGroupDescription(group.description));
     }
+
+    for (const [index, item] of group.items.entries()) {
+        // eslint-disable-next-line no-magic-numbers
+        const isFirstItem = index === 0;
+        // eslint-disable-next-line no-magic-numbers
+        const isLastItem = index === group.items.length - 1;
+        const settingsItem = createSettingsItem(item, settings[item.settingsName], isFirstItem, isLastItem);
+        fragment.appendChild(settingsItem);
+    }
+
+    return fragment;
 };
 
 /**
@@ -98,8 +112,8 @@ const loadSettings = async (): Promise<void> => {
     if (!fieldset) throw new Error("Failed to get fieldset");
     const fragment = document.createDocumentFragment();
 
-    for (const data of SETTINGS_ITEMS) {
-        const element = createItemsFromData(settings, data);
+    for (const settingsGroup of SETTINGS_ITEMS) {
+        const element = createItemsFromGroup(settings, settingsGroup);
         fragment.appendChild(element);
     }
 
