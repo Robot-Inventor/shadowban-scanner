@@ -133,6 +133,9 @@ header img {
     font-weight: 800;
     line-height: 120%;
     margin-bottom: 0.5rem;
+}
+
+.gradient_text {
     background: linear-gradient(to bottom, white, var(--gray-text-dark));
     background-clip: text;
     -webkit-text-fill-color: transparent;
