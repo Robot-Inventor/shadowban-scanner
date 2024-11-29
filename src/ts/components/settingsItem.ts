@@ -3,6 +3,7 @@ import "@material/web/checkbox/checkbox.js";
 import { LitElement, css, html } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import type { MdCheckbox } from "@material/web/checkbox/checkbox";
+import { classMap } from "lit/directives/class-map.js";
 
 @customElement("settings-item")
 class SettingsItem extends LitElement {
@@ -10,13 +11,24 @@ class SettingsItem extends LitElement {
     private checkbox!: MdCheckbox;
 
     public static override styles = css`
+        :host {
+            display: block;
+        }
+
         .settings-item {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            margin: 0.5rem 0;
-            padding: 0 1rem;
+            gap: 1rem;
+            background: var(--theme-secondary-background-color);
+            padding: 1rem 1.5rem;
+            border-radius: 0.25rem;
+            transition: background 0.2s;
+        }
+
+        .settings-item:hover {
+            background: var(--theme-secondary-background-color-variant);
         }
 
         .settings-item,
@@ -29,8 +41,17 @@ class SettingsItem extends LitElement {
         }
 
         md-checkbox {
-            margin-left: 0.75rem;
             flex-shrink: 0;
+        }
+
+        .first-item {
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+
+        .last-item {
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
         }
     `;
 
@@ -40,9 +61,20 @@ class SettingsItem extends LitElement {
     @property({ attribute: true, reflect: true, type: Boolean })
     public checked = false;
 
+    @property({ attribute: "is-first-item", reflect: true, type: Boolean })
+    public isFirstItem = false;
+
+    @property({ attribute: "is-last-item", reflect: true, type: Boolean })
+    public isLastItem = false;
+
     protected override render(): ReturnType<typeof html> {
+        const itemClasses = {
+            "first-item": this.isFirstItem,
+            "last-item": this.isLastItem
+        };
+
         return html`
-            <div class="settings-item">
+            <div class="settings-item ${classMap(itemClasses)}">
                 <label for="${this.settingsName}">
                     <slot></slot>
                 </label>

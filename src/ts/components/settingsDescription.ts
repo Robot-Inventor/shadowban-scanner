@@ -14,9 +14,10 @@ class SettingsDescription extends LitElement {
         }
 
         .settings-description {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             flex-grow: 1;
             width: 0;
+            color: var(--theme-secondary-font-color);
         }
     `;
 
