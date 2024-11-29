@@ -1,14 +1,4 @@
-:root {
-    --theme-font-color: #333;
-    --theme-background-color: #fff;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --theme-font-color: #fff;
-        --theme-background-color: #121212;
-    }
-}
+@import url("./theme.css");
 
 * {
     box-sizing: border-box;
@@ -16,20 +6,35 @@
     padding: 0;
 }
 
-html,
-body {
+:root {
     font-family: sans-serif;
     width: 100%;
-    font-size: 100%;
-    color: var(--theme-font-color);
-    background: var(--theme-background-color);
+    background: var(--md-surface-container);
+    color: var(--md-on-surface);
+    line-height: 175%;
 }
 
 body {
-    padding: 2rem 0;
+    display: flex;
+    justify-content: center;
+    font-size: 100%;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 main {
     margin: 0 auto;
-    max-width: 50rem;
+    max-width: min(50rem, calc(100% - 4rem));
+    background: var(--md-surface);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2rem;
+    transition: background 0.2s;
+}
+
+main:hover {
+    background: var(--md-surface-variant);
 }

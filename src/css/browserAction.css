@@ -1,34 +1,10 @@
+@import url("./theme.css");
+
 :root {
     font-size: 16px;
 
     --window-padding: 1.75rem;
     --container-outside-text-padding-left: 0.25rem;
-
-    --md-surface-container: #f2f3f6;
-    --md-surface: white;
-    --md-surface-variant: #fafafc;
-    --md-on-surface: rgb(51, 51, 51);
-    --md-on-surface-variant: rgb(51, 51, 51, 0.7);
-
-    --md-sys-color-primary: rgb(73, 113, 214);
-    --md-sys-color-on-primary: var(--md-surface);
-    --md-sys-color-on-surface-variant: #888;
-    --md-sys-color-on-surface: #aaa;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --md-surface-container: #0d0e14;
-        --md-surface: #1f2029;
-        --md-surface-variant: #2a2b37;
-        --md-on-surface: #ebedf2;
-        --md-on-surface-variant: #a8b2c7;
-
-        --md-sys-color-primary: rgb(98, 125, 194);
-        --md-sys-color-on-primary: var(--md-surface);
-        --md-sys-color-on-surface-variant: #aaa;
-        --md-sys-color-on-surface: #888;
-    }
 }
 
 * {
