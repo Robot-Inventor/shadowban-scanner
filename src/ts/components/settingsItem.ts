@@ -20,28 +20,35 @@ class SettingsItem extends LitElement {
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            gap: 1rem;
-            background: var(--theme-secondary-background-color);
-            padding: 1rem 1.5rem;
+            background: var(--md-surface);
             border-radius: 0.25rem;
             transition: background 0.2s;
         }
 
         .settings-item:hover {
-            background: var(--theme-secondary-background-color-variant);
+            background: var(--md-surface-variant);
         }
 
-        .settings-item,
         .settings-item > * {
             cursor: pointer;
+            padding: 1rem 0;
         }
 
-        .settings-item > label {
+        .settings-item > *:first-child {
+            padding-left: 1.5rem;
+        }
+
+        .settings-item > *:last-child {
+            padding-right: 1.5rem;
+        }
+
+        label {
             flex-grow: 1;
         }
 
-        md-checkbox {
+        .settings-item > md-checkbox {
             flex-shrink: 0;
+            padding-left: 1.5rem;
         }
 
         .first-item {
