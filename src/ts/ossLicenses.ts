@@ -15,7 +15,7 @@ const normalizeRepositoryLink = (repository: string): string => {
 
 // eslint-disable-next-line max-statements
 const main = async (): Promise<void> => {
-    const target = document.getElementById("third-party-licenses");
+    const target = document.querySelector("main");
     if (!target) {
         throw new Error("Missing target element");
     }
@@ -27,8 +27,7 @@ const main = async (): Promise<void> => {
     const fragment = document.createDocumentFragment();
 
     for (const license of [...OSSLicenses, ...additionalLicenses]) {
-        const itemOuter = document.createElement("div");
-        itemOuter.className = "license-item-outer";
+        const itemOuter = document.createElement("section");
         fragment.appendChild(itemOuter);
 
         const h2 = document.createElement("h2");
