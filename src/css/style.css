@@ -24,15 +24,27 @@ sbs-message {
 }
 
 [data-sb-compact-mode] {
-    border-left: solid 0.3rem;
+    /*
+     * `!important` is required to work with Kiwi Browser.
+     * In Kiwi Browser and, likely, in Chrome's mobile layout, it is necessary to override the borders set by X on posts.
+     */
+    border-left: solid 0.3rem !important;
 }
 
 [data-sb-compact-mode="green"] {
-    border-left-color: var(--sb-background-green);
+    /*
+     * `!important` is required to work with Kiwi Browser.
+     * In Kiwi Browser and, likely, in Chrome's mobile layout, it is necessary to override the borders set by X on posts.
+     */
+    border-left-color: var(--sb-background-green) !important;
 }
 
 [data-sb-compact-mode="red"] {
-    border-left-color: var(--sb-background-red);
+    /*
+     * `!important` is required to work with Kiwi Browser.
+     * In Kiwi Browser and, likely, in Chrome's mobile layout, it is necessary to override the borders set by X on posts.
+     */
+    border-left-color: var(--sb-background-red) !important;
 }
 
 [data-sb-translation] {
