@@ -123,6 +123,9 @@
     "settingsShowReleaseNotes": {
         "message": "アップデート後にリリースノートを表示"
     },
+    "settingsEnableColorAccessibilityMode": {
+        "message": "カラーアクセシビリティモードを有効化"
+    },
     "settingsPleaseReload": {
         "message": "設定を変更したらTwitterを再読み込みしてください。"
     },

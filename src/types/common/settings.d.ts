@@ -8,6 +8,7 @@ export interface Settings {
     showNotesInMessages: boolean;
     showTweetButton: boolean;
     enableCompactMode: boolean;
+    enableColorAccessibilityMode: boolean;
     enableOnXPro: boolean;
     showReleaseNotes: boolean;
 }

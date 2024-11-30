@@ -76,6 +76,11 @@ const SETTINGS_ITEMS = [
                 settingsName: "showReleaseNotes",
                 translationKey: "settingsShowReleaseNotes",
                 type: "checkbox"
+            },
+            {
+                settingsName: "enableColorAccessibilityMode",
+                translationKey: "settingsEnableColorAccessibilityMode",
+                type: "checkbox"
             }
         ],
         type: "group"

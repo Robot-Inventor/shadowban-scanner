@@ -18,6 +18,7 @@ export function isSettings(obj: unknown): obj is Settings {
         typeof typedObj["showNotesInMessages"] === "boolean" &&
         typeof typedObj["showTweetButton"] === "boolean" &&
         typeof typedObj["enableCompactMode"] === "boolean" &&
+        typeof typedObj["enableColorAccessibilityMode"] === "boolean" &&
         typeof typedObj["enableOnXPro"] === "boolean" &&
         typeof typedObj["showReleaseNotes"] === "boolean"
     )
