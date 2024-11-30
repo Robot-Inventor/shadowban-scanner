@@ -126,6 +126,10 @@
         "message": "更新後顯示發行說明",
         "description": "This field was translated by machine translation."
     },
+    "settingsEnableColorAccessibilityMode": {
+        "message": "啟用色彩無障礙模式",
+        "description": "This field was translated by machine translation."
+    },
     "settingsPleaseReload": {
         "message": "如更改過設定，請重新載入 Twitter/X"
     },

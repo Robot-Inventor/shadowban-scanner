@@ -1,11 +1,21 @@
 body[data-color-scheme="light"] {
-    --sb-background-green: #70d28b;
-    --sb-background-red: #f99f9f;
+    --sb-background-green: #a4dda8;
+    --sb-background-red: #f6afaf;
 }
 
 body[data-color-scheme="dark"] {
-    --sb-background-green: #0c411a;
-    --sb-background-red: #702d27;
+    --sb-background-green: #184223;
+    --sb-background-red: #5d2420;
+}
+
+body[data-color-accessibility-mode][data-color-scheme="light"] {
+    --sb-background-green: #c3d2ee;
+    --sb-background-red: #f4b892;
+}
+
+body[data-color-accessibility-mode][data-color-scheme="dark"] {
+    --sb-background-green: #22487d;
+    --sb-background-red: #772929;
 }
 
 .shadowban-scanner-tombstone-necromancer {

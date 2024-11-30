@@ -123,6 +123,9 @@
     "settingsShowReleaseNotes": {
         "message": "Show release notes after updates"
     },
+    "settingsEnableColorAccessibilityMode": {
+        "message": "Enable color accessibility mode"
+    },
     "settingsPleaseReload": {
         "message": "Please reload Twitter after changing settings."
     },

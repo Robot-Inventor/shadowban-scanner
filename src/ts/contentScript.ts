@@ -8,12 +8,14 @@ import { isSettings } from "../types/common/settings.guard";
 const main = async (): Promise<void> => {
     const settings = await storage.local.get(DEFAULT_SETTINGS);
 
-    if (
-        ["pro.twitter.com", "pro.x.com"].includes(location.hostname) &&
-        isSettings(settings) &&
-        !settings.enableOnXPro
-    ) {
-        return;
+    if (isSettings(settings)) {
+        if (["pro.twitter.com", "pro.x.com"].includes(location.hostname) && !settings.enableOnXPro) {
+            return;
+        }
+
+        if (settings.enableColorAccessibilityMode) {
+            document.body.setAttribute("data-color-accessibility-mode", "true");
+        }
     }
 
     const translator = new Translator(

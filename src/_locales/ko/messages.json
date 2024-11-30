@@ -123,6 +123,9 @@
     "settingsShowReleaseNotes": {
         "message": "업데이트 후 릴리즈 노트 표시"
     },
+    "settingsEnableColorAccessibilityMode": {
+        "message": "컬러 접근성 모드 활성화"
+    },
     "settingsPleaseReload": {
         "message": "설정을 변경한 후 Twitter를 다시 로드해주세요"
     },
