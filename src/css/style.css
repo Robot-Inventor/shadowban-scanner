@@ -254,6 +254,7 @@ section h2 {
     margin-top: 5rem;
     display: flex;
     gap: 3rem;
+    align-items: flex-start;
 }
 
 .secondary_section-item_container {
@@ -275,7 +276,7 @@ section h2 {
 }
 
 .secondary_section-item h3 {
-    font-size: max(1vw, 1.5rem);
+    font-size: 1.3rem;
     margin-bottom: 1em;
 }
 
@@ -325,20 +326,79 @@ section h2 {
     background: var(--blue-black);
 }
 
+@media (orientation: portrait) {
+    #faq_section {
+        padding: 3rem 1.5rem;
+    }
+}
+
 #faq_section h3 {
-    font-size: max(1vw, 1.5rem);
-    margin-bottom: 0.75em;
+    font-size: 1.3rem;
 }
 
 .faq_section-item {
-    margin: 4rem auto;
+    margin: 0.15rem auto;
     max-width: 40rem;
-    font-size: 1.2rem;
+    background: #171924;
+    border-radius: 0.25rem;
+    transition: background var(--transition-duration-short);
+}
+
+.faq_section-item:first-of-type {
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+}
+
+.faq_section-item:last-of-type {
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+
+.faq_section-item:hover {
+    background: #1d2231;
 }
 
 .faq_section-item p {
-    margin-bottom: 1em;
+    margin-top: 1rem;
+    padding: 0 3rem 0 1.5rem;
     color: var(--gray-text);
+}
+
+.faq_section-item p:last-of-type {
+    padding-bottom: 1.5rem;
+}
+
+summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+}
+
+summary::after {
+    content: "keyboard_arrow_down";
+    /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+    font-family: "Material Symbols Outlined";
+    font-size: 1.25rem;
+    transition: transform var(--transition-duration-short);
+    background: rgba(163, 194, 255, 0.1);
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 1.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+details[open] summary::after {
+    transform: rotate(180deg);
+}
+
+details[open] summary {
+    padding-bottom: 0;
 }
 
 #user_count {
@@ -354,6 +414,7 @@ footer {
     background: var(--blue-black);
     border-top: 2px solid transparent;
     border-image: linear-gradient(to right, rgb(38 60 87 / 0%) 0%, rgb(161 178 217) 50%, rgb(38 60 87 / 0%) 100%) 1;
+    color: var(--gray-text);
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
