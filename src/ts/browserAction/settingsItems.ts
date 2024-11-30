@@ -1,3 +1,4 @@
+import type { AssertType } from "@robot-inventor/ts-utils";
 import type { Settings } from "../../types/common/settings";
 import type { TranslationKey } from "../../types/common/translator";
 
@@ -86,5 +87,16 @@ const SETTINGS_ITEMS = [
         type: "group"
     }
 ] as const satisfies SettingsData;
+
+// Check if there are missing keys in the settings data.
+type AllSettingsKeys = keyof Settings;
+type DefinedSettingsKeys = (typeof SETTINGS_ITEMS)[number]["items"][number]["settingsName"];
+type MissingKeys = Exclude<AllSettingsKeys, DefinedSettingsKeys>;
+
+// @ts-expect-error This is a type assertion to check if there are missing keys.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+type _ =
+    // This line break is necessary to ensure that type assertion errors are not ignored
+    AssertType<MissingKeys, never>;
 
 export { type SettingsData, type SettingsItemData, SETTINGS_ITEMS };
