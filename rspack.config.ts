@@ -1,10 +1,14 @@
 import { type Compiler, CopyRspackPlugin, type CopyRspackPluginOptions } from "@rspack/core";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import LicensePlugin from "webpack-license-plugin";
+import { addUserScriptsComment } from "./script/addUserScriptsComment.ts";
+import { copyManifest } from "./script/copyManifest.ts";
 import { defineConfig } from "@rspack/cli";
 import { exec } from "child_process";
 import { glob } from "glob";
 import path from "path";
+import { updatePrivacyPolicy } from "./script/updatePrivacyPolicy.ts";
+// eslint-disable-next-line import-x/max-dependencies
 import { watch } from "chokidar";
 
 const userScripts = glob.sync("./src/ts/userScript/*.user.ts");
@@ -39,30 +43,14 @@ class RunCommandsPlugin {
     }
 
     private static updateManifest(): void {
-        exec("npx tsx ./script/copyManifest.ts", (err, stdout) => {
-            if (err) {
-                // eslint-disable-next-line no-console
-                console.error(`Error: ${err.message}`);
-            } else {
-                // eslint-disable-next-line no-console
-                console.log(stdout);
-            }
-        });
+        copyManifest();
     }
 
     private static updatePrivacyPolicy(callback?: () => void): void {
-        exec("npx tsx ./script/updatePrivacyPolicy.ts", (err, stdout) => {
-            if (err) {
-                // eslint-disable-next-line no-console
-                console.error(`Error: ${err.message}`);
-            } else {
-                // eslint-disable-next-line no-console
-                console.log(stdout);
-                if (callback) {
-                    callback();
-                }
-            }
-        });
+        updatePrivacyPolicy();
+        if (callback) {
+            callback();
+        }
     }
 
     // eslint-disable-next-line max-lines-per-function
@@ -138,16 +126,8 @@ class RunCommandsPlugin {
             isFirstRun = false;
 
             if (this.env["updateUserScripts"]) {
-                exec("npx tsx ./script/addUserScriptsComment.ts", (err, stdout) => {
-                    if (err) {
-                        // eslint-disable-next-line no-console
-                        console.error(`Error: ${err.message}`);
-                    } else {
-                        // eslint-disable-next-line no-console
-                        console.log(stdout);
-                    }
-                    callback();
-                });
+                addUserScriptsComment();
+                callback();
             } else {
                 callback();
             }
