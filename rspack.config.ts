@@ -1,6 +1,7 @@
 import { type Compiler, CopyRspackPlugin, type CopyRspackPluginOptions } from "@rspack/core";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import LicensePlugin from "webpack-license-plugin";
+import UnPluginTypia from "@ryoppippi/unplugin-typia/rspack";
 import { defineConfig } from "@rspack/cli";
 import { exec } from "child_process";
 import { glob } from "glob";
@@ -19,23 +20,6 @@ class RunCommandsPlugin {
 
     public constructor(env: Record<string, unknown>) {
         this.env = env;
-    }
-
-    private static generateTypeGuards(callback?: () => void): void {
-        // eslint-disable-next-line no-console
-        console.log("Generating type guards...");
-        exec("npx ts-auto-guard ./src/types/**/*.ts", (err, stdout) => {
-            if (err) {
-                // eslint-disable-next-line no-console
-                console.error(`Error: ${err.message}`);
-            } else {
-                // eslint-disable-next-line no-console
-                console.log(stdout);
-                if (callback) {
-                    callback();
-                }
-            }
-        });
     }
 
     private static updateManifest(): void {
@@ -73,17 +57,6 @@ class RunCommandsPlugin {
         let localesWatcher: null | ReturnType<typeof watch> = null;
         let isWatchMode = false;
 
-        compiler.hooks.beforeCompile.tapAsync("RunCommandsPlugin", (_params, callback) => {
-            if (!isWatchMode) {
-                RunCommandsPlugin.generateTypeGuards(callback);
-            } else if (isFirstRun) {
-                // `this.isFirstRun` is also used in the afterEmit hook, so it should be set to false in there.
-                RunCommandsPlugin.generateTypeGuards(callback);
-            } else {
-                callback();
-            }
-        });
-
         // eslint-disable-next-line max-statements
         compiler.hooks.watchRun.tapAsync("RunCommandsPlugin", (_params, callback) => {
             isWatchMode = true;
@@ -99,17 +72,13 @@ class RunCommandsPlugin {
                 });
 
                 typeWatcher = watch("src/types/", {
-                    ignored: (pathString, stats) => Boolean(stats && stats.isFile() && !pathString.endsWith(".d.ts"))
+                    ignored: (pathString, stats) => Boolean(stats && stats.isFile() && !pathString.endsWith(".ts"))
                 });
 
                 typeWatcher.on("change", (pathString: string) => {
                     // eslint-disable-next-line no-console
                     console.log(`Type definition file changed: ${pathString}`);
-                    RunCommandsPlugin.generateTypeGuards(() => {
-                        if (compiler.watching) {
-                            compiler.watching.invalidate();
-                        }
-                    });
+                    compiler.watching?.invalidate();
                 });
 
                 if (!localesWatcher) {
@@ -289,7 +258,11 @@ const config = defineConfig((env) => ({
             unacceptableLicenseTest,
             includeNoticeText: true
         }),
-        new ForkTsCheckerWebpackPlugin()
+        new ForkTsCheckerWebpackPlugin(),
+        // eslint-disable-next-line new-cap
+        UnPluginTypia({
+            cache: true
+        })
     ]
 }));
 /* eslint-enable sort-keys */

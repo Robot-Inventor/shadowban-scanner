@@ -1,8 +1,11 @@
 import { ALLOWED_TWEMOJI, SHADOW_TRANSLATION_ATTRIBUTE, TRANSLATION_ATTRIBUTE, TWEMOJI_ATTRIBUTE } from "./constants";
 
-import type { TranslationData, TranslationFunction } from "../../types/common/translator";
+import {
+    type TranslationData,
+    type TranslationFunction,
+    isTranslationSubstitutions
+} from "../../types/common/translator";
 import type { SbsMessage } from "../components/sbsMessage";
-import { isTranslationSubstitutions } from "../../types/common/translator.guard";
 
 /**
  * Translator class

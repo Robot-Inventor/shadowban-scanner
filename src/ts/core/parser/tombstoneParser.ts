@@ -1,5 +1,9 @@
-import type { CellInnerDivProps, TombstoneGrandchildProps } from "../../../types/core/reactProps/reactProps";
-import { isCellInnerDivProps, isTombstoneGrandchildProps } from "../../../types/core/reactProps/reactProps.guard";
+import {
+    type CellInnerDivProps,
+    type TombstoneGrandchildProps,
+    isCellInnerDivProps,
+    isTombstoneGrandchildProps
+} from "../../../types/core/reactProps/reactProps";
 import { getReactProps } from "./utility";
 
 class TombstoneParser {
