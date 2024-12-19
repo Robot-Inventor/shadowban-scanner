@@ -5,7 +5,12 @@
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
     "isolatedModules": true,
-    "rootDir": "."
+    "rootDir": ".",
+    "plugins": [
+      {
+        "transform": "typia/lib/transform"
+      }
+    ]
   },
   "include": [
     "./rspack.config.ts",

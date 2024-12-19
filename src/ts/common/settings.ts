@@ -1,5 +1,4 @@
-import type { Settings } from "../../types/common/settings";
-import { isSettings } from "../../types/common/settings.guard";
+import { type Settings, isSettings } from "../../types/common/settings";
 import { storage } from "webextension-polyfill";
 
 /**

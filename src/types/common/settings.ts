@@ -1,5 +1,6 @@
-/** @see {isSettings} ts-auto-guard:type-guard */
-export interface Settings {
+import typia from "typia";
+
+interface Settings {
     alwaysDetailedView: boolean;
     enableForOtherUsersProfiles: boolean;
     enableForOtherUsersTweets: boolean;
@@ -12,3 +13,7 @@ export interface Settings {
     enableOnXPro: boolean;
     showReleaseNotes: boolean;
 }
+
+const isSettings = typia.createIs<Settings>();
+
+export { type Settings, isSettings };

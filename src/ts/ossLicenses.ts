@@ -1,5 +1,5 @@
 import { additionalLicenses } from "./additional-licenses";
-import { isOSSLicenses } from "../types/ossLicenses.guard";
+import { isOSSLicenses } from "../types/ossLicenses";
 
 const normalizeRepositoryLink = (repository: string): string => {
     if (repository.startsWith("git+")) {

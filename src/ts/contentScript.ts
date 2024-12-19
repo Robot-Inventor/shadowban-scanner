@@ -2,7 +2,7 @@ import { EVENT_GENERATOR_ID, EVENT_GENERATOR_SETTINGS_ATTRIBUTE } from "./common
 import { i18n, runtime, storage } from "webextension-polyfill";
 import { DEFAULT_SETTINGS } from "./common/settings";
 import { Translator } from "./common/translator";
-import { isSettings } from "../types/common/settings.guard";
+import { isSettings } from "../types/common/settings";
 
 // eslint-disable-next-line max-statements
 const main = async (): Promise<void> => {

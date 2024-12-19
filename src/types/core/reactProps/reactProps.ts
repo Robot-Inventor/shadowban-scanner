@@ -1,4 +1,5 @@
-/** @see {isCellInnerDivProps} ts-auto-guard:type-guard */
+import typia from "typia";
+
 interface CellInnerDivProps {
     children: {
         _owner?: {
@@ -7,9 +8,10 @@ interface CellInnerDivProps {
     };
 }
 
+const isCellInnerDivProps = typia.createIs<CellInnerDivProps>();
+
 /**
  * (tombstones' cell inner div) > div > div  <- This element is the tombstone's grandchild and has detailed information.
- * @see {isTombstoneGrandchildProps} ts-auto-guard:type-guard
  */
 interface TombstoneGrandchildProps {
     children: [
@@ -30,4 +32,6 @@ interface TombstoneGrandchildProps {
     ];
 }
 
-export type { CellInnerDivProps, TombstoneGrandchildProps };
+const isTombstoneGrandchildProps = typia.createIs<TombstoneGrandchildProps>();
+
+export { type CellInnerDivProps, isCellInnerDivProps, type TombstoneGrandchildProps, isTombstoneGrandchildProps };
