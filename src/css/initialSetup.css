@@ -12,25 +12,23 @@ body {
     font-size: 100%;
     background: radial-gradient(#1c1f63, #111 50%);
     color: white;
-    position: relative;
+}
+
+body {
+    display: flex;
 }
 
 main {
     width: max-content;
     max-width: 100%;
     height: 80%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     padding: 2rem;
-    display: grid;
-    grid-template-rows: auto auto auto 1fr auto;
-    grid-template-columns: auto;
+    display: flex;
+    gap: 3rem;
+    margin: auto;
 }
 
 #shadowban-scanner-installed {
-    text-align: center;
     font-size: 1.2rem;
 }
 
@@ -38,12 +36,18 @@ h1 {
     line-height: 110%;
     font-size: 4rem;
     text-align: center;
-    background: linear-gradient(-45deg, #1ec4db, #6a6cf2);
+    background: linear-gradient(to bottom, white, #a2a5b0);
     background-clip: border-box;
     background-clip: border-box;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 0.5em;
+}
+
+#text-container,
+#button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #instruction {
@@ -53,14 +57,10 @@ h1 {
 }
 
 #settings-buttons {
-    --settings-buttons-margin-top: 1rem;
-
-    margin: auto;
-    margin-top: var(--settings-buttons-margin-top);
-    height: calc(100% - var(--settings-buttons-margin-top));
+    margin: 1rem 0;
+    height: 100%;
     max-height: 20rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     max-width: 50rem;
     gap: 1rem;
 }
@@ -71,7 +71,6 @@ h1 {
     --button-default-border-width: 0.1rem;
 
     width: calc(100% - var(--button-margin) * 2);
-    height: 100%;
     background: rgb(255, 255, 255, 20%);
     backdrop-filter: blur(3rem);
     border-radius: 0.5rem;
@@ -85,6 +84,7 @@ h1 {
         background 0.3s,
         transform 0.3s,
         border-color 0.3s;
+    aspect-ratio: 1 / 1;
 }
 
 @media (orientation: portrait) {
@@ -93,22 +93,30 @@ h1 {
         margin-top: 1rem;
     }
 
+    body {
+        height: max-content;
+    }
+
     main {
-        height: 100%;
+        min-height: 100%;
         max-width: 100%;
         width: 100%;
+        flex-direction: column;
+    }
+
+    #shadowban-scanner-installed {
+        font-size: 1rem;
     }
 
     #settings-buttons {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
         max-height: none;
-        padding: 2rem 0;
+        margin: 2rem 0;
         max-width: 100%;
+        flex-direction: column;
     }
 
     .settings-button-item {
-        width: calc(100% - var(--button-padding));
+        width: 100%;
     }
 }
 
@@ -146,8 +154,8 @@ h1 {
     cursor: pointer;
     color: white;
     font-size: 100%;
-    padding: 0.5em 1em;
-    border-radius: 0.25em;
+    padding: 0.5em 2em;
+    border-radius: 2em;
 }
 
 .basic-secondary-button:disabled,
@@ -162,6 +170,7 @@ h1 {
 }
 
 .basic-primary-button {
-    background: linear-gradient(-45deg, #1ec4db, #6a6cf2);
+    background: white;
+    color: #333;
     border: none;
 }
