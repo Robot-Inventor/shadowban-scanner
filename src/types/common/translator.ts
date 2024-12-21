@@ -3,7 +3,7 @@ import typia from "typia";
 
 type TranslationData = typeof enTranslation;
 type TranslationKey = keyof TranslationData;
-type TranslationFunction = (messageName: TranslationKey, substitutions?: string | string[] | undefined) => string;
+type TranslationFunction = (messageName: TranslationKey, substitutions?: string | string[]) => string;
 
 // eslint-disable-next-line no-magic-numbers
 type TranslationSubstitutions = Parameters<TranslationFunction>[1];
