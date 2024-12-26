@@ -1,4 +1,6 @@
-* {
+@import url("./theme.css");
+
+*:not(md-filled-button, md-text-button) {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -10,22 +12,31 @@ body {
     height: 100%;
     font-family: sans-serif;
     font-size: 100%;
-    background: radial-gradient(#1c1f63, #111 50%);
-    color: white;
+    background: var(--md-surface-container);
+    color: var(--md-on-surface);
 }
 
 body {
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo {
+    height: 2rem;
 }
 
 main {
     width: max-content;
+    height: max-content;
     max-width: 100%;
-    height: 80%;
-    padding: 2rem;
-    display: flex;
-    gap: 3rem;
-    margin: auto;
+    gap: 5rem;
+    margin: 2rem;
+    background: var(--md-surface);
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: 1fr auto auto 1fr;
+    grid-template-rows: 1fr auto 1fr;
 }
 
 #shadowban-scanner-installed {
@@ -34,143 +45,90 @@ main {
 
 h1 {
     line-height: 110%;
-    font-size: 4rem;
-    text-align: center;
-    background: linear-gradient(to bottom, white, #a2a5b0);
-    background-clip: border-box;
-    background-clip: border-box;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 2.5rem;
 }
 
-#text-container,
+#text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    grid-column: 2;
+    grid-row: 2;
+}
+
 #button-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    grid-column: 3;
+    grid-row: 2;
 }
 
 #instruction {
-    text-align: center;
     font-size: 1.3rem;
     font-weight: bold;
+    margin-top: 0.5rem;
 }
 
 #settings-buttons {
-    margin: 1rem 0;
-    height: 100%;
-    max-height: 20rem;
     display: flex;
-    max-width: 50rem;
+    flex-direction: column;
     gap: 1rem;
+    margin-top: 1rem;
 }
 
-.settings-button-item {
-    --button-margin: 1rem;
-    --button-padding: 0.5rem;
-    --button-default-border-width: 0.1rem;
-
-    width: calc(100% - var(--button-margin) * 2);
-    background: rgb(255, 255, 255, 20%);
-    backdrop-filter: blur(3rem);
-    border-radius: 0.5rem;
-    border: var(--button-default-border-width) solid rgb(255, 255, 255, 30%);
+.settings-button-item label {
     cursor: pointer;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding: var(--button-padding);
-    transition:
-        background 0.3s,
-        transform 0.3s,
-        border-color 0.3s;
-    aspect-ratio: 1 / 1;
 }
 
 @media (orientation: portrait) {
+    #logo {
+        height: 1.5rem;
+    }
+
     h1 {
-        font-size: 3rem;
+        font-size: 1.75rem;
         margin-top: 1rem;
     }
 
-    body {
+    main {
+        width: 100%;
         height: max-content;
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 2rem;
     }
 
-    main {
-        min-height: 100%;
-        max-width: 100%;
-        width: 100%;
-        flex-direction: column;
+    #text-container {
+        align-items: center;
+        gap: 0;
+    }
+
+    #instruction {
+        font-size: 1.1rem;
+        font-weight: normal;
+    }
+
+    #button-container {
+        grid-column: 2;
+        grid-row: 3;
     }
 
     #shadowban-scanner-installed {
         font-size: 1rem;
     }
-
-    #settings-buttons {
-        max-height: none;
-        margin: 2rem 0;
-        max-width: 100%;
-        flex-direction: column;
-    }
-
-    .settings-button-item {
-        width: 100%;
-    }
 }
 
-.settings-button-item:hover,
-.settings-button-item:focus {
-    background: rgb(255, 255, 255, 30%);
-    border-color: rgb(255, 255, 255, 40%);
-    transform: scale(1.01);
-}
-
-.settings-button-item.selected {
-    --button-selected-border-width: 0.3rem;
-    border: solid var(--button-selected-border-width) #bedfec;
-    padding: calc(var(--button-padding) - var(--button-selected-border-width) + var(--button-default-border-width));
-}
-
-.settings-button-item img {
-    display: block;
-    margin: auto;
-    height: 50%;
-    width: auto;
-    max-width: 100%;
-    filter: invert();
+md-list-item {
+    --md-list-item-label-text-color: var(--md-on-surface);
 }
 
 #navigation-buttons {
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
-    margin-top: 1rem;
-}
-
-.basic-secondary-button,
-.basic-primary-button {
-    cursor: pointer;
-    color: white;
-    font-size: 100%;
-    padding: 0.5em 2em;
-    border-radius: 2em;
-}
-
-.basic-secondary-button:disabled,
-.basic-primary-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.basic-secondary-button {
-    background: rgba(255, 255, 255, 0.2);
-    border: 0.1rem solid rgba(255, 255, 255, 0.2);
-}
-
-.basic-primary-button {
-    background: white;
-    color: #333;
-    border: none;
+    margin-top: 2rem;
 }

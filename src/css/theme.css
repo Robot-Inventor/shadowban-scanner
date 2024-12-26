@@ -1,6 +1,7 @@
 :root {
     --md-surface-container: #f2f3f6;
     --md-surface: white;
+    --md-sys-color-surface: var(--md-surface);
     --md-surface-variant: #fafafc;
     --md-on-surface: #36373a;
     --md-on-surface-variant: #768098;

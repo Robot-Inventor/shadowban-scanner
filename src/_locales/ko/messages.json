@@ -153,9 +153,6 @@
     "initialSetup": {
         "message": "초기 설정 - Shadowban Scanner"
     },
-    "shadowbanScannerHasBeenInstalled": {
-        "message": "Shadowban Scanner가 설치되었습니다."
-    },
     "letsStartWithASimpleInitialSetup": {
         "message": "간단한 초기 설정을 시작해 보겠습니다."
     },
@@ -181,7 +178,7 @@
         "message": "다음"
     },
     "initialSetupCompleted": {
-        "message": "초기 설정 완료!<br>사용 설명서를 열까요?"
+        "message": "초기 설정 완료! 사용 설명서를 열까요?"
     },
     "open": {
         "message": "열기"
