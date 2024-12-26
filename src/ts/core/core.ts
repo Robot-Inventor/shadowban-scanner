@@ -38,7 +38,7 @@ class Core {
 
     private checkProfile(profile: Profile): void {
         const isCurrentUsersProfile = Boolean(document.querySelector("[data-testid='editProfileButton']"));
-        if (isCurrentUsersProfile && !this.settings.enableForOtherUsersProfiles) return;
+        if (!isCurrentUsersProfile && !this.settings.enableForOtherUsersProfiles) return;
 
         const profileAnalyzer = analyzeProfileProps(profile.props);
         if (!(profileAnalyzer.user.hasAnyProblem || this.settings.showMessagesInUnproblematicProfiles)) return;
