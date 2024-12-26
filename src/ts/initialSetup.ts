@@ -1,14 +1,28 @@
+// eslint-disable-next-line import-x/no-unassigned-import
+import "@material/web/button/filled-button";
+// eslint-disable-next-line import-x/no-unassigned-import
+import "@material/web/button/text-button";
+// eslint-disable-next-line import-x/no-unassigned-import
+import "@material/web/radio/radio";
+// eslint-disable-next-line import-x/no-unassigned-import
+import "@material/web/list/list";
+// eslint-disable-next-line import-x/no-unassigned-import
+import "@material/web/list/list-item";
 import { INSTRUCTION_URL, TRANSLATION_ATTRIBUTE } from "./common/constants";
 import { type NonEmptyArray, isNonEmptyArray } from "@robot-inventor/ts-utils";
 import { i18n, runtime, tabs } from "webextension-polyfill";
+// eslint-disable-next-line no-duplicate-imports
+import type { MdListItem } from "@material/web/list/list-item";
+// eslint-disable-next-line no-duplicate-imports
+import type { MdRadio } from "@material/web/radio/radio";
 import type { Settings } from "../types/common/settings";
 import { Translator } from "./common/translator";
+// eslint-disable-next-line import-x/max-dependencies
 import { writeSettingsToStorage } from "./common/settings";
 
 interface InitialSetupItem {
     options: Array<{
-        default: boolean;
-        icon: string;
+        isDefault: boolean;
         label: string;
         value: boolean;
     }>;
@@ -19,14 +33,12 @@ const INITIAL_SETUP_ITEMS = [
     {
         options: [
             {
-                default: false,
-                icon: "../image/done_all.svg",
+                isDefault: false,
                 label: "displayForAllTweetsAndAccounts",
                 value: true
             },
             {
-                default: true,
-                icon: "../image/report.svg",
+                isDefault: true,
                 label: "displayOnlyForProblematicTweets",
                 value: false
             }
@@ -36,14 +48,12 @@ const INITIAL_SETUP_ITEMS = [
     {
         options: [
             {
-                default: false,
-                icon: "../image/person.svg",
+                isDefault: false,
                 label: "displayOnlyInYourOwnTweets",
                 value: false
             },
             {
-                default: true,
-                icon: "../image/group.svg",
+                isDefault: true,
                 label: "displayInAllUsersTweets",
                 value: true
             }
@@ -58,43 +68,47 @@ const removeButtons = (buttonsOuter: Element): void => {
     }
 };
 
-const createButton = (label: string, icon: string): HTMLButtonElement => {
-    const button = document.createElement("button");
-    button.classList.add("settings-button-item");
+// eslint-disable-next-line max-statements
+const createButton = (value: string, label: string, name: string): { outer: MdListItem; button: MdRadio } => {
+    const outer = document.createElement("md-list-item");
+    outer.classList.add("settings-button-item");
+    const id = `settings-button-${label}`;
 
-    const labelSpan = document.createElement("span");
-    labelSpan.setAttribute(TRANSLATION_ATTRIBUTE, label);
-    button.appendChild(labelSpan);
+    const button = document.createElement("md-radio");
+    button.value = value;
+    button.slot = "start";
+    button.id = id;
+    button.name = name;
+    outer.appendChild(button);
 
-    const iconImg = document.createElement("img");
-    iconImg.src = icon;
-    button.appendChild(iconImg);
+    const labelElement = document.createElement("label");
+    labelElement.htmlFor = id;
+    labelElement.slot = "headline";
+    labelElement.setAttribute(TRANSLATION_ATTRIBUTE, label);
+    outer.appendChild(labelElement);
 
-    return button;
+    return { button, outer } as const;
 };
 
+// eslint-disable-next-line max-statements
 const insertButtons = (buttonsOuter: Element, translator: Translator, setupItem: InitialSetupItem): void => {
     removeButtons(buttonsOuter);
 
+    const mdList = document.createElement("md-list");
+
     for (const option of setupItem.options) {
-        const button = createButton(option.label, option.icon);
-        if (option.default) {
-            button.classList.add("selected");
+        const settingsItem = createButton(option.value.toString(), option.label, setupItem.settingsKey);
+        if (option.isDefault) {
+            settingsItem.button.checked = true;
         }
 
-        button.dataset["settingsKey"] = setupItem.settingsKey;
-        button.dataset["settingsValue"] = option.value.toString();
+        settingsItem.button.dataset["settingsKey"] = setupItem.settingsKey;
+        settingsItem.button.dataset["settingsValue"] = option.value.toString();
 
-        button.addEventListener("click", () => {
-            document.querySelectorAll(".settings-button-item").forEach((element) => {
-                element.classList.remove("selected");
-            });
-            button.classList.add("selected");
-        });
-
-        buttonsOuter.appendChild(button);
+        mdList.appendChild(settingsItem.outer);
     }
 
+    buttonsOuter.appendChild(mdList);
     translator.translateElements();
 };
 
@@ -136,12 +150,15 @@ const closeCurrentTab = async (): Promise<void> => {
     void tabs.remove(currentTab.id);
 };
 
+// eslint-disable-next-line max-statements
 const showCompletionMessage = (buttonsOuter: Element, translator: Translator): void => {
     removeButtons(buttonsOuter);
     updateInstructionToCompletionMessage(translator);
 
-    const openUsagesPageButton = createButton("open", "../image/open_in_new.svg");
-    openUsagesPageButton.addEventListener("click", () => {
+    const mdList = document.createElement("md-list");
+
+    const openUsagesPageButton = createButton("open", "open", "openUsagesPage");
+    openUsagesPageButton.button.addEventListener("click", () => {
         void closeCurrentTab();
         const isJapanese = i18n.getUILanguage().toLowerCase().startsWith("ja");
         void tabs.create({
@@ -149,22 +166,26 @@ const showCompletionMessage = (buttonsOuter: Element, translator: Translator): v
         });
     });
 
-    const exitButton = createButton("exitWithoutOpening", "../image/close.svg");
-    exitButton.addEventListener("click", () => {
+    const exitButton = createButton("exitWithoutOpening", "exitWithoutOpening", "openUsagesPage");
+    exitButton.button.addEventListener("click", () => {
         void closeCurrentTab();
     });
 
-    buttonsOuter.appendChild(exitButton);
-    buttonsOuter.appendChild(openUsagesPageButton);
+    mdList.appendChild(exitButton.outer);
+    mdList.appendChild(openUsagesPageButton.outer);
+    buttonsOuter.appendChild(mdList);
+
     translator.translateElements();
 };
 
 // eslint-disable-next-line max-statements, max-lines-per-function
 const main = (): void => {
-    const buttonsOuter = document.querySelector("#settings-buttons");
+    const buttonsOuter = document.querySelector<HTMLFormElement>("#settings-buttons");
     if (!buttonsOuter) throw new Error("no #settings-buttons");
+
     const backButton = document.querySelector<HTMLButtonElement>("#back-button");
     if (!backButton) throw new Error("no #back-button");
+
     const nextButton = document.querySelector<HTMLButtonElement>("#next-button");
     if (!nextButton) throw new Error("no #next-button");
 
@@ -177,12 +198,13 @@ const main = (): void => {
     let setupItemIndex = 0;
     insertButtons(buttonsOuter, translator, INITIAL_SETUP_ITEMS[0]);
     backButton.disabled = true;
+
     // eslint-disable-next-line max-statements
     nextButton.addEventListener("click", () => {
-        const selectedButton = document.querySelector<HTMLButtonElement>(".settings-button-item.selected");
-        if (!selectedButton) throw new Error("no selected button");
-        const { settingsKey } = selectedButton.dataset;
-        const { settingsValue } = selectedButton.dataset;
+        const [formData] = Array.from(new FormData(buttonsOuter));
+        if (!formData) throw new Error("no formData");
+
+        const [settingsKey, settingsValue] = formData;
         if (!settingsKey || !settingsValue) throw new Error("no settingsKey or settingsValue");
         void writeSettingsToStorage({ [settingsKey]: settingsValue === "true" });
 
@@ -198,6 +220,7 @@ const main = (): void => {
         }
         updateNavigationButtonsStatus(backButton, nextButton, setupItemIndex, INITIAL_SETUP_ITEMS.length);
     });
+
     backButton.addEventListener("click", () => {
         // eslint-disable-next-line no-magic-numbers
         if (setupItemIndex > 0) {

@@ -159,9 +159,6 @@
     "initialSetup": {
         "message": "初始設定 - Shadowban Scanner"
     },
-    "shadowbanScannerHasBeenInstalled": {
-        "message": "已安裝 Shadowban Scanner"
-    },
     "letsStartWithASimpleInitialSetup": {
         "message": "先從簡單的初始設定開始吧"
     },
@@ -187,7 +184,7 @@
         "message": "下一步"
     },
     "initialSetupCompleted": {
-        "message": "已完成初始設定！<br>是否要開啟使用說明？"
+        "message": "已完成初始設定！是否要開啟使用說明？"
     },
     "open": {
         "message": "開啟"

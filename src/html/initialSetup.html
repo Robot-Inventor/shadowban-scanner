@@ -10,17 +10,19 @@
     <body>
         <main>
             <div id="text-container">
-                <div id="shadowban-scanner-installed" data-sb-translation="shadowbanScannerHasBeenInstalled"></div>
+                <img src="../image/logo.svg" alt="Shadowban Scanner Icon" id="logo" />
                 <h1 data-sb-translation="letsStartWithASimpleInitialSetup"></h1>
             </div>
             <div id="button-container">
                 <div id="instruction" data-sb-translation="pleaseSelectOneOfThem"></div>
-                <div id="settings-buttons">
-                    <!-- The contents of this element are dynamically generated. -->
-                </div>
+                <form id="settings-buttons">
+                    <md-list>
+                        <!-- The contents of this element are dynamically generated. -->
+                    </md-list>
+                </form>
                 <div id="navigation-buttons">
-                    <button id="back-button" class="basic-secondary-button" data-sb-translation="back"></button>
-                    <button id="next-button" class="basic-primary-button" data-sb-translation="next"></button>
+                    <md-text-button id="back-button" data-sb-translation="back"></md-text-button>
+                    <md-filled-button id="next-button" data-sb-translation="next"></md-filled-button>
                 </div>
             </div>
         </main>
