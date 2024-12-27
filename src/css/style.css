@@ -4,8 +4,8 @@ body[data-color-scheme="light"] {
 }
 
 body[data-color-scheme="dark"] {
-    --sb-background-green: #184223;
-    --sb-background-red: #5d2020;
+    --sb-background-green: #14351d;
+    --sb-background-red: #481e1e;
 }
 
 body[data-color-accessibility-mode][data-color-scheme="light"] {
