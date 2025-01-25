@@ -81,13 +81,8 @@ header img {
 #language_switcher-select {
     font-size: inherit;
     color: inherit;
-    background: none;
+    background: #070c14;
     border: none;
-}
-
-#language_switcher-select > option {
-    color: inherit;
-    background: #202229;
 }
 
 #top_section {
