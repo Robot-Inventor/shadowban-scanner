@@ -31,6 +31,7 @@ body[data-color-accessibility-mode][data-color-scheme="dark"] {
 sbs-message {
     --message-background-color-red: var(--sb-background-red);
     --message-background-color-green: var(--sb-background-green);
+    margin-top: 1em;
 }
 
 [data-sb-compact-mode] {
