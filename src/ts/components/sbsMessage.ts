@@ -61,7 +61,6 @@ class SbsMessage extends LitElement {
             padding: 1em;
             border-radius: 0.5em;
             background: var(--message-background-color);
-            margin: 1em 0 0 0;
         }
 
         .shadowban-scanner-message.focal-mode {
