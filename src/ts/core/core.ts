@@ -69,12 +69,15 @@ class Core {
         const messageData = generateMessageDataForTweet(tweet, analyzer, this.onMessageCallback, this.settings);
         const sbsMessageWrapper = new SbsMessageWrapper(messageData);
 
-        const landmarkElement =
-            tweet.element.querySelector<HTMLElement>("[data-testid='analyticsButton']")?.parentElement ??
-            tweet.element.querySelector<HTMLElement>("div[role='group'][id]");
+        const landmarkElement = tweet.metadata.isFocalMode
+            ? tweet.element.querySelector<HTMLElement>("div[dir]:has(a[href^='/'])")?.parentElement?.parentElement
+                  ?.parentElement
+            : tweet.element.querySelector<HTMLElement>("div[role='group'][id]");
 
         if (!landmarkElement) throw new Error("Failed to get landmark element of tweet");
-        sbsMessageWrapper.insertAdjacentElement(landmarkElement, "beforebegin");
+
+        const insertionPosition = tweet.metadata.isFocalMode ? "afterend" : "beforebegin";
+        sbsMessageWrapper.insertAdjacentElement(landmarkElement, insertionPosition);
     }
 
     // eslint-disable-next-line max-statements
