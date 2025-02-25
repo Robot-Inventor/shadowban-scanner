@@ -372,6 +372,11 @@ summary {
     align-items: center;
 }
 
+/* Hide the `<summary>` arrows in Safari */
+summary::-webkit-details-marker {
+    display: none;
+}
+
 summary::after {
     content: "keyboard_arrow_down";
     /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
