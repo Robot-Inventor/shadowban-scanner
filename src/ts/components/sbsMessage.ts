@@ -63,10 +63,6 @@ class SbsMessage extends LitElement {
             background: var(--message-background-color);
         }
 
-        .shadowban-scanner-message.focal-mode {
-            margin: 0 0 1em 0;
-        }
-
         .shadowban-scanner-message .twemoji {
             height: 1em;
             width: 1em;
