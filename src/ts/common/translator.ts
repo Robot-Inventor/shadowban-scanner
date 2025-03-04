@@ -33,7 +33,7 @@ class Translator {
         let result = text;
 
         for (const targetEmoji of ALLOWED_TWEMOJI) {
-            // eslint-disable-next-line no-magic-numbers
+            // eslint-disable-next-line no-magic-numbers, @typescript-eslint/no-misused-spread
             const codePoints = [...targetEmoji].map((emoji) => emoji.codePointAt(0)?.toString(16)).join("-");
             const twemojiURL = new URL(`${codePoints}.svg`, this.twemojiEndpoint).href;
             const img = `<img src="${twemojiURL}" alt="${targetEmoji}" class="twemoji">`;
