@@ -55,7 +55,7 @@
     "@robot-inventor/tsconfig-base": "^6.0.0",
     "@rspack/cli": "^1.0.14",
     "@rspack/core": "^1.0.14",
-    "@ryoppippi/unplugin-typia": "^1.1.0",
+    "@ryoppippi/unplugin-typia": "^2.0.0",
     "@types/addons-linter": "^6.16.0",
     "@types/webextension-polyfill": "^0.12.0",
     "cross-env": "^7.0.3",
