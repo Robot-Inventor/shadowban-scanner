@@ -383,7 +383,7 @@ summary::after {
     font-family: "Material Symbols Outlined";
     font-size: 1.25rem;
     transition: transform var(--transition-duration-short);
-    background: rgba(163 194 255 / 10%);
+    background: rgb(163 194 255 / 10%);
     width: 1.75rem;
     height: 1.75rem;
     border-radius: 1.75rem;
