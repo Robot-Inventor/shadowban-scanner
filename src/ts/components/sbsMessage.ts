@@ -108,10 +108,10 @@ class SbsMessage extends LitElement {
         .shadowban-scanner-message md-filled-button {
             margin-top: 0.5em;
             width: 100%;
-            --md-filled-button-container-color: rgb(255, 255, 255, 0.2);
+            --md-filled-button-container-color: rgb(255 255 255 / 0.2);
             --md-ripple-hover-color: white;
             --md-ripple-pressed-color: white;
-            --_container-shadow-color: rgba(0, 0, 0, 0.3);
+            --_container-shadow-color: rgb(0 0 0 / 0.3);
         }
 
         [data-sb-translation] {
@@ -119,7 +119,7 @@ class SbsMessage extends LitElement {
             min-width: 15em;
             min-height: 1em;
             border-radius: 0.25em;
-            background-image: linear-gradient(90deg, transparent 40%, rgba(175, 175, 175, 0.7) 80%, transparent 100%);
+            background-image: linear-gradient(90deg, transparent 40%, rgb(175 175 175 / 0.7) 80%, transparent 100%);
             background-size: 200% 100%;
             animation: loading-animation 1.5s linear infinite;
         }
