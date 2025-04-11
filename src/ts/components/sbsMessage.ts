@@ -108,7 +108,7 @@ class SbsMessage extends LitElement {
         .shadowban-scanner-message md-filled-button {
             margin-top: 0.5em;
             width: 100%;
-            --md-filled-button-container-color: rgb(255, 255, 255, 0.2);
+            --md-filled-button-container-color: rgb(255 255 255 / 0.2);
             --md-ripple-hover-color: white;
             --md-ripple-pressed-color: white;
             --_container-shadow-color: rgb(0 0 0 / 0.3);
