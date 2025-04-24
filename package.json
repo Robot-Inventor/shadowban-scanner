@@ -6,13 +6,13 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "npx eslint \"./src/**/*.ts\" \"./script/**/*.ts\" \"./rspack.config.ts\" && npx knip && tsx ./script/addonsLinter.ts",
+    "lint": "npx eslint \"./src/**/*.ts\" \"./script/**/*.ts\" \"./rspack.config.ts\" && npx knip && cross-env NODE_OPTIONS=--experimental-transform-types node ./script/addonsLinter.ts",
     "format": "npx prettier --write ./src/ts/**/*.ts ./src/html/**/*.html ./src/css/**/*.css",
     "format:check": "npx prettier --check ./src/ts/**/*.ts ./src/html/**/*.html ./src/css/**/*.css",
     "build": "npx cross-env NODE_OPTIONS=--experimental-transform-types NODE_ENV=production npx rspack build",
     "dev": "npx cross-env NODE_OPTIONS=--experimental-transform-types NODE_ENV=development npx rspack build --watch",
     "ci:build": "npx cross-env NODE_OPTIONS=--experimental-transform-types NODE_ENV=production npx rspack build --env updateUserScripts",
-    "package": "tsx ./script/package.ts",
+    "package": "cross-env NODE_OPTIONS=--experimental-transform-types node ./script/package.ts",
     "version": "npm run package && git add .",
     "prepare": "ts-patch install && typia patch"
   },
@@ -62,7 +62,6 @@
     "fork-ts-checker-webpack-plugin": "^9.0.2",
     "knip": "^5.0.0",
     "ts-patch": "^3.3.0",
-    "tsx": "^4.10.1",
     "typia": "^9.0.0"
   }
 }
