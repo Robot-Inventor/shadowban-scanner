@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "npx eslint ./src/ts/**/*.ts ./src/types/**/*.ts ./script/**/*.ts ./rspack.config.ts && npx knip && tsx ./script/addonsLinter.ts",
+    "lint": "npx eslint \"./src/**/*.ts\" \"./script/**/*.ts\" \"./rspack.config.ts\" && npx knip && tsx ./script/addonsLinter.ts",
     "format": "npx prettier --write ./src/ts/**/*.ts ./src/html/**/*.html ./src/css/**/*.css",
     "format:check": "npx prettier --check ./src/ts/**/*.ts ./src/html/**/*.html ./src/css/**/*.css",
     "build": "npx cross-env NODE_OPTIONS=--experimental-transform-types NODE_ENV=production npx rspack build",
