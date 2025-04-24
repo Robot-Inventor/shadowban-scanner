@@ -1,4 +1,4 @@
-import * as colors from "colors/safe";
+import * as colors from "colors/safe.js";
 import { type Options as LinterOptions, createInstance } from "addons-linter";
 import { execSync } from "child_process";
 

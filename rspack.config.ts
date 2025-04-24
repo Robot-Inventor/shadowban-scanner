@@ -23,30 +23,36 @@ class RunCommandsPlugin {
     }
 
     private static updateManifest(): void {
-        exec("npx tsx ./script/copyManifest.ts", (err, stdout) => {
-            if (err) {
-                // eslint-disable-next-line no-console
-                console.error(`Error: ${err.message}`);
-            } else {
-                // eslint-disable-next-line no-console
-                console.log(stdout);
+        exec(
+            "npx cross-env NODE_OPTIONS=--experimental-transform-types node ./script/copyManifest.ts",
+            (err, stdout) => {
+                if (err) {
+                    // eslint-disable-next-line no-console
+                    console.error(`Error: ${err.message}`);
+                } else {
+                    // eslint-disable-next-line no-console
+                    console.log(stdout);
+                }
             }
-        });
+        );
     }
 
     private static updatePrivacyPolicy(callback?: () => void): void {
-        exec("npx tsx ./script/updatePrivacyPolicy.ts", (err, stdout) => {
-            if (err) {
-                // eslint-disable-next-line no-console
-                console.error(`Error: ${err.message}`);
-            } else {
-                // eslint-disable-next-line no-console
-                console.log(stdout);
-                if (callback) {
-                    callback();
+        exec(
+            "npx cross-env NODE_OPTIONS=--experimental-transform-types node ./script/updatePrivacyPolicy.ts",
+            (err, stdout) => {
+                if (err) {
+                    // eslint-disable-next-line no-console
+                    console.error(`Error: ${err.message}`);
+                } else {
+                    // eslint-disable-next-line no-console
+                    console.log(stdout);
+                    if (callback) {
+                        callback();
+                    }
                 }
             }
-        });
+        );
     }
 
     // eslint-disable-next-line max-lines-per-function
@@ -107,16 +113,19 @@ class RunCommandsPlugin {
             isFirstRun = false;
 
             if (this.env["updateUserScripts"]) {
-                exec("npx tsx ./script/addUserScriptsComment.ts", (err, stdout) => {
-                    if (err) {
-                        // eslint-disable-next-line no-console
-                        console.error(`Error: ${err.message}`);
-                    } else {
-                        // eslint-disable-next-line no-console
-                        console.log(stdout);
+                exec(
+                    "npx cross-env NODE_OPTIONS=--experimental-transform-types node ./script/addUserScriptsComment.ts",
+                    (err, stdout) => {
+                        if (err) {
+                            // eslint-disable-next-line no-console
+                            console.error(`Error: ${err.message}`);
+                        } else {
+                            // eslint-disable-next-line no-console
+                            console.log(stdout);
+                        }
+                        callback();
                     }
-                    callback();
-                });
+                );
             } else {
                 callback();
             }

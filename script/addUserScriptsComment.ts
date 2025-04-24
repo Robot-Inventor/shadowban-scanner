@@ -1,7 +1,7 @@
 import fs from "fs";
 import { glob } from "glob";
 import { isPlainObject } from "@robot-inventor/ts-utils";
-import packagejson from "../package.json";
+import packagejson from "../package.json" with { type: "json" };
 import path from "path";
 
 // eslint-disable-next-line no-console
