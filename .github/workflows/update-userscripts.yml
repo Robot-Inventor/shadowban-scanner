@@ -8,6 +8,10 @@ jobs:
     update-userscripts:
         runs-on: ubuntu-latest
 
+        permissions:
+            contents: read
+            pull-requests: write
+
         strategy:
             matrix:
                 node-version: [23.x]

@@ -10,6 +10,9 @@ jobs:
     lint:
         runs-on: ubuntu-latest
 
+        permissions:
+            contents: read
+
         strategy:
             matrix:
                 node-version: [23.x]
