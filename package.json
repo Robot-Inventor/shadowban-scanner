@@ -10,7 +10,7 @@
     "format": "npx prettier --write ./src/ts/**/*.ts ./src/html/**/*.html ./src/css/**/*.css",
     "format:check": "npx prettier --check ./src/ts/**/*.ts ./src/html/**/*.html ./src/css/**/*.css",
     "build": "npx cross-env NODE_OPTIONS=--experimental-transform-types NODE_ENV=production npx rspack build",
-    "watch": "npx cross-env NODE_OPTIONS=--experimental-transform-types NODE_ENV=development npx rspack build --watch",
+    "dev": "npx cross-env NODE_OPTIONS=--experimental-transform-types NODE_ENV=development npx rspack build --watch",
     "ci:build": "npx cross-env NODE_OPTIONS=--experimental-transform-types NODE_ENV=production npx rspack build --env updateUserScripts",
     "package": "tsx ./script/package.ts",
     "version": "npm run package && git add .",

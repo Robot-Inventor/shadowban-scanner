@@ -33,7 +33,7 @@ This project uses Node.js and npm. To develop, follow these steps:
 Additionally, this project provides the following commands:
 
 - `npm run build`: Run the build process
-- `npm run watch`: Monitor file changes and auto-build
+- `npm run dev`: Monitor file changes and auto-build
 - `npm run lint`: Check code style
 - `npm run format`: Format the code style
 - `npm run package`: Create a package (ZIP file) of the extension
