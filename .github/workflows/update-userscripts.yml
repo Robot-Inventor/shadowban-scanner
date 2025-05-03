@@ -37,4 +37,4 @@ jobs:
                   body: |
                       This PR was automatically generated to update the userscripts. It contains the latest changes from the main branch, and should be merged when the new release is ready.
                   branch: update-userscripts
-                  reviewers: Robot-Inventor
+                  reviewers: ${{ github.repository_owner }}
