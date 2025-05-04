@@ -4,7 +4,7 @@
 
 ![Shadowban Scanner 的標誌](doc/image/logo.svg)
 
-[Read in English](README.md) | [日本語で読む](README_ja.md) | [한국어로 읽기](README_ko.md) | [以简体中文阅读](README_zh_hans.md)
+[Read in English](README.md) | [日本語で読む](README_ja.md) | [한국어로 읽기](README_ko.md) | [以简体中文阅读](README_zh_cn.md)
 這是一個用於檢查 Twitter 的 Shadowban 的擴充功能。
 
 <p align="center">
@@ -27,7 +27,7 @@
 - [日本語](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/ja.user.js)
 - [한국어](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/ko.user.js)
 - [繁體中文](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/zh_TW.user.js)
-- [简体中文](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/zh_Hans.user.js)
+- [简体中文](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/zh_CN.user.js)
 
 ## 功能
 

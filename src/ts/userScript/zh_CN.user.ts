@@ -1,4 +1,4 @@
 import { createUserScript } from "./userScriptBase";
-import translation from "../../_locales/zh_HANS/messages.json";
+import translation from "../../_locales/zh_CN/messages.json";
 
 createUserScript(translation);

@@ -27,7 +27,7 @@
 - [日本語](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/ja.user.js)
 - [한국어](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/ko.user.js)
 - [繁体中文](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/zh_TW.user.js)
-- [简体中文](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/zh_Hans.user.js)
+- [简体中文](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/zh_CN.user.js)
 
 ## 功能
 
@@ -38,11 +38,11 @@
 - 检测推文上的年龄限制  
 - 在设置为隐藏的推文中增加查看按钮  
 
-![账户级别 Shadowban 检测截图](doc/image/screenshot2_zh_hans.png)
+![账户级别 Shadowban 检测截图](doc/image/screenshot2_zh_CN.png)
 
-![推文级别 Shadowban 检测截图](doc/image/screenshot1_zh_hans.png)
+![推文级别 Shadowban 检测截图](doc/image/screenshot1_zh_CN.png)
 
-![被隐藏推文截图](doc/image/screenshot3_zh_hans.png)
+![被隐藏推文截图](doc/image/screenshot3_zh_CN.png)
 
 ## 精准度
 
@@ -58,9 +58,9 @@
 ## Privacy Policy
 
 <!-- PRIVACY_POLICY_TEXT_START -->
-<!-- THIS SECTION IS GENERATED FROM ./src/_locales/zh_HANS/messages.json. DO NOT EDIT MANUALLY -->
+<!-- THIS SECTION IS GENERATED FROM ./src/_locales/zh_CN/messages.json. DO NOT EDIT MANUALLY -->
 
-此扩展原则上会在用户的电脑上处理所有数据，不会将数据发送到外部服务器，此扩展亦不会在未经用户许可的情况下使用登录凭证访问 Twitter/X 的内部 API。对于此扩展没有对应的网页，将适用各自的使用条款和隐私政策。
+此扩展原则上会在用户的电脑上处理所有数据，不会将数据发送到外部服务器，此扩展亦不会在未经用户许可的情况下使用登录凭证访问 Twitter/X 的内部 API。对于此扩展没有对应处理的网页，将适用各自的使用条款和隐私政策。
 
 <!-- PRIVACY_POLICY_TEXT_END -->
 
