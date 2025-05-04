@@ -1,4 +1,10 @@
-import rspack, { type Compiler, CopyRspackPlugin, type CopyRspackPluginOptions } from "@rspack/core";
+import {
+    type Compiler,
+    CopyRspackPlugin,
+    type CopyRspackPluginOptions,
+    LightningCssMinimizerRspackPlugin,
+    SwcJsMinimizerRspackPlugin
+} from "@rspack/core";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import LicensePlugin from "webpack-license-plugin";
 import UnPluginTypia from "@ryoppippi/unplugin-typia/rspack";
@@ -219,10 +225,10 @@ const config = defineConfig((env) => ({
     },
     optimization: {
         minimizer: [
-            new rspack.SwcJsMinimizerRspackPlugin({
+            new SwcJsMinimizerRspackPlugin({
                 extractComments: true
             }),
-            new rspack.LightningCssMinimizerRspackPlugin({})
+            new LightningCssMinimizerRspackPlugin({})
         ]
     },
     module: {
