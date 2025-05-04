@@ -4,7 +4,7 @@
 
 ![Shadowban Scannerのロゴ](doc/image/logo.svg)
 
-[Read in English](README.md) | [한국어로 읽기](README_ko.md) | [以繁體字閱讀](README_zh_tw.md)
+[Read in English](README.md) | [한국어로 읽기](README_ko.md) | [以繁體字閱讀](README_zh_tw.md) | [以简体中文阅读](README_zh_hans.md)
 
 Twitterのシャドウバンを検出する拡張機能です。
 
@@ -28,6 +28,7 @@ Twitterのシャドウバンを検出する拡張機能です。
 - [日本語](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/ja.user.js)
 - [한국어](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/ko.user.js)
 - [繁體中文](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/zh_TW.user.js)
+- [简体中文](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/zh_Hans.user.js)
 
 ## 機能
 

@@ -4,7 +4,7 @@
 
 ![Shadowban Scanner의 로고](doc/image/logo.svg)
 
-[Read in English](README.md) | [日本語で読む](README_ja.md) | [以繁體字閱讀](README_zh_tw.md)
+[Read in English](README.md) | [日本語で読む](README_ja.md) | [以繁體字閱讀](README_zh_tw.md) | [以简体中文阅读](README_zh_hans.md)
 
 Twitter의 Shadowban을 감지하는 확장 기능입니다.
 
@@ -30,6 +30,7 @@ Twitter의 Shadowban을 감지하는 확장 기능입니다.
 - [日本語](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/ja.user.js)
 - [한국어](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/ko.user.js)
 - [繁體中文](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/zh_TW.user.js)
+- [简体中文](https://raw.githubusercontent.com/Robot-Inventor/shadowban-scanner/main/userScript/zh_Hans.user.js)
 
 ## 기능
 
