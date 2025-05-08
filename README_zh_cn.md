@@ -31,18 +31,18 @@
 
 ## 功能
 
-- 检测账户级别的 Shadowban 和敏感内容标记  
-- 检查个人资料的媒体（头像或头图）上的敏感内容标记  
-- 检测账户因法律原因而导致的国家/地区屏蔽情况  
-- 检测推文级别的敏感内容标记  
-- 检测推文上的年龄限制  
-- 在设置为隐藏的推文中增加查看按钮  
+- 检测账户级别的 Shadowban 和敏感内容标记
+- 检查个人资料的媒体（头像或头图）上的敏感内容标记
+- 检测账户因法律原因而导致的国家/地区屏蔽情况
+- 检测推文级别的敏感内容标记
+- 检测推文上的年龄限制
+- 在设置为隐藏的推文中增加查看按钮
 
-![账户级别 Shadowban 检测截图](doc/image/screenshot2_zh_CN.png)
+![账户级别 Shadowban 检测截图](doc/image/screenshot2_zh_cn.png)
 
-![推文级别 Shadowban 检测截图](doc/image/screenshot1_zh_CN.png)
+![推文级别 Shadowban 检测截图](doc/image/screenshot1_zh_cn.png)
 
-![被隐藏推文截图](doc/image/screenshot3_zh_CN.png)
+![被隐藏推文截图](doc/image/screenshot3_zh_cn.png)
 
 ## 精准度
 
