@@ -53,7 +53,7 @@
     "@robot-inventor/eslint-config": "^10.0.0",
     "@robot-inventor/ts-utils": "^0.8.0",
     "@robot-inventor/tsconfig-base": "^6.0.0",
-    "@rspack/cli": "^1.0.14",
+    "@rspack/cli": "^1.3.15",
     "@rspack/core": "^1.0.14",
     "@ryoppippi/unplugin-typia": "^2.0.0",
     "@types/addons-linter": "^6.16.0",
