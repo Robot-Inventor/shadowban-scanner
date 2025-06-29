@@ -31,7 +31,7 @@ main {
     height: max-content;
     max-width: 100%;
     gap: 5rem;
-    margin: 2rem;
+    margin: 2rem !important;
     background: var(--md-surface);
     border-radius: 1rem;
     display: grid;
@@ -95,10 +95,10 @@ h1 {
     main {
         width: 100%;
         height: max-content;
-        margin: 1rem;
+        margin: 1rem !important;
         display: flex;
         flex-direction: column;
-        padding: 1.5rem;
+        padding: 1.5rem !important;
         gap: 2rem;
     }
 
