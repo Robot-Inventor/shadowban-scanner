@@ -1,5 +1,5 @@
 import { CHECKED_DATA_ATTRIBUTE, TRANSLATION_ATTRIBUTE } from "../common/constants";
-import { type Profile, Timeline, type Tweet, getColorScheme } from "twi-ext";
+import { type Profile, Timeline, type Tweet, getColorScheme, onColorSchemeChange } from "twi-ext";
 import { analyzeProfileProps, analyzeTombstoneProps, analyzeTweetProps } from "./propsAnalyzer";
 import { generateMessageDataForProfile, generateMessageDataForTweet } from "./messageDataGenerator";
 import { SbsMessageWrapper } from "./sbsMessageWrapper";
@@ -32,8 +32,13 @@ class Core {
             this.checkProfile(profile);
         });
 
-        const colorScheme = getColorScheme() === "light" ? "light" : "dark";
-        document.body.setAttribute("data-color-scheme", colorScheme);
+        const colorScheme = getColorScheme();
+        Core.updateColorScheme(colorScheme);
+        onColorSchemeChange(Core.updateColorScheme.bind(this));
+    }
+
+    private static updateColorScheme(colorScheme: ReturnType<typeof getColorScheme>): void {
+        document.body.setAttribute("data-color-scheme", colorScheme === "light" ? "light" : "dark");
     }
 
     private checkProfile(profile: Profile): void {
