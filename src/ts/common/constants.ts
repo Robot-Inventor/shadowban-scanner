@@ -5,7 +5,7 @@ const TRANSLATION_ATTRIBUTE = "data-sb-translation";
 const SHADOW_TRANSLATION_ATTRIBUTE = "data-sb-shadow-translation";
 const TWEMOJI_ATTRIBUTE = "data-sb-enable-twemoji";
 const ALLOWED_TWEMOJI = ["✅", "🚫", "⚠️"] as const;
-const SHOW_RELEASE_NOTES = true;
+const SHOW_RELEASE_NOTES = false;
 
 const ONBOARDING_PATH = "html/initialSetup.html";
 const RELEASE_NOTE_URL = {
