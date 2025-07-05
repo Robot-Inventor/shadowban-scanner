@@ -75,8 +75,8 @@ class Core {
         const sbsMessageWrapper = new SbsMessageWrapper(messageData);
 
         const landmarkElement = tweet.metadata.isFocalMode
-            ? tweet.element.querySelector<HTMLElement>("div[dir]:has(a[href^='/'])")?.parentElement?.parentElement
-                  ?.parentElement
+            ? tweet.element.querySelector<HTMLElement>("div[dir]:has(a[href^='/']):has(time)")?.parentElement
+                  ?.parentElement?.parentElement
             : tweet.element.querySelector<HTMLElement>("div[role='group'][id]");
 
         if (!landmarkElement) throw new Error("Failed to get landmark element of tweet");
