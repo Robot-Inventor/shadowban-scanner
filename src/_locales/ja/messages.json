@@ -1,33 +1,33 @@
 {
     "manifest_description": {
-        "message": "Twitter / Xのシャドウバンを検出する拡張機能です。"
+        "message": "X（旧Twitter）のシャドウバンを検出する拡張機能です。"
     },
     "accountShadowbanned": {
-        "message": "このユーザーはシャドウバンされている可能性があるため、ツイートが検索結果に表示されないかもしれません。"
+        "message": "このユーザーはシャドウバンされている可能性があるため、ポストが検索結果に表示されないかもしれません。"
     },
     "accountShadowbannedAndTweetFlaggedAsSensitive": {
-        "message": "このユーザーはシャドウバンされている可能性があるため、ツイートが検索結果に表示されないかもしれません。また、このツイートにはセンシティブフラグが付与されています。"
+        "message": "このユーザーはシャドウバンされている可能性があるため、ポストが検索結果に表示されないかもしれません。また、このポストにはセンシティブフラグが付与されています。"
     },
     "accountAndTweetShadowbanned": {
-        "message": "このツイートには年齢制限があり、18歳未満のユーザーやログインしていないユーザーは閲覧できません。また、検索結果に表示されない可能性があります。"
+        "message": "このポストには年齢制限があり、18歳未満のユーザーやログインしていないユーザーは閲覧できません。また、検索結果に表示されない可能性があります。"
     },
     "accountIsBlockedInSomeCountries": {
         "message": "このユーザーは一部の国でブロックされています。"
     },
     "tweetFlaggedAsSensitive": {
-        "message": "このツイートにはセンシティブフラグが付与されており、閲覧者の設定によっては検索結果に表示されません。"
+        "message": "このポストにはセンシティブフラグが付与されており、閲覧者の設定によっては検索結果に表示されません。"
     },
     "thisUserIsNotShadowbanned": {
         "message": "このユーザーはシャドウバンされていません。"
     },
     "thisUserIsShadowbanned": {
-        "message": "このユーザーはシャドウバンされている可能性があるため、ツイートが検索結果に表示されないかもしれません。"
+        "message": "このユーザーはシャドウバンされている可能性があるため、ポストが検索結果に表示されないかもしれません。"
     },
     "tweetShadowbanned": {
-        "message": "このツイートには年齢制限があり、18歳未満のユーザーやログインしていないユーザーは閲覧できません。また、検索結果に表示されない可能性があります。"
+        "message": "このポストには年齢制限があり、18歳未満のユーザーやログインしていないユーザーは閲覧できません。また、検索結果に表示されない可能性があります。"
     },
     "tweetNoProblem": {
-        "message": "ツイートに問題は見つかりませんでした。"
+        "message": "ポストに問題は見つかりませんでした。"
     },
     "accountIsNotFlaggedAsSensitive": {
         "message": "✅アカウントにセンシティブフラグは付与されていません"
@@ -48,41 +48,41 @@
         "message": "🚫アカウントは次の国でブロックされています（<a href=\"https://help.twitter.com/rules-and-policies/post-withheld-by-country\" target=\"_blank\">詳細</a>）：$1"
     },
     "tweetIsNotFlaggedAsSensitive": {
-        "message": "✅ツイートにセンシティブフラグは付与されていません"
+        "message": "✅ポストにセンシティブフラグは付与されていません"
     },
     "tweetIsFlaggedAsSensitive": {
-        "message": "🚫ツイートにセンシティブフラグが付与されています"
+        "message": "🚫ポストにセンシティブフラグが付与されています"
     },
     "tweetIsNotAgeRestricted": {
-        "message": "✅ツイートに年齢制限はありません"
+        "message": "✅ポストに年齢制限はありません"
     },
     "tweetIsAgeRestricted": {
-        "message": "🚫ツイートに年齢制限があります"
+        "message": "🚫ポストに年齢制限があります"
     },
     "tweetIsSearchable": {
-        "message": "✅ツイートは検索結果に表示されます"
+        "message": "✅ポストは検索結果に表示されます"
     },
     "tweetMayNotBeSearchable": {
-        "message": "⚠️ツイートは閲覧者の設定によっては検索結果に表示されません"
+        "message": "⚠️ポストは閲覧者の設定によっては検索結果に表示されません"
     },
     "tweetIsNotSearchable": {
-        "message": "🚫ツイートが検索結果に表示されない可能性があります"
+        "message": "🚫ポストが検索結果に表示されない可能性があります"
     },
     "falsePositivesAndFalseNegativesOccur": {
         "message": "Shadowban Scannerは類似の他のツールと同様に、偽陽性や偽陰性が発生することがあります。仕組みについて詳しくは<a href=\"https://github.com/Robot-Inventor/shadowban-scanner/blob/main/doc/ja/about-shadowban.md\" target=\"blank\">こちら</a>を参照してください。"
     },
     "translatedByAI": {
         "message": "",
-        "description": "This field is used if the translation was done by AI. Otherwise, set this field to an empty string. Example sentence: \"Translated from Japanese to <language name> by AI. Please notify <a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>'s DM or <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub repository</a> if there are any unnatural points.\""
+        "description": "This field is used if the translation was done by AI. Otherwise, set this field to an empty string. Example sentence: \"Translated from Japanese to <language name> by AI. Please notify <a href=\"https://x.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>'s DM or <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub repository</a> if there are any unnatural points.\""
     },
     "showMore": {
         "message": "▶さらに表示"
     },
     "tweetTheResults": {
-        "message": "結果をツイート"
+        "message": "結果をポスト"
     },
     "viewTweet": {
-        "message": "ツイートを表示"
+        "message": "ポストを表示"
     },
     "settingsWhereToDisplayCheckResults": {
         "message": "検証結果を表示する場所"
@@ -91,13 +91,13 @@
         "message": "自分のアカウントがシャドウバンされている場合は常にメッセージが表示されます。"
     },
     "settingsShowMessagesInUnproblematicTweets": {
-        "message": "問題のないツイートにも表示"
+        "message": "問題のないポストにも表示"
     },
     "settingsShowMessagesInUnproblematicProfiles": {
         "message": "問題のないプロフィールにも表示"
     },
     "settingsEnableForOtherUsersTweets": {
-        "message": "他のユーザーのツイートにも表示"
+        "message": "他のユーザーのポストにも表示"
     },
     "settingsEnableForOtherUsersProfiles": {
         "message": "他のユーザーのプロフィールにも表示"
@@ -115,7 +115,7 @@
         "message": "メッセージ下部に注意書きを表示"
     },
     "settingsShowTweetButton": {
-        "message": "結果をツイートするボタンを表示"
+        "message": "結果をポストするボタンを表示"
     },
     "settingsEnableOnXPro": {
         "message": "X Pro上で実行する"
@@ -160,16 +160,16 @@
         "message": "どちらかを選択してください。設定はあとから変えられます。"
     },
     "displayForAllTweetsAndAccounts": {
-        "message": "すべてのツイートとアカウントに検査結果を表示"
+        "message": "すべてのポストとアカウントに検査結果を表示"
     },
     "displayOnlyForProblematicTweets": {
-        "message": "問題のあるツイートとアカウントにだけ検査結果を表示"
+        "message": "問題のあるポストとアカウントにだけ検査結果を表示"
     },
     "displayOnlyInYourOwnTweets": {
-        "message": "自分のツイートにのみ検査結果を表示"
+        "message": "自分のポストにのみ検査結果を表示"
     },
     "displayInAllUsersTweets": {
-        "message": "すべてのユーザーのツイートに検査結果を表示"
+        "message": "すべてのユーザーのポストに検査結果を表示"
     },
     "back": {
         "message": "戻る"

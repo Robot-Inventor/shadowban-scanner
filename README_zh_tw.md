@@ -5,7 +5,7 @@
 ![Shadowban Scanner 的標誌](doc/image/logo.svg)
 
 [Read in English](README.md) | [日本語で読む](README_ja.md) | [한국어로 읽기](README_ko.md) | [以简体中文阅读](README_zh_cn.md)
-這是一個用於檢查 Twitter / X 的 Shadowban 的擴充功能。
+這是一個用於檢查 X（原 Twitter） 的 Shadowban 的擴充功能。
 
 <p align="center">
 <a href="https://www.buymeacoffee.com/keita_roboin"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=keita_roboin&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff" /></a>
@@ -34,19 +34,19 @@
 - 偵測帳戶層級的 Shadowban 和敏感內容標記
 - 檢查個人檔案的媒體（頭像或標頭圖片）的敏感內容標記
 - 檢查帳戶因法律原因而被封鎖的國家/地區
-- 偵測推文層級的敏感內容標記
-- 偵測推文的年齡限制
-- 在設置為隱藏的推文中增加查看的按鈕
+- 偵測貼文層級的敏感內容標記
+- 偵測貼文的年齡限制
+- 在設置為隱藏的貼文中增加查看的按鈕
 
 ![帳戶層級 Shadowban 偵測的截圖](doc/image/screenshot2_zh_tw.png)
 
-![推文層級 Shadowban 偵測的截圖](doc/image/screenshot1_zh_tw.png)
+![貼文層級 Shadowban 偵測的截圖](doc/image/screenshot1_zh_tw.png)
 
-![隱藏推文的螢幕截圖](doc/image/screenshot3_zh_tw.png)
+![隱藏貼文的螢幕截圖](doc/image/screenshot3_zh_tw.png)
 
 ## 精確性
 
-就帳號層級的 Shadowban 檢查而言，與其他許多工具一樣，可能會發生誤判的情況。然而，針對推文層級的敏感內容標記和年齡限制，此擴充功能幾乎可以完美地得出正確結果。因此，建議您在使用 Shadowban Scanner 確認帳號和推文的狀態之餘，同時使用其他工具協助。
+就帳號層級的 Shadowban 檢查而言，與其他許多工具一樣，可能會發生誤判的情況。然而，針對貼文層級的敏感內容標記和年齡限制，此擴充功能幾乎可以完美地得出正確結果。因此，建議您在使用 Shadowban Scanner 確認帳號和貼文的狀態之餘，同時使用其他工具協助。
 
 ## 檢查方法
 

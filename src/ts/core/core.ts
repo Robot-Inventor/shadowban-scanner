@@ -91,7 +91,7 @@ class Core {
 
         const tweetId = analyzeTombstoneProps(new TombstoneParser(tombstone).parse());
         if (!tweetId) return;
-        const tweetURL = `https://twitter.com/i/status/${tweetId}`;
+        const tweetURL = `https://x.com/i/status/${tweetId}`;
         const link = document.createElement("a");
         link.href = tweetURL;
         link.target = "_blank";

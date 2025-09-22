@@ -1,33 +1,33 @@
 {
     "manifest_description": {
-        "message": "這是一個用於檢查 Twitter / X 的 Shadowban 的擴充功能。"
+        "message": "這是一個用於檢查 X（原 Twitter）的 Shadowban 的擴充功能。"
     },
     "accountShadowbanned": {
-        "message": "此使用者可能已被 Shadowban，因此他們的推文可能不會顯示在搜尋結果中。"
+        "message": "此使用者可能已被 Shadowban，因此他們的貼文可能不會顯示在搜尋結果中。"
     },
     "accountShadowbannedAndTweetFlaggedAsSensitive": {
-        "message": "此使用者可能已被 Shadowban，因此他們的推文可能不會顯示在搜尋結果中。此外，此推文已被標記為敏感內容。"
+        "message": "此使用者可能已被 Shadowban，因此他們的貼文可能不會顯示在搜尋結果中。此外，此貼文已被標記為敏感內容。"
     },
     "accountAndTweetShadowbanned": {
-        "message": "此推文有年齡限制，未滿 18 歲或未登入的使用者將不會看到。此外，它可能不會出現在搜尋結果中。"
+        "message": "此貼文有年齡限制，未滿 18 歲或未登入的使用者將不會看到。此外，它可能不會出現在搜尋結果中。"
     },
     "accountIsBlockedInSomeCountries": {
         "message": "此使用者在某些國家/地區被封鎖。"
     },
     "tweetFlaggedAsSensitive": {
-        "message": "此推文已被標註為敏感內容，根據使用者的設定，它可能不會顯示在搜尋結果中。"
+        "message": "此貼文已被標註為敏感內容，根據使用者的設定，它可能不會顯示在搜尋結果中。"
     },
     "thisUserIsNotShadowbanned": {
         "message": "此使用者沒有被 Shadowban。"
     },
     "thisUserIsShadowbanned": {
-        "message": "此使用者可能已被 Shadowban，因此他們發佈的推文可能不會顯示在搜尋結果中。"
+        "message": "此使用者可能已被 Shadowban，因此他們發佈的貼文可能不會顯示在搜尋結果中。"
     },
     "tweetShadowbanned": {
-        "message": "此推文有年齡限制，未滿 18 歲或未登入的使用者將不會看到。此外，它可能不會出現在搜尋結果中。"
+        "message": "此貼文有年齡限制，未滿 18 歲或未登入的使用者將不會看到。此外，它可能不會出現在搜尋結果中。"
     },
     "tweetNoProblem": {
-        "message": "此推文沒有發現任何問題。"
+        "message": "此貼文沒有發現任何問題。"
     },
     "accountIsNotFlaggedAsSensitive": {
         "message": "✅此使用者沒有標記為敏感內容。"
@@ -48,32 +48,32 @@
         "message": "🚫此使用者被以下國家/地區封鎖（<a href=\"https://help.twitter.com/rules-and-policies/post-withheld-by-country\" target=\"_blank\">詳細說明</a>）：$1"
     },
     "tweetIsNotFlaggedAsSensitive": {
-        "message": "✅此推文沒有標記為敏感內容。"
+        "message": "✅此貼文沒有標記為敏感內容。"
     },
     "tweetIsFlaggedAsSensitive": {
-        "message": "🚫此推文已被標記為敏感內容。"
+        "message": "🚫此貼文已被標記為敏感內容。"
     },
     "tweetIsNotAgeRestricted": {
-        "message": "✅此推文沒有年齡限制。"
+        "message": "✅此貼文沒有年齡限制。"
     },
     "tweetIsAgeRestricted": {
-        "message": "🚫此推文有年齡限制。"
+        "message": "🚫此貼文有年齡限制。"
     },
     "tweetIsSearchable": {
-        "message": "✅此推文會顯示在搜尋結果中。"
+        "message": "✅此貼文會顯示在搜尋結果中。"
     },
     "tweetMayNotBeSearchable": {
-        "message": "⚠️根據使用者的設定，此推文可能不會顯示在搜尋結果中。"
+        "message": "⚠️根據使用者的設定，此貼文可能不會顯示在搜尋結果中。"
     },
     "tweetIsNotSearchable": {
-        "message": "🚫此推文可能不會顯示在搜尋結果中。"
+        "message": "🚫此貼文可能不會顯示在搜尋結果中。"
     },
     "falsePositivesAndFalseNegativesOccur": {
         "message": "Shadowban Scanner 和其他功能類似的工具一樣，可能會產生誤判的情況。有關運作方式的詳細資訊，請參考<a href=\"https://github.com/Robot-Inventor/shadowban-scanner/blob/main/doc/en/about-shadowban.md\" target=\"blank\">這裡</a>。"
     },
     "translatedByAI": {
         "message": "",
-        "description": "This field is used if the translation was done by AI. Otherwise, set this field to an empty string. Example sentence: \"Translated from Japanese to <language name> by AI. Please notify <a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>'s DM or <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub repository</a> if there are any unnatural points.\""
+        "description": "This field is used if the translation was done by AI. Otherwise, set this field to an empty string. Example sentence: \"Translated from Japanese to <language name> by AI. Please notify <a href=\"https://x.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>'s DM or <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub repository</a> if there are any unnatural points.\""
     },
     "showMore": {
         "message": "▶顯示更多"
@@ -82,7 +82,7 @@
         "message": "分享結果"
     },
     "viewTweet": {
-        "message": "查看推文"
+        "message": "查看貼文"
     },
     "settingsWhereToDisplayCheckResults": {
         "message": "顯示檢查結果的位置"
@@ -92,13 +92,13 @@
         "description": "This field was translated by machine translation."
     },
     "settingsShowMessagesInUnproblematicTweets": {
-        "message": "在沒有問題的推文中顯示"
+        "message": "在沒有問題的貼文中顯示"
     },
     "settingsShowMessagesInUnproblematicProfiles": {
         "message": "在沒有問題的使用者的個人資料中顯示"
     },
     "settingsEnableForOtherUsersTweets": {
-        "message": "在其他使用者的推文中顯示"
+        "message": "在其他使用者的貼文中顯示"
     },
     "settingsEnableForOtherUsersProfiles": {
         "message": "在其他使用者的個人資料中顯示"
@@ -166,16 +166,16 @@
         "message": "請選擇其中一個。這個設定之後可以再更改。"
     },
     "displayForAllTweetsAndAccounts": {
-        "message": "顯示所有推文和使用者的檢查結果"
+        "message": "顯示所有貼文和使用者的檢查結果"
     },
     "displayOnlyForProblematicTweets": {
-        "message": "僅顯示問題推文和使用者的檢查結果"
+        "message": "僅顯示問題貼文和使用者的檢查結果"
     },
     "displayOnlyInYourOwnTweets": {
-        "message": "僅顯示我自己的推文的檢查結果"
+        "message": "僅顯示我自己的貼文的檢查結果"
     },
     "displayInAllUsersTweets": {
-        "message": "顯示所有使用者推文的檢查結果"
+        "message": "顯示所有使用者貼文的檢查結果"
     },
     "back": {
         "message": "返回"

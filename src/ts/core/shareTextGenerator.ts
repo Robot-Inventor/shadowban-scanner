@@ -9,12 +9,12 @@ const TRANSLATIONS = {
         noSensitiveFlagOnProfileMedia: "✅No sensitive flag on profile media",
         accountBlockedInSomeCountries: "🚫Account blocked in some countries",
         accountNotBlockedInAnyCountries: "✅Account not blocked in any countries",
-        sensitiveFlagOnTweet: "🚫Sensitive flag on tweet",
-        noSensitiveFlagOnTweet: "✅No sensitive flag on tweet",
-        ageLimitOnTweet: "🚫Age limit on tweet",
-        noAgeLimitOnTweet: "✅No age limit on tweet",
-        tweetSearchable: "✅Tweet searchable",
-        tweetMayNotBeSearchable: "🚫Tweet may not be searchable",
+        sensitiveFlagOnTweet: "🚫Sensitive flag on post",
+        noSensitiveFlagOnTweet: "✅No sensitive flag on post",
+        ageLimitOnTweet: "🚫Age limit on post",
+        noAgeLimitOnTweet: "✅No age limit on post",
+        tweetSearchable: "✅Post searchable",
+        tweetMayNotBeSearchable: "🚫Post may not be searchable",
         shadowbanScannerByRoboin: "Shadowban Scanner by roboin",
         siteURL: "https://shadowban-scanner.roboin.io/en/",
         accountStatusFor: "Account status for $1"
@@ -26,12 +26,12 @@ const TRANSLATIONS = {
         noSensitiveFlagOnProfileMedia: "✅プロフィールのメディアにセンシティブ判定なし",
         accountBlockedInSomeCountries: "🚫アカウントをブロックしている国あり",
         accountNotBlockedInAnyCountries: "✅アカウントをブロックしている国なし",
-        sensitiveFlagOnTweet: "🚫ツイートにセンシティブ判定あり",
-        noSensitiveFlagOnTweet: "✅ツイートにセンシティブ判定なし",
-        ageLimitOnTweet: "🚫ツイートに年齢制限あり",
-        noAgeLimitOnTweet: "✅ツイートに年齢制限なし",
-        tweetSearchable: "✅ツイートは検索可能",
-        tweetMayNotBeSearchable: "🚫ツイートは検索不能",
+        sensitiveFlagOnTweet: "🚫ポストにセンシティブ判定あり",
+        noSensitiveFlagOnTweet: "✅ポストにセンシティブ判定なし",
+        ageLimitOnTweet: "🚫ポストに年齢制限あり",
+        noAgeLimitOnTweet: "✅ポストに年齢制限なし",
+        tweetSearchable: "✅ポストは検索可能",
+        tweetMayNotBeSearchable: "🚫ポストは検索不能",
         shadowbanScannerByRoboin: "Shadowban Scanner by ろぼいん",
         siteURL: "https://shadowban-scanner.roboin.io/ja/",
         accountStatusFor: "$1 のアカウントの状態"
@@ -114,3 +114,4 @@ ${translations.siteURL}
 };
 
 export { generateShareTextForTweet, generateShareTextForProfile };
+

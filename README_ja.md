@@ -6,7 +6,7 @@
 
 [Read in English](README.md) | [한국어로 읽기](README_ko.md) | [以繁體字閱讀](README_zh_tw.md) | [以简体中文阅读](README_zh_cn.md)
 
-Twitter / Xのシャドウバンを検出する拡張機能です。
+X（旧Twitter）のシャドウバンを検出する拡張機能です。
 
 <p align="center">
 <a href="https://www.buymeacoffee.com/keita_roboin"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=keita_roboin&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff" /></a>
@@ -35,19 +35,19 @@ Twitter / Xのシャドウバンを検出する拡張機能です。
 - アカウント単位のシャドウバンとセンシティブフラグを検出します
 - プロフィールのメディア（アイコンとヘッダー画像）のセンシティブフラグを検出します
 - 法的な理由でアカウントをブロックしている国を検出します
-- ツイート単位のセンシティブフラグを検出します
-- ツイートの年齢制限を検出します
-- 非表示にされたツイートを表示するボタンを追加します
+- ポスト単位のセンシティブフラグを検出します
+- ポストの年齢制限を検出します
+- 非表示にされたポストを表示するボタンを追加します
 
 ![アカウント単位のシャドウバン検出のスクリーンショット](doc/image/screenshot2_ja.png)
 
-![ツイート単位のシャドウバン検出のスクリーンショット](doc/image/screenshot1_ja.png)
+![ポスト単位のシャドウバン検出のスクリーンショット](doc/image/screenshot1_ja.png)
 
-![非表示にされたツイートのスクリーンショット](doc/image/screenshot3_ja.png)
+![非表示にされたポストのスクリーンショット](doc/image/screenshot3_ja.png)
 
 ## 精度
 
-アカウント単位のシャドウバン検出については、他の多くのツールと同様に、偽陽性や偽陰性が発生することがあります。一方で、ツイート単位のセンシティブフラグと年齢制限は、ほとんど完璧に検出できます。そのため、Shadowban Scannerで継続的にアカウントやツイートの状態を確認しつつ、他のツールも併せて利用することを推奨します。
+アカウント単位のシャドウバン検出については、他の多くのツールと同様に、偽陽性や偽陰性が発生することがあります。一方で、ポスト単位のセンシティブフラグと年齢制限は、ほとんど完璧に検出できます。そのため、Shadowban Scannerで継続的にアカウントやポストの状態を確認しつつ、他のツールも併せて利用することを推奨します。
 
 ## 検出方法
 
