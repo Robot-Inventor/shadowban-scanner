@@ -5,7 +5,7 @@
 ![Shadowban Scanner 的标志](doc/image/logo.svg)
 
 [Read in English](README.md) | [日本語で読む](README_ja.md) | [한국어로 읽기](README_ko.md) | [以繁體字閱讀](README_zh_tw.md)
-这是一个用于检测 Twitter Shadowban 的浏览器扩展。
+这是一个用于检测 Twitter / X Shadowban 的浏览器扩展。
 
 <p align="center">
 <a href="https://www.buymeacoffee.com/keita_roboin"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=keita_roboin&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff" /></a>
@@ -60,7 +60,7 @@
 <!-- PRIVACY_POLICY_TEXT_START -->
 <!-- THIS SECTION IS GENERATED FROM ./src/_locales/zh_CN/messages.json. DO NOT EDIT MANUALLY -->
 
-此扩展原则上会在用户的电脑上处理所有数据，不会将数据发送到外部服务器，此扩展亦不会在未经用户许可的情况下使用登录凭证访问 Twitter/X 的内部 API。对于此扩展没有对应处理的网页，将适用各自的使用条款和隐私政策。
+此扩展原则上会在用户的电脑上处理所有数据，不会将数据发送到外部服务器，此扩展亦不会在未经用户许可的情况下使用登录凭证访问 X 的内部 API。对于此扩展没有对应处理的网页，将适用各自的使用条款和隐私政策。
 
 <!-- PRIVACY_POLICY_TEXT_END -->
 

@@ -6,4 +6,4 @@ Shadowban Scannerは作者の趣味のプロジェクトですが、開発や運
 
 <a href="https://github.com/sponsors/Robot-Inventor" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/static/v1?label=GitHub%20Sponsors&message=%E2%9D%A4&logo=GitHub&color=%23db61a2" width="200px"></a>
 
-また、[作者のTwitterアカウント](https://x.com/keita_roboin)をフォローしていただけるだけでも、開発のモチベーションになります。プログラミングに精通している方や翻訳に協力したい方は、ぜひ[GitHub](https://github.com/Robot-Inventor/shadowban-scanner/)で開発に参加してください！
+また、[作者のXアカウント](https://x.com/keita_roboin)をフォローしていただけるだけでも、開発のモチベーションになります。プログラミングに精通している方や翻訳に協力したい方は、ぜひ[GitHub](https://github.com/Robot-Inventor/shadowban-scanner/)で開発に参加してください！

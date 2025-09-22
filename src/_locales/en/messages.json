@@ -1,6 +1,6 @@
 {
     "manifest_description": {
-        "message": "A browser extension that detects shadowbans on Twitter."
+        "message": "A browser extension that detects shadowbans on Twitter / X."
     },
     "accountShadowbanned": {
         "message": "This user may be shadowbanned, so their tweets might not appear in search results."
@@ -127,7 +127,7 @@
         "message": "Enable color accessibility mode"
     },
     "settingsPleaseReload": {
-        "message": "Please reload Twitter after changing settings."
+        "message": "Please reload X after changing settings."
     },
     "settingsPrivacyPolicy": {
         "message": "Privacy Policy"
@@ -148,7 +148,7 @@
         "message": "Privacy Policy"
     },
     "privacyPolicyText": {
-        "message": "As a rule, this extension performs all processing on the user's computer. No data is transmitted to external servers. It also does not access Twitter's internal API by obtaining user credentials without permission, as seen with some other extensions. Any web pages not included in this extension are subject to their own terms of use and privacy policies."
+        "message": "As a rule, this extension performs all processing on the user's computer. No data is transmitted to external servers. It also does not access X's internal API by obtaining user credentials without permission, as seen with some other extensions. Any web pages not included in this extension are subject to their own terms of use and privacy policies."
     },
     "initialSetup": {
         "message": "Initial Setup - Shadowban Scanner"

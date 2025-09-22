@@ -6,7 +6,7 @@
 
 [Read in English](README.md) | [한국어로 읽기](README_ko.md) | [以繁體字閱讀](README_zh_tw.md) | [以简体中文阅读](README_zh_cn.md)
 
-Twitterのシャドウバンを検出する拡張機能です。
+Twitter / Xのシャドウバンを検出する拡張機能です。
 
 <p align="center">
 <a href="https://www.buymeacoffee.com/keita_roboin"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=keita_roboin&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff" /></a>
@@ -61,7 +61,7 @@ Twitterのシャドウバンを検出する拡張機能です。
 <!-- PRIVACY_POLICY_TEXT_START -->
 <!-- THIS SECTION IS GENERATED FROM ./src/_locales/ja/messages.json. DO NOT EDIT MANUALLY -->
 
-この拡張機能は、原則としてすべての処理をユーザーのコンピューター上で実行します。データが外部のサーバーに送信されることはありません。また、一部の拡張機能でみられるような、ユーザーの認証情報を無断で取得してTwitterの内部APIにアクセスする処理もありません。この拡張機能に同梱されていないWebページには、それぞれの利用規約やプライバシーポリシーが適用されます。
+この拡張機能は、原則としてすべての処理をユーザーのコンピューター上で実行します。データが外部のサーバーに送信されることはありません。また、一部の拡張機能でみられるような、ユーザーの認証情報を無断で取得してXの内部APIにアクセスする処理もありません。この拡張機能に同梱されていないWebページには、それぞれの利用規約やプライバシーポリシーが適用されます。
 
 <!-- PRIVACY_POLICY_TEXT_END -->
 

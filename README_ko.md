@@ -6,7 +6,7 @@
 
 [Read in English](README.md) | [日本語で読む](README_ja.md) | [以繁體字閱讀](README_zh_tw.md) | [以简体中文阅读](README_zh_cn.md)
 
-Twitter의 Shadowban을 감지하는 확장 기능입니다.
+Twitter / X의 Shadowban을 감지하는 확장 기능입니다.
 
 ※이 문서는 인공지능을 사용하여 일본어에서 한국어로 번역되었습니다. 부자연스러운 점이 있다면 보고해주세요.
 
@@ -63,7 +63,7 @@ Twitter의 Shadowban을 감지하는 확장 기능입니다.
 <!-- PRIVACY_POLICY_TEXT_START -->
 <!-- THIS SECTION IS GENERATED FROM ./src/_locales/ko/messages.json. DO NOT EDIT MANUALLY -->
 
-As a rule, this extension performs all processing on the user's computer. No data is transmitted to an external server. It also does not access Twitter's internal API by obtaining the user's credentials without permission, as is the case with some extensions. Web pages not bundled in this extension are subject to their own terms of use and privacy policies.
+As a rule, this extension performs all processing on the user's computer. No data is transmitted to an external server. It also does not access X's internal API by obtaining the user's credentials without permission, as is the case with some extensions. Web pages not bundled in this extension are subject to their own terms of use and privacy policies.
 
 <!-- PRIVACY_POLICY_TEXT_END -->
 

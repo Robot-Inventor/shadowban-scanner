@@ -8,27 +8,27 @@ This document was translated from [Japanese](../ja/about-shadowban.md) to Englis
 
 There are two definitions for shadowbanning. The first one is the commonly used definition, which refers to the phenomenon where tweets become less likely to appear in search results or recommendations, or may not appear at all.
 
-The second definition is the official one by Twitter, which involves making tweets invisible to everyone except the author, effectively hiding them from public view. You can find more details about this on Twitter's official blog.
+The second definition is the official one by X, which involves making tweets invisible to everyone except the author, effectively hiding them from public view. You can find more details about this on X's official blog.
 
-- [Twitter's Official Blog on Shadowbanning](https://blog.twitter.com/en_us/topics/company/2018/Setting-the-record-straight-on-shadow-banning)
+- [X's Official Blog on Shadowbanning](https://blog.twitter.com/en_us/topics/company/2018/Setting-the-record-straight-on-shadow-banning)
 
-In this official blog, Twitter claims that it is not shadowbanning under the official Twitter definition, but does not deny that it is shadowbanning under the general definition.
+In this official blog, X claims that it is not shadowbanning under the official X definition, but does not deny that it is shadowbanning under the general definition.
 
 With the commonly used definition of shadowbanning, you can still view the tweets if you access the user's profile.
 
-This does not align with Twitter's official definition of making tweets "undiscoverable to everyone" and it corresponds to the statement in the official blog that says, "you may have to do more work to find them, like go directly to their profile."
+This does not align with X's official definition of making tweets "undiscoverable to everyone" and it corresponds to the statement in the official blog that says, "you may have to do more work to find them, like go directly to their profile."
 
-Therefore, Twitter does not officially engage in shadowbanning as per their definition, but they indirectly acknowledge the existence of the commonly used definition of shadowbanning. It is believed that shadowbans under the commonly used definition align with what Twitter refers to as "ranking."
+Therefore, X does not officially engage in shadowbanning as per their definition, but they indirectly acknowledge the existence of the commonly used definition of shadowbanning. It is believed that shadowbans under the commonly used definition align with what X refers to as "ranking."
 
-From here on, this document will use the commonly used definition for shadowbanning (referred to as Twitter's ranking).
+From here on, this document will use the commonly used definition for shadowbanning (referred to as X's ranking).
 
 ## What is Sensitivity Assessment?
 
-Apart from shadowbanning, Twitter also has a feature known as "Sensitivity Assessment."
+Apart from shadowbanning, X also has a feature known as "Sensitivity Assessment."
 
-When Twitter identifies a tweet or an account as sensitive, it adds a sensitivity flag. This can result in them being less prominently featured in recommendations or search results, or even not being displayed at all.
+When X identifies a tweet or an account as sensitive, it adds a sensitivity flag. This can result in them being less prominently featured in recommendations or search results, or even not being displayed at all.
 
-Twitter's sensitivity assessment is determined globally, and sometimes it may seem counterintuitive.
+X's sensitivity assessment is determined globally, and sometimes it may seem counterintuitive.
 
 There are two types of sensitivity assessments for tweets and accounts:
 
