@@ -5,7 +5,7 @@
 ![Shadowban Scanner 的标志](doc/image/logo.svg)
 
 [Read in English](README.md) | [日本語で読む](README_ja.md) | [한국어로 읽기](README_ko.md) | [以繁體字閱讀](README_zh_tw.md)
-这是一个用于检测 Twitter / X Shadowban 的浏览器扩展。
+这是一个用于检测 X（原 Twitter） Shadowban 的浏览器扩展。
 
 <p align="center">
 <a href="https://www.buymeacoffee.com/keita_roboin"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=keita_roboin&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff" /></a>
@@ -34,19 +34,19 @@
 - 检测账户级别的 Shadowban 和敏感内容标记
 - 检查个人资料的媒体（头像或头图）上的敏感内容标记
 - 检测账户因法律原因而导致的国家/地区屏蔽情况
-- 检测推文级别的敏感内容标记
-- 检测推文上的年龄限制
-- 在设置为隐藏的推文中增加查看按钮
+- 检测帖子级别的敏感内容标记
+- 检测帖子上的年龄限制
+- 在设置为隐藏的帖子中增加查看按钮
 
 ![账户级别 Shadowban 检测截图](doc/image/screenshot2_zh_cn.png)
 
-![推文级别 Shadowban 检测截图](doc/image/screenshot1_zh_cn.png)
+![帖子级别 Shadowban 检测截图](doc/image/screenshot1_zh_cn.png)
 
-![被隐藏推文截图](doc/image/screenshot3_zh_cn.png)
+![被隐藏帖子截图](doc/image/screenshot3_zh_cn.png)
 
 ## 精准度
 
-对于账户级别的 Shadowban 检查，与其他许多工具一样，可能会出现误判。但针对推文级别的敏感内容标记和年龄限制标记，本扩展几乎能够完美地给出正确结果。因此，建议您在使用 Shadowban Scanner 确认账户和推文状态的同时，也使用其他工具辅助检查。
+对于账户级别的 Shadowban 检查，与其他许多工具一样，可能会出现误判。但针对帖子级别的敏感内容标记和年龄限制标记，本扩展几乎能够完美地给出正确结果。因此，建议您在使用 Shadowban Scanner 确认账户和帖子状态的同时，也使用其他工具辅助检查。
 
 ## 检查方法
 

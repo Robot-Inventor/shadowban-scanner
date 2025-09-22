@@ -64,8 +64,8 @@ class SbsMessageWrapper {
     }
 
     /**
-     * Get the text color of the tweet.
-     * @returns text color of the tweet
+     * Get the text color of the post.
+     * @returns text color of the post
      */
     private static getTextColor(): `rgb(${number}, ${number}, ${number})` {
         const TEXT_SELECTOR = [
@@ -74,7 +74,7 @@ class SbsMessageWrapper {
         ].join(",");
 
         const text = document.querySelector(TEXT_SELECTOR);
-        if (!text) throw new Error("Failed to get user name span of tweet");
+        if (!text) throw new Error("Failed to get user name span of post");
 
         const { color } = getComputedStyle(text);
         return color as `rgb(${number}, ${number}, ${number})`;
@@ -83,7 +83,7 @@ class SbsMessageWrapper {
     private onTweetButtonClick(): void {
         if (this.tweet) {
             if (!this.tweetText) {
-                throw new Error("Tweet button clicked without source tweet");
+                throw new Error("Post button clicked without source post");
             }
 
             // eslint-disable-next-line no-magic-numbers
@@ -97,13 +97,13 @@ class SbsMessageWrapper {
     private onTweetButtonTouch(): void {
         if (this.tweet) {
             if (!this.tweetText) {
-                throw new Error("Tweet button clicked without source tweet");
+                throw new Error("Post button clicked without source post");
             }
 
             // eslint-disable-next-line no-magic-numbers
             void this.tweet.quoteTweet(this.tweetText, 2000);
         } else {
-            // On touch devices, clicking the tweet button fails to open the compose screen in the same tab.
+            // On touch devices, clicking the Post button fails to open the compose screen in the same tab.
             // Therefore, open the compose screen in a new tab.
 
             // eslint-disable-next-line no-magic-numbers

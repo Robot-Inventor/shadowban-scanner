@@ -1,33 +1,33 @@
 {
     "manifest_description": {
-        "message": "Twitter / X의 Shadowban을 감지하는 확장 기능입니다."
+        "message": "X(구 Twitter)의 Shadowban을 감지하는 확장 기능입니다."
     },
     "accountShadowbanned": {
-        "message": "이 사용자는 Shadowban되어 있을 가능성이 있어, 트윗이 검색 결과에 표시되지 않을 수도 있습니다."
+        "message": "이 사용자는 Shadowban되어 있을 가능성이 있어, 포스트가 검색 결과에 표시되지 않을 수도 있습니다."
     },
     "accountShadowbannedAndTweetFlaggedAsSensitive": {
-        "message": "이 사용자는 Shadowban되어 있을 가능성이 있어, 트윗이 검색 결과에 표시되지 않을 수도 있습니다. 또한, 이 트윗에는 센시티브 플래그가 부여되어 있습니다."
+        "message": "이 사용자는 Shadowban되어 있을 가능성이 있어, 포스트가 검색 결과에 표시되지 않을 수도 있습니다. 또한, 이 포스트에는 센시티브 플래그가 부여되어 있습니다."
     },
     "accountAndTweetShadowbanned": {
-        "message": "이 트윗에는 연령 제한이 있어, 만 18세 미만의 사용자나 로그인하지 않은 사용자는 볼 수 없습니다. 또한, 검색 결과에 표시되지 않을 수도 있습니다."
+        "message": "이 포스트에는 연령 제한이 있어, 만 18세 미만의 사용자나 로그인하지 않은 사용자는 볼 수 없습니다. 또한, 검색 결과에 표시되지 않을 수도 있습니다."
     },
     "accountIsBlockedInSomeCountries": {
         "message": "이 사용자는 일부 국가에서 차단되었습니다."
     },
     "tweetFlaggedAsSensitive": {
-        "message": "이 트윗에는 센시티브 플래그가 부여되어 있고, 조회자의 설정에 따라 검색 결과에 표시되지 않을 수 있습니다."
+        "message": "이 포스트에는 센시티브 플래그가 부여되어 있고, 조회자의 설정에 따라 검색 결과에 표시되지 않을 수 있습니다."
     },
     "thisUserIsNotShadowbanned": {
         "message": "이 사용자는 shadowban되지 않았습니다."
     },
     "thisUserIsShadowbanned": {
-        "message": "이 사용자는 Shadowban되어 있을 가능성이 있어, 트윗이 검색 결과에 표시되지 않을 수도 있습니다."
+        "message": "이 사용자는 Shadowban되어 있을 가능성이 있어, 포스트가 검색 결과에 표시되지 않을 수도 있습니다."
     },
     "tweetShadowbanned": {
-        "message": "이 트윗에는 연령 제한이 있어, 만 18세 미만의 사용자나 로그인하지 않은 사용자는 볼 수 없습니다. 또한, 검색 결과에 표시되지 않을 수도 있습니다."
+        "message": "이 포스트에는 연령 제한이 있어, 만 18세 미만의 사용자나 로그인하지 않은 사용자는 볼 수 없습니다. 또한, 검색 결과에 표시되지 않을 수도 있습니다."
     },
     "tweetNoProblem": {
-        "message": "트윗에 문제가 발견되지 않았습니다."
+        "message": "포스트에 문제가 발견되지 않았습니다."
     },
     "accountIsNotFlaggedAsSensitive": {
         "message": "✅계정에 민감 플래그가 부여되지 않았습니다."
@@ -48,41 +48,41 @@
         "message": "🚫계정은 다음 국가에서 차단됩니다(<a href=\"https://help.twitter.com/rules-and-policies/post-withheld-by-country\" target=\"_blank\">세부 정보</a>): $1"
     },
     "tweetIsNotFlaggedAsSensitive": {
-        "message": "✅트윗에는 센시티브 플래그가 부여되지 않았습니다."
+        "message": "✅포스트에는 센시티브 플래그가 부여되지 않았습니다."
     },
     "tweetIsFlaggedAsSensitive": {
-        "message": "🚫트윗에 센시티브 플래그가 부여되었습니다."
+        "message": "🚫포스트에 센시티브 플래그가 부여되었습니다."
     },
     "tweetIsNotAgeRestricted": {
-        "message": "✅트윗에는 연령 제한이 없습니다."
+        "message": "✅포스트에는 연령 제한이 없습니다."
     },
     "tweetIsAgeRestricted": {
-        "message": "🚫트윗에 연령 제한이 있습니다."
+        "message": "🚫포스트에 연령 제한이 있습니다."
     },
     "tweetIsSearchable": {
-        "message": "✅트윗은 검색 결과에 표시됩니다."
+        "message": "✅포스트는 검색 결과에 표시됩니다."
     },
     "tweetMayNotBeSearchable": {
-        "message": "⚠️트윗은 조회자의 설정에 따라 검색 결과에 표시되지 않을 수 있습니다."
+        "message": "⚠️포스트는 조회자의 설정에 따라 검색 결과에 표시되지 않을 수 있습니다."
     },
     "tweetIsNotSearchable": {
-        "message": "🚫트윗이 검색 결과에 표시되지 않을 가능성이 있습니다."
+        "message": "🚫포스트가 검색 결과에 표시되지 않을 가능성이 있습니다."
     },
     "falsePositivesAndFalseNegativesOccur": {
         "message": "Shadowban Scanner는 유사한 다른 도구와 마찬가지로 위양성 또는 위음성이 발생할 수 있습니다. 작동 방식에 대한 자세한 내용은 <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/blob/main/doc/en/about-shadowban.md\" target=\"blank\">여기</a>를 참조하세요."
     },
     "translatedByAI": {
-        "message": "AI에 의한 일본어에서 한국어로 번역되었습니다. 이상한 부분이 있으면 <a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>의 DM이나 <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub 저장소</a>로 알려주세요.",
-        "description": "This field is used if the translation was done by AI. Otherwise, set this field to an empty string. Example sentence: \"Translated from Japanese to <language name> by AI. Please notify <a href=\"https://twitter.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>'s DM or <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub repository</a> if there are any unnatural points.\""
+        "message": "AI에 의한 일본어에서 한국어로 번역되었습니다. 이상한 부분이 있으면 <a href=\"https://x.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>의 DM이나 <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub 저장소</a>로 알려주세요.",
+        "description": "This field is used if the translation was done by AI. Otherwise, set this field to an empty string. Example sentence: \"Translated from Japanese to <language name> by AI. Please notify <a href=\"https://x.com/keita_roboin\" target=\"_blank\">@keita_roboin</a>'s DM or <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub repository</a> if there are any unnatural points.\""
     },
     "showMore": {
         "message": "▶더 보기"
     },
     "tweetTheResults": {
-        "message": "결과 트윗하기"
+        "message": "결과 포스트하기"
     },
     "viewTweet": {
-        "message": "트윗 보기"
+        "message": "포스트 보기"
     },
     "settingsWhereToDisplayCheckResults": {
         "message": "검사 결과를 표시할 위치"
@@ -91,13 +91,13 @@
         "message": "당신의 계정이 shadowban되면, 메시지는 항상 표시됩니다."
     },
     "settingsShowMessagesInUnproblematicTweets": {
-        "message": "문제가 없는 트윗에 표시"
+        "message": "문제가 없는 포스트에 표시"
     },
     "settingsShowMessagesInUnproblematicProfiles": {
         "message": "문제가 없는 프로필에 표시"
     },
     "settingsEnableForOtherUsersTweets": {
-        "message": "다른 사용자의 트윗에 표시"
+        "message": "다른 사용자의 포스트에 표시"
     },
     "settingsEnableForOtherUsersProfiles": {
         "message": "다른 사용자의 프로필에 표시"
@@ -115,7 +115,7 @@
         "message": "메시지 하단에 메모 표시"
     },
     "settingsShowTweetButton": {
-        "message": "결과 트윗하기 버튼 표시"
+        "message": "결과 포스트하기 버튼 표시"
     },
     "settingsEnableOnXPro": {
         "message": "X Pro에서 실행"
@@ -160,16 +160,16 @@
         "message": "둘 중 하나를 선택하세요. 설정은 나중에 변경할 수 있습니다."
     },
     "displayForAllTweetsAndAccounts": {
-        "message": "모든 트윗과 계정에 검사 결과를 표시합니다."
+        "message": "모든 포스트와 계정에 검사 결과를 표시합니다."
     },
     "displayOnlyForProblematicTweets": {
-        "message": "문제가 있는 트윗과 계정에만 검사 결과를 표시합니다."
+        "message": "문제가 있는 포스트와 계정에만 검사 결과를 표시합니다."
     },
     "displayOnlyInYourOwnTweets": {
-        "message": "내 트윗에만 검사 결과를 표시합니다."
+        "message": "내 포스트에만 검사 결과를 표시합니다."
     },
     "displayInAllUsersTweets": {
-        "message": "모든 사용자의 트윗에 검사 결과를 표시합니다."
+        "message": "모든 사용자의 포스트에 검사 결과를 표시합니다."
     },
     "back": {
         "message": "뒤로"

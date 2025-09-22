@@ -6,17 +6,17 @@ This document was translated from [Japanese](../ja/about-shadowban.md) to Englis
 
 ## What Is a Shadowban?
 
-There are two definitions for shadowbanning. The first one is the commonly used definition, which refers to the phenomenon where tweets become less likely to appear in search results or recommendations, or may not appear at all.
+There are two definitions for shadowbanning. The first one is the commonly used definition, which refers to the phenomenon where posts become less likely to appear in search results or recommendations, or may not appear at all.
 
-The second definition is the official one by X, which involves making tweets invisible to everyone except the author, effectively hiding them from public view. You can find more details about this on X's official blog.
+The second definition is the official one by X, which involves making posts invisible to everyone except the author, effectively hiding them from public view. You can find more details about this on X's official blog.
 
 - [X's Official Blog on Shadowbanning](https://blog.twitter.com/en_us/topics/company/2018/Setting-the-record-straight-on-shadow-banning)
 
 In this official blog, X claims that it is not shadowbanning under the official X definition, but does not deny that it is shadowbanning under the general definition.
 
-With the commonly used definition of shadowbanning, you can still view the tweets if you access the user's profile.
+With the commonly used definition of shadowbanning, you can still view the posts if you access the user's profile.
 
-This does not align with X's official definition of making tweets "undiscoverable to everyone" and it corresponds to the statement in the official blog that says, "you may have to do more work to find them, like go directly to their profile."
+This does not align with X's official definition of making posts "undiscoverable to everyone" and it corresponds to the statement in the official blog that says, "you may have to do more work to find them, like go directly to their profile."
 
 Therefore, X does not officially engage in shadowbanning as per their definition, but they indirectly acknowledge the existence of the commonly used definition of shadowbanning. It is believed that shadowbans under the commonly used definition align with what X refers to as "ranking."
 
@@ -26,23 +26,23 @@ From here on, this document will use the commonly used definition for shadowbann
 
 Apart from shadowbanning, X also has a feature known as "Sensitivity Assessment."
 
-When X identifies a tweet or an account as sensitive, it adds a sensitivity flag. This can result in them being less prominently featured in recommendations or search results, or even not being displayed at all.
+When X identifies a post or an account as sensitive, it adds a sensitivity flag. This can result in them being less prominently featured in recommendations or search results, or even not being displayed at all.
 
 X's sensitivity assessment is determined globally, and sometimes it may seem counterintuitive.
 
-There are two types of sensitivity assessments for tweets and accounts:
+There are two types of sensitivity assessments for posts and accounts:
 
-### Sensitivity Assessment for Tweets
+### Sensitivity Assessment for Posts
 
-For tweets, sensitivity assessment comes in two levels: mild and severe.
+For posts, sensitivity assessment comes in two levels: mild and severe.
 
-Mild sensitivity assessment for tweets will make them not appear in the search results of users who have the "Hide sensitive content" option enabled, regardless of their settings.
+Mild sensitivity assessment for posts will make them not appear in the search results of users who have the "Hide sensitive content" option enabled, regardless of their settings.
 
-Severe sensitivity assessment will make tweets not appear in search results, regardless of settings, and they may have age restrictions applied. With age restrictions, underage users or non-logged-in users won't be able to view them.
+Severe sensitivity assessment will make posts not appear in search results, regardless of settings, and they may have age restrictions applied. With age restrictions, underage users or non-logged-in users won't be able to view them.
 
 ### Sensitivity Assessment for Accounts
 
-In the assessment of an account's sensitivity, tweets may become less visible or entirely hidden in search results in both of the two scenarios.
+In the assessment of an account's sensitivity, posts may become less visible or entirely hidden in search results in both of the two scenarios.
 
 The only (possibly) distinction lies in the ability to modify the setting "Mark media you post as having material that may be sensitive." If this setting cannot be changed, all media submitted will be judged sensitive.
 

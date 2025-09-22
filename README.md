@@ -6,7 +6,7 @@
 
 [日本語で読む](README_ja.md) | [한국어로 읽기](README_ko.md) | [以繁體字閱讀](README_zh_tw.md) | [以简体中文阅读](README_zh_cn.md)
 
-A browser extension that detects shadowbans on Twitter / X.
+A browser extension that detects shadowbans on X (formerly Twitter).
 
 <p align="center">
 <a href="https://www.buymeacoffee.com/keita_roboin"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=keita_roboin&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff" /></a>
@@ -35,19 +35,19 @@ The settings cannot be changed in the user script version. If you need detailed 
 - Detects shadowbans and sensitive flags per account
 - Detects sensitive flags for profile media (icon and header image)
 - Detects countries that block accounts for legal reasons
-- Detects sensitive flags per tweet
-- Detects age restrictions on tweets
-- Adds buttons to show hidden tweets
+- Detects sensitive flags per post
+- Detects age restrictions on posts
+- Adds buttons to show hidden posts
 
 ![Screenshot of per-account shadowban detection](doc/image/screenshot2_en.png)
 
-![Screenshot of per-tweet shadowban detection](doc/image/screenshot1_en.png)
+![Screenshot of per-post shadowban detection](doc/image/screenshot1_en.png)
 
-![Screenshot of a hidden tweet](doc/image/screenshot3_en.png)
+![Screenshot of a hidden post](doc/image/screenshot3_en.png)
 
 ## Accuracy
 
-When it comes to detecting shadowbans on an account level, like many other tools, there can be instances of false positives and false negatives. However, when it comes to detecting sensitive flags and age restrictions on a tweet level, it can be almost perfectly accurate. Therefore, it is recommended to use Shadowban Scanner to continuously monitor the status of your account and tweets, while also utilizing other tools alongside it.
+When it comes to detecting shadowbans on an account level, like many other tools, there can be instances of false positives and false negatives. However, when it comes to detecting sensitive flags and age restrictions on a post level, it can be almost perfectly accurate. Therefore, it is recommended to use Shadowban Scanner to continuously monitor the status of your account and posts, while also utilizing other tools alongside it.
 
 ## Detection Methods
 
