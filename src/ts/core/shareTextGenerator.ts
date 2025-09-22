@@ -114,4 +114,3 @@ ${translations.siteURL}
 };
 
 export { generateShareTextForTweet, generateShareTextForProfile };
-
