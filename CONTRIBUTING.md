@@ -23,7 +23,7 @@ Note that not all pull requests will be merged.
 
 If you plan to create a pull request to add a feature, please create an issue first. Discussing it with the maintainers in the issue can reduce the chances of your pull request being rejected.
 
-Changes that may violate user privacy, or result in user accounts being locked or suspended, will not be accepted. This includes, but is not limited to, accessing Twitter's internal APIs or connecting to external services.
+Changes that may violate user privacy, or result in user accounts being locked or suspended, will not be accepted. This includes, but is not limited to, accessing X's internal APIs or connecting to external services.
 
 This project uses Node.js and npm. To develop, follow these steps:
 

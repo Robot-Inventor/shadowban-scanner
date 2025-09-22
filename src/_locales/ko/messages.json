@@ -1,6 +1,6 @@
 {
     "manifest_description": {
-        "message": "Twitter의 Shadowban을 감지하는 확장 기능입니다."
+        "message": "Twitter / X의 Shadowban을 감지하는 확장 기능입니다."
     },
     "accountShadowbanned": {
         "message": "이 사용자는 Shadowban되어 있을 가능성이 있어, 트윗이 검색 결과에 표시되지 않을 수도 있습니다."
@@ -127,7 +127,7 @@
         "message": "컬러 접근성 모드 활성화"
     },
     "settingsPleaseReload": {
-        "message": "설정을 변경한 후 Twitter를 다시 로드해주세요"
+        "message": "설정을 변경한 후 X를 다시 로드해주세요"
     },
     "settingsPrivacyPolicy": {
         "message": "Privacy Policy"
@@ -148,7 +148,7 @@
         "message": "Privacy Policy"
     },
     "privacyPolicyText": {
-        "message": "As a rule, this extension performs all processing on the user's computer. No data is transmitted to an external server. It also does not access Twitter's internal API by obtaining the user's credentials without permission, as is the case with some extensions. Web pages not bundled in this extension are subject to their own terms of use and privacy policies."
+        "message": "As a rule, this extension performs all processing on the user's computer. No data is transmitted to an external server. It also does not access X's internal API by obtaining the user's credentials without permission, as is the case with some extensions. Web pages not bundled in this extension are subject to their own terms of use and privacy policies."
     },
     "initialSetup": {
         "message": "초기 설정 - Shadowban Scanner"

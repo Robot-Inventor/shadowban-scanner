@@ -4,16 +4,16 @@
 
 正確性を期すため、このドキュメントで使用する言葉を次のとおり定義します。
 
-- シャドウバン：ツイートが検索結果やおすすめに表示されにくくなったり、それらにまったく表示されなくなったりする状態の総称。[Twitter公式の定義](./about-shadowban.md#シャドウバンとは)ではなく、一般的に用いられる定義
+- シャドウバン：ツイートが検索結果やおすすめに表示されにくくなったり、それらにまったく表示されなくなったりする状態の総称。[X公式の定義](./about-shadowban.md#シャドウバンとは)ではなく、一般的に用いられる定義
 - 事実：Shadowban Scannerの実装など、確実に正しいといえる内容
 - 断定：いくつかの事実や調査から、正しいと判断できる内容
 - 推定：いくつかの事実や調査から、正しい可能性が高いと判断できる内容
 
 ## データの取得方法
 
-Shadowban Scannerでは現在、外部サーバーのAPIやTwitterの内部API等にはアクセスせずに情報を取得しています。これは、ツイートごとに判定結果を表示するという仕様上、APIへのアクセス頻度が高くなり、サーバーに負荷をかけてしまうのを防ぐためです。また、プライバシーやセキュリティーの観点での利点もあります。（事実）
+Shadowban Scannerでは現在、外部サーバーのAPIやXの内部API等にはアクセスせずに情報を取得しています。これは、ツイートごとに判定結果を表示するという仕様上、APIへのアクセス頻度が高くなり、サーバーに負荷をかけてしまうのを防ぐためです。また、プライバシーやセキュリティーの観点での利点もあります。（事実）
 
-Shadowban ScannerはAPIにアクセスする代わりに、TwitterのWebクライアントのReact Propsを取得しています。React Propsには、Twitterの内部APIの応答結果が格納されているため、これを利用することでAPIへアクセスせずに情報を取得できます。（事実）
+Shadowban ScannerはAPIにアクセスする代わりに、XのWebクライアントのReact Propsを取得しています。React Propsには、Xの内部APIの応答結果が格納されているため、これを利用することでAPIへアクセスせずに情報を取得できます。（事実）
 
 ## 判定方法
 
@@ -38,7 +38,7 @@ Shadowban Scannerでは、アカウントのシャドウバンを``TweetProps.us
 
 ``TweetProps.user.possibly_sensitive``プロパティーが存在しない場合や、``null``の場合は、混乱を防ぐためにシャドウバンされていないと表示します。（事実）
 
-``TweetProps.user.possibly_sensitive``はアカウント単位のセンシティブフラグです。このフラグが``true``の場合、たいていはツイートが検索結果に表示されないシャドウバン状態にあります。ただし、まれに``true``でもシャドウバンされていなかったり、``false``なのにシャドウバンされていることもあります。いずれにしても、シャドウバンの状態にかかわらず、このフラグが``true``の場合はTwitterによってセンシティブなアカウントとしてみなされていることを示します。（断定・Twitterの検索結果の調査により判断）
+``TweetProps.user.possibly_sensitive``はアカウント単位のセンシティブフラグです。このフラグが``true``の場合、たいていはツイートが検索結果に表示されないシャドウバン状態にあります。ただし、まれに``true``でもシャドウバンされていなかったり、``false``なのにシャドウバンされていることもあります。いずれにしても、シャドウバンの状態にかかわらず、このフラグが``true``の場合はXによってセンシティブなアカウントとしてみなされていることを示します。（断定・Xの検索結果の調査により判断）
 
 フラグが``true``でもシャドウバンされていない場合、「ぎりぎりシャドウバンはされていないがセンシティブなアカウントとしてみなされている」と考えられます。（推定）
 
@@ -104,7 +104,7 @@ t(
   'b9a9cbdc',
   'センシティブな内容の画像やテキストをツイートしている可能性があります。表示してもよろしいですか？'
 ),
-t('i622ef86', 'Twitterルールに違反している可能性があります。表示してもよろしいですか？'),
+t('i622ef86', 'Xルールに違反している可能性があります。表示してもよろしいですか？'),
 ```
 
 このコードの``jf604336``の部分を見ると、「注意: プロフィールにセンシティブな内容が含まれている可能性のあるアカウントです」と書かれています。（事実）
@@ -122,7 +122,7 @@ Shadowban Scannerでは、アカウントがブロックされている国を``T
 #### 参考
 
 - [特定の国でコンテンツが表示制限される状況の理解](https://help.twitter.com/ja/rules-and-policies/post-withheld-by-country)
-- [Tweet object | Docs | Twitter Developer Platform](https://developer.twitter.com/en/docs/twitter-api/v1/data-dictionary/object-model/tweet#:~:text=withheld_copyright%22%3A%20true-,withheld_in_countries,-Array%20of%20String)
+- [Tweet object | Docs | X Developer Platform](https://developer.twitter.com/en/docs/twitter-api/v1/data-dictionary/object-model/tweet#:~:text=withheld_copyright%22%3A%20true-,withheld_in_countries,-Array%20of%20String)
 
 ### ツイートのセンシティブ判定と年齢制限判定
 
@@ -132,6 +132,6 @@ Shadowban Scannerでは、ツイートのセンシティブ判定を``TweetProps
 
 ``TweetProps.possibly_sensitive``はツイート単位のセンシティブフラグです。このフラグが``true``の場合、ツイートがセンシティブなツイートとしてみなされていることを示します。（断定）
 
-``TweetProps.possibly_sensitive``が``true``かつ、``TweetProps.possibly_sensitive_editable``が``true``の場合、そのツイートは［センシティブな内容を含むものを表示しない］設定がオンになっているアカウントの検索結果に表示されなくなります。（推定・Twitterの検索結果の調査により判断）
+``TweetProps.possibly_sensitive``が``true``かつ、``TweetProps.possibly_sensitive_editable``が``true``の場合、そのツイートは［センシティブな内容を含むものを表示しない］設定がオンになっているアカウントの検索結果に表示されなくなります。（推定・Xの検索結果の調査により判断）
 
 ``TweetProps.possibly_sensitive``が``true``かつ、``TweetProps.possibly_sensitive_editable``が``false``の場合、そのツイートは検索結果に表示されなくなります。また、年齢制限がかかり、未成年者のアカウントや非ログイン状態で閲覧できなくなります。（断定・該当ツイートを非ログイン状態で表示しようとする試みにより判断）

@@ -6,7 +6,7 @@
 
 [日本語で読む](README_ja.md) | [한국어로 읽기](README_ko.md) | [以繁體字閱讀](README_zh_tw.md) | [以简体中文阅读](README_zh_cn.md)
 
-A browser extension that detects shadowbans on Twitter.
+A browser extension that detects shadowbans on Twitter / X.
 
 <p align="center">
 <a href="https://www.buymeacoffee.com/keita_roboin"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=keita_roboin&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff" /></a>
@@ -61,7 +61,7 @@ For more information on detection methods and technical details, please refer to
 <!-- PRIVACY_POLICY_TEXT_START -->
 <!-- THIS SECTION IS GENERATED FROM ./src/_locales/en/messages.json. DO NOT EDIT MANUALLY -->
 
-As a rule, this extension performs all processing on the user's computer. No data is transmitted to external servers. It also does not access Twitter's internal API by obtaining user credentials without permission, as seen with some other extensions. Any web pages not included in this extension are subject to their own terms of use and privacy policies.
+As a rule, this extension performs all processing on the user's computer. No data is transmitted to external servers. It also does not access X's internal API by obtaining user credentials without permission, as seen with some other extensions. Any web pages not included in this extension are subject to their own terms of use and privacy policies.
 
 <!-- PRIVACY_POLICY_TEXT_END -->
 

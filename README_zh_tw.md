@@ -5,7 +5,7 @@
 ![Shadowban Scanner 的標誌](doc/image/logo.svg)
 
 [Read in English](README.md) | [日本語で読む](README_ja.md) | [한국어로 읽기](README_ko.md) | [以简体中文阅读](README_zh_cn.md)
-這是一個用於檢查 Twitter 的 Shadowban 的擴充功能。
+這是一個用於檢查 Twitter / X 的 Shadowban 的擴充功能。
 
 <p align="center">
 <a href="https://www.buymeacoffee.com/keita_roboin"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=keita_roboin&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff" /></a>
@@ -60,7 +60,7 @@
 <!-- PRIVACY_POLICY_TEXT_START -->
 <!-- THIS SECTION IS GENERATED FROM ./src/_locales/zh_TW/messages.json. DO NOT EDIT MANUALLY -->
 
-此擴充功能原則上會在使用者的電腦上處理所有資料，不會傳送到外部伺服器，而且此擴充功能不會在未經使用者許可的情況下使用登入認證存取 Twitter/X 的內部 API。對於此擴充功能沒有對應的網頁，將適用各自的使用條款和隱私政策。
+此擴充功能原則上會在使用者的電腦上處理所有資料，不會傳送到外部伺服器，而且此擴充功能不會在未經使用者許可的情況下使用登入認證存取 X 的內部 API。對於此擴充功能沒有對應的網頁，將適用各自的使用條款和隱私政策。
 
 <!-- PRIVACY_POLICY_TEXT_END -->
 

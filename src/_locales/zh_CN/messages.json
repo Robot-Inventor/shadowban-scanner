@@ -1,6 +1,6 @@
 {
     "manifest_description": {
-        "message": "这是一个用于检查 Twitter/X 的 Shadowban 的浏览器扩展。"
+        "message": "这是一个用于检查 Twitter / X 的 Shadowban 的浏览器扩展。"
     },
     "accountShadowbanned": {
         "message": "此账户可能已被 Shadowban，因此他们的推文可能不会显示在搜索结果中。"
@@ -127,7 +127,7 @@
         "message": "启用色盲模式"
     },
     "settingsPleaseReload": {
-        "message": "如果更改过扩展设置，请重新加载 Twitter/X 页面"
+        "message": "如果更改过扩展设置，请重新加载 X 页面"
     },
     "settingsPrivacyPolicy": {
         "message": "隐私政策"
@@ -148,7 +148,7 @@
         "message": "隐私政策"
     },
     "privacyPolicyText": {
-        "message": "此扩展原则上会在用户的电脑上处理所有数据，不会将数据发送到外部服务器，此扩展亦不会在未经用户许可的情况下使用登录凭证访问 Twitter/X 的内部 API。对于此扩展没有对应处理的网页，将适用各自的使用条款和隐私政策。"
+        "message": "此扩展原则上会在用户的电脑上处理所有数据，不会将数据发送到外部服务器，此扩展亦不会在未经用户许可的情况下使用登录凭证访问 X 的内部 API。对于此扩展没有对应处理的网页，将适用各自的使用条款和隐私政策。"
     },
     "initialSetup": {
         "message": "初始设置 - Shadowban Scanner"
