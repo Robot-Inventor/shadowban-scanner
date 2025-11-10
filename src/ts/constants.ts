@@ -10,6 +10,6 @@ type ExtensionStoreType = keyof typeof EXTENSION_STORE_LINKS;
 
 const SUPPORTED_MOBILE_BROWSERS = ["firefox", "kiwiBrowser"] as const satisfies BrowserType[];
 
-const NUMBER_OF_USERS = 25000;
+const NUMBER_OF_USERS = 45000;
 
 export { EXTENSION_STORE_LINKS, type ExtensionStoreType, SUPPORTED_MOBILE_BROWSERS, NUMBER_OF_USERS };
