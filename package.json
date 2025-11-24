@@ -8,7 +8,7 @@
     "lint": "eslint ./src/ts/**/*.ts && stylelint ./src/css/**/*.css"
   },
   "dependencies": {
-    "@robot-inventor/eslint-config": "^10.0.0",
+    "@robot-inventor/eslint-config": "^11.0.0",
     "@robot-inventor/ts-utils": "^0.8.0",
     "eslint": "^9.1.1",
     "i18next": "^25.0.0",
