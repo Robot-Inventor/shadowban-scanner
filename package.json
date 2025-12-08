@@ -35,7 +35,7 @@
   "dependencies": {
     "@material/web": "^2.0.0",
     "addons-linter": "^9.0.0",
-    "chokidar": "^4.0.0",
+    "chokidar": "^5.0.0",
     "colors": "^1.4.0",
     "css-loader": "^7.0.0",
     "eslint": "^9.0.0",
