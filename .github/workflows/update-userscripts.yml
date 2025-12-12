@@ -28,7 +28,7 @@ jobs:
 
             - run: npm run ci:build
 
-            - uses: peter-evans/create-pull-request@v7
+            - uses: peter-evans/create-pull-request@v8
               with:
                   commit-message: "ci: update userscripts"
                   delete-branch: true
