@@ -1,6 +1,6 @@
 {
   "name": "shadowban-scanner",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "A browser extension that detects shadowbans on X (formerly Twitter).",
   "main": "index.js",
   "type": "module",
