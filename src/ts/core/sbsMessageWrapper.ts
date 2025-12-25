@@ -114,6 +114,10 @@ class SbsMessageWrapper {
     public insertAdjacentElement(target: Element, position: InsertPosition): void {
         target.insertAdjacentElement(position, this.sbsMessage);
     }
+
+    public remove(): void {
+        this.sbsMessage.remove();
+    }
 }
 
 export { type SbsMessageWrapperOptionsForTweets, type SbsMessageWrapperOptionsForProfiles, SbsMessageWrapper };

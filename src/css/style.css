@@ -34,6 +34,15 @@ sbs-message {
     margin-top: 1em;
 }
 
+/*
+ * If the bio is empty, the bio element does not exist, and sbs-message is inserted directly after the username,
+ * so apply a different style
+ */
+[data-testid="UserName"] + sbs-message {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
 [data-sb-compact-mode] {
     /*
      * `!important` is required to work with Kiwi Browser.
