@@ -13,6 +13,7 @@ import { TweetParser } from "./parser/tweetParser";
 class Core {
     private readonly settings: Settings;
     private readonly onMessageCallback: () => void;
+    private previousMessageWrapper: SbsMessageWrapper | null = null;
 
     /**
      * Run the core process.
@@ -41,6 +42,7 @@ class Core {
         document.body.setAttribute("data-color-scheme", colorScheme === "light" ? "light" : "dark");
     }
 
+    // eslint-disable-next-line max-statements
     private checkProfile(profile: Profile): void {
         const isCurrentUsersProfile = Boolean(document.querySelector("[data-testid='editProfileButton']"));
         if (!isCurrentUsersProfile && !this.settings.enableForOtherUsersProfiles) return;
@@ -56,6 +58,13 @@ class Core {
             document.querySelector("[data-testid='UserName']");
         if (!bioOrUserName) throw new Error("Failed to get user description of profile");
 
+        /*
+         * When navigating directly from one profile page to another,
+         * especially if the bio of the previous profile is empty, the inserted message may remain.
+         * Therefore, ensure it is removed.
+         */
+        this.previousMessageWrapper?.remove();
+        this.previousMessageWrapper = sbsMessageWrapper;
         sbsMessageWrapper.insertAdjacentElement(bioOrUserName, "afterend");
     }
 
