@@ -5,12 +5,12 @@ const TRANSLATION_ATTRIBUTE = "data-sb-translation";
 const SHADOW_TRANSLATION_ATTRIBUTE = "data-sb-shadow-translation";
 const TWEMOJI_ATTRIBUTE = "data-sb-enable-twemoji";
 const ALLOWED_TWEMOJI = ["✅", "🚫", "⚠️"] as const;
-const SHOW_RELEASE_NOTES = false;
+const SHOW_RELEASE_NOTES = true;
 
 const ONBOARDING_PATH = "html/initialSetup.html";
 const RELEASE_NOTE_URL = {
-    en: "https://roboin.io/article/2025/06/29/shadowban-scanner-v4-0/en/",
-    ja: "https://roboin.io/article/2025/06/29/shadowban-scanner-v4-0/"
+    en: "https://roboin.io/article/en/2025/12/26/shadowban-scanner-v4-0-2/",
+    ja: "https://roboin.io/article/2025/12/26/shadowban-scanner-v4-0-2/"
 } as const;
 const INSTRUCTION_URL = {
     en: "https://roboin.io/article/2023/09/30/detect-twitter-shadowban/en/#usage",
