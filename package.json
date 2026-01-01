@@ -17,7 +17,7 @@
     "sweetalert2": "^11.10.8"
   },
   "devDependencies": {
-    "@robot-inventor/tsconfig-base": "^6.0.0",
+    "@robot-inventor/tsconfig-base": "^7.0.0",
     "@rspack/cli": "^1.0.14",
     "@rspack/core": "^1.0.14",
     "cross-env": "^10.0.0",
