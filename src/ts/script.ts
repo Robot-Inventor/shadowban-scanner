@@ -12,7 +12,14 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import Swal from "sweetalert2";
 import { isNonEmptyArray } from "@robot-inventor/ts-utils";
 import translationEn from "../translations/en.json";
+import translationEs from "../translations/es.json";
+import translationHi from "../translations/hi.json";
+import translationId from "../translations/id.json";
 import translationJa from "../translations/ja.json";
+import translationPt from "../translations/pt.json";
+import translationTh from "../translations/th.json";
+// eslint-disable-next-line import-x/max-dependencies
+import translationTr from "../translations/tr.json";
 
 declare global {
     interface Window {
@@ -192,6 +199,7 @@ const initializeLanguageSwitcher = (): void => {
     });
 };
 
+// eslint-disable-next-line max-lines-per-function
 const main = async (): Promise<void> => {
     const languageDetectionOrderDefault = [
         "querystring",
@@ -230,9 +238,15 @@ const main = async (): Promise<void> => {
         fallbackLng: "en",
         resources: {
             en: { translation: { ...translationEn } },
-            ja: { translation: { ...translationJa } }
+            es: { translation: { ...translationEs } },
+            hi: { translation: { ...translationHi } },
+            id: { translation: { ...translationId } },
+            ja: { translation: { ...translationJa } },
+            pt: { translation: { ...translationPt } },
+            th: { translation: { ...translationTh } },
+            tr: { translation: { ...translationTr } }
         },
-        supportedLngs: ["en", "ja"]
+        supportedLngs: ["en", "ja", "es", "pt", "tr", "th", "id", "hi"]
     });
 
     onLanguageChanged();
