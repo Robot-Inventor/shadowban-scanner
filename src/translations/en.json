@@ -2,7 +2,7 @@
     "languageCode": "en",
     "url": "https://shadowban-scanner.roboin.io/en/",
     "title": "Shadowban Scanner for Twitter / X",
-    "description": "The official site for the Shadowban Scanner extension, which detects shadowbans and sensitive content flags on Twitter (X).",
+    "description": "Shadowban Scanner is a privacy-first browser extension for Twitter (X) that detects shadowbans, sensitive-content flags, age restrictions, and country blocks on accounts and tweets.",
     "ogImage": "https://shadowban-scanner.roboin.io/image/ogp_en.png",
     "topImage": "/image/top-en.svg",
     "userCountSurpassed": "{{count, number}}+ Users 🎉",
