@@ -2,7 +2,7 @@
     "languageCode": "ja",
     "url": "https://shadowban-scanner.roboin.io/ja/",
     "title": "Shadowban Scanner for Twitter / X",
-    "description": "Twitter（X）のシャドウバンやセンシティブ判定を検出できる拡張機能「Shadowban Scanner」の公式サイトです。",
+    "description": "Shadowban Scannerはプライバシー重視のTwitter（X）向けブラウザー拡張機能です。アカウントやツイートのシャドウバン、センシティブ判定、年齢制限、国別ブロックを検出します。",
     "ogImage": "https://shadowban-scanner.roboin.io/image/ogp_ja.png",
     "topImage": "/image/top-ja.svg",
     "userCountSurpassed": "{{count, number}}ユーザー突破 🎉",
