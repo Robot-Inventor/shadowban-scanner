@@ -44,7 +44,7 @@
     "doINeedAnAccountForShadowbanScanner": "क्या Shadowban Scanner इस्तेमाल करने के लिए खाता चाहिए?",
     "doINeedAnAccountForShadowbanScannerAnswer": "नहीं, Shadowban Scanner उपयोग करने के लिए खाता बनाने की ज़रूरत नहीं है। लेकिन X इस्तेमाल करने के लिए आपको X खाता चाहिए।",
     "howDoesShadowbanScannerEnsureSafety": "Shadowban Scanner सुरक्षा कैसे सुनिश्चित करता है?",
-    "howDoesShadowbanScannerEnsureSafetyAnswer": "Shadowban Scanner ओपन सोर्स है और इसका सोर्स कोड सार्वजनिक है, इसलिए कोई भी इसे समीक्षा कर सकता है। इसके अलावा, मैं उपयोगकर्ता सुरक्षा के लिए विभिन्न प्रयास कर रहा हूँ। विवरण के लिए \\\"<a href=\"https://roboin.io/article/2024/08/24/how-does-shadowban-scanner-protect-user-privacy-and-safety/\" target=\"_blank\">Shadowban Scanner की सुरक्षा प्रतिबद्धता (जापानी)</a>\\\" देखें।",
+    "howDoesShadowbanScannerEnsureSafetyAnswer": "Shadowban Scanner ओपन सोर्स है और इसका सोर्स कोड सार्वजनिक है, इसलिए कोई भी इसे समीक्षा कर सकता है। इसके अलावा, मैं उपयोगकर्ता सुरक्षा के लिए विभिन्न प्रयास कर रहा हूँ। विवरण के लिए \"<a href=\"https://roboin.io/article/2024/08/24/how-does-shadowban-scanner-protect-user-privacy-and-safety/\" target=\"_blank\">Shadowban Scanner की सुरक्षा प्रतिबद्धता (जापानी)</a>\" देखें।",
     "isTheSourceCodePubliclyAvailable": "क्या Shadowban Scanner का सोर्स कोड सार्वजनिक है?",
     "isTheSourceCodePubliclyAvailableAnswer": "हाँ, Shadowban Scanner का पूरा सोर्स कोड <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub</a> पर सार्वजनिक है।",
     "privacyPolicy": "गोपनीयता नीति",
