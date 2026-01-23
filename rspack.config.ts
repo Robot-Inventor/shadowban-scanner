@@ -99,7 +99,7 @@ const config = defineConfig({
             }
         }),
         new HtmlRspackPlugin({
-            template: "./src/html/index.html",
+            template: "./src/download/html/index.html",
             filename: "./download/index.html",
             minify: true,
             chunks: ["js/redirect.js"]
