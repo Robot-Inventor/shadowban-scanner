@@ -13,6 +13,12 @@ import Swal from "sweetalert2";
 import { isNonEmptyArray } from "@robot-inventor/ts-utils";
 import translationEn from "../translations/en.json";
 import translationJa from "../translations/ja.json";
+import translationEs from "../translations/es.json";
+import translationPt from "../translations/pt.json";
+import translationTr from "../translations/tr.json";
+import translationTh from "../translations/th.json";
+import translationId from "../translations/id.json";
+import translationHi from "../translations/hi.json";
 
 declare global {
     interface Window {
@@ -230,9 +236,15 @@ const main = async (): Promise<void> => {
         fallbackLng: "en",
         resources: {
             en: { translation: { ...translationEn } },
-            ja: { translation: { ...translationJa } }
+            ja: { translation: { ...translationJa } },
+            es: { translation: { ...translationEs } },
+            pt: { translation: { ...translationPt } },
+            tr: { translation: { ...translationTr } },
+            th: { translation: { ...translationTh } },
+            id: { translation: { ...translationId } },
+            hi: { translation: { ...translationHi } }
         },
-        supportedLngs: ["en", "ja"]
+        supportedLngs: ["en", "ja", "es", "pt", "tr", "th", "id", "hi"]
     });
 
     onLanguageChanged();
