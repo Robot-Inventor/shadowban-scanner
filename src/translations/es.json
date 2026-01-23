@@ -16,7 +16,7 @@
     "detectTweetsSensitiveFlagsAndAgeRestrictions": "Detecta etiquetas de contenido delicado y restricciones de edad en publicaciones",
     "detectTweetsSensitiveFlagsAndAgeRestrictionsDescription": "Comprueba si las publicaciones están marcadas como contenido delicado o tienen restricciones de edad.",
     "detectSensitiveFlagsInProfileMedia": "Detecta etiquetas de contenido delicado en los medios del perfil",
-    "detectSensitiveFlagsInProfileMediaDescription": "Verifica si los medios del perfil de tu cuenta de Twitter están marcados como contenido delicado.",
+    "detectSensitiveFlagsInProfileMediaDescription": "Verifica si los medios del perfil de tu cuenta de X están marcados como contenido delicado.",
     "detectCountriesBlockingYourAccount": "Detecta países que bloquean tu cuenta",
     "detectCountriesBlockingYourAccountDescription": "Algunos países pueden bloquear cuentas por razones legales. Comprueba si algún país bloquea tu cuenta e identifica cuáles son.",
     "addButtonToShowHiddenTweets": "Añade botones para mostrar publicaciones ocultas",
