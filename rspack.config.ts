@@ -100,6 +100,12 @@ const config = defineConfig({
         }),
         new HtmlRspackPlugin({
             template: "./src/html/index.html",
+            filename: "./download/index.html",
+            minify: true,
+            chunks: ["js/redirect.js"]
+        }),
+        new HtmlRspackPlugin({
+            template: "./src/html/index.html",
             filename: "./es/index.html",
             minify: true,
             chunks: ["js/script.js"],
@@ -151,12 +157,6 @@ const config = defineConfig({
             templateParameters: {
                 ...translationHi
             }
-        }),
-        new HtmlRspackPlugin({
-            template: "./src/html/index.html",
-            filename: "./download/index.html",
-            minify: true,
-            chunks: ["js/redirect.js"]
         }),
         new ForkTsCheckerWebpackPlugin()
     ]
