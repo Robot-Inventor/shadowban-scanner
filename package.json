@@ -10,7 +10,7 @@
   "dependencies": {
     "@robot-inventor/eslint-config": "^11.0.0",
     "@robot-inventor/ts-utils": "^0.8.0",
-    "eslint": "^9.1.1",
+    "eslint": "^10.0.0",
     "i18next": "^25.0.0",
     "i18next-browser-languagedetector": "^8.0.0",
     "prettier": "^3.2.5",
