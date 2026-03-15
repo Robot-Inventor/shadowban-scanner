@@ -120,16 +120,11 @@ class Core {
      */
     private timelineObserverCallback(): void {
         const cellInnerDivs = document.querySelectorAll<HTMLElement>(
-            `[data-testid='cellInnerDiv']:not([${CHECKED_DATA_ATTRIBUTE}])`
+            `[data-testid='cellInnerDiv']:has(a[href='https://help.twitter.com/rules-and-policies/notices-on-twitter']):not([${CHECKED_DATA_ATTRIBUTE}])`
         );
         for (const cellInnerDiv of cellInnerDivs) {
             cellInnerDiv.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
-            const isTombstone = Boolean(
-                cellInnerDiv.querySelector("a[href='https://help.twitter.com/rules-and-policies/notices-on-twitter']")
-            );
-            if (isTombstone) {
-                this.necromancer(cellInnerDiv);
-            }
+            this.necromancer(cellInnerDiv);
         }
     }
 }
