@@ -24,8 +24,8 @@ interface TweetAnalysisResult extends ProfileAnalysisResult {
 
 const analyzeProfileProps = (props: UserProps): ProfileAnalysisResult => {
     const possiblySensitive = Boolean(props.possibly_sensitive);
-    const sensitiveMediaInProfile = Boolean(
-        ["sensitive_media", "offensive_profile_content"].includes(props.profile_interstitial_type)
+    const sensitiveMediaInProfile = ["sensitive_media", "offensive_profile_content"].includes(
+        props.profile_interstitial_type
     );
     const withheldInCountries = props.withheld_in_countries;
     const shadowbanned = possiblySensitive || sensitiveMediaInProfile;
