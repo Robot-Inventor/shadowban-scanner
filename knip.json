@@ -1,6 +1,6 @@
 {
     "project": ["src/**/*.ts", "script/**/*.ts"],
-    "entry": ["src/ts/background.ts", "src/ts/contentScript.ts", "src/ts/userScript/*.ts", "script/**/*.ts"],
+    "entry": ["src/ts/userScript/*.ts", "script/**/*.ts"],
     "ignoreDependencies": ["web-ext"],
     "ignore": ["tsconfig.json"]
 }
