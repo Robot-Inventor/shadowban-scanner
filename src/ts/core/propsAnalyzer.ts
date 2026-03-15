@@ -79,14 +79,19 @@ const analyzeTombstoneProps = (props: [CellInnerDivProps, TombstoneGrandchildPro
     // eslint-disable-next-line no-underscore-dangle, no-undefined
     if (!cellInnerDivProps.children._owner) return undefined;
 
-    // eslint-disable-next-line no-undefined
-    if (grandchildProps.children[0].props.entry.conversationPosition.showReplyContext) return undefined;
+    const grandchildPropsChildren = grandchildProps.children;
+    if (
+        (Array.isArray(grandchildPropsChildren) ? grandchildPropsChildren[0] : grandchildPropsChildren).props.entry
+            .conversationPosition.showReplyContext
+    ) {
+        // eslint-disable-next-line no-undefined
+        return undefined;
+    }
 
     // eslint-disable-next-line no-underscore-dangle
     const { key } = cellInnerDivProps.children._owner;
-    // Extract tweet ID from `conversationthread-${string}-tweet-${string}`
-    // eslint-disable-next-line prefer-destructuring
-    const tweetId = key.split("-")[3];
+    // Extract tweet ID from `conversationthread-${string}-tweet-${string}` or `tweet-${string}`
+    const tweetId = key.split("-").pop();
     return tweetId;
 };
 
