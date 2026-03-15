@@ -7,7 +7,7 @@ import {
 } from "@rspack/core";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import LicensePlugin from "webpack-license-plugin";
-import UnPluginTypia from "@ryoppippi/unplugin-typia/rspack";
+import UnPluginTypia from "@typia/unplugin/rspack";
 import { defineConfig } from "@rspack/cli";
 import { exec } from "child_process";
 import { glob } from "glob";
