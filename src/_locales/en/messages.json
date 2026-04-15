@@ -39,7 +39,7 @@
         "message": "🚫Account may be shadowbanned or flagged as sensitive"
     },
     "accountHasGraduatedAccess": {
-        "message": "✅Account has graduated access"
+        "message": "✅Account has graduated access and is not subject to these limitations"
     },
     "accountDoesNotHaveGraduatedAccess": {
         "message": "🚫Account does not have graduated access, so its reach may be limited while X evaluates authenticity"
