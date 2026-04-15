@@ -24,6 +24,7 @@ interface TweetProps {
     possibly_sensitive?: boolean | null;
     possibly_sensitive_editable?: boolean | null;
     user: {
+        has_graduated_access: boolean;
         possibly_sensitive?: boolean | null;
         screen_name: string;
         profile_interstitial_type: "" | "sensitive_media" | "fake_account" | "offensive_profile_content" | "timeout";
@@ -41,6 +42,18 @@ Shadowban Scannerでは、アカウントのシャドウバンを``TweetProps.us
 ``TweetProps.user.possibly_sensitive``はアカウント単位のセンシティブフラグです。このフラグが``true``の場合、たいていはポストが検索結果に表示されないシャドウバン状態にあります。ただし、まれに``true``でもシャドウバンされていなかったり、``false``なのにシャドウバンされていることもあります。いずれにしても、シャドウバンの状態にかかわらず、このフラグが``true``の場合はXによってセンシティブなアカウントとしてみなされていることを示します。（断定・Xの検索結果の調査により判断）
 
 フラグが``true``でもシャドウバンされていない場合、「ぎりぎりシャドウバンはされていないがセンシティブなアカウントとしてみなされている」と考えられます。（推定）
+
+### 段階的な利用制限（graduated access checks）の確認
+
+2023年10月のオーストラリア政府eSafety Commissionerの透明性レポートでは、Twitterが「graduated access checks」を実装しており、アカウントの真正性を評価している間はリーチを制限する場合があるとされています。（事実）
+
+``TweetProps.user.has_graduated_access``はこのgraduated access checkに対応する可能性が高いと考えられます。（推定・プロパティ名と実際の挙動により判断）
+
+Shadowban Scannerでは、アカウントの段階的な利用制限の有無を``TweetProps.user.has_graduated_access``の値で判定しています。この値が``false``の場合、Shadowban Scannerは、アカウントが段階的な利用制限の対象でリーチが制限される可能性があると表示します。（事実）
+
+#### 参考
+
+- [Basic Online Safety Expectations: Summary of industry responses to mandatory transparency notices, October 2023（p. 103）](https://www.esafety.gov.au/sites/default/files/2024-03/Basic-Online-Safety-Expectations-Full-Transparency-Report-October-2023_0.pdf?v=1718238463402)
 
 ### プロフィールのメディアのセンシティブ判定
 

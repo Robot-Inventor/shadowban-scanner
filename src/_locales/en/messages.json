@@ -23,6 +23,9 @@
     "thisUserIsShadowbanned": {
         "message": "This user may be shadowbanned, and their posts might not appear in search results."
     },
+    "accountMayHaveLimitedReachWhileAuthenticityIsChecked": {
+        "message": "This user's reach may be limited while X evaluates whether the account is operated authentically."
+    },
     "tweetShadowbanned": {
         "message": "This post is age-restricted and cannot be viewed by users under 18 or those who are not logged in. It may also not appear in search results."
     },
@@ -34,6 +37,12 @@
     },
     "accountIsShadowbannedOrFlaggedAsSensitive": {
         "message": "🚫Account may be shadowbanned or flagged as sensitive"
+    },
+    "accountHasGraduatedAccess": {
+        "message": "✅Account has graduated access"
+    },
+    "accountDoesNotHaveGraduatedAccess": {
+        "message": "⚠️Account does not have graduated access, so its reach may be limited while X evaluates authenticity"
     },
     "profileDoesNotContainSensitiveMedia": {
         "message": "✅Profile media is not flagged as sensitive"

@@ -23,6 +23,9 @@
     "thisUserIsShadowbanned": {
         "message": "이 사용자는 Shadowban되어 있을 가능성이 있어, 포스트가 검색 결과에 표시되지 않을 수도 있습니다."
     },
+    "accountMayHaveLimitedReachWhileAuthenticityIsChecked": {
+        "message": "X가 계정의 진위를 평가하는 동안 이 사용자의 도달 범위가 제한될 수 있습니다."
+    },
     "tweetShadowbanned": {
         "message": "이 포스트에는 연령 제한이 있어, 만 18세 미만의 사용자나 로그인하지 않은 사용자는 볼 수 없습니다. 또한, 검색 결과에 표시되지 않을 수도 있습니다."
     },
@@ -34,6 +37,12 @@
     },
     "accountIsShadowbannedOrFlaggedAsSensitive": {
         "message": "🚫계정이 셰도우밴되었거나, 또는 민감 플래그가 부여되었을 수 있습니다."
+    },
+    "accountHasGraduatedAccess": {
+        "message": "✅계정은 단계적 이용 제한의 대상이 아닙니다."
+    },
+    "accountDoesNotHaveGraduatedAccess": {
+        "message": "⚠️계정은 단계적 이용 제한의 대상이며, X가 진위를 평가하는 동안 도달 범위가 제한될 수 있습니다."
     },
     "profileDoesNotContainSensitiveMedia": {
         "message": "✅프로필의 미디어에 민감한 플래그가 부여되지 않았습니다."

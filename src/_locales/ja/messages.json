@@ -23,6 +23,9 @@
     "thisUserIsShadowbanned": {
         "message": "このユーザーはシャドウバンされている可能性があるため、ポストが検索結果に表示されないかもしれません。"
     },
+    "accountMayHaveLimitedReachWhileAuthenticityIsChecked": {
+        "message": "Xがアカウントの真正性を評価している間、このユーザーのリーチは制限される可能性があります。"
+    },
     "tweetShadowbanned": {
         "message": "このポストには年齢制限があり、18歳未満のユーザーやログインしていないユーザーは閲覧できません。また、検索結果に表示されない可能性があります。"
     },
@@ -34,6 +37,12 @@
     },
     "accountIsShadowbannedOrFlaggedAsSensitive": {
         "message": "🚫アカウントがシャドウバンされているか、センシティブフラグが付与されています"
+    },
+    "accountHasGraduatedAccess": {
+        "message": "✅アカウントは段階的な利用制限の対象ではありません"
+    },
+    "accountDoesNotHaveGraduatedAccess": {
+        "message": "⚠️アカウントは段階的な利用制限の対象で、Xが真正性を評価している間はリーチが制限される可能性があります"
     },
     "profileDoesNotContainSensitiveMedia": {
         "message": "✅プロフィールのメディアにセンシティブフラグは付与されていません"
