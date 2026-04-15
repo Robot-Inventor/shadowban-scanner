@@ -23,6 +23,9 @@
     "thisUserIsShadowbanned": {
         "message": "此使用者可能已被 Shadowban，因此他們發佈的貼文可能不會顯示在搜尋結果中。"
     },
+    "accountMayHaveLimitedReachWhileAuthenticityIsChecked": {
+        "message": "當 X 正在評估此帳號是否由真實使用者操作時，此使用者的觸及範圍可能會受到限制。"
+    },
     "tweetShadowbanned": {
         "message": "此貼文有年齡限制，未滿 18 歲或未登入的使用者將不會看到。此外，它可能不會出現在搜尋結果中。"
     },
@@ -34,6 +37,12 @@
     },
     "accountIsShadowbannedOrFlaggedAsSensitive": {
         "message": "🚫此使用者可能已被 Shadowban 或標記為敏感內容。"
+    },
+    "accountHasGraduatedAccess": {
+        "message": "✅此使用者不屬於分階段使用限制的對象。"
+    },
+    "accountDoesNotHaveGraduatedAccess": {
+        "message": "🚫此使用者屬於分階段使用限制的對象，因此 X 在評估其真實性期間，觸及範圍可能會受到限制。"
     },
     "profileDoesNotContainSensitiveMedia": {
         "message": "✅此使用者的個人檔案媒體（頭像或標頭圖片）沒有標記為敏感內容。"

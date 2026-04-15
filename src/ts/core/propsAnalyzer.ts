@@ -5,6 +5,7 @@ import type { UserProps } from "twi-ext";
 interface ProfileAnalysisResult {
     user: {
         hasAnyProblem: boolean;
+        hasGraduatedAccess: boolean;
         sensitiveMediaInProfile: boolean;
         screenName: string;
         shadowbanned: boolean;
@@ -23,6 +24,7 @@ interface TweetAnalysisResult extends ProfileAnalysisResult {
 }
 
 const analyzeProfileProps = (props: UserProps): ProfileAnalysisResult => {
+    const hasGraduatedAccess = props.has_graduated_access;
     const possiblySensitive = Boolean(props.possibly_sensitive);
     const sensitiveMediaInProfile = ["sensitive_media", "offensive_profile_content"].includes(
         props.profile_interstitial_type
@@ -33,7 +35,8 @@ const analyzeProfileProps = (props: UserProps): ProfileAnalysisResult => {
     return {
         user: {
             // eslint-disable-next-line no-magic-numbers
-            hasAnyProblem: shadowbanned || withheldInCountries.length > 0,
+            hasAnyProblem: shadowbanned || withheldInCountries.length > 0 || !hasGraduatedAccess,
+            hasGraduatedAccess,
             isLoggedInUser: Boolean(document.querySelector('[data-testid="editProfileButton"')),
             screenName: props.screen_name,
             sensitiveMediaInProfile,
@@ -57,7 +60,7 @@ const analyzeTweetProps = (parser: TweetParser): TweetAnalysisResult => {
 
     if (ageRestriction || userAnalysisResult.user.shadowbanned) {
         searchability = "unsearchable";
-    } else if (possiblySensitive) {
+    } else if (possiblySensitive || !userAnalysisResult.user.hasGraduatedAccess) {
         searchability = "possiblyUnsearchable";
     }
 

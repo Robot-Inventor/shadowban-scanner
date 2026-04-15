@@ -4,13 +4,6 @@ import type { SbsMessageDetails } from "../components/sbsMessage";
 import type { TranslationKey } from "../../types/common/translator";
 
 const summarizeForTweet = (analyzer: TweetAnalysisResult): TranslationKey => {
-    const tweetHasProblem =
-        analyzer.user.shadowbanned ||
-        analyzer.user.sensitiveMediaInProfile ||
-        Boolean(analyzer.user.withheldInCountries.length) ||
-        analyzer.tweet.possiblySensitive;
-    if (!tweetHasProblem) return "tweetNoProblem";
-
     if (analyzer.user.withheldInCountries.length) return "accountIsBlockedInSomeCountries";
 
     if (analyzer.user.shadowbanned || analyzer.user.sensitiveMediaInProfile) {
@@ -23,7 +16,15 @@ const summarizeForTweet = (analyzer: TweetAnalysisResult): TranslationKey => {
         return "accountShadowbanned";
     }
 
-    return analyzer.tweet.ageRestriction ? "tweetShadowbanned" : "tweetFlaggedAsSensitive";
+    if (analyzer.tweet.possiblySensitive) {
+        return analyzer.tweet.ageRestriction ? "tweetShadowbanned" : "tweetFlaggedAsSensitive";
+    }
+
+    if (!analyzer.user.hasGraduatedAccess) {
+        return "accountMayHaveLimitedReachWhileAuthenticityIsChecked";
+    }
+
+    return "tweetNoProblem";
 };
 
 const formatCountryList = (countries: string[]): string => {
@@ -45,6 +46,10 @@ const getAccountDetails = (analyzer: TweetAnalysisResult | ProfileAnalysisResult
         ? "accountIsShadowbannedOrFlaggedAsSensitive"
         : "accountIsNotFlaggedAsSensitive";
 
+    const graduatedAccess = analyzer.user.hasGraduatedAccess
+        ? "accountHasGraduatedAccess"
+        : "accountDoesNotHaveGraduatedAccess";
+
     const sensitiveMediaInProfile = analyzer.user.sensitiveMediaInProfile
         ? "profileContainsSensitiveMedia"
         : "profileDoesNotContainSensitiveMedia";
@@ -56,7 +61,7 @@ const getAccountDetails = (analyzer: TweetAnalysisResult | ProfileAnalysisResult
           } as const)
         : "accountIsNotWithheldInCountries";
 
-    return [accountStatus, sensitiveMediaInProfile, accountWithheldInCountries];
+    return [accountStatus, graduatedAccess, sensitiveMediaInProfile, accountWithheldInCountries];
 };
 
 const getTweetDetails = (analyzer: TweetAnalysisResult): SbsMessageDetails => {
@@ -85,6 +90,9 @@ const getTranslationKeyFromProfileAnalyzer = (
         summary = "thisUserIsShadowbanned";
     } else if (analyzer.user.withheldInCountries.length) {
         summary = "accountIsBlockedInSomeCountries";
+        // eslint-disable-next-line no-negated-condition
+    } else if (!analyzer.user.hasGraduatedAccess) {
+        summary = "accountMayHaveLimitedReachWhileAuthenticityIsChecked";
     } else {
         summary = "thisUserIsNotShadowbanned";
     }
