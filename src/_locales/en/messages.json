@@ -42,7 +42,7 @@
         "message": "✅Account has graduated access"
     },
     "accountDoesNotHaveGraduatedAccess": {
-        "message": "⚠️Account does not have graduated access, so its reach may be limited while X evaluates authenticity"
+        "message": "🚫Account does not have graduated access, so its reach may be limited while X evaluates authenticity"
     },
     "profileDoesNotContainSensitiveMedia": {
         "message": "✅Profile media is not flagged as sensitive"

@@ -42,7 +42,7 @@
         "message": "✅此账户不属于分阶段使用限制的对象。"
     },
     "accountDoesNotHaveGraduatedAccess": {
-        "message": "⚠️此账户属于分阶段使用限制的对象，因此 X 在评估其真实性期间，触达范围可能会受到限制。"
+        "message": "🚫此账户属于分阶段使用限制的对象，因此 X 在评估其真实性期间，触达范围可能会受到限制。"
     },
     "profileDoesNotContainSensitiveMedia": {
         "message": "✅此账户的个人资料媒体（头像或头图）没有标记为敏感内容。"

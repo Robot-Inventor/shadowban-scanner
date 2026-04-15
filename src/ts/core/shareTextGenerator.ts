@@ -5,7 +5,7 @@ const TRANSLATIONS = {
     en: {
         accountFlaggedAsSensitiveOrShadowbanned: "🚫Account flagged as sensitive or shadowbanned",
         accountNotFlaggedAsSensitive: "✅Account not flagged as sensitive",
-        accountUnderGraduatedAccessShort: "⚠️Account is under graduated access restrictions and may have limited reach",
+        accountUnderGraduatedAccessShort: "🚫Account is under graduated access restrictions and may have limited reach",
         sensitiveFlagOnProfileMedia: "🚫Sensitive flag on profile media",
         noSensitiveFlagOnProfileMedia: "✅No sensitive flag on profile media",
         accountBlockedInSomeCountries: "🚫Account blocked in some countries",
@@ -23,7 +23,7 @@ const TRANSLATIONS = {
     ja: {
         accountFlaggedAsSensitiveOrShadowbanned: "🚫アカウントにセンシティブ判定またはシャドウバンあり",
         accountNotFlaggedAsSensitive: "✅アカウントにセンシティブ判定なし",
-        accountUnderGraduatedAccessShort: "⚠️アカウントは段階的な利用制限とリーチ制限の対象",
+        accountUnderGraduatedAccessShort: "🚫アカウントは段階的な利用制限とリーチ制限の対象",
         sensitiveFlagOnProfileMedia: "🚫プロフィールのメディアにセンシティブ判定あり",
         noSensitiveFlagOnProfileMedia: "✅プロフィールのメディアにセンシティブ判定なし",
         accountBlockedInSomeCountries: "🚫アカウントをブロックしている国あり",

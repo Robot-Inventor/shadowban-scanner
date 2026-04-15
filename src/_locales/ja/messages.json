@@ -42,7 +42,7 @@
         "message": "✅アカウントは段階的な利用制限の対象ではありません"
     },
     "accountDoesNotHaveGraduatedAccess": {
-        "message": "⚠️アカウントは段階的な利用制限の対象で、Xが真正性を評価している間はリーチが制限される可能性があります"
+        "message": "🚫アカウントは段階的な利用制限の対象で、Xが真正性を評価している間はリーチが制限される可能性があります"
     },
     "profileDoesNotContainSensitiveMedia": {
         "message": "✅プロフィールのメディアにセンシティブフラグは付与されていません"

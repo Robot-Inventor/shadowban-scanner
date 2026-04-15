@@ -42,7 +42,7 @@
         "message": "✅계정은 단계적 이용 제한의 대상이 아닙니다."
     },
     "accountDoesNotHaveGraduatedAccess": {
-        "message": "⚠️계정은 단계적 이용 제한의 대상이며, X가 진위를 평가하는 동안 도달 범위가 제한될 수 있습니다."
+        "message": "🚫계정은 단계적 이용 제한의 대상이며, X가 진위를 평가하는 동안 도달 범위가 제한될 수 있습니다."
     },
     "profileDoesNotContainSensitiveMedia": {
         "message": "✅프로필의 미디어에 민감한 플래그가 부여되지 않았습니다."

@@ -42,7 +42,7 @@
         "message": "✅此使用者不屬於分階段使用限制的對象。"
     },
     "accountDoesNotHaveGraduatedAccess": {
-        "message": "⚠️此使用者屬於分階段使用限制的對象，因此 X 在評估其真實性期間，觸及範圍可能會受到限制。"
+        "message": "🚫此使用者屬於分階段使用限制的對象，因此 X 在評估其真實性期間，觸及範圍可能會受到限制。"
     },
     "profileDoesNotContainSensitiveMedia": {
         "message": "✅此使用者的個人檔案媒體（頭像或標頭圖片）沒有標記為敏感內容。"
