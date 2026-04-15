@@ -90,6 +90,7 @@ const getTranslationKeyFromProfileAnalyzer = (
         summary = "thisUserIsShadowbanned";
     } else if (analyzer.user.withheldInCountries.length) {
         summary = "accountIsBlockedInSomeCountries";
+        // eslint-disable-next-line no-negated-condition
     } else if (!analyzer.user.hasGraduatedAccess) {
         summary = "accountMayHaveLimitedReachWhileAuthenticityIsChecked";
     } else {
