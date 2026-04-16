@@ -7,18 +7,14 @@ const summarizeForTweet = (analyzer: TweetAnalysisResult): TranslationKey => {
     if (analyzer.user.withheldInCountries.length) return "accountIsBlockedInSomeCountries";
 
     if (analyzer.user.shadowbanned || analyzer.user.sensitiveMediaInProfile) {
-        if (analyzer.tweet.possiblySensitive) {
-            return analyzer.tweet.ageRestriction
-                ? "accountAndTweetShadowbanned"
-                : "accountShadowbannedAndTweetFlaggedAsSensitive";
-        }
+        if (analyzer.tweet.ageRestriction) return "accountAndTweetShadowbanned";
+        if (analyzer.tweet.possiblySensitive) return "accountShadowbannedAndTweetFlaggedAsSensitive";
 
         return "accountShadowbanned";
     }
 
-    if (analyzer.tweet.possiblySensitive) {
-        return analyzer.tweet.ageRestriction ? "tweetShadowbanned" : "tweetFlaggedAsSensitive";
-    }
+    if (analyzer.tweet.ageRestriction) return "tweetShadowbanned";
+    if (analyzer.tweet.possiblySensitive) return "tweetFlaggedAsSensitive";
 
     if (!analyzer.user.hasGraduatedAccess) {
         return "accountMayHaveLimitedReachWhileAuthenticityIsChecked";
