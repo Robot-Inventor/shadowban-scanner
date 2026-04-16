@@ -29,7 +29,7 @@ const analyzeProfileProps = (props: UserProps): ProfileAnalysisResult => {
     const sensitiveMediaInProfile = ["sensitive_media", "offensive_profile_content"].includes(
         props.profile_interstitial_type
     );
-    const withheldInCountries = props.withheld_in_countries;
+    const withheldInCountries = Array.isArray(props.withheld_in_countries) ? props.withheld_in_countries : [];
     const shadowbanned = possiblySensitive || sensitiveMediaInProfile;
 
     return {
