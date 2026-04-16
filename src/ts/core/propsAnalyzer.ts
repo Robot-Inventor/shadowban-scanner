@@ -46,6 +46,7 @@ const analyzeProfileProps = (props: UserProps): ProfileAnalysisResult => {
     };
 };
 
+// eslint-disable-next-line max-statements
 const analyzeTweetProps = (parser: TweetParser): TweetAnalysisResult => {
     const props = parser.parse();
 
