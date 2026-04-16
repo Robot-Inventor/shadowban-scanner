@@ -63,7 +63,7 @@ const analyzeTweetProps = (parser: TweetParser): TweetAnalysisResult => {
     if (ageRestriction || userAnalysisResult.user.shadowbanned) {
         searchability = "unsearchable";
     } else if (possiblySensitive || !userAnalysisResult.user.hasGraduatedAccess) {
-        searchability = "possiblyUnsearchable";
+        searchability = "unsearchable";
     }
 
     return {
