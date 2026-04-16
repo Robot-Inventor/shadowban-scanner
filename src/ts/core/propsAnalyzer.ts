@@ -46,6 +46,7 @@ const analyzeProfileProps = (props: UserProps): ProfileAnalysisResult => {
     };
 };
 
+// eslint-disable-next-line max-statements
 const analyzeTweetProps = (parser: TweetParser): TweetAnalysisResult => {
     const props = parser.parse();
 
@@ -53,8 +54,9 @@ const analyzeTweetProps = (parser: TweetParser): TweetAnalysisResult => {
     const possiblySensitive = Boolean(props.possibly_sensitive);
     // Ref: https://github.com/Robot-Inventor/shadowban-scanner/issues/16
     const possiblySensitiveEditable = !(props.possibly_sensitive_editable === false);
-
-    const ageRestriction = possiblySensitive && !possiblySensitiveEditable;
+    const hasBlurredImageInterstitialOpacity =
+        typeof props.mediaVisibilityResults?.blurred_image_interstitial?.opacity === "number";
+    const ageRestriction = (possiblySensitive && !possiblySensitiveEditable) || hasBlurredImageInterstitialOpacity;
 
     let searchability: TweetAnalysisResult["tweet"]["searchability"] = "searchable";
 
