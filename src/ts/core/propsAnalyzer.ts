@@ -24,7 +24,7 @@ interface TweetAnalysisResult extends ProfileAnalysisResult {
 }
 
 const analyzeProfileProps = (props: UserProps): ProfileAnalysisResult => {
-    const hasGraduatedAccess = props.has_graduated_access;
+    const hasGraduatedAccess = props.has_graduated_access !== false;
     const possiblySensitive = Boolean(props.possibly_sensitive);
     const sensitiveMediaInProfile = ["sensitive_media", "offensive_profile_content"].includes(
         props.profile_interstitial_type
