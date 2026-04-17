@@ -29,11 +29,11 @@ interface TweetProps {
         };
     };
     user: {
-        has_graduated_access: boolean;
+        has_graduated_access?: boolean;
         possibly_sensitive?: boolean | null;
         screen_name: string;
         profile_interstitial_type: "" | "sensitive_media" | "fake_account" | "offensive_profile_content" | "timeout";
-        withheld_in_countries: string[]
+        withheld_in_countries?: string[]
     };
 }
 ```
