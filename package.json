@@ -20,6 +20,7 @@
     "@robot-inventor/tsconfig-base": "^7.0.0",
     "@rspack/cli": "^2.0.0",
     "@rspack/core": "^2.0.0",
+    "@rspack/dev-server": "^2.0.0",
     "cross-env": "^10.0.0",
     "css-loader": "^7.1.2",
     "fork-ts-checker-webpack-plugin": "^9.0.2",
