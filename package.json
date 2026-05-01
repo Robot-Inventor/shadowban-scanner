@@ -60,7 +60,7 @@
     "cross-env": "^10.0.0",
     "fork-ts-checker-webpack-plugin": "^9.0.2",
     "knip": "^6.0.0",
-    "ts-patch": "^3.3.0",
+    "ts-patch": "^4.0.0",
     "typia": "^12.0.1"
   },
   "overrides": {
