@@ -1,6 +1,6 @@
 import * as colors from "colors/safe.js";
 import { type Options as LinterOptions, createInstance } from "addons-linter";
-import { execSync } from "child_process";
+import { execSync } from "node:child_process";
 
 const ERROR_EXIT_CODE = 1;
 
