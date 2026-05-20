@@ -55,6 +55,7 @@
     "@rspack/cli": "^2.0.0",
     "@rspack/core": "^2.0.0",
     "@types/addons-linter": "^6.16.0",
+    "@types/node": "^25.9.1",
     "@types/webextension-polyfill": "^0.12.0",
     "@typia/unplugin": "^12.0.1",
     "cross-env": "^10.0.0",

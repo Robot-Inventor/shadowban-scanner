@@ -9,9 +9,9 @@ import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import LicensePlugin from "webpack-license-plugin";
 import UnPluginTypia from "@typia/unplugin/rspack";
 import { defineConfig } from "@rspack/cli";
-import { exec } from "child_process";
+import { exec } from "node:child_process";
 import { glob } from "glob";
-import path from "path";
+import path from "node:path";
 import { watch } from "chokidar";
 
 const userScripts = glob.sync("./src/ts/userScript/*.user.ts");

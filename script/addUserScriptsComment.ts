@@ -1,8 +1,8 @@
-import fs from "fs";
+import fs from "node:fs";
 import { glob } from "glob";
 import { isPlainObject } from "@robot-inventor/ts-utils";
 import packagejson from "../package.json" with { type: "json" };
-import path from "path";
+import path from "node:path";
 
 // eslint-disable-next-line no-console
 console.log("Adding userScript comments...");

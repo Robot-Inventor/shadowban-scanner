@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 
 import manifestV2 from "../src/manifest/v2.json" with { type: "json" };
 import manifestV3 from "../src/manifest/v3.json" with { type: "json" };

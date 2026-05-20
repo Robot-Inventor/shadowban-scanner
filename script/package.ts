@@ -1,4 +1,4 @@
-import { execSync } from "child_process";
+import { execSync } from "node:child_process";
 
 // eslint-disable-next-line no-console
 console.log("Building...");
