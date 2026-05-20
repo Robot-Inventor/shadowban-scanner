@@ -4,8 +4,8 @@
     "declaration": false,
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
-    "isolatedModules": true,
     "rootDir": ".",
+    "types": ["node"],
     "plugins": [
       {
         "transform": "typia/lib/transform"
