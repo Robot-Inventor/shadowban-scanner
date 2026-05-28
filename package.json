@@ -44,7 +44,7 @@
     "style-loader": "^4.0.0",
     "twi-ext": "^1.0.0",
     "typescript": "^6.0.0",
-    "web-ext": "^10.0.0",
+    "web-ext": "^10.3.0",
     "webextension-polyfill": "^0.12.0",
     "webpack-license-plugin": "^4.4.2"
   },
