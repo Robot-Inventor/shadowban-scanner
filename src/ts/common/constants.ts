@@ -9,8 +9,8 @@ const SHOW_RELEASE_NOTES = true;
 
 const ONBOARDING_PATH = "html/initialSetup.html";
 const RELEASE_NOTE_URL = {
-    en: "https://roboin.io/article/en/2026/04/17/shadowban-scanner-v4-1-0/",
-    ja: "https://roboin.io/article/2026/04/17/shadowban-scanner-v4-1-0"
+    en: "https://roboin.io/article/en/2026/06/09/shadowban-scanner-v4-1-1/",
+    ja: "https://roboin.io/article/2026/06/09/shadowban-scanner-v4-1-1/"
 } as const;
 const INSTRUCTION_URL = {
     en: "https://roboin.io/article/2023/09/30/detect-twitter-shadowban/en/#usage",
