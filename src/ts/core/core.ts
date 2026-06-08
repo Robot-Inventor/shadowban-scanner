@@ -65,7 +65,8 @@ class Core {
          */
         this.previousMessageWrapper?.remove();
         this.previousMessageWrapper = sbsMessageWrapper;
-        sbsMessageWrapper.insertAdjacentElement(bioOrUserName, "afterend");
+        const bioOrUserNameGrandParent = (bioOrUserName.parentElement?.parentElement ?? bioOrUserName) as HTMLElement;
+        sbsMessageWrapper.insertAdjacentElement(bioOrUserNameGrandParent, "afterend");
     }
 
     // eslint-disable-next-line max-statements
