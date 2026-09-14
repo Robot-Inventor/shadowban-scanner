@@ -1,4 +1,4 @@
-// eslint-disable-next-line import-x/no-unassigned-import
+// oxlint-disable-next-line import-x/no-unassigned-import
 import "../css/style.css";
 import {
     EXTENSION_STORE_LINKS,
@@ -15,10 +15,10 @@ import translationEn from "../translations/en.json";
 import translationEs from "../translations/es.json";
 import translationHi from "../translations/hi.json";
 import translationId from "../translations/id.json";
+// oxlint-disable-next-line import/max-dependencies
 import translationJa from "../translations/ja.json";
 import translationPt from "../translations/pt.json";
 import translationTh from "../translations/th.json";
-// eslint-disable-next-line import-x/max-dependencies
 import translationTr from "../translations/tr.json";
 
 declare global {
@@ -55,7 +55,7 @@ const initializeDownloadButtons = (): void => {
 
         button.textContent = downloadText;
 
-        // eslint-disable-next-line @typescript-eslint/no-misused-promises
+        // oxlint-disable-next-line @typescript-eslint/no-misused-promises
         button.addEventListener("click", async () => {
             const isMobile = Boolean(/iPhone|Android.+Mobile/u.exec(navigator.userAgent));
             if (
@@ -84,7 +84,7 @@ const initializeDownloadButtons = (): void => {
     });
 };
 
-// eslint-disable-next-line max-statements
+// oxlint-disable-next-line max-statements
 const initializeDownloadLinks = (): void => {
     const storeTypes = Object.keys(EXTENSION_STORE_LINKS) as ExtensionStoreType[];
 
@@ -112,7 +112,7 @@ const initializeDownloadLinks = (): void => {
     downloadLinksSection.appendChild(fragment);
 };
 
-// eslint-disable-next-line no-magic-numbers
+// oxlint-disable-next-line no-magic-numbers
 const easeOutQuart = (time: number): number => 1 - (1 - time) ** 4;
 
 interface AnimateCountOptions {
@@ -131,13 +131,13 @@ const animateCount = ({ elementId, endValue, duration, locale }: AnimateCountOpt
 
     const updateCount = (currentTime: number): void => {
         const elapsed = currentTime - startTime;
-        // eslint-disable-next-line no-magic-numbers
+        // oxlint-disable-next-line no-magic-numbers
         const time = Math.min(elapsed / duration, 1);
         const easedT = easeOutQuart(time);
         const current = Math.floor(easedT * (endValue - start) + start);
         targetElement.textContent = translate("userCountSurpassed", { count: current, lng: locale });
 
-        // eslint-disable-next-line no-magic-numbers
+        // oxlint-disable-next-line no-magic-numbers
         if (time < 1) {
             requestAnimationFrame(updateCount);
         }
@@ -199,7 +199,7 @@ const initializeLanguageSwitcher = (): void => {
     });
 };
 
-// eslint-disable-next-line max-lines-per-function
+// oxlint-disable-next-line max-lines-per-function
 const main = async (): Promise<void> => {
     const languageDetectionOrderDefault = [
         "querystring",
@@ -226,7 +226,7 @@ const main = async (): Promise<void> => {
         "sessionStorage"
     ];
 
-    // eslint-disable-next-line import-x/no-named-as-default-member
+    // oxlint-disable-next-line import-x/no-named-as-default-member
     await i18next.use(LanguageDetector).init({
         detection: {
             convertDetectedLanguage: (lng) => {
