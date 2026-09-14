@@ -1,4 +1,4 @@
-import typia from "typia";
+import { createIs } from "typia";
 
 type OSSLicenses = Array<{
     name: string;
@@ -9,6 +9,6 @@ type OSSLicenses = Array<{
     licenseText: string;
 }>;
 
-const isOSSLicenses = typia.createIs<OSSLicenses>();
+const isOSSLicenses = createIs<OSSLicenses>();
 
 export { type OSSLicenses, isOSSLicenses };

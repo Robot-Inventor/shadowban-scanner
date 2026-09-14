@@ -94,8 +94,7 @@ type DefinedSettingsKeys = (typeof SETTINGS_ITEMS)[number]["items"][number]["set
 type MissingKeys = Exclude<AllSettingsKeys, DefinedSettingsKeys>;
 
 // @ts-expect-error This is a type assertion to check if there are missing keys.
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-type _ =
+type __ =
     // This line break is necessary to ensure that type assertion errors are not ignored
     AssertType<MissingKeys, never>;
 

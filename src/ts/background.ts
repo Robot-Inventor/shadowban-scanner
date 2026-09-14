@@ -10,7 +10,7 @@ import { loadSettingsFromStorage } from "./common/settings";
  */
 const onUpdated = async (details: Runtime.OnInstalledDetailsType, isJapanese: boolean): Promise<void> => {
     const settings = await loadSettingsFromStorage();
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    // oxlint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!SHOW_RELEASE_NOTES || !settings.showReleaseNotes) return;
 
     // Do nothing while development

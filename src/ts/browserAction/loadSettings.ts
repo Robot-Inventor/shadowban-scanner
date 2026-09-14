@@ -1,18 +1,15 @@
-// eslint-disable-next-line import-x/no-unassigned-import
+// oxlint-disable-next-line import-x/no-unassigned-import
 import "../components/settingsItem";
-// eslint-disable-next-line import-x/no-unassigned-import
+// oxlint-disable-next-line import-x/no-unassigned-import
 import "../components/settingsDescription";
-// eslint-disable-next-line import-x/no-unassigned-import
+// oxlint-disable-next-line import-x/no-unassigned-import
 import "../components/settingsGroupTitle";
 import { SETTINGS_ITEMS, type SettingsData, type SettingsItemData } from "./settingsItems";
 import { i18n, runtime } from "webextension-polyfill";
 import { loadSettingsFromStorage, writeSettingsToStorage } from "../common/settings";
 import type { Settings } from "../../types/common/settings";
-// eslint-disable-next-line no-duplicate-imports
 import type { SettingsDescription } from "../components/settingsDescription";
-// eslint-disable-next-line no-duplicate-imports
 import type { SettingsGroupTitle } from "../components/settingsGroupTitle";
-// eslint-disable-next-line no-duplicate-imports
 import type { SettingsItem } from "../components/settingsItem";
 import { TRANSLATION_ATTRIBUTE } from "../common/constants";
 import { Translator } from "../common/translator";
@@ -49,12 +46,12 @@ const createGroupDescription = (translationKey: string): SettingsDescription => 
  * @param isLastItem Whether this is the last item
  * @returns The created settings item
  */
+// oxlint-disable-next-line max-params
 const createSettingsItem = (
     settingsItemData: SettingsItemData,
     checked: boolean,
     isFirstItem: boolean,
     isLastItem: boolean
-    // eslint-disable-next-line max-params
 ): SettingsItem => {
     const item = document.createElement("settings-item");
     item.settingsName = settingsItemData.settingsName;
@@ -91,9 +88,9 @@ const createItemsFromGroup = (settings: Settings, group: SettingsData[number]): 
     }
 
     for (const [index, item] of group.items.entries()) {
-        // eslint-disable-next-line no-magic-numbers
+        // oxlint-disable-next-line no-magic-numbers
         const isFirstItem = index === 0;
-        // eslint-disable-next-line no-magic-numbers
+        // oxlint-disable-next-line no-magic-numbers
         const isLastItem = index === group.items.length - 1;
         const settingsItem = createSettingsItem(item, settings[item.settingsName], isFirstItem, isLastItem);
         fragment.appendChild(settingsItem);

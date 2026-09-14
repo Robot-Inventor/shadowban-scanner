@@ -13,7 +13,7 @@ class SettingsGroupTitle extends LitElement {
         }
     `;
 
-    // eslint-disable-next-line class-methods-use-this
+    // oxlint-disable-next-line class-methods-use-this
     protected override render(): ReturnType<typeof html> {
         return html`
             <div class="settings-title">

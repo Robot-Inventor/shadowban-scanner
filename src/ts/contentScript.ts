@@ -4,7 +4,7 @@ import { DEFAULT_SETTINGS } from "./common/settings";
 import { Translator } from "./common/translator";
 import { isSettings } from "../types/common/settings";
 
-// eslint-disable-next-line max-statements
+// oxlint-disable-next-line max-statements
 const main = async (): Promise<void> => {
     const settings = await storage.local.get(DEFAULT_SETTINGS);
 
