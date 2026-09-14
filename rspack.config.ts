@@ -29,36 +29,30 @@ class RunCommandsPlugin {
     }
 
     private static updateManifest(): void {
-        exec(
-            "npx cross-env NODE_OPTIONS=--experimental-transform-types node ./script/copyManifest.ts",
-            (err, stdout) => {
-                if (err) {
-                    // eslint-disable-next-line no-console
-                    console.error(`Error: ${err.message}`);
-                } else {
-                    // eslint-disable-next-line no-console
-                    console.log(stdout);
-                }
+        exec("node ./script/copyManifest.ts", (err, stdout) => {
+            if (err) {
+                // eslint-disable-next-line no-console
+                console.error(`Error: ${err.message}`);
+            } else {
+                // eslint-disable-next-line no-console
+                console.log(stdout);
             }
-        );
+        });
     }
 
     private static updatePrivacyPolicy(callback?: () => void): void {
-        exec(
-            "npx cross-env NODE_OPTIONS=--experimental-transform-types node ./script/updatePrivacyPolicy.ts",
-            (err, stdout) => {
-                if (err) {
-                    // eslint-disable-next-line no-console
-                    console.error(`Error: ${err.message}`);
-                } else {
-                    // eslint-disable-next-line no-console
-                    console.log(stdout);
-                    if (callback) {
-                        callback();
-                    }
+        exec("node ./script/updatePrivacyPolicy.ts", (err, stdout) => {
+            if (err) {
+                // eslint-disable-next-line no-console
+                console.error(`Error: ${err.message}`);
+            } else {
+                // eslint-disable-next-line no-console
+                console.log(stdout);
+                if (callback) {
+                    callback();
                 }
             }
-        );
+        });
     }
 
     // eslint-disable-next-line max-lines-per-function
@@ -75,7 +69,7 @@ class RunCommandsPlugin {
 
             if (!manifestWatcher || !typeWatcher || !localesWatcher) {
                 manifestWatcher = watch("src/manifest/", {
-                    ignored: (pathString, stats) => Boolean(stats && stats.isFile() && !pathString.endsWith(".json"))
+                    ignored: (pathString, stats) => Boolean(stats?.isFile() && !pathString.endsWith(".json"))
                 });
                 manifestWatcher.on("change", (pathString: string) => {
                     // eslint-disable-next-line no-console
@@ -84,7 +78,7 @@ class RunCommandsPlugin {
                 });
 
                 typeWatcher = watch("src/types/", {
-                    ignored: (pathString, stats) => Boolean(stats && stats.isFile() && !pathString.endsWith(".ts"))
+                    ignored: (pathString, stats) => Boolean(stats?.isFile() && !pathString.endsWith(".ts"))
                 });
 
                 typeWatcher.on("change", (pathString: string) => {
@@ -95,8 +89,7 @@ class RunCommandsPlugin {
 
                 if (!localesWatcher) {
                     localesWatcher = watch("src/_locales/", {
-                        ignored: (pathString, stats) =>
-                            Boolean(stats && stats.isFile() && !pathString.endsWith(".json"))
+                        ignored: (pathString, stats) => Boolean(stats?.isFile() && !pathString.endsWith(".json"))
                     });
                     localesWatcher.on("change", (pathString: string) => {
                         // eslint-disable-next-line no-console
@@ -119,19 +112,16 @@ class RunCommandsPlugin {
             isFirstRun = false;
 
             if (this.env["updateUserScripts"]) {
-                exec(
-                    "npx cross-env NODE_OPTIONS=--experimental-transform-types node ./script/addUserScriptsComment.ts",
-                    (err, stdout) => {
-                        if (err) {
-                            // eslint-disable-next-line no-console
-                            console.error(`Error: ${err.message}`);
-                        } else {
-                            // eslint-disable-next-line no-console
-                            console.log(stdout);
-                        }
-                        callback();
+                exec("node ./script/addUserScriptsComment.ts", (err, stdout) => {
+                    if (err) {
+                        // eslint-disable-next-line no-console
+                        console.error(`Error: ${err.message}`);
+                    } else {
+                        // eslint-disable-next-line no-console
+                        console.log(stdout);
                     }
-                );
+                    callback();
+                });
             } else {
                 callback();
             }

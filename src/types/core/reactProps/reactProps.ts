@@ -1,4 +1,4 @@
-import typia from "typia";
+import { createIs } from "typia";
 
 interface CellInnerDivProps {
     children: {
@@ -8,7 +8,7 @@ interface CellInnerDivProps {
     };
 }
 
-const isCellInnerDivProps = typia.createIs<CellInnerDivProps>();
+const isCellInnerDivProps = createIs<CellInnerDivProps>();
 
 interface TombstoneGrandchildMainProps {
     props: {
@@ -32,6 +32,6 @@ interface TombstoneGrandchildProps {
     children: TombstoneGrandchildMainProps | [TombstoneGrandchildMainProps, ...unknown[]];
 }
 
-const isTombstoneGrandchildProps = typia.createIs<TombstoneGrandchildProps>();
+const isTombstoneGrandchildProps = createIs<TombstoneGrandchildProps>();
 
 export { type CellInnerDivProps, isCellInnerDivProps, type TombstoneGrandchildProps, isTombstoneGrandchildProps };

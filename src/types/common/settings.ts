@@ -1,4 +1,4 @@
-import typia from "typia";
+import { createIs } from "typia";
 
 interface Settings {
     alwaysDetailedView: boolean;
@@ -14,6 +14,6 @@ interface Settings {
     showReleaseNotes: boolean;
 }
 
-const isSettings = typia.createIs<Settings>();
+const isSettings = createIs<Settings>();
 
 export { type Settings, isSettings };

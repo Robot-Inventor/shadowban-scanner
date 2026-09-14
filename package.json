@@ -5,13 +5,13 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "npx eslint \"./src/**/*.ts\" \"./script/**/*.ts\" \"./rspack.config.ts\" && npx knip && cross-env NODE_OPTIONS=--experimental-transform-types node ./script/addonsLinter.ts",
-    "format": "npx prettier --write ./src/ts/**/*.ts ./src/html/**/*.html ./src/css/**/*.css",
-    "format:check": "npx prettier --check ./src/ts/**/*.ts ./src/html/**/*.html ./src/css/**/*.css",
-    "build": "npx cross-env NODE_OPTIONS=--experimental-transform-types NODE_ENV=production npx rspack build",
-    "dev": "npx cross-env NODE_OPTIONS=--experimental-transform-types NODE_ENV=development npx rspack build --watch",
-    "ci:build": "npx cross-env NODE_OPTIONS=--experimental-transform-types NODE_ENV=production npx rspack build --env updateUserScripts",
-    "package": "cross-env NODE_OPTIONS=--experimental-transform-types node ./script/package.ts",
+    "lint": "oxlint ./src ./script ./rspack.config.ts && knip && node ./script/addonsLinter.ts",
+    "format": "prettier --write ./src/ts/**/*.ts ./src/html/**/*.html ./src/css/**/*.css",
+    "format:check": "prettier --check ./src/ts/**/*.ts ./src/html/**/*.html ./src/css/**/*.css",
+    "build": "cross-env NODE_ENV=production npx rspack build",
+    "dev": "cross-env NODE_ENV=development npx rspack build --watch",
+    "ci:build": "cross-env NODE_ENV=production npx rspack build --env updateUserScripts",
+    "package": "node ./script/package.ts",
     "version": "npm run package && git add .",
     "prepare": "ts-patch install && typia patch"
   },
@@ -37,7 +37,6 @@
     "chokidar": "^5.0.0",
     "colors": "^1.4.0",
     "css-loader": "^7.0.0",
-    "eslint": "^10.0.0",
     "glob": "^13.0.0",
     "lit": "^3.0.2",
     "prettier": "^3.0.0",
@@ -49,7 +48,7 @@
     "webpack-license-plugin": "^4.4.2"
   },
   "devDependencies": {
-    "@robot-inventor/eslint-config": "^13.0.0",
+    "@robot-inventor/oxlint-config": "^0.2.0",
     "@robot-inventor/ts-utils": "^0.8.0",
     "@robot-inventor/tsconfig-base": "^7.0.0",
     "@rspack/cli": "^2.0.0",
@@ -61,10 +60,8 @@
     "cross-env": "^10.0.0",
     "fork-ts-checker-webpack-plugin": "^9.0.2",
     "knip": "^6.0.0",
+    "oxlint": "^1.83.0",
     "ts-patch": "^4.0.0",
     "typia": "^12.0.1"
-  },
-  "overrides": {
-    "zod-validation-error": "^5.0.0"
   }
 }

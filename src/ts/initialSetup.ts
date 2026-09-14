@@ -11,13 +11,10 @@ import "@material/web/list/list-item";
 import { INSTRUCTION_URL, TRANSLATION_ATTRIBUTE } from "./common/constants";
 import { type NonEmptyArray, isNonEmptyArray } from "@robot-inventor/ts-utils";
 import { i18n, runtime, tabs } from "webextension-polyfill";
-// eslint-disable-next-line no-duplicate-imports
 import type { MdListItem } from "@material/web/list/list-item";
-// eslint-disable-next-line no-duplicate-imports
 import type { MdRadio } from "@material/web/radio/radio";
 import type { Settings } from "../types/common/settings";
 import { Translator } from "./common/translator";
-// eslint-disable-next-line import-x/max-dependencies
 import { writeSettingsToStorage } from "./common/settings";
 
 interface InitialSetupItem {
@@ -112,12 +109,12 @@ const insertButtons = (buttonsOuter: Element, translator: Translator, setupItem:
     translator.translateElements();
 };
 
+// oxlint-disable-next-line max-params
 const updateNavigationButtonsStatus = (
     backButton: HTMLButtonElement,
     nextButton: HTMLButtonElement,
     setupItemIndex: number,
     setupItemsLength: number
-    // eslint-disable-next-line max-params
 ): void => {
     // eslint-disable-next-line no-magic-numbers
     backButton.disabled = setupItemIndex === 0;

@@ -8,11 +8,8 @@ import { SETTINGS_ITEMS, type SettingsData, type SettingsItemData } from "./sett
 import { i18n, runtime } from "webextension-polyfill";
 import { loadSettingsFromStorage, writeSettingsToStorage } from "../common/settings";
 import type { Settings } from "../../types/common/settings";
-// eslint-disable-next-line no-duplicate-imports
 import type { SettingsDescription } from "../components/settingsDescription";
-// eslint-disable-next-line no-duplicate-imports
 import type { SettingsGroupTitle } from "../components/settingsGroupTitle";
-// eslint-disable-next-line no-duplicate-imports
 import type { SettingsItem } from "../components/settingsItem";
 import { TRANSLATION_ATTRIBUTE } from "../common/constants";
 import { Translator } from "../common/translator";
@@ -49,12 +46,12 @@ const createGroupDescription = (translationKey: string): SettingsDescription => 
  * @param isLastItem Whether this is the last item
  * @returns The created settings item
  */
+// oxlint-disable-next-line max-params
 const createSettingsItem = (
     settingsItemData: SettingsItemData,
     checked: boolean,
     isFirstItem: boolean,
     isLastItem: boolean
-    // eslint-disable-next-line max-params
 ): SettingsItem => {
     const item = document.createElement("settings-item");
     item.settingsName = settingsItemData.settingsName;

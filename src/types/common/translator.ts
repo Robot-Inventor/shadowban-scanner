@@ -1,5 +1,5 @@
+import { createIs } from "typia";
 import type enTranslation from "../../_locales/en/messages.json";
-import typia from "typia";
 
 type TranslationData = typeof enTranslation;
 type TranslationKey = keyof TranslationData;
@@ -8,6 +8,6 @@ type TranslationFunction = (messageName: TranslationKey, substitutions?: string 
 // eslint-disable-next-line no-magic-numbers
 type TranslationSubstitutions = Parameters<TranslationFunction>[1];
 
-const isTranslationSubstitutions = typia.createIs<TranslationSubstitutions>();
+const isTranslationSubstitutions = createIs<TranslationSubstitutions>();
 
 export { type TranslationData, type TranslationKey, type TranslationFunction, isTranslationSubstitutions };
