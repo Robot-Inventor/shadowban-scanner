@@ -2,7 +2,7 @@
     "languageCode": "hi",
     "url": "https://shadowban-scanner.roboin.io/hi/",
     "title": "Shadowban Scanner for Twitter / X",
-    "description": "Shadowban Scanner X (Twitter) के लिए एक गोपनीयता-प्रथम ब्राउज़र एक्सटेंशन है, जो खातों और पोस्ट पर शैडोबैन, संवेदनशील सामग्री फ्लैग, आयु प्रतिबंध और देश-आधारित ब्लॉक का पता लगाता है।",
+    "description": "X (Twitter) पर शैडोबैन और संवेदनशील सामग्री के फ़्लैग की मुफ़्त में जाँच करें। Shadowban Scanner एक ब्राउज़र एक्सटेंशन है, जो बाहरी वेबसाइटों पर जाए बिना X पर शैडोबैन, संवेदनशील सामग्री के फ़्लैग, आयु प्रतिबंध और देश-आधारित ब्लॉक की जाँच करने देता है।",
     "ogImage": "https://shadowban-scanner.roboin.io/image/ogp_en.png",
     "topImage": "/image/top-en.svg",
     "userCountSurpassed": "{{count, number}}+ उपयोगकर्ता 🎉",

@@ -2,7 +2,7 @@
     "languageCode": "id",
     "url": "https://shadowban-scanner.roboin.io/id/",
     "title": "Shadowban Scanner untuk Twitter / X",
-    "description": "Shadowban Scanner adalah ekstensi peramban berfokus privasi untuk X (Twitter) yang mendeteksi shadowban, label konten sensitif, batasan usia, dan blokir negara pada akun serta postingan.",
+    "description": "Periksa shadowban dan label konten sensitif di X (Twitter) secara gratis. Shadowban Scanner adalah ekstensi peramban yang memungkinkan Anda memeriksa shadowban, label konten sensitif, batasan usia, dan pemblokiran berdasarkan negara di X tanpa mengunjungi situs web eksternal.",
     "ogImage": "https://shadowban-scanner.roboin.io/image/ogp_en.png",
     "topImage": "/image/top-en.svg",
     "userCountSurpassed": "{{count, number}}+ Pengguna 🎉",

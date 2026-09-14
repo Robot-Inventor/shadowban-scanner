@@ -2,7 +2,7 @@
     "languageCode": "th",
     "url": "https://shadowban-scanner.roboin.io/th/",
     "title": "Shadowban Scanner for Twitter / X",
-    "description": "Shadowban Scanner คือส่วนขยายเบราว์เซอร์ที่ให้ความสำคัญกับความเป็นส่วนตัวสำหรับ X (Twitter) ซึ่งสามารถตรวจจับการแบนเงา (shadowban) ป้ายกำกับเนื้อหาละเอียดอ่อน ข้อจำกัดอายุ และการบล็อกตามประเทศบนบัญชีและโพสต์",
+    "description": "ตรวจสอบการแบนเงาและป้ายกำกับเนื้อหาละเอียดอ่อนบน X (Twitter) ได้ฟรี Shadowban Scanner คือส่วนขยายเบราว์เซอร์ที่ช่วยให้คุณตรวจสอบการแบนเงา ป้ายกำกับเนื้อหาละเอียดอ่อน ข้อจำกัดอายุ และการบล็อกตามประเทศบน X ได้โดยไม่ต้องไปยังเว็บไซต์ภายนอก",
     "ogImage": "https://shadowban-scanner.roboin.io/image/ogp_en.png",
     "topImage": "/image/top-en.svg",
     "userCountSurpassed": "{{count, number}}+ ผู้ใช้ 🎉",
