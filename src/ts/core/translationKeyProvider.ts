@@ -80,13 +80,13 @@ const getTranslationKeyFromProfileAnalyzer = (
 ): Pick<SbsMessageWrapperOptionsForProfiles, "summary" | "details"> => {
     const details = getAccountDetails(analyzer);
 
-    // eslint-disable-next-line no-useless-assignment
+    // oxlint-disable-next-line no-useless-assignment
     let summary: TranslationKey | null = null;
     if (analyzer.user.shadowbanned) {
         summary = "thisUserIsShadowbanned";
     } else if (analyzer.user.withheldInCountries.length) {
         summary = "accountIsBlockedInSomeCountries";
-        // eslint-disable-next-line no-negated-condition
+        // oxlint-disable-next-line no-negated-condition
     } else if (!analyzer.user.hasGraduatedAccess) {
         summary = "accountMayHaveLimitedReachWhileAuthenticityIsChecked";
     } else {

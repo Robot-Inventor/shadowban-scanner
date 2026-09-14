@@ -34,7 +34,7 @@ const analyzeProfileProps = (props: UserProps): ProfileAnalysisResult => {
 
     return {
         user: {
-            // eslint-disable-next-line no-magic-numbers
+            // oxlint-disable-next-line no-magic-numbers
             hasAnyProblem: shadowbanned || withheldInCountries.length > 0 || !hasGraduatedAccess,
             hasGraduatedAccess,
             isLoggedInUser: Boolean(document.querySelector('[data-testid="editProfileButton"')),
@@ -46,7 +46,7 @@ const analyzeProfileProps = (props: UserProps): ProfileAnalysisResult => {
     };
 };
 
-// eslint-disable-next-line max-statements
+// oxlint-disable-next-line max-statements
 const analyzeTweetProps = (parser: TweetParser): TweetAnalysisResult => {
     const props = parser.parse();
 
@@ -81,7 +81,7 @@ const analyzeTweetProps = (parser: TweetParser): TweetAnalysisResult => {
 const analyzeTombstoneProps = (props: [CellInnerDivProps, TombstoneGrandchildProps]): string | undefined => {
     const [cellInnerDivProps, grandchildProps] = props;
 
-    // eslint-disable-next-line no-underscore-dangle, no-undefined
+    // oxlint-disable-next-line no-underscore-dangle, no-undefined
     if (!cellInnerDivProps.children._owner) return undefined;
 
     const grandchildPropsChildren = grandchildProps.children;
@@ -89,11 +89,11 @@ const analyzeTombstoneProps = (props: [CellInnerDivProps, TombstoneGrandchildPro
         (Array.isArray(grandchildPropsChildren) ? grandchildPropsChildren[0] : grandchildPropsChildren).props.entry
             .conversationPosition.showReplyContext
     ) {
-        // eslint-disable-next-line no-undefined
+        // oxlint-disable-next-line no-undefined
         return undefined;
     }
 
-    // eslint-disable-next-line no-underscore-dangle
+    // oxlint-disable-next-line no-underscore-dangle
     const { key } = cellInnerDivProps.children._owner;
     // Extract tweet ID from `conversationthread-${string}-tweet-${string}` or `tweet-${string}`
     const tweetId = key.split("-").pop();

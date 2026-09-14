@@ -1,4 +1,4 @@
-// eslint-disable-next-line import-x/no-unassigned-import
+// oxlint-disable-next-line import-x/no-unassigned-import
 import "@material/web/button/filled-button";
 import { LitElement, type PropertyValues, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";

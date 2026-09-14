@@ -5,14 +5,14 @@ import { isPlainObject } from "@robot-inventor/ts-utils";
 const START_MARKER = "<!-- PRIVACY_POLICY_TEXT_START -->";
 const END_MARKER = "<!-- PRIVACY_POLICY_TEXT_END -->";
 
-// eslint-disable-next-line no-console
+// oxlint-disable-next-line no-console
 console.log("Updating privacy policy...");
 const files = glob.sync("./README*.md");
 
 for (const file of files) {
     const readmeText = fs.readFileSync(file, "utf8");
     const languageCode = file.replace(/README_?/u, "").replace(".md", "") || "en";
-    // eslint-disable-next-line prefer-named-capture-group
+    // oxlint-disable-next-line prefer-named-capture-group
     const messagePath = `./src/_locales/${languageCode.replace(/(_\w+)/u, (match) => match.toUpperCase())}/messages.json`;
 
     const parsedMessages: unknown = JSON.parse(fs.readFileSync(messagePath, "utf8"));
@@ -42,5 +42,5 @@ ${END_MARKER}
     fs.writeFileSync(file, updatedReadmeText);
 }
 
-// eslint-disable-next-line no-console
+// oxlint-disable-next-line no-console
 console.log("Updated privacy policy");

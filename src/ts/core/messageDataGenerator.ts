@@ -29,12 +29,12 @@ const generateMessageDataForProfile = (
     };
 };
 
+// oxlint-disable-next-line max-params
 const generateMessageDataForTweet = (
     tweet: Tweet,
     analyzer: TweetAnalysisResult,
     onRenderedCallback: () => void,
     options: Settings
-    // eslint-disable-next-line max-params
 ): SbsMessageWrapperOptionsForTweets => {
     const translations = getTranslationKeyFromTweetAnalyzer(analyzer);
     const tweetText = generateShareTextForTweet(analyzer);

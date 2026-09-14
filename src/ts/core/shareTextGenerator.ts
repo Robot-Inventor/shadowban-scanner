@@ -1,6 +1,6 @@
 import type { ProfileAnalysisResult, TweetAnalysisResult } from "./propsAnalyzer";
 
-/* eslint-disable sort-keys */
+/* oxlint-disable sort-keys */
 const TRANSLATIONS = {
     en: {
         accountFlaggedAsSensitiveOrShadowbanned: "🚫Account flagged as sensitive or shadowbanned",
@@ -39,7 +39,7 @@ const TRANSLATIONS = {
         accountStatusFor: "$1 のアカウントの状態"
     }
 } as const;
-/* eslint-enable sort-keys */
+/* oxlint-enable sort-keys */
 
 const isJapanese = navigator.language.toLowerCase().startsWith("ja");
 const SHORT_TEMPLATE_TRANSLATIONS = TRANSLATIONS[isJapanese ? "ja" : "en"];

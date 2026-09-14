@@ -1,4 +1,4 @@
-// eslint-disable-next-line import-x/no-unassigned-import
+// oxlint-disable-next-line import-x/no-unassigned-import
 import "../../css/style.css";
 import { Core } from "../core/core";
 import { DEFAULT_SETTINGS } from "../common/settings";
@@ -11,7 +11,7 @@ const createUserScript = (translationData: TranslationData): void => {
             const substitutionsArray = typeof substitutions === "string" ? [substitutions] : substitutions;
             let result = translationData[key].message;
             for (const [index, value] of substitutionsArray.entries()) {
-                // eslint-disable-next-line no-magic-numbers
+                // oxlint-disable-next-line no-magic-numbers
                 result = result.replace(`$${String(index + 1)}`, value);
             }
             return result;

@@ -13,7 +13,7 @@ const normalizeRepositoryLink = (repository: string): string => {
     return repository;
 };
 
-// eslint-disable-next-line max-statements
+// oxlint-disable-next-line max-statements
 const main = async (): Promise<void> => {
     const target = document.querySelector("main");
     if (!target) {
