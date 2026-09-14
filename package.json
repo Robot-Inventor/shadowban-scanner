@@ -1,4 +1,5 @@
 {
+  "name": "shadowban-scanner",
   "type": "module",
   "scripts": {
     "build": "cross-env NODE_OPTIONS=--experimental-transform-types NODE_ENV=production rspack build",
