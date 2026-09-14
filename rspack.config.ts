@@ -31,10 +31,10 @@ class RunCommandsPlugin {
     private static updateManifest(): void {
         exec("node ./script/copyManifest.ts", (err, stdout) => {
             if (err) {
-                // eslint-disable-next-line no-console
+                // oxlint-disable-next-line no-console
                 console.error(`Error: ${err.message}`);
             } else {
-                // eslint-disable-next-line no-console
+                // oxlint-disable-next-line no-console
                 console.log(stdout);
             }
         });
@@ -43,10 +43,10 @@ class RunCommandsPlugin {
     private static updatePrivacyPolicy(callback?: () => void): void {
         exec("node ./script/updatePrivacyPolicy.ts", (err, stdout) => {
             if (err) {
-                // eslint-disable-next-line no-console
+                // oxlint-disable-next-line no-console
                 console.error(`Error: ${err.message}`);
             } else {
-                // eslint-disable-next-line no-console
+                // oxlint-disable-next-line no-console
                 console.log(stdout);
                 if (callback) {
                     callback();
@@ -55,7 +55,7 @@ class RunCommandsPlugin {
         });
     }
 
-    // eslint-disable-next-line max-lines-per-function
+    // oxlint-disable-next-line max-lines-per-function
     public apply(compiler: Compiler): void {
         let isFirstRun = true;
         let typeWatcher: null | ReturnType<typeof watch> = null;
@@ -63,7 +63,7 @@ class RunCommandsPlugin {
         let localesWatcher: null | ReturnType<typeof watch> = null;
         let isWatchMode = false;
 
-        // eslint-disable-next-line max-statements
+        // oxlint-disable-next-line max-statements
         compiler.hooks.watchRun.tapAsync("RunCommandsPlugin", (_params, callback) => {
             isWatchMode = true;
 
@@ -72,7 +72,7 @@ class RunCommandsPlugin {
                     ignored: (pathString, stats) => Boolean(stats?.isFile() && !pathString.endsWith(".json"))
                 });
                 manifestWatcher.on("change", (pathString: string) => {
-                    // eslint-disable-next-line no-console
+                    // oxlint-disable-next-line no-console
                     console.log(`Manifest file changed: ${pathString}`);
                     RunCommandsPlugin.updateManifest();
                 });
@@ -82,7 +82,7 @@ class RunCommandsPlugin {
                 });
 
                 typeWatcher.on("change", (pathString: string) => {
-                    // eslint-disable-next-line no-console
+                    // oxlint-disable-next-line no-console
                     console.log(`Type definition file changed: ${pathString}`);
                     compiler.watching?.invalidate();
                 });
@@ -92,7 +92,7 @@ class RunCommandsPlugin {
                         ignored: (pathString, stats) => Boolean(stats?.isFile() && !pathString.endsWith(".json"))
                     });
                     localesWatcher.on("change", (pathString: string) => {
-                        // eslint-disable-next-line no-console
+                        // oxlint-disable-next-line no-console
                         console.log(`Locale file changed: ${pathString}`);
                         RunCommandsPlugin.updatePrivacyPolicy();
                     });
@@ -114,10 +114,10 @@ class RunCommandsPlugin {
             if (this.env["updateUserScripts"]) {
                 exec("node ./script/addUserScriptsComment.ts", (err, stdout) => {
                     if (err) {
-                        // eslint-disable-next-line no-console
+                        // oxlint-disable-next-line no-console
                         console.error(`Error: ${err.message}`);
                     } else {
-                        // eslint-disable-next-line no-console
+                        // oxlint-disable-next-line no-console
                         console.log(stdout);
                     }
                     callback();
@@ -199,8 +199,8 @@ const unacceptableLicenseTest = (licenseIdentifier: string): boolean => {
 };
 
 const isProduction = process.env["NODE_ENV"] === "production";
-/* eslint-disable sort-keys */
-// eslint-disable-next-line max-lines-per-function
+/* oxlint-disable sort-keys */
+// oxlint-disable-next-line max-lines-per-function
 const config = defineConfig((env) => ({
     mode: isProduction ? "production" : "development",
     devtool: isProduction ? false : "source-map",
@@ -272,12 +272,12 @@ const config = defineConfig((env) => ({
             includeNoticeText: true
         }),
         new ForkTsCheckerWebpackPlugin(),
-        // eslint-disable-next-line new-cap
+        // oxlint-disable-next-line new-cap
         UnPluginTypia({
             cache: true
         })
     ]
 }));
-/* eslint-enable sort-keys */
+/* oxlint-enable sort-keys */
 
 export default config;

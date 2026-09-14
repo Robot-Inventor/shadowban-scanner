@@ -1,8 +1,8 @@
-// eslint-disable-next-line import-x/no-unassigned-import
+// oxlint-disable-next-line import-x/no-unassigned-import
 import "../components/settingsItem";
-// eslint-disable-next-line import-x/no-unassigned-import
+// oxlint-disable-next-line import-x/no-unassigned-import
 import "../components/settingsDescription";
-// eslint-disable-next-line import-x/no-unassigned-import
+// oxlint-disable-next-line import-x/no-unassigned-import
 import "../components/settingsGroupTitle";
 import { SETTINGS_ITEMS, type SettingsData, type SettingsItemData } from "./settingsItems";
 import { i18n, runtime } from "webextension-polyfill";
@@ -88,9 +88,9 @@ const createItemsFromGroup = (settings: Settings, group: SettingsData[number]): 
     }
 
     for (const [index, item] of group.items.entries()) {
-        // eslint-disable-next-line no-magic-numbers
+        // oxlint-disable-next-line no-magic-numbers
         const isFirstItem = index === 0;
-        // eslint-disable-next-line no-magic-numbers
+        // oxlint-disable-next-line no-magic-numbers
         const isLastItem = index === group.items.length - 1;
         const settingsItem = createSettingsItem(item, settings[item.settingsName], isFirstItem, isLastItem);
         fragment.appendChild(settingsItem);

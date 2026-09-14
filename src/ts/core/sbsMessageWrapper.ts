@@ -1,4 +1,4 @@
-// eslint-disable-next-line import-x/no-unassigned-import
+// oxlint-disable-next-line import-x/no-unassigned-import
 import "../components/sbsMessage";
 import { type Tweet, composeNewTweet } from "twi-ext";
 import { SHADOW_TRANSLATION_ATTRIBUTE } from "../common/constants";
@@ -34,7 +34,7 @@ class SbsMessageWrapper {
     private readonly tweet: Tweet | null = null;
     private readonly tweetText: string;
 
-    // eslint-disable-next-line max-statements
+    // oxlint-disable-next-line max-statements
     public constructor(options: SbsMessageWrapperOptionsForTweets | SbsMessageWrapperOptionsForProfiles) {
         const sbsMessage = document.createElement("sbs-message");
 
@@ -85,10 +85,10 @@ class SbsMessageWrapper {
                 throw new Error("Post button clicked without source post");
             }
 
-            // eslint-disable-next-line no-magic-numbers
+            // oxlint-disable-next-line no-magic-numbers
             void this.tweet.quoteTweet(this.tweetText, 2000);
         } else {
-            // eslint-disable-next-line no-magic-numbers
+            // oxlint-disable-next-line no-magic-numbers
             void composeNewTweet(this.tweetText, 2000);
         }
     }
@@ -99,13 +99,13 @@ class SbsMessageWrapper {
                 throw new Error("Post button clicked without source post");
             }
 
-            // eslint-disable-next-line no-magic-numbers
+            // oxlint-disable-next-line no-magic-numbers
             void this.tweet.quoteTweet(this.tweetText, 2000);
         } else {
             // On touch devices, clicking the Post button fails to open the compose screen in the same tab.
             // Therefore, open the compose screen in a new tab.
 
-            // eslint-disable-next-line no-magic-numbers
+            // oxlint-disable-next-line no-magic-numbers
             void composeNewTweet(this.tweetText, 2000, true);
         }
     }

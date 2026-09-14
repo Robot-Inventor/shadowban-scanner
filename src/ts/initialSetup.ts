@@ -1,12 +1,12 @@
-// eslint-disable-next-line import-x/no-unassigned-import
+// oxlint-disable-next-line import-x/no-unassigned-import
 import "@material/web/button/filled-button";
-// eslint-disable-next-line import-x/no-unassigned-import
+// oxlint-disable-next-line import-x/no-unassigned-import
 import "@material/web/button/text-button";
-// eslint-disable-next-line import-x/no-unassigned-import
+// oxlint-disable-next-line import-x/no-unassigned-import
 import "@material/web/radio/radio";
-// eslint-disable-next-line import-x/no-unassigned-import
+// oxlint-disable-next-line import-x/no-unassigned-import
 import "@material/web/list/list";
-// eslint-disable-next-line import-x/no-unassigned-import
+// oxlint-disable-next-line import-x/no-unassigned-import
 import "@material/web/list/list-item";
 import { INSTRUCTION_URL, TRANSLATION_ATTRIBUTE } from "./common/constants";
 import { type NonEmptyArray, isNonEmptyArray } from "@robot-inventor/ts-utils";
@@ -65,7 +65,7 @@ const removeButtons = (buttonsOuter: Element): void => {
     }
 };
 
-// eslint-disable-next-line max-statements
+// oxlint-disable-next-line max-statements
 const createButton = (value: string, label: string, name: string): { outer: MdListItem; button: MdRadio } => {
     const outer = document.createElement("md-list-item");
     outer.classList.add("settings-button-item");
@@ -87,7 +87,7 @@ const createButton = (value: string, label: string, name: string): { outer: MdLi
     return { button, outer } as const;
 };
 
-// eslint-disable-next-line max-statements
+// oxlint-disable-next-line max-statements
 const insertButtons = (buttonsOuter: Element, translator: Translator, setupItem: InitialSetupItem): void => {
     removeButtons(buttonsOuter);
 
@@ -116,7 +116,7 @@ const updateNavigationButtonsStatus = (
     setupItemIndex: number,
     setupItemsLength: number
 ): void => {
-    // eslint-disable-next-line no-magic-numbers
+    // oxlint-disable-next-line no-magic-numbers
     backButton.disabled = setupItemIndex === 0;
     nextButton.disabled = setupItemIndex === setupItemsLength;
 };
@@ -147,7 +147,7 @@ const closeCurrentTab = async (): Promise<void> => {
     void tabs.remove(currentTab.id);
 };
 
-// eslint-disable-next-line max-statements
+// oxlint-disable-next-line max-statements
 const showCompletionMessage = (buttonsOuter: Element, translator: Translator): void => {
     removeButtons(buttonsOuter);
     updateInstructionToCompletionMessage(translator);
@@ -175,7 +175,7 @@ const showCompletionMessage = (buttonsOuter: Element, translator: Translator): v
     translator.translateElements();
 };
 
-// eslint-disable-next-line max-statements, max-lines-per-function
+// oxlint-disable-next-line max-statements, max-lines-per-function
 const main = (): void => {
     const buttonsOuter = document.querySelector<HTMLFormElement>("#settings-buttons");
     if (!buttonsOuter) throw new Error("no #settings-buttons");
@@ -196,7 +196,7 @@ const main = (): void => {
     insertButtons(buttonsOuter, translator, INITIAL_SETUP_ITEMS[0]);
     backButton.disabled = true;
 
-    // eslint-disable-next-line max-statements
+    // oxlint-disable-next-line max-statements
     nextButton.addEventListener("click", () => {
         const [formData] = Array.from(new FormData(buttonsOuter));
         if (!formData) throw new Error("no formData");
@@ -205,7 +205,7 @@ const main = (): void => {
         if (!settingsKey || !settingsValue) throw new Error("no settingsKey or settingsValue");
         void writeSettingsToStorage({ [settingsKey]: settingsValue === "true" });
 
-        // eslint-disable-next-line no-magic-numbers
+        // oxlint-disable-next-line no-magic-numbers
         if (setupItemIndex < INITIAL_SETUP_ITEMS.length - 1) {
             setupItemIndex++;
             const setupItem = INITIAL_SETUP_ITEMS[setupItemIndex];
@@ -219,7 +219,7 @@ const main = (): void => {
     });
 
     backButton.addEventListener("click", () => {
-        // eslint-disable-next-line no-magic-numbers
+        // oxlint-disable-next-line no-magic-numbers
         if (setupItemIndex > 0) {
             setupItemIndex--;
             const setupItem = INITIAL_SETUP_ITEMS[setupItemIndex];
@@ -228,7 +228,7 @@ const main = (): void => {
             updateNavigationButtonsStatus(backButton, nextButton, setupItemIndex, INITIAL_SETUP_ITEMS.length);
         }
 
-        // eslint-disable-next-line no-magic-numbers
+        // oxlint-disable-next-line no-magic-numbers
         if (setupItemIndex === INITIAL_SETUP_ITEMS.length - 1) {
             updateInstructionToOptionSelectionMessage(translator);
         }

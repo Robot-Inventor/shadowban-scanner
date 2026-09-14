@@ -4,7 +4,7 @@ import { isPlainObject } from "@robot-inventor/ts-utils";
 import packagejson from "../package.json" with { type: "json" };
 import path from "node:path";
 
-// eslint-disable-next-line no-console
+// oxlint-disable-next-line no-console
 console.log("Adding userScript comments...");
 const userScriptFiles = glob.sync("./userScript/*.user.js");
 
@@ -53,5 +53,5 @@ for (const userScript of userScriptFiles) {
     fs.writeFileSync(userScript, newScriptString);
 }
 
-// eslint-disable-next-line no-console
+// oxlint-disable-next-line no-console
 console.log("Done!");
