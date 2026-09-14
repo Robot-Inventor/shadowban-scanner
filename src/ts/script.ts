@@ -74,10 +74,7 @@ const initializeDownloadButtons = async (): Promise<void> => {
             const isSupportedMobileBrowser = SUPPORTED_MOBILE_BROWSERS.some(
                 (supportedBrowser) => supportedBrowser === browser
             );
-            if (
-                isMobile &&
-                (!isAndroid || !isSupportedMobileBrowser)
-            ) {
+            if (isMobile && (!isAndroid || !isSupportedMobileBrowser)) {
                 const result = await Swal.fire({
                     background: "#21272e",
                     cancelButtonColor: "#d33",

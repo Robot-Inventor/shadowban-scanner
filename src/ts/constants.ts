@@ -8,14 +8,14 @@ const EXTENSION_STORE_LINKS = {
 
 type ExtensionStoreType = keyof typeof EXTENSION_STORE_LINKS;
 
-const SUPPORTED_MOBILE_BROWSERS = ["firefox", "edge", "brave", "vivaldi", "kiwiBrowser"] as const satisfies BrowserType[];
+const SUPPORTED_MOBILE_BROWSERS = [
+    "firefox",
+    "edge",
+    "brave",
+    "vivaldi",
+    "kiwiBrowser"
+] as const satisfies BrowserType[];
 
 const NUMBER_OF_USERS = 50000;
 
-export {
-    EXTENSION_STORE_LINKS,
-    type BrowserType,
-    type ExtensionStoreType,
-    SUPPORTED_MOBILE_BROWSERS,
-    NUMBER_OF_USERS
-};
+export { EXTENSION_STORE_LINKS, type BrowserType, type ExtensionStoreType, SUPPORTED_MOBILE_BROWSERS, NUMBER_OF_USERS };
