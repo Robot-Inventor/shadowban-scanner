@@ -27,6 +27,6 @@
     "oxlint": "^1.83.0",
     "stylelint": "^17.0.0",
     "stylelint-config-standard": "^40.0.0",
-    "typescript": "^6.0.0"
+    "typescript": "^7.0.0"
   }
 }
