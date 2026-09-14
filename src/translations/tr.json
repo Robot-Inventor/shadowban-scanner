@@ -2,7 +2,7 @@
     "languageCode": "tr",
     "url": "https://shadowban-scanner.roboin.io/tr/",
     "title": "Shadowban Scanner for Twitter / X",
-    "description": "Shadowban Scanner, X (Twitter) için gizlilik odaklı bir tarayıcı uzantısıdır; hesaplar ve gönderilerde shadowban, hassas içerik etiketleri, yaş sınırlamaları ve ülke engellerini tespit eder.",
+    "description": "X (Twitter) üzerindeki shadowban'leri ve hassas içerik etiketlerini ücretsiz olarak kontrol edin. Shadowban Scanner, harici web sitelerine gitmeden X üzerindeki shadowban'leri, hassas içerik etiketlerini, yaş sınırlamalarını ve ülke engellerini kontrol etmenizi sağlayan bir tarayıcı uzantısıdır.",
     "ogImage": "https://shadowban-scanner.roboin.io/image/ogp_en.png",
     "topImage": "/image/top-en.svg",
     "userCountSurpassed": "{{count, number}}+ Kullanıcı 🎉",
