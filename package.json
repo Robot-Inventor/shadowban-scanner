@@ -2,8 +2,8 @@
   "name": "shadowban-scanner",
   "type": "module",
   "scripts": {
-    "build": "cross-env NODE_OPTIONS=--experimental-transform-types NODE_ENV=production rspack build",
-    "dev": "cross-env NODE_OPTIONS=--experimental-transform-types NODE_ENV=development rspack serve",
+    "build": "cross-env NODE_ENV=production rspack build",
+    "dev": "cross-env NODE_ENV=development rspack serve",
     "format": "prettier --write ./src/",
     "format:check": "prettier --check ./src/",
     "lint": "eslint ./src/ts/**/*.ts && stylelint ./src/css/**/*.css"
