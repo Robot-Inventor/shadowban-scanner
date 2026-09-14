@@ -26,13 +26,15 @@
     "openSource": "Sumber terbuka",
     "openSourceDescription": "Kode sumber tersedia di <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub</a>. Semua fitur dapat digunakan secara gratis.",
     "installNow": "Instal sekarang",
-    "supportedBrowsers": "Shadowban Scanner mendukung Chrome, Edge, dan Firefox.",
+    "supportedBrowsers": "Shadowban Scanner mendukung Chrome, Edge, Firefox, Brave, dan Vivaldi.",
     "doYouUseAnotherBrowser": "Apakah Anda menggunakan peramban lain?",
     "faq": "FAQ",
     "isShadowbanScannerFree": "Apakah Shadowban Scanner gratis?",
     "isShadowbanScannerFreeAnswer": "Ya, semua fitur Shadowban Scanner dapat digunakan secara gratis.",
     "whyIsShadowbanScannerFree": "Mengapa Shadowban Scanner gratis?",
     "whyIsShadowbanScannerFreeAnswer": "Shadowban Scanner adalah proyek hobi yang dikembangkan oleh penulis dan disediakan secara gratis. Namun, pengembangan dan operasinya memakan banyak waktu; jika memungkinkan, mohon pertimbangkan untuk mendukung melalui <a href=\"https://buymeacoffee.com/keita_roboin\" target=\"_blank\">Buy Me a Coffee</a> atau <a href=\"https://github.com/sponsors/Robot-Inventor\" target=\"_blank\">GitHub Sponsors</a>.",
+    "whichBrowsersAreSupported": "Peramban apa saja yang didukung Shadowban Scanner?",
+    "whichBrowsersAreSupportedAnswer": "Shadowban Scanner mendukung Chrome, Edge, Firefox, Brave, dan Vivaldi di PC. Di Android, Shadowban Scanner mendukung Firefox, Edge, Vivaldi, dan Kiwi Browser.",
     "areThereWaysToSupportDevelopment": "Apakah ada cara mendukung pengembangan Shadowban Scanner?",
     "areThereWaysToSupportDevelopmentAnswer1": "Ya, Anda bisa mendukung pengembangan melalui <a href=\"https://buymeacoffee.com/keita_roboin\" target=\"_blank\">Buy Me a Coffee</a> atau <a href=\"https://github.com/sponsors/Robot-Inventor\" target=\"_blank\">GitHub Sponsors</a>. Bahkan mengikuti <a href=\"https://x.com/keita_roboin\" target=\"_blank\">akun X penulis</a> saja sudah sangat membantu.",
     "areThereWaysToSupportDevelopmentAnswer2": "Jika Anda memahami pemrograman atau ingin membantu penerjemahan Shadowban Scanner, Anda dapat ikut berkontribusi di <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub</a>.",
@@ -52,8 +54,10 @@
     "installToFirefox": "Instal ke Firefox",
     "installToEdge": "Instal ke Edge",
     "installToKiwiBrowser": "Instal ke Kiwi Browser",
+    "installToBrave": "Instal ke Brave",
+    "installToVivaldi": "Instal ke Vivaldi",
     "cancel": "Batal",
     "continueAnyway": "Lanjutkan saja",
     "smartphonesAreNotSupported": "Tidak didukung di smartphone",
-    "smartphonesAreNotSupportedDescription": "Karena alasan teknis, Shadowban Scanner hanya tersedia untuk peramban PC, Firefox untuk Android, dan Kiwi Browser untuk Android."
+    "smartphonesAreNotSupportedDescription": "Karena alasan teknis, Shadowban Scanner hanya tersedia untuk peramban PC dan versi Android dari Firefox, Edge, Vivaldi, serta Kiwi Browser."
 }

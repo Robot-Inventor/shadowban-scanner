@@ -26,13 +26,15 @@
     "openSource": "โอเพ่นซอร์ส",
     "openSourceDescription": "ซอร์สโค้ดเปิดเผยบน <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub</a> ฟีเจอร์ทั้งหมดใช้งานได้ฟรี",
     "installNow": "ติดตั้งตอนนี้",
-    "supportedBrowsers": "Shadowban Scanner รองรับ Chrome, Edge และ Firefox",
+    "supportedBrowsers": "Shadowban Scanner รองรับ Chrome, Edge, Firefox, Brave และ Vivaldi",
     "doYouUseAnotherBrowser": "ใช้งานเบราว์เซอร์อื่นอยู่หรือไม่?",
     "faq": "FAQ",
     "isShadowbanScannerFree": "Shadowban Scanner ฟรีหรือไม่?",
     "isShadowbanScannerFreeAnswer": "ฟรี ฟีเจอร์ทั้งหมดของ Shadowban Scanner ใช้งานได้โดยไม่เสียค่าใช้จ่าย",
     "whyIsShadowbanScannerFree": "ทำไม Shadowban Scanner ถึงฟรี?",
     "whyIsShadowbanScannerFreeAnswer": "Shadowban Scanner เป็นโปรเจ็กต์ที่ผู้พัฒนาสร้างขึ้นจากงานอดิเรกและให้บริการฟรี อย่างไรก็ตาม การพัฒนาและการดำเนินงานต้องใช้เวลามาก หากสะดวก โปรดพิจารณาสนับสนุนผ่าน <a href=\"https://buymeacoffee.com/keita_roboin\" target=\"_blank\">Buy Me a Coffee</a> หรือ <a href=\"https://github.com/sponsors/Robot-Inventor\" target=\"_blank\">GitHub Sponsors</a>",
+    "whichBrowsersAreSupported": "Shadowban Scanner รองรับเบราว์เซอร์ใดบ้าง?",
+    "whichBrowsersAreSupportedAnswer": "Shadowban Scanner รองรับ Chrome, Edge, Firefox, Brave และ Vivaldi บน PC ส่วนบน Android รองรับ Firefox, Edge, Vivaldi และ Kiwi Browser",
     "areThereWaysToSupportDevelopment": "มีวิธีสนับสนุนการพัฒนา Shadowban Scanner หรือไม่?",
     "areThereWaysToSupportDevelopmentAnswer1": "มี คุณสามารถสนับสนุนการพัฒนาได้ผ่าน <a href=\"https://buymeacoffee.com/keita_roboin\" target=\"_blank\">Buy Me a Coffee</a> หรือ <a href=\"https://github.com/sponsors/Robot-Inventor\" target=\"_blank\">GitHub Sponsors</a> แค่ติดตาม <a href=\"https://x.com/keita_roboin\" target=\"_blank\">บัญชี X ของผู้พัฒนา</a> ก็เป็นกำลังใจที่ดี",
     "areThereWaysToSupportDevelopmentAnswer2": "หากคุณมีพื้นฐานการเขียนโปรแกรมหรืออยากช่วยแปล Shadowban Scanner สามารถเข้าร่วมการพัฒนาบน <a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub</a> ได้",
@@ -52,8 +54,10 @@
     "installToFirefox": "ติดตั้งบน Firefox",
     "installToEdge": "ติดตั้งบน Edge",
     "installToKiwiBrowser": "ติดตั้งบน Kiwi Browser",
+    "installToBrave": "ติดตั้งบน Brave",
+    "installToVivaldi": "ติดตั้งบน Vivaldi",
     "cancel": "ยกเลิก",
     "continueAnyway": "ดำเนินการต่อ",
     "smartphonesAreNotSupported": "ไม่รองรับสมาร์ตโฟน",
-    "smartphonesAreNotSupportedDescription": "ด้วยเหตุผลทางเทคนิค Shadowban Scanner ใช้งานได้เฉพาะบนเบราว์เซอร์ PC, Firefox สำหรับ Android และ Kiwi Browser สำหรับ Android เท่านั้น"
+    "smartphonesAreNotSupportedDescription": "ด้วยเหตุผลทางเทคนิค Shadowban Scanner ใช้งานได้เฉพาะบนเบราว์เซอร์ PC และเบราว์เซอร์ Firefox, Edge, Vivaldi และ Kiwi Browser ที่ใช้บน Android เท่านั้น"
 }
