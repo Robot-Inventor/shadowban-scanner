@@ -1,3 +1,7 @@
-import { getExtensionStoreLink } from "./util";
+import { detectBrowser, getExtensionStoreLink } from "./util";
 
-location.href = getExtensionStoreLink();
+const redirect = async (): Promise<void> => {
+    location.href = getExtensionStoreLink(await detectBrowser());
+};
+
+void redirect();

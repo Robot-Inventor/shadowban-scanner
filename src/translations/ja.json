@@ -26,13 +26,15 @@
     "openSource": "オープンソース",
     "openSourceDescription": "ソースコードは<a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub</a>で公開されています。すべての機能を完全に無料で利用できます。",
     "installNow": "今すぐインストール",
-    "supportedBrowsers": "Shadowban ScannerはChrome、Edge、Firefoxに対応しています。",
+    "supportedBrowsers": "Shadowban ScannerはChrome、Edge、Firefox、Brave、Vivaldiに対応しています。",
     "doYouUseAnotherBrowser": "他のブラウザーを使っていますか？",
     "faq": "FAQ",
     "isShadowbanScannerFree": "Shadowban Scannerは無料ですか？",
     "isShadowbanScannerFreeAnswer": "はい、Shadowban Scannerのすべての機能は無料で利用できます。",
     "whyIsShadowbanScannerFree": "Shadowban Scannerはなぜ無料なのですか？",
     "whyIsShadowbanScannerFreeAnswer": "Shadowban Scannerは、作者の趣味で開発されたプロジェクトであり、無料で提供されています。ただし、開発や運用には多くの時間がかかっているため、余裕のある方は<a href=\"https://buymeacoffee.com/keita_roboin\" target=\"_blank\" >Buy Me a Coffee</a>や<a href=\"https://github.com/sponsors/Robot-Inventor\" target=\"_blank\">GitHub Sponsors</a>で支援していただけると助かります。",
+    "whichBrowsersAreSupported": "Shadowban Scannerはどのブラウザーに対応していますか？",
+    "whichBrowsersAreSupportedAnswer": "Shadowban Scannerは、PCではChrome、Edge、Firefox、Brave、Vivaldiに対応しています。また、AndroidではFirefox、Edge、VivaldiおよびKiwi Browserに対応しています。",
     "areThereWaysToSupportDevelopment": "Shadowban Scannerの開発を支援する方法はありますか？",
     "areThereWaysToSupportDevelopmentAnswer1": "はい、<a href=\"https://buymeacoffee.com/keita_roboin\" target=\"_blank\">Buy Me a Coffee</a>または<a href=\"https://github.com/sponsors/Robot-Inventor\" target=\"_blank\">GitHub Sponsors</a>を通じて開発を支援できます。また、作者の<a href=\"https://x.com/keita_roboin\" target=\"_blank\">Xアカウント</a>をフォローするだけでも開発の励みになります。",
     "areThereWaysToSupportDevelopmentAnswer2": "あなたがプログラミングに詳しい場合や、Shadowban Scannerの翻訳に協力したい場合は、<a href=\"https://github.com/Robot-Inventor/shadowban-scanner/\" target=\"_blank\">GitHub</a>で開発に参加できます。",
@@ -52,8 +54,10 @@
     "installToFirefox": "Firefoxにインストール",
     "installToEdge": "Edgeにインストール",
     "installToKiwiBrowser": "Kiwi Browserにインストール",
+    "installToBrave": "Braveにインストール",
+    "installToVivaldi": "Vivaldiにインストール",
     "cancel": "キャンセル",
     "continueAnyway": "とにかく続行する",
     "smartphonesAreNotSupported": "スマートフォンには対応していません",
-    "smartphonesAreNotSupportedDescription": "Shadowban Scannerは技術的な理由により、PCのブラウザーとAndroid版Firefox、Android版Kiwi Browserでのみ利用できます。"
+    "smartphonesAreNotSupportedDescription": "Shadowban Scannerは技術的な理由により、PCのブラウザーとFirefox、Edge、VivaldiおよびKiwi BrowserのAndroid版でのみ利用できます。"
 }

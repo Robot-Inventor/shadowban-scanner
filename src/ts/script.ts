@@ -1,6 +1,7 @@
 // oxlint-disable-next-line import-x/no-unassigned-import
 import "../css/style.css";
 import {
+    type BrowserType,
     EXTENSION_STORE_LINKS,
     type ExtensionStoreType,
     NUMBER_OF_USERS,
@@ -37,31 +38,43 @@ const isCrawler = (): boolean => {
     return result;
 };
 
-const initializeDownloadButtons = (): void => {
+const getDownloadText = (browser: BrowserType): string => {
+    switch (browser) {
+        case "firefox":
+            return translate("installToFirefox");
+        case "edge":
+            return translate("installToEdge");
+        case "kiwiBrowser":
+            return translate("installToKiwiBrowser");
+        case "brave":
+            return translate("installToBrave");
+        case "vivaldi":
+            return translate("installToVivaldi");
+        case "chrome":
+        default:
+            return translate("installToChrome");
+    }
+};
+
+const initializeDownloadButtons = async (): Promise<void> => {
+    const browser = await detectBrowser();
+    const downloadLink = getExtensionStoreLink(browser);
+    const downloadText = getDownloadText(browser);
+
     const buttons = document.querySelectorAll("button.download_button");
 
     buttons.forEach((button) => {
-        const browser = detectBrowser();
-        const downloadLink = getExtensionStoreLink();
-        let downloadText: string = translate("installToChrome");
-
-        if (browser === "firefox") {
-            downloadText = translate("installToFirefox");
-        } else if (browser === "edge") {
-            downloadText = translate("installToEdge");
-        } else if (browser === "kiwiBrowser") {
-            downloadText = translate("installToKiwiBrowser");
-        }
-
         button.textContent = downloadText;
 
         // oxlint-disable-next-line @typescript-eslint/no-misused-promises
         button.addEventListener("click", async () => {
-            const isMobile = Boolean(/iPhone|Android.+Mobile/u.exec(navigator.userAgent));
-            if (
-                isMobile &&
-                !SUPPORTED_MOBILE_BROWSERS.includes(browser as (typeof SUPPORTED_MOBILE_BROWSERS)[number])
-            ) {
+            const { userAgent } = navigator;
+            const isAndroid = userAgent.includes("Android");
+            const isMobile = Boolean(/iPhone|Android.+Mobile/u.exec(userAgent));
+            const isSupportedMobileBrowser = SUPPORTED_MOBILE_BROWSERS.some(
+                (supportedBrowser) => supportedBrowser === browser
+            );
+            if (isMobile && (!isAndroid || !isSupportedMobileBrowser)) {
                 const result = await Swal.fire({
                     background: "#21272e",
                     cancelButtonColor: "#d33",
@@ -167,7 +180,7 @@ const onLanguageChanged = (): void => {
         }
     });
 
-    initializeDownloadButtons();
+    void initializeDownloadButtons();
 
     const userCountAnimationDuration = 1500;
     const animateCountOptions = {
