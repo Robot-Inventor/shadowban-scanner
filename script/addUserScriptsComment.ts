@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import { glob } from "glob";
-import { isPlainObject } from "@robot-inventor/ts-utils";
+import { json } from "typia";
 import packagejson from "../package.json" with { type: "json" };
 import path from "node:path";
 
@@ -17,14 +17,11 @@ for (const userScript of userScriptFiles) {
         new Intl.DisplayNames([formattedLanguageCode], { type: "language" }).of(formattedLanguageCode) ??
         formattedLanguageCode;
 
-    const localizedMessages: unknown = JSON.parse(
+    const localizedMessages = json.isParse<{ manifest_description: { message: string } }>(
         fs.readFileSync(`./src/_locales/${languageCode}/messages.json`, "utf-8")
     );
-    if (
-        !isPlainObject(localizedMessages) ||
-        !isPlainObject(localizedMessages["manifest_description"]) ||
-        typeof localizedMessages["manifest_description"]["message"] !== "string"
-    ) {
+
+    if (!localizedMessages) {
         throw new Error(`Invalid localized messages for ${languageCode}`);
     }
 
@@ -33,7 +30,7 @@ for (const userScript of userScriptFiles) {
 // @name         Shadowban Scanner (${languageName})
 // @namespace    https://github.com/Robot-Inventor/shadowban-scanner/
 // @version      ${packagejson.version}
-// @description  ${localizedMessages["manifest_description"]["message"]}
+// @description  ${localizedMessages.manifest_description.message}
 // @author       Robot-Inventor (ろぼいん / @keita_roboin)
 // @match        https://*.twitter.com/*
 // @match        https://*.x.com/*

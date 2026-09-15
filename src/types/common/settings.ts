@@ -1,4 +1,4 @@
-import { createIs } from "typia";
+import { createIs, json } from "typia";
 
 interface Settings {
     alwaysDetailedView: boolean;
@@ -15,5 +15,6 @@ interface Settings {
 }
 
 const isSettings = createIs<Settings>();
+const parseSettings = json.createIsParse<Settings>();
 
-export { type Settings, isSettings };
+export { type Settings, isSettings, parseSettings };
