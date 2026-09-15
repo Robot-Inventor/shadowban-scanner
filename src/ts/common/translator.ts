@@ -3,7 +3,7 @@ import { ALLOWED_TWEMOJI, SHADOW_TRANSLATION_ATTRIBUTE, TRANSLATION_ATTRIBUTE, T
 import {
     type TranslationData,
     type TranslationFunction,
-    isTranslationSubstitutions
+    parseTranslationSubstitutions
 } from "../../types/common/translator";
 import type { SbsMessage } from "../components/sbsMessage";
 
@@ -64,8 +64,8 @@ class Translator {
         targetElements.forEach((element) => {
             const translationKey = element.getAttribute(TRANSLATION_ATTRIBUTE) as keyof TranslationData;
             const substitutions = element.getAttribute("data-sb-translation-substitutions");
-            const parsedSubstitutions = substitutions ? (JSON.parse(substitutions) as unknown) : null;
-            const translatedText = isTranslationSubstitutions(parsedSubstitutions)
+            const parsedSubstitutions = parseTranslationSubstitutions(substitutions ?? "");
+            const translatedText = parsedSubstitutions
                 ? this.translationFunction(translationKey, parsedSubstitutions)
                 : this.translationFunction(translationKey);
             if (element.hasAttribute(TWEMOJI_ATTRIBUTE)) {
