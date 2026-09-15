@@ -21,7 +21,7 @@ const main = async (): Promise<void> => {
     }
 
     const response = await fetch("../json/oss-licenses.json");
-    const OSSLicenses = (await response.json()) as unknown;
+    const OSSLicenses: unknown = await response.json();
     if (!isOSSLicenses(OSSLicenses)) throw new Error("Invalid JSON");
 
     const fragment = document.createDocumentFragment();
