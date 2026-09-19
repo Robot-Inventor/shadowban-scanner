@@ -16,7 +16,7 @@
     "sweetalert2": "^11.10.8"
   },
   "devDependencies": {
-    "@robot-inventor/oxlint-config": "^0.2.0",
+    "@robot-inventor/oxlint-config": "^0.3.0",
     "@robot-inventor/tsconfig-base": "^7.0.0",
     "@rspack/cli": "^2.0.0",
     "@rspack/core": "^2.0.0",
