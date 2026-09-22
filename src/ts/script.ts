@@ -97,7 +97,6 @@ const initializeDownloadButtons = async (): Promise<void> => {
     });
 };
 
-// oxlint-disable-next-line max-statements
 const initializeDownloadLinks = (): void => {
     const storeTypes = Object.keys(EXTENSION_STORE_LINKS) as ExtensionStoreType[];
 
@@ -212,7 +211,6 @@ const initializeLanguageSwitcher = (): void => {
     });
 };
 
-// oxlint-disable-next-line max-lines-per-function
 const main = async (): Promise<void> => {
     const languageDetectionOrderDefault = [
         "querystring",
