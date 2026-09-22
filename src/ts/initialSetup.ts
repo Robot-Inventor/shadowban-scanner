@@ -65,7 +65,6 @@ const removeButtons = (buttonsOuter: Element): void => {
     }
 };
 
-// oxlint-disable-next-line max-statements
 const createButton = (value: string, label: string, name: string): { outer: MdListItem; button: MdRadio } => {
     const outer = document.createElement("md-list-item");
     outer.classList.add("settings-button-item");
@@ -87,7 +86,6 @@ const createButton = (value: string, label: string, name: string): { outer: MdLi
     return { button, outer } as const;
 };
 
-// oxlint-disable-next-line max-statements
 const insertButtons = (buttonsOuter: Element, translator: Translator, setupItem: InitialSetupItem): void => {
     removeButtons(buttonsOuter);
 
@@ -147,7 +145,6 @@ const closeCurrentTab = async (): Promise<void> => {
     void tabs.remove(currentTab.id);
 };
 
-// oxlint-disable-next-line max-statements
 const showCompletionMessage = (buttonsOuter: Element, translator: Translator): void => {
     removeButtons(buttonsOuter);
     updateInstructionToCompletionMessage(translator);
@@ -175,7 +172,6 @@ const showCompletionMessage = (buttonsOuter: Element, translator: Translator): v
     translator.translateElements();
 };
 
-// oxlint-disable-next-line max-statements, max-lines-per-function
 const main = (): void => {
     const buttonsOuter = document.querySelector<HTMLFormElement>("#settings-buttons");
     if (!buttonsOuter) throw new Error("no #settings-buttons");
@@ -196,7 +192,6 @@ const main = (): void => {
     insertButtons(buttonsOuter, translator, INITIAL_SETUP_ITEMS[0]);
     backButton.disabled = true;
 
-    // oxlint-disable-next-line max-statements
     nextButton.addEventListener("click", () => {
         const [formData] = Array.from(new FormData(buttonsOuter));
         if (!formData) throw new Error("no formData");

@@ -46,7 +46,6 @@ const analyzeProfileProps = (props: UserProps): ProfileAnalysisResult => {
     };
 };
 
-// oxlint-disable-next-line max-statements
 const analyzeTweetProps = (parser: TweetParser): TweetAnalysisResult => {
     const props = parser.parse();
 

@@ -34,7 +34,6 @@ class SbsMessageWrapper {
     private readonly tweet: Tweet | null = null;
     private readonly tweetText: string;
 
-    // oxlint-disable-next-line max-statements
     public constructor(options: SbsMessageWrapperOptionsForTweets | SbsMessageWrapperOptionsForProfiles) {
         const sbsMessage = document.createElement("sbs-message");
 

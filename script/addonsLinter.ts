@@ -4,7 +4,6 @@ import { execSync } from "node:child_process";
 
 const ERROR_EXIT_CODE = 1;
 
-// oxlint-disable-next-line max-statements
 const main = async (): Promise<void> => {
     const linterConfigFirefox: LinterOptions = {
         config: {
