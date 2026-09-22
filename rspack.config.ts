@@ -55,7 +55,6 @@ class RunCommandsPlugin {
         });
     }
 
-    // oxlint-disable-next-line max-lines-per-function
     public apply(compiler: Compiler): void {
         let isFirstRun = true;
         let typeWatcher: null | ReturnType<typeof watch> = null;
@@ -63,7 +62,6 @@ class RunCommandsPlugin {
         let localesWatcher: null | ReturnType<typeof watch> = null;
         let isWatchMode = false;
 
-        // oxlint-disable-next-line max-statements
         compiler.hooks.watchRun.tapAsync("RunCommandsPlugin", (_params, callback) => {
             isWatchMode = true;
 
@@ -200,7 +198,6 @@ const unacceptableLicenseTest = (licenseIdentifier: string): boolean => {
 
 const isProduction = process.env["NODE_ENV"] === "production";
 /* oxlint-disable sort-keys */
-// oxlint-disable-next-line max-lines-per-function
 const config = defineConfig((env) => ({
     mode: isProduction ? "production" : "development",
     devtool: isProduction ? false : "source-map",

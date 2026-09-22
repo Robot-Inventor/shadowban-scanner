@@ -42,7 +42,6 @@ class Core {
         document.body.setAttribute("data-color-scheme", colorScheme === "light" ? "light" : "dark");
     }
 
-    // oxlint-disable-next-line max-statements
     private checkProfile(profile: Profile): void {
         const isCurrentUsersProfile = Boolean(document.querySelector("[data-testid='editProfileButton']"));
         if (!isCurrentUsersProfile && !this.settings.enableForOtherUsersProfiles) return;
@@ -69,7 +68,6 @@ class Core {
         sbsMessageWrapper.insertAdjacentElement(bioOrUserNameGrandParent, "afterend");
     }
 
-    // oxlint-disable-next-line max-statements
     private checkTweet(tweet: Tweet): void {
         const analyzer = analyzeTweetProps(new TweetParser(tweet));
 
@@ -96,7 +94,6 @@ class Core {
         sbsMessageWrapper.insertAdjacentElement(landmarkElement, insertionPosition);
     }
 
-    // oxlint-disable-next-line max-statements
     private necromancer(tombstone: HTMLElement): void {
         tombstone.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
 
