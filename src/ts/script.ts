@@ -247,14 +247,30 @@ const main = async (): Promise<void> => {
         },
         fallbackLng: "en",
         resources: {
-            en: { translation: { ...translationEn } },
-            es: { translation: { ...translationEs } },
-            hi: { translation: { ...translationHi } },
-            id: { translation: { ...translationId } },
-            ja: { translation: { ...translationJa } },
-            pt: { translation: { ...translationPt } },
-            th: { translation: { ...translationTh } },
-            tr: { translation: { ...translationTr } }
+            en: {
+                translation: { ...translationEn }
+            },
+            es: {
+                translation: { ...translationEs }
+            },
+            hi: {
+                translation: { ...translationHi }
+            },
+            id: {
+                translation: { ...translationId }
+            },
+            ja: {
+                translation: { ...translationJa }
+            },
+            pt: {
+                translation: { ...translationPt }
+            },
+            th: {
+                translation: { ...translationTh }
+            },
+            tr: {
+                translation: { ...translationTr }
+            }
         },
         supportedLngs: ["en", "ja", "es", "pt", "tr", "th", "id", "hi"]
     });
