@@ -1,20 +1,16 @@
 {
-  "extends": "@robot-inventor/tsconfig-base/bundler.json",
-  "compilerOptions": {
-    "declaration": false,
-    "experimentalDecorators": true,
-    "useDefineForClassFields": false,
-    "rootDir": ".",
-    "types": ["node"],
-    "plugins": [
-      {
-        "transform": "typia/lib/transform"
-      }
-    ]
-  },
-  "include": [
-    "./rspack.config.ts",
-    "./src/**/*.ts",
-    "./script/**/*.ts"
-  ]
+    "extends": "@robot-inventor/tsconfig-base/bundler.json",
+    "compilerOptions": {
+        "declaration": false,
+        "experimentalDecorators": true,
+        "useDefineForClassFields": false,
+        "rootDir": ".",
+        "types": ["node"],
+        "plugins": [
+            {
+                "transform": "typia/lib/transform"
+            }
+        ]
+    },
+    "include": ["./rspack.config.ts", "./src/**/*.ts", "./script/**/*.ts"]
 }

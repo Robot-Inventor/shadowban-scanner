@@ -17,7 +17,7 @@ Shadowban ScannerはAPIにアクセスする代わりに、XのWebクライア�
 
 ## 判定方法
 
-次のデータは、ポストのReact Propsのうち、重要な部分を抜粋してTypeScriptの``interface``として表現したものです。（断定）
+次のデータは、ポストのReact Propsのうち、重要な部分を抜粋してTypeScriptの`interface`として表現したものです。（断定）
 
 ```typescript
 interface TweetProps {
@@ -33,28 +33,28 @@ interface TweetProps {
         possibly_sensitive?: boolean | null;
         screen_name: string;
         profile_interstitial_type: "" | "sensitive_media" | "fake_account" | "offensive_profile_content" | "timeout";
-        withheld_in_countries?: string[]
+        withheld_in_countries?: string[];
     };
 }
 ```
 
 ### アカウントのシャドウバン判定
 
-Shadowban Scannerでは、アカウントのシャドウバンを``TweetProps.user.possibly_sensitive``の値で判定しています。この値が``true``の場合、Shadowban Scannerは、アカウントがシャドウバンされているかセンシティブフラグが付与されているとみなします。（事実）
+Shadowban Scannerでは、アカウントのシャドウバンを`TweetProps.user.possibly_sensitive`の値で判定しています。この値が`true`の場合、Shadowban Scannerは、アカウントがシャドウバンされているかセンシティブフラグが付与されているとみなします。（事実）
 
-``TweetProps.user.possibly_sensitive``プロパティーが存在しない場合や、``null``の場合は、混乱を防ぐためにシャドウバンされていないと表示します。（事実）
+`TweetProps.user.possibly_sensitive`プロパティーが存在しない場合や、`null`の場合は、混乱を防ぐためにシャドウバンされていないと表示します。（事実）
 
-``TweetProps.user.possibly_sensitive``はアカウント単位のセンシティブフラグです。このフラグが``true``の場合、たいていはポストが検索結果に表示されないシャドウバン状態にあります。ただし、まれに``true``でもシャドウバンされていなかったり、``false``なのにシャドウバンされていることもあります。いずれにしても、シャドウバンの状態にかかわらず、このフラグが``true``の場合はXによってセンシティブなアカウントとしてみなされていることを示します。（断定・Xの検索結果の調査により判断）
+`TweetProps.user.possibly_sensitive`はアカウント単位のセンシティブフラグです。このフラグが`true`の場合、たいていはポストが検索結果に表示されないシャドウバン状態にあります。ただし、まれに`true`でもシャドウバンされていなかったり、`false`なのにシャドウバンされていることもあります。いずれにしても、シャドウバンの状態にかかわらず、このフラグが`true`の場合はXによってセンシティブなアカウントとしてみなされていることを示します。（断定・Xの検索結果の調査により判断）
 
-フラグが``true``でもシャドウバンされていない場合、「ぎりぎりシャドウバンはされていないがセンシティブなアカウントとしてみなされている」と考えられます。（推定）
+フラグが`true`でもシャドウバンされていない場合、「ぎりぎりシャドウバンはされていないがセンシティブなアカウントとしてみなされている」と考えられます。（推定）
 
 ### 段階的な利用制限（graduated access checks）の確認
 
 2023年10月のオーストラリア政府eSafety Commissionerの透明性レポートでは、Twitterが「graduated access checks」を実装しており、アカウントの真正性を評価している間はリーチを制限する場合があるとされています。（事実）
 
-``TweetProps.user.has_graduated_access``はこのgraduated access checkに対応する可能性が高いと考えられます。（推定・プロパティ名と実際の挙動により判断）
+`TweetProps.user.has_graduated_access`はこのgraduated access checkに対応する可能性が高いと考えられます。（推定・プロパティ名と実際の挙動により判断）
 
-Shadowban Scannerでは、アカウントの段階的な利用制限の有無を``TweetProps.user.has_graduated_access``の値で判定しています。この値が``false``の場合、Shadowban Scannerは、アカウントが段階的な利用制限の対象でリーチが制限される可能性があると表示します。（事実）
+Shadowban Scannerでは、アカウントの段階的な利用制限の有無を`TweetProps.user.has_graduated_access`の値で判定しています。この値が`false`の場合、Shadowban Scannerは、アカウントが段階的な利用制限の対象でリーチが制限される可能性があると表示します。（事実）
 
 #### 参考
 
@@ -62,18 +62,18 @@ Shadowban Scannerでは、アカウントの段階的な利用制限の有無を
 
 ### プロフィールのメディアのセンシティブ判定
 
-Shadowban Scannerでは、``TweetProps.user.profile_interstitial_type``が``sensitive_media``か``offensive_profile_content``の場合、プロフィールのメディアがセンシティブ判定を受けていると表示します。（事実）
+Shadowban Scannerでは、`TweetProps.user.profile_interstitial_type`が`sensitive_media`か`offensive_profile_content`の場合、プロフィールのメディアがセンシティブ判定を受けていると表示します。（事実）
 
-``TweetProps.user.profile_interstitial_type``はプロフィールに関するフラグです。このフラグの値が``sensitive_media``か``offensive_profile_content``の場合、プロフィールのメディアがセンシティブとみなされていることを示します。また、プロフィールのメディアはアイコンやヘッダー画像を指していると考えられます。（推定）
+`TweetProps.user.profile_interstitial_type`はプロフィールに関するフラグです。このフラグの値が`sensitive_media`か`offensive_profile_content`の場合、プロフィールのメディアがセンシティブとみなされていることを示します。また、プロフィールのメディアはアイコンやヘッダー画像を指していると考えられます。（推定）
 
-フラグの値が``sensitive_media``か``offensive_profile_content``の場合、［ポストするメディアをセンシティブな内容を含むものとして設定する］という設定項目が変更できなくなります。また、投稿するすべてのメディアに対し、強制的にセンシティブフラグが付与されます。（断定・当該設定を変更できないと主張する複数のアカウントを調査した結果により判断）
+フラグの値が`sensitive_media`か`offensive_profile_content`の場合、［ポストするメディアをセンシティブな内容を含むものとして設定する］という設定項目が変更できなくなります。また、投稿するすべてのメディアに対し、強制的にセンシティブフラグが付与されます。（断定・当該設定を変更できないと主張する複数のアカウントを調査した結果により判断）
 
 <details>
 <summary><strong>推定の根拠</strong></summary>
 
-2023年9月17日時点では、任意のアカウントのプロフィールを表示した際に``https://abs.twimg.com/responsive-web/client-web-legacy/bundle.UserProfile.58f1422a.js``が読み込まれます。次のコードは、その重要な部分とその周辺の抜粋です。（事実）
+2023年9月17日時点では、任意のアカウントのプロフィールを表示した際に`https://abs.twimg.com/responsive-web/client-web-legacy/bundle.UserProfile.58f1422a.js`が読み込まれます。次のコードは、その重要な部分とその周辺の抜粋です。（事実）
 
-なお、URLの``58f1422a``はソースコードの変更によって変わる可能性があります。（断定）
+なお、URLの`58f1422a`はソースコードの変更によって変わる可能性があります。（断定）
 
 ```javascript
 Ra = te().cb339f26,
@@ -102,11 +102,11 @@ Ya = {
 },
 ```
 
-``sensitive_media``には``Wa``か``Va``のいずれかが代入されています。``Wa``と``Va``はそれぞれ、``te().jf604336``と``te().b9a9cbdc``が代入されています。また、``offensive_profile_content``には``Ka``か``Ha``のいずれかが代入されており、``Ka``と``Ha``はそれぞれ``te().jf604336``と``te().c9bfda48``が代入されています。（事実）
+`sensitive_media`には`Wa`か`Va`のいずれかが代入されています。`Wa`と`Va`はそれぞれ、`te().jf604336`と`te().b9a9cbdc`が代入されています。また、`offensive_profile_content`には`Ka`か`Ha`のいずれかが代入されており、`Ka`と`Ha`はそれぞれ`te().jf604336`と`te().c9bfda48`が代入されています。（事実）
 
-次のコードは、日本語の翻訳データが含まれる``https://abs.twimg.com/responsive-web/client-web-legacy/i18n/ja.9d70063a.js``のうち、重要な部分とその周辺の抜粋です。（事実）
+次のコードは、日本語の翻訳データが含まれる`https://abs.twimg.com/responsive-web/client-web-legacy/i18n/ja.9d70063a.js`のうち、重要な部分とその周辺の抜粋です。（事実）
 
-なお、URLの``9d70063a``はソースコードの変更によって変わる可能性があります。（断定）
+なお、URLの`9d70063a`はソースコードの変更によって変わる可能性があります。（断定）
 
 ```javascript
 t('d834ab9c', 'プロフィールを表示する'),
@@ -125,17 +125,17 @@ t(
 t('i622ef86', 'Xルールに違反している可能性があります。表示してもよろしいですか？'),
 ```
 
-このコードの``jf604336``の部分を見ると、「注意: プロフィールにセンシティブな内容が含まれている可能性のあるアカウントです」と書かれています。（事実）
+このコードの`jf604336`の部分を見ると、「注意: プロフィールにセンシティブな内容が含まれている可能性のあるアカウントです」と書かれています。（事実）
 
-他のメッセージの主語が「アカウント」なのにもかかわらず、このメッセージはアカウントではなく「プロフィール」について言及しています（事実）。また、``sensitive_media``という名称から、このメッセージはプロフィールのメディアがセンシティブという意味だと考えられます。（推定）
+他のメッセージの主語が「アカウント」なのにもかかわらず、このメッセージはアカウントではなく「プロフィール」について言及しています（事実）。また、`sensitive_media`という名称から、このメッセージはプロフィールのメディアがセンシティブという意味だと考えられます。（推定）
 
 </details>
 
 ### アカウントがブロックされている国の検出
 
-Shadowban Scannerでは、アカウントがブロックされている国を``TweetProps.user.withheld_in_countries``の値で判定しています。この値が空の配列でない場合、Shadowban Scannerは、アカウントがブロックされている国があるとみなします。（事実）
+Shadowban Scannerでは、アカウントがブロックされている国を`TweetProps.user.withheld_in_countries`の値で判定しています。この値が空の配列でない場合、Shadowban Scannerは、アカウントがブロックされている国があるとみなします。（事実）
 
-``TweetProps.user.withheld_in_countries``はアカウントがブロックされている国のリストです。このリストには、アカウントがブロックされている国の国コードが格納されています。（事実）
+`TweetProps.user.withheld_in_countries`はアカウントがブロックされている国のリストです。このリストには、アカウントがブロックされている国の国コードが格納されています。（事実）
 
 #### 参考
 
@@ -144,16 +144,16 @@ Shadowban Scannerでは、アカウントがブロックされている国を``T
 
 ### ポストのセンシティブ判定と年齢制限判定
 
-Shadowban Scannerでは、ポストのセンシティブ判定を``TweetProps.possibly_sensitive``の値で判定しています。この値が``true``の場合、Shadowban Scannerは、ポストがセンシティブなポストとしてみなされていると判定します。（事実）
+Shadowban Scannerでは、ポストのセンシティブ判定を`TweetProps.possibly_sensitive`の値で判定しています。この値が`true`の場合、Shadowban Scannerは、ポストがセンシティブなポストとしてみなされていると判定します。（事実）
 
-``TweetProps.possibly_sensitive``プロパティーが存在しない場合や、``null``の場合は、混乱を防ぐためにセンシティブなポストではないと表示します。（事実）
+`TweetProps.possibly_sensitive`プロパティーが存在しない場合や、`null`の場合は、混乱を防ぐためにセンシティブなポストではないと表示します。（事実）
 
-``TweetProps.possibly_sensitive``はポスト単位のセンシティブフラグです。このフラグが``true``の場合、ポストがセンシティブなポストとしてみなされていることを示します。（断定）
+`TweetProps.possibly_sensitive`はポスト単位のセンシティブフラグです。このフラグが`true`の場合、ポストがセンシティブなポストとしてみなされていることを示します。（断定）
 
-``TweetProps.possibly_sensitive``が``true``かつ、``TweetProps.possibly_sensitive_editable``が``true``の場合、そのポストは［センシティブな内容を含むものを表示しない］設定がオンになっているアカウントの検索結果に表示されなくなります。（推定・Xの検索結果の調査により判断）
+`TweetProps.possibly_sensitive`が`true`かつ、`TweetProps.possibly_sensitive_editable`が`true`の場合、そのポストは［センシティブな内容を含むものを表示しない］設定がオンになっているアカウントの検索結果に表示されなくなります。（推定・Xの検索結果の調査により判断）
 
-``TweetProps.possibly_sensitive``が``true``かつ、``TweetProps.possibly_sensitive_editable``が``false``の場合、そのポストは検索結果に表示されなくなります。また、年齢制限がかかり、未成年者のアカウントや非ログイン状態で閲覧できなくなります。（断定・該当ポストを非ログイン状態で表示しようとする試みにより判断）
+`TweetProps.possibly_sensitive`が`true`かつ、`TweetProps.possibly_sensitive_editable`が`false`の場合、そのポストは検索結果に表示されなくなります。また、年齢制限がかかり、未成年者のアカウントや非ログイン状態で閲覧できなくなります。（断定・該当ポストを非ログイン状態で表示しようとする試みにより判断）
 
-Shadowban Scannerでは、``TweetProps.mediaVisibilityResults.blurred_image_interstitial.opacity``が存在する場合も、そのポストに年齢制限があるとみなします。（事実）
+Shadowban Scannerでは、`TweetProps.mediaVisibilityResults.blurred_image_interstitial.opacity`が存在する場合も、そのポストに年齢制限があるとみなします。（事実）
 
-``TweetProps.mediaVisibilityResults.blurred_image_interstitial.opacity``は、［センシティブな内容を含むものを表示しない］設定がオンになっているときに、年齢制限のあるメディアを含むポストに設定されます。［センシティブな内容を含むものを表示しない］がオフになっている場合や、年齢制限のないポストの場合は``TweetProps.mediaVisibilityResults``が``undefined``になります。（断定・実際のReact Propsの観察により判断）
+`TweetProps.mediaVisibilityResults.blurred_image_interstitial.opacity`は、［センシティブな内容を含むものを表示しない］設定がオンになっているときに、年齢制限のあるメディアを含むポストに設定されます。［センシティブな内容を含むものを表示しない］がオフになっている場合や、年齢制限のないポストの場合は`TweetProps.mediaVisibilityResults`が`undefined`になります。（断定・実際のReact Propsの観察により判断）
