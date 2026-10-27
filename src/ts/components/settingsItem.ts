@@ -62,23 +62,39 @@ class SettingsItem extends LitElement {
         }
     `;
 
-    @property({ attribute: "settings-name", reflect: true, type: String })
+    @property({
+        attribute: "settings-name",
+        reflect: true,
+        type: String
+    })
     public settingsName = "";
 
-    @property({ attribute: true, reflect: true, type: Boolean })
+    @property({
+        attribute: true,
+        reflect: true,
+        type: Boolean
+    })
     public checked = false;
 
-    @property({ attribute: "is-first-item", reflect: true, type: Boolean })
+    @property({
+        attribute: "is-first-item",
+        reflect: true,
+        type: Boolean
+    })
     public isFirstItem = false;
 
-    @property({ attribute: "is-last-item", reflect: true, type: Boolean })
+    @property({
+        attribute: "is-last-item",
+        reflect: true,
+        type: Boolean
+    })
     public isLastItem = false;
 
     protected override render(): ReturnType<typeof html> {
         const itemClasses = {
             "first-item": this.isFirstItem,
             "last-item": this.isLastItem
-        };
+        } as const;
 
         return html`
             <div class="settings-item ${classMap(itemClasses)}">
