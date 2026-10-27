@@ -2,6 +2,5 @@
     "$schema": "https://unpkg.com/knip@6/schema.json",
     "project": ["src/**/*.ts", "script/**/*.ts"],
     "entry": ["src/ts/userScript/*.ts", "script/**/*.ts"],
-    "ignore": ["tsconfig.json"],
-    "ignoreDependencies": ["eslint-plugin-import-x", "eslint-plugin-jsdoc"]
+    "ignore": ["tsconfig.json"]
 }

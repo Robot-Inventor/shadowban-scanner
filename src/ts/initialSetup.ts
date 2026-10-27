@@ -83,7 +83,10 @@ const createButton = (value: string, label: string, name: string): { outer: MdLi
     labelElement.setAttribute(TRANSLATION_ATTRIBUTE, label);
     outer.appendChild(labelElement);
 
-    return { button, outer } as const;
+    return {
+        button,
+        outer
+    } as const;
 };
 
 const insertButtons = (buttonsOuter: Element, translator: Translator, setupItem: InitialSetupItem): void => {
