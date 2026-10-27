@@ -15,7 +15,7 @@ The website is available in multiple languages. The translations are stored in t
 
     ```json
     {
-      "key": "value"
+        "key": "value"
     }
     ```
 
