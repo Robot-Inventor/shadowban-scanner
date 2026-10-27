@@ -4,15 +4,14 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production rspack build",
     "dev": "cross-env NODE_ENV=development rspack serve",
-    "format": "prettier --write ./src/",
-    "format:check": "prettier --check ./src/",
-    "lint": "oxlint ./src && stylelint ./src/css/**/*.css"
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
+    "lint": "tsc --noEmit && oxlint ./src && stylelint ./src/css/**/*.css"
   },
   "dependencies": {
     "@robot-inventor/ts-utils": "^0.8.0",
     "i18next": "^26.0.0",
     "i18next-browser-languagedetector": "^8.0.0",
-    "prettier": "^3.2.5",
     "sweetalert2": "^11.10.8"
   },
   "devDependencies": {
@@ -25,6 +24,7 @@
     "cross-env": "^10.0.0",
     "css-loader": "^7.1.2",
     "fork-ts-checker-webpack-plugin": "^9.0.2",
+    "oxfmt": "^0.75.0",
     "oxlint": "^1.83.0",
     "stylelint": "^17.0.0",
     "stylelint-config-standard": "^40.0.0",
