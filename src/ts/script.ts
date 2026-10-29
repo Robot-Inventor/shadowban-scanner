@@ -30,7 +30,7 @@ declare global {
 }
 
 const isCrawler = (): boolean => {
-    const crawlerUserAgents = ["googlebot", "bingbot", "google-inspectiontool", "y!j", "yahoo!"];
+    const crawlerUserAgents = ["googlebot", "bingbot", "google-inspectiontool", "y!j", "yahoo!"] as const;
     const result = crawlerUserAgents.some((crawlerUserAgent) =>
         navigator.userAgent.toLowerCase().includes(crawlerUserAgent)
     );
@@ -68,12 +68,15 @@ const initializeDownloadButtons = async (): Promise<void> => {
         // oxlint-disable-next-line @typescript-eslint/no-misused-promises
         button.addEventListener("click", async () => {
             const { userAgent } = navigator;
+
             const isAndroid = userAgent.includes("Android");
             const isMobile = Boolean(/iPhone|Android.+Mobile/u.exec(userAgent));
             const isSupportedMobileBrowser = SUPPORTED_MOBILE_BROWSERS.some(
                 (supportedBrowser) => supportedBrowser === browser
             );
-            if (isMobile && (!isAndroid || !isSupportedMobileBrowser)) {
+
+            const isUnSupportedMobileBrowser = isMobile && (!isAndroid || !isSupportedMobileBrowser);
+            if (isUnSupportedMobileBrowser) {
                 const result = await Swal.fire({
                     background: "#21272e",
                     cancelButtonColor: "#d33",
@@ -211,6 +214,8 @@ const initializeLanguageSwitcher = (): void => {
 };
 
 const main = async (): Promise<void> => {
+    // i18next expects a mutable array
+    // oxlint-disable-next-line roboin/require-as-const
     const languageDetectionOrderDefault = [
         "querystring",
         "cookie",
@@ -222,6 +227,8 @@ const main = async (): Promise<void> => {
         "subdomain"
     ];
 
+    // i18next expects a mutable array
+    // oxlint-disable-next-line roboin/require-as-const
     const languageDetectionOrderCrawler = [
         "querystring",
         "path",
