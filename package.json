@@ -27,7 +27,7 @@
     "oxfmt": "^0.75.0",
     "oxlint": "^1.83.0",
     "stylelint": "^17.0.0",
-    "stylelint-config-standard": "^40.0.0",
+    "stylelint-config-standard": "^41.0.0",
     "typescript": "npm:@typescript/typescript6@^6.0.2"
   }
 }
