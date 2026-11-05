@@ -34,6 +34,7 @@ runtime.onInstalled.addListener((details) => {
 
     if (details.reason === "update") {
         void onUpdated(details, isJapanese);
+
         return;
     }
 

@@ -29,6 +29,7 @@ const analyzeProfileProps = (props: UserProps): ProfileAnalysisResult => {
     const sensitiveMediaInProfile = ["sensitive_media", "offensive_profile_content"].includes(
         props.profile_interstitial_type
     );
+
     const withheldInCountries = Array.isArray(props.withheld_in_countries) ? props.withheld_in_countries : [];
     const shadowbanned = possiblySensitive || sensitiveMediaInProfile;
 
@@ -55,6 +56,7 @@ const analyzeTweetProps = (parser: TweetParser): TweetAnalysisResult => {
     const possiblySensitiveEditable = !(props.possibly_sensitive_editable === false);
     const hasBlurredImageInterstitialOpacity =
         typeof props.mediaVisibilityResults?.blurred_image_interstitial?.opacity === "number";
+
     const ageRestriction = (possiblySensitive && !possiblySensitiveEditable) || hasBlurredImageInterstitialOpacity;
 
     let searchability: TweetAnalysisResult["tweet"]["searchability"] = "searchable";
@@ -96,6 +98,7 @@ const analyzeTombstoneProps = (props: [CellInnerDivProps, TombstoneGrandchildPro
     const { key } = cellInnerDivProps.children._owner;
     // Extract tweet ID from `conversationthread-${string}-tweet-${string}` or `tweet-${string}`
     const tweetId = key.split("-").pop();
+
     return tweetId;
 };
 

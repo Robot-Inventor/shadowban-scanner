@@ -29,6 +29,7 @@ const main = async (): Promise<void> => {
     eventGenerator.addEventListener("newMessage", () => {
         translator.translateElements();
     });
+
     document.body.appendChild(eventGenerator);
 
     const pageScript = document.createElement("script");

@@ -68,11 +68,13 @@ class Translator {
             const translatedText = parsedSubstitutions
                 ? this.translationFunction(translationKey, parsedSubstitutions)
                 : this.translationFunction(translationKey);
+
             if (element.hasAttribute(TWEMOJI_ATTRIBUTE)) {
                 element.innerHTML = this.convertEmojiToTwemoji(translatedText);
             } else {
                 element.innerHTML = translatedText;
             }
+
             element.removeAttribute(TRANSLATION_ATTRIBUTE);
         });
     }

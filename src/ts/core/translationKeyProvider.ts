@@ -29,6 +29,7 @@ const formatCountryList = (countries: string[]): string => {
         style: "narrow",
         type: "conjunction"
     });
+
     const translator = new Intl.DisplayNames([userLanguage], { type: "region" });
 
     const translatedCountries = countries.map((country) => translator.of(country) ?? "");
@@ -64,12 +65,14 @@ const getTweetDetails = (analyzer: TweetAnalysisResult): SbsMessageDetails => {
     const tweetSensitiveFlag = analyzer.tweet.possiblySensitive
         ? "tweetIsFlaggedAsSensitive"
         : "tweetIsNotFlaggedAsSensitive";
+
     const tweetAgeRestriction = analyzer.tweet.ageRestriction ? "tweetIsAgeRestricted" : "tweetIsNotAgeRestricted";
     const tweetSearchStatusTable = {
         possiblyUnsearchable: "tweetMayNotBeSearchable",
         searchable: "tweetIsSearchable",
         unsearchable: "tweetIsNotSearchable"
     } as const;
+
     const tweetSearchStatus = tweetSearchStatusTable[analyzer.tweet.searchability];
 
     return [tweetSensitiveFlag, tweetAgeRestriction, tweetSearchStatus];

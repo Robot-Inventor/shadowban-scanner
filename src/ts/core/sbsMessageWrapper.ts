@@ -75,6 +75,7 @@ class SbsMessageWrapper {
         if (!text) throw new Error("Failed to get user name span of post");
 
         const { color } = getComputedStyle(text);
+
         return color as `rgb(${number}, ${number}, ${number})`;
     }
 

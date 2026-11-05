@@ -29,6 +29,7 @@ class Core {
             this.checkTweet(tweet);
             this.timelineObserverCallback();
         });
+
         timeline.onNewProfile((profile) => {
             this.checkProfile(profile);
         });
@@ -55,6 +56,7 @@ class Core {
         const bioOrUserName =
             document.querySelector("[data-testid='UserDescription']") ??
             document.querySelector("[data-testid='UserName']");
+
         if (!bioOrUserName) throw new Error("Failed to get user description of profile");
 
         /*
@@ -76,6 +78,7 @@ class Core {
 
         if (!tweet.metadata.isFocalMode && this.settings.enableCompactMode) {
             tweet.element.dataset["sbCompactMode"] = analyzer.tweet.hasAnyProblem ? "red" : "green";
+
             return;
         }
 
@@ -99,6 +102,7 @@ class Core {
 
         const tweetId = analyzeTombstoneProps(new TombstoneParser(tombstone).parse());
         if (!tweetId) return;
+
         const tweetURL = `https://x.com/i/status/${tweetId}`;
         const link = document.createElement("a");
         link.href = tweetURL;
@@ -121,6 +125,7 @@ class Core {
         const cellInnerDivs = document.querySelectorAll<HTMLElement>(
             `[data-testid='cellInnerDiv']:has(a[href='https://help.twitter.com/rules-and-policies/notices-on-twitter']):not([${CHECKED_DATA_ATTRIBUTE}])`
         );
+
         for (const cellInnerDiv of cellInnerDivs) {
             cellInnerDiv.setAttribute(CHECKED_DATA_ATTRIBUTE, "true");
             this.necromancer(cellInnerDiv);

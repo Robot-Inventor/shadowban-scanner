@@ -7,6 +7,7 @@ if (!eventGenerator) throw new Error("Event generator not found");
 
 const settingsString = eventGenerator.getAttribute(EVENT_GENERATOR_SETTINGS_ATTRIBUTE);
 if (!settingsString) throw new Error("Settings not found");
+
 const settings = parseSettings(settingsString);
 if (!settings) throw new Error("Invalid settings");
 

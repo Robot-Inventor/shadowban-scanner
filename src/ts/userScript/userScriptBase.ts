@@ -13,8 +13,10 @@ const createUserScript = (translationData: TranslationData): void => {
                 // oxlint-disable-next-line no-magic-numbers
                 result = result.replace(`$${String(index + 1)}`, value);
             }
+
             return result;
         }
+
         return translationData[key].message;
     }, "https://abs-0.twimg.com/emoji/v2/svg/");
 

@@ -46,6 +46,7 @@ for (const userScript of userScriptFiles) {
 // @grant        none
 // ==/UserScript==
 `.trim();
+
     const newScriptString = `${userScriptComment}\n\n${scriptString}`;
     fs.writeFileSync(userScript, newScriptString);
 }
