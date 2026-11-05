@@ -12,20 +12,11 @@ jobs:
             contents: write
             pull-requests: write
 
-        strategy:
-            matrix:
-                node-version: [latest]
-
         steps:
             - uses: actions/checkout@v7
+            - uses: oven-sh/setup-bun@v2
 
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v7
-              with:
-                  node-version: ${{ matrix.node-version }}
-
-            - run: npm ci
-
+            - run: bun install --frozen-lockfile
             - run: npm run ci:build
 
             - uses: peter-evans/create-pull-request@v8
