@@ -34,6 +34,7 @@ const isCrawler = (): boolean => {
     const result = crawlerUserAgents.some((crawlerUserAgent) =>
         navigator.userAgent.toLowerCase().includes(crawlerUserAgent)
     );
+
     return result;
 };
 
@@ -89,6 +90,7 @@ const initializeDownloadButtons = async (): Promise<void> => {
                     text: translate("smartphonesAreNotSupportedDescription"),
                     title: translate("smartphonesAreNotSupported")
                 });
+
                 if (result.isConfirmed) {
                     open(downloadLink, "_blank");
                 }
@@ -141,6 +143,7 @@ const animateCount = ({ elementId, endValue, duration, locale }: AnimateCountOpt
 
     const targetElement = document.getElementById(elementId);
     if (!targetElement) return;
+
     const startTime = performance.now();
 
     const updateCount = (currentTime: number): void => {
@@ -173,6 +176,7 @@ const onLanguageChanged = (): void => {
         if (!key) {
             throw new Error("data-translation attribute is not set.");
         }
+
         const targetAttribute = target.getAttribute("data-translation-attribute");
         if (targetAttribute) {
             target.setAttribute(targetAttribute, translate(key));
@@ -190,6 +194,7 @@ const onLanguageChanged = (): void => {
         endValue: NUMBER_OF_USERS,
         locale: i18next.language
     } as const satisfies AnimateCountOptions;
+
     animateCount(animateCountOptions);
 };
 
@@ -198,10 +203,12 @@ const initializeLanguageSwitcher = (): void => {
     if (!languageSwitcher) {
         throw new Error("Language switcher element is not found.");
     }
+
     const languageSwitcherSelect = document.querySelector<HTMLSelectElement>("#language_switcher-select");
     if (!languageSwitcherSelect) {
         throw new Error("Language switcher select element is not found.");
     }
+
     languageSwitcherSelect.value = i18next.language;
 
     languageSwitcher.addEventListener("click", () => {
@@ -248,6 +255,7 @@ const main = async (): Promise<void> => {
         detection: {
             convertDetectedLanguage: (lng) => {
                 const splitLng = lng.split("-");
+
                 return isNonEmptyArray(splitLng) ? splitLng[0] : lng;
             },
             order: isCrawler() ? languageDetectionOrderCrawler : languageDetectionOrderDefault

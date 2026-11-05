@@ -1,3 +1,3 @@
-import { oxlintConfigNoJSDoc } from "@robot-inventor/oxlint-config";
+import { oxlintConfig } from "@robot-inventor/oxlint-config";
 
-export default oxlintConfigNoJSDoc;
+export default oxlintConfig;
