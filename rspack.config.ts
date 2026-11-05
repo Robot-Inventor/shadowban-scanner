@@ -65,10 +65,13 @@ class RunCommandsPlugin {
         compiler.hooks.watchRun.tapAsync("RunCommandsPlugin", (_params, callback) => {
             isWatchMode = true;
 
-            if (!manifestWatcher || !typeWatcher || !localesWatcher) {
+            const shouldInitializeWatchers = !manifestWatcher || !typeWatcher || !localesWatcher;
+
+            if (shouldInitializeWatchers) {
                 manifestWatcher = watch("src/manifest/", {
                     ignored: (pathString, stats) => Boolean(stats?.isFile() && !pathString.endsWith(".json"))
                 });
+
                 manifestWatcher.on("change", (pathString: string) => {
                     // oxlint-disable-next-line no-console
                     console.log(`Manifest file changed: ${pathString}`);
@@ -89,12 +92,14 @@ class RunCommandsPlugin {
                     localesWatcher = watch("src/_locales/", {
                         ignored: (pathString, stats) => Boolean(stats?.isFile() && !pathString.endsWith(".json"))
                     });
+
                     localesWatcher.on("change", (pathString: string) => {
                         // oxlint-disable-next-line no-console
                         console.log(`Locale file changed: ${pathString}`);
                         RunCommandsPlugin.updatePrivacyPolicy();
                     });
                 }
+
                 callback();
             } else {
                 callback();
@@ -118,6 +123,7 @@ class RunCommandsPlugin {
                         // oxlint-disable-next-line no-console
                         console.log(stdout);
                     }
+
                     callback();
                 });
             } else {
@@ -193,6 +199,7 @@ for (const target of copyTargets) {
 
 const unacceptableLicenseTest = (licenseIdentifier: string): boolean => {
     const acceptableLicenses: readonly string[] = ["BSD-3-Clause", "Apache-2.0", "MIT", "0BSD", "MPL-2.0"];
+
     return !acceptableLicenses.includes(licenseIdentifier);
 };
 

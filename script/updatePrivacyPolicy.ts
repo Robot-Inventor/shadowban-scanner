@@ -16,14 +16,12 @@ for (const file of files) {
     const messagePath = `./src/_locales/${languageCode.replace(/(_\w+)/u, (match) => match.toUpperCase())}/messages.json`;
 
     const parsedMessages: unknown = JSON.parse(fs.readFileSync(messagePath, "utf8"));
-    if (
-        !isPlainObject(parsedMessages) ||
-        !isPlainObject(parsedMessages["privacyPolicyText"]) ||
-        typeof parsedMessages["privacyPolicyText"]["message"] !== "string"
-    ) {
+    const privacyPolicyMessage = isPlainObject(parsedMessages) ? parsedMessages["privacyPolicyText"] : null;
+    const privacyPolicyText = isPlainObject(privacyPolicyMessage) ? privacyPolicyMessage["message"] : null;
+
+    if (typeof privacyPolicyText !== "string") {
         throw new Error(`Privacy policy text not found in ${messagePath}`);
     }
-    const privacyPolicyText = parsedMessages["privacyPolicyText"]["message"];
 
     const newPrivacyPolicySection = `
 ${START_MARKER}

@@ -15,5 +15,6 @@ console.log("Packaging for Firefox...");
 execSync(
     `npx web-ext build --source-dir "./dist/firefox/" --artifacts-dir "./web-ext-artifacts/manifestV2" --filename "{short_name}-{version}-manifestV2.zip"`
 );
+
 // oxlint-disable-next-line no-console
 console.log("Done.");

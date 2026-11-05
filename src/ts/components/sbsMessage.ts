@@ -156,6 +156,7 @@ class SbsMessage extends LitElement {
         if (this.onRenderedCallback) {
             this.onRenderedCallback();
         }
+
         super.firstUpdated(_changedProperties);
     }
 
@@ -173,6 +174,7 @@ class SbsMessage extends LitElement {
                 if (typeof detail === "string") {
                     return html` <li data-sb-enable-twemoji data-sb-translation=${detail}></li> `;
                 }
+
                 return html`
                     <li
                         data-sb-enable-twemoji

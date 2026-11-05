@@ -21,7 +21,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "oxlint ./src ./script ./rspack.config.ts && knip && node ./script/addonsLinter.ts",
+    "lint": "oxlint src script rspack.config.ts && knip && node ./script/addonsLinter.ts",
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
     "build": "cross-env NODE_ENV=production npx rspack build",

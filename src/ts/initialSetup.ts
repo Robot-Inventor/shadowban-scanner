@@ -57,7 +57,7 @@ const INITIAL_SETUP_ITEMS = [
         ],
         settingsKey: "enableForOtherUsersTweets"
     }
-] satisfies NonEmptyArray<InitialSetupItem>;
+] as const satisfies NonEmptyArray<InitialSetupItem>;
 
 const removeButtons = (buttonsOuter: Element): void => {
     while (buttonsOuter.firstChild) {
@@ -189,6 +189,7 @@ const main = (): void => {
         (messageName, substitutions) => i18n.getMessage(messageName, substitutions),
         runtime.getURL("image/")
     );
+
     translator.translateElements();
 
     let setupItemIndex = 0;
@@ -201,6 +202,7 @@ const main = (): void => {
 
         const [settingsKey, settingsValue] = formData;
         if (!settingsKey || !settingsValue) throw new Error("no settingsKey or settingsValue");
+
         void writeSettingsToStorage({ [settingsKey]: settingsValue === "true" });
 
         // oxlint-disable-next-line no-magic-numbers
@@ -208,11 +210,13 @@ const main = (): void => {
             setupItemIndex++;
             const setupItem = INITIAL_SETUP_ITEMS[setupItemIndex];
             if (!setupItem) throw new Error("no setupItem");
+
             insertButtons(buttonsOuter, translator, setupItem);
         } else {
             setupItemIndex++;
             showCompletionMessage(buttonsOuter, translator);
         }
+
         updateNavigationButtonsStatus(backButton, nextButton, setupItemIndex, INITIAL_SETUP_ITEMS.length);
     });
 
@@ -222,6 +226,7 @@ const main = (): void => {
             setupItemIndex--;
             const setupItem = INITIAL_SETUP_ITEMS[setupItemIndex];
             if (!setupItem) throw new Error("no setupItem");
+
             insertButtons(buttonsOuter, translator, setupItem);
             updateNavigationButtonsStatus(backButton, nextButton, setupItemIndex, INITIAL_SETUP_ITEMS.length);
         }

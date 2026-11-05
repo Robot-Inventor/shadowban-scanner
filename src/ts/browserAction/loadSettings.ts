@@ -107,6 +107,7 @@ const loadSettings = async (): Promise<void> => {
 
     const fieldset = document.querySelector("fieldset");
     if (!fieldset) throw new Error("Failed to get fieldset");
+
     const fragment = document.createDocumentFragment();
 
     for (const settingsGroup of SETTINGS_ITEMS) {
