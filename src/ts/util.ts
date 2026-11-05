@@ -16,6 +16,7 @@ const getBrowserFromUserAgent = (userAgent: string): BrowserType | null => {
     if (userAgent.includes("firefox")) return "firefox";
     if (userAgent.includes("edg")) return "edge";
     if (userAgent.includes("vivaldi/")) return "vivaldi";
+
     return null;
 };
 

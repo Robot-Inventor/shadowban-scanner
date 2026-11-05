@@ -6,7 +6,7 @@
     "dev": "cross-env NODE_ENV=development rspack serve",
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
-    "lint": "tsc --noEmit && oxlint ./src && stylelint ./src/css/**/*.css"
+    "lint": "tsc --noEmit && oxlint src && stylelint ./src/css/**/*.css"
   },
   "dependencies": {
     "@robot-inventor/ts-utils": "^0.8.0",
