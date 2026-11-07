@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@robot-inventor/ts-utils": "^0.8.0",
-    "i18next": "^26.0.0",
+    "i18next": "^27.0.0",
     "i18next-browser-languagedetector": "^8.0.0",
     "sweetalert2": "^11.10.8"
   },
