@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import { glob } from "glob";
-import { isPlainObject } from "@robot-inventor/ts-utils";
+
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+    typeof value === "object" && value !== null && !Array.isArray(value);
 
 const START_MARKER = "<!-- PRIVACY_POLICY_TEXT_START -->";
 const END_MARKER = "<!-- PRIVACY_POLICY_TEXT_END -->";
@@ -16,8 +18,8 @@ for (const file of files) {
     const messagePath = `./src/_locales/${languageCode.replace(/(_\w+)/u, (match) => match.toUpperCase())}/messages.json`;
 
     const parsedMessages: unknown = JSON.parse(fs.readFileSync(messagePath, "utf8"));
-    const privacyPolicyMessage = isPlainObject(parsedMessages) ? parsedMessages["privacyPolicyText"] : null;
-    const privacyPolicyText = isPlainObject(privacyPolicyMessage) ? privacyPolicyMessage["message"] : null;
+    const privacyPolicyMessage = isRecord(parsedMessages) ? parsedMessages["privacyPolicyText"] : null;
+    const privacyPolicyText = isRecord(privacyPolicyMessage) ? privacyPolicyMessage["message"] : null;
 
     if (typeof privacyPolicyText !== "string") {
         throw new Error(`Privacy policy text not found in ${messagePath}`);

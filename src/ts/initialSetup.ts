@@ -9,7 +9,6 @@ import "@material/web/list/list";
 // oxlint-disable-next-line import-x/no-unassigned-import
 import "@material/web/list/list-item";
 import { INSTRUCTION_URL, TRANSLATION_ATTRIBUTE } from "./common/constants";
-import { type NonEmptyArray, isNonEmptyArray } from "@robot-inventor/ts-utils";
 import { i18n, runtime, tabs } from "webextension-polyfill";
 import type { MdListItem } from "@material/web/list/list-item";
 import type { MdRadio } from "@material/web/radio/radio";
@@ -57,7 +56,7 @@ const INITIAL_SETUP_ITEMS = [
         ],
         settingsKey: "enableForOtherUsersTweets"
     }
-] as const satisfies NonEmptyArray<InitialSetupItem>;
+] as const satisfies InitialSetupItem[];
 
 const removeButtons = (buttonsOuter: Element): void => {
     while (buttonsOuter.firstChild) {
@@ -140,10 +139,8 @@ const updateInstructionToCompletionMessage = (translator: Translator): void => {
 
 const closeCurrentTab = async (): Promise<void> => {
     const activeTabs = await tabs.query({ active: true, currentWindow: true });
-    if (!isNonEmptyArray(activeTabs)) return;
-
     const [currentTab] = activeTabs;
-    if (!currentTab.id) throw new Error("no current tab");
+    if (!currentTab?.id) throw new Error("no current tab");
 
     void tabs.remove(currentTab.id);
 };

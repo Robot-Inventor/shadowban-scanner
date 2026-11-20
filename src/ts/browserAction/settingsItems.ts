@@ -1,4 +1,3 @@
-import type { AssertType } from "@robot-inventor/ts-utils";
 import type { Settings } from "../../types/common/settings";
 import type { TranslationKey } from "../../types/common/translator";
 
@@ -87,6 +86,8 @@ const SETTINGS_ITEMS = [
         type: "group"
     }
 ] as const satisfies SettingsData;
+
+type AssertType<T extends Expected, Expected> = T;
 
 // Check if there are missing keys in the settings data.
 type AllSettingsKeys = keyof Settings;
