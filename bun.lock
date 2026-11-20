@@ -21,7 +21,6 @@
       },
       "devDependencies": {
         "@robot-inventor/oxlint-config": "^2.0.0",
-        "@robot-inventor/ts-utils": "^0.8.0",
         "@robot-inventor/tsconfig-base": "^7.0.0",
         "@rspack/cli": "^2.0.0",
         "@rspack/core": "^2.0.0",
@@ -319,8 +318,6 @@
     "@pnpm/npm-conf": ["@pnpm/npm-conf@3.0.3", "", { "dependencies": { "@pnpm/config.env-replace": "^1.1.0", "@pnpm/network.ca-file": "^1.0.1", "config-chain": "^1.1.11" } }, "sha512-//0sR/cow/s4ICQaYoAobOl4aU8cjU6x/V24V7XkKotb9+O+3zySIYp146vpaobYHnxa4pZX8NkV54Z5AwbDKA=="],
 
     "@robot-inventor/oxlint-config": ["@robot-inventor/oxlint-config@2.1.1", "", { "dependencies": { "@next/eslint-plugin-next": "^16.4.4", "@oxlint/plugins": "^1.91.0", "eslint": "^10.14.0", "eslint-import-resolver-node": "^0.4.0", "eslint-import-resolver-typescript": "^4.4.5", "eslint-plugin-import-x": "^4.17.1", "eslint-plugin-jsdoc": "^65.4.2", "oxlint": "^1.91.0", "oxlint-plugin-react-doctor": "^0.9.22", "oxlint-tsgolint": "^7.0.2005" } }, "sha512-GQGGDLOS285BowpfAFY3y/cBc/ERSCM1YuSkME7/izelbAB/xAG4+rzhOytjJXKD+Waf+uzlEUfypq+MNf9l7g=="],
-
-    "@robot-inventor/ts-utils": ["@robot-inventor/ts-utils@0.8.9", "", {}, "sha512-Kr+/aT5uAlQpfdxPn4s7fFyMT0eMkcqa/Y+0+LginckKRK9htX9LhcpAv0gRK5+aXSeBqCEb6iQSqGh/rUobPQ=="],
 
     "@robot-inventor/tsconfig-base": ["@robot-inventor/tsconfig-base@7.2.0", "", {}, "sha512-M3kXeBVcuS7QDrCva77iIlQ4MRG7Y2EnagnmJUj00cRuzlu0Qq++EZZpA7ySMJyyBZvLWfmwl2zVNh0/ANSabA=="],
 
